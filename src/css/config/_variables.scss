@@ -1,0 +1,55 @@
+$nodesto: 'Nodesto', 'Signika', 'Palatino Linotype', serif;
+
+$black: black;
+$blue: blue;
+$cornflower: #6495ed;
+$green: green;
+$red: red;
+$grey: grey;
+$white: white;
+$darkblue: darkblue;
+$crimson: crimson;
+$darkred: darkred;
+$light: darken($white, 10%);
+$light-1: darken($light, 10%);
+$light-2: darken($light-1, 10%);
+$dark: darken($grey, 20%);
+$dark-sunken: #414040;
+$matrix-green: rgb(7, 145, 35);
+$mce-background: #939393;
+
+$stun: $blue;
+$physical: $red;
+$matrix: $matrix-green;
+
+$edge: #C7B002;
+
+$roll-limit-hit: $green;
+$roll-failure-background: #ffdddd;
+$roll-failure-border: #6e0000;
+
+$rollcolor: $darkblue;
+
+$color: $white;
+$inner-color: $white;
+$outline-color: $black;
+
+$groove-width: 1px;
+$groove-color: $dark;
+$groove: $groove-width solid $groove-color;
+$light-border: $dark;
+
+$dark-sunken-box-shadow: inset 0 0 3px 0 #000, 0 -2px 2px -1px #000, -2px 0 2px -2px #28221f, -2px 0 2px -2px #28221f, 2px 0 2px -2px #28221f, 2px 0 2px -2px #28221f, 0 3px 3px -3px #8f8c8b, 0 2px 2px -2px #8f8c8b, 0 1px 1px -1px #8f8c8b;
+
+$radius: 0.25em;
+$small-distance: 0.15em;
+$medium-distance: 0.25em;
+$large-distance: 0.5em;
+
+$border-under: 1px groove $groove-color;
+
+$sheetbackground: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url('assets/brushed_metal.jpg') repeat;
+
+$popupbackground: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url('assets/brushed_metal.jpg') repeat

@@ -1,0 +1,24 @@
+{
+  "SRA.Sheet.Actor": "Actor sheet",
+  "SRA.Sheet.Item": "Item sheet",
+
+  "SRA.ItemTypes": {
+    "Metatype": "Metatype",
+    "Skill": "Skill",
+    "Quality": "Quality",
+    "ShadowAmp": "Shadow Amp",
+    "Weapon": "Weapon",
+    "Gear": "Gear",
+    "Contact": "Contact"
+  },
+
+  "SRA.Attributes": {
+    "Strength": "Strength",
+    "Agility": "Agility",
+    "Willpower": "Willpower",
+    "Logic": "Logic",
+    "Charisma": "Charisma",
+    "Edge": "Edge"
+  }
+
+}

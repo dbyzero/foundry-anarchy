@@ -1,0 +1,100 @@
+{
+  "Actor": {
+    "types": [
+      "character"
+    ],
+    "templates": {
+      "description": {
+        "description": {
+          "description": "Description",
+          "gmnotes": "Gamemaster notes",
+          "keywords": [],
+          "dispositions": [],
+          "cues": []
+        }
+      },
+      "counter": {
+        "essence": {
+          "value": 6
+        },
+        "karma": {
+          "value": 0,
+          "total": 0
+        },
+        "anarchy": {
+          "value": 0
+        },
+        "edge": {
+          "value": 0
+        }
+      },
+      "attributes": {
+        "attributes": {
+          "strength": {
+            "value": 1
+          },
+          "agility": {
+            "value": 1
+          },
+          "willpower": {
+            "value": 1
+          },
+          "logic": {
+            "value": 1
+          },
+          "charisma": {
+            "value": 1
+          },
+          "edge": {
+            "value": 1
+          }
+        }
+      },
+      "condition_monitors": {
+        "track": {
+          "physical": {
+            "value": 0,
+            "max": 10,
+            "disabled": false
+          },
+          "stun": {
+            "value": 0,
+            "max": 10,
+            "disabled": false
+          },
+          "armor": {
+            "label": "Armor",
+            "value": 0,
+            "max": 9
+          }
+        }
+      }
+    },
+    "character": {
+      "templates": [
+        "description",
+        "fundamental",
+        "attributes",
+        "condition"
+      ]
+    }
+  },
+  "Item": {
+    "types": [
+      "metatype",
+      "skill",
+      "quality",
+      "shadowamp",
+      "weapon",
+      "gear",
+      "contact"
+    ],
+    "metatype": {},
+    "skill": {},
+    "quality": {},
+    "shadowamp": {},
+    "weapon": {},
+    "gear": {},
+    "contact": {}
+  }
+}
