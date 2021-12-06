@@ -1,24 +1,27 @@
 {
-  "SRA.Sheet.Actor": "Actor sheet",
-  "SRA.Sheet.Item": "Item sheet",
-
-  "SRA.ItemTypes": {
-    "Metatype": "Metatype",
-    "Skill": "Skill",
-    "Quality": "Quality",
-    "ShadowAmp": "Shadow Amp",
-    "Weapon": "Weapon",
-    "Gear": "Gear",
-    "Contact": "Contact"
-  },
-
-  "SRA.Attributes": {
-    "Strength": "Strength",
-    "Agility": "Agility",
-    "Willpower": "Willpower",
-    "Logic": "Logic",
-    "Charisma": "Charisma",
-    "Edge": "Edge"
+  "SRA": {
+    "sheet": {
+      "character": "Character sheet",
+      "actorName": "Name"
+    },
+    "common":{
+    },
+    "itemTypes": {
+      "metatype": "Metatype",
+      "skill": "Skill",
+      "quality": "Quality",
+      "shadowAmp": "Shadow Amp",
+      "weapon": "Weapon",
+      "gear": "Gear",
+      "contact": "Contact"
+    },
+    "attributes": {
+      "strength": "Strength",
+      "agility": "Agility",
+      "willpower": "Willpower",
+      "logic": "Logic",
+      "charisma": "Charisma",
+      "edge": "Edge"
+    }
   }
-
 }

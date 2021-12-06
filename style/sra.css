@@ -1,0 +1,12 @@
+
+
+.sheet-header .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 128px;
+  flex: 0 0 128px;
+  height: 128px;
+  width: 128px;
+  margin-right: 10px;
+  object-fit: cover;
+  object-position: 50% 0;
+}

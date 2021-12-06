@@ -1,5 +1,5 @@
 
-export class SRAActor extends Actor {
+export class SRACharacter extends Actor {
 
   prepareData() {
     super.prepareData();

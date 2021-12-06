@@ -1,0 +1,21 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+      <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+      <div class="flexcol">
+        <h1 class="charname flexrow"><input name="name" type="text" value="{{data.name}}" placeholder="{{localize 'SRA.sheet.actorName'}}"/></h1>
+        <div class="flexrow">
+            <!-- TODO: extract attributes to partial-->
+          {{#each data.data.attributes as |attribute key|}}
+            <!-- TODO: extract attribute to partial-->
+            <div class="flexcol" data-attribute="{{key}}">
+              <label class="attribute-label">{{localize (concat 'SRA.attributes.' key)}}</label>
+              <input class="attribute-value" type="text" data-dtype="Number"
+                name="data.attributes.{{key}}.value" value="{{attribute.value}}" 
+              />
+            </div>
+          {{/each}}
+      </div>
+    </header>
+    
+
+</form>

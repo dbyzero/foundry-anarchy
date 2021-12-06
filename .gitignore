@@ -1,6 +1,0 @@
-*.swp
-node_modules
-foundryconfig.json
-.vscode
-*.lock
-src5/*

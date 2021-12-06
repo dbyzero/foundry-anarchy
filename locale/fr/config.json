@@ -1,23 +1,27 @@
 {
-  "SRA.Sheet.Actor": "Fiche de personnage",
-  "SRA.Sheet.Item": "Fiche d'items",
-  "SRA.ItemTypes": {
-    "Metatype": "Métatype",
-    "Skill": "Compétence",
-    "Quality": "Trait",
-    "ShadowAmp": "Atout",
-    "Weapon": "Arme",
-    "Gear": "Equipement",
-    "Contact": "Contact"
-  },
-
-  "SRA.Attributes": {
-    "Strength": "Force",
-    "Agility": "Agilité",
-    "Willpower": "Volonté",
-    "Logic": "Logique",
-    "Charisma": "Charisme",
-    "Edge": "Chance"
+  "SRA": {
+    "sheet": {
+      "character": "Fiche de personnage",
+      "actorName": "Nom"
+    },
+    "common":{
+    },
+    "itemTypes": {
+      "metatype": "Metatype",
+      "skill": "Compétence",
+      "quality": "Trait",
+      "shadowAmp": "Atout",
+      "weapon": "Arme",
+      "gear": "Equipement",
+      "contact": "Contact"
+    },
+    "attributes": {
+      "strength": "Force",
+      "agility": "Agilité",
+      "willpower": "Volonté",
+      "logic": "Logique",
+      "charisma": "Charisme",
+      "edge": "Chance"
+    }
   }
-
 }
