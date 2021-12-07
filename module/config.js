@@ -2,8 +2,21 @@ export const SRA = {
     sheet: {
         actorName: "SRA.sheet.actorName",
         character: "SRA.sheet.character",
+        keywords: {
+            name: "SRA.sheet.keyword.name",
+        },
+        dispositions: {
+            name: "SRA.sheet.dispositions.name",
+        },
+        cues: {
+            name: "SRA.sheet.cues.name",
+        },
     },
-
+    common: {
+        newEntry: "SRA.common.newEntry",
+        add: "SRA.common.add",
+        del: "SRA.common.del"
+    },
     itemTypes: {
         metatype: 'SRA.itemTypes.metatype',
         skill: 'SRA.itemTypes.skill',

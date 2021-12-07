@@ -1,0 +1,5 @@
+<div class="flexrow">
+  {{#each data.data.attributes as |attribute key|}}
+  {{> "systems/shadowrun-anarchy/templates/actor/parts/attribute.hbs" attribute=attribute key=key}}
+  {{/each}}
+</div>

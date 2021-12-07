@@ -1,5 +1,6 @@
 import { SRA } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
+import { Misc } from "../misc.js";
 
 export class SRABaseCharacterSheet extends ActorSheet {
 
@@ -8,11 +9,14 @@ export class SRABaseCharacterSheet extends ActorSheet {
   }
 
   getData(options) {
-    let data = mergeObject(super.getData(options),
-      {
-        config: SRA
-      });
-    return data;
+    let hbsData = mergeObject(
+      super.getData(options), {
+      items: {},
+      config: SRA
+
+    });
+    Misc.classifyInto(hbsData.items, hbsData.data.items);
+    return hbsData;
   }
 
 

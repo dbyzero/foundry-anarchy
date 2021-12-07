@@ -2,9 +2,21 @@
   "SRA": {
     "sheet": {
       "character": "Character sheet",
-      "actorName": "Name"
+      "actorName": "Name",
+      "keywords": {
+        "name": "Keywords"
+      },
+      "dispositions": {
+        "name": "Dispositions"
+      },
+      "cues": {
+        "name": "Cues"
+      }
     },
     "common":{
+      "newEntry": "New entry...",
+      "add": "Add",
+      "del": "Remove"
     },
     "itemTypes": {
       "metatype": "Metatype",

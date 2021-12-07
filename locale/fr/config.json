@@ -2,9 +2,21 @@
   "SRA": {
     "sheet": {
       "character": "Fiche de personnage",
-      "actorName": "Nom"
+      "actorName": "Nom",
+      "keywords": {
+        "name": "Mots clés"
+      },
+      "dispositions": {
+        "name": "Répliques"
+      },
+      "cues": {
+        "name": "Comportements"
+      }
     },
     "common":{
+      "newEntry": "Valeur...",
+      "add": "Ajouter",
+      "del": "Supprimer"
     },
     "itemTypes": {
       "metatype": "Metatype",
