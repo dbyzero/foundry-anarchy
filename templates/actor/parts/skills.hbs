@@ -1,0 +1,9 @@
+<h2>
+  <label>{{localize 'SRA.itemType.plural.skill'}}</label>
+  <a class="skill-add" title="{{localize 'SRA.common.add'}}"><i class="fas fa-plus-circle"></i></a>
+</h2>
+<div class="flexrow flex-wrap">
+  {{#each items.skill as |skill|}}
+  {{> "systems/shadowrun-anarchy/templates/actor/parts/skill.hbs" skill}}
+  {{/each}}
+</div>

@@ -6,11 +6,16 @@
     "templates": {
       "description": {
         "description": {
+          "capacity": "mundane",
           "description": "Description",
           "gmnotes": "Gamemaster notes",
           "keywords": [],
           "dispositions": [],
-          "cues": []
+          "cues": [],
+          "karma":{
+            "value":0,
+            "total":0
+          }
         }
       },
       "counter": {
@@ -90,7 +95,10 @@
       "contact"
     ],
     "metatype": {},
-    "skill": {},
+    "skill": {
+      "attribute": "knowledge",
+      "value": 0
+    },
     "quality": {},
     "shadowamp": {},
     "weapon": {},

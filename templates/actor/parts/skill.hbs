@@ -1,0 +1,24 @@
+<div class="flexrow" data-item-id="{{_id}}">
+  {{#if img}}
+  <img class="sheet-item-img" src="{{img}}" alt="name"/>
+  {{/if}}
+  {{#if (eq data.attribute 'knowledge')}}
+  <span title="{{localize 'SRA.attributes.knowledge'}}">
+    <i class="fas fa-user-graduate"></i>
+    <label>{{name}}</label>
+  </span>
+  {{else}}
+  <a class="skill-label">
+    <label>{{name}}</label>
+  </a>
+  <input class="skill-value" type="text" data-dtype="Number"
+      name="skill.{{_id}}.value" value="{{data.value}}" />
+  <span>
+  + {{toUpperCase (substring (localize (concat 'SRA.attributes.' data.attribute)) 0 3)}}
+  </span>
+  {{/if}}
+  <span>
+  <a class="item-control item-edit" title="{{localize 'SRA.common.edit'}}"><i class="fas fa-edit"></i></a>
+  <a class="item-control item-delete" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
+  </span>
+</div>

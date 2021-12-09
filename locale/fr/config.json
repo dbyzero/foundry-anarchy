@@ -3,29 +3,49 @@
     "sheet": {
       "character": "Fiche de personnage",
       "actorName": "Nom",
-      "keywords": {
-        "name": "Mots clés"
+      "karma": "Karma",
+      "karmatotal": "Total",
+      "singular": {
+        "keyword": "Mot clé",
+        "disposition": "Réplique",
+        "cue": "Comportement"
       },
-      "dispositions": {
-        "name": "Répliques"
-      },
-      "cues": {
-        "name": "Comportements"
+      "plural": {
+        "keyword": "Mots clés",
+        "disposition": "Répliques",
+        "cue": "Comportements"
       }
     },
-    "common":{
+    "common": {
       "newEntry": "Valeur...",
       "add": "Ajouter",
-      "del": "Supprimer"
+      "del": "Supprimer",
+      "edit": "Modifier"
     },
-    "itemTypes": {
-      "metatype": "Metatype",
-      "skill": "Compétence",
-      "quality": "Trait",
-      "shadowAmp": "Atout",
-      "weapon": "Arme",
-      "gear": "Equipement",
-      "contact": "Contact"
+    "itemType": {
+      "singular": {
+        "metatype": "Metatype",
+        "skill": "Compétence",
+        "quality": "Trait",
+        "shadowamp": "Atout",
+        "weapon": "Arme",
+        "gear": "Equipement",
+        "contact": "Contact"
+      },
+      "plural": {
+        "metatype": "Metatypes",
+        "skill": "Compétences",
+        "quality": "Traits",
+        "shadowAmp": "Atouts",
+        "weapon": "Armes",
+        "gear": "Equipements",
+        "contact": "Contacts"
+      }
+    },
+    "capacity": {
+      "mundane": "Normal",
+      "awakened": "Eveillé",
+      "emerged": "Emergé"
     },
     "attributes": {
       "strength": "Force",
@@ -33,7 +53,8 @@
       "willpower": "Volonté",
       "logic": "Logique",
       "charisma": "Charisme",
-      "edge": "Chance"
+      "edge": "Chance",
+      "knowledge": "Connaissance"
     }
   }
 }

@@ -3,29 +3,49 @@
     "sheet": {
       "character": "Character sheet",
       "actorName": "Name",
-      "keywords": {
-        "name": "Keywords"
+      "karma": "Karma",
+      "karmatotal": "Total",
+      "singular": {
+        "keyword": "Keyword",
+        "disposition": "Disposition",
+        "cue": "Cue"
       },
-      "dispositions": {
-        "name": "Dispositions"
-      },
-      "cues": {
-        "name": "Cues"
+      "plural": {
+        "keyword": "Keywords",
+        "disposition": "Dispositions",
+        "cue": "Cues"
       }
     },
-    "common":{
+    "common": {
       "newEntry": "New entry...",
       "add": "Add",
-      "del": "Remove"
+      "del": "Remove",
+      "edit": "SRA.common.edit"
     },
-    "itemTypes": {
-      "metatype": "Metatype",
-      "skill": "Skill",
-      "quality": "Quality",
-      "shadowAmp": "Shadow Amp",
-      "weapon": "Weapon",
-      "gear": "Gear",
-      "contact": "Contact"
+    "itemType": {
+      "singular": {
+        "metatype": "Metatype",
+        "skill": "Skill",
+        "quality": "Quality",
+        "shadowAmp": "Shadow Amp",
+        "weapon": "Weapon",
+        "gear": "Gear",
+        "contact": "Contact"
+      },
+      "plural": {
+        "metatype": "Metatypes",
+        "skill": "Skills",
+        "quality": "Qualitys",
+        "shadowAmp": "Shadow Amps",
+        "weapon": "Weapons",
+        "gear": "Gears",
+        "contact": "Contacts"
+      }
+    },
+    "capacity": {
+      "mundane": "Mundane",
+      "awakened": "Awakened",
+      "emerged": "Emerged"
     },
     "attributes": {
       "strength": "Strength",
@@ -33,7 +53,8 @@
       "willpower": "Willpower",
       "logic": "Logic",
       "charisma": "Charisma",
-      "edge": "Edge"
+      "edge": "Edge",
+      "knowledge": "Knowledge"
     }
   }
 }

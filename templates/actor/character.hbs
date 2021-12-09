@@ -1,25 +1,40 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="sheet-header">
-      <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
-      <div class="flexcol">
-        <h1 class="charname flexrow"><input name="name" type="text" value="{{data.name}}" placeholder="{{localize 'SRA.sheet.actorName'}}"/></h1>
-        <hr>
-        {{> "systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs"}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+    <div class="flexcol">
+      <div class="flexrow">
+        <div class="flex-grow">
+          <h1 class="charname flexrow"><input name="name" type="text" value="{{data.name}}" placeholder="{{localize 'SRA.sheet.actorName'}}"/></h1>
+        </div>
+        <div class="flexcol flex-shrink">
+          <div class="flexrow">
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/metatype.hbs"}}
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs"}}
+          </div>
+          <div class="flexrow">
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/karma.hbs"}}
+          </div>
+        </div>
       </div>
-    </header>
-      {{!-- Sheet Tab Navigation --}}
-<hr>
-    <div class="flexrow">
-      <div class="flexcol">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='keywords' values=data.data.description.keywords}}
-      </div>
-      <div class="flexcol flex-grow">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='dispositions' values=data.data.description.dispositions}}
-      </div>
-      <div class="flexcol">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='cues' values=data.data.description.cues}}
-      </div>
+      <hr>
+      {{> "systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs"}}
     </div>
+  </header>
 <hr>
+  <div class="flexrow">
+    <div class="flexcol">
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.description.keywords}}
+    </div>
+    <div class="flexcol flex-grow">
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='disposition' values=data.data.description.dispositions}}
+    </div>
+    <div class="flexcol">
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='cue' values=data.data.description.cues}}
+    </div>
+  </div>
+<hr>
+  <div class="flexcol">
+  {{> "systems/shadowrun-anarchy/templates/actor/parts/skills.hbs"}}
+  </div>
 
 </form>

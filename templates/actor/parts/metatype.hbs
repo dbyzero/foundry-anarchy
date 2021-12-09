@@ -1,0 +1,10 @@
+{{#if items.metatype}}
+  {{#each items.metatype as | metatype |}}
+  <span data-item-id="metatype._id">
+  <label>{{metatype.name}}</label>
+  <a class="item-control item-delete" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
+  </span>
+  {{/each}}
+{{else}}
+<span>{{localize 'SRA.itemType.singular.metatype'}}?</span>
+{{/if}}

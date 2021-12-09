@@ -1,16 +1,12 @@
-  <div>{{localize (concat 'SRA.sheet.' listName '.name')}}</div>
-  {{#each values as |value|}}
-  <div data-description-list="{{@listName}}" data-item="{{value}}">
-    <span class="flexrow">
-      <input class="description-list-value" type="text" data-dtype="String" value="{{value}}"/>
-      <a class="description-list-del" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
-    </span>
-  </div>
-  {{/each}}
-  <div class="description-list-add" data-description-list="{{@listName}}">
-    <span class="flexrow">
-      <input class="attribute-value" type="text" data-dtype="String"
-        value="" placeholder="{{localize (concat 'SRA.common.newEntry')}}"/>
-      <a title="{{localize 'SRA.common.add'}}"><i class="fas fa-plus-circle"></i></a>
-    </span>
-  </div>
+<h3 data-description-list="{{listName}}">
+  <label>{{localize (concat 'SRA.sheet.plural.' listName)}}</label>
+  <a class="description-list-add" title="{{localize 'SRA.common.add'}}"><i class="fas fa-plus-circle"></i></a>
+</h3>
+{{#each values as |value|}}
+<div data-description-list="{{@listName}}" data-item="{{value}}">
+  <span class="flexrow">
+    <input class="description-list-value" type="text" data-dtype="String" value="{{value}}"/>
+    <a class="description-list-del" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
+  </span>
+</div>
+{{/each}}
