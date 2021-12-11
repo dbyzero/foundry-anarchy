@@ -1,0 +1,3 @@
+{{#each @root.enums.attribute as |attribute|}}
+<option value="{{attribute.key}}">{{localize attribute.label}}</option>
+{{/each}}

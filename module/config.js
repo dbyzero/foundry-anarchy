@@ -1,32 +1,4 @@
 export const SRA = {
-    sheet: {
-        actorName: "SRA.sheet.actorName",
-        character: "SRA.sheet.character",
-        genre: "SRA.sheet.genre",
-        singular: {
-            keyword: "SRA.sheet.singular.keyword",
-            disposition: "SRA.sheet.singular.disposition",
-            cue: "SRA.sheet.singular.cue",
-        },
-        plural: {
-            keyword: "SRA.sheet.plural.keyword",
-            disposition: "SRA.sheet.plural.disposition",
-            cue: "SRA.sheet.plural.cue",
-        },
-        counters: {
-            essence: "SRA.sheet.counters.essence",
-            karma: "SRA.sheet.counters.karma",
-            karmatotal: "SRA.sheet.counters.karmatotal",
-            anarchy: "SRA.sheet.counters.anarchy",
-            edge: "SRA.sheet.counters.edge",
-        },
-        monitors: {
-            conditionmonitors: "SRA.sheet.monitors.conditionmonitors",
-            physical: "SRA.sheet.monitors.physical",
-            stun: "SRA.sheet.monitors.stun",
-            armor: "SRA.sheet.monitors.armor"
-        }
-    },
     common: {
         newEntry: "SRA.common.newEntry",
         newName: "SRA.common.newName",
@@ -37,6 +9,56 @@ export const SRA = {
         confirmation: {
             del: "SRA.common.confirmation.del",
             delitem: "SRA.common.confirmation.delitem"
+        },
+        sourcereference: "SRA.common.sourcereference",
+        sourcereferencehelp: "SRA.common.sourcereferencehelp",
+        description: "SRA.common.description",
+        gmnotes: "SRA.common.gmnotes"
+    },
+    actorSheet: {
+        characterSheet: "SRA.actorSheet.characterSheet",
+        actorName: "SRA.actorSheet.actorName",
+        genre: "SRA.actorSheet.genre",
+        singular: {
+            keyword: "SRA.actorSheet.singular.keyword",
+            disposition: "SRA.actorSheet.singular.disposition",
+            cue: "SRA.actorSheet.singular.cue",
+        },
+        plural: {
+            keyword: "SRA.actorSheet.plural.keyword",
+            disposition: "SRA.actorSheet.plural.disposition",
+            cue: "SRA.actorSheet.plural.cue",
+        },
+        counters: {
+            essence: "SRA.actorSheet.counters.essence",
+            karma: "SRA.actorSheet.counters.karma",
+            karmatotal: "SRA.actorSheet.counters.karmatotal",
+            anarchy: "SRA.actorSheet.counters.anarchy",
+            edge: "SRA.actorSheet.counters.edge",
+        },
+        monitors: {
+            conditionmonitors: "SRA.actorSheet.monitors.conditionmonitors",
+            physical: "SRA.actorSheet.monitors.physical",
+            stun: "SRA.actorSheet.monitors.stun",
+            armor: "SRA.actorSheet.monitors.armor"
+        }
+    },
+    itemSheet: {
+        sheet: "SRA.itemSheet.sheet",
+        skill: {
+            attribute: "SRA.itemSheet.skill.attribute",
+            value: "SRA.itemSheet.skill.value",
+            specialization: "SRA.itemSheet.skill.specialization",
+            specializationhelp: "SRA.itemSheet.skill.specializationhelp"
+        },
+        quality: {
+            positive: 'SRA.itemSheet.quality.positive'
+        },
+        shadowamp: {
+            category: "SRA.itemSheet.shadowamp.category",
+            capacity: "SRA.itemSheet.shadowamp.capacity",
+            level: "SRA.itemSheet.shadowamp.level",
+            essence: "SRA.itemSheet.shadowamp.essence"
         }
     },
     itemType: {
@@ -75,6 +97,18 @@ export const SRA = {
         awakened: 'SRA.capacity.awakened',
         emerged: 'SRA.capacity.emerged'
     },
+    shadowampcategory: {
+        cyberware: "SRA.shadowampcategory.cyberware",
+        bioware: "SRA.shadowampcategory.bioware",
+        cyberdeck: "SRA.shadowampcategory.cyberdeck",
+        program: "SRA.shadowampcategory.program",
+        complexform: "SRA.shadowampcategory.complexform",
+        drone: "SRA.shadowampcategory.drone",
+        spell: "SRA.shadowampcategory.spell",
+        adeptpower: "SRA.shadowampcategory.adeptpower",
+        equipment: "SRA.shadowampcategory.equipment",
+        special: "SRA.shadowampcategory.special"
+    },
     attributes: {
         strength: 'SRA.attributes.strength',
         agility: 'SRA.attributes.agility',
@@ -88,3 +122,4 @@ export const SRA = {
         adjustments: 'SRA.essence.adjustments',
     },
 };
+

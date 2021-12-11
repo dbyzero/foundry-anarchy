@@ -1,0 +1,41 @@
+{{log this}}
+<form class="{{options.cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+    {{> 'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs'
+      labelkey='SRA.itemType.singular.shadowamp'
+      type="shadowamp"
+    }}
+  </header>
+  <section class="sheet-body">
+    <div class="form-group">
+      <label for="data.category">{{localize 'SRA.itemSheet.shadowamp.category'}} </label>
+      <select name="data.category" data-dtype="String">
+          {{#select data.data.category}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-shadowampcategory.hbs'}}
+          {{/select}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="data.capacity">{{localize 'SRA.itemSheet.shadowamp.capacity'}} </label>
+      <select name="data.capacity" data-dtype="String">
+          {{#select data.data.capacity}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-capacity.hbs'}}
+          {{/select}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="data.level">{{localize 'SRA.itemSheet.shadowamp.level'}} </label>
+      <input name="data.level" type="text" data-dtype="Number" size=2
+        value="{{data.data.level}}"/>
+    </div>
+    <div class="form-group">
+      <label for="data.essence">{{localize 'SRA.itemSheet.shadowamp.essence'}} </label>
+      <input name="data.essence" type="text" data-dtype="Number" size=3
+        value="{{data.data.essence}}"/>
+    </div>
+
+    {{> 'systems/shadowrun-anarchy/templates/item/parts/references.hbs'}}
+  </section>
+
+</form>

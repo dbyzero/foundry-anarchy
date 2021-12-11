@@ -1,7 +1,23 @@
 {
   "SRA": {
-    "sheet": {
-      "character": "Character sheet",
+    "common": {
+      "newEntry": "New entry...",
+      "newName": "New {type}",
+      "cancel": "Cancel",
+      "add": "Add",
+      "edit": "Edit",
+      "del": "Remove",
+      "confirmation": {
+        "del": "Confirm removal",
+        "delitem": "Confirm removal of {name} ({type})"
+      },
+      "sourcereference": "Source reference",
+      "sourcereferencehelp": "rulebook, page, ...",
+      "description": "Description",
+      "gmnotes": "GM notes"
+    },
+    "actorSheet": {
+      "characterSheet": "Character sheet",
       "actorName": "Name",
       "genre": "Genre",
       "singular": {
@@ -28,15 +44,22 @@
         "armor": "Armor"
       }
     },
-    "common": {
-      "newEntry": "New entry...",
-      "newName": "New",
-      "add": "Add",
-      "edit": "Edit",
-      "del": "Remove",
-      "confirmation": {
-          "del": "Confirm removal",
-          "delitem": "Confirm removal of "
+    "itemSheet": {
+      "sheet": "Sheet for ",
+      "skill": {
+        "attribute": "Attribute",
+        "value": "Level",
+        "specialization": "Specialisation",
+        "specializationhelp": "Type the name to choose a specialization"
+      },
+      "quality": {
+        "positive": "Positive quality if checked"
+      },
+      "shadowamp": {
+        "category": "Category",
+        "capacity": "Capacity",
+        "level": "Level",
+        "essence": "Essence"
       }
     },
     "itemType": {
@@ -52,7 +75,7 @@
       "plural": {
         "metatype": "Metatypes",
         "skill": "Skills",
-        "quality": "Qualitys",
+        "quality": "Qualities",
         "shadowamp": "Shadow Amps",
         "weapon": "Weapons",
         "gear": "Gears",
@@ -74,6 +97,18 @@
       "mundane": "Mundane",
       "awakened": "Awakened",
       "emerged": "Emerged"
+    },
+    "shadowampcategory":{
+      "cyberware": "Cyberware",
+      "bioware": "Bioware",
+      "cyberdeck": "Cyberdeck",
+      "program": "Program",
+      "complexform": "Complex form",
+      "drone": "Drone",
+      "spell": "Spell",
+      "adeptpower": "Adept power",
+      "equipment": "Equipment",
+      "special" : "Special"
     },
     "attributes": {
       "strength": "Strength",

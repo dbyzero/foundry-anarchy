@@ -35,6 +35,10 @@ export class SRABaseCharacterSheet extends ActorSheet {
       super.getData(options), {
       items: {},
       config: SRA,
+      options: {
+        isGM: game.user.isGM,
+        owner: this.document.isOwner
+      },
       essence:{
         adjust: Essence.getAdjust(this.actor.data.data.counters.essence.value)
       }
@@ -61,7 +65,7 @@ export class SRABaseCharacterSheet extends ActorSheet {
 
     html.find('.item-add').click(async event => {
       const itemType = SRABaseCharacterSheet.getItemType(event);
-      const itemName = game.i18n.localize('SRA.common.newName') + ' ' + game.i18n.localize('SRA.itemType.singular.'+itemType) ;
+      const itemName = game.i18n.format(SRA.common.newName, {type: game.i18n.localize('SRA.itemType.singular.'+itemType)}) ;
       this.createItem(itemName, itemType)
     });
 

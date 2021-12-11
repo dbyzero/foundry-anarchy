@@ -1,7 +1,23 @@
 {
   "SRA": {
-    "sheet": {
-      "character": "Fiche de personnage",
+    "common": {
+      "newEntry": "Valeur...",
+      "newName": "Nouveau {type}",
+      "cancel": "Annuler",
+      "add": "Ajouter",
+      "edit": "Modifier",
+      "del": "Supprimer",
+      "confirmation": {
+        "del": "Confirmer la suppression",
+        "delitem": "Confirmer la suppression de {name} ({type})"
+      },
+      "sourcereference": "Référence source",
+      "sourcereferencehelp": "livre, page, ...",
+      "description": "Description",
+      "gmnotes": "Notes du MJ"
+    },
+    "actorSheet": {
+      "characterSheet": "Fiche de personnage",
       "actorName": "Nom",
       "genre": "Genre",
       "karma": "Karma",
@@ -30,15 +46,22 @@
         "armor": "Armure"
       }      
     },
-    "common": {
-      "newEntry": "Valeur...",
-      "newName": "Nouveau",
-      "add": "Ajouter",
-      "edit": "Modifier",
-      "del": "Supprimer",
-      "confirmation": {
-          "del": "Confirmer la suppression",
-          "delitem": "Confirmer la suppression de "
+    "itemSheet": {
+      "sheet": "Fiche de ",
+      "skill": {
+        "attribute": "Attribut",
+        "value": "Niveau",
+        "specialization": "Spécialisation",
+        "specializationhelp": "Saisissez un nom pour avoir cette spécialization"
+      },
+      "quality": {
+        "positive": "Avantage si cochée"
+      },
+      "shadowamp": {
+        "category": "Categorie",
+        "capacity": "Capacité",
+        "level": "Niveau",
+        "essence": "Essence"
       }
     },
     "itemType": {
@@ -76,6 +99,18 @@
       "mundane": "Normal",
       "awakened": "Eveillé",
       "emerged": "Emergé"
+    },
+    "shadowampcategory":{
+      "cyberware": "Cyberware",
+      "bioware": "Bioware",
+      "cyberdeck": "Cyberdeck",
+      "program": "Programme",
+      "complexform": "Forme complexe",
+      "drone": "Drone",
+      "spell": "Sort",
+      "adeptpower": "Pouvoir d'adepte",
+      "equipment": "Equipement",
+      "special" : "Spécial"
     },
     "attributes": {
       "strength": "Force",

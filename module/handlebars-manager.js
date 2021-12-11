@@ -23,13 +23,22 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/actor/parts/gear.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/contacts.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/contact.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/description.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/gmnotes.hbs',
   //-- counters & monitors
   'systems/shadowrun-anarchy/templates/actor/parts/armor.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/counteranarchy.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/counteredge.hbs',
-  //-- technical partials
+  //-- item
+  'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs',
+  'systems/shadowrun-anarchy/templates/item/parts/references.hbs',
+  //-- common&technical partials
   'systems/shadowrun-anarchy/templates/common/checkbar.hbs',
+  'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
+  'systems/shadowrun-anarchy/templates/common/enum-attribute.hbs',
+  'systems/shadowrun-anarchy/templates/common/enum-capacity.hbs',
+  'systems/shadowrun-anarchy/templates/common/enum-shadowampcategory.hbs',
 ];
 
 export class HandlebarsManager {

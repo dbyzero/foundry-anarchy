@@ -1,0 +1,18 @@
+<form class="{{options.cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+    {{> 'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs'
+      labelkey='SRA.itemType.singular.quality'
+      type="quality"
+    }}
+  </header>
+  <section class="sheet-body">
+    <div class="form-group">
+      <label for="data.positive">{{localize 'SRA.itemSheet.quality.positive'}} </label>
+      <input class="item-field-value" type="checkbox" name="data.positive" {{#if data.data.positive}}checked{{/if}} />
+    </div>
+
+    {{> 'systems/shadowrun-anarchy/templates/item/parts/references.hbs'}}
+  </section>
+
+</form>

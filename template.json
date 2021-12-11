@@ -8,8 +8,8 @@
         "description": {
           "genre": "",
           "capacity": "mundane",
-          "description": "Description",
-          "gmnotes": "Gamemaster notes",
+          "description": "",
+          "gmnotes": "",
           "keywords": [],
           "dispositions": [],
           "cues": []
@@ -26,7 +26,7 @@
           },
           "anarchy": {
             "value": 0,
-            "max" : 6
+            "max": 6
           },
           "edge": {
             "value": 0
@@ -92,22 +92,64 @@
       "gear",
       "contact"
     ],
-    "metatype": {},
+    "templates": {
+      "references":{
+        "sourcereference": "",
+        "description": "",
+        "gmnotes": ""
+      }
+    },
+    "metatype": {
+      "templates": ["references"],
+      "adjustments": {
+        "strength": {
+          "bonus": 0,
+          "max": 6
+        },
+        "agility": {
+          "bonus": 0,
+          "max": 6
+        },
+        "willpower": {
+          "bonus": 0,
+          "max": 6
+        },
+        "logic": {
+          "bonus": 0,
+          "max": 6
+        },
+        "charisma": {
+          "bonus": 0,
+          "max": 6
+        },
+        "edge": {
+          "bonus": 0,
+          "max": 6
+        },
+        "skillsbonus": 0,
+        "armorbonus": 0
+      }
+    },
     "skill": {
+      "templates": ["references"],
       "attribute": "knowledge",
       "value": 0,
-      "specialization": ""
+      "specialization": "",
+      "listspecialization": [""]
     },
     "quality": {
-      "description": "",
+      "templates": ["references"],
       "positive": true
     },
     "shadowamp": {
-      "description": "",
+      "templates": ["references"],
+      "category": "special",
+      "capacity": "mundane",
       "level": 1,
       "essence": 0
     },
     "weapon": {
+      "templates": ["references"],
       "skill": "",
       "specialization": "",
       "strength": true,
@@ -121,7 +163,11 @@
         "long": 0
       }
     },
-    "gear": {},
-    "contact": {}
+    "gear": {
+      "templates": ["references"]
+    },
+    "contact": {
+      "templates": ["references"]
+    }
   }
 }

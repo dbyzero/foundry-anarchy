@@ -1,8 +1,13 @@
 
+div.item.flexcol { gap: 2px; align-items: flex-start; }
+div.item.flexrow { gap: 2px; align-items: flex-start; justify-content:space-between; }
+
 .flex-grow-3 { flex-grow : 3; }
 .flex-grow-2 { flex-grow : 2; }
 .flex-wrap { flex-wrap: wrap; }
 .flex-shrink { flex: 'flex-shrink' ; }
+.flex-end { justify-content: flex-end; }
+.flex-shrink-end { flex: 'flex-shrink' ;  flex-grow: 0; justify-content: flex-end; }
 
 .grid-3col {
   grid-column: span 3 / span 3;
@@ -29,6 +34,36 @@
   vertical-align: bottom;
 }
 
+.editor {
+  border: 2;
+  height: 200px;
+  min-height: 100px;
+  padding: 0 3px;
+}
+
+.medium-editor {
+  border: 2;
+  height: 160px;
+  min-height: 100px;
+  padding: 0 3px;
+}
+
+.small-editor {
+  border: 2;
+  height: 120px;
+  min-height: 100px;
+  padding: 0 3px;
+}
+
+.tox .tox-editor-container {
+  background: #fff;
+}
+
+.tox .tox-edit-area {
+  padding: 0 8px;
+}
+
+
 .list-item {
   margin: 0.125rem;
   box-shadow: inset 0px 0px 1px #00000096;
@@ -47,4 +82,14 @@
 }
 .alterne-list > .list-item:nth-child(odd) {
   background: rgb(160, 130, 100, 0.10);
+}
+
+div.item {
+  margin: 2px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+}
+div.item.quality-negative {
+  border-style: dashed;
 }

@@ -1,15 +1,10 @@
-<div class="flexrow item" data-item-id="{{_id}}" data-item-type="quality">
+<div class="flexrow item {{#if data.positive}}quality-positive{{else}}quality-negative{{/if}}" data-item-id="{{_id}}" data-item-type="quality">
   {{#if img}}
   <img class="sheet-item-img" src="{{img}}" alt="name"/>
   {{/if}}
   <div class="flexcol">
-    <div class="flexrow">
-      <label>{{name}}</label>
-      <label>{{data.data.description}}</label>
-    </div>
+    <label>{{name}}</label>
+    <label>{{{data.description}}}</label>
   </div>
-  <span>
-  <a class="item-control item-edit" title="{{localize 'SRA.common.edit'}}"><i class="fas fa-edit"></i></a>
-  <a class="item-control item-delete" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
-  </span>
+  {{> 'systems/shadowrun-anarchy/templates/common/item-controls.hbs'}}
 </div>
