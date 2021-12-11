@@ -45,7 +45,8 @@ export class HandlebarsManager {
     Handlebars.registerHelper('damageLetter',  Damage.letter);
     Handlebars.registerHelper('for', HandlebarsManager.hbsFor);
     Handlebars.registerHelper('modulo', (value, divisor) => value % divisor);
-    Handlebars.registerHelper('divint', (value, divisor) => parseInt(value/divisor));
+    Handlebars.registerHelper('divint', (value, divisor) => Math.floor(value/divisor));
+    Handlebars.registerHelper('divup', (value, divisor) => Math.ceil(value/divisor));
     Handlebars.registerHelper('sum', (v1, v2) => v1 + v2);
     Handlebars.registerHelper('diff', (v1, v2) => v1 - v2);
     Handlebars.registerHelper('either', (a, b) => a ? a : b);
