@@ -3,6 +3,7 @@
     "sheet": {
       "character": "Fiche de personnage",
       "actorName": "Nom",
+      "genre": "Genre",
       "karma": "Karma",
       "karmatotal": "Total",
       "singular": {
@@ -14,13 +15,31 @@
         "keyword": "Mots clés",
         "disposition": "Répliques",
         "cue": "Comportements"
-      }
+      },
+      "counters": {
+        "essence": "Essence",
+        "karma": "Karma",
+        "karmatotal": "Total",
+        "anarchy": "Anarchie",
+        "edge": "Chance"
+      },
+      "monitors":{
+        "conditionmonitors": "Moniteurs de condition",
+        "physical": "Physique",
+        "stun": "Etourdissant",
+        "armor": "Armure"
+      }      
     },
     "common": {
       "newEntry": "Valeur...",
+      "newName": "Nouveau",
       "add": "Ajouter",
+      "edit": "Modifier",
       "del": "Supprimer",
-      "edit": "Modifier"
+      "confirmation": {
+          "del": "Confirmer la suppression",
+          "delitem": "Confirmer la suppression de "
+      }
     },
     "itemType": {
       "singular": {
@@ -36,10 +55,21 @@
         "metatype": "Metatypes",
         "skill": "Compétences",
         "quality": "Traits",
-        "shadowAmp": "Atouts",
+        "shadowamp": "Atouts",
         "weapon": "Armes",
         "gear": "Equipements",
         "contact": "Contacts"
+      },
+      "shadowamp": {
+        "level": "Lvl",
+        "essence": "Ess"
+      },
+      "weapon": {
+        "damage": "VD",
+        "area": "Area",
+        "short": "Courte",
+        "medium": "Int.",
+        "long": "longue"
       }
     },
     "capacity": {
@@ -55,6 +85,9 @@
       "charisma": "Charisme",
       "edge": "Chance",
       "knowledge": "Connaissance"
+    },
+    "essence": {
+      "adjustments": "pour Magie, résonance, soins"
     }
   }
 }

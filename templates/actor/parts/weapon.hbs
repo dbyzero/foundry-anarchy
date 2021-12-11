@@ -1,0 +1,33 @@
+<li class="flexrow item" data-item-id="{{_id}}" data-item-type="weapon">
+  {{#if img}}
+  <img class="sheet-item-img" src="{{img}}" alt="name"/>
+  {{/if}}
+  <span>{{name}}</span>
+  <span>
+    {{#if data.data.strength}}
+    ({{toUpperCase (substring (localize (concat 'SRA.attributes.strength')) 0 3)}}/2 + {{data.data.damage}})
+    {{else}}
+    {{data.data.damage}}
+    {{/if}}{{damageLetter data.data.monitor}}
+  </span>
+  <span>
+    {{either data.data.area '-'}}
+  </span>
+  <span>
+    {{either data.data.range.short 0}}
+  </span>
+  <span>
+    {{#unless (eq data.data.range.max "short")}}
+    {{data.data.range.medium}}
+    {{/unless}}
+  </span>
+  <span>
+    {{#if (eq data.data.range.max "long")}}
+    {{data.data.range.long}}
+    {{/if}}
+  </span>
+  <span>
+  <a class="item-control item-edit" title="{{localize 'SRA.common.edit'}}"><i class="fas fa-edit"></i></a>
+  <a class="item-control item-delete" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
+  </span>
+</li>

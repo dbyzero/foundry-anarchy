@@ -1,0 +1,15 @@
+<div class="SRA-armor flexcol">
+  <h2><div class="flexrow">
+    {{localize (concat 'SRA.sheet.monitors.armor')}}
+    <input name="data.monitors.armor.label" type="text" data-dtype="String" size=12
+      value="{{data.data.monitors.armor.label}}"/>
+  </div></h2>
+  {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+    code='armor'
+    value=data.data.monitors.armor.value
+    max=data.data.monitors.armor.max
+    labelkey='SRA.sheet.monitors.armor'
+    rowlength=3
+    adjust=false
+  }}
+</div>

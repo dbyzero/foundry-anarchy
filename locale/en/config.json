@@ -3,8 +3,7 @@
     "sheet": {
       "character": "Character sheet",
       "actorName": "Name",
-      "karma": "Karma",
-      "karmatotal": "Total",
+      "genre": "Genre",
       "singular": {
         "keyword": "Keyword",
         "disposition": "Disposition",
@@ -14,20 +13,38 @@
         "keyword": "Keywords",
         "disposition": "Dispositions",
         "cue": "Cues"
+      },
+      "counters": {
+        "essence": "Essence",
+        "karma": "Karma",
+        "karmatotal": "Total",
+        "anarchy": "Anarchy",
+        "edge": "Edge"
+      },
+      "monitors":{
+        "conditionmonitors": "Condition monitors",
+        "physical": "Physical",
+        "stun": "Stun",
+        "armor": "Armor"
       }
     },
     "common": {
       "newEntry": "New entry...",
+      "newName": "New",
       "add": "Add",
+      "edit": "Edit",
       "del": "Remove",
-      "edit": "SRA.common.edit"
+      "confirmation": {
+          "del": "Confirm removal",
+          "delitem": "Confirm removal of "
+      }
     },
     "itemType": {
       "singular": {
         "metatype": "Metatype",
         "skill": "Skill",
         "quality": "Quality",
-        "shadowAmp": "Shadow Amp",
+        "shadowamp": "Shadow Amp",
         "weapon": "Weapon",
         "gear": "Gear",
         "contact": "Contact"
@@ -36,10 +53,21 @@
         "metatype": "Metatypes",
         "skill": "Skills",
         "quality": "Qualitys",
-        "shadowAmp": "Shadow Amps",
+        "shadowamp": "Shadow Amps",
         "weapon": "Weapons",
         "gear": "Gears",
         "contact": "Contacts"
+      },
+      "shadowamp": {
+        "level": "Lvl",
+        "essence": "Ess"
+      },
+      "weapon": {
+        "damage": "DV",
+        "area": "Area",
+        "short": "Short",
+        "medium": "Medium",
+        "long": "Long"
       }
     },
     "capacity": {
@@ -55,6 +83,9 @@
       "charisma": "Charisma",
       "edge": "Edge",
       "knowledge": "Knowledge"
+    },
+    "essence": {
+      "adjustments": "to Magic, resonance, healing"
     }
   }
 }

@@ -1,0 +1,12 @@
+<div class="flexrow item" data-item-id="{{_id}}" data-item-type="gear">
+  {{#if img}}
+  <img class="sheet-item-img" src="{{img}}" alt="name"/>
+  {{/if}}
+  <span>
+    <label>{{name}}</label>
+  </span>
+  <span>
+  <a class="item-control item-edit" title="{{localize 'SRA.common.edit'}}"><i class="fas fa-edit"></i></a>
+  <a class="item-control item-delete" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
+  </span>
+</div>

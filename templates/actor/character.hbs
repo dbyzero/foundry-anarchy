@@ -3,18 +3,22 @@
     <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
     <div class="flexcol">
       <div class="flexrow">
-        <div class="flex-grow">
+        <div class="flex-grow-2 ">
           <h1 class="charname flexrow"><input name="name" type="text" value="{{data.name}}" placeholder="{{localize 'SRA.sheet.actorName'}}"/></h1>
         </div>
         <div class="flexcol flex-shrink">
           <div class="flexrow">
           {{> "systems/shadowrun-anarchy/templates/actor/parts/metatype.hbs"}}
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/genre.hbs"}}
           {{> "systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs"}}
           </div>
           <div class="flexrow">
           {{> "systems/shadowrun-anarchy/templates/actor/parts/karma.hbs"}}
           </div>
         </div>
+      </div>
+      <div class="flexrow">
+      {{> "systems/shadowrun-anarchy/templates/actor/parts/essence.hbs"}}
       </div>
       <hr>
       {{> "systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs"}}
@@ -25,7 +29,7 @@
     <div class="flexcol">
     {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.description.keywords}}
     </div>
-    <div class="flexcol flex-grow">
+    <div class="flexcol flex-grow-3">
     {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='disposition' values=data.data.description.dispositions}}
     </div>
     <div class="flexcol">
@@ -35,6 +39,31 @@
 <hr>
   <div class="flexcol">
   {{> "systems/shadowrun-anarchy/templates/actor/parts/skills.hbs"}}
+  </div>
+  <div class="flexcol">
+  {{> "systems/shadowrun-anarchy/templates/actor/parts/shadowamps.hbs"}}
+  </div>
+  <div class="flexcol">
+  {{> "systems/shadowrun-anarchy/templates/actor/parts/qualities.hbs"}}
+  </div>
+  <div class="flexcol">
+  {{> "systems/shadowrun-anarchy/templates/actor/parts/weapons.hbs"}}
+  </div>
+  <div class="flexrow">
+    <div>
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/armor.hbs"}}
+    <hr>
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/counteredge.hbs"}}
+    <hr>
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/counteranarchy.hbs"}}
+    </div>
+    <div>
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs"}}
+    </div>
+    <div>
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/gears.hbs"}}
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/contacts.hbs"}}
+    </div>
   </div>
 
 </form>

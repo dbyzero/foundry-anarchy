@@ -6,31 +6,31 @@
     "templates": {
       "description": {
         "description": {
+          "genre": "",
           "capacity": "mundane",
           "description": "Description",
           "gmnotes": "Gamemaster notes",
           "keywords": [],
           "dispositions": [],
-          "cues": [],
-          "karma":{
-            "value":0,
-            "total":0
-          }
+          "cues": []
         }
       },
-      "counter": {
-        "essence": {
-          "value": 6
-        },
-        "karma": {
-          "value": 0,
-          "total": 0
-        },
-        "anarchy": {
-          "value": 0
-        },
-        "edge": {
-          "value": 0
+      "counters": {
+        "counters": {
+          "essence": {
+            "value": 6
+          },
+          "karma": {
+            "value": 0,
+            "total": 0
+          },
+          "anarchy": {
+            "value": 0,
+            "max" : 6
+          },
+          "edge": {
+            "value": 0
+          }
         }
       },
       "attributes": {
@@ -55,17 +55,15 @@
           }
         }
       },
-      "condition_monitors": {
-        "track": {
+      "monitors": {
+        "monitors": {
           "physical": {
             "value": 0,
-            "max": 10,
-            "disabled": false
+            "max": 10
           },
           "stun": {
             "value": 0,
-            "max": 10,
-            "disabled": false
+            "max": 10
           },
           "armor": {
             "label": "Armor",
@@ -78,9 +76,9 @@
     "character": {
       "templates": [
         "description",
-        "fundamental",
         "attributes",
-        "condition"
+        "counters",
+        "monitors"
       ]
     }
   },
@@ -97,11 +95,32 @@
     "metatype": {},
     "skill": {
       "attribute": "knowledge",
-      "value": 0
+      "value": 0,
+      "specialization": ""
     },
-    "quality": {},
-    "shadowamp": {},
-    "weapon": {},
+    "quality": {
+      "description": "",
+      "positive": true
+    },
+    "shadowamp": {
+      "description": "",
+      "level": 1,
+      "essence": 0
+    },
+    "weapon": {
+      "skill": "",
+      "specialization": "",
+      "strength": true,
+      "damage": 0,
+      "monitor": "stun",
+      "area": "",
+      "range": {
+        "max": "short",
+        "short": 0,
+        "medium": 0,
+        "long": 0
+      }
+    },
     "gear": {},
     "contact": {}
   }

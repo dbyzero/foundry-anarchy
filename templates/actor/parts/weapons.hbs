@@ -1,0 +1,21 @@
+<div class="define-item-type weapon" data-item-type="weapon">
+  <h2>
+      <label>{{localize 'SRA.itemType.plural.weapon'}}</label>
+      <a class="item-control item-add" title="{{localize 'SRA.common.add'}}"><i class="fas fa-plus-circle"></i></a>
+  </h2>
+  <ul class="item-list alterne-list">
+    <li class="flexrow list-item">
+      <img class="sheet-item-img" src="icons/skills/melee/unarmed-punch-fist-white.webp" data-edit="img" title="{{localize 'SRA.itemType.plural.weapon'}}"/>
+      <span>{{localize 'SRA.itemType.singular.weapon'}}</span>
+      <span>{{localize 'SRA.itemType.weapon.damage'}}</span>
+      <span>{{localize 'SRA.itemType.weapon.area'}}</span>
+      <span>{{localize 'SRA.itemType.weapon.short'}}</span>
+      <span>{{localize 'SRA.itemType.weapon.medium'}}</span>
+      <span>{{localize 'SRA.itemType.weapon.long'}}</span>
+      <span>{{localize 'SRA.common.edit'}}/{{localize 'SRA.common.del'}}</span>
+    </li>
+    {{#each items.weapon as |weapon|}}
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/weapon.hbs" weapon}}
+    {{/each}}
+  </ul>
+</div>

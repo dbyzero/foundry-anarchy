@@ -1,0 +1,27 @@
+<h2>
+  {{localize 'SRA.sheet.monitors.conditionmonitors'}}
+</h2>
+<div class="flexrow flex-wrap">
+  <div class="flexcol">
+    <h3>{{localize 'SRA.sheet.monitors.physical'}}</h3>
+    {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+      code='physical'
+      value=data.data.monitors.physical.value
+      max=data.data.monitors.physical.max
+      labelkey='SRA.sheet.monitors.physical'
+      rowlength=3
+      adjust=true
+    }}
+  </div>
+  <div class="flexcol">
+    <h3>{{localize 'SRA.sheet.monitors.stun'}}</h3>
+    {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+      code='stun'
+      value=data.data.monitors.stun.value
+      max=data.data.monitors.stun.max
+      labelkey='SRA.sheet.monitors.stun'
+      rowlength=3
+      adjust=true
+    }}
+  </div>
+</div>

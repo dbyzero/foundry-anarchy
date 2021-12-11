@@ -1,0 +1,14 @@
+ <div class="flexrow item" data-item-id="{{_id}}" data-item-type="shadowamp">
+  <img class="sheet-item-img flex-shrink" src="{{img}}" alt="name"/>
+  <div>
+    <label>{{localize 'SRA.itemType.shadowamp.level'}} {{data.level}}</label>
+    <label>{{name}}</label>
+    {{#if data.essence}}<label>{{localize 'SRA.itemType.shadowamp.essence'}} {{data.essence}}</label>{{/if}}
+    <br>
+    <label>{{data.description}}</label>
+  </div>
+  <span>
+  <a class="item-control item-edit" title="{{localize 'SRA.common.edit'}}"><i class="fas fa-edit"></i></a>
+  <a class="item-control item-delete" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
+  </span>
+</div>

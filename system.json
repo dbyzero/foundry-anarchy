@@ -56,6 +56,6 @@
   "protected": false,
   "gridDistance": 1,
   "gridUnits": "m",
-  "primaryTokenAttribute": "track.physical",
-  "secondaryTokenAttribute": "track.stun"
+  "primaryTokenAttribute": "monitors.physical",
+  "secondaryTokenAttribute": "monitors.stun"
 }

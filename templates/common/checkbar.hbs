@@ -1,0 +1,37 @@
+<!--
+  data is:
+  {
+    code: "stun", // identifying the monitor"
+    value: 0, // current value in monitor
+    max: 9 // max value in monitor
+    labelkey: "SRA.sheet.monitors.stun", label key (to internationalize), used also for css class
+    rowlength: 3, // count of checks per row
+    adjust: true // indicates to compute & display adjustment
+  }
+
+-->
+<div class="{{labelkey}}" data-monitor-code="{{code}}"
+    style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
+  >
+  {{#for 0 max}}
+    {{#if (and (eq 0 (modulo this ../rowlength)) (gt this 0))}}
+      </div>
+      <div class="{{labelkey}}" data-monitor-code="{{code}}"
+          style="grid-column: span {{../rowlength}} / span {{../rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
+        >
+    {{/if}}
+
+    {{#if (lt this ../value)}}
+      <a data-index="{{this}}" data-checked="true"><i class="fas fa-circle"></i></a>
+    {{else}}
+      <a data-index="{{this}}" data-checked="false"><i class="far fa-circle"></i></a>
+    {{/if}}
+    {{#if ../adjust}}
+    {{#if (gt this ../rowlength)}}
+    {{#if (or (eq ../rowlength (sum 1 (modulo this ../rowlength))) (eq (sum this 1) ../max))}}
+    <label>-{{divint this ../rowlength}}</label>
+    {{/if}}
+    {{/if}}
+    {{/if}}
+  {{/for}}
+</div>
