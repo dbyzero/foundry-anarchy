@@ -1,0 +1,29 @@
+image: python:3-alpine
+
+before_script:
+  - apk update
+  - apk add zip
+
+stages:
+  - test
+  - build
+
+test:
+  stage: test
+  script:
+    - python -mjson.tool 'system.json' > /dev/null
+    - python -mjson.tool 'template.json' > /dev/null
+
+build:
+  stage: build
+  script:
+    - zip shadowrun-anarchy.zip -r *.js *.json *.md *.txt locale module packs style templates -x ".*"
+  artifacts:
+    name: shadowrun-anarchy
+    when: on_success
+    paths:
+      - shadowrun-anarchy.zip
+  when: on_success
+  only:
+    - tags
+    - master
