@@ -4,6 +4,8 @@ import { SRA } from './config.js';
 import { SYSTEM_NAME } from './constants.js';
 import { HandlebarsManager } from './handlebars-manager.js';
 import { SRABaseItemSheet } from './item/base-item-sheet.js';
+import { SRASkillItemSheet as SRASkillSheet } from './item/skill-item-sheet.js';
+import { SRABaseItem } from './item/base-item.js';
 
 
 export class HooksManager {
@@ -24,6 +26,16 @@ export class HooksManager {
 
     CONFIG.SRA = SRA;
 
+    HooksManager.registerSheets();
+
+    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actorSheet.characterSheet));
+    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.itemSheet.sheet));
+
+    await HandlebarsManager.preload();
+    SRABaseItem.init();
+  }
+
+  static registerSheets() {
     Actors.unregisterSheet('core', ActorSheet);
     Actors.registerSheet(SYSTEM_NAME, SRACharacterSheet, {
       label: game.i18n.localize(SRA.actorSheet.characterSheet),
@@ -33,13 +45,12 @@ export class HooksManager {
 
     Items.unregisterSheet('core', ItemSheet);
     Items.registerSheet(SYSTEM_NAME, SRABaseItemSheet, {
-      types: ["metatype", "skill", "quality", "shadowamp", "weapon", "gear", "contact"],
+      types: ["metatype", "quality", "shadowamp", "weapon", "gear", "contact"],
       makeDefault: true
     });
-
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actorSheet.characterSheet));
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.itemSheet.sheet));
-
-    await HandlebarsManager.preload();
+    Items.registerSheet(SYSTEM_NAME, SRASkillSheet, {
+      types: ["skill"],
+      makeDefault: true
+    });
   }
 }

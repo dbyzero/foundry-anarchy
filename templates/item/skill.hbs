@@ -1,28 +1,40 @@
 <form class="{{options.cssClass}}" autocomplete="off">
   <header class="sheet-header">
     <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-    {{> 'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs'
-      labelkey='SRA.itemType.singular.skill'
-      type="skill"
-    }}
+    {{#if options.isKnowledge}}
+      {{> 'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs'
+        labelkey='SRA.itemType.singular.skill'
+        type="skill"
+      }}
+    {{else}}
+    <h1 class="item-name">
+      <select name="data.code" data-dtype="String">
+          {{#select data.data.code}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-skill.hbs'}}
+          {{/select}}
+      </select>
+    </h1>
+    {{/if}}
   </header>
   <section class="sheet-body">
     <div class="form-group">
-      <label for="data.attribute">{{localize 'SRA.itemSheet.skill.attribute'}} </label>
-      <select name="data.attribute" data-dtype="String">
-          {{#select data.data.attribute}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-attribute.hbs'}}
-          {{/select}}
-      </select>
+      <input class="item-field-value check-knowledge" type="checkbox" {{#if options.isKnowledge}}checked{{/if}} >
+      {{localize 'SRA.attributes.knowledge'}}</input>
+    </div>
+    {{#unless options.isKnowledge}}
+    <div class="form-group">
+      <label>{{localize 'SRA.itemSheet.skill.attribute'}} </label>
+      <span class="item-field-value">{{localize (concat 'SRA.attributes.' data.data.attribute)}}</span>
     </div>
     <div class="form-group">
       <label for="data.value">{{localize 'SRA.itemSheet.skill.value'}} </label>
       <input class="item-field-value" type="text" name="data.value" value="{{data.data.value}}" data-dtype="Number"/>
     </div>
+    {{/unless}}
     <div class="form-group">
       <label for="data.specialization">{{localize 'SRA.itemSheet.skill.specialization'}} </label>
       <input class="item-field-value" type="text" data-dtype="String"
-          name="data.specialization" value="{{data.data.specialization}}" 
+          name="data.specialization" value="{{data.data.specialization}}"
           placeholder="{{localize 'SRA.itemSheet.skill.specializationhelp'}}"
       />
     </div>

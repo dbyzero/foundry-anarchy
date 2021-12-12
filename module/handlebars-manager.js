@@ -39,6 +39,7 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/common/enum-attribute.hbs',
   'systems/shadowrun-anarchy/templates/common/enum-capacity.hbs',
   'systems/shadowrun-anarchy/templates/common/enum-shadowampcategory.hbs',
+  'systems/shadowrun-anarchy/templates/common/enum-skill.hbs',
 ];
 
 export class HandlebarsManager {

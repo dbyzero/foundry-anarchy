@@ -132,6 +132,7 @@
     },
     "skill": {
       "templates": ["references"],
+      "code": "",
       "attribute": "knowledge",
       "value": 0,
       "specialization": "",

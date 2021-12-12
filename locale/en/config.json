@@ -47,6 +47,7 @@
     "itemSheet": {
       "sheet": "Sheet for ",
       "skill": {
+        "isKnowledge": "Knowledge",
         "attribute": "Attribute",
         "value": "Level",
         "specialization": "Specialisation",
@@ -119,7 +120,34 @@
       "edge": "Edge",
       "knowledge": "Knowledge"
     },
-    "essence": {
+    "skill": {
+      "athletics": "Athletics",
+      "acrobatics": "Acrobatics",
+      "firearms": "Firearms",
+      "projectiles": "Projectiles",
+      "gunnery": "Gunnery",
+      "heavyweapons": "Heavy weapons",
+      "closecombat": "Close combat",
+      "stealth": "Stealth",
+      "groundvehicles": "Ground vehicles",
+      "miscvehicles": "Misc vehicles",
+      "astralfight": "Astral fight",
+      "conjuring": "Conjuring",
+      "sorcery": "Sorcery",
+      "survival": "Survival",
+      "biotech": "Biotech",
+      "electronics": "Electronics",
+      "hacking": "Hacking",
+      "engineering": "Engineering",
+      "tracking": "Tracking",
+      "technomancy": "Technomancy",
+      "animals": "Animals",
+      "con": "Con",
+      "etiquette": "Etiquette",
+      "intimidation": "Intimidation",
+      "negotiation": "Negotiation"
+    },
+   "essence": {
       "adjustments": "to Magic, resonance, healing"
     }
   }

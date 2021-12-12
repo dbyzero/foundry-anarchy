@@ -39,16 +39,17 @@
         "anarchy": "Anarchie",
         "edge": "Chance"
       },
-      "monitors":{
+      "monitors": {
         "conditionmonitors": "Moniteurs de condition",
         "physical": "Physique",
         "stun": "Etourdissant",
         "armor": "Armure"
-      }      
+      }
     },
     "itemSheet": {
       "sheet": "Fiche de ",
       "skill": {
+        "isKnowledge": "Connaissance",
         "attribute": "Attribut",
         "value": "Niveau",
         "specialization": "Spécialisation",
@@ -100,7 +101,7 @@
       "awakened": "Eveillé",
       "emerged": "Emergé"
     },
-    "shadowampcategory":{
+    "shadowampcategory": {
       "cyberware": "Cyberware",
       "bioware": "Bioware",
       "cyberdeck": "Cyberdeck",
@@ -110,7 +111,7 @@
       "spell": "Sort",
       "adeptpower": "Pouvoir d'adepte",
       "equipment": "Equipement",
-      "special" : "Spécial"
+      "special": "Spécial"
     },
     "attributes": {
       "strength": "Force",
@@ -120,6 +121,33 @@
       "charisma": "Charisme",
       "edge": "Chance",
       "knowledge": "Connaissance"
+    },
+    "skill": {
+      "athletics": "Athlétisme",
+      "acrobatics": "Acrobaties",
+      "firearms": "Armes à feu",
+      "projectiles": "Arme à projectiles",
+      "gunnery": "Armes de véhicules",
+      "heavyweapons": "Armes lourdes",
+      "closecombat": "Corps à corps",
+      "stealth": "Furtivité",
+      "groundvehicles": "Véhicules terrestres",
+      "miscvehicles": "Véhicules divers",
+      "astralfight": "Combat astral",
+      "conjuring": "Conjuration",
+      "sorcery": "Sorcellerie",
+      "survival": "Survie",
+      "biotech": "Biotech",
+      "electronics": "Electronique",
+      "hacking": "Hacking",
+      "engineering": "Ingénierie",
+      "tracking": "Pistage",
+      "technomancy": "Technomancie",
+      "animals": "Animaux",
+      "con": "Comédie",
+      "etiquette": "Etiquette",
+      "intimidation": "Intimidation",
+      "negotiation": "Négotiation"
     },
     "essence": {
       "adjustments": "pour Magie, résonance, soins"
