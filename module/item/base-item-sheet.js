@@ -4,9 +4,14 @@ import { hbsAreas, hbsAttributes, hbsCapacities, hbsItemTypes, hbsMonitors, hbsR
 
 export class SRABaseItemSheet extends ItemSheet {
 
+  get title() {
+    return game.i18n.localize(SRA.itemType.singular[this.item.type]) + ': ' + this.item.name;
+  }
+
   get template() {
     return `${TEMPLATES_PATH}/item/${this.object.type}.hbs`;
   }
+
   getData(options) {
     let hbsData = mergeObject(
       super.getData(options), {
