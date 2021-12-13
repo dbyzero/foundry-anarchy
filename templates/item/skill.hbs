@@ -10,9 +10,10 @@
     <h1 class="item-name">
       <select name="data.code" data-dtype="String">
           {{#select data.data.code}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-skill.hbs'}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.skills}}
           {{/select}}
       </select>
+      {{data.name}}
     </h1>
     {{/if}}
   </header>
@@ -23,19 +24,19 @@
     </div>
     {{#unless options.isKnowledge}}
     <div class="form-group">
-      <label>{{localize 'SRA.itemSheet.skill.attribute'}} </label>
+      <label>{{localize 'SRA.item.skill.attribute'}} </label>
       <span class="item-field-value">{{localize (concat 'SRA.attributes.' data.data.attribute)}}</span>
     </div>
     <div class="form-group">
-      <label for="data.value">{{localize 'SRA.itemSheet.skill.value'}} </label>
+      <label for="data.value">{{localize 'SRA.item.skill.value'}} </label>
       <input class="item-field-value" type="text" name="data.value" value="{{data.data.value}}" data-dtype="Number"/>
     </div>
     {{/unless}}
     <div class="form-group">
-      <label for="data.specialization">{{localize 'SRA.itemSheet.skill.specialization'}} </label>
+      <label for="data.specialization">{{localize 'SRA.item.skill.specialization'}} </label>
       <input class="item-field-value" type="text" data-dtype="String"
           name="data.specialization" value="{{data.data.specialization}}"
-          placeholder="{{localize 'SRA.itemSheet.skill.specializationhelp'}}"
+          placeholder="{{localize 'SRA.item.skill.specializationhelp'}}"
       />
     </div>
     {{> 'systems/shadowrun-anarchy/templates/item/parts/references.hbs'}}

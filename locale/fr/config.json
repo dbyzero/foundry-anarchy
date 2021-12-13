@@ -2,7 +2,7 @@
   "SRA": {
     "common": {
       "newEntry": "Valeur...",
-      "newName": "Nouveau {type}",
+      "newName": "Nouveau(elle) {type}",
       "cancel": "Annuler",
       "add": "Ajouter",
       "edit": "Modifier",
@@ -16,7 +16,7 @@
       "description": "Description",
       "gmnotes": "Notes du MJ"
     },
-    "actorSheet": {
+    "actor": {
       "characterSheet": "Fiche de personnage",
       "actorName": "Nom",
       "genre": "Genre",
@@ -32,6 +32,9 @@
         "disposition": "Répliques",
         "cue": "Comportements"
       },
+      "essence": {
+        "adjustments": "pour Magie, résonance, soins"
+      },
       "counters": {
         "essence": "Essence",
         "karma": "Karma",
@@ -46,7 +49,7 @@
         "armor": "Armure"
       }
     },
-    "itemSheet": {
+    "item": {
       "sheet": "Fiche de ",
       "skill": {
         "isKnowledge": "Connaissance",
@@ -62,7 +65,23 @@
         "category": "Categorie",
         "capacity": "Capacité",
         "level": "Niveau",
-        "essence": "Essence"
+        "essence": "Essence",
+        "level_short": "Niv",
+        "essence_short": "Ess"
+      },
+      "weapon": {
+        "skill": "Compétence",
+        "damage": "Dommages",
+        "strength": "+ force",
+        "area": "Zone d'effet",
+        "witharmor": "L'armure protège",
+        "noarmor": "Ignore l'armure",
+        "damage_short": "DV",
+        "area_short": "Zone",
+        "noarmor_short": "(CA)",
+        "range": {
+          "max": "Portée maximale"
+        }
       }
     },
     "itemType": {
@@ -83,23 +102,22 @@
         "weapon": "Armes",
         "gear": "Equipements",
         "contact": "Contacts"
-      },
-      "shadowamp": {
-        "level": "Lvl",
-        "essence": "Ess"
-      },
-      "weapon": {
-        "damage": "VD",
-        "area": "Area",
-        "short": "Courte",
-        "medium": "Int.",
-        "long": "longue"
       }
     },
     "capacity": {
       "mundane": "Normal",
       "awakened": "Eveillé",
       "emerged": "Emergé"
+    },
+    "monitor": {
+      "physical": "Physique",
+      "stun": "Etourdissant",
+      "matrix": "Matriciel"
+    },
+    "monitor_letter": {
+      "physical": "P",
+      "stun": "E",
+      "matrix": "M"
     },
     "shadowampcategory": {
       "cyberware": "Cyberware",
@@ -149,8 +167,14 @@
       "intimidation": "Intimidation",
       "negotiation": "Négotiation"
     },
-    "essence": {
-      "adjustments": "pour Magie, résonance, soins"
+    "area": {
+      "none": "-",
+      "shotgun": "Shotgun"
+    },
+    "range": {
+      "short": "Courte",
+      "medium": "Moyenne",
+      "long": "Longue"
     }
   }
 }

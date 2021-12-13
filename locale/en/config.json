@@ -16,7 +16,7 @@
       "description": "Description",
       "gmnotes": "GM notes"
     },
-    "actorSheet": {
+    "actor": {
       "characterSheet": "Character sheet",
       "actorName": "Name",
       "genre": "Genre",
@@ -29,6 +29,9 @@
         "keyword": "Keywords",
         "disposition": "Dispositions",
         "cue": "Cues"
+      },
+      "essence": {
+        "adjustments": "to Magic, resonance, healing"
       },
       "counters": {
         "essence": "Essence",
@@ -44,7 +47,7 @@
         "armor": "Armor"
       }
     },
-    "itemSheet": {
+    "item": {
       "sheet": "Sheet for ",
       "skill": {
         "isKnowledge": "Knowledge",
@@ -60,7 +63,23 @@
         "category": "Category",
         "capacity": "Capacity",
         "level": "Level",
-        "essence": "Essence"
+        "essence": "Essence",
+        "level_short": "Lvl",
+        "essence_short": "Ess"
+      },
+      "weapon":{
+        "skill": "Skill",
+        "damage": "Damages",
+        "strength": "+ strength",
+        "area": "Area of effect",
+        "witharmor": "Armor protects",
+        "noarmor": "Ignore armor",
+        "damage_short": "DV",
+        "area_short": "Area",
+        "noarmor_short": "(AP)",
+        "range":{
+          "max":"Maximum range"
+        }
       }
     },
     "itemType": {
@@ -81,23 +100,22 @@
         "weapon": "Weapons",
         "gear": "Gears",
         "contact": "Contacts"
-      },
-      "shadowamp": {
-        "level": "Lvl",
-        "essence": "Ess"
-      },
-      "weapon": {
-        "damage": "DV",
-        "area": "Area",
-        "short": "Short",
-        "medium": "Medium",
-        "long": "Long"
       }
     },
     "capacity": {
       "mundane": "Mundane",
       "awakened": "Awakened",
       "emerged": "Emerged"
+    },
+    "monitor": {
+      "physical": "Physical",
+      "stun": "Stun",
+      "matrix": "Matrix"
+    },
+    "monitor_letter": {
+      "physical": "P",
+      "stun": "S",
+      "matrix": "M"
     },
     "shadowampcategory":{
       "cyberware": "Cyberware",
@@ -147,8 +165,14 @@
       "intimidation": "Intimidation",
       "negotiation": "Negotiation"
     },
-   "essence": {
-      "adjustments": "to Magic, resonance, healing"
+    "area":{
+      "none": "-",
+      "shotgun": "Shotgun"
+    },
+    "range": {
+      "short": "Short",
+      "medium": "Medium",
+      "long": "Long"
     }
   }
 }

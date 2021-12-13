@@ -1,17 +1,11 @@
+import { Enums, hbsMonitorLetters, hbsMonitors } from "./enums.js";
 
-
-
-const monitors = [
-  // todo: translate monitor codes?
-  {code:'stun', letter: 'S'},
-  {code:'physical', letter: 'P'},
-]
-
-export class Damage{
+export class Damage {
   static monitor(code) {
-    return monitors.find(m => m.code == code) ?? monitors[0]
+    return game.i18n.localize(Enums.getFromList(hbsMonitors, code) ?? "");
   }
+
   static letter(code) {
-    return Damage.monitor(code).letter
+    return game.i18n.localize(Enums.getFromList(hbsMonitorLetters, code) ?? "");
   }
 }

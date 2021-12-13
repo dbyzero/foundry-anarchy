@@ -1,0 +1,13 @@
+{{!
+  data is:
+  {
+    // the entries to propose as options
+    entries: [
+      { "value": "k1", "label": "SRA.(...).label1"},
+      { "value": "k2", "label": "SRA.(...).label2"},
+    ]
+  }
+}}
+{{#each entries as |entry|}}
+<option value="{{entry.value}}">{{localize entry.label}}</option>
+{{/each}}

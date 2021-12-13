@@ -1,6 +1,6 @@
 import { SRA } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
-import { hbsAttributes, hbsCapacity, hbsItemTypes, hbsShadowampCategory, hbsSkill, hbsSkillAttribute } from "../enums.js";
+import { hbsAreas, hbsAttributes, hbsCapacities, hbsItemTypes, hbsMonitors, hbsRanges, hbsShadowampCategories, hbsSkills } from "../enums.js";
 
 export class SRABaseItemSheet extends ItemSheet {
 
@@ -19,29 +19,17 @@ export class SRABaseItemSheet extends ItemSheet {
         cssClass: this.isEditable ? "editable" : "locked"
       },
       enums: {
-        attribute: hbsAttributes,
+        attributes: hbsAttributes,
         itemTypes: hbsItemTypes,
-        shadowampCategory: hbsShadowampCategory,
-        capacity: hbsCapacity,
-        skill: hbsSkill,
-        skillattribute: hbsSkillAttribute
+        capacities: hbsCapacities,
+        monitors: hbsMonitors,
+        shadowampCategories: hbsShadowampCategories,
+        skills: hbsSkills,
+        areas: hbsAreas,
+        ranges: hbsRanges
       }
     });
-    if (this.object.data.type == 'skill') {
-      hbsData.options.isKnowledge = (this.object.data.data.attribute == 'knowledge');
-    }
-
     return hbsData;
   }
 
-  activateListeners(html) {
-    super.activateListeners(html);
-  
-    html.find('.check-knowledge').click(async event => {
-      const checkKnowledge = event.currentTarget.checked;
-      const newAttribute = checkKnowledge ? 'knowledge' : (SRA.skillattribute[this.object.data.data.code] ?? 'agility') ;
-      await this.object.update({"data.attribute": newAttribute });
-      this.render(true);
-    });
-  }
 }

@@ -1,15 +1,14 @@
-<!--
+{{! 
   data is:
   {
     code: "stun", // identifying the monitor"
     value: 0, // current value in monitor
     max: 9 // max value in monitor
-    labelkey: "SRA.actorSheet.monitors.stun", label key (to internationalize), used also for css class
+    labelkey: "SRA.actor.monitors.stun", label key (to internationalize), used also for css class
     rowlength: 3, // count of checks per row
     adjust: true // indicates to compute & display adjustment
   }
-
--->
+}}
 <div class="{{labelkey}}" data-monitor-code="{{code}}"
     style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
   >

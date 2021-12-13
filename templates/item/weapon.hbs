@@ -1,4 +1,3 @@
-{{log this}}
 <form class="{{options.cssClass}}" autocomplete="off">
   <header class="sheet-header">
     <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
@@ -8,6 +7,84 @@
     }}
   </header>
   <section class="sheet-body">
+    <div class="form-group">
+      <label for="data.skill">{{localize 'SRA.item.weapon.skill'}} </label>
+      <select name="data.skill" data-dtype="String">
+          {{#select data.data.skill}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.skills}}
+          {{/select}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="data.damage" class="flexrow">
+        <span>{{localize 'SRA.item.weapon.damage'}}</span>
+        <span>{{> 'systems/shadowrun-anarchy/templates/common/damagecode.hbs'
+            strength=data.data.strength
+            damage=data.data.damage
+            monitor=data.data.monitor
+            noarmor=data.data.noarmor
+          }}
+        </span>
+      </label>
+      <div class="grid-2col">
+        <input class="item-field-value" type="text" data-dtype="Number"
+          name="data.damage" value="{{data.data.damage}}"
+        />
+
+        <input class="item-field-value" name="data.strength" type="checkbox" {{#if data.data.strength}}checked{{/if}} >
+          <label >{{localize 'SRA.item.weapon.strength'}}</label>
+        </input>
+
+        <select name="data.monitor" data-dtype="String">
+          {{#select data.data.monitor}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.monitors}}
+          {{/select}}
+        </select>
+
+        <input class="item-field-value" name="data.noarmor" type="checkbox" {{#if data.data.noarmor}}checked{{/if}}>
+          <label>{{localize 'SRA.item.weapon.noarmor'}}</label>
+        </input>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="data.area" >{{localize 'SRA.item.weapon.area'}} </label>
+      <select name="data.area" data-dtype="String">
+        {{#select data.data.area}}
+        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.areas}}
+        {{/select}}
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="data.range.max" >{{localize 'SRA.item.weapon.range.max'}} </label>
+        <select name="data.range.max" data-dtype="String">
+          {{#select data.data.range.max}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.ranges}}
+          {{/select}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="data.range.short" >{{localize 'SRA.range.short'}} </label>
+        <input class="item-field-value" type="text" data-dtype="Number"
+          name="data.range.short" value="{{numberFormat data.data.range.short decimals=0 sign=false}}"
+        />
+    </div>
+    {{#unless (eq data.data.range.max "short")}}
+      <div class="form-group">
+          <label for="data.range.medium" >{{localize 'SRA.range.medium'}} </label>
+          <input class="item-field-value" type="text" data-dtype="Number"
+            name="data.range.medium" value="{{numberFormat data.data.range.medium decimals=0 sign=false}}"
+          />
+      </div>
+    {{/unless}}
+
+    {{#if (eq data.data.range.max "long")}}
+    <div class="form-group">
+        <label for="data.range.long" >{{localize 'SRA.range.long'}} </label>
+        <input class="item-field-value" type="text" data-dtype="Number"
+          name="data.range.long" value="{{numberFormat data.data.range.long decimals=0 sign=false}}"
+        />
+    </div>
+    {{/if}}
     {{> 'systems/shadowrun-anarchy/templates/item/parts/references.hbs'}}
   </section>
 

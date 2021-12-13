@@ -2,7 +2,7 @@ import { SRA } from "./config.js";
 
 export class ConfirmationDialog {
 
-  static async confirmDeleteActorItem(actorSheet, item, onDelete = (id) =>{} ) {
+  static async confirmDeleteActorItem(actor, item, onDelete = (id) =>{} ) {
     
     let itemId = item.id;
 
@@ -17,8 +17,8 @@ export class ConfirmationDialog {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize(SRA.common.del),
           callback: () => {
-            actorSheet.actor.deleteEmbeddedDocuments('Item', [itemId]);
-            actorSheet.render(true);
+            actor.actor.deleteEmbeddedDocuments('Item', [itemId]);
+            actor.render(true);
           }
         },
         cancel: {

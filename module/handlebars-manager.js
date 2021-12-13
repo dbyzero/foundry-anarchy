@@ -35,11 +35,9 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/item/parts/references.hbs',
   //-- common&technical partials
   'systems/shadowrun-anarchy/templates/common/checkbar.hbs',
+  'systems/shadowrun-anarchy/templates/common/damagecode.hbs',
   'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
-  'systems/shadowrun-anarchy/templates/common/enum-attribute.hbs',
-  'systems/shadowrun-anarchy/templates/common/enum-capacity.hbs',
-  'systems/shadowrun-anarchy/templates/common/enum-shadowampcategory.hbs',
-  'systems/shadowrun-anarchy/templates/common/enum-skill.hbs',
+  'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs',
 ];
 
 export class HandlebarsManager {

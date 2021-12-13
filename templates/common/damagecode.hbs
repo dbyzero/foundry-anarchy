@@ -1,0 +1,19 @@
+{{! 
+  data is:
+  {
+    damage: 1, // the damage or damage modifier
+    strength: true, // damage is based on strength
+    monitor: 'stun' // damage is stun/physical
+  }
+}}
+{{#if strength}}
+({{toUpperCase (substring (localize (concat 'SRA.attributes.strength')) 0 3)}}/2 + {{damage}})
+{{~else}}
+{{damage}}
+{{~/if~}}{{damageLetter monitor}}
+{{#if noarmor}}
+<i class="fas fa-user-times" title="{{localize 'SRA.item.weapon.noarmor'}}"></i>
+{{else}}
+<i class="fas fa-user-shield" title="{{localize 'SRA.item.weapon.witharmor'}}"></i>
+{{/if}}
+

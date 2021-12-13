@@ -1,7 +1,5 @@
+import { SRABaseActor } from "./base-actor.js";
 
-export class SRACharacter extends Actor {
+export class SRACharacter extends SRABaseActor {
 
-  prepareData() {
-    super.prepareData();
-  }
 }

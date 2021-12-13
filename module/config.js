@@ -15,51 +15,70 @@ export const SRA = {
         description: "SRA.common.description",
         gmnotes: "SRA.common.gmnotes"
     },
-    actorSheet: {
-        characterSheet: "SRA.actorSheet.characterSheet",
-        actorName: "SRA.actorSheet.actorName",
-        genre: "SRA.actorSheet.genre",
+    actor: {
+        characterSheet: "SRA.actor.characterSheet",
+        actorName: "SRA.actor.actorName",
+        genre: "SRA.actor.genre",
         singular: {
-            keyword: "SRA.actorSheet.singular.keyword",
-            disposition: "SRA.actorSheet.singular.disposition",
-            cue: "SRA.actorSheet.singular.cue",
+            keyword: "SRA.actor.singular.keyword",
+            disposition: "SRA.actor.singular.disposition",
+            cue: "SRA.actor.singular.cue",
         },
         plural: {
-            keyword: "SRA.actorSheet.plural.keyword",
-            disposition: "SRA.actorSheet.plural.disposition",
-            cue: "SRA.actorSheet.plural.cue",
+            keyword: "SRA.actor.plural.keyword",
+            disposition: "SRA.actor.plural.disposition",
+            cue: "SRA.actor.plural.cue",
+        },
+        essence: {
+            adjustments: 'SRA.essence.adjustments',
         },
         counters: {
-            essence: "SRA.actorSheet.counters.essence",
-            karma: "SRA.actorSheet.counters.karma",
-            karmatotal: "SRA.actorSheet.counters.karmatotal",
-            anarchy: "SRA.actorSheet.counters.anarchy",
-            edge: "SRA.actorSheet.counters.edge",
+            essence: "SRA.actor.counters.essence",
+            karma: "SRA.actor.counters.karma",
+            karmatotal: "SRA.actor.counters.karmatotal",
+            anarchy: "SRA.actor.counters.anarchy",
+            edge: "SRA.actor.counters.edge",
         },
         monitors: {
-            conditionmonitors: "SRA.actorSheet.monitors.conditionmonitors",
-            physical: "SRA.actorSheet.monitors.physical",
-            stun: "SRA.actorSheet.monitors.stun",
-            armor: "SRA.actorSheet.monitors.armor"
+            conditionmonitors: "SRA.actor.monitors.conditionmonitors",
+            physical: "SRA.actor.monitors.physical",
+            stun: "SRA.actor.monitors.stun",
+            armor: "SRA.actor.monitors.armor"
         }
     },
-    itemSheet: {
-        sheet: "SRA.itemSheet.sheet",
+    item: {
+        sheet: "SRA.item.sheet",
         skill: {
-            isKnowledge: "SRA.itemSheet.skill.isKnowledge",
-            attribute: "SRA.itemSheet.skill.attribute",
-            value: "SRA.itemSheet.skill.value",
-            specialization: "SRA.itemSheet.skill.specialization",
-            specializationhelp: "SRA.itemSheet.skill.specializationhelp"
+            isKnowledge: "SRA.item.skill.isKnowledge",
+            attribute: "SRA.item.skill.attribute",
+            value: "SRA.item.skill.value",
+            specialization: "SRA.item.skill.specialization",
+            specializationhelp: "SRA.item.skill.specializationhelp"
         },
         quality: {
-            positive: 'SRA.itemSheet.quality.positive'
+            positive: 'SRA.item.quality.positive'
         },
         shadowamp: {
-            category: "SRA.itemSheet.shadowamp.category",
-            capacity: "SRA.itemSheet.shadowamp.capacity",
-            level: "SRA.itemSheet.shadowamp.level",
-            essence: "SRA.itemSheet.shadowamp.essence"
+            category: "SRA.item.shadowamp.category",
+            capacity: "SRA.item.shadowamp.capacity",
+            level: "SRA.item.shadowamp.level",
+            essence: "SRA.item.shadowamp.essence",
+            level_short: "Niv",
+            essence_short: "Ess"
+        },
+        weapon: {
+            skill: "SRA.item.weapon.skill",
+            damage: "SRA.item.weapon.damage",
+            strength: "SRA.item.weapon.strength",
+            area: "SRA.item.weapon.area",
+            noarmor: 'SRA.item.weapon.noarmor',
+            witharmor: 'SRA.item.weapon.witharmor',
+            damage_short: "SRA.item.weapon.damage_short",
+            area_short: "SRA.item.weapon.area_short",
+            noarmor_short: 'SRA.item.weapon.noarmor_short',
+            range: {
+                max:"SRA.item.weapon.range.max"
+            }
         }
     },
     itemType: {
@@ -80,23 +99,22 @@ export const SRA = {
             weapon: 'SRA.itemType.plural.weapon',
             gear: 'SRA.itemType.plural.gear',
             contact: 'SRA.itemType.plural.contact'
-        },
-        shadowamp: {
-            level: 'SRA.itemType.shadowamp.level',
-            essence: 'SRA.itemType.shadowamp.essence',
-        },
-        weapon: {
-            damage: 'SRA.itemType.weapon.damage',
-            area: 'SRA.itemType.weapon.area',
-            short: 'SRA.itemType.weapon.short',
-            medium: 'SRA.itemType.weapon.medium',
-            long: 'SRA.itemType.weapon.long',
         }
     },
     capacity: {
         mundane: 'SRA.capacity.mundane',
         awakened: 'SRA.capacity.awakened',
         emerged: 'SRA.capacity.emerged'
+    },
+    monitor: {
+        physical: "SRA.monitor.physical",
+        stun: "SRA.monitor.stun",
+        matrix: "SRA.monitor.matrix"
+    },
+    monitor_letter: {
+        physical: "SRA.monitor_letter.physical",
+        stun: "SRA.monitor_letter.stun",
+        matrix: "SRA.monitor_letter.matrix"
     },
     shadowampcategory: {
         cyberware: "SRA.shadowampcategory.cyberware",
@@ -146,35 +164,18 @@ export const SRA = {
         intimidation: "SRA.skill.intimidation",
         negotiation: "SRA.skill.negotiation"
     },
-    skillattribute: {
-        athletics: "strength",
-        acrobatics: "agility",
-        firearms: "agility",
-        projectiles: "agility",
-        gunnery: "agility",
-        heavyweapons: "agility",
-        closecombat: "agility",
-        stealth: "agility",
-        groundvehicles: "agility",
-        miscvehicles: "agility",
-        astralfight: "willpower",
-        conjuring: "willpower",
-        sorcery: "willpower",
-        survival: "willpower",
-        biotech: "logic",
-        electronics: "logic",
-        hacking: "logic",
-        engineering: "logic",
-        tracking: "logic",
-        technomancy: "logic",
-        animals: "charisma",
-        con: "charisma",
-        etiquette: "charisma",
-        intimidation: "charisma",
-        negotiation: "charisma",
+    area: {
+        none: "SRA.area.none",
+        shotgun: "SRA.area.shotgun",
+        circle: "CONTROLS.MeasureCircle",
+        cone: "CONTROLS.MeasureCone",
+        rect: "CONTROLS.MeasureRect",
+        ray: "CONTROLS.MeasureRay"
     },
-    essence: {
-        adjustments: 'SRA.essence.adjustments',
-    },
+    range: {
+        short: "SRA.range.short",
+        medium: "SRA.range.medium",
+        long: "SRA.range.long",
+    }
 };
 

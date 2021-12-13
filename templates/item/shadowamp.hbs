@@ -9,28 +9,28 @@
   </header>
   <section class="sheet-body">
     <div class="form-group">
-      <label for="data.category">{{localize 'SRA.itemSheet.shadowamp.category'}} </label>
+      <label for="data.category">{{localize 'SRA.item.shadowamp.category'}} </label>
       <select name="data.category" data-dtype="String">
           {{#select data.data.category}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-shadowampcategory.hbs'}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.shadowampCategories}}
           {{/select}}
       </select>
     </div>
     <div class="form-group">
-      <label for="data.capacity">{{localize 'SRA.itemSheet.shadowamp.capacity'}} </label>
+      <label for="data.capacity">{{localize 'SRA.item.shadowamp.capacity'}} </label>
       <select name="data.capacity" data-dtype="String">
           {{#select data.data.capacity}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-capacity.hbs'}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.capacities}}
           {{/select}}
       </select>
     </div>
     <div class="form-group">
-      <label for="data.level">{{localize 'SRA.itemSheet.shadowamp.level'}} </label>
+      <label for="data.level">{{localize 'SRA.item.shadowamp.level'}} </label>
       <input name="data.level" type="text" data-dtype="Number" size=2
         value="{{data.data.level}}"/>
     </div>
     <div class="form-group">
-      <label for="data.essence">{{localize 'SRA.itemSheet.shadowamp.essence'}} </label>
+      <label for="data.essence">{{localize 'SRA.item.shadowamp.essence'}} </label>
       <input name="data.essence" type="text" data-dtype="Number" size=3
         value="{{data.data.essence}}"/>
     </div>

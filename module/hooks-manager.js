@@ -4,7 +4,7 @@ import { SRA } from './config.js';
 import { SYSTEM_NAME } from './constants.js';
 import { HandlebarsManager } from './handlebars-manager.js';
 import { SRABaseItemSheet } from './item/base-item-sheet.js';
-import { SRASkillItemSheet as SRASkillSheet } from './item/skill-item-sheet.js';
+import { SRASkillSheet } from './item/skill-item-sheet.js';
 import { SRABaseItem } from './item/base-item.js';
 
 
@@ -28,8 +28,8 @@ export class HooksManager {
 
     HooksManager.registerSheets();
 
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actorSheet.characterSheet));
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.itemSheet.sheet));
+    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
+    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
 
     await HandlebarsManager.preload();
     SRABaseItem.init();
@@ -38,7 +38,7 @@ export class HooksManager {
   static registerSheets() {
     Actors.unregisterSheet('core', ActorSheet);
     Actors.registerSheet(SYSTEM_NAME, SRACharacterSheet, {
-      label: game.i18n.localize(SRA.actorSheet.characterSheet),
+      label: game.i18n.localize(SRA.actor.characterSheet),
       makeDefault: true,
       types: ['character']
     });

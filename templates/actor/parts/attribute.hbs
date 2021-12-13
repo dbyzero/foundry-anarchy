@@ -1,5 +1,7 @@
-<div class="flexcol" data-attribute="{{key}}">
-  <label class="attribute-label" for="data.attributes.{{key}}.value">{{localize (concat 'SRA.attributes.' key)}}</label>
+<div class="flexcol  item" data-attribute="{{key}}">
+  <a class="attribute-label">
+    <label for="data.attributes.{{key}}.value">{{localize (concat 'SRA.attributes.' key)}}</label>
+  </a>
   <input class="attribute-value" type="text" data-dtype="Number"
     name="data.attributes.{{key}}.value" value="{{attribute.value}}" 
   />

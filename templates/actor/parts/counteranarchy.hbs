@@ -1,13 +1,13 @@
 <div class="SRA-anarchy flexrow">
   <span class="flex-shrink">
-    {{localize (concat 'SRA.actorSheet.counters.anarchy')}}
+    {{localize (concat 'SRA.actor.counters.anarchy')}}
   </span>
   <span class="flex-grow-3">
   {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
     code='anarchy'
     value=data.data.counters.anarchy.value
     max=data.data.counters.anarchy.max
-    labelkey='SRA.actorSheet.counters.anarchy'
+    labelkey='SRA.actor.counters.anarchy'
     rowlength=6
     adjust=false
   }}

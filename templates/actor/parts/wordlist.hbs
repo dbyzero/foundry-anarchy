@@ -1,12 +1,12 @@
-<h3 data-description-list="{{listName}}">
-  <label>{{localize (concat 'SRA.actorSheet.plural.' listName)}}</label>
-  <a class="description-list-add" title="{{localize 'SRA.common.add'}}"><i class="fas fa-plus-circle"></i></a>
+<h3 class="define-wordlist" data-wordlist="{{listName}}">
+  <label>{{localize (concat 'SRA.actor.plural.' listName)}}</label>
+  <a class="item-control wordlist-add" title="{{localize 'SRA.common.add'}}"><i class="fas fa-plus-circle"></i></a>
 </h3>
 {{#each values as |value|}}
-<div data-description-list="{{@listName}}" data-item="{{value}}">
+<div class="define-wordlist" data-wordlist="{{../listName}}" data-word="{{value}}">
   <span class="flexrow">
-    <input class="description-list-value" type="text" data-dtype="String" value="{{value}}"/>
-    <a class="description-list-del" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
+    <input class="wordlist-value" type="text" data-dtype="String" value="{{value}}"/>
+    <a class="item-control wordlist-delete flex-shrink-end" title="{{localize 'SRA.common.del'}}"><i class="fas fa-trash"></i></a>
   </span>
 </div>
 {{/each}}
