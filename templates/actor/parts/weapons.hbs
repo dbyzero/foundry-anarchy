@@ -6,12 +6,12 @@
   <ul class="alterne-list">
     <li class="list-header flexrow ">
       <img class="sheet-item-img" src="icons/skills/melee/unarmed-punch-fist-white.webp" data-edit="img" title="{{localize 'SRA.itemType.plural.weapon'}}"/>
-      <span>{{localize 'SRA.itemType.singular.weapon'}}</span>
-      <span>{{localize 'SRA.item.weapon.damage_short'}}</span>
-      <span>{{localize 'SRA.item.weapon.area_short'}}</span>
-      <span>{{localize 'SRA.range.short'}}</span>
-      <span>{{localize 'SRA.range.medium'}}</span>
-      <span>{{localize 'SRA.range.long'}}</span>
+      <span class="flex-grow-2">{{localize 'SRA.itemType.singular.weapon'}}</span>
+      <span class="flex-grow-2">{{localize 'SRA.item.weapon.damage_short'}}</span>
+      <span class="flex-shrink">{{localize 'SRA.item.weapon.area_short'}}</span>
+      <span class="flex-shrink">{{localize 'SRA.range.short'}}</span>
+      <span class="flex-shrink">{{localize 'SRA.range.medium'}}</span>
+      <span class="flex-shrink">{{localize 'SRA.range.long'}}</span>
       <span class="flex-shrink-end"></span>
     </li>
     {{#each items.weapon as |weapon|}}

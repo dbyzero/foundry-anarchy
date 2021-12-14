@@ -18,6 +18,10 @@ export class Misc {
     return [...new Set(array)];
   }
 
+  static sum() {
+    return (a, b) => a + b;
+  }
+
   static join(params, separator = '') {
     return params.reduce(Misc.joiner(separator));
   }

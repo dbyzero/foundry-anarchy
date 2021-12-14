@@ -38,6 +38,9 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/common/damagecode.hbs',
   'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
   'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs',
+  //-- dialogs
+  'systems/shadowrun-anarchy/templates/dialog/skill-roll.hbs',
+  'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs',
 ];
 
 export class HandlebarsManager {
@@ -58,6 +61,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('sum', (v1, v2) => v1 + v2);
     Handlebars.registerHelper('diff', (v1, v2) => v1 - v2);
     Handlebars.registerHelper('either', (a, b) => a ? a : b);
+    Handlebars.registerHelper('isInteger', a => a !== undefined && Number.isInteger(a));
   }
 
   static hbsFor(start, end, options) {

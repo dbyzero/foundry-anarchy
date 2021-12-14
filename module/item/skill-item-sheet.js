@@ -1,5 +1,5 @@
 import { TEMPLATES_PATH } from "../constants.js";
-import { skillsAttribute } from "../enums.js";
+import { Enums } from "../enums.js";
 import { SRABaseItemSheet } from "./base-item-sheet.js";
 
 export class SRASkillSheet extends SRABaseItemSheet {
@@ -20,7 +20,7 @@ export class SRASkillSheet extends SRABaseItemSheet {
   
     html.find('.check-knowledge').click(async event => {
       const checkKnowledge = event.currentTarget.checked;
-      const newAttribute = checkKnowledge ? 'knowledge' : (skillsAttribute[this.object.data.data.code] ?? 'agility') ;
+      const newAttribute = checkKnowledge ? 'knowledge' : Enums.getSkillAttribute(this.object.data.data.code);
       await this.object.update({"data.attribute": newAttribute });
       this.render(true);
     });

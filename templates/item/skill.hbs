@@ -10,7 +10,7 @@
     <h1 class="item-name">
       <select name="data.code" data-dtype="String">
           {{#select data.data.code}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.skills}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
           {{/select}}
       </select>
       {{data.name}}
@@ -22,6 +22,12 @@
       <input class="item-field-value check-knowledge" type="checkbox" {{#if options.isKnowledge}}checked{{/if}} >
       {{localize 'SRA.attributes.knowledge'}}</input>
     </div>
+    {{#if options.isGM}}
+    <div class="form-group">
+      <label>{{localize 'SRA.item.skill.code'}} </label>
+      <input class="item-field-value" type="text" value="{{data.data.code}}" data-dtype="Number" disabled/>
+    </div>
+    {{/if}}
     {{#unless options.isKnowledge}}
     <div class="form-group">
       <label>{{localize 'SRA.item.skill.attribute'}} </label>

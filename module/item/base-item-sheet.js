@@ -1,6 +1,6 @@
 import { SRA } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
-import { hbsAreas, hbsAttributes, hbsCapacities, hbsItemTypes, hbsMonitors, hbsRanges, hbsShadowampCategories, hbsSkills } from "../enums.js";
+import { Enums } from "../enums.js";
 
 export class SRABaseItemSheet extends ItemSheet {
 
@@ -15,7 +15,6 @@ export class SRABaseItemSheet extends ItemSheet {
   getData(options) {
     let hbsData = mergeObject(
       super.getData(options), {
-      config: SRA,
       options: {
         isGM: game.user.isGM,
         owner: this.document.isOwner,
@@ -23,16 +22,8 @@ export class SRABaseItemSheet extends ItemSheet {
         editable: this.isEditable,
         cssClass: this.isEditable ? "editable" : "locked"
       },
-      enums: {
-        attributes: hbsAttributes,
-        itemTypes: hbsItemTypes,
-        capacities: hbsCapacities,
-        monitors: hbsMonitors,
-        shadowampCategories: hbsShadowampCategories,
-        skills: hbsSkills,
-        areas: hbsAreas,
-        ranges: hbsRanges
-      }
+      ENUMS: Enums.getEnums(),
+      SRA: SRA
     });
     return hbsData;
   }

@@ -6,18 +6,22 @@ export class SheetHelper {
   }
 
   static getItemId(event) {
-    return SheetHelper.getEventItemData(event, "item-id");
+    return SheetHelper.getClosestElementData(event, "item-id");
   }
   static getItemType(event) {
-    return SheetHelper.getEventItemData(event, "item-type", ".define-item-type");
+    return SheetHelper.getClosestElementData(event, "item-type", ".define-item-type");
   }
 
-  static getEventItemData(event, property, parentclass = ".item") {
-    const node = SheetHelper.getEventElement(event, parentclass);
+  static getClosestElementData(event, property, parentclass = ".item") {
+    const node = SheetHelper.getClosestElement(event, parentclass);
     return node?.data(property);
   }
 
-  static getEventElement(event, parentclass = ".item") {
-    return $(event.currentTarget)?.parents(parentclass);
+  static getEventData(event, property) {
+    return event.currentTarget.attributes['data-'+property]?.value;
+  }
+
+  static getClosestElement(event, parentclass = ".item") {
+    return $(event.currentTarget).closest(parentclass);
   }
 }

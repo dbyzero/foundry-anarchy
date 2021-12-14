@@ -1,6 +1,17 @@
+:root {
+  --controls-color: rgba(7, 63, 15, 0.7);
+  --gradient-silver: linear-gradient(45deg, rgba(61, 55, 93, 0.3), rgba(178, 179, 196, 0.3), rgba(59, 62, 63, 0.6), rgba(206, 204, 199, 0.3), rgba(61, 46, 49, 0.3));
+  --gradient-gold: linear-gradient(30deg, rgba(191, 149, 63, 0.3), rgba(252, 246, 186, 0.3), rgba(179, 135, 40, 0.3), rgba(251, 245, 183, 0.3), rgba(170, 119, 28, 0.3));
+  --gradient-green: linear-gradient(30deg, rgba(7, 76, 0, 0.3), rgba(66, 163, 65, 0.2), rgba(184, 226, 163, 0.1), rgba(66, 163, 65, 0.2), rgba(184, 226, 163, 0.3));
+  --gradient-yellow: linear-gradient(45deg, rgba(165, 142, 10, 0.3), rgba(163, 161, 65, 0.2), rgba(222, 226, 163, 0.1), rgba(156, 163, 65, 0.2), rgba(225, 226, 163, 0.3));
+  --gradient-purple-black: linear-gradient(150deg,  rgba(0, 0, 0, 0.7), rgba(100, 45, 124, 0.4), rgba(82, 17, 131, 0.3),rgba(100, 45, 124, 0.4), rgba(0, 0, 0, 0.7));
+  --gradient-silver-light: linear-gradient(30deg, rgba(61, 55, 93, 0.2), rgba(178, 179, 196, 0.1), rgba(59, 62, 63, 0.2), rgba(206, 204, 199, 0.1), rgba(61, 46, 49, 0.2));
+  --color-wordlist: rgba(154, 155, 120, 0.2);
+}
 
 div.item.flexcol { gap: 2px; align-items: flex-start; }
 div.item.flexrow { gap: 2px; align-items: flex-start; justify-content:space-between; }
+div.flex-group-left { gap: 2px; align-items: flex-start; justify-content:space-between; }
 
 .flex-grow-3 { flex-grow : 3; }
 .flex-grow-2 { flex-grow : 2; }
@@ -13,15 +24,20 @@ div.item.flexrow { gap: 2px; align-items: flex-start; justify-content:space-betw
   grid-column: span 3 / span 3;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.grid-3col {
-  grid-column: span 3 / span 3;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
 .grid-2col {
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.dialog-img,
+.chat-img {
+  border: 0;
+  padding: 2px 6px 2px 2px;
+  float: left;
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+}
 
 .sheet-header .profile-img {
   -webkit-box-flex: 0;
@@ -32,6 +48,7 @@ div.item.flexrow { gap: 2px; align-items: flex-start; justify-content:space-betw
   margin-right: 10px;
   object-fit: cover;
   object-position: 50% 0;
+  border-radius: 6px;
 }
 
 .sheet-item-img {
@@ -40,6 +57,7 @@ div.item.flexrow { gap: 2px; align-items: flex-start; justify-content:space-betw
   flex-grow: 0;
   margin-right: 0.1rem;
   vertical-align: bottom;
+  border-radius: 6px;
 }
 
 .editor {
@@ -49,13 +67,31 @@ div.item.flexrow { gap: 2px; align-items: flex-start; justify-content:space-betw
   padding: 0 3px;
 }
 
-
 .tox .tox-editor-container {
   background: #fff;
 }
 
 .tox .tox-edit-area {
   padding: 0 8px;
+}
+div.style-keyword-list,
+div.style-disposition-list,
+div.style-cue-list {
+  margin: 2px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+  border-color: var(--controls-color);
+  background-color: var(--color-wordlist);
+}
+
+div.style-keyword-list input,
+div.style-disposition-list input,
+div.style-cue-list input{
+  border-width: 1px;
+  border-style: dashed;
+  border-color: var(--controls-color);
 }
 
 .list-item {
@@ -94,13 +130,43 @@ div.item {
   padding: 2px;
   border-width: 1px;
   border-style: solid;
+  border-radius: 6px;
 }
+
+div.item.style-attribute {
+  margin: 2px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  background: var(--gradient-gold) !important;
+  flex-basis: auto;
+  max-width: 8rem;
+}
+
+div.item.style-shadowamp,
+div.item.style-skill,
+div.item.style-quality {
+  margin: 2px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  background: var(--gradient-silver-light) !important;
+  min-width: 10rem;
+  flex-basis: auto;
+}  
+
 div.item.quality-negative {
   border-style: dashed;
 }
 a.item-control i {
-  color: rgba(7, 63, 15, 0.7);
+  font-size: small;
+  color: var(--controls-color);
 }
 div.form-group {
   align-items: flex-start;
 }
+/*
+.sra-dialog {
+
+}
+*/

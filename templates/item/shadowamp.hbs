@@ -12,7 +12,7 @@
       <label for="data.category">{{localize 'SRA.item.shadowamp.category'}} </label>
       <select name="data.category" data-dtype="String">
           {{#select data.data.category}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.shadowampCategories}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.shadowampCategories}}
           {{/select}}
       </select>
     </div>
@@ -20,7 +20,7 @@
       <label for="data.capacity">{{localize 'SRA.item.shadowamp.capacity'}} </label>
       <select name="data.capacity" data-dtype="String">
           {{#select data.data.capacity}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.capacities}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.capacities}}
           {{/select}}
       </select>
     </div>

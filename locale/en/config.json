@@ -7,9 +7,28 @@
       "add": "Add",
       "edit": "Edit",
       "del": "Remove",
+      "roll": {
+        "button": "Roll",
+        "title": "Roll {name} {specialization}",
+        "modifiers": {
+          "edge": "Use edge",
+          "specialization": "Use specialization",
+          "anarchy_disposition": "Anarchy Point: dispositions",
+          "anarchy_risk": "Anarchy points: take risks",
+          "wounds": "Wounds modifiers",
+          "other": "Other modifiers",
+          "reroll": "Rerolls",
+          "reroll_forced": "Rerolls forced by opponent",
+          "opponent_reroll": "Force opponent to reroll",
+          "opponent_reduce": "Reduce opponent pool"          
+        }
+      },
       "confirmation": {
         "del": "Confirm removal",
         "delitem": "Confirm removal of {name} ({type})"
+      },
+      "errors": {
+        "insufficient": "Not enough {resource}: required {required}, available {available}"
       },
       "sourcereference": "Source reference",
       "sourcereferencehelp": "rulebook, page, ...",
@@ -40,7 +59,7 @@
         "anarchy": "Anarchy",
         "edge": "Edge"
       },
-      "monitors":{
+      "monitors": {
         "conditionmonitors": "Condition monitors",
         "physical": "Physical",
         "stun": "Stun",
@@ -50,6 +69,7 @@
     "item": {
       "sheet": "Sheet for ",
       "skill": {
+        "code": "Internal code",
         "isKnowledge": "Knowledge",
         "attribute": "Attribute",
         "value": "Level",
@@ -57,7 +77,7 @@
         "specializationhelp": "Type the name to choose a specialization"
       },
       "quality": {
-        "positive": "Positive quality if checked"
+        "positive": "Positive if checked"
       },
       "shadowamp": {
         "category": "Category",
@@ -67,7 +87,7 @@
         "level_short": "Lvl",
         "essence_short": "Ess"
       },
-      "weapon":{
+      "weapon": {
         "skill": "Skill",
         "damage": "Damages",
         "strength": "+ strength",
@@ -77,8 +97,8 @@
         "damage_short": "DV",
         "area_short": "Area",
         "noarmor_short": "(AP)",
-        "range":{
-          "max":"Maximum range"
+        "range": {
+          "max": "Maximum range"
         }
       }
     },
@@ -117,7 +137,7 @@
       "stun": "S",
       "matrix": "M"
     },
-    "shadowampcategory":{
+    "shadowampcategory": {
       "cyberware": "Cyberware",
       "bioware": "Bioware",
       "cyberdeck": "Cyberdeck",
@@ -127,7 +147,7 @@
       "spell": "Spell",
       "adeptpower": "Adept power",
       "equipment": "Equipment",
-      "special" : "Special"
+      "special": "Special"
     },
     "attributes": {
       "strength": "Strength",
@@ -140,32 +160,33 @@
     },
     "skill": {
       "athletics": "Athletics",
-      "acrobatics": "Acrobatics",
-      "firearms": "Firearms",
-      "projectiles": "Projectiles",
-      "gunnery": "Gunnery",
-      "heavyweapons": "Heavy weapons",
       "closecombat": "Close combat",
+      "projectileweapons": "Projectile weapons",
+      "firearms": "Firearms",
+      "vehicleweapons": "Vehicle weapons",
+      "heavyweapons": "Heavy weapons",
       "stealth": "Stealth",
-      "groundvehicles": "Ground vehicles",
-      "miscvehicles": "Misc vehicles",
-      "astralfight": "Astral fight",
+      "pilotingground": "Vehicles (Ground)",
+      "pilotingother": "Vehicles (others)",
+      "escapeartist": "Escape artist",
+      "astralcombat": "Astral combat",
       "conjuring": "Conjuring",
       "sorcery": "Sorcery",
       "survival": "Survival",
       "biotech": "Biotech",
-      "electronics": "Electronics",
       "hacking": "Hacking",
+      "electronics": "Electronics",
       "engineering": "Engineering",
+      "tasking": "tasking",
       "tracking": "Tracking",
-      "technomancy": "Technomancy",
-      "animals": "Animals",
       "con": "Con",
-      "etiquette": "Etiquette",
       "intimidation": "Intimidation",
-      "negotiation": "Negotiation"
+      "negotiation": "Negotiation",
+      "disguise": "Disguise",
+      "animals": "Animals",
+      "etiquette": "Etiquette"
     },
-    "area":{
+    "area": {
       "none": "-",
       "shotgun": "Shotgun"
     },

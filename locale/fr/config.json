@@ -7,9 +7,28 @@
       "add": "Ajouter",
       "edit": "Modifier",
       "del": "Supprimer",
+      "roll": {
+        "button":"Lancer",
+        "title": "Jet de {name} {specialization}",
+        "modifiers" :{
+          "edge": "Utiliser la chance",
+          "specialization": "Utiliser la spécialization",
+          "anarchy_disposition": "Point d'Anarchie: bien disposé",
+          "anarchy_risk": "Point d'Anarchie: prise de risques",
+          "wounds": "Modificateur de blessures",
+          "other":  "Autres modificateurs",
+          "reroll": "Relances autorisées",
+          "reroll_forced": "Relances forcées par l'adversaire",
+          "opponent_reroll": "Force des relances adverse",
+          "opponent_reduce": "Dés retranchés à l'adversaire"
+        }
+      },
       "confirmation": {
         "del": "Confirmer la suppression",
         "delitem": "Confirmer la suppression de {name} ({type})"
+      },
+      "errors": {
+        "insufficient": "{resource} insuffisant: requis {required}, disponible {available}"
       },
       "sourcereference": "Référence source",
       "sourcereferencehelp": "livre, page, ...",
@@ -53,6 +72,7 @@
       "sheet": "Fiche de ",
       "skill": {
         "isKnowledge": "Connaissance",
+        "code": "Code interne",
         "attribute": "Attribut",
         "value": "Niveau",
         "specialization": "Spécialisation",
@@ -142,30 +162,31 @@
     },
     "skill": {
       "athletics": "Athlétisme",
-      "acrobatics": "Acrobaties",
-      "firearms": "Armes à feu",
-      "projectiles": "Arme à projectiles",
-      "gunnery": "Armes de véhicules",
-      "heavyweapons": "Armes lourdes",
       "closecombat": "Corps à corps",
+      "projectileweapons": "Arme à projectileweapons",
+      "firearms": "Armes à feu",
+      "heavyweapons": "Armes lourdes",
+      "vehicleweapons": "Armes de véhicules",
       "stealth": "Furtivité",
-      "groundvehicles": "Véhicules terrestres",
-      "miscvehicles": "Véhicules divers",
-      "astralfight": "Combat astral",
+      "pilotingground": "Véhicules terrestres",
+      "pilotingother": "Véhicules divers",
+      "escapeartist": "Acrobaties",
+      "astralcombat": "Combat astral",
       "conjuring": "Conjuration",
       "sorcery": "Sorcellerie",
       "survival": "Survie",
       "biotech": "Biotech",
-      "electronics": "Electronique",
       "hacking": "Hacking",
+      "electronics": "Electronique",
       "engineering": "Ingénierie",
+      "tasking": "Technomancie",
       "tracking": "Pistage",
-      "technomancy": "Technomancie",
-      "animals": "Animaux",
       "con": "Comédie",
-      "etiquette": "Etiquette",
       "intimidation": "Intimidation",
-      "negotiation": "Négotiation"
+      "negotiation": "Négotiation",
+      "disguise": "Déguisement",
+      "animals": "Animaux",
+      "etiquette": "Etiquette"
     },
     "area": {
       "none": "-",

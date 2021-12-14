@@ -6,6 +6,7 @@ import { HandlebarsManager } from './handlebars-manager.js';
 import { SRABaseItemSheet } from './item/base-item-sheet.js';
 import { SRASkillSheet } from './item/skill-item-sheet.js';
 import { SRABaseItem } from './item/base-item.js';
+import { Enums } from './enums.js';
 
 
 export class HooksManager {
@@ -27,6 +28,7 @@ export class HooksManager {
     CONFIG.SRA = SRA;
 
     HooksManager.registerSheets();
+    Enums.registerEnums();
 
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));

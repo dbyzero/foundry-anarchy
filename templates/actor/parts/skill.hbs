@@ -1,4 +1,4 @@
-<div class="flexrow item" data-item-id="{{_id}}" data-item-type="skill">
+<div class="flexrow item style-skill" data-item-id="{{_id}}" data-item-type="skill">
   {{#if img}}
   <img class="sheet-item-img" src="{{img}}" alt="name"/>
   {{/if}}
@@ -8,25 +8,23 @@
     <label>{{name}}</label>
   </span>
   {{else}}
-    {{#if data.specialization}}
-      <div class="flexcol">
-    {{/if}}
-    <span class="flexrow">
-      <a class="skill-label">
-        <label>{{name}}</label>
-        <label>{{data.value}} + {{toUpperCase (substring (localize (concat 'SRA.attributes.' data.attribute)) 0 3)}}
-        </label>
-      </a>
-    </span>
-    {{#if data.specialization}}
+    <div class="flexcol">
       <span class="flexrow">
-        <a class="skill-specialization-label">(
-          <label>{{data.specialization}}</label>
-          <label>{{sum data.value 2}} + {{toUpperCase (substring (localize (concat 'SRA.attributes.' data.attribute)) 0 3)}}</label>
-        )</a>
+        <a class="skill-roll">
+          <label>{{name}}</label>
+          <label>{{data.value}} + {{toUpperCase (substring (localize (concat 'SRA.attributes.' data.attribute)) 0 3)}}
+          </label>
+        </a>
       </span>
+      {{#if data.specialization}}
+        <span class="flexrow">
+          <a class="skill-roll" data-item-specialization="{{data.specialization}}">(
+            <label>{{data.specialization}}</label>
+            <label>{{sum data.value 2}} + {{toUpperCase (substring (localize (concat 'SRA.attributes.' data.attribute)) 0 3)}}</label>
+          )</a>
+        </span>
+      {{/if}}
     </div>
-    {{/if}}
   {{/if}}
   {{> 'systems/shadowrun-anarchy/templates/common/item-controls.hbs'}}
 </div>

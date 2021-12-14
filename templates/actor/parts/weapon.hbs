@@ -2,8 +2,8 @@
   {{#if img}}
   <img class="sheet-item-img" src="{{img}}" alt="name"/>
   {{/if}}
-  <span>{{name}}</span>
-  <span>
+  <span class="flex-grow-2">{{name}}</span>
+  <span class="flex-grow-2">
     {{> 'systems/shadowrun-anarchy/templates/common/damagecode.hbs'
       strength=data.strength
       damage=data.damage
@@ -11,14 +11,14 @@
       noarmor=data.noarmor
     }}
   </span>
-  <span>{{localize (concat 'SRA.area.' data.area)}}</span>
-  <span>{{either data.range.short 'OK'}}</span>
-  <span>
+  <span class="flex-shrink">{{localize (concat 'SRA.area.' data.area)}}</span>
+  <span class="flex-shrink">{{either data.range.short 'OK'}}</span>
+  <span class="flex-shrink">
     {{#unless (eq data.range.max "short")}}
     {{either data.range.medium 'OK'}}
     {{/unless}}
   </span>
-  <span>
+  <span class="flex-shrink">
     {{#if (eq data.range.max "long")}}
     {{either data.range.long 'OK'}}
     {{/if}}

@@ -4,6 +4,7 @@ import { Misc } from "../misc.js";
 import { Essence } from "../essence.js";
 import { ConfirmationDialog } from "../confirmation.js";
 import { SheetHelper } from "../sheet-helper.js";
+import { Enums } from "../enums.js";
 
 export class SRABaseCharacterSheet extends ActorSheet {
 
@@ -15,14 +16,15 @@ export class SRABaseCharacterSheet extends ActorSheet {
     let hbsData = mergeObject(
       super.getData(options), {
       items: {},
-      config: SRA,
       options: {
         isGM: game.user.isGM,
         owner: this.document.isOwner
       },
       essence: {
         adjust: Essence.getAdjust(this.actor.data.data.counters.essence.value)
-      }
+      },
+      ENUMS: Enums.getEnums(),
+      SRA: SRA
     });
     Misc.classifyInto(hbsData.items, hbsData.data.items);
     return hbsData;
@@ -33,21 +35,21 @@ export class SRABaseCharacterSheet extends ActorSheet {
 
     // cues, dispositions, keywords
     html.find('.wordlist-add').click(async event => {
-      const wordlist = SheetHelper.getEventItemData(event, 'wordlist', '.define-wordlist');
+      const wordlist = SheetHelper.getClosestElementData(event, 'wordlist', '.define-wordlist');
       const word = game.i18n.localize(SRA.common.newEntry);
       this.actor.createWordlistWord(wordlist, word);
     });
 
     html.find('.wordlist-value').change(async event => {
       const updated = event.currentTarget.value;
-      const previous = SheetHelper.getEventItemData(event, 'word', '.define-wordlist');
-      const wordlist = SheetHelper.getEventItemData(event, 'wordlist', '.define-wordlist');
+      const previous = SheetHelper.getClosestElementData(event, 'word', '.define-wordlist');
+      const wordlist = SheetHelper.getClosestElementData(event, 'wordlist', '.define-wordlist');
       await this.actor.updateWordlistWord(wordlist, previous, updated);
     });
     
     html.find('.wordlist-delete').click(async event => {
-      const wordlist = SheetHelper.getEventItemData(event, 'wordlist', '.define-wordlist');
-      const word = SheetHelper.getEventItemData(event, 'word', '.define-wordlist');
+      const wordlist = SheetHelper.getClosestElementData(event, 'wordlist', '.define-wordlist');
+      const word = SheetHelper.getClosestElementData(event, 'word', '.define-wordlist');
       this.actor.deleteWordlistWord(wordlist, word);
     });
 
@@ -57,16 +59,26 @@ export class SRABaseCharacterSheet extends ActorSheet {
     });
 
     html.find('.item-edit').click(async event => {
-      const item = SheetHelper.getItem(event, this.actor);
+      const itemId = SheetHelper.getItemId(event);
+      const item = this.actor.items.get(itemId);
       item.sheet.render(true);
     });
 
     html.find('.item-delete').click(async event => {
-      const item = SheetHelper.getItem(event, this.actor);
-      ConfirmationDialog.confirmDeleteActorItem(this, item, (id) => {
-        this.actor.deleteEmbeddedDocuments('Item', [id]);
+      const itemId = SheetHelper.getItemId(event);
+      const item = this.actor.items.get(itemId);
+      ConfirmationDialog.confirmDeleteItem(item, () => {
+        this.actor.deleteEmbeddedDocuments('Item', [itemId]);
         this.render(true);
       });
+    });
+    
+    // rolls
+    html.find('.skill-roll').click(async event => {
+      const specialization = SheetHelper.getClosestElementData(event, "item-specialization", ".skill-roll");
+      const itemId = SheetHelper.getItemId(event);
+      const item = this.actor.items.get(itemId);
+      this.actor.skillRoll(item, specialization);
     });
 
 

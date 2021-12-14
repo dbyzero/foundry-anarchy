@@ -1,0 +1,31 @@
+{{!-- 
+  data:{
+    type: 'wounds'
+    optional: true, // display a checkbox to activate
+    editable: true, // true to allow changing the modifier, false if fixed
+    label: 'Wounds modifier', // the label for the modifier
+    use: true, // used to determine the checkbox, modifier and label
+    modifier: -1, // used to determine the checkbox, modifier and label
+  }
+ --}}
+ {{#if type}}
+  <li class="flexrow list-item">
+    <label>{{label}}</label>
+    <span>
+
+    {{#if (and optional (not editable))}}
+    <input class="item-field-value flex-shrink check-use-modifier {{#if isAnarchy}}anarchy-modifier{{/if}}" data-modifier="{{type}}" type="checkbox" {{#if used}}checked{{/if}} />
+    {{/if}}
+
+    {{#if (isInteger value)}}
+      {{#if editable}}
+        <input class="item-field-value input-select-modifier"
+          type="number" data-dtype="Number"
+          value="{{either value 0}}"/>
+      {{else}}
+        <label>{{numberFormat value decimals=0 sign=true}}</label>
+      {{/if}}
+    {{/if}}
+    </span>
+  </li>
+{{/if}}

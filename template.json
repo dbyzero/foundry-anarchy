@@ -136,7 +136,7 @@
       "attribute": "knowledge",
       "value": 0,
       "specialization": "",
-      "listspecialization": [""]
+      "listspecialization": []
     },
     "quality": {
       "templates": ["references"],

@@ -11,7 +11,7 @@
       <label for="data.skill">{{localize 'SRA.item.weapon.skill'}} </label>
       <select name="data.skill" data-dtype="String">
           {{#select data.data.skill}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.skills}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
           {{/select}}
       </select>
     </div>
@@ -37,7 +37,7 @@
 
         <select name="data.monitor" data-dtype="String">
           {{#select data.data.monitor}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.monitors}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.monitors}}
           {{/select}}
         </select>
 
@@ -50,7 +50,7 @@
       <label for="data.area" >{{localize 'SRA.item.weapon.area'}} </label>
       <select name="data.area" data-dtype="String">
         {{#select data.data.area}}
-        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.areas}}
+        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.areas}}
         {{/select}}
       </select>
     </div>
@@ -58,7 +58,7 @@
         <label for="data.range.max" >{{localize 'SRA.item.weapon.range.max'}} </label>
         <select name="data.range.max" data-dtype="String">
           {{#select data.data.range.max}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=enums.ranges}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.ranges}}
           {{/select}}
         </select>
     </div>

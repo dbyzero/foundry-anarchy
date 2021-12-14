@@ -1,5 +1,5 @@
 import { SRA } from "../config.js";
-import { skillsAttribute } from "../enums.js";
+import { Enums } from "../enums.js";
 
 export class SRABaseItem extends Item {
 
@@ -11,7 +11,7 @@ export class SRABaseItem extends Item {
     if (item.type == 'skill' && item.data.data.attribute != 'knowledge') {
       if (change.data.code) {
         change.name = game.i18n.localize(SRA.skill[change.data.code]);
-        change.data.attribute = skillsAttribute[change.data.code];
+        change.data.attribute = Enums.getSkillAttribute(change.data.code);
       }
     }
   }

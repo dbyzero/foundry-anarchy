@@ -1,0 +1,34 @@
+<form class="skill-roll-dialog">
+  <div class="flexcol">
+    <div class="flexrow">
+      <img class="dialog-img flex-shrink" src="{{skill.img}}" alt="{{skill.name}}"/>
+      <div class="flex-grow-3">
+        <h2 class="dialog-roll-title">{{actor.name}} - {{skill.name}}</h2>
+        <div class="flexrow">
+          <label for="select.attribute">{{localize SRA.item.skill.attribute}}</label>
+          <select name="select.attribute" class="select-attribute" data-dtype="String">
+              {{#select skill.data.data.attribute}}
+              {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
+              {{/select}}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="flex-group-left">
+      <ul class="alterne-list list-modifiers">
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.specialization}}
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.wounds}}
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.other}}
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.reroll}}
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.reroll_forced}}
+          <hr>
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.anarchy_disposition}}
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.anarchy_risk}}
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.edge}}
+          <hr>
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.opponent_reroll}}
+          {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.opponent_reduce}}
+      </ul>
+    </div>
+  </div>
+</form>
