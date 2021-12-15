@@ -74,7 +74,7 @@ export class SRABaseCharacterSheet extends ActorSheet {
     });
 
     // counters & monitors
-    html.find('a.click-monitor-element').click(async event =>{
+    html.find('a.click-checkbar-element').click(async event =>{
       const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
       const index = Number.parseInt($(event.currentTarget).attr('data-index'));
       const checked = $(event.currentTarget).attr('data-checked') == 'true';

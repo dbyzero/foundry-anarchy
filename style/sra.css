@@ -1,5 +1,7 @@
 :root {
   --controls-color: rgba(7, 63, 15, 0.7);
+  --checked-color: rgba(248, 118, 12, 0.664);
+  --unchecked-color: rgba(150, 202, 158, 0.7);
   --gradient-silver: linear-gradient(45deg, rgba(61, 55, 93, 0.3), rgba(178, 179, 196, 0.3), rgba(59, 62, 63, 0.6), rgba(206, 204, 199, 0.3), rgba(61, 46, 49, 0.3));
   --gradient-gold: linear-gradient(30deg, rgba(191, 149, 63, 0.3), rgba(252, 246, 186, 0.3), rgba(179, 135, 40, 0.3), rgba(251, 245, 183, 0.3), rgba(170, 119, 28, 0.3));
   --gradient-green: linear-gradient(30deg, rgba(7, 76, 0, 0.3), rgba(66, 163, 65, 0.2), rgba(184, 226, 163, 0.1), rgba(66, 163, 65, 0.2), rgba(184, 226, 163, 0.3));
@@ -177,6 +179,12 @@ div.item.quality-negative {
 a.item-control i {
   font-size: small;
   color: var(--controls-color);
+}
+a.click-checkbar-element.checked-element i {
+  color: var(--checked-color);
+}
+a.click-checkbar-element.unchecked-element i {
+  color: var(--unchecked-color);
 }
 div.form-group {
   align-items: flex-start;
