@@ -37,7 +37,7 @@ export class SRASkillRoll extends Dialog {
     const options = {
       classes: ["sra-dialog"],
       width: 450,
-      height: 510,
+      height: 530,
       'z-index': 99999,
     };
 
@@ -50,8 +50,11 @@ export class SRASkillRoll extends Dialog {
     super.activateListeners(html);
     this.bringToTop();
 
-    html.find('.select-attribute').change((event) => {
+    html.find('.select-skill-attribute').change((event) => {
       this.rollData.attribute = event.currentTarget.value;
+      html.find('.select-attribute .selected-attribute-value').text(
+        this.rollData.actor.getAttributeValue(this.rollData.attribute)
+      );
       this.updateRollData();
     });
 

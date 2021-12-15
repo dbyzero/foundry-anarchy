@@ -3,7 +3,7 @@ export class SRARoll extends Roll {
    * @param {*} data : { pool: 1, reroll: 0, wild: 0, rerollsuccess: 0, target: 5 }
    */
   static create(data) {
-    mergeObject(data, { pool: 1, reroll: 0, wild: 0, rerollsuccess: 0, target: 5 }, {overwrite: false});
+    mergeObject(data, { pool: 1, reroll: 0, wild: 0, rerollsuccess: 0, target: 5}, {overwrite: false});
     const roll = new SRARoll(`${data.pool}d6cs>=${data.target}`);
     roll.data = data;
     roll.follow = {};

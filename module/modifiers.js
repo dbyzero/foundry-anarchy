@@ -1,7 +1,6 @@
 import { SRA } from "./config.js";
-import { ANARCHY_DICE_BONUS, SPECIALIZATION_BONUS } from "./constants.js";
+import { ANARCHY_DICE_BONUS, SPECIALIZATION_BONUS, TARGET_SUCCESS, TARGET_SUCCESS_EDGE } from "./constants.js";
 import { Enums } from "./enums.js";
-import { Misc } from "./misc.js";
 
 export class Modifiers {
 
@@ -54,7 +53,8 @@ export class Modifiers {
     return {
       pool: Modifiers.countPool(rollData),
       anarchy: Modifiers.countAnarchy(rollData),
-      edge: Modifiers.isUsed(rollData.modifiers.edge),
+      edge: Modifiers.isUsed(rollData.modifiers.edge) ? 1 : 0,
+      target: Modifiers.isUsed(rollData.modifiers.edge) ? TARGET_SUCCESS_EDGE : TARGET_SUCCESS,
       wild: Modifiers.valueIfUsed(rollData.modifiers.anarchy_risk),
       reroll: Modifiers.valueIfUsed(rollData.modifiers.reroll),
       reroll_forced: Modifiers.valueIfUsed(rollData.modifiers.reroll_forced),
@@ -82,7 +82,7 @@ export class Modifiers {
   }
 
   static valueIfUsed(modifier) {
-    return Modifiers.isUsed() ? modifier.value : 0;
+    return Modifiers.isUsed(modifier) ? modifier.value : 0;
   }
 
   static _prepareAnarchyDisposition(actor) {

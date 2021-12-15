@@ -75,26 +75,29 @@ export class SRABaseActor extends Actor {
 
   async spendAnarchy(count) {
     let value = this.data.data.counters.anarchy.value;
-    if (count > value) {
-      throw ErrorManager.insufficient(SRA.actor.counters.anarchy, count, value);
-    }
+    ErrorManager.checkSufficient(SRA.actor.counters.anarchy, count, value);
     await this.update({ 'data.counters.anarchy.value': (value - count) });
   }
 
-  async spendEdge(spend = true) {
+  async spendEdge(spend) {
     if (spend) {
       let current = this.data.data.counters.edge.value;
       let available = this.data.data.attributes.edge.value - current;
-      if (current >= available) {
-        throw ErrorManager.insufficient(SRA.actor.counters.edge, 1, available);
-      }
+      ErrorManager.checkSufficient(SRA.actor.counters.edge, spend, available);
       await this.update({ 'data.counters.edge.value': (current + 1) });
     }
   }
 
+  getAttributeValue(attribute) {
+    const selected = this.data.data.attributes[attribute];
+    return selected ? selected.value : `?`;
+  }
+
   getWounds(skillCode) {
-    // TODO
-    return 0;
+    // TODO: for matrix skill, should use the matrix condition monitor of the cyberdeck
+
+    return -Misc.divint(this.data.data.monitors.stun.value, 3)
+      - Misc.divint(this.data.data.monitors.physical.value, 3);
   }
 
 }
