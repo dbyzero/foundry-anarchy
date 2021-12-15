@@ -28,7 +28,8 @@
         "delitem": "Confirm removal of {name} ({type})"
       },
       "errors": {
-        "insufficient": "Not enough {resource}: required {required}, available {available}"
+        "insufficient": "Not enough {resource}: required {required}, available {available}",
+        "out_of_range": "Cannot set {resource} to {value}, out of range [{min} , {max}]"
       },
       "sourcereference": "Source reference",
       "sourcereferencehelp": "rulebook, page, ...",

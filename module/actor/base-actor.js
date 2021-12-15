@@ -6,6 +6,15 @@ import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers.js";
 import { SRARoll } from "../roll.js";
 
+
+const CHECKBARS = {
+  physical: { value: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: SRA.actor.monitors.physical },
+  stun: { value: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: SRA.actor.monitors.stun },
+  armor: { value: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: SRA.actor.monitors.armor },
+  anarchy: { value: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: SRA.actor.counters.anarchy },
+  edge: { value: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: SRA.actor.counters.edge }
+}
+
 export class SRABaseActor extends Actor {
 
   prepareData() {
@@ -31,6 +40,16 @@ export class SRABaseActor extends Actor {
     }
     let values = Misc.distinct(mutate(this.data.data.description[listType]));
     await this.update({ [`data.description.${listType}`]: values });
+  }
+
+  async setCounter(monitor, index, checked) {
+    const checkbar = CHECKBARS[monitor];
+    if (checkbar) {
+      const newValue = index + (checked ? 0 : 1);
+      const max = checkbar.maxForActor(this);
+      ErrorManager.checkOutOfRange(checkbar.resource, newValue, 0, checkbar.maxForActor(this));
+      await this.update({ [`${checkbar.value}`]: newValue });
+    }
   }
 
   async skillRoll(skill, specialization) {

@@ -28,7 +28,8 @@
         "delitem": "Confirmer la suppression de {name} ({type})"
       },
       "errors": {
-        "insufficient": "{resource} insuffisant: requis {required}, disponible {available}"
+        "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
+        "out_of_range": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]"
       },
       "sourcereference": "Référence source",
       "sourcereferencehelp": "livre, page, ...",

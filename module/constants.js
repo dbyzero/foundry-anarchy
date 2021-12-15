@@ -9,4 +9,5 @@ export const SYSTEM_PATH = `systems/${SYSTEM_NAME}`;
 export const TEMPLATES_PATH = `systems/${SYSTEM_NAME}/templates`;
 
 export const ANARCHY_DICE_BONUS = 3;
-export const SPECIALIZATION_BONUS = 2
+export const SPECIALIZATION_BONUS = 2;
+export const PLAYER_MAX_ANARCHY = 6;

@@ -72,7 +72,15 @@ export class SRABaseCharacterSheet extends ActorSheet {
         this.render(true);
       });
     });
-    
+
+    // counters & monitors
+    html.find('a.click-monitor-element').click(async event =>{
+      const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
+      const index = Number.parseInt($(event.currentTarget).attr('data-index'));
+      const checked = $(event.currentTarget).attr('data-checked') == 'true';
+      console.log('click monitor ', monitor, ' at ', index, ' checked', checked);
+      await this.actor.setCounter(monitor, index, checked);
+    });
     // rolls
     html.find('.skill-roll').click(async event => {
       const specialization = SheetHelper.getClosestElementData(event, "item-specialization", ".skill-roll");

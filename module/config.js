@@ -27,7 +27,8 @@ export const SRA = {
             delitem: 'SRA.common.confirmation.delitem'
         },
         errors:{
-            insufficient: 'SRA.common.errors.insufficient'
+            insufficient: 'SRA.common.errors.insufficient',
+            out_of_range: 'SRA.common.errors.out_of_range'
         },
         sourcereference: 'SRA.common.sourcereference',
         sourcereferencehelp: 'SRA.common.sourcereferencehelp',
