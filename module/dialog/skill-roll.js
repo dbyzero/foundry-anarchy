@@ -49,29 +49,28 @@ export class SRASkillRoll extends Dialog {
   activateListeners(html) {
     super.activateListeners(html);
     this.bringToTop();
+
     html.find('.select-attribute').change((event) => {
       this.rollData.attribute = event.currentTarget.value;
       this.updateRollData();
     });
+
     html.find('.check-use-modifier').click(event => {
-      const modifier = SheetHelper.getEventData(event, 'modifier');
+      const modifier = $(event.currentTarget).attr('data-modifier');
       if (this.rollData.modifiers[modifier].isAnarchy && event.currentTarget.checked) {
-        const startNode = $(event.currentTarget).closest('.list-modifiers');
-        $(startNode).find(`* input.check-use-modifier.anarchy-modifier:not([data-modifier='${modifier}'])`)
+        // only allow selecting one anarchy for a given roll
+        html.find(`.list-modifiers input.check-use-modifier.anarchy-modifier:not([data-modifier='${modifier}'])`)
           .prop('checked', false);
       }
       this.rollData.modifiers[modifier].used = event.currentTarget.checked;
       this.updateRollData();
     });
+
     html.find('.input-select-modifier').change(event => {
-      const modifier = SheetHelper.getClosestElementData(event, 'modifier', '.list-item');
+      const modifier = $(event.currentTarget).closest('.list-item').attr('data-modifier')
       this.rollData.modifiers[modifier].modifier = Number.parseInt(event.currentTarget.value);
       this.updateRollData();
     });
-  }
-
-  async updateRollData() {
-    // is it needed?
   }
 
 }

@@ -35,22 +35,22 @@ export class SRABaseCharacterSheet extends ActorSheet {
 
     // cues, dispositions, keywords
     html.find('.wordlist-add').click(async event => {
-      const wordlist = SheetHelper.getClosestElementData(event, 'wordlist', '.define-wordlist');
+      const wordlist = SheetHelper.getWordList(event);
       const word = game.i18n.localize(SRA.common.newEntry);
       this.actor.createWordlistWord(wordlist, word);
     });
 
     html.find('.wordlist-value').change(async event => {
       const updated = event.currentTarget.value;
-      const previous = SheetHelper.getClosestElementData(event, 'word', '.define-wordlist');
-      const wordlist = SheetHelper.getClosestElementData(event, 'wordlist', '.define-wordlist');
+      const previous = SheetHelper.getWord(event);
+      const wordlist = SheetHelper.getWordList(event);
       await this.actor.updateWordlistWord(wordlist, previous, updated);
     });
     
     html.find('.wordlist-delete').click(async event => {
-      const wordlist = SheetHelper.getClosestElementData(event, 'wordlist', '.define-wordlist');
-      const word = SheetHelper.getClosestElementData(event, 'word', '.define-wordlist');
-      this.actor.deleteWordlistWord(wordlist, word);
+      const previous = SheetHelper.getWord(event);
+      const wordlist = SheetHelper.getWordList(event);
+      this.actor.deleteWordlistWord(wordlist, previous);
     });
 
     // items standard actions (add/edit/delete)
