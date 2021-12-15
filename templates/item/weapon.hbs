@@ -31,7 +31,7 @@
           name="data.damage" value="{{data.data.damage}}"
         />
 
-        <input class="item-field-value" name="data.strength" type="checkbox" {{#if data.data.strength}}checked{{/if}} >
+        <input class="item-field-value" name="data.strength" type="checkbox" {{checked data.data.strength}} >
           <label >{{localize 'SRA.item.weapon.strength'}}</label>
         </input>
 
@@ -41,7 +41,7 @@
           {{/select}}
         </select>
 
-        <input class="item-field-value" name="data.noarmor" type="checkbox" {{#if data.data.noarmor}}checked{{/if}}>
+        <input class="item-field-value" name="data.noarmor" type="checkbox" {{checked data.data.noarmor}}>
           <label>{{localize 'SRA.item.weapon.noarmor'}}</label>
         </input>
       </div>

@@ -9,7 +9,7 @@
   <section class="sheet-body">
     <div class="form-group">
       <label for="data.positive">{{localize 'SRA.item.quality.positive'}} </label>
-      <input class="item-field-value" type="checkbox" name="data.positive" {{#if data.data.positive}}checked{{/if}} />
+      <input class="item-field-value" type="checkbox" name="data.positive" {{checked data.data.positive}} />
     </div>
 
     {{> 'systems/shadowrun-anarchy/templates/item/parts/references.hbs'}}

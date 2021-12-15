@@ -19,8 +19,9 @@
   </header>
   <section class="sheet-body">
     <div class="form-group">
-      <input class="item-field-value check-knowledge" type="checkbox" {{#if options.isKnowledge}}checked{{/if}} >
-      {{localize 'SRA.attributes.knowledge'}}</input>
+      <input class="item-field-value check-knowledge" type="checkbox" {{checked options.isKnowledge}}>
+        {{localize 'SRA.attributes.knowledge'}}
+      </input>
     </div>
     {{#if options.isGM}}
     <div class="form-group">

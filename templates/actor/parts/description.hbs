@@ -1,6 +1,11 @@
 <div class="flexcol">
   <span><label>{{localize 'SRA.common.description'}}</label></span>
   <div class="form-group editor actor-editor">
-    {{editor content=data.data.description.description target="data.description.description" button=true owner=options.owner editable=options.editable}}
+    {{editor 
+      target="data.description.description"
+      owner=options.owner
+      content=data.data.description.description 
+      button=true
+      editable=options.editable}}
   </div>
 </div>

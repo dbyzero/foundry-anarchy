@@ -14,7 +14,7 @@
     <span>
 
     {{#if (and optional (not editable))}}
-    <input class="item-field-value flex-shrink check-use-modifier {{#if isAnarchy}}anarchy-modifier{{/if}}" data-modifier="{{type}}" type="checkbox" {{#if used}}checked{{/if}} />
+    <input class="item-field-value flex-shrink check-use-modifier {{#if isAnarchy}}anarchy-modifier{{/if}}" data-modifier="{{type}}" type="checkbox" {{checked used}} />
     {{/if}}
 
     {{#if (isInteger value)}}
