@@ -42,13 +42,11 @@ export class SRABaseActor extends Actor {
     await this.update({ [`data.description.${listType}`]: values });
   }
 
-  async setCounter(monitor, index, checked) {
+  async setCounter(monitor, value) {
     const checkbar = CHECKBARS[monitor];
     if (checkbar) {
-      const newValue = index + (checked ? 0 : 1);
-      const max = checkbar.maxForActor(this);
-      ErrorManager.checkOutOfRange(checkbar.resource, newValue, 0, checkbar.maxForActor(this));
-      await this.update({ [`${checkbar.value}`]: newValue });
+      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
+      await this.update({ [`${checkbar.value}`]: value });
     }
   }
 

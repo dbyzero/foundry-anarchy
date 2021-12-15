@@ -79,8 +79,9 @@ export class SRABaseCharacterSheet extends ActorSheet {
       const index = Number.parseInt($(event.currentTarget).attr('data-index'));
       const checked = $(event.currentTarget).attr('data-checked') == 'true';
       console.log('click monitor ', monitor, ' at ', index, ' checked', checked);
-      await this.actor.setCounter(monitor, index, checked);
+      await this.actor.setCounter(monitor, index + (checked ? 0 : 1));
     });
+
     // rolls
     html.find('.skill-roll').click(async event => {
       const specialization = SheetHelper.getClosestElementData(event, "item-specialization", ".skill-roll");
