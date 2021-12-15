@@ -1,5 +1,5 @@
 export class Misc {
-  
+
   static ascending(orderFunction = x => x) {
     return (a, b) => Misc.sortingBy(orderFunction(a), orderFunction(b));
   }
@@ -20,6 +20,14 @@ export class Misc {
 
   static sum() {
     return (a, b) => a + b;
+  }
+
+  static divint(value, divisor) {
+    return Math.floor(value / divisor);
+  }
+
+  static divup(value, divisor) {
+    return Math.ceil(value / divisor);
   }
 
   static join(params, separator = '') {
