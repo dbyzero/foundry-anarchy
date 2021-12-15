@@ -2,7 +2,7 @@
   <a class="attribute-label">
     <label for="data.attributes.{{key}}.value">{{localize (concat 'SRA.attributes.' key)}}</label>
   </a>
-  <input class="attribute-value" type="text" data-dtype="Number"
+  <input class="attribute-value" type="text" data-dtype="Number" maxlength="2"
     name="data.attributes.{{key}}.value" value="{{attribute.value}}" 
   />
 </div>

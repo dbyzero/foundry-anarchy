@@ -133,6 +133,9 @@ div.item {
   border-radius: 6px;
 }
 
+div.item.style-attribute input {
+  width: 2rem;
+}
 div.item.style-attribute {
   margin: 2px;
   padding: 2px;
@@ -140,7 +143,20 @@ div.item.style-attribute {
   border-style: solid;
   background: var(--gradient-gold) !important;
   flex-basis: auto;
-  max-width: 8rem;
+  width: auto;
+}
+
+div.item.style-skill {
+  max-width: 12rem;  
+}
+
+div.item.style-gear,
+div.item.style-contact{
+  margin: 2px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  background: var(--gradient-yellow) !important;
 }
 
 div.item.style-shadowamp,
@@ -151,8 +167,8 @@ div.item.style-quality {
   border-width: 1px;
   border-style: solid;
   background: var(--gradient-silver-light) !important;
-  min-width: 10rem;
   flex-basis: auto;
+  width: auto;
 }  
 
 div.item.quality-negative {
@@ -165,6 +181,8 @@ a.item-control i {
 div.form-group {
   align-items: flex-start;
 }
+
+
 /*
 .sra-dialog {
 
