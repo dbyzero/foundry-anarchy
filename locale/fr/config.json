@@ -13,13 +13,13 @@
         "modifiers": {
           "edge": "Utiliser la chance",
           "specialization": "Utiliser la spécialization",
-          "anarchy_disposition": "Point d'Anarchie: bien disposé",
-          "anarchy_risk": "Point d'Anarchie: prise de risques",
+          "anarchyDisposition": "Point d'Anarchie: bien disposé",
+          "anarchyRisk": "Point d'Anarchie: prise de risques",
           "wounds": "Modificateur de blessures",
           "other": "Autres modificateurs",
           "reroll": "Relances autorisées",
-          "opponent_reroll": "Force des relances à l'adversaire",
-          "opponent_reduce": "Dés retranchés à l'adversaire"
+          "opponentRerollForced": "Force des relances à l'adversaire",
+          "opponentReduce": "Dés retranchés à l'adversaire"
         },
         "totalSuccess": "Succès finaux",
         "success": "Succès",
@@ -38,10 +38,10 @@
       },
       "errors": {
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
-        "out_of_range": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]"
+        "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]"
       },
-      "sourcereference": "Référence source",
-      "sourcereferencehelp": "livre, page, ...",
+      "sourceReference": "Référence source",
+      "sourceReferenceHelp": "livre, page, ...",
       "description": "Description",
       "gmnotes": "Notes du MJ"
     },
@@ -50,7 +50,7 @@
       "actorName": "Nom",
       "genre": "Genre",
       "karma": "Karma",
-      "karmatotal": "Total",
+      "karmaTotal": "Total",
       "singular": {
         "keyword": "Mot clé",
         "disposition": "Réplique",
@@ -67,12 +67,12 @@
       "counters": {
         "essence": "Essence",
         "karma": "Karma",
-        "karmatotal": "Total",
+        "karmaTotal": "Total",
         "anarchy": "Anarchie",
         "edge": "Chance"
       },
       "monitors": {
-        "conditionmonitors": "Moniteurs de condition",
+        "conditionMonitors": "Moniteurs de condition",
         "physical": "Physique",
         "stun": "Etourdissant",
         "armor": "Armure"
@@ -86,7 +86,7 @@
         "attribute": "Attribut",
         "value": "Niveau",
         "specialization": "Spécialisation",
-        "specializationhelp": "Saisissez un nom pour avoir cette spécialization"
+        "specializationHelp": "Saisissez un nom pour avoir cette spécialization"
       },
       "quality": {
         "positive": "Avantage si cochée"
@@ -96,19 +96,19 @@
         "capacity": "Capacité",
         "level": "Niveau",
         "essence": "Essence",
-        "level_short": "Niv",
-        "essence_short": "Ess"
+        "levelShort": "Niv",
+        "essenceShort": "Ess"
       },
       "weapon": {
         "skill": "Compétence",
         "damage": "Dommages",
         "strength": "+ force",
         "area": "Zone d'effet",
-        "witharmor": "L'armure protège",
-        "noarmor": "Ignore l'armure",
-        "damage_short": "DV",
-        "area_short": "Zone",
-        "noarmor_short": "(CA)",
+        "withArmor": "L'armure protège",
+        "noArmor": "Ignore l'armure",
+        "damageShort": "DV",
+        "areaShort": "Zone",
+        "noArmorShort": "(CA)",
         "range": {
           "max": "Portée maximale"
         }
@@ -144,20 +144,20 @@
       "stun": "Etourdissant",
       "matrix": "Matriciel"
     },
-    "monitor_letter": {
+    "monitorLetter": {
       "physical": "P",
       "stun": "E",
       "matrix": "M"
     },
-    "shadowampcategory": {
+    "shadowampCategory": {
       "cyberware": "Cyberware",
       "bioware": "Bioware",
       "cyberdeck": "Cyberdeck",
       "program": "Programme",
-      "complexform": "Forme complexe",
+      "complexForm": "Forme complexe",
       "drone": "Drone",
       "spell": "Sort",
-      "adeptpower": "Pouvoir d'adepte",
+      "adeptPower": "Pouvoir d'adepte",
       "equipment": "Equipement",
       "special": "Spécial"
     },
@@ -172,16 +172,16 @@
     },
     "skill": {
       "athletics": "Athlétisme",
-      "closecombat": "Corps à corps",
-      "projectileweapons": "Arme à projectileweapons",
+      "closeCombat": "Corps à corps",
+      "projectileWeapons": "Arme à projectiles",
       "firearms": "Armes à feu",
-      "heavyweapons": "Armes lourdes",
-      "vehicleweapons": "Armes de véhicules",
+      "heavyWeapons": "Armes lourdes",
+      "vehicleWeapons": "Armes de véhicules",
       "stealth": "Furtivité",
-      "pilotingground": "Véhicules terrestres",
-      "pilotingother": "Véhicules divers",
-      "escapeartist": "Acrobaties",
-      "astralcombat": "Combat astral",
+      "pilotingGround": "Véhicules terrestres",
+      "pilotingOther": "Véhicules divers",
+      "escapeArtist": "Acrobaties",
+      "astralCombat": "Combat astral",
       "conjuring": "Conjuration",
       "sorcery": "Sorcellerie",
       "survival": "Survie",

@@ -94,7 +94,7 @@
     ],
     "templates": {
       "references":{
-        "sourcereference": "",
+        "sourceReference": "",
         "description": "",
         "gmnotes": ""
       }
@@ -155,7 +155,7 @@
       "specialization": "",
       "strength": true,
       "damage": 0,
-      "noarmor": false,
+      "noArmor": false,
       "monitor": "stun",
       "area": "",
       "range": {

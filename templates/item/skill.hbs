@@ -8,12 +8,12 @@
       }}
     {{else}}
     <h1 class="item-name">
-      <select name="data.code" data-dtype="String">
+      <select name="data.code" class="select-skill-code" data-dtype="String">
           {{#select data.data.code}}
           {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
           {{/select}}
       </select>
-      {{data.name}}
+      {{#unless data.data.code}}{{data.name}}{{/unless}}
     </h1>
     {{/if}}
   </header>
@@ -43,7 +43,7 @@
       <label for="data.specialization">{{localize 'SRA.item.skill.specialization'}} </label>
       <input class="item-field-value" type="text" data-dtype="String"
           name="data.specialization" value="{{data.data.specialization}}"
-          placeholder="{{localize 'SRA.item.skill.specializationhelp'}}"
+          placeholder="{{localize 'SRA.item.skill.specializationHelp'}}"
       />
     </div>
     {{> 'systems/shadowrun-anarchy/templates/item/parts/references.hbs'}}

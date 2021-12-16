@@ -13,14 +13,14 @@
         "modifiers": {
           "edge": "Use edge",
           "specialization": "Use specialization",
-          "anarchy_disposition": "Anarchy Point: dispositions",
-          "anarchy_risk": "Anarchy points: take risks",
+          "anarchyDisposition": "Anarchy Point: dispositions",
+          "anarchyRisk": "Anarchy points: take risks",
           "wounds": "Wounds modifiers",
           "other": "Other modifiers",
           "reroll": "Rerolls",
           "rerollForced": "Rerolls forced by opponent",
-          "opponent_reroll": "Force opponent to reroll",
-          "opponent_reduce": "Reduce opponent pool"          
+          "opponentRerollForced": "Force opponent to reroll",
+          "opponentReduce": "Reduce opponent pool"          
         },
         "totalSuccess": "Total successes",
         "success": "Successes",
@@ -39,10 +39,10 @@
       },
       "errors": {
         "insufficient": "Not enough {resource}: required {required}, available {available}",
-        "out_of_range": "Cannot set {resource} to {value}, out of range [{min} , {max}]"
+        "outOfRange": "Cannot set {resource} to {value}, out of range [{min} , {max}]"
       },
-      "sourcereference": "Source reference",
-      "sourcereferencehelp": "rulebook, page, ...",
+      "sourceReference": "Source reference",
+      "sourceReferenceHelp": "rulebook, page, ...",
       "description": "Description",
       "gmnotes": "GM notes"
     },
@@ -66,12 +66,12 @@
       "counters": {
         "essence": "Essence",
         "karma": "Karma",
-        "karmatotal": "Total",
+        "karmaTotal": "Total",
         "anarchy": "Anarchy",
         "edge": "Edge"
       },
       "monitors": {
-        "conditionmonitors": "Condition monitors",
+        "conditionMonitors": "Condition monitors",
         "physical": "Physical",
         "stun": "Stun",
         "armor": "Armor"
@@ -85,7 +85,7 @@
         "attribute": "Attribute",
         "value": "Level",
         "specialization": "Specialisation",
-        "specializationhelp": "Type the name to choose a specialization"
+        "specializationHelp": "Type the name to choose a specialization"
       },
       "quality": {
         "positive": "Positive if checked"
@@ -95,19 +95,19 @@
         "capacity": "Capacity",
         "level": "Level",
         "essence": "Essence",
-        "level_short": "Lvl",
-        "essence_short": "Ess"
+        "levelShort": "Lvl",
+        "essenceShort": "Ess"
       },
       "weapon": {
         "skill": "Skill",
         "damage": "Damages",
         "strength": "+ strength",
         "area": "Area of effect",
-        "witharmor": "Armor protects",
-        "noarmor": "Ignore armor",
-        "damage_short": "DV",
-        "area_short": "Area",
-        "noarmor_short": "(AP)",
+        "withArmor": "Armor protects",
+        "noArmor": "Ignore armor",
+        "damageShort": "DV",
+        "areaShort": "Area",
+        "noArmorShort": "(AP)",
         "range": {
           "max": "Maximum range"
         }
@@ -143,20 +143,20 @@
       "stun": "Stun",
       "matrix": "Matrix"
     },
-    "monitor_letter": {
+    "monitorLetter": {
       "physical": "P",
       "stun": "S",
       "matrix": "M"
     },
-    "shadowampcategory": {
+    "shadowampCategory": {
       "cyberware": "Cyberware",
       "bioware": "Bioware",
       "cyberdeck": "Cyberdeck",
       "program": "Program",
-      "complexform": "Complex form",
+      "complexForm": "Complex form",
       "drone": "Drone",
       "spell": "Spell",
-      "adeptpower": "Adept power",
+      "adeptPower": "Adept power",
       "equipment": "Equipment",
       "special": "Special"
     },
@@ -171,16 +171,16 @@
     },
     "skill": {
       "athletics": "Athletics",
-      "closecombat": "Close combat",
-      "projectileweapons": "Projectile weapons",
+      "closeCombat": "Close combat",
+      "projectileWeapons": "Projectile weapons",
       "firearms": "Firearms",
-      "vehicleweapons": "Vehicle weapons",
-      "heavyweapons": "Heavy weapons",
+      "vehicleWeapons": "Vehicle weapons",
+      "heavyWeapons": "Heavy weapons",
       "stealth": "Stealth",
-      "pilotingground": "Vehicles (Ground)",
-      "pilotingother": "Vehicles (others)",
-      "escapeartist": "Escape artist",
-      "astralcombat": "Astral combat",
+      "pilotingGround": "Vehicles (Ground)",
+      "pilotingOther": "Vehicles (others)",
+      "escapeArtist": "Escape artist",
+      "astralCombat": "Astral combat",
       "conjuring": "Conjuring",
       "sorcery": "Sorcery",
       "survival": "Survival",

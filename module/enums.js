@@ -3,19 +3,19 @@ import { SRA } from "./config.js";
 const defaultSkillsAttribute = {
   athletics: SRA.attributes.strength,
 
-  closecombat: SRA.attributes.agility,
-  projectileweapons: SRA.attributes.agility,
+  closeCombat: SRA.attributes.agility,
+  projectileWeapons: SRA.attributes.agility,
   firearms: SRA.attributes.agility,
-  heavyweapons: SRA.attributes.agility,
-  vehicleweapons: SRA.attributes.agility,
+  heavyWeapons: SRA.attributes.agility,
+  vehicleWeapons: SRA.attributes.agility,
   stealth: SRA.attributes.agility,
-  pilotingground: SRA.attributes.agility,
-  pilotingother: SRA.attributes.agility,
-  escapeartist: SRA.attributes.agility,
+  pilotingGround: SRA.attributes.agility,
+  pilotingOther: SRA.attributes.agility,
+  escapeArtist: SRA.attributes.agility,
 
   conjuring: SRA.attributes.willpower,
   sorcery: SRA.attributes.willpower,
-  astralcombat: SRA.attributes.willpower,
+  astralCombat: SRA.attributes.willpower,
   survival: SRA.attributes.willpower,
 
   biotech: SRA.attributes.logic,
@@ -43,7 +43,7 @@ const actorDescriptionTypeLists = {
 export class Enums {
   static ENUMS;
   static hbsSkills;
-  static skillAttribute;
+  static skillsAttribute;
   static hbsAttributes;
   static hbsItemTypes;
   static hbsCapacities;
@@ -55,15 +55,15 @@ export class Enums {
 
   static registerEnums() {
     // Customisation of skills will have to be done based on system settings
-    Enums.skillAttribute = defaultSkillsAttribute;
+    Enums.skillsAttribute = defaultSkillsAttribute;
     Enums.hbsSkills = Enums.mapObjetToValueLabel(SRA.skill);
     Enums.hbsAttributes = Enums.mapObjetToValueLabel(SRA.attributes)
       .filter(a => a.value != 'knowledge');
     Enums.hbsItemTypes = Enums.mapObjetToValueLabel(SRA.itemType);
     Enums.hbsCapacities = Enums.mapObjetToValueLabel(SRA.capacity);
     Enums.hbsMonitors = Enums.mapObjetToValueLabel(SRA.monitor);
-    Enums.hbsMonitorLetters = Enums.mapObjetToValueLabel(SRA.monitor_letter);
-    Enums.hbsShadowampCategories = Enums.mapObjetToValueLabel(SRA.shadowampcategory);
+    Enums.hbsMonitorLetters = Enums.mapObjetToValueLabel(SRA.monitorLetter);
+    Enums.hbsShadowampCategories = Enums.mapObjetToValueLabel(SRA.shadowampCategory);
     Enums.hbsAreas = Enums.mapObjetToValueLabel(SRA.area);
     Enums.hbsRanges = Enums.mapObjetToValueLabel(SRA.range);
   }
@@ -98,7 +98,14 @@ export class Enums {
   }
 
   static getSkillAttribute(code) {
-    return Enums.skillsAttribute[code] ?? SRA.attributes.agility;
+    if (Enums.isSkillCode(code))  {
+        return Enums.skillsAttribute[code];
+    }
+    return 'agility';
+  }
+
+  static isSkillCode(code) {
+    return code && Enums.skillsAttribute[code];
   }
 
   static getFromList(list, value, key = 'value', label = 'label') {

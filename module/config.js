@@ -12,14 +12,14 @@ export const SRA = {
             modifiers: {
                 edge: 'SRA.common.roll.modifiers.edge',
                 specialization: 'SRA.common.roll.modifiers.specialization',
-                anarchy_disposition: 'SRA.common.roll.modifiers.anarchy_disposition',
-                anarchy_risk: 'SRA.common.roll.modifiers.anarchy_risk',
+                anarchyDisposition: 'SRA.common.roll.modifiers.anarchyDisposition',
+                anarchyRisk: 'SRA.common.roll.modifiers.anarchyRisk',
                 wounds: 'SRA.common.roll.modifiers.wounds',
                 other: 'SRA.common.roll.modifiers.other',
                 reroll: 'SRA.common.roll.modifiers.reroll',
                 rerollForced: 'SRA.common.roll.modifiers.rerollForced',
-                opponent_reroll: 'SRA.common.roll.modifiers.opponent_reroll',
-                opponent_reduce: 'SRA.common.roll.modifiers.opponent_reduce'
+                opponentRerollForced: 'SRA.common.roll.modifiers.opponentRerollForced',
+                opponentReduce: 'SRA.common.roll.modifiers.opponentReduce'
             },
             totalSuccess: 'SRA.common.roll.totalSuccess',
             success: 'SRA.common.roll.success',
@@ -38,10 +38,10 @@ export const SRA = {
         },
         errors: {
             insufficient: 'SRA.common.errors.insufficient',
-            out_of_range: 'SRA.common.errors.out_of_range'
+            outOfRange: 'SRA.common.errors.outOfRange'
         },
-        sourcereference: 'SRA.common.sourcereference',
-        sourcereferencehelp: 'SRA.common.sourcereferencehelp',
+        sourceReference: 'SRA.common.sourceReference',
+        sourceReferenceHelp: 'SRA.common.sourceReferenceHelp',
         description: 'SRA.common.description',
         gmnotes: 'SRA.common.gmnotes'
     },
@@ -65,12 +65,12 @@ export const SRA = {
         counters: {
             essence: 'SRA.actor.counters.essence',
             karma: 'SRA.actor.counters.karma',
-            karmatotal: 'SRA.actor.counters.karmatotal',
+            karmaTotal: 'SRA.actor.counters.karmaTotal',
             anarchy: 'SRA.actor.counters.anarchy',
             edge: 'SRA.actor.counters.edge',
         },
         monitors: {
-            conditionmonitors: 'SRA.actor.monitors.conditionmonitors',
+            conditionMonitors: 'SRA.actor.monitors.conditionMonitors',
             physical: 'SRA.actor.monitors.physical',
             stun: 'SRA.actor.monitors.stun',
             armor: 'SRA.actor.monitors.armor'
@@ -84,7 +84,7 @@ export const SRA = {
             attribute: 'SRA.item.skill.attribute',
             value: 'SRA.item.skill.value',
             specialization: 'SRA.item.skill.specialization',
-            specializationhelp: 'SRA.item.skill.specializationhelp'
+            specializationHelp: 'SRA.item.skill.specializationHelp'
         },
         quality: {
             positive: 'SRA.item.quality.positive'
@@ -94,19 +94,19 @@ export const SRA = {
             capacity: 'SRA.item.shadowamp.capacity',
             level: 'SRA.item.shadowamp.level',
             essence: 'SRA.item.shadowamp.essence',
-            level_short: 'SRA.item.shadowamp.level_short',
-            essence_short: 'SRA.item.shadowamp.essence_short'
+            levelShort: 'SRA.item.shadowamp.levelShort',
+            essenceShort: 'SRA.item.shadowamp.essenceShort'
         },
         weapon: {
             skill: 'SRA.item.weapon.skill',
             damage: 'SRA.item.weapon.damage',
             strength: 'SRA.item.weapon.strength',
             area: 'SRA.item.weapon.area',
-            noarmor: 'SRA.item.weapon.noarmor',
-            witharmor: 'SRA.item.weapon.witharmor',
-            damage_short: 'SRA.item.weapon.damage_short',
-            area_short: 'SRA.item.weapon.area_short',
-            noarmor_short: 'SRA.item.weapon.noarmor_short',
+            noArmor: 'SRA.item.weapon.noArmor',
+            withArmor: 'SRA.item.weapon.withArmor',
+            damageShort: 'SRA.item.weapon.damageShort',
+            areaShort: 'SRA.item.weapon.areaShort',
+            noArmorShort: 'SRA.item.weapon.noArmorShort',
             range: {
                 max: 'SRA.item.weapon.range.max'
             }
@@ -142,22 +142,22 @@ export const SRA = {
         stun: 'SRA.monitor.stun',
         matrix: 'SRA.monitor.matrix'
     },
-    monitor_letter: {
-        physical: 'SRA.monitor_letter.physical',
-        stun: 'SRA.monitor_letter.stun',
-        matrix: 'SRA.monitor_letter.matrix'
+    monitorLetter: {
+        physical: 'SRA.monitorLetter.physical',
+        stun: 'SRA.monitorLetter.stun',
+        matrix: 'SRA.monitorLetter.matrix'
     },
-    shadowampcategory: {
-        cyberware: 'SRA.shadowampcategory.cyberware',
-        bioware: 'SRA.shadowampcategory.bioware',
-        cyberdeck: 'SRA.shadowampcategory.cyberdeck',
-        program: 'SRA.shadowampcategory.program',
-        complexform: 'SRA.shadowampcategory.complexform',
-        drone: 'SRA.shadowampcategory.drone',
-        spell: 'SRA.shadowampcategory.spell',
-        adeptpower: 'SRA.shadowampcategory.adeptpower',
-        equipment: 'SRA.shadowampcategory.equipment',
-        special: 'SRA.shadowampcategory.special'
+    shadowampCategory: {
+        cyberware: 'SRA.shadowampCategory.cyberware',
+        bioware: 'SRA.shadowampCategory.bioware',
+        cyberdeck: 'SRA.shadowampCategory.cyberdeck',
+        program: 'SRA.shadowampCategory.program',
+        complexForm: 'SRA.shadowampCategory.complexForm',
+        drone: 'SRA.shadowampCategory.drone',
+        spell: 'SRA.shadowampCategory.spell',
+        adeptPower: 'SRA.shadowampCategory.adeptPower',
+        equipment: 'SRA.shadowampCategory.equipment',
+        special: 'SRA.shadowampCategory.special'
     },
     attributes: {
         strength: 'SRA.attributes.strength',
@@ -170,16 +170,16 @@ export const SRA = {
     },
     skill: {
         athletics: 'SRA.skill.athletics',
-        closecombat: 'SRA.skill.closecombat',
-        projectileweapons: 'SRA.skill.projectileweapons',
+        closeCombat: 'SRA.skill.closeCombat',
+        projectileWeapons: 'SRA.skill.projectileWeapons',
         firearms: 'SRA.skill.firearms',
-        heavyweapons: 'SRA.skill.heavyweapons',
-        vehicleweapons: 'SRA.skill.vehicleweapons',
+        heavyWeapons: 'SRA.skill.heavyWeapons',
+        vehicleWeapons: 'SRA.skill.vehicleWeapons',
         stealth: 'SRA.skill.stealth',
-        pilotingground: 'SRA.skill.pilotingground',
-        pilotingother: 'SRA.skill.pilotingother',
-        escapeartist: 'SRA.skill.escapeartist',
-        astralcombat: 'SRA.skill.astralcombat',
+        pilotingGround: 'SRA.skill.pilotingGround',
+        pilotingOther: 'SRA.skill.pilotingOther',
+        escapeArtist: 'SRA.skill.escapeArtist',
+        astralCombat: 'SRA.skill.astralCombat',
         conjuring: 'SRA.skill.conjuring',
         sorcery: 'SRA.skill.sorcery',
         survival: 'SRA.skill.survival',

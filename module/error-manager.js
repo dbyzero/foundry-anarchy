@@ -15,7 +15,7 @@ export class ErrorManager {
 
   static checkOutOfRange(resource, value, min, max) {
     if (value < min || value > max) {
-      const error = game.i18n.format(SRA.common.errors.out_of_range, {
+      const error = game.i18n.format(SRA.common.errors.outOfRange, {
         resource: game.i18n.localize(resource),
         value: value, min: min, max: max
       });
