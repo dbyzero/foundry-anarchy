@@ -69,7 +69,7 @@ export class SRABaseActor extends Actor {
     rollData.roll = new SRARoll(rollData.param);
     await rollData.roll.evaluate();
     const flavor = await renderTemplate('systems/shadowrun-anarchy/templates/chat/skill-roll.hbs', rollData);
-    const message = await rollData.roll.toMessage({ flavor: flavor}, { create:false});
+    const message = await rollData.roll.toMessage({ flavor: flavor }, { create: false });
     ChatMessage.create(message);
   }
 
@@ -100,4 +100,10 @@ export class SRABaseActor extends Actor {
       - Misc.divint(this.data.data.monitors.physical.value, 3);
   }
 
+  async removeOtherMetatype(metatype) {
+    const metatypeIds = this.items.filter(it => it.isMetatype)
+      .filter(it => it.id != metatype.id)
+      .map(it => it.id);
+    this.deleteEmbeddedDocuments("Item", metatypeIds);
+  }
 }
