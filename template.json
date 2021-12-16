@@ -5,15 +5,13 @@
     ],
     "templates": {
       "description": {
-        "description": {
-          "genre": "",
-          "capacity": "mundane",
-          "description": "",
-          "gmnotes": "",
-          "keywords": [],
-          "dispositions": [],
-          "cues": []
-        }
+        "genre": "",
+        "capacity": "mundane",
+        "description": "",
+        "gmnotes": "",
+        "keywords": [],
+        "dispositions": [],
+        "cues": []
       },
       "counters": {
         "counters": {
