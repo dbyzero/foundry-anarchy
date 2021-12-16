@@ -1,37 +1,37 @@
 import { SRA } from "./config.js";
 
 const defaultSkillsAttribute = {
-  athletics: SRA.attributes.strength,
+  athletics: 'strength',
 
-  closeCombat: SRA.attributes.agility,
-  projectileWeapons: SRA.attributes.agility,
-  firearms: SRA.attributes.agility,
-  heavyWeapons: SRA.attributes.agility,
-  vehicleWeapons: SRA.attributes.agility,
-  stealth: SRA.attributes.agility,
-  pilotingGround: SRA.attributes.agility,
-  pilotingOther: SRA.attributes.agility,
-  escapeArtist: SRA.attributes.agility,
+  closeCombat: 'agility',
+  projectileWeapons: 'agility',
+  firearms: 'agility',
+  heavyWeapons: 'agility',
+  vehicleWeapons: 'agility',
+  stealth: 'agility',
+  pilotingGround: 'agility',
+  pilotingOther: 'agility',
+  escapeArtist: 'agility',
 
-  conjuring: SRA.attributes.willpower,
-  sorcery: SRA.attributes.willpower,
-  astralCombat: SRA.attributes.willpower,
-  survival: SRA.attributes.willpower,
+  conjuring: 'willpower',
+  sorcery: 'willpower',
+  astralCombat: 'willpower',
+  survival: 'willpower',
 
-  biotech: SRA.attributes.logic,
-  hacking: SRA.attributes.logic,
-  electronics: SRA.attributes.logic,
-  engineering: SRA.attributes.logic,
-  tracking: SRA.attributes.logic,
-  tasking: SRA.attributes.logic,
+  biotech: 'logic',
+  hacking: 'logic',
+  electronics: 'logic',
+  engineering: 'logic',
+  tracking: 'logic',
+  tasking: 'logic',
 
-  con: SRA.attributes.charisma,
-  intimidation: SRA.attributes.charisma,
-  negotiation: SRA.attributes.charisma,
-  disguise: SRA.attributes.charisma,
+  con: 'charisma',
+  intimidation: 'charisma',
+  negotiation: 'charisma',
+  disguise: 'charisma',
 
-  animals: SRA.attributes.charisma,
-  etiquette: SRA.attributes.charisma,
+  animals: 'charisma',
+  etiquette: 'charisma',
 };
 
 const actorDescriptionTypeLists = {
