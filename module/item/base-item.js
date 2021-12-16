@@ -15,7 +15,7 @@ export class SRABaseItem extends Item {
   }
 
   static forceGeneralSkillName(change) {
-    if (change.data.code) {
+    if (change.data?.code) {
       change.name = game.i18n.localize(SRA.skill[change.data.code]);
       change.data.attribute = Enums.getSkillAttribute(change.data.code);
     }
