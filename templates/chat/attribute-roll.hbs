@@ -1,0 +1,47 @@
+<img class="chat-img" src="{{actor.img}}" alt="{{actor.name}}"/>
+{{!-- Dice pool explanation --}}
+<div class="tooltip tooltip-dotted">
+  <h3 class="chat-roll-title">
+    {{actor.name}} - {{localize (concat 'SRA.attributes.' attribute)}}
+    {{~#if attribute2}}+{{localize (concat 'SRA.attributes.' attribute2)}}{{/if}} : {{roll.pool}}
+  </h3>
+  <div class="tooltiptext tooltip-roll-modifiers">
+    <div>{{localize (concat 'SRA.attributes.' attribute)}}: {{actorAttribute actor attribute}}</div>
+    {{#if attribute2}}
+    <div>{{localize (concat 'SRA.attributes.' attribute2)}}: {{actorAttribute actor attribute2}}</div>
+    {{/if}}
+    {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
+    {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
+    {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
+  </div>
+</div>
+<br>
+{{!-- Roll successes explanation --}}
+<div class="tooltip tooltip-dotted">
+  <h3 class="chat-roll-title">
+    {{localize SRA.common.roll.success}}: {{roll.hits}}
+  </h3>
+  <div class="tooltiptext tooltip-roll-modifiers">
+    <div>{{localize SRA.common.roll.success}}: {{roll.roll.total}} / {{roll.param.pool}}</div>
+    {{#if roll.subrolls.reroll}}
+    <div>{{localize SRA.common.roll.rerollSuccess}}: {{roll.subrolls.reroll.total}} / {{roll.param.reroll}}</div>
+    {{/if}}
+    {{#if roll.subrolls.rerollForced}}
+    <div>{{localize SRA.common.roll.rerollForcedLoss}}: -{{roll.param.rerollForced}}</div>
+    <div>{{localize SRA.common.roll.rerollForcedSuccess}}: {{roll.subrolls.rerollForced.total}} / {{roll.param.rerollForced}}</div>
+    {{/if}}
+    {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
+    <div>{{localize 'SRA.common.roll.risk.prowess'}}: 1</div>
+    {{/if}}
+  </div>
+</div>
+
+<div>
+  <div class="alterne-list">
+  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyRisk}}
+  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
+  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}
+  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentRerollForced}}
+  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentReduce}}
+  </div>
+</div>

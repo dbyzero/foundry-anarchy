@@ -10,6 +10,8 @@
       "roll": {
         "button": "Lancer",
         "title": "Jet de {name} {specialization}",
+        "attribute": "Premier attribut",
+        "attribute2": "Second attribut",
         "modifiers": {
           "edge": "Utiliser la chance",
           "specialization": "Utiliser la spécialization",

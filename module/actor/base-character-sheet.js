@@ -90,6 +90,11 @@ export class SRABaseCharacterSheet extends ActorSheet {
       this.actor.skillRoll(item, specialization);
     });
 
+    html.find('.attribute-roll').click(async event => {
+      const attribute = $(event.currentTarget).closest('.item').attr('data-attribute');
+      this.actor.attributeRoll(attribute);
+    });
+
 
   }
 

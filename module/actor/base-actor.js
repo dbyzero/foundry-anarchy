@@ -1,10 +1,8 @@
 import { SRA } from "../config.js";
-import { SRASkillRoll } from "../dialog/skill-roll.js";
+import { SRARollDialog } from "../dialog/roll-dialog.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
-import { Modifiers } from "../modifiers.js";
-import { SRARoll } from "../roll.js";
 
 
 const CHECKBARS = {
@@ -51,26 +49,15 @@ export class SRABaseActor extends Actor {
   }
 
   async skillRoll(skill, specialization) {
-    const rollData = Modifiers.prepareSkillRollData(this, skill, specialization);
-    const dialog = await SRASkillRoll.create(rollData, async r => this.onSkillRoll(r));
+    const rollData = SRARollDialog.prepareSkillRollData(this, skill, specialization);
+    const dialog = await SRARollDialog.create(rollData);
     dialog.render(true);
   }
 
-  async onSkillRoll(rollData) {
-    console.log('onSkillRoll', rollData);
-
-    rollData.param = Modifiers.computeRollParameters(rollData);
-    await this.spendEdge(rollData.param.edge);
-    await this.spendAnarchy(rollData.param.anarchy);
-    this.rollToChat(rollData);
-  }
-
-  async rollToChat(rollData) {
-    rollData.roll = new SRARoll(rollData.param);
-    await rollData.roll.evaluate();
-    const flavor = await renderTemplate('systems/shadowrun-anarchy/templates/chat/skill-roll.hbs', rollData);
-    const message = await rollData.roll.toMessage({ flavor: flavor }, { create: false });
-    ChatMessage.create(message);
+  async attributeRoll(attribute, attribute2 = undefined) {
+    const rollData = SRARollDialog.prepareAttributeRollData(this, attribute, attribute2);
+    const dialog = await SRARollDialog.create(rollData);
+    dialog.render(true);
   }
 
   async spendAnarchy(count) {

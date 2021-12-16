@@ -9,6 +9,8 @@ export const SRA = {
         roll: {
             button: 'SRA.common.roll.button',
             title: 'SRA.common.roll.title',
+            attribute: 'SRA.common.roll.attribute',
+            attribute2: 'SRA.common.roll.attribute2',
             modifiers: {
                 edge: 'SRA.common.roll.modifiers.edge',
                 specialization: 'SRA.common.roll.modifiers.specialization',

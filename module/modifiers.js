@@ -1,38 +1,7 @@
 import { SRA } from "./config.js";
 import { ANARCHY_DICE_BONUS, SPECIALIZATION_BONUS, TARGET_SUCCESS, TARGET_SUCCESS_EDGE } from "./constants.js";
-import { Enums } from "./enums.js";
 
 export class Modifiers {
-
-  static prepareSkillRollData(actor, skill, specialization) {
-    const rollData = {
-      actor: actor,
-      skill: skill,
-      attribute: skill?.data.data.attribute,
-      specialization: specialization,
-      modifiers: Modifiers.build(actor, skill, specialization),
-      ENUMS: Enums.getEnums(),
-      SRA: SRA,
-      title: game.i18n.format(SRA.common.roll.title, {
-        name: skill?.name,
-        specialization: specialization ? '- ' + specialization : ''
-      })
-    };
-    return rollData;
-  }
-
-  static prepareAttributeRollData(actor, attribute, attribute2 = undefined) {
-    const rollData = {
-      actor: actor,
-      attribute: attribute,
-      attribute2: attribute2,
-      modifiers: Modifiers.build(actor, skill, specialization),
-      ENUMS: Enums.getEnums(),
-      SRA: SRA
-    };
-    return rollData;
-  }
-
 
   static build(actor, skill = undefined, specialization = undefined) {
     return {
@@ -66,6 +35,7 @@ export class Modifiers {
   static countPool(rollData) {
     return (rollData.actor.data.data.attributes[rollData.attribute].value ?? 0)
       + (rollData.skill?.data.data.value ?? 0)
+      + (rollData.attribute2 ? (rollData.actor.data.data.attributes[rollData.attribute2].value ?? 0) : 0)
       + Modifiers.valueIfUsed(rollData.modifiers.specialization)
       + Modifiers.valueIfUsed(rollData.modifiers.wounds)
       + Modifiers.valueIfUsed(rollData.modifiers.other)
@@ -96,7 +66,7 @@ export class Modifiers {
       used: false
     }
   }
-  
+
   static _prepareAnarchyRisk(actor) {
     return actor.data.data.counters.anarchy.value <= 0 ? undefined : {
       type: 'anarchyRisk',
@@ -108,7 +78,7 @@ export class Modifiers {
       used: false
     }
   }
-  
+
   static _prepareEdge(actor) {
     return actor.data.data.counters.edge.value >= actor.data.data.attributes.edge.value ? undefined : {
       type: 'edge',
@@ -132,7 +102,7 @@ export class Modifiers {
       : undefined;
   }
 
-  static _prepareWounds(actor, skill) {
+  static _prepareWounds(actor, skill = undefined) {
     const wounds = actor.getWounds(skill?.data.data.code);
     return wounds == 0 ? undefined : {
       type: 'wounds',
@@ -184,7 +154,7 @@ export class Modifiers {
       editable: true,
       used: true
     }
-    
+
   }
   static _prepareOpponentReduce(actor) {
     return {

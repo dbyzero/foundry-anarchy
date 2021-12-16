@@ -10,6 +10,8 @@
       "roll": {
         "button": "Roll",
         "title": "Roll {name} {specialization}",
+        "attribute": "Main attribute",
+        "attribute2": "Second attribute",
         "modifiers": {
           "edge": "Use edge",
           "specialization": "Use specialization",
