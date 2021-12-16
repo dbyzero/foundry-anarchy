@@ -17,9 +17,10 @@
           "anarchyRisk": "Point d'Anarchie: prise de risques",
           "wounds": "Modificateur de blessures",
           "other": "Autres modificateurs",
-          "reroll": "Relances autorisées",
-          "opponentRerollForced": "Force des relances à l'adversaire",
-          "opponentReduce": "Dés retranchés à l'adversaire"
+          "reroll": "Relances",
+          "rerollForced": "Relances de succès",
+          "opponentRerollForced": "Relance de succès adverses",
+          "opponentReduce": "Malus de dés pour l'adversaire"
         },
         "totalSuccess": "Succès finaux",
         "success": "Succès",
@@ -49,8 +50,7 @@
       "characterSheet": "Fiche de personnage",
       "actorName": "Nom",
       "genre": "Genre",
-      "karma": "Karma",
-      "karmaTotal": "Total",
+      "noMetatype": "No metatype, drag it!",
       "singular": {
         "keyword": "Mot clé",
         "disposition": "Réplique",

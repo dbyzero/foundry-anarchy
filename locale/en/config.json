@@ -18,9 +18,9 @@
           "wounds": "Wounds modifiers",
           "other": "Other modifiers",
           "reroll": "Rerolls",
-          "rerollForced": "Rerolls forced by opponent",
-          "opponentRerollForced": "Force opponent to reroll",
-          "opponentReduce": "Reduce opponent pool"          
+          "rerollForced": "Rerolls successes",
+          "opponentRerollForced": "Opponent must reroll successes",
+          "opponentReduce": "Opponent pool reduction"          
         },
         "totalSuccess": "Total successes",
         "success": "Successes",
@@ -50,6 +50,7 @@
       "characterSheet": "Character sheet",
       "actorName": "Name",
       "genre": "Genre",
+      "noMetatype": "Pas de metatype, ajoutez le!",
       "singular": {
         "keyword": "Keyword",
         "disposition": "Disposition",
