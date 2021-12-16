@@ -21,14 +21,15 @@ export class HooksManager {
       SRACharacter
     };
     CONFIG.Actor.documentClass = SRACharacter;
+    CONFIG.Item.documentClass = SRABaseItem;
     CONFIG.Combat.initiative = {
       formula: "1d6"
     }
 
     CONFIG.SRA = SRA;
 
-    HooksManager.registerSheets();
     Enums.registerEnums();
+    HooksManager.registerSheets();
 
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));

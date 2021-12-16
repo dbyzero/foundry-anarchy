@@ -8,7 +8,7 @@ export class SRABaseItem extends Item {
   }
 
   static async onPreUpdateItem(item, change, options, id) {
-    if (item.type == 'skill' && item.data.data.attribute != 'knowledge') {
+    if (item.isSkillGeneral()) {
       if (change.data.code) {
         change.name = game.i18n.localize(SRA.skill[change.data.code]);
         change.data.attribute = Enums.getSkillAttribute(change.data.code);
@@ -16,4 +16,11 @@ export class SRABaseItem extends Item {
     }
   }
 
+  isSkillKnowledge() {
+    return this.type == 'skill' && this.data.data.attribute == 'knowledge';
+  }
+
+  isSkillGeneral() {
+    return this.type == 'skill' && this.data.data.attribute != 'knowledge';
+  }
 }
