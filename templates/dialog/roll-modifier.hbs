@@ -20,6 +20,7 @@
     {{#if (isInteger value)}}
       {{#if editable}}
         <input class="item-field-value-numeric input-select-modifier"
+          data-modifier="{{type}}" 
           type="number" data-dtype="Number" maxlength="2"
           value="{{either value 0}}"/>
       {{else}}

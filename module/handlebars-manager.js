@@ -39,8 +39,9 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
   'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs',
   //-- dialogs
-  'systems/shadowrun-anarchy/templates/dialog/skill-roll.hbs',
   'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs',
+  //-- chat
+  'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs',
 ];
 
 export class HandlebarsManager {

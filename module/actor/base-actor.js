@@ -66,11 +66,11 @@ export class SRABaseActor extends Actor {
   }
 
   async rollToChat(rollData) {
-    const target = rollData.param.edge > 0 ? 4 : 5;
-    const roll = SRARoll.create(rollData.param);
-    await roll.evaluate();
-    await roll.toMessage({ flavor: rollData.title + ' ' + roll.total });
-    //TODO: use SRARoll
+    rollData.roll = new SRARoll(rollData.param);
+    await rollData.roll.evaluate();
+    const flavor = await renderTemplate('systems/shadowrun-anarchy/templates/chat/skill-roll.hbs', rollData);
+    const message = await rollData.roll.toMessage({ flavor: flavor}, { create:false});
+    ChatMessage.create(message);
   }
 
   async spendAnarchy(count) {

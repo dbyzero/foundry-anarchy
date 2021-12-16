@@ -40,7 +40,7 @@ export class Modifiers {
       wounds: Modifiers._prepareWounds(actor, skill),
       other: Modifiers._prepareOther(actor),
       reroll: Modifiers._prepareReroll(actor),
-      reroll_forced: Modifiers._prepareRerollForced(actor),
+      rerollForced: Modifiers._prepareRerollForced(actor),
       anarchy_disposition: Modifiers._prepareAnarchyDisposition(actor),
       anarchy_risk: Modifiers._prepareAnarchyRisk(actor),
       edge: Modifiers._prepareEdge(actor),
@@ -53,11 +53,11 @@ export class Modifiers {
     return {
       pool: Modifiers.countPool(rollData),
       anarchy: Modifiers.countAnarchy(rollData),
-      edge: Modifiers.isUsed(rollData.modifiers.edge) ? 1 : 0,
+      edge: Modifiers.valueIfUsed(rollData.modifiers.edge),
       target: Modifiers.isUsed(rollData.modifiers.edge) ? TARGET_SUCCESS_EDGE : TARGET_SUCCESS,
-      wild: Modifiers.valueIfUsed(rollData.modifiers.anarchy_risk),
+      risk: Modifiers.valueIfUsed(rollData.modifiers.anarchy_risk),
       reroll: Modifiers.valueIfUsed(rollData.modifiers.reroll),
-      reroll_forced: Modifiers.valueIfUsed(rollData.modifiers.reroll_forced),
+      rerollForced: Modifiers.valueIfUsed(rollData.modifiers.rerollForced),
       opponent_reroll: Modifiers.valueIfUsed(rollData.modifiers.opponent_reroll),
       opponent_reduce: Modifiers.valueIfUsed(rollData.modifiers.opponent_reduce),
     }
@@ -90,6 +90,7 @@ export class Modifiers {
       type: 'anarchy_disposition',
       label: game.i18n.localize(SRA.common.roll.modifiers.anarchy_disposition) + ' (' + actor.data.data.counters.anarchy.value + ')',
       value: ANARCHY_DICE_BONUS,
+      category: 'pool',
       isAnarchy: true,
       optional: true,
       used: false
@@ -100,16 +101,20 @@ export class Modifiers {
     return actor.data.data.counters.anarchy.value <= 0 ? undefined : {
       type: 'anarchy_risk',
       label: game.i18n.localize(SRA.common.roll.modifiers.anarchy_risk) + ' (' + actor.data.data.counters.anarchy.value + ')',
+      category: 'other',
       isAnarchy: true,
+      value: 1,
       optional: true,
       used: false
     }
   }
-
+  
   static _prepareEdge(actor) {
     return actor.data.data.counters.edge.value >= actor.data.data.attributes.edge.value ? undefined : {
       type: 'edge',
       label: game.i18n.localize(SRA.common.roll.modifiers.edge) + ' (' + actor.data.data.counters.edge.value + '/' + actor.data.data.attributes.edge.value + ')',
+      category: 'other',
+      value: 1,
       optional: true,
       used: false
     }
@@ -119,6 +124,7 @@ export class Modifiers {
     return specialization ? {
       type: 'specialization',
       label: game.i18n.localize(SRA.common.roll.modifiers.specialization) + ' ' + specialization,
+      category: 'pool',
       optional: true,
       used: true,
       value: SPECIALIZATION_BONUS
@@ -131,6 +137,7 @@ export class Modifiers {
     return wounds == 0 ? undefined : {
       type: 'wounds',
       label: game.i18n.localize(SRA.common.roll.modifiers.wounds),
+      category: 'pool',
       value: wounds,
       optional: true,
       used: true
@@ -141,6 +148,7 @@ export class Modifiers {
     return {
       type: 'other',
       label: game.i18n.localize(SRA.common.roll.modifiers.other),
+      category: 'pool',
       value: 0,
       editable: true,
       used: true
@@ -151,6 +159,7 @@ export class Modifiers {
     return {
       type: 'reroll',
       label: game.i18n.localize(SRA.common.roll.modifiers.reroll),
+      category: 'reroll',
       value: 0,
       editable: true,
       used: true
@@ -158,8 +167,9 @@ export class Modifiers {
   }
   static _prepareRerollForced(actor) {
     return {
-      type: 'reroll_forced',
-      label: game.i18n.localize(SRA.common.roll.modifiers.reroll_forced),
+      type: 'rerollForced',
+      label: game.i18n.localize(SRA.common.roll.modifiers.rerollForced),
+      category: 'reroll',
       value: 0,
       editable: true,
       used: true
@@ -169,16 +179,18 @@ export class Modifiers {
     return {
       type: 'opponent_reroll',
       label: game.i18n.localize(SRA.common.roll.modifiers.opponent_reroll),
+      category: 'opponent',
       value: 0,
       editable: true,
       used: true
     }
-
+    
   }
   static _prepareOpponentReduce(actor) {
     return {
       type: 'opponent_reduce',
       label: game.i18n.localize(SRA.common.roll.modifiers.opponent_reduce),
+      category: 'opponent',
       value: 0,
       editable: true,
       used: true

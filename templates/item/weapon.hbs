@@ -27,7 +27,7 @@
         </span>
       </label>
       <div class="grid-2col">
-        <input class="item-field-value" type="text" data-dtype="Number"
+        <input class="item-field-value-numeric" type="number" data-dtype="Number"
           name="data.damage" value="{{data.data.damage}}"
         />
 
@@ -64,14 +64,14 @@
     </div>
     <div class="form-group">
         <label for="data.range.short" >{{localize 'SRA.range.short'}} </label>
-        <input class="item-field-value" type="text" data-dtype="Number"
+        <input class="item-field-value-numeric" type="number" data-dtype="Number"
           name="data.range.short" value="{{numberFormat data.data.range.short decimals=0 sign=false}}"
         />
     </div>
     {{#unless (eq data.data.range.max "short")}}
       <div class="form-group">
           <label for="data.range.medium" >{{localize 'SRA.range.medium'}} </label>
-          <input class="item-field-value" type="text" data-dtype="Number"
+          <input class="item-field-value-numeric" type="number" data-dtype="Number"
             name="data.range.medium" value="{{numberFormat data.data.range.medium decimals=0 sign=false}}"
           />
       </div>
@@ -80,7 +80,7 @@
     {{#if (eq data.data.range.max "long")}}
     <div class="form-group">
         <label for="data.range.long" >{{localize 'SRA.range.long'}} </label>
-        <input class="item-field-value" type="text" data-dtype="Number"
+        <input class="item-field-value-numeric" type="number" data-dtype="Number"
           name="data.range.long" value="{{numberFormat data.data.range.long decimals=0 sign=false}}"
         />
     </div>

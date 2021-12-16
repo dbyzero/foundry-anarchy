@@ -18,10 +18,20 @@
           "wounds": "Wounds modifiers",
           "other": "Other modifiers",
           "reroll": "Rerolls",
-          "reroll_forced": "Rerolls forced by opponent",
+          "rerollForced": "Rerolls forced by opponent",
           "opponent_reroll": "Force opponent to reroll",
           "opponent_reduce": "Reduce opponent pool"          
-        }
+        },
+        "totalSuccess": "Total successes",
+        "success": "Successes",
+        "risk": {
+          "prowess": "Risk taken: Prowess",
+          "nothing": "Risk taken: no effect",
+          "glitch": "Risk taken: Glitch"
+        },
+        "rerollSuccess": "Reroll successes",
+        "rerollForcedLoss": "Forced reroll",
+        "rerollForcedSuccess": "Forced reroll successes"
       },
       "confirmation": {
         "del": "Confirm removal",

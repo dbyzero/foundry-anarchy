@@ -8,20 +8,29 @@
       "edit": "Modifier",
       "del": "Supprimer",
       "roll": {
-        "button":"Lancer",
+        "button": "Lancer",
         "title": "Jet de {name} {specialization}",
-        "modifiers" :{
+        "modifiers": {
           "edge": "Utiliser la chance",
           "specialization": "Utiliser la spécialization",
           "anarchy_disposition": "Point d'Anarchie: bien disposé",
           "anarchy_risk": "Point d'Anarchie: prise de risques",
           "wounds": "Modificateur de blessures",
-          "other":  "Autres modificateurs",
+          "other": "Autres modificateurs",
           "reroll": "Relances autorisées",
-          "reroll_forced": "Relances forcées par l'adversaire",
-          "opponent_reroll": "Force des relances adverse",
+          "opponent_reroll": "Force des relances à l'adversaire",
           "opponent_reduce": "Dés retranchés à l'adversaire"
-        }
+        },
+        "totalSuccess": "Succès finaux",
+        "success": "Succès",
+        "risk": {
+          "prowess": "Prise de risque: Exploit",
+          "nothing": "Prise de risque: sans effet",
+          "glitch": "Prise de risque: Complication"
+        },
+        "rerollSuccess": "Succès sur relance",
+        "rerollForcedLoss": "Relances forcées",
+        "rerollForcedSuccess": "Succès sur relance forcée"
       },
       "confirmation": {
         "del": "Confirmer la suppression",

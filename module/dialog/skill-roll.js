@@ -55,7 +55,6 @@ export class SRASkillRoll extends Dialog {
       html.find('.select-attribute .selected-attribute-value').text(
         this.rollData.actor.getAttributeValue(this.rollData.attribute)
       );
-      this.updateRollData();
     });
 
     html.find('.check-use-modifier').click(event => {
@@ -66,13 +65,11 @@ export class SRASkillRoll extends Dialog {
           .prop('checked', false);
       }
       this.rollData.modifiers[modifier].used = event.currentTarget.checked;
-      this.updateRollData();
     });
 
     html.find('.input-select-modifier').change(event => {
-      const modifier = $(event.currentTarget).closest('.list-item').attr('data-modifier')
-      this.rollData.modifiers[modifier].modifier = Number.parseInt(event.currentTarget.value);
-      this.updateRollData();
+      const modifier = $(event.currentTarget).attr('data-modifier')
+      this.rollData.modifiers[modifier].value = Number.parseInt(event.currentTarget.value);
     });
   }
 

@@ -17,16 +17,26 @@ export const SRA = {
                 wounds: 'SRA.common.roll.modifiers.wounds',
                 other: 'SRA.common.roll.modifiers.other',
                 reroll: 'SRA.common.roll.modifiers.reroll',
-                reroll_forced: 'SRA.common.roll.modifiers.reroll_forced',
+                rerollForced: 'SRA.common.roll.modifiers.rerollForced',
                 opponent_reroll: 'SRA.common.roll.modifiers.opponent_reroll',
                 opponent_reduce: 'SRA.common.roll.modifiers.opponent_reduce'
-            }
-        },
+            },
+            totalSuccess: 'SRA.common.roll.totalSuccess',
+            success: 'SRA.common.roll.success',
+            risk: {
+                prowess: 'SRA.common.roll.risk.prowess',
+                nothing: 'SRA.common.roll.risk.nothing',
+                glitch: 'SRA.common.roll.risk.glitch',
+            },
+            rerollSuccess: 'SRA.common.roll.rerollSuccess',
+            rerollForcedLoss: 'SRA.common.roll.rerollForcedLoss',
+            rerollForcedSuccess: 'SRA.common.roll.rerollForcedSuccess',
+          },
         confirmation: {
             del: 'SRA.common.confirmation.del',
             delitem: 'SRA.common.confirmation.delitem'
         },
-        errors:{
+        errors: {
             insufficient: 'SRA.common.errors.insufficient',
             out_of_range: 'SRA.common.errors.out_of_range'
         },
