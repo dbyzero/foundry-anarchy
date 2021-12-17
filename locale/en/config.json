@@ -170,7 +170,8 @@
       "logic": "Logic",
       "charisma": "Charisma",
       "edge": "Edge",
-      "knowledge": "Knowledge"
+      "knowledge": "Knowledge",
+      "noAttribute": "No attribute chosen"
     },
     "attributeActions":{
       "catch": "Catch object",

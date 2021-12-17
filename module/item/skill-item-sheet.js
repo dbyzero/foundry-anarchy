@@ -11,7 +11,7 @@ export class SRASkillSheet extends SRABaseItemSheet {
 
   getData(options) {
     let hbsData = super.getData(options);
-    hbsData.options.isKnowledge = this.object.isSkillKnowledge();
+    hbsData.options.isKnowledge = this.object.isKnowledgeSkill();
     return hbsData;
   }
 
@@ -20,7 +20,7 @@ export class SRASkillSheet extends SRABaseItemSheet {
     super.activateListeners(html);
     
     html.find('.select-skill-code').change(async event => {
-      if (this.object.isSkillGeneral()) {
+      if (this.object.isGeneralSkill()) {
         const code = event.currentTarget.value;
         if (code && SRA.skill[code]){
           const newName = game.i18n.localize(SRA.skill[code]);

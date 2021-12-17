@@ -9,7 +9,7 @@ export class SRABaseItem extends Item {
   }
 
   static async onPreUpdateItem(item, change, options, id) {
-    if (item.isSkillGeneral()) {
+    if (item.isGeneralSkill()) {
       SRABaseItem.forceGeneralSkillName(change);
     }
   }
@@ -31,11 +31,11 @@ export class SRABaseItem extends Item {
     return this.type == 'metatype';
   }
 
-  isSkillKnowledge() {
+  isKnowledgeSkill() {
     return this.type == 'skill' && this.data.data.attribute == 'knowledge';
   }
 
-  isSkillGeneral() {
+  isGeneralSkill() {
     return this.type == 'skill' && this.data.data.attribute != 'knowledge';
   }
 }

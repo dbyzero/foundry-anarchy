@@ -170,7 +170,8 @@
       "logic": "Logique",
       "charisma": "Charisme",
       "edge": "Chance",
-      "knowledge": "Connaissance"
+      "knowledge": "Connaissance",
+      "noAttribute": "Pas d'attribut choisi"
     },
     "attributeActions":{
       "catch": "Attraper au vol",

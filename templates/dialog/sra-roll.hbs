@@ -11,29 +11,33 @@
   {{#if (eq mode 'attribute')}}
       <img class="dialog-img flex-shrink" src="{{actor.img}}" alt="{{actor.name}}"/>
       <div class="flex-grow-3">
-        <h2 class="dialog-roll-title">{{actor.name}} - {{localize (concat 'SRA.attributes.' attribute)}}</h2>
+        <h2 class="dialog-roll-title">
+          {{actor.name}} - 
+          {{#if attributeAction}}
+            {{localize (concat 'SRA.attributeActions.' attributeAction)}}
+          {{else}}
+            {{localizeAttribute attribute}}
+          {{/if}}
+          </h2>
       </div>
   {{/if}}
     </div>
 
     <div class="flex-group-left">
       <ul class="alterne-list list-modifiers">
-
-  {{#if (eq mode 'skill')}}
         <li class="flexrow list-item select-attribute">
-          <label class="flex-grow-2" for="select.attribute">{{localize SRA.item.skill.attribute}}</label>
+          <label class="flex-grow-2" for="select.attribute">{{localize SRA.common.roll.attribute}}</label>
           <span class="flex-end">
             <select name="select.attribute" class="select-skill-attribute" data-dtype="String">
-                {{#select skill.data.data.attribute}}
-                {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
-                {{/select}}
+              {{#select attribute}}
+              {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
+              {{/select}}
             </select>
             <label>&nbsp;</label>
-            <label class="selected-attribute-value">
-              {{actorAttribute actor skill.data.data.attribute}}
-            </label>
+            <label class="selected-attribute-value">{{actorAttribute actor attribute}}</label>
           </span>
         </li>
+        {{#if (eq mode 'skill')}}
         <li class="flexrow list-item">
           <label class="flex-grow-2">{{localize (concat 'SRA.skill.' skill.data.data.code)}}</label>
           <span class="flex-end">
@@ -43,28 +47,18 @@
           </span>
         </li>
         {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.specialization}}
-  {{/if}}
-  {{#if (eq mode 'attribute')}}
-        <li class="flexrow list-item">
-          <label class="flex-grow-2">{{localize SRA.common.roll.attribute}}</label>
-          <span class="flex-end">
-            <label class="flex-grow-2">{{localize (concat 'SRA.attributes.' attribute)}}</label>
-            <label>&nbsp;{{actorAttribute actor attribute}}</label>
-          </span>
-        </li>
+        {{/if}}
+      {{#if (eq mode 'attribute')}}
         <li class="flexrow list-item select-attribute">
           <label class="flex-grow-2">{{localize SRA.common.roll.attribute2}}</label>
           <span class="flex-end">
             <select class="select-attribute2" data-dtype="String">
                 {{#select attribute2}}
-                <option value=""></option>
                 {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
                 {{/select}}
             </select>
             <label>&nbsp;</label>
-            <label class="selected-attribute2-value">
-              {{actorAttribute actor attribute2}}
-            </label>
+            <label class="selected-attribute2-value">{{actorAttribute actor attribute2}}</label>
           </span>
         </li>
   {{/if}}

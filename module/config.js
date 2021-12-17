@@ -169,6 +169,7 @@ export const SRA = {
         charisma: 'SRA.attributes.charisma',
         edge: 'SRA.attributes.edge',
         knowledge: 'SRA.attributes.knowledge',
+        noAttribute: 'SRA.attributes.noAttributes',
     },
     attributeActions:{
         catch: 'SRA.attributeActions.catch',

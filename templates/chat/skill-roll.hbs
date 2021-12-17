@@ -5,10 +5,10 @@
     {{actor.name}} - {{skill.name}} : {{roll.pool}}
   </h3>
   <div class="tooltiptext tooltip-roll-modifiers">
-    <div>{{localize (concat 'SRA.attributes.' attribute)}}: {{actorAttribute actor attribute}}</div>
-    <div>{{localize (concat 'SRA.skill.' skill.data.data.code)}}: {{either skill.data.data.value 0}}</div>
+    <div>{{localizeAttribute attribute}}: {{actorAttribute actor attribute}}</div>
+    <div>{{skill.name}}: {{either skill.data.data.value 0}}</div>
     {{#if modifiers.specialization.used}}
-    <div>{{localize 'SRA.item.skill.specialization'}} {{specialization}}: {{numberFormat modifiers.specialization.value decimals=0 sign=true}}</div>
+    <div>{{localize SRA.item.skill.specialization}} {{specialization}}: {{numberFormat modifiers.specialization.value decimals=0 sign=true}}</div>
     {{/if}}
     {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
     {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
@@ -31,7 +31,7 @@
     <div>{{localize SRA.common.roll.rerollForcedSuccess}}: {{roll.subrolls.rerollForced.total}} / {{roll.param.rerollForced}}</div>
     {{/if}}
     {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
-    <div>{{localize 'SRA.common.roll.risk.prowess'}}: 1</div>
+    <div>{{localize SRA.common.roll.risk.prowess}}: 1</div>
     {{/if}}
   </div>
 </div>

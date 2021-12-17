@@ -12,15 +12,14 @@
       <span class="flexrow">
         <a class="click-skill-roll">
           <label>{{name}}</label>
-          <label>{{data.value}} + {{toUpperCase (substring (localize (concat 'SRA.attributes.' data.attribute)) 0 3)}}
-          </label>
+          <label>{{data.value}} + {{localizeAttribute data.attribute}}</label>
         </a>
       </span>
       {{#if data.specialization}}
         <span class="flexrow">
           <a class="click-skill-roll" data-item-specialization="{{data.specialization}}">(
             <label>{{data.specialization}}</label>
-            <label>{{sum data.value 2}} + {{toUpperCase (substring (localize (concat 'SRA.attributes.' data.attribute)) 0 3)}}</label>
+            <label>{{sum data.value 2}} + {{localizeAttribute data.attribute}}</label>
           )</a>
         </span>
       {{/if}}

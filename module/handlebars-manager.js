@@ -1,4 +1,5 @@
 import { Damage } from "./damage.js";
+import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
 import { Misc } from "./misc.js";
 
@@ -66,6 +67,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('either', (a, b) => a ? a : b);
     Handlebars.registerHelper('isInteger', a => a !== undefined && Number.isInteger(a));
     Handlebars.registerHelper('actorAttribute', (actor, attribute) => actor.getAttributeValue(attribute));
+    Handlebars.registerHelper('localizeAttribute', (attribute) => Enums.localizeAttribute(attribute));
   }
 
   static hbsFor(start, end, options) {

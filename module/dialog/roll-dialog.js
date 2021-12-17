@@ -32,7 +32,7 @@ export class SRARollDialog extends Dialog {
       actor: actor,
       attributeAction: attributeAction,
       attribute: attribute,
-      attribute2: attribute2,
+      attribute2: attribute2 ?? attribute,
       modifiers: Modifiers.build(actor),
       ENUMS: Enums.getEnums(),
       SRA: SRA

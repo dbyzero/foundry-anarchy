@@ -1,21 +1,10 @@
 <form class="{{options.cssClass}}" autocomplete="off">
   <header class="sheet-header">
     <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-    {{#if options.isKnowledge}}
-      {{> 'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs'
-        labelkey='SRA.itemType.singular.skill'
-        type="skill"
-      }}
-    {{else}}
-    <h1 class="item-name">
-      <select name="data.code" class="select-skill-code" data-dtype="String">
-          {{#select data.data.code}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
-          {{/select}}
-      </select>
-      {{#unless data.data.code}}{{data.name}}{{/unless}}
-    </h1>
-    {{/if}}
+    {{> 'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs'
+      labelkey='SRA.itemType.singular.skill'
+      type="skill"
+    }}
   </header>
   <section class="sheet-body">
     <div class="form-group">
@@ -23,16 +12,21 @@
         {{localize 'SRA.attributes.knowledge'}}
       </input>
     </div>
-    {{#if options.isGM}}
-    <div class="form-group">
-      <label>{{localize 'SRA.item.skill.code'}} </label>
-      <input class="item-field-value" type="text" value="{{data.data.code}}" data-dtype="String" disabled/>
-    </div>
-    {{/if}}
     {{#unless options.isKnowledge}}
     <div class="form-group">
-      <label>{{localize 'SRA.item.skill.attribute'}} </label>
-      <span class="item-field-value">{{localize (concat 'SRA.attributes.' data.data.attribute)}}</span>
+      <select name="data.code" class="select-skill-code" data-dtype="String">
+        {{#select data.data.code}}
+        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
+        {{/select}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="data.attribute">{{localize 'SRA.item.skill.attribute'}} </label>
+      <select class="item-field-value" name="data.attribute" data-dtype="String">
+        {{#select data.data.attribute}}
+        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
+        {{/select}}
+      </select>
     </div>
     <div class="form-group">
       <label for="data.value">{{localize 'SRA.item.skill.value'}} </label>

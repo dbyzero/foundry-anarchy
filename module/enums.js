@@ -62,6 +62,7 @@ export class Enums {
   static hbsShadowampCategories;
   static hbsAreas;
   static hbsRanges;
+  static hbsAllAttributes
 
   // this method is the place to add settings-based entries in the enums
   static registerEnums() {
@@ -69,7 +70,7 @@ export class Enums {
     Enums.skillsAttribute = defaultSkillsAttribute;
     Enums.hbsSkills = Enums.mapObjetToValueLabel(SRA.skill);
     Enums.hbsAttributes = Enums.mapObjetToValueLabel(SRA.attributes)
-      .filter(a => a.value != 'knowledge');
+        .filter(a => a.value != 'knowledge' && a.value != 'noAttribute');
     Enums.hbsItemTypes = Enums.mapObjetToValueLabel(SRA.itemType);
     Enums.hbsCapacities = Enums.mapObjetToValueLabel(SRA.capacity);
     Enums.hbsMonitors = Enums.mapObjetToValueLabel(SRA.monitor);
@@ -110,15 +111,22 @@ export class Enums {
     return actorDescriptionTypeLists[wordlist];
   }
 
-  static getSkillAttribute(code) {
-    if (Enums.isSkillCode(code)) {
-      return Enums.skillsAttribute[code];
+  static localizeAttribute(attribute) {
+    if (!SRA.attributes[attribute]) {
+      return game.i18n.localize(SRA.attributes['noAttribute']);
     }
-    return 'agility';
+    return game.i18n.localize(SRA.attributes[attribute]);
   }
 
-  static isSkillCode(code) {
-    return code && Enums.skillsAttribute[code];
+  static getSkillAttribute(code) {
+    if (Enums.isDefaultSkill(code)) {
+      return defaultSkillsAttribute[code];
+    }
+    return '';
+  }
+
+  static isDefaultSkill(code) {
+    return code && defaultSkillsAttribute[code];
   }
 
   static getFromList(list, value, key = 'value', label = 'label') {

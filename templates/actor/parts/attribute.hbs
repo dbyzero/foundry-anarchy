@@ -1,6 +1,6 @@
 <div class="flexcol item style-attribute" data-attribute="{{key}}">
   <a class="attribute-label click-roll-attribute">
-    <label for="data.attributes.{{key}}.value">{{localize (concat 'SRA.attributes.' key)}}</label>
+    <label for="data.attributes.{{key}}.value">{{localizeAttribute key}}</label>
   </a>
   <input class="attribute-value" type="text" data-dtype="Number" maxlength="2"
     name="data.attributes.{{key}}.value" value="{{attribute.value}}" 

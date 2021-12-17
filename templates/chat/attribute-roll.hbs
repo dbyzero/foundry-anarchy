@@ -2,13 +2,13 @@
 {{!-- Dice pool explanation --}}
 <div class="tooltip tooltip-dotted">
   <h3 class="chat-roll-title">
-    {{actor.name}} - {{localize (concat 'SRA.attributes.' attribute)}}
-    {{~#if attribute2}}+{{localize (concat 'SRA.attributes.' attribute2)}}{{/if}} : {{roll.pool}}
+    {{actor.name}} - {{localizeAttribute attribute}}
+    {{~#if attribute2}}+{{localizeAttribute attribute2}}{{/if}} : {{roll.pool}}
   </h3>
   <div class="tooltiptext tooltip-roll-modifiers">
-    <div>{{localize (concat 'SRA.attributes.' attribute)}}: {{actorAttribute actor attribute}}</div>
+    <div>{{localizeAttribute attribute}}: {{actorAttribute actor attribute}}</div>
     {{#if attribute2}}
-    <div>{{localize (concat 'SRA.attributes.' attribute2)}}: {{actorAttribute actor attribute2}}</div>
+    <div>{{localizeAttribute attribute2}}: {{actorAttribute actor attribute2}}</div>
     {{/if}}
     {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
     {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
