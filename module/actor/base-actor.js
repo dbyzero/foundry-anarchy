@@ -38,7 +38,7 @@ export class SRABaseActor extends Actor {
       return;
     }
     let values = Misc.distinct(mutate(this.data.data[listType]));
-    await this.update({ [`data.{listType}`]: values });
+    await this.update({ [`data.${listType}`]: values });
   }
 
   async setCounter(monitor, value) {
