@@ -85,6 +85,7 @@
       "skill": {
         "isKnowledge": "Connaissance",
         "code": "Code interne",
+        "copyDefault": "Copier une compétence par défaut",
         "attribute": "Attribut",
         "value": "Niveau",
         "specialization": "Spécialisation",

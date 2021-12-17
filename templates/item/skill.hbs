@@ -5,6 +5,14 @@
       labelkey='SRA.itemType.singular.skill'
       type="skill"
     }}
+    {{#unless options.isKnowledge}}
+    <div class="form-group">
+      <label>{{localize 'SRA.item.skill.copyDefault'}} </label>
+      <select class="select-skill-code" data-dtype="String">
+        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
+      </select>
+    </div>
+    {{/unless}}
   </header>
   <section class="sheet-body">
     <div class="form-group">
@@ -14,11 +22,8 @@
     </div>
     {{#unless options.isKnowledge}}
     <div class="form-group">
-      <select name="data.code" class="select-skill-code" data-dtype="String">
-        {{#select data.data.code}}
-        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
-        {{/select}}
-      </select>
+      <label for="data.code">{{localize 'SRA.item.skill.code'}}</label>
+      <input class="item-field-value" type="text" name="data.code" value="{{data.data.code}}" data-dtype="String"/>
     </div>
     <div class="form-group">
       <label for="data.attribute">{{localize 'SRA.item.skill.attribute'}} </label>

@@ -82,6 +82,7 @@ export const SRA = {
         sheet: 'SRA.item.sheet',
         skill: {
             code: 'SRA.item.skill.code',
+            copyDefault: 'SRA.item.skill.useDefault',
             isKnowledge: 'SRA.item.skill.isKnowledge',
             attribute: 'SRA.item.skill.attribute',
             value: 'SRA.item.skill.value',

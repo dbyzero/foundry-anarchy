@@ -84,6 +84,7 @@
       "sheet": "Sheet for ",
       "skill": {
         "code": "Internal code",
+        "copyDefault": "Copy default skill",
         "isKnowledge": "Knowledge",
         "attribute": "Attribute",
         "value": "Level",

@@ -4,21 +4,7 @@ import { Enums } from "../enums.js";
 export class SRABaseItem extends Item {
 
   static init() {
-    Hooks.on("preUpdateItem", (item, change, options, id) => SRABaseItem.onPreUpdateItem(item, change, options, id));
     Hooks.on("createItem", (item, options, id) => SRABaseItem.onCreateItem(item, options, id));
-  }
-
-  static async onPreUpdateItem(item, change, options, id) {
-    if (item.isGeneralSkill()) {
-      SRABaseItem.forceGeneralSkillName(change);
-    }
-  }
-
-  static forceGeneralSkillName(change) {
-    if (change.data?.code) {
-      change.name = game.i18n.localize(SRA.skill[change.data.code]);
-      change.data.attribute = Enums.getSkillAttribute(change.data.code);
-    }
   }
 
   static async onCreateItem(item, options, id) {
