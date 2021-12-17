@@ -34,37 +34,37 @@ export class SRABaseCharacterSheet extends ActorSheet {
     super.activateListeners(html);
 
     // cues, dispositions, keywords
-    html.find('.wordlist-add').click(async event => {
+    html.find('.click-wordlist-add').click(async event => {
       const wordlist = SheetHelper.getWordList(event);
       const word = game.i18n.localize(SRA.common.newEntry);
       this.actor.createWordlistWord(wordlist, word);
     });
 
-    html.find('.wordlist-value').change(async event => {
+    html.find('.change-wordlist-value').change(async event => {
       const updated = event.currentTarget.value;
       const previous = SheetHelper.getWord(event);
       const wordlist = SheetHelper.getWordList(event);
       await this.actor.updateWordlistWord(wordlist, previous, updated);
     });
     
-    html.find('.wordlist-delete').click(async event => {
+    html.find('.click-wordlist-delete').click(async event => {
       const previous = SheetHelper.getWord(event);
       const wordlist = SheetHelper.getWordList(event);
       this.actor.deleteWordlistWord(wordlist, previous);
     });
 
     // items standard actions (add/edit/delete)
-    html.find('.item-add').click(async event => {
+    html.find('.click-item-add').click(async event => {
       this.createItem(SheetHelper.getItemType(event))
     });
 
-    html.find('.item-edit').click(async event => {
+    html.find('.click-item-edit').click(async event => {
       const itemId = SheetHelper.getItemId(event);
       const item = this.actor.items.get(itemId);
       item.sheet.render(true);
     });
 
-    html.find('.item-delete').click(async event => {
+    html.find('.click-item-delete').click(async event => {
       const itemId = SheetHelper.getItemId(event);
       const item = this.actor.items.get(itemId);
       ConfirmationDialog.confirmDeleteItem(item, () => {
@@ -83,16 +83,23 @@ export class SRABaseCharacterSheet extends ActorSheet {
     });
 
     // rolls
-    html.find('.skill-roll').click(async event => {
-      const specialization = SheetHelper.getClosestElementData(event, "item-specialization", ".skill-roll");
+    html.find('.click-skill-roll').click(async event => {
+      const specialization = SheetHelper.getClosestElementData(event, "item-specialization", ".click-skill-roll");
       const itemId = SheetHelper.getItemId(event);
       const item = this.actor.items.get(itemId);
       this.actor.skillRoll(item, specialization);
     });
 
-    html.find('.attribute-roll').click(async event => {
+    html.find('.click-roll-attribute').click(async event => {
       const attribute = $(event.currentTarget).closest('.item').attr('data-attribute');
       this.actor.attributeRoll(attribute);
+    });
+    html.find('.click-roll-attribute-action').click(async event => {
+      
+      const attribute = $(event.currentTarget).attr('data-attribute');
+      const attribute2 = $(event.currentTarget).attr('data-attribute2');
+      const actionCode = $(event.currentTarget).attr('data-action-code');
+      this.actor.attributeRoll(attribute, attribute2, actionCode);
     });
 
 

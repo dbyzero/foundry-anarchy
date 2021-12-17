@@ -13,6 +13,7 @@ const CHECKBARS = {
   edge: { value: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: SRA.actor.counters.edge }
 }
 
+
 export class SRABaseActor extends Actor {
 
   prepareData() {
@@ -54,8 +55,8 @@ export class SRABaseActor extends Actor {
     dialog.render(true);
   }
 
-  async attributeRoll(attribute, attribute2 = undefined) {
-    const rollData = SRARollDialog.prepareAttributeRollData(this, attribute, attribute2);
+  async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
+    const rollData = SRARollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
     const dialog = await SRARollDialog.create(rollData);
     dialog.render(true);
   }

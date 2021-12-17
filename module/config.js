@@ -170,6 +170,16 @@ export const SRA = {
         edge: 'SRA.attributes.edge',
         knowledge: 'SRA.attributes.knowledge',
     },
+    attributeActions:{
+        catch: 'SRA.attributeActions.catch',
+        defense: 'SRA.attributeActions.defense',
+        judgeIntentions: 'SRA.attributeActions.judgeIntentions',
+        perception: 'SRA.attributeActions.perception',
+        resistTorture: 'SRA.attributeActions.resistTorture',
+        composure: 'SRA.attributeActions.composure',
+        memory: 'SRA.attributeActions.memory',
+        lifting: 'SRA.attributeActions.lifting',
+    },
     skill: {
         athletics: 'SRA.skill.athletics',
         closeCombat: 'SRA.skill.closeCombat',

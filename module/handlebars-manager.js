@@ -25,6 +25,8 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/actor/parts/contact.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/description.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/gmnotes.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/attributebutton.hbs',
   //-- counters & monitors
   'systems/shadowrun-anarchy/templates/actor/parts/armor.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs',

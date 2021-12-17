@@ -40,6 +40,16 @@ const actorDescriptionTypeLists = {
   cue: "cues"
 }
 
+const defaultAttributeActions = [
+  { actionCode: "catch", labelkey: SRA.attributeActions.catch, attribute: "agility", attribute2: "agility" },
+  { actionCode: "defense", labelkey: SRA.attributeActions.defense, attribute: "agility", attribute2: "logic" },
+  { actionCode: "judgeIntentions", labelkey: SRA.attributeActions.judgeIntentions, attribute: "charisma", attribute2: "charisma" },
+  { actionCode: "perception", labelkey: SRA.attributeActions.perception, attribute: "logic", attribute2: "willpower" },
+  { actionCode: "resistTorture", labelkey: SRA.attributeActions.resistTorture, attribute: "strength", attribute2: "willpower" },
+  { actionCode: "composure", labelkey: SRA.attributeActions.composure, attribute: "charisma", attribute2: "willpower" },
+  { actionCode: "memory", labelkey: SRA.attributeActions.memory, attribute: "logic", attribute2: "logic" },
+  { actionCode: "lifting", labelkey: SRA.attributeActions.lifting, attribute: "strength", attribute2: "strength" },
+]
 export class Enums {
   static ENUMS;
   static hbsSkills;
@@ -53,6 +63,7 @@ export class Enums {
   static hbsAreas;
   static hbsRanges;
 
+  // this method is the place to add settings-based entries in the enums
   static registerEnums() {
     // Customisation of skills will have to be done based on system settings
     Enums.skillsAttribute = defaultSkillsAttribute;
@@ -66,6 +77,7 @@ export class Enums {
     Enums.hbsShadowampCategories = Enums.mapObjetToValueLabel(SRA.shadowampCategory);
     Enums.hbsAreas = Enums.mapObjetToValueLabel(SRA.area);
     Enums.hbsRanges = Enums.mapObjetToValueLabel(SRA.range);
+    Enums.attributeActions = defaultAttributeActions;
   }
 
   static getEnums() {
@@ -77,7 +89,8 @@ export class Enums {
       shadowampCategories: Enums.hbsShadowampCategories,
       skills: Enums.hbsSkills,
       areas: Enums.hbsAreas,
-      ranges: Enums.hbsRanges
+      ranges: Enums.hbsRanges,
+      attributeActions: Enums.attributeActions
     };
   }
 
@@ -98,8 +111,8 @@ export class Enums {
   }
 
   static getSkillAttribute(code) {
-    if (Enums.isSkillCode(code))  {
-        return Enums.skillsAttribute[code];
+    if (Enums.isSkillCode(code)) {
+      return Enums.skillsAttribute[code];
     }
     return 'agility';
   }

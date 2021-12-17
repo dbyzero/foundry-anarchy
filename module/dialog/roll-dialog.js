@@ -26,10 +26,11 @@ export class SRARollDialog extends Dialog {
     };
   }
 
-  static prepareAttributeRollData(actor, attribute, attribute2 = undefined) {
+  static prepareAttributeRollData(actor, attribute, attribute2 = undefined, attributeAction = undefined) {
     const rollData = {
       mode: 'attribute',
       actor: actor,
+      attributeAction: attributeAction,
       attribute: attribute,
       attribute2: attribute2,
       modifiers: Modifiers.build(actor),

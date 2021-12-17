@@ -172,6 +172,16 @@
       "edge": "Chance",
       "knowledge": "Connaissance"
     },
+    "attributeActions":{
+      "catch": "Attraper au vol",
+      "defense": "Défense",
+      "judgeIntentions": "Jauger les intentions",
+      "perception": "Perception",
+      "resistTorture": "Résistance mentale",
+      "composure": "Sang froid",
+      "memory": "Mémoire",
+      "lifting": "Soulever"
+    },
     "skill": {
       "athletics": "Athlétisme",
       "closeCombat": "Corps à corps",

@@ -172,7 +172,17 @@
       "edge": "Edge",
       "knowledge": "Knowledge"
     },
-    "skill": {
+    "attributeActions":{
+      "catch": "Catch object",
+      "defense": "Defense",
+      "judgeIntentions": "Judge intentions",
+      "perception": "Perception",
+      "resistTorture": "Resist torture",
+      "composure": "Composure",
+      "memory": "Memory",
+      "lifting": "Lifting/carrying"
+    },
+   "skill": {
       "athletics": "Athletics",
       "closeCombat": "Close combat",
       "projectileWeapons": "Projectile weapons",

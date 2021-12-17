@@ -39,6 +39,7 @@ div.flex-group-left {
 
 .flex-grow-3 { flex-grow: 3; }
 .flex-grow-2 { flex-grow: 2; }
+.flex-grow-0 { flex-grow: 0; }
 .flex-wrap { flex-wrap: wrap; }
 .flex-shrink { flex: 'flex-shrink'; }
 .flex-end { justify-content: flex-end; }
@@ -237,13 +238,38 @@ div.form-group {
 input.item-field-value-numeric {
   max-width: 2rem;
 }
+
+.style-button {
+  box-shadow: inset 0px 1px 0px 0px #817a79d8;
+  background: var(--gradient-silver);
+  border-radius: 3px;
+  border: 2px ridge #c0beb9;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 4px 12px 0px 12px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #4d3534;
+  position: relative;
+  margin:2px;
+}
+
+.style-button:hover {
+  background: var(--gradient-silver);
+  background-color: rgba(103, 144, 184, 0.678);
+}
+.style-button:active {
+  position:relative;
+  top:1px;
+}
+
+
 .window-app.sheet .window-content .tooltip:hover .tooltiptext {
   top: 2rem;
   left: 2rem;
   margin: 0;
   padding: 0.25rem;
 }
-
 
 /* Tooltip container */
 .tooltip {
