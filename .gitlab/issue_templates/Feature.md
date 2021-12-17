@@ -3,10 +3,6 @@
 
 > Simple description of the feature you need
 
-### Expérience Utilisateur
-
-> Indiquez ce que l'utilisateur aura comme bénéfice avec cette fonction.
-
 ### Priority/Importance
 
 > What is the importance of the feature?
