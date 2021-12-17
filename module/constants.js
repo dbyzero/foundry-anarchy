@@ -14,3 +14,6 @@ export const PLAYER_MAX_ANARCHY = 6;
 
 export const TARGET_SUCCESS = 5;
 export const TARGET_SUCCESS_EDGE = 4;
+
+export const BASE_MONITOR = 8;
+
