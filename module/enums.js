@@ -41,14 +41,14 @@ const actorDescriptionTypeLists = {
 }
 
 const defaultAttributeActions = [
-  { actionCode: "catch", labelkey: SRA.attributeActions.catch, attribute: "agility", attribute2: "agility" },
-  { actionCode: "defense", labelkey: SRA.attributeActions.defense, attribute: "agility", attribute2: "logic" },
-  { actionCode: "judgeIntentions", labelkey: SRA.attributeActions.judgeIntentions, attribute: "charisma", attribute2: "charisma" },
-  { actionCode: "perception", labelkey: SRA.attributeActions.perception, attribute: "logic", attribute2: "willpower" },
-  { actionCode: "resistTorture", labelkey: SRA.attributeActions.resistTorture, attribute: "strength", attribute2: "willpower" },
-  { actionCode: "composure", labelkey: SRA.attributeActions.composure, attribute: "charisma", attribute2: "willpower" },
-  { actionCode: "memory", labelkey: SRA.attributeActions.memory, attribute: "logic", attribute2: "logic" },
-  { actionCode: "lifting", labelkey: SRA.attributeActions.lifting, attribute: "strength", attribute2: "strength" },
+  { actionCode: "catch", labelkey: SRA.attributeActions.catch, attribute: "agility", attribute2: "agility", fontAwesomeIcon:"fas fa-baseball-ball" },
+  { actionCode: "defense", labelkey: SRA.attributeActions.defense, attribute: "agility", attribute2: "logic", fontAwesomeIcon:"fas fa-shield-alt" },
+  { actionCode: "judgeIntentions", labelkey: SRA.attributeActions.judgeIntentions, attribute: "charisma", attribute2: "charisma", fontAwesomeIcon:"fas fa-theater-masks" },
+  { actionCode: "perception", labelkey: SRA.attributeActions.perception, attribute: "logic", attribute2: "willpower", fontAwesomeIcon:"fas fa-eye" },
+  { actionCode: "resistTorture", labelkey: SRA.attributeActions.resistTorture, attribute: "strength", attribute2: "willpower", fontAwesomeIcon:"fas fa-angry"},
+  { actionCode: "composure", labelkey: SRA.attributeActions.composure, attribute: "charisma", attribute2: "willpower", fontAwesomeIcon:"fas fa-meh" },
+  { actionCode: "memory", labelkey: SRA.attributeActions.memory, attribute: "logic", attribute2: "logic", fontAwesomeIcon:"fas fa-brain" },
+  { actionCode: "lifting", labelkey: SRA.attributeActions.lifting, attribute: "strength", attribute2: "strength", fontAwesomeIcon:"fas fa-dumbbell" },
 ]
 export class Enums {
   static ENUMS;

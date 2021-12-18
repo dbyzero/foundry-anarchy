@@ -1,4 +1,10 @@
 <a class="item style-button click-roll-attribute-action flex-grow-0"
-  data-attribute="{{attribute}}" data-attribute2="{{attribute2}}" data-action-code="{{actionCode}}">
+  title="{{localize labelkey}}"
+  data-attribute="{{attribute}}" data-attribute2="{{attribute2}}"
+  data-action-code="{{actionCode}}">
+{{#if fontAwesomeIcon}}
+  <i class="{{fontAwesomeIcon}}"></i>
+{{else}}
   <label>{{localize labelkey}}</label>
+{{/if}}
 </a>
