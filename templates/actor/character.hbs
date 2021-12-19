@@ -59,7 +59,10 @@
       <hr>
       {{> "systems/shadowrun-anarchy/templates/actor/parts/counteredge.hbs"}}
       <hr>
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/counteranarchy.hbs"}}
+      {{> "systems/shadowrun-anarchy/templates/common/counteranarchy.hbs"
+        anarchy=data.data.counters.anarchy.value
+        maxanarchy=data.data.counters.anarchy.max
+      }}
       </div>
       <div>
       {{> "systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs"}}

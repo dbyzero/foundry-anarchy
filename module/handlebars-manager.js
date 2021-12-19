@@ -31,12 +31,12 @@ export const partials = [
   //-- counters & monitors
   'systems/shadowrun-anarchy/templates/actor/parts/armor.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs',
-  'systems/shadowrun-anarchy/templates/actor/parts/counteranarchy.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/counteredge.hbs',
   //-- item
   'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs',
   'systems/shadowrun-anarchy/templates/item/parts/references.hbs',
   //-- common&technical partials
+  'systems/shadowrun-anarchy/templates/common/counteranarchy.hbs',
   'systems/shadowrun-anarchy/templates/common/checkbar.hbs',
   'systems/shadowrun-anarchy/templates/common/damagecode.hbs',
   'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
@@ -49,7 +49,7 @@ export const partials = [
 
 export class HandlebarsManager {
 
-  static async preload() {
+  static async init() {
     await loadTemplates(partials);
   }
 

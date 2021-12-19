@@ -7,12 +7,14 @@ import { SRABaseItemSheet } from './item/base-item-sheet.js';
 import { SRASkillSheet } from './item/skill-item-sheet.js';
 import { SRABaseItem } from './item/base-item.js';
 import { Enums } from './enums.js';
-
+import { GMAnarchy } from './anarchy/gm-anarchy.js';
 
 export class HooksManager {
+
   static register() {
     console.log('Shadowrun Anarchy | Registering system hooks');
-    Hooks.once('init', HooksManager.onInit)
+    Hooks.once('init', HooksManager.onInit);
+    Hooks.once('ready', async () => await HooksManager.onReady());
   }
 
   static async onInit() {
@@ -34,7 +36,8 @@ export class HooksManager {
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
 
-    await HandlebarsManager.preload();
+    await HandlebarsManager.init();
+    GMAnarchy.init();
     SRABaseItem.init();
   }
 
@@ -55,5 +58,19 @@ export class HooksManager {
       types: ["skill"],
       makeDefault: true
     });
+  }
+
+  static async onReady() {
+
+    const gmAnarchy = GMAnarchy.create();
+    if (game.user.isGM) {
+      gmAnarchy.render(true);
+    }
+    game.system.sra.gmAnarchy = gmAnarchy;
+    // const options = game.system.sra.gmAnarchy.defaultOptions;
+    // renderTemplate(options.template, { anarchy: gmAnarchy.anarchy })
+    //   .then(html => game.system.sra.gmAnarchy.render(true));
+
+
   }
 }

@@ -1,4 +1,8 @@
 export const SRA = {
+    anarchy:{
+        title: 'SRA.anarchy.title',
+        gmAnarchy: 'SRA.anarchy.gmAnarchy'
+    },
     common: {
         newEntry: 'SRA.common.newEntry',
         newName: 'SRA.common.newName',

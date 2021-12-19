@@ -32,4 +32,5 @@ export class SheetHelper {
   static getClosestElement(event, parentclass = ".item") {
     return $(event.currentTarget).closest(parentclass);
   }
+
 }

@@ -1,5 +1,9 @@
 {
   "SRA": {
+    "anarchy": {
+      "title": "Anarchy manager",
+      "gmAnarchy": "GM Anarchy"
+    },
     "common": {
       "newEntry": "New entry...",
       "newName": "New {type}",
