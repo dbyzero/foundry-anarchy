@@ -6,7 +6,7 @@ const ANARCHY_MANAGER = "anarchy-manager";
 const ANARCHY_MANAGER_POSITION = "anarchy-manager-position";
 const ANARCHY_GM = "anarchy-gm";
 const ANARCHY_MANAGER_INITIAL_POSITION = { top: 200, left: 200 };
-const GM_ANARCHY_TEMPLATE = 'systems/shadowrun-anarchy/templates/dialog/gm-anarchy.hbs';
+const GM_ANARCHY_TEMPLATE = 'systems/shadowrun-anarchy/templates/app/gm-anarchy.hbs';
 
 export class GMAnarchy extends Application {
 

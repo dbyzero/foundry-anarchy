@@ -4,8 +4,6 @@
       <p class="anarchy-manager-move-handle">{{localize SRA.anarchy.title}}</p>
     </div>
     <div class="anarchy-manager-content">
-    	<div class="flexcol">
-			
 			<div class="flexrow">
 				{{> "systems/shadowrun-anarchy/templates/common/counteranarchy.hbs"
 			 		anarchy=anarchy
@@ -15,8 +13,8 @@
 			<div class="flexrow">
 				<label>{{localize SRA.anarchy.gmAnarchy}}</label>
 				<input id="anarchy-manager-gmAnarchy" type="number" data-dtype="Number" value="{{anarchy}}" disabled/>
-				<a><i class="fas fa-plus-circle"></i></a>
-			</div>
+				<a class="click-item-add flex-shrink-end" title="{{localize SRA.common.add}}"><i class="fas fa-plus-circle"></i></a>
+				</div>
 			</div>
     </div>
   </div>

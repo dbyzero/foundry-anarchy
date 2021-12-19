@@ -7,7 +7,7 @@ import { SRABaseItemSheet } from './item/base-item-sheet.js';
 import { SRASkillSheet } from './item/skill-item-sheet.js';
 import { SRABaseItem } from './item/base-item.js';
 import { Enums } from './enums.js';
-import { GMAnarchy } from './anarchy/gm-anarchy.js';
+import { GMAnarchy } from './app/gm-anarchy.js';
 
 export class HooksManager {
 
