@@ -1,0 +1,37 @@
+<div class="SRA-anarchy flexrow">
+  <span class="flex-shrink">
+    {{#if options.ownAnarchy}}
+    {{localize SRA.actor.counters.anarchy}}
+    {{else}}
+    {{localize SRA.anarchy.gmAnarchy}}
+    {{/if}}
+  </span>
+  <span class="flex-grow-3">
+  {{#if options.ownAnarchy}}
+    {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+      code='anarchy'
+      value=options.anarchy.value
+      max=options.anarchy.max
+      labelkey=SRA.actor.counters.anarchy
+      rowlength=10
+      adjust=false
+      checkicon='fas fa-star'
+      uncheckicon='far fa-star'
+    }}
+  {{else}}
+    {{#if options.isGM}}
+    {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+      code='anarchy'
+      value=options.anarchy.value
+      max=options.anarchy.max
+      labelkey=SRA.anarchy.gmAnarchy
+      rowlength=10
+      adjust=false
+      checkicon='fas fa-sun'
+      uncheckicon='far fa-sun'
+    }}
+    {{/if}}
+  {{/if}}
+  </span>
+</div>
+

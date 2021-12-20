@@ -1,6 +1,7 @@
 import { SRA } from "./config.js";
 
 export class ErrorManager {
+
   static checkSufficient(resource, required, available) {
     if (required > available) {
       const error = game.i18n.format(SRA.common.errors.insufficient, {
@@ -19,6 +20,14 @@ export class ErrorManager {
         resource: game.i18n.localize(resource),
         value: value, min: min, max: max
       });
+      ui.notifications.error(error);
+      throw error;
+    }
+  }
+
+  static checkUserGM() {
+    if (!game.user.isGM) {
+      const error = game.i18n.localize(SRA.common.errors.onlyGM);
       ui.notifications.error(error);
       throw error;
     }

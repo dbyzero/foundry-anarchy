@@ -4,6 +4,7 @@ import { Grammar } from "./grammar.js";
 import { Misc } from "./misc.js";
 
 export const partials = [
+  'systems/shadowrun-anarchy/templates/actor/parts/anarchy.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/genre.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/metatype.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs',
@@ -36,7 +37,6 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs',
   'systems/shadowrun-anarchy/templates/item/parts/references.hbs',
   //-- common&technical partials
-  'systems/shadowrun-anarchy/templates/common/counteranarchy.hbs',
   'systems/shadowrun-anarchy/templates/common/checkbar.hbs',
   'systems/shadowrun-anarchy/templates/common/damagecode.hbs',
   'systems/shadowrun-anarchy/templates/common/item-controls.hbs',

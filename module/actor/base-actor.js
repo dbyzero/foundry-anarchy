@@ -20,7 +20,7 @@ export class SRABaseActor extends Actor {
   prepareData() {
     super.prepareData();
   }
-  prepareDerivedData(){
+  prepareDerivedData() {
     super.prepareDerivedData();
     this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
@@ -67,10 +67,23 @@ export class SRABaseActor extends Actor {
     dialog.render(true);
   }
 
+  getAnarchy() {
+    return this.hasPlayerOwner ? this.data.data.counters.anarchy.value : game.system.sra.gmAnarchyManager.getAnarchy();
+  }
+  getAnarchyMax() {
+    return this.hasPlayerOwner ? this.data.data.counters.anarchy.max : game.system.sra.gmAnarchyManager.getAnarchyMax();
+  }
+
   async spendAnarchy(count) {
-    let value = this.data.data.counters.anarchy.value;
-    ErrorManager.checkSufficient(SRA.actor.counters.anarchy, count, value);
-    await this.update({ 'data.counters.anarchy.value': (value - count) });
+    if (this.hasPlayerOwner) {
+      let value = this.getAnarchy();
+      ErrorManager.checkSufficient(SRA.actor.counters.anarchy, count, value);
+      await game.system.sra.gmAnarchyManager.addAnarchy(count);
+      await this.update({ 'data.counters.anarchy.value': (value - count) });
+    }
+    else {
+      await game.system.sra.gmAnarchyManager.addAnarchy(-count);
+    }
   }
 
   async spendEdge(spend) {

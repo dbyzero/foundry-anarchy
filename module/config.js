@@ -37,14 +37,15 @@ export const SRA = {
             rerollSuccess: 'SRA.common.roll.rerollSuccess',
             rerollForcedLoss: 'SRA.common.roll.rerollForcedLoss',
             rerollForcedSuccess: 'SRA.common.roll.rerollForcedSuccess',
-          },
+        },
         confirmation: {
             del: 'SRA.common.confirmation.del',
             delitem: 'SRA.common.confirmation.delitem'
         },
         errors: {
             insufficient: 'SRA.common.errors.insufficient',
-            outOfRange: 'SRA.common.errors.outOfRange'
+            outOfRange: 'SRA.common.errors.outOfRange',
+            onlyGM:  'SRA.common.errors.onlyGM'
         },
         sourceReference: 'SRA.common.sourceReference',
         sourceReferenceHelp: 'SRA.common.sourceReferenceHelp',

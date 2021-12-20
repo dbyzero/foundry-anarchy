@@ -1,6 +1,7 @@
 import { HandleDragApplication } from "./handle-drag.js";
 import { SRA } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
+import { ErrorManager } from "../error-manager.js";
 
 const ANARCHY_MANAGER = "anarchy-manager";
 const ANARCHY_MANAGER_POSITION = "anarchy-manager-position";
@@ -55,58 +56,98 @@ export class GMAnarchyManager extends Application {
   getData() {
     this.handleDrag.setPosition();
     return {
-      anarchy: Number(this.anarchy),
-      maxAnarchy: Number(this.anarchy) + 1,
+      value: this.getAnarchy(),
+      max: this.getAnarchyMax(),
       SRA: SRA
     }
   }
 
-  async updateDisplay() {
-    
+  getAnarchy() {
+    return this.anarchy;
   }
 
-  
+  getAnarchyMax() {
+    return this.anarchy + 1;
+  }
+
+  async setAnarchy(newAnarchy) {
+    ErrorManager.checkUserGM();
+    this._saveAnarchy(newAnarchy);
+
+    this.gmAnarchyBar.find('.checkbar-root')
+      .replaceWith(await this._buildAnarchyCheckbar());
+    this.gmAnarchyBar.find('a.click-checkbar-element')
+      .click(async (event) => await this._onCheckbarClick(event));
+
+    this._syncAllNPCSheetAnarchy();
+  }
+
+  async addAnarchy(count){
+    ErrorManager.checkSufficient(SRA.anarchy.gmAnarchy, -count, this.anarchy);
+    await this.setAnarchy(this.anarchy + count);
+  }
+
+  _syncAllNPCSheetAnarchy() {
+    for (let actor of game.actors) {
+      this._syncNPCSheetAnarchy(actor);
+    }
+    for (let token of game.canvas.tokens.documentCollection.values()) {
+      if (token.actor && !token.data.actorLink) {
+        this._syncNPCSheetAnarchy(token.actor);
+      }
+    }
+  }
+
+  _syncNPCSheetAnarchy(actor) {
+    if (!actor.hasPlayerOwner) {
+      console.log(`rendering NPC sheet for ${actor.name} , rendered=${actor.sheet?.rendered} `);
+      actor.sheet.render(actor.sheet?.rendered);
+    }
+  }
+
+  async updateDisplay() {
+
+  }
+
+
   async activateListeners(html) {
     super.activateListeners(html);
+    this.gmAnarchyBar = html.find(".gm-anarchy-bar");
+
     console.log('activateListeners', html);
-    
+
     await this.updateDisplay(html);
-    
+
     html.find('.anarchy-manager-move-handle').mousedown(event => this.handleDrag.onMouseDown(event));
-    
+
     html.find('a.click-checkbar-element').click(async event => await this._onCheckbarClick(event));
-    
+
   }
-  
+
   async _onCheckbarClick(event) {
     const current = $(event.currentTarget);
-    const gmAnarchyBar = current.closest('.gm-anarchy-bar');
-
     const index = Number.parseInt(current.attr('data-index'));
     const isChecked = current.attr('data-checked') == 'true';
-    this._setAnarchy(index + (isChecked ? 0 : 1));
+    const newAnarchy = index + (isChecked ? 0 : 1);
 
-    gmAnarchyBar.find('.checkbar-root')
-      .replaceWith(await this._buildAnarchyCheckbar());
-    gmAnarchyBar.find('a.click-checkbar-element')
-      .click(async event => await this._onCheckbarClick(event));
+    await this.setAnarchy(newAnarchy);
   }
 
   async _buildAnarchyCheckbar() {
     const htmlCheckBar = await renderTemplate("systems/shadowrun-anarchy/templates/common/checkbar.hbs", {
       code: 'anarchy',
-      value: Number(this.anarchy),
-      max: Number(this.anarchy) + 1,
+      value: this.getAnarchy(),
+      max: this.getAnarchyMax(),
       labelkey: SRA.anarchy.gmAnarchy,
       rowlength: 10,
       adjust: false,
-      checkicon: 'fas fa-star',
-      uncheckicon: 'far fa-star',
+      checkicon: 'fas fa-sun',
+      uncheckicon: 'far fa-sun',
     });
     return htmlCheckBar;
   }
-  
-  _setAnarchy(newAnarchy) {
+
+  _saveAnarchy(newAnarchy) {
     this.anarchy = newAnarchy;
     game.settings.set(SYSTEM_NAME, ANARCHY_GM, this.anarchy);
   }

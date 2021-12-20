@@ -56,9 +56,10 @@ export class Modifiers {
   }
 
   static _prepareAnarchyDisposition(actor) {
-    return actor.data.data.counters.anarchy.value <= 0 ? undefined : {
+    const anarchy = actor.getAnarchy();
+    return anarchy <= 0 ? undefined : {
       type: 'anarchyDisposition',
-      label: game.i18n.localize(SRA.common.roll.modifiers.anarchyDisposition) + ' (' + actor.data.data.counters.anarchy.value + ')',
+      label: game.i18n.localize(SRA.common.roll.modifiers.anarchyDisposition) + ' (' + anarchy + ')',
       value: ANARCHY_DICE_BONUS,
       category: 'pool',
       isAnarchy: true,
@@ -66,11 +67,12 @@ export class Modifiers {
       used: false
     }
   }
-
+  
   static _prepareAnarchyRisk(actor) {
-    return actor.data.data.counters.anarchy.value <= 0 ? undefined : {
+    const anarchy = actor.getAnarchy();
+    return anarchy <= 0 ? undefined : {
       type: 'anarchyRisk',
-      label: game.i18n.localize(SRA.common.roll.modifiers.anarchyRisk) + ' (' + actor.data.data.counters.anarchy.value + ')',
+      label: game.i18n.localize(SRA.common.roll.modifiers.anarchyRisk) + ' (' + anarchy + ')',
       category: 'other',
       isAnarchy: true,
       value: 1,

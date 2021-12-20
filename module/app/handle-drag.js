@@ -4,7 +4,7 @@ export class HandleDragApplication {
     this.getDocElement = getDocElement
     this.initial = options.initial ?? { left: 200, top: 200 };
     this.maxPos = options.maxPos ?? { left: 200, top: 100 };
-    this.minPos = options.minPos ?? { left: 100, top: 100 };
+    this.minPos = options.minPos ?? { left: 2, top: 2 };
     this.settings = options.settings;
 
     game.settings.register(this.settings.system, this.settings.keyPosition, {

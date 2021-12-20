@@ -17,15 +17,13 @@ export class SRARollDialog extends Dialog {
       attribute: skill?.data.data.attribute,
       specialization: specialization,
       modifiers: Modifiers.build(actor, skill, specialization),
-      ENUMS: Enums.getEnums(),
-      SRA: SRA,
       title: game.i18n.format(SRA.common.roll.title, {
         name: skill?.name,
         specialization: specialization ? '- ' + specialization : ''
       })
     };
   }
-
+  
   static prepareAttributeRollData(actor, attribute, attribute2 = undefined, attributeAction = undefined) {
     const rollData = {
       mode: 'attribute',
@@ -33,14 +31,15 @@ export class SRARollDialog extends Dialog {
       attributeAction: attributeAction,
       attribute: attribute,
       attribute2: attribute2 ?? attribute,
-      modifiers: Modifiers.build(actor),
-      ENUMS: Enums.getEnums(),
-      SRA: SRA
+      modifiers: Modifiers.build(actor)
     };
     return rollData;
   }
-
+  
   static async create(rollData) {
+    rollData.anarchy = rollData.actor.getAnarchy();
+    rollData.ENUMS = Enums.getEnums();
+    rollData.SRA = SRA;
     const html = await renderTemplate(`systems/shadowrun-anarchy/templates/dialog/sra-roll.hbs`, rollData);
     return new SRARollDialog(rollData, html);
   }

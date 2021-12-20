@@ -68,8 +68,10 @@
         {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.reroll}}
         {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.rerollForced}}
         <hr>
+        {{#if anarchy}}
         {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.anarchyDisposition}}
         {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.anarchyRisk}}
+        {{/if}}
         {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.edge}}
         <hr>
         {{> 'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs' modifiers.opponentRerollForced}}

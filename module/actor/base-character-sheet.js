@@ -18,7 +18,12 @@ export class SRABaseCharacterSheet extends ActorSheet {
       items: {},
       options: {
         isGM: game.user.isGM,
-        owner: this.document.isOwner
+        owner: this.document.isOwner,
+        ownAnarchy: this.document.hasPlayerOwner,
+        anarchy: {
+          value: this.actor.getAnarchy(),
+          max: this.actor.getAnarchyMax()
+        }
       },
       essence: {
         adjust: Essence.getAdjust(this.actor.data.data.counters.essence.value)
@@ -78,8 +83,14 @@ export class SRABaseCharacterSheet extends ActorSheet {
       const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
       const index = Number.parseInt($(event.currentTarget).attr('data-index'));
       const checked = $(event.currentTarget).attr('data-checked') == 'true';
-      console.log('click monitor ', monitor, ' at ', index, ' checked', checked);
-      await this.actor.setCounter(monitor, index + (checked ? 0 : 1));
+      const newValue = index + (checked ? 0 : 1);
+
+      if (monitor == 'anarchy' && !this.document.hasPlayerOwner) {
+        await game.system.sra.gmAnarchyManager.setAnarchy(newValue);
+        this.render(true)
+      } else{
+        await this.actor.setCounter(monitor, newValue);
+      }
     });
 
     // rolls
@@ -94,8 +105,8 @@ export class SRABaseCharacterSheet extends ActorSheet {
       const attribute = $(event.currentTarget).closest('.item').attr('data-attribute');
       this.actor.attributeRoll(attribute);
     });
-    html.find('.click-roll-attribute-action').click(async event => {
-      
+
+    html.find('.click-roll-attribute-action').click(async event => {      
       const attribute = $(event.currentTarget).attr('data-attribute');
       const attribute2 = $(event.currentTarget).attr('data-attribute2');
       const actionCode = $(event.currentTarget).attr('data-action-code');
