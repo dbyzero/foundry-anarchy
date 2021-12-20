@@ -319,10 +319,9 @@ input.item-field-value-numeric {
 }
 
 .anarchy-manager{
-  min-width: 150px;
+  min-width: 206px;
   grid-row: 2;
   grid-column: 1;
-  width: 206px;
   height: fit-content;
   margin: 0;
   padding: 0;
@@ -331,6 +330,7 @@ input.item-field-value-numeric {
   background: rgba(58, 58, 58, 0.8);
   z-index: 100;
 }
+
 .anarchy-manager-header{
   display: grid;
 	margin: 3px;
@@ -344,6 +344,6 @@ input.item-field-value-numeric {
   color: rgb(196, 196, 196);
   vertical-align: top;
 }
-.anarchy-manager-content input:disabled{
+.anarchy-manager-content input:disabled {
   color: rgb(196, 196, 196);
 }

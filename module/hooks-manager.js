@@ -7,7 +7,7 @@ import { SRABaseItemSheet } from './item/base-item-sheet.js';
 import { SRASkillSheet } from './item/skill-item-sheet.js';
 import { SRABaseItem } from './item/base-item.js';
 import { Enums } from './enums.js';
-import { GMAnarchy } from './app/gm-anarchy.js';
+import { GMAnarchyManager } from './app/gm-anarchy-manager.js';
 
 export class HooksManager {
 
@@ -37,7 +37,7 @@ export class HooksManager {
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
 
     await HandlebarsManager.init();
-    GMAnarchy.init();
+    GMAnarchyManager.init();
     SRABaseItem.init();
   }
 
@@ -62,15 +62,10 @@ export class HooksManager {
 
   static async onReady() {
 
-    const gmAnarchy = GMAnarchy.create();
+    game.system.sra.gmAnarchyManager = GMAnarchyManager.create();
     if (game.user.isGM) {
-      gmAnarchy.render(true);
+      game.system.sra.gmAnarchyManager.render(true);
     }
-    game.system.sra.gmAnarchy = gmAnarchy;
-    // const options = game.system.sra.gmAnarchy.defaultOptions;
-    // renderTemplate(options.template, { anarchy: gmAnarchy.anarchy })
-    //   .then(html => game.system.sra.gmAnarchy.render(true));
-
 
   }
 }

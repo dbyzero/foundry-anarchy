@@ -1,0 +1,24 @@
+<div id="anarchy-manager">
+  <div class="anarchy-manager">
+    <div class="anarchy-manager-header">
+      <p class="anarchy-manager-move-handle">{{localize SRA.anarchy.title}}</p>
+    </div>
+    <div class="anarchy-manager-content">
+			<div class="flexrow">
+				<div class="SRA-anarchy flexrow">
+					<span class="flex-grow-2 gm-anarchy-bar">
+					{{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+						code='anarchy'
+						value=anarchy
+						max=maxAnarchy
+						labelkey=SRA.anarchy.gmAnarchy
+						rowlength=10
+						adjust=false
+						checkicon='fas fa-star'
+						uncheckicon='far fa-star'
+					}}
+					</span>
+				</div>
+    </div>
+  </div>
+</div>
