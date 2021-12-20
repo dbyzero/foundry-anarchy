@@ -8,6 +8,8 @@ import { SRASkillSheet } from './item/skill-item-sheet.js';
 import { SRABaseItem } from './item/base-item.js';
 import { Enums } from './enums.js';
 import { GMAnarchyManager } from './app/gm-anarchy-manager.js';
+import { RemoteCall } from './remotecall.js';
+import { Users } from './users.js';
 
 export class HooksManager {
 
@@ -28,17 +30,22 @@ export class HooksManager {
       formula: "1d6"
     }
 
+    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
+    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
+
     CONFIG.SRA = SRA;
 
     Enums.registerEnums();
     HooksManager.registerSheets();
-
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
-
+    
     await HandlebarsManager.init();
+
+    // initialize remote calls registry first
+    RemoteCall.init();
+    Users.init();
     GMAnarchyManager.init();
     SRABaseItem.init();
+    console.log('Shadowrun Anarchy | init done');
   }
 
   static registerSheets() {
@@ -61,11 +68,6 @@ export class HooksManager {
   }
 
   static async onReady() {
-
-    game.system.sra.gmAnarchyManager = GMAnarchyManager.create();
-    if (game.user.isGM) {
-      game.system.sra.gmAnarchyManager.render(true);
-    }
-
+    GMAnarchyManager.create();
   }
 }

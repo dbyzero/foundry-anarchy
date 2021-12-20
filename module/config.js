@@ -1,7 +1,12 @@
 export const SRA = {
-    anarchy:{
+    anarchy: {
         title: 'SRA.anarchy.title',
-        gmAnarchy: 'SRA.anarchy.gmAnarchy'
+        gmAnarchy: 'SRA.anarchy.gmAnarchy',
+        playerChangedAnarchy: 'SRA.anarchy.playerChangedAnarchy',
+        gmReceivedAnarchy: 'SRA.anarchy.gmReceivedAnarchy'
+    },
+    chat:{
+        blindMessageToGM : 'SRA.chat.blindMessageToGM'
     },
     common: {
         newEntry: 'SRA.common.newEntry',
@@ -45,7 +50,7 @@ export const SRA = {
         errors: {
             insufficient: 'SRA.common.errors.insufficient',
             outOfRange: 'SRA.common.errors.outOfRange',
-            onlyGM:  'SRA.common.errors.onlyGM'
+            onlyGM: 'SRA.common.errors.onlyGM'
         },
         sourceReference: 'SRA.common.sourceReference',
         sourceReferenceHelp: 'SRA.common.sourceReferenceHelp',
@@ -177,7 +182,7 @@ export const SRA = {
         knowledge: 'SRA.attributes.knowledge',
         noAttribute: 'SRA.attributes.noAttributes',
     },
-    attributeActions:{
+    attributeActions: {
         catch: 'SRA.attributeActions.catch',
         defense: 'SRA.attributeActions.defense',
         judgeIntentions: 'SRA.attributeActions.judgeIntentions',

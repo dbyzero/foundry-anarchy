@@ -85,12 +85,7 @@ export class SRABaseCharacterSheet extends ActorSheet {
       const checked = $(event.currentTarget).attr('data-checked') == 'true';
       const newValue = index + (checked ? 0 : 1);
 
-      if (monitor == 'anarchy' && !this.document.hasPlayerOwner) {
-        await game.system.sra.gmAnarchyManager.setAnarchy(newValue);
-        this.render(true)
-      } else{
-        await this.actor.setCounter(monitor, newValue);
-      }
+      await this.actor.setCounter(monitor, newValue);
     });
 
     // rolls

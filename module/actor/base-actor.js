@@ -4,14 +4,15 @@ import { SRARollDialog } from "../dialog/roll-dialog.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
+import { Users } from "../users.js";
 
 
 const CHECKBARS = {
-  physical: { value: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: SRA.actor.monitors.physical },
-  stun: { value: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: SRA.actor.monitors.stun },
-  armor: { value: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: SRA.actor.monitors.armor },
-  anarchy: { value: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: SRA.actor.counters.anarchy },
-  edge: { value: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: SRA.actor.counters.edge }
+  physical: { dataPath: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: SRA.actor.monitors.physical },
+  stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: SRA.actor.monitors.stun },
+  armor: { dataPath: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: SRA.actor.monitors.armor },
+  anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: SRA.actor.counters.anarchy },
+  edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: SRA.actor.counters.edge }
 }
 
 
@@ -50,9 +51,58 @@ export class SRABaseActor extends Actor {
   async setCounter(monitor, value) {
     const checkbar = CHECKBARS[monitor];
     if (checkbar) {
-      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
-      await this.update({ [`${checkbar.value}`]: value });
+      if (monitor == 'anarchy') {
+        await this._setAnarchy(checkbar, value);
+      }
+      else {
+        ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
+        await this.update({ [`${checkbar.dataPath}`]: value });
+      }
     }
+  }
+
+  async _setAnarchy(checkbar, value) {
+    if (!this.hasPlayerOwner) {
+      await game.system.sra.gmAnarchyManager.setAnarchy(newValue);
+      this.sheet.render(false);
+    }
+    else {
+      const current = this.data.data.counters.anarchy.value;
+      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
+      if (!game.user.isGM) {
+        Users.blindMessageToGM({
+          from: game.user.id,
+          content: game.i18n.format(SRA.anarchy.playerChangedAnarchy,
+            {
+              user: game.user.name,
+              actor: this.name,
+              from: current,
+              to: value
+            })
+        });
+      }
+      if (value < current) {
+        await this._playerGivesAnarchyToGM(current - value);
+      }
+      await this.update({ [`${checkbar.dataPath}`]: value });
+    }
+  }
+
+  async _playerGivesAnarchyToGM(count) {
+    ChatMessage.create({
+      user: game.user,
+      whisper: ChatMessage.getWhisperRecipients('GM'),
+      content: game.i18n.format(SRA.anarchy.gmReceivedAnarchy,
+        {
+          anarchy: count,
+          actor: this.name
+        })
+    });
+    await game.system.sra.gmAnarchyManager.addAnarchy(count);
+  }
+
+  async npcConsumesAnarchy(count) {
+    await game.system.sra.gmAnarchyManager.addAnarchy(-count);
   }
 
   async skillRoll(skill, specialization) {
@@ -78,11 +128,11 @@ export class SRABaseActor extends Actor {
     if (this.hasPlayerOwner) {
       let value = this.getAnarchy();
       ErrorManager.checkSufficient(SRA.actor.counters.anarchy, count, value);
-      await game.system.sra.gmAnarchyManager.addAnarchy(count);
+      await this._playerGivesAnarchyToGM(count);
       await this.update({ 'data.counters.anarchy.value': (value - count) });
     }
     else {
-      await game.system.sra.gmAnarchyManager.addAnarchy(-count);
+      await this.npcConsumesAnarchy(count);
     }
   }
 

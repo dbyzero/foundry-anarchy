@@ -2,7 +2,12 @@
   "SRA": {
     "anarchy": {
       "title": "GM Anarchy manager",
-      "gmAnarchy": "GM Anarchy"
+      "gmAnarchy": "GM Anarchy",
+      "playerChangedAnarchy": "User {user} changed {actor}'s anarchy from {from} to {to}",
+      "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}"
+    },
+    "chat":{
+      "blindMessageToGM" : "Blind message from {user}:<br>{message}"
     },
     "common": {
       "newEntry": "New entry...",

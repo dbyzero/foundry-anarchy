@@ -2,12 +2,16 @@ import { HandleDragApplication } from "./handle-drag.js";
 import { SRA } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
+import { Users } from "../users.js";
+import { RemoteCall } from "../remotecall.js";
 
 const ANARCHY_MANAGER = "anarchy-manager";
 const ANARCHY_MANAGER_POSITION = "anarchy-manager-position";
 const ANARCHY_GM = "anarchy-gm";
 const ANARCHY_MANAGER_INITIAL_POSITION = { top: 200, left: 200 };
 const GM_ANARCHY_TEMPLATE = 'systems/shadowrun-anarchy/templates/app/gm-anarchy-manager.hbs';
+
+const GM_ADD_ANARCHY = 'GMAnarchyManager.addAnarchy';
 
 export class GMAnarchyManager extends Application {
 
@@ -19,9 +23,18 @@ export class GMAnarchyManager extends Application {
       type: Number
     });
   }
-
+  
   static create() {
-    return new GMAnarchyManager();
+    game.system.sra.gmAnarchyManager = new GMAnarchyManager();
+
+    if (game.user.isGM) {
+      game.system.sra.gmAnarchyManager.render(true);
+    }
+
+    RemoteCall.register(GM_ADD_ANARCHY, {
+      callback: data => game.system.sra.gmAnarchyManager.addAnarchy(data),
+      condition: user => user.isGM
+    });
   }
 
   constructor() {
@@ -36,8 +49,7 @@ export class GMAnarchyManager extends Application {
           system: SYSTEM_NAME,
           keyPosition: ANARCHY_MANAGER_POSITION
         }
-      }
-    )
+      })
   }
 
   /* -------------------------------------------- */
@@ -71,7 +83,6 @@ export class GMAnarchyManager extends Application {
   }
 
   async setAnarchy(newAnarchy) {
-    ErrorManager.checkUserGM();
     this._saveAnarchy(newAnarchy);
 
     this.gmAnarchyBar.find('.checkbar-root')
@@ -82,9 +93,11 @@ export class GMAnarchyManager extends Application {
     this._syncAllNPCSheetAnarchy();
   }
 
-  async addAnarchy(count){
-    ErrorManager.checkSufficient(SRA.anarchy.gmAnarchy, -count, this.anarchy);
-    await this.setAnarchy(this.anarchy + count);
+  async addAnarchy(count) {
+    if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
+      ErrorManager.checkSufficient(SRA.anarchy.gmAnarchy, -count, this.anarchy);
+      await this.setAnarchy(this.anarchy + count);
+    }
   }
 
   _syncAllNPCSheetAnarchy() {
