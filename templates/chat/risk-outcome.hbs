@@ -1,0 +1,9 @@
+  {{#if modifiers.anarchyRisk.used}}
+    {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
+    <div class="style-chat-anarchy-risk-prowess">{{localize SRA.common.roll.risk.prowess}}</div>
+    {{else if (eq roll.subrolls.risk.outcome 'glitch')}}
+    <div class="style-chat-anarchy-risk-glitch">{{localize SRA.common.roll.risk.glitch}}</div>
+    {{else if (eq roll.subrolls.risk.outcome 'nothing')}}
+    <div>{{localize SRA.common.roll.risk.nothing}}</div>
+    {{/if}}
+  {{/if}}

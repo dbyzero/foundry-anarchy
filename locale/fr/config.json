@@ -24,8 +24,8 @@
         "modifiers": {
           "edge": "Utiliser la chance",
           "specialization": "Utiliser la spécialization",
-          "anarchyDisposition": "Point d'Anarchie: bien disposé",
-          "anarchyRisk": "Point d'Anarchie: prise de risques",
+          "anarchyDisposition": "Anarchie - Bien disposé",
+          "anarchyRisk": "Anarchie - Prise de risques",
           "wounds": "Modificateur de blessures",
           "other": "Autres modificateurs",
           "reroll": "Relances",
@@ -36,9 +36,9 @@
         "totalSuccess": "Succès finaux",
         "success": "Succès",
         "risk": {
-          "prowess": "Prise de risque: Exploit",
-          "nothing": "Prise de risque: sans effet",
-          "glitch": "Prise de risque: Complication"
+          "prowess": "Anarchie - Prise de risque: Exploit",
+          "nothing": "Anarchie - Prise de risque: sans effet",
+          "glitch": "Anarchie - Prise de risque: Complication"
         },
         "rerollSuccess": "Succès sur relance",
         "rerollForcedLoss": "Relances forcées",

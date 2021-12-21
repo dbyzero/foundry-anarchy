@@ -155,6 +155,28 @@ li.flexrow.item span {
   text-align: left;  
 }
 
+
+div.style-chat-modifiers {
+  margin: 1px;
+  padding: 1px;
+  border-width: 1px;
+  border-style: dashed;
+  /* border-color: var(--controls-color); */
+}
+
+div.style-chat-anarchy-risk-glitch {
+  margin: 1px;
+  padding: 1px;
+  border-radius: 6px;
+  background: var(--gradient-purple-black) !important;
+}
+div.style-chat-anarchy-risk-prowess {
+  margin: 1px;
+  padding: 1px;
+  border-radius: 6px;
+  background: var(--gradient-gold) !important;
+}
+
 div.item {
   margin: 2px;
   padding: 2px;
@@ -187,13 +209,6 @@ div.item.style-contact{
   border-width: 1px;
   border-style: solid;
   background: var(--gradient-yellow) !important;
-}
-div.style-chat-modifiers {
-  margin: 1px;
-  padding: 1px;
-  border-width: 1px;
-  border-style: dashed;
-  /* border-color: var(--controls-color); */
 }
 
 

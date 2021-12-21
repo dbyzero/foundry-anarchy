@@ -24,8 +24,8 @@
         "modifiers": {
           "edge": "Use edge",
           "specialization": "Use specialization",
-          "anarchyDisposition": "Anarchy Point: dispositions",
-          "anarchyRisk": "Anarchy points: take risks",
+          "anarchyDisposition": "Anarchy - Dispositions",
+          "anarchyRisk": "Anarchy - Take risks",
           "wounds": "Wounds modifiers",
           "other": "Other modifiers",
           "reroll": "Rerolls",
@@ -36,9 +36,9 @@
         "totalSuccess": "Total successes",
         "success": "Successes",
         "risk": {
-          "prowess": "Risk taken: Prowess",
-          "nothing": "Risk taken: no effect",
-          "glitch": "Risk taken: Glitch"
+          "prowess": "Anarchy - Risk taken: Prowess",
+          "nothing": "Anarchy - Risk taken: no effect",
+          "glitch": "Anarchy - Risk taken: Glitch"
         },
         "rerollSuccess": "Reroll successes",
         "rerollForcedLoss": "Forced reroll",

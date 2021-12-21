@@ -21,4 +21,11 @@
     </div>
     {{/if}}
   {{/if}}
+  {{#if (eq category 'other')}}
+    {{#if value}}
+    <div>
+      {{localize (concat 'SRA.common.roll.modifiers.' type)}}
+    </div>
+    {{/if}}
+  {{/if}}
 {{/if}}
