@@ -46,7 +46,7 @@
           "nothing": "Anarchy - Risk taken: no effect",
           "glitch": "Anarchy - Risk taken: Glitch"
         },
-        "rerollSuccess": "Reroll successes",
+        "rerollSuccess": "Successes after reroll",
         "rerollForcedLoss": "Forced reroll",
         "rerollForcedSuccess": "Forced reroll successes"
       },

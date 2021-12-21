@@ -35,6 +35,7 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/actor/parts/armor-header.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/armor.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/monitors-npc.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/edge.hbs',
   //-- item
   'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs',
