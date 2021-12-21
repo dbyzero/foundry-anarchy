@@ -1,17 +1,9 @@
-<div class="SRA-armor flexcol">
-  <h2><div class="flexrow">
-    <input class="flex-grow-2" name="data.monitors.armor.label" type="text" data-dtype="String"
-      value="{{data.data.monitors.armor.label}}" placeholder="{{localize 'SRA.actor.monitors.armor'}}"/>
-    <input name="data.monitors.armor.max" type="text" data-dtype="Number" 
-      value="{{data.data.monitors.armor.max}}"/>
-  </div></h2>
-  {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
-    code='armor'
-    value=data.data.monitors.armor.value
-    max=data.data.monitors.armor.max
-    rowlength=(divup data.data.monitors.armor.max 3)
-    adjust=false
-    checkicon='far fa-dot-circle'
-    uncheckicon='fas fa-shield-alt'
-  }}
-</div>
+{{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+  code='armor'
+  value=data.data.monitors.armor.value
+  max=data.data.monitors.armor.max
+  rowlength=9
+  adjust=false
+  checkicon='far fa-dot-circle'
+  uncheckicon='fas fa-shield-alt'
+}}

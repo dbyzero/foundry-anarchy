@@ -23,8 +23,12 @@
       {{> "systems/shadowrun-anarchy/templates/actor/parts/essence.hbs"}}
       </div>
       <hr>
+      <div class="flexrow">
       {{> "systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs"}}
+      </div>
+      <div class="flexrow">
       {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs"}}
+      </div>
     </div>
   </header>
   <hr>
@@ -44,7 +48,7 @@
     <div class="flexcol">
     {{> "systems/shadowrun-anarchy/templates/actor/parts/skills.hbs"}}
     </div>
-    <div class="flexcol style-shadowamps">
+    <div class="flexcol">
     {{> "systems/shadowrun-anarchy/templates/actor/parts/shadowamps.hbs"}}
     </div>
     <div class="flexcol">
@@ -55,11 +59,30 @@
     </div>
     <div class="flexrow">
       <div>
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/armor.hbs"}}
-      <hr>
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/counteredge.hbs"}}
-      <hr>
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy.hbs"}}
+        <div class="flexcol">
+          <h3>
+            {{> "systems/shadowrun-anarchy/templates/actor/parts/armor-header.hbs"}}
+          </h3>
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/armor.hbs"}}
+        </div>
+        <hr>
+          <div class="flexrow">
+            <span class="flex-shrink">
+              {{localize (concat 'SRA.actor.counters.edge')}}
+            </span>
+            <span class="flex-grow-3">
+              {{> "systems/shadowrun-anarchy/templates/actor/parts/edge.hbs"}}
+            </span>
+          </div>
+        <hr>
+        <div class="SRA-anarchy flexrow">
+          <span class="flex-shrink">
+              {{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy-header.hbs"}}
+          </span>
+          <span class="flex-grow-3">
+              {{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy.hbs"}}
+          </span>
+        </div>
       </div>
       <div>
       {{> "systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs"}}

@@ -65,6 +65,7 @@
     },
     "actor": {
       "characterSheet": "Character sheet",
+      "npcSheet": "NPC Sheet",
       "actorName": "Name",
       "genre": "Genre",
       "noMetatype": "Pas de metatype, ajoutez le!",
@@ -79,7 +80,8 @@
         "cue": "Cues"
       },
       "essence": {
-        "adjustments": "to Magic, resonance, healing"
+        "adjustments": "to Magic, resonance, healing",
+        "adjustShort": "Essence adj. "
       },
       "counters": {
         "essence": "Essence",

@@ -65,6 +65,7 @@
     },
     "actor": {
       "characterSheet": "Fiche de personnage",
+      "npcSheet": "Fiche PNJ",
       "actorName": "Nom",
       "genre": "Genre",
       "noMetatype": "No metatype, drag it!",
@@ -79,7 +80,8 @@
         "cue": "Comportements"
       },
       "essence": {
-        "adjustments": "pour Magie, résonance, soins"
+        "adjustments": "pour Magie, résonance, soins",
+        "adjustShort": "Malus essence"
       },
       "counters": {
         "essence": "Essence",

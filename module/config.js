@@ -65,8 +65,10 @@ export const SRA = {
     },
     actor: {
         characterSheet: 'SRA.actor.characterSheet',
+        npcSheet: 'SRA.actor.npcSheet',
         actorName: 'SRA.actor.actorName',
         genre: 'SRA.actor.genre',
+        noMetatype: 'SRA.actor.noMetatype',
         singular: {
             keyword: 'SRA.actor.singular.keyword',
             disposition: 'SRA.actor.singular.disposition',
@@ -78,7 +80,8 @@ export const SRA = {
             cue: 'SRA.actor.plural.cue',
         },
         essence: {
-            adjustments: 'SRA.essence.adjustments',
+            adjustments: 'SRA.actor.essence.adjustments',
+            adjustShort: 'SRA.actor.essence.adjustShort',
         },
         counters: {
             essence: 'SRA.actor.counters.essence',

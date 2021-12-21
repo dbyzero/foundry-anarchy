@@ -1,9 +1,10 @@
 import { TEMPLATES_PATH } from "../constants.js";
 import { SRABaseCharacterSheet } from "./base-character-sheet.js";
 
-export class SRACharacterSheet extends SRABaseCharacterSheet{
+export class SRANPCSheet extends SRABaseCharacterSheet {
 
   get template() {
-    return `${TEMPLATES_PATH}/actor/character.hbs`;
+    return `${TEMPLATES_PATH}/actor/npc-sheet.hbs`;
   }
+
 }

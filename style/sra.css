@@ -1,13 +1,14 @@
 :root {
-  --font-color: rgba(211,211,211,1);
-  --controls-color: rgba(157, 187, 138, 0.6);
-  --checked-color: rgba(165, 144, 26, 0.6);
-  --unchecked-color: rgba(102, 192, 116, 0.6);
-  --wordlist-color: rgba(175, 180, 231, 0.3);
-  --border-dark:rgba(99, 99, 99, 0.3);
-  --border-medium:rgba(120, 120, 120, 0.3);
-  --border-light: rgba(163, 163, 163, 0.5);
-  --hover-tint: rgba(142, 176, 211, 0.486);
+  --font-color: hsl(0, 0%, 83%);
+  --controls-color: hsla(100, 30%, 60%, 0.6);
+  --checked-color: hsla(50, 80%, 50%, 0.6);
+  --unchecked-color: hsla(130, 80%, 40%, 0.6);
+  --wordlist-color: hsla(200, 50%, 70%, 0.3);
+  --border-dark:hsla(200, 10%, 30%, 0.4);
+  --border-medium:hsla(200, 10%, 45%, 0.4);
+  --border-light: hsla(200, 10%, 60%, 0.4);
+  --hover-tint: hsla(210, 44%, 69%, 0.486);
+  --background-dark:hsla(200, 5%, 30%, 0.8);
   --gradient-dark: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.8) 0% 3%,
     hsla(0, 0%, 15%, 0.8) 7%,
@@ -29,14 +30,24 @@
 h1, h2, h3, h4 {
   font-weight: bold;
 }
-.window-app .window-content{
+
+
+div.app.window-app.sheet .window-content{
   background: var(--gradient-dark);
   color: var(--font-color);
 }
-.window-app .window-content input,
-.window-app .window-content select {
+div.app.window-app.sheet .window-content input,
+div.app.window-app.sheet .window-content select,
+div.app.window-app.sheet .window-content label,
+div.app.window-app.sheet .window-content button {
   color: var(--font-color);
 }
+
+div.app.window-app.sheet .window-content select option{
+  background-color: var(--background-dark);
+  color: var(--font-color);
+}
+
 
 div.item.flexcol {
   gap: 2px;
@@ -359,7 +370,7 @@ input.item-field-value-numeric {
   height: fit-content;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border-medium);
   border-radius: 3%;
   background: var(--gradient-dark);
   z-index: 100;
@@ -370,7 +381,7 @@ input.item-field-value-numeric {
 	margin: 3px;
 	padding: 3px;
 	width: 200px;
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-light);
   color: var(--font-color);
 }
 .gm-manager-content {

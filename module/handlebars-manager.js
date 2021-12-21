@@ -5,10 +5,12 @@ import { Misc } from "./misc.js";
 
 export const partials = [
   'systems/shadowrun-anarchy/templates/actor/parts/anarchy.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/anarchy-header.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/genre.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/metatype.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/essence.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/essence-short.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/karma.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/attribute.hbs',
@@ -30,9 +32,10 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/attributebutton.hbs',
   //-- counters & monitors
+  'systems/shadowrun-anarchy/templates/actor/parts/armor-header.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/armor.hbs',
   'systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs',
-  'systems/shadowrun-anarchy/templates/actor/parts/counteredge.hbs',
+  'systems/shadowrun-anarchy/templates/actor/parts/edge.hbs',
   //-- item
   'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs',
   'systems/shadowrun-anarchy/templates/item/parts/references.hbs',

@@ -12,6 +12,7 @@ import { RemoteCall } from './remotecall.js';
 import { Users } from './users.js';
 import { GMAnarchy } from './app/gm-anarchy.js';
 import { GMDifficulty } from './app/gm-difficulty.js';
+import { SRANPCSheet } from './actor/npc-sheet.js';
 
 export class HooksManager {
 
@@ -54,6 +55,11 @@ export class HooksManager {
     Actors.registerSheet(SYSTEM_NAME, SRACharacterSheet, {
       label: game.i18n.localize(SRA.actor.characterSheet),
       makeDefault: true,
+      types: ['character']
+    });
+    Actors.registerSheet(SYSTEM_NAME, SRANPCSheet, {
+      label: game.i18n.localize(SRA.actor.npcSheet),
+      makeDefault: false,
       types: ['character']
     });
 

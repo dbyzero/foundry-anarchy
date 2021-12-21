@@ -1,25 +1,3 @@
-{{!-- 
-• Attraper un objet au vol : Agilité + Agilité
-• Défense : Agilité + Logique (voir Combat, p. XXX)
-• Estimer les intentions : Charisme + Charisme
-• Perception : Logique + Volonté (voir Perception, p. XXX)
-• Résister à la torture : Force + Volonté
-• Résister à l’intimidation : Charisme + Volonté
-• Se souvenir d’un détail spécifique : Logique + Logique
-• Soulever un objet lourd : Force + Force
-
-
-catch
-defense
-judgeIntentions
-perception
-resistTorture
-composure
-memory
-lifting
- --}}
-<div class="flexrow">
-  {{#each ENUMS.attributeActions as |attributeAction|}}
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebutton.hbs" attributeAction}}
-  {{/each}}
-</div>
+{{#each ENUMS.attributeActions as |attributeAction|}}
+    {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebutton.hbs" attributeAction}}
+{{/each}}
