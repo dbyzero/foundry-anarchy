@@ -21,6 +21,7 @@ export class SRABaseActor extends Actor {
   prepareData() {
     super.prepareData();
   }
+
   prepareDerivedData() {
     super.prepareDerivedData();
     this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
@@ -158,7 +159,7 @@ export class SRABaseActor extends Actor {
   }
 
   async removeOtherMetatype(metatype) {
-    const metatypeIds = this.items.filter(it => it.isMetatype)
+    const metatypeIds = this.items.filter(it => it.isMetatype())
       .filter(it => it.id != metatype.id)
       .map(it => it.id);
     this.deleteEmbeddedDocuments("Item", metatypeIds);
