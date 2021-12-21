@@ -7,9 +7,10 @@ import { SRABaseItemSheet } from './item/base-item-sheet.js';
 import { SRASkillSheet } from './item/skill-item-sheet.js';
 import { SRABaseItem } from './item/base-item.js';
 import { Enums } from './enums.js';
-import { GMAnarchyManager } from './app/gm-anarchy-manager.js';
+import { GMManager } from './app/gm-manager.js';
 import { RemoteCall } from './remotecall.js';
 import { Users } from './users.js';
+import { GMAnarchy } from './app/gm-anarchy.js';
 
 export class HooksManager {
 
@@ -43,7 +44,6 @@ export class HooksManager {
     // initialize remote calls registry first
     RemoteCall.init();
     Users.init();
-    GMAnarchyManager.init();
     SRABaseItem.init();
     console.log('Shadowrun Anarchy | init done');
   }
@@ -68,6 +68,9 @@ export class HooksManager {
   }
 
   static async onReady() {
-    GMAnarchyManager.create();
+    GMAnarchy.init();
+    GMManager.init();
+
+    GMManager.create();
   }
 }

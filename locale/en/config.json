@@ -1,13 +1,13 @@
 {
   "SRA": {
-    "anarchy": {
-      "title": "GM Anarchy manager",
+    "gmManager": {
+      "title": "GM manager",
       "gmAnarchy": "GM Anarchy",
       "playerChangedAnarchy": "User {user} changed {actor}'s anarchy from {from} to {to}",
       "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}"
     },
-    "chat":{
-      "blindMessageToGM" : "Blind message from {user}:<br>{message}"
+    "chat": {
+      "blindMessageToGM": "Blind message from {user}:<br>{message}"
     },
     "common": {
       "newEntry": "New entry...",
@@ -31,7 +31,7 @@
           "reroll": "Rerolls",
           "rerollForced": "Rerolls successes",
           "opponentRerollForced": "Opponent must reroll successes",
-          "opponentReduce": "Opponent pool reduction"          
+          "opponentReduce": "Opponent pool reduction"
         },
         "totalSuccess": "Total successes",
         "success": "Successes",
@@ -183,7 +183,7 @@
       "knowledge": "Knowledge",
       "noAttribute": "No attribute chosen"
     },
-    "attributeActions":{
+    "attributeActions": {
       "catch": "Catch object",
       "defense": "Defense",
       "judgeIntentions": "Judge intentions",
@@ -193,7 +193,7 @@
       "memory": "Memory",
       "lifting": "Lifting/carrying"
     },
-   "skill": {
+    "skill": {
       "athletics": "Athletics",
       "closeCombat": "Close combat",
       "projectileWeapons": "Projectile weapons",

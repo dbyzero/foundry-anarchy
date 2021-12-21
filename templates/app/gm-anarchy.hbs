@@ -1,0 +1,15 @@
+<div class="SRA-anarchy flexrow">
+	<label>{{localize SRA.gmManager.gmAnarchy}}</label>
+	<span class="flex-grow-2 gm-anarchy-bar">
+	{{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+		code='anarchy'
+		value=anarchy.value
+		max=anarchy.max
+		labelkey=SRA.gmManager.gmAnarchy
+		rowlength=10
+		adjust=false
+		checkicon='fas fa-sun'
+		uncheckicon='far fa-sun'
+	}}
+	</span>
+</div>

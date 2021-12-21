@@ -63,7 +63,7 @@ export class SRABaseActor extends Actor {
 
   async _setAnarchy(checkbar, value) {
     if (!this.hasPlayerOwner) {
-      await game.system.sra.gmAnarchyManager.setAnarchy(newValue);
+      await game.system.sra.gmManager.gmAnarchy.gmAnarchy.gmAnarchy.gmAnarchy.gmAnarchy.setAnarchy(newValue);
       this.sheet.render(false);
     }
     else {
@@ -72,7 +72,7 @@ export class SRABaseActor extends Actor {
       if (!game.user.isGM) {
         Users.blindMessageToGM({
           from: game.user.id,
-          content: game.i18n.format(SRA.anarchy.playerChangedAnarchy,
+          content: game.i18n.format(SRA.gmManager.playerChangedAnarchy,
             {
               user: game.user.name,
               actor: this.name,
@@ -92,17 +92,17 @@ export class SRABaseActor extends Actor {
     ChatMessage.create({
       user: game.user,
       whisper: ChatMessage.getWhisperRecipients('GM'),
-      content: game.i18n.format(SRA.anarchy.gmReceivedAnarchy,
+      content: game.i18n.format(SRA.gmManager.gmReceivedAnarchy,
         {
           anarchy: count,
           actor: this.name
         })
     });
-    await game.system.sra.gmAnarchyManager.addAnarchy(count);
+    await game.system.sra.gmManager.gmAnarchy.addAnarchy(count);
   }
 
   async npcConsumesAnarchy(count) {
-    await game.system.sra.gmAnarchyManager.addAnarchy(-count);
+    await game.system.sra.gmManager.gmAnarchy.addAnarchy(-count);
   }
 
   async skillRoll(skill, specialization) {
@@ -118,10 +118,10 @@ export class SRABaseActor extends Actor {
   }
 
   getAnarchy() {
-    return this.hasPlayerOwner ? this.data.data.counters.anarchy.value : game.system.sra.gmAnarchyManager.getAnarchy();
+    return this.hasPlayerOwner ? this.data.data.counters.anarchy.value : game.system.sra.gmManager.gmAnarchy.getAnarchy();
   }
   getAnarchyMax() {
-    return this.hasPlayerOwner ? this.data.data.counters.anarchy.max : game.system.sra.gmAnarchyManager.getAnarchyMax();
+    return this.hasPlayerOwner ? this.data.data.counters.anarchy.max : game.system.sra.gmManager.gmAnarchy.getAnarchyMax();
   }
 
   async spendAnarchy(count) {

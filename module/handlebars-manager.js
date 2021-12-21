@@ -46,6 +46,9 @@ export const partials = [
   //-- chat
   'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs',
   'systems/shadowrun-anarchy/templates/chat/risk-outcome.hbs',
+  //-- apps
+  'systems/shadowrun-anarchy/templates/app/gm-anarchy.hbs',
+
 ];
 
 export class HandlebarsManager {

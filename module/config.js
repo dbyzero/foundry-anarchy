@@ -1,12 +1,12 @@
 export const SRA = {
-    anarchy: {
-        title: 'SRA.anarchy.title',
-        gmAnarchy: 'SRA.anarchy.gmAnarchy',
-        playerChangedAnarchy: 'SRA.anarchy.playerChangedAnarchy',
-        gmReceivedAnarchy: 'SRA.anarchy.gmReceivedAnarchy'
+    gmManager: {
+        title: 'SRA.gmManager.title',
+        gmAnarchy: 'SRA.gmManager.gmAnarchy',
+        playerChangedAnarchy: 'SRA.gmManager.playerChangedAnarchy',
+        gmReceivedAnarchy: 'SRA.gmManager.gmReceivedAnarchy'
     },
-    chat:{
-        blindMessageToGM : 'SRA.chat.blindMessageToGM'
+    chat: {
+        blindMessageToGM: 'SRA.chat.blindMessageToGM'
     },
     common: {
         newEntry: 'SRA.common.newEntry',

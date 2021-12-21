@@ -327,13 +327,13 @@ input.item-field-value-numeric {
   padding: 3px 0;
 }
 
-#anarchy-manager {
+#gm-manager {
 	position: absolute;
   display: block;
   z-index: 100;
 }
 
-.anarchy-manager{
+.gm-manager{
   min-width: 206px;
   grid-row: 2;
   grid-column: 1;
@@ -346,7 +346,7 @@ input.item-field-value-numeric {
   z-index: 100;
 }
 
-.anarchy-manager-header{
+.gm-manager-header{
   display: grid;
 	margin: 3px;
 	padding: 3px;
@@ -354,11 +354,11 @@ input.item-field-value-numeric {
   border-bottom: 1px solid rgb(196, 196, 196);
   color: rgb(196, 196, 196);
 }
-.anarchy-manager-content {
+.gm-manager-content {
   padding: 3px;
   color: rgb(196, 196, 196);
   vertical-align: top;
 }
-.anarchy-manager-content input:disabled {
+.gm-manager-content input:disabled {
   color: rgb(196, 196, 196);
 }

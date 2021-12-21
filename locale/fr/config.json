@@ -1,13 +1,13 @@
 {
   "SRA": {
-    "anarchy": {
-      "title": "Gestion de l'Anarchie MJ",
+    "gmManager": {
+      "title": "Gestion du MJ",
       "gmAnarchy": "Anarchie MJ",
       "playerChangedAnarchy": "Le joueur {user} a passé l'anarchy de {actor} de {from} à {to}",
       "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchie de {actor}"
     },
-    "chat":{
-      "blindMessageToGM" : "Message aveugle de {user}:<br>{message}"
+    "chat": {
+      "blindMessageToGM": "Message aveugle de {user}:<br>{message}"
     },
     "common": {
       "newEntry": "Valeur...",
