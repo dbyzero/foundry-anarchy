@@ -4,7 +4,13 @@
       "title": "GM manager",
       "gmAnarchy": "GM Anarchy",
       "playerChangedAnarchy": "User {user} changed {actor}'s anarchy from {from} to {to}",
-      "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}"
+      "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}",
+      "gmDifficulty": {
+        "name": "Default difficulty pools",
+        "hint": "The default difficulty pools, represented as 'Trivial:4,Easy:6' ...",
+        "default": "Trivial:4,Easy:6,Average:8,Hard:10,Very hard:12",
+        "chatMessage": "The difficulty {difficulty} ({pool}) dice is {success}"
+      }
     },
     "chat": {
       "blindMessageToGM": "Blind message from {user}:<br>{message}"

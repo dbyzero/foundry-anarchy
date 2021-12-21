@@ -48,6 +48,8 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/chat/risk-outcome.hbs',
   //-- apps
   'systems/shadowrun-anarchy/templates/app/gm-anarchy.hbs',
+  'systems/shadowrun-anarchy/templates/app/gm-difficulty.hbs',
+  'systems/shadowrun-anarchy/templates/app/gm-difficulty-buttons.hbs',
 
 ];
 

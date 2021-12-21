@@ -3,7 +3,13 @@ export const SRA = {
         title: 'SRA.gmManager.title',
         gmAnarchy: 'SRA.gmManager.gmAnarchy',
         playerChangedAnarchy: 'SRA.gmManager.playerChangedAnarchy',
-        gmReceivedAnarchy: 'SRA.gmManager.gmReceivedAnarchy'
+        gmReceivedAnarchy: 'SRA.gmManager.gmReceivedAnarchy',
+        gmDifficulty: {
+            name: 'SRA.gmManager.gmDifficulty.name',
+            hint: 'SRA.gmManager.gmDifficulty.hint',
+            default: 'SRA.gmManager.gmDifficulty.default',
+            chatMessage: 'SRA.gmManager.gmDifficulty.chatMessage',
+        }
     },
     chat: {
         blindMessageToGM: 'SRA.chat.blindMessageToGM'

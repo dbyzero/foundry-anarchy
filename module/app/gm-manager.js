@@ -2,6 +2,7 @@ import { HandleDragApplication } from "./handle-drag.js";
 import { SRA } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
 import { GMAnarchy } from "./gm-anarchy.js";
+import { GMDifficulty } from "./gm-difficulty.js";
 
 const GM_MANAGER = "gm-manager";
 const GM_MANAGER_POSITION = "gm-manager-position";
@@ -27,6 +28,7 @@ export class GMManager extends Application {
   constructor() {
     super();
     this.gmAnarchy = new GMAnarchy();
+    this.gmDifficulty = new GMDifficulty();
     this.handleDrag = new HandleDragApplication(
       doc => doc.getElementById("gm-manager"),
       {
@@ -56,6 +58,7 @@ export class GMManager extends Application {
     this.handleDrag.setPosition();
     return {
       anarchy: this.gmAnarchy.getAnarchyData(),
+      difficultyPools: this.gmDifficulty.getDifficultyData(),
       SRA: SRA
     }
   }
@@ -66,6 +69,7 @@ export class GMManager extends Application {
     html.find('.gm-manager-move-handle').mousedown(event => this.handleDrag.onMouseDown(event));
 
     this.gmAnarchy.activateListeners(html)
+    this.gmDifficulty.activateListeners(html)
 
   }
 }

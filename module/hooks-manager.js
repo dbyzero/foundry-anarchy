@@ -11,6 +11,7 @@ import { GMManager } from './app/gm-manager.js';
 import { RemoteCall } from './remotecall.js';
 import { Users } from './users.js';
 import { GMAnarchy } from './app/gm-anarchy.js';
+import { GMDifficulty } from './app/gm-difficulty.js';
 
 export class HooksManager {
 
@@ -69,6 +70,7 @@ export class HooksManager {
 
   static async onReady() {
     GMAnarchy.init();
+    GMDifficulty.init();
     GMManager.init();
 
     GMManager.create();
