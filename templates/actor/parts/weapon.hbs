@@ -13,10 +13,10 @@
       noArmor=data.noArmor
     }}
   </span>
-  <span class="flex-shrink">{{localize (concat 'SRA.area.' data.area)}}</span>
+  <span class="flex-shrink">{{localize (concat 'SRA.area.' (either data.area 'none'))}}</span>
   <span class="flex-shrink">{{either data.range.short 'OK'}}</span>
   <span class="flex-shrink">
-    {{#unless (eq data.range.max "short")}}
+    {{#unless (eq data.range.max "sh  ort")}}
     {{either data.range.medium 'OK'}}
     {{/unless}}
   </span>

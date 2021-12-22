@@ -1,4 +1,4 @@
-<form class="{{options.cssClass}}" autocomplete="off">
+<form class="{{options.cssClass}} npc-character-sheet" autocomplete="off">
   <header class="sheet-header">
     <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
     <div class="flexcol">
@@ -6,29 +6,30 @@
         <div>
             <input name="name" type="text" value="{{data.name}}" placeholder="{{localize SRA.actor.actorName}}"/>
         </div>
-        <div class="flexcol flex-shrink">
-          <div class="flexrow">
+        <div class="flex-shrink">
           {{> "systems/shadowrun-anarchy/templates/actor/parts/metatype.hbs"}}
+        </div>
+        <div class="flex-shrink">
           {{> "systems/shadowrun-anarchy/templates/actor/parts/genre.hbs"}}
-          </div>
         </div>
       </div>
       <div class="flexrow">
-        {{> "systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs"}}
-        {{> "systems/shadowrun-anarchy/templates/actor/parts/essence-short.hbs"}}
+        <div class="flexrow flex-shrink">
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs"}}
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/essence-short.hbs"}}
+        </div>
+      </div>
+      <div class="flexrow">
+      {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs"}}
       </div>
     </div>
   </header>
-  <hr>
   <section class="sheet-body">
     <div class="flexrow">
     {{> "systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs"}}
     </div>
     <div class="flexrow">
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs"}}
-    </div>
-    <div class="flexrow">
-      <div>
+      <div class="style-monitor-counters">
         <span class="flexcol">
           {{> "systems/shadowrun-anarchy/templates/actor/parts/armor-header.hbs"}}
         </span>
@@ -44,7 +45,7 @@
           {{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy.hbs"}}
         </span>
       </div>
-      <div>
+      <div class="style-monitor-counters">
       {{> "systems/shadowrun-anarchy/templates/actor/parts/monitors-npc.hbs"}}
       </div>
     </div>
@@ -58,11 +59,9 @@
     {{> "systems/shadowrun-anarchy/templates/actor/parts/shadowamps.hbs"}}
     {{> "systems/shadowrun-anarchy/templates/actor/parts/qualities.hbs"}}
     </div>
-    <hr>
     <div>
-      {{> 'systems/shadowrun-anarchy/templates/actor/parts/description.hbs'}}
-      <hr>
-      {{> 'systems/shadowrun-anarchy/templates/actor/parts/gmnotes.hbs'}}
+    {{> 'systems/shadowrun-anarchy/templates/actor/parts/description.hbs'}}
+    {{> 'systems/shadowrun-anarchy/templates/actor/parts/gmnotes.hbs'}}
     </div>
   </section>
 </form>

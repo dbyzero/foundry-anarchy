@@ -9,6 +9,7 @@
   --border-light: hsla(200, 10%, 60%, 0.4);
   --hover-tint: hsla(210, 44%, 69%, 0.486);
   --background-dark:hsla(200, 5%, 30%, 0.8);
+  --lighter-npc: hsla(90, 29%, 30%, 0.2);
   --gradient-dark: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.8) 0% 3%,
     hsla(0, 0%, 15%, 0.8) 7%,
@@ -21,6 +22,18 @@
     hsla(0, 0%, 10%, 0.8) 41%, 
     hsla(0, 0%, 5%, 0.8) 44%, 
     hsla(0, 0%, 0%, 0.8) 50%);
+  --gradient-dark-npc: repeating-linear-gradient(80deg,
+    hsla(220, 10%, 10%, 0.8) 0% 3%,
+    hsla(220, 10%, 25%, 0.8) 7%,
+    hsla(220, 10%, 20%, 0.9) 9% 12%,
+    hsla(220, 10%, 30%, 0.8) 16%,
+    hsla(220, 10%, 23%, 0.9) 18%,
+    hsla(220, 10%, 10%, 0.8) 20% 25%, 
+    hsla(220, 10%, 20%, 0.8) 30%,
+    hsla(220, 10%, 25%, 0.8) 38%,
+    hsla(220, 10%, 20%, 0.8) 41%, 
+    hsla(220, 10%, 15%, 0.8) 44%, 
+    hsla(220, 10%, 10%, 0.8) 50%);
   --gradient-dark-transparent: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.5) 0% 3%,
     hsla(0, 0%, 15%, 0.5) 7%,
@@ -48,10 +61,14 @@ h1, h2, h3, h4 {
   font-weight: bold;
 }
 
-div.app.window-app.sheet .window-content{
+div.app.window-app.sheet .window-content {
   background: var(--gradient-dark);
   color: var(--font-color);
 }
+div.app.window-app.sheet .window-content > form.npc-character-sheet {
+  background: var(--lighter-npc);
+}
+
 
 div.app.window-app.sheet .window-content input,
 div.app.window-app.sheet .window-content select,
@@ -151,19 +168,41 @@ div.flex-group-left {
 .tox .tox-edit-area {
   padding: 0 8px;
 }
+div.style-monitor-counters {
+  margin: 2px;
+  padding: 2px;
+}
+
+div.style-chat-modifiers {
+  margin: 1px;
+  padding: 1px;
+  border-width: 1px;
+  border-style: dashed;
+}
+div.style-chat-anarchy-risk-glitch {
+  margin: 1px;
+  padding: 1px;
+  border-radius: 6px;
+  background: var(--gradient-purple-black) !important;
+}
+div.style-chat-anarchy-risk-prowess {
+  margin: 1px;
+  padding: 1px;
+  border-radius: 6px;
+  background: var(--gradient-gold) !important;
+}
 
 div.style-keyword-list,
 div.style-disposition-list,
 div.style-cue-list {
   margin: 2px;
   padding: 2px;
+  border-radius: 6px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 6px;
   border-color: var(--border-light);
   background-color: var(--wordlist-color);
 }
-
 div.style-keyword-list input,
 div.style-disposition-list input,
 div.style-cue-list input{
@@ -172,6 +211,51 @@ div.style-cue-list input{
   border-color: var(--border-light);
 }
 
+div.item {
+  margin: 2px;
+  padding: 2px;
+  border-width: 1px;
+  border-color: var(--border-light);
+  border-style: solid;
+  border-radius: 6px;
+  max-width: 16rem;
+  flex-basis: auto;
+}
+
+div.item.style-attribute {
+  background: var(--gradient-gold) !important;
+  min-width: auto;  
+  max-width: 6rem;
+}
+div.item.style-attribute input {
+  max-width: 2rem;
+  font-size: large;
+}
+div.item.style-skill {
+  background: var(--gradient-silver);
+}
+div.item.style-gear,
+div.item.style-contact{
+  background: var(--wordlist-color) !important;
+}
+div.item.style-shadowamp,
+div.item.style-quality {
+  background: var(--gradient-silver);
+}  
+div.item.style-quality.style-quality-negative {
+  background: var(--gradient-purple-black);
+  border-style: dashed;
+}  
+
+li.list-header {
+  align-content: flex-start;
+  justify-content: flex-start;
+  font-weight: bold;
+  flex-grow: 0;
+}
+li.flexrow.item span {
+  text-align: left;  
+}
 .list-item {
   margin: 0.1rem;
   box-shadow: inset 0px 0px 1px var(--border-medium);
@@ -192,98 +276,7 @@ div.style-cue-list input{
   background: var(--border-medium);
 }
 
-.list-header {
-  align-content: flex-start;
-  justify-content: flex-start;
-  font-weight: bold;
-  flex-grow: 0;
-}
 
-li.flexrow.item span {
-  text-align: left;  
-}
-
-
-div.style-chat-modifiers {
-  margin: 1px;
-  padding: 1px;
-  border-width: 1px;
-  border-style: dashed;
-}
-
-div.style-chat-anarchy-risk-glitch {
-  margin: 1px;
-  padding: 1px;
-  border-radius: 6px;
-  background: var(--gradient-purple-black) !important;
-}
-div.style-chat-anarchy-risk-prowess {
-  margin: 1px;
-  padding: 1px;
-  border-radius: 6px;
-  background: var(--gradient-gold) !important;
-}
-
-div.item {
-  margin: 2px;
-  padding: 2px;
-  border-width: 1px;
-  border-color: var(--border-light);
-  border-style: solid;
-  border-radius: 6px;
-}
-
-div.item.style-attribute input {
-  width: 2rem;
-}
-div.item.style-attribute {
-  margin: 2px;
-  padding: 2px;
-  border-width: 1px;
-  border-style: solid;
-  background: var(--gradient-gold) !important;
-  flex-basis: auto;
-  width: auto;
-}
-
-div.item.style-skill {
-  max-width: 12rem;  
-}
-
-div.item.style-gear,
-div.item.style-contact{
-  margin: 2px;
-  padding: 2px;
-  border-width: 1px;
-  border-style: solid;
-  background: var(--wordlist-color) !important;
-}
-
-
-div.item.style-shadowamp,
-div.item.style-skill,
-div.item.style-quality-positive {
-  margin: 2px;
-  padding: 2px;
-  border-width: 1px;
-  border-style: solid;
-  background: var(--gradient-silver) !important;
-  flex-basis: auto;
-  width: auto;
-}  
-div.item.style-quality-negative {
-  margin: 2px;
-  padding: 2px;
-  border-width: 1px;
-  border-style: solid;
-  background: var(--gradient-purple-black) !important;
-  flex-basis: auto;
-  width: auto;
-}  
-
-div.item.quality-negative {
-  border-style: dashed;
-}
 a.item-control i {
   font-size: small;
   color: var(--controls-color);
@@ -303,17 +296,16 @@ input.item-field-value-numeric {
 }
 
 .style-button {
-  box-shadow: inset 0px 1px 0px 0px var(--border-light);
   background: var(--gradient-silver);
-  border-radius: 3px;
-  border: 2px ridge #c0beb9;
+  border-radius: 6px;
+  border: 3px ridge var(--border-medium);
   display: inline-block;
   cursor: pointer;
-  padding: 4px 12px 0px 12px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px var(--border-light);
+  margin: 2px;
+  padding: 3px 5px;
   position: relative;
-  margin:2px;
+  height: fit-content;
+  width: fit-content;
 }
 
 .style-button:hover {
@@ -321,8 +313,9 @@ input.item-field-value-numeric {
   background-color: var(--hover-tint);
 }
 .style-button:active {
-  position:relative;
-  top:1px;
+  position: relative;
+  top: 1px;
+  left: 1px;
 }
 
 

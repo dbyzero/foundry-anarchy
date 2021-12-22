@@ -1,12 +1,15 @@
-<form class="{{options.cssClass}}" autocomplete="off">
+<form class="{{options.cssClass}} character-sheet" autocomplete="off">
   <header class="sheet-header">
     <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
     <div class="flexcol">
       <div class="flexrow">
-        <div class="flex-grow-2 ">
+        <div class="flex-grow-2 flexcol">
           <h1 class="actor-name flexrow">
             <input name="name" type="text" value="{{data.name}}" placeholder="{{localize SRA.actor.actorName}}"/>
           </h1>
+          <div class="flexrow">
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs"}}
+          </div>
         </div>
         <div class="flexcol flex-shrink">
           <div class="flexrow">
@@ -17,21 +20,18 @@
           <div class="flexrow">
           {{> "systems/shadowrun-anarchy/templates/actor/parts/karma.hbs"}}
           </div>
+          <div class="flexrow">
+          {{> "systems/shadowrun-anarchy/templates/actor/parts/essence.hbs"}}
+          </div>
         </div>
       </div>
-      <div class="flexrow">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/essence.hbs"}}
-      </div>
-      <hr>
       <div class="flexrow">
       {{> "systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs"}}
       </div>
       <div class="flexrow">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs"}}
       </div>
     </div>
   </header>
-  <hr>
   <section class="sheet-body">
     <div class="flexrow">
       <div class="flexcol style-keyword-list">
@@ -44,7 +44,6 @@
       {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='cue' values=data.data.cues}}
       </div>
     </div>
-    <hr>
     <div class="flexcol">
     {{> "systems/shadowrun-anarchy/templates/actor/parts/skills.hbs"}}
     </div>
@@ -92,10 +91,8 @@
       {{> "systems/shadowrun-anarchy/templates/actor/parts/contacts.hbs"}}
       </div>
     </div>
-    <hr>
     <div>
       {{> 'systems/shadowrun-anarchy/templates/actor/parts/description.hbs'}}
-      <hr>
       {{> 'systems/shadowrun-anarchy/templates/actor/parts/gmnotes.hbs'}}
     </div>
   </section>

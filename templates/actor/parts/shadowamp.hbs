@@ -1,9 +1,9 @@
  <div class="flexrow item style-shadowamp" data-item-id="{{_id}}" data-item-type="shadowamp">
   <img class="sheet-item-img flex-shrink" src="{{img}}" alt="name"/>
   <div>
-    <label>{{localize 'SRA.item.shadowamp.levelShort'}} {{data.level}}</label>
     <label>{{name}}</label>
-    {{#if data.essence}}<label>{{localize 'SRA.item.shadowamp.essence_short'}} {{data.essence}}</label>{{/if}}
+    <label>({{localize 'SRA.item.shadowamp.levelShort'}} {{data.level}})</label>
+    {{#if data.essence}}<label>{{localize 'SRA.item.shadowamp.essenceShort'}} {{data.essence}}</label>{{/if}}
     <br>
     <label>{{{data.description}}}</label>
   </div>

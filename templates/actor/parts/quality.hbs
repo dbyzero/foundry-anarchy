@@ -1,10 +1,10 @@
-<div class="flexrow item style-quality{{#if data.positive}}-positive{{else}}-negative{{/if}}" data-item-id="{{_id}}" data-item-type="quality">
+<div class="flexrow item style-quality {{#unless data.positive}}style-quality-negative{{/unless}}" data-item-id="{{_id}}" data-item-type="quality">
   {{#if img}}
   <img class="sheet-item-img" src="{{img}}" alt="name"/>
   {{/if}}
   <div class="flexcol">
     <label>{{name}}</label>
-    <label>{{{data.description}}}</label>
+    <label class="item-description">{{{data.description}}}</label>
   </div>
   {{> 'systems/shadowrun-anarchy/templates/common/item-controls.hbs'}}
 </div>
