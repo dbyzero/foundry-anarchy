@@ -1,6 +1,6 @@
 <li class="flexrow list-item item" data-item-id="{{_id}}" data-item-type="weapon">
   {{> 'systems/shadowrun-anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
-  <span class="flex-grow-2">{{name}}</span>
+  <span class="flex-grow-2"><a class="click-weapon-roll">{{name}}</a></span>
   <span class="flex-grow-2">
     {{> 'systems/shadowrun-anarchy/templates/common/damage-code.hbs'
       strength=data.strength

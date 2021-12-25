@@ -118,6 +118,10 @@ export class SRABaseActor extends Actor {
     dialog.render(true);
   }
 
+  async weaponRoll(weapon, specialization) {
+
+  }
+
   getAnarchy() {
     return this.hasPlayerOwner ? this.data.data.counters.anarchy.value : game.system.sra.gmManager.gmAnarchy.getAnarchy();
   }

@@ -51,7 +51,7 @@ export class SRABaseCharacterSheet extends ActorSheet {
       const wordlist = SheetHelper.getWordList(event);
       await this.actor.updateWordlistWord(wordlist, previous, updated);
     });
-    
+
     html.find('.click-wordlist-delete').click(async event => {
       const previous = SheetHelper.getWord(event);
       const wordlist = SheetHelper.getWordList(event);
@@ -79,7 +79,7 @@ export class SRABaseCharacterSheet extends ActorSheet {
     });
 
     // counters & monitors
-    html.find('a.click-checkbar-element').click(async event =>{
+    html.find('a.click-checkbar-element').click(async event => {
       const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
       const index = Number.parseInt($(event.currentTarget).attr('data-index'));
       const checked = $(event.currentTarget).attr('data-checked') == 'true';
@@ -101,13 +101,19 @@ export class SRABaseCharacterSheet extends ActorSheet {
       this.actor.attributeRoll(attribute);
     });
 
-    html.find('.click-roll-attribute-action').click(async event => {      
+    html.find('.click-roll-attribute-action').click(async event => {
       const attribute = $(event.currentTarget).attr('data-attribute');
       const attribute2 = $(event.currentTarget).attr('data-attribute2');
       const actionCode = $(event.currentTarget).attr('data-action-code');
       this.actor.attributeRoll(attribute, attribute2, actionCode);
     });
 
+    // rolls
+    html.find('.click-weapon-roll').click(async event => {
+      const itemId = SheetHelper.getItemId(event);
+      const weapon = this.actor.items.get(itemId);
+      this.actor.weaponRoll(weapon, specialization);
+    });
 
   }
 
