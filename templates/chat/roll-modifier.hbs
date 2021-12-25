@@ -2,7 +2,8 @@
   {{#if (eq category 'pool')}}  
   {{#if value}}
     <div>
-    {{localize (concat 'SRA.common.roll.modifiers.' type)}}:
+    {{localize (concat 'SRA.common.roll.modifiers.' type)}}
+    {{#if options}}{{selectedLabel}}{{!-- already i18n --}}{{/if}}:
     {{numberFormat value decimals=0 sign=true}}
     </div>
   {{/if}}

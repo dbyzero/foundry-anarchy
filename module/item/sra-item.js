@@ -1,3 +1,5 @@
+import { SRA } from "../config.js";
+import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Weapon } from "./weapon.js";
 
@@ -43,6 +45,23 @@ export class SRAItem extends Item {
       this.data.data.damage,
       this.data.data.strength,
       this.data.data.monitor);
+  }
+
+  getRanges() {
+    let ranges = [
+      this._getRange('short'),
+    ]
+    if (this.data.data.range.max != 'short') {
+      ranges.push(this._getRange('medium'));
+    }
+    if (this.data.data.range.max == 'long') {
+      ranges.push(this._getRange('long'));
+    }
+    return ranges
+  }
+
+  _getRange(range) {
+    return { value: this.data.data.range[range], label: Enums.getFromList(Enums.getEnums().ranges, range) };
   }
 }
 

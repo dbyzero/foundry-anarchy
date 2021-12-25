@@ -112,7 +112,7 @@ export class SRAActorSheet extends ActorSheet {
     html.find('.click-weapon-roll').click(async event => {
       const itemId = SheetHelper.getItemId(event);
       const weapon = this.actor.items.get(itemId);
-      this.actor.weaponRoll(weapon, specialization);
+      this.actor.weaponRoll(weapon);
     });
 
   }

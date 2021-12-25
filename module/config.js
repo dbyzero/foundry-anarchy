@@ -32,6 +32,7 @@ export const SRA = {
                 anarchyDisposition: 'SRA.common.roll.modifiers.anarchyDisposition',
                 anarchyRisk: 'SRA.common.roll.modifiers.anarchyRisk',
                 wounds: 'SRA.common.roll.modifiers.wounds',
+                range: 'SRA.common.roll.modifiers.range',
                 other: 'SRA.common.roll.modifiers.other',
                 reroll: 'SRA.common.roll.modifiers.reroll',
                 rerollForced: 'SRA.common.roll.modifiers.rerollForced',

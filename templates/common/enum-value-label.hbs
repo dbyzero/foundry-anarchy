@@ -8,7 +8,9 @@
     ]
   }
 }}
+{{#unless noEmpty}}
 <option value=""></option>
+{{/unless}}
 {{#each entries as |entry|}}
 <option value="{{entry.value}}">{{localize entry.label}}</option>
 {{/each}}

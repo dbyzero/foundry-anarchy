@@ -3,10 +3,11 @@ import { ANARCHY_DICE_BONUS, SPECIALIZATION_BONUS, TARGET_SUCCESS, TARGET_SUCCES
 
 export class Modifiers {
 
-  static build(actor, skill = undefined, specialization = undefined) {
+  static build(actor, skill = undefined, specialization = undefined, weapon = undefined) {
     return {
       specialization: Modifiers._prepareSpecialization(actor, specialization),
       wounds: Modifiers._prepareWounds(actor, skill),
+      range: Modifiers._prepareRange(weapon),
       other: Modifiers._prepareOther(actor),
       reroll: Modifiers._prepareReroll(actor),
       rerollForced: Modifiers._prepareRerollForced(actor),
@@ -38,6 +39,7 @@ export class Modifiers {
       + (rollData.attribute2 ? (rollData.actor.data.data.attributes[rollData.attribute2].value ?? 0) : 0)
       + Modifiers.valueIfUsed(rollData.modifiers.specialization)
       + Modifiers.valueIfUsed(rollData.modifiers.wounds)
+      + Modifiers.valueIfUsed(rollData.modifiers.range)
       + Modifiers.valueIfUsed(rollData.modifiers.other)
       + Modifiers.valueIfUsed(rollData.modifiers.anarchyDisposition);
   }
@@ -67,7 +69,7 @@ export class Modifiers {
       used: false
     }
   }
-  
+
   static _prepareAnarchyRisk(actor) {
     const anarchy = actor.getAnarchy();
     return anarchy <= 0 ? undefined : {
@@ -112,6 +114,22 @@ export class Modifiers {
       category: 'pool',
       value: wounds,
       optional: true,
+      used: true
+    }
+  }
+  static _prepareRange(weapon) {
+    if (!weapon) {
+      return undefined;
+    }
+    const ranges = weapon.getRanges();
+    return {
+      type: 'range',
+      label: game.i18n.localize(SRA.common.roll.modifiers.range),
+      options: ranges,
+      category: 'pool',
+      value: ranges[0].value,
+      selectedLabel: game.i18n.localize(ranges[0].label),
+      editable: true,
       used: true
     }
   }

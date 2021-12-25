@@ -25,7 +25,7 @@
       "roll": {
         "button": "Roll",
         "title": "Roll {name} {specialization}",
-        "attribute": "Main attribute",
+        "attribute": "Attribute",
         "attribute2": "Second attribute",
         "modifiers": {
           "edge": "Use edge",
@@ -33,6 +33,7 @@
           "anarchyDisposition": "Anarchy - Dispositions",
           "anarchyRisk": "Anarchy - Take risks",
           "wounds": "Wounds modifiers",
+          "range": "Range",
           "other": "Other modifiers",
           "reroll": "Rerolls",
           "rerollForced": "Rerolls successes",

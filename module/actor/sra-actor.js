@@ -110,18 +110,23 @@ export class SRAActor extends Actor {
 
   async skillRoll(skill, specialization) {
     const rollData = SRARollDialog.prepareSkillRollData(this, skill, specialization);
-    const dialog = await SRARollDialog.create(rollData);
-    dialog.render(true);
+    await this._roll(rollData);
   }
 
   async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
     const rollData = SRARollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
-    const dialog = await SRARollDialog.create(rollData);
-    dialog.render(true);
+    await this._roll(rollData);
   }
 
-  async weaponRoll(weapon, specialization) {
+  async weaponRoll(weapon) {
+    const skill = this.items.find(it => it.type == 'skill' && it.data.data.code === weapon.data.data.skill);
+    const rollData = SRARollDialog.prepareWeaponRollData(this, skill, weapon);
+    await this._roll(rollData);
+  }
 
+  async _roll(rollData) {
+    const dialog = await SRARollDialog.create(rollData);
+    dialog.render(true);
   }
 
   getAnarchy() {

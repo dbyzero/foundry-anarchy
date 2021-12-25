@@ -32,6 +32,18 @@ export class SRARollDialog extends Dialog {
     return rollData;
   }
 
+  static prepareWeaponRollData(actor, skill, weapon) {
+    return {
+      mode: 'weapon',
+      actor: actor,
+      skill: skill,
+      weapon: weapon,
+      attribute: skill?.data.data.attribute ?? 'agility',
+      specialization: skill?.data.data.specialization,
+      modifiers: Modifiers.build(actor, skill, skill?.data.data.specialization, weapon),
+    };
+  }
+
   static async create(rollData) {
     rollData.anarchy = rollData.actor.getAnarchy();
     rollData.ENUMS = Enums.getEnums();
@@ -106,6 +118,18 @@ export class SRARollDialog extends Dialog {
       const modifier = $(event.currentTarget).attr('data-modifier')
       this.rollData.modifiers[modifier].value = Number.parseInt(event.currentTarget.value);
     });
+    html.find('.select-option-modifier').change(event => {
+      const selected = Number.parseInt(event.currentTarget.value);
+      const modifier = $(event.currentTarget).attr('data-modifier')
+      this.rollData.modifiers[modifier].value = selected;
+      this.rollData.modifiers[modifier].selectedLabel = html.find(`.list-modifiers .list-item[data-modifier='${modifier}'] select option:selected`)
+        .text()
+
+      html.find(`.list-modifiers .list-item[data-modifier='${modifier}'] .selected-option-modifier-value`)
+        .text(selected);
+    });
+
+
   }
 
 }

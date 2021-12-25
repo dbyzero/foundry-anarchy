@@ -9,7 +9,7 @@
   }
  --}}
  {{#if type}}
-  <li class="flexrow list-item">
+  <li class="flexrow list-item" data-modifier="{{type}}">
     <label class="flex-grow-2" >{{label}}</label>
 
     <span class="flex-shrink">
@@ -19,10 +19,20 @@
 
     {{#if (isInteger value)}}
       {{#if editable}}
-        <input class="item-field-value-numeric input-select-modifier"
-          data-modifier="{{type}}" 
-          type="number" data-dtype="Number" maxlength="2"
-          value="{{either value 0}}"/>
+        {{#if options}}
+          <select name="select.range" class="select-option-modifier" data-dtype="String"
+            data-modifier="{{type}}">
+          {{#select value}}
+          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=options noEmpty=true}}
+          {{/select}}
+          </select>
+          <label class="selected-option-modifier-value">{{numberFormat value decimals=0 sign=false}}</label>
+        {{else}}
+          <input class="item-field-value-numeric input-select-modifier"
+            data-modifier="{{type}}"
+            type="number" data-dtype="Number" maxlength="2"
+            value="{{either value 0}}"/>
+        {{/if}}
       {{else}}
         <label>{{numberFormat value decimals=0 sign=true}}</label>
       {{/if}}
