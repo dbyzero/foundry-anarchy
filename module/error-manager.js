@@ -32,4 +32,15 @@ export class ErrorManager {
       throw error;
     }
   }
+
+  static checkItemType(item, expectedType) {
+    if (item.type != expectedType) {
+      const error = game.i18n.format(SRA.common.errors.expectedType, {
+        type: game.i18n.localize(item.type ? (SRA.itemType.singular[item.type]) : item.type),
+        expectedType: game.i18n.localize(expectedType)
+      });
+      ui.notifications.error(error);
+      throw error;
+    }
+  }
 }

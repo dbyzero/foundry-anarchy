@@ -56,7 +56,8 @@ export const SRA = {
         errors: {
             insufficient: 'SRA.common.errors.insufficient',
             outOfRange: 'SRA.common.errors.outOfRange',
-            onlyGM: 'SRA.common.errors.onlyGM'
+            onlyGM: 'SRA.common.errors.onlyGM',
+            expectedType: 'SRA.common.errors.expectedType',
         },
         sourceReference: 'SRA.common.sourceReference',
         sourceReferenceHelp: 'SRA.common.sourceReferenceHelp',

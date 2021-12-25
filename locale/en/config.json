@@ -56,7 +56,9 @@
       },
       "errors": {
         "insufficient": "Not enough {resource}: required {required}, available {available}",
-        "outOfRange": "Cannot set {resource} to {value}, out of range [{min} , {max}]"
+        "outOfRange": "Cannot set {resource} to {value}, out of range [{min} , {max}]",
+        "onlyGM": "Only allowed for GM",
+        "expectedType": "Item is of type {type} instead of expected type {expectedType}"
       },
       "sourceReference": "Source reference",
       "sourceReferenceHelp": "rulebook, page, ...",

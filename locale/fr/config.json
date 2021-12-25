@@ -56,7 +56,9 @@
       },
       "errors": {
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
-        "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]"
+        "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]",
+        "onlyGM": "Seul un MJ est autorisé",
+        "expectedType": "Objet de type incorrect, attendu: {expectedType}, type de l'objet: {type}"
       },
       "sourceReference": "Référence source",
       "sourceReferenceHelp": "livre, page, ...",
@@ -81,7 +83,7 @@
       },
       "essence": {
         "adjustments": "pour Magie, résonance, soins",
-        "adjustShort": "Malus essence"
+        "adjustShort": "Malus"
       },
       "counters": {
         "essence": "Essence",
