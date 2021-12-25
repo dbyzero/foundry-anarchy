@@ -92,14 +92,16 @@
       "contact"
     ],
     "templates": {
-      "references":{
+      "references": {
         "sourceReference": "",
         "description": "",
         "gmnotes": ""
       }
     },
     "metatype": {
-      "templates": ["references"],
+      "templates": [
+        "references"
+      ],
       "adjustments": {
         "strength": {
           "bonus": 0,
@@ -130,7 +132,9 @@
       }
     },
     "skill": {
-      "templates": ["references"],
+      "templates": [
+        "references"
+      ],
       "code": "",
       "attribute": "knowledge",
       "value": 0,
@@ -138,18 +142,24 @@
       "listspecialization": []
     },
     "quality": {
-      "templates": ["references"],
+      "templates": [
+        "references"
+      ],
       "positive": true
     },
     "shadowamp": {
-      "templates": ["references"],
+      "templates": [
+        "references"
+      ],
       "category": "special",
       "capacity": "mundane",
       "level": 1,
       "essence": 0
     },
     "weapon": {
-      "templates": ["references"],
+      "templates": [
+        "references"
+      ],
       "skill": "",
       "specialization": "",
       "strength": true,
@@ -165,10 +175,14 @@
       }
     },
     "gear": {
-      "templates": ["references"]
+      "templates": [
+        "references"
+      ]
     },
     "contact": {
-      "templates": ["references"]
+      "templates": [
+        "references"
+      ]
     }
   }
 }
