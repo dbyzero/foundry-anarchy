@@ -23,7 +23,7 @@ export class SRARollDialog extends Dialog {
       })
     };
   }
-  
+
   static prepareAttributeRollData(actor, attribute, attribute2 = undefined, attributeAction = undefined) {
     const rollData = {
       mode: 'attribute',
@@ -35,7 +35,7 @@ export class SRARollDialog extends Dialog {
     };
     return rollData;
   }
-  
+
   static async create(rollData) {
     rollData.anarchy = rollData.actor.getAnarchy();
     rollData.ENUMS = Enums.getEnums();

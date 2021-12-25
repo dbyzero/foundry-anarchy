@@ -47,7 +47,7 @@ export class GMAnarchy {
       await this.setAnarchy(this.anarchy + count);
     }
   }
-  
+
   async setAnarchy(newAnarchy) {
     this.anarchy = newAnarchy;
     game.settings.set(SYSTEM_NAME, ANARCHY_GM, newAnarchy);
@@ -59,7 +59,7 @@ export class GMAnarchy {
     this.toolbar = html.find(".gm-anarchy-bar");
     await this._rebuild();
   }
-  
+
   async _rebuild() {
     this.toolbar.find('.checkbar-root').replaceWith(await this._renderBar());
     this.toolbar.find('a.click-checkbar-element').click(async (event) => await this._onClickAnarchyCheckbar(event));

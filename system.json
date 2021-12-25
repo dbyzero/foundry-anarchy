@@ -4,7 +4,9 @@
   "description": "Shadowrun Anarchy RPG for FoundryVTT",
   "author": "VincentVK",
   "authors": [
-    { "name": "VincentVK" }
+    {
+      "name": "VincentVK"
+    }
   ],
   "url": "https://gitlab.com/vincent.vandeme/shadowrun-anarchy",
   "bugs": "https://gitlab.com/vincent.vandeme/shadowrun-anarchy/-/issues",
@@ -24,27 +26,39 @@
     "style/sra.css"
   ],
   "languages": [
-    { "lang": "en", "name": "English", "path": "locale/en/config.json"},
-    { "lang": "fr", "name": "Français", "path": "locale/fr/config.json" }
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "locale/en/config.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "locale/fr/config.json"
+    }
   ],
   "packs": [
-  	{
+    {
       "name": "items",
       "label": "Items",
       "system": "shadowrun-anarchy",
       "module": "shadowrun-anarchy",
       "path": "./packs/items.db",
       "entity": "Item",
-      "tags" : [ "item" ]
+      "tags": [
+        "item"
+      ]
     },
-  	{
+    {
       "name": "gm-info",
       "label": "Gamemaster information",
       "system": "shadowrun-anarchy",
       "module": "shadowrun-anarchy",
       "path": "./packs/gm-info.db",
       "entity": "JournalEntry",
-      "tags" : [ "journal"]
+      "tags": [
+        "journal"
+      ]
     }
   ],
   "system": [],

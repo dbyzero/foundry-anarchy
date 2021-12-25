@@ -18,11 +18,11 @@ export class SRASkillSheet extends SRABaseItemSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
-    
+
     html.find('.select-skill-code').change(async event => {
       if (this.object.isGeneralSkill()) {
         const newSkillCode = event.currentTarget.value;
-        if (newSkillCode && SRA.skill[newSkillCode]){
+        if (newSkillCode && SRA.skill[newSkillCode]) {
           const newName = game.i18n.localize(SRA.skill[newSkillCode]);
           await this.object.update({
             "name": newName,
@@ -36,8 +36,8 @@ export class SRASkillSheet extends SRABaseItemSheet {
     html.find('.check-knowledge').click(async event => {
       const checkKnowledge = event.currentTarget.checked;
       const newAttribute = checkKnowledge ? 'knowledge' : Enums.getSkillAttribute(this.object.data.data.code);
-      await this.object.update({"data.attribute": newAttribute });
+      await this.object.update({ "data.attribute": newAttribute });
       this.render(true);
     });
-  }  
+  }
 }
