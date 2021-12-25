@@ -17,10 +17,6 @@ export class SRARollDialog extends Dialog {
       attribute: skill?.data.data.attribute,
       specialization: specialization,
       modifiers: Modifiers.build(actor, skill, specialization),
-      title: game.i18n.format(SRA.common.roll.title, {
-        name: skill?.name,
-        specialization: specialization ? '- ' + specialization : ''
-      })
     };
   }
 
