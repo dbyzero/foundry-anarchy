@@ -90,16 +90,18 @@ export class SRAActor extends Actor {
   }
 
   async _playerGivesAnarchyToGM(count) {
-    ChatMessage.create({
-      user: game.user,
-      whisper: ChatMessage.getWhisperRecipients('GM'),
-      content: game.i18n.format(SRA.gmManager.gmReceivedAnarchy,
-        {
-          anarchy: count,
-          actor: this.name
-        })
-    });
-    await game.system.sra.gmManager.gmAnarchy.addAnarchy(count);
+    if (count > 0) {
+      ChatMessage.create({
+        user: game.user,
+        whisper: ChatMessage.getWhisperRecipients('GM'),
+        content: game.i18n.format(SRA.gmManager.gmReceivedAnarchy,
+          {
+            anarchy: count,
+            actor: this.name
+          })
+      });
+      await game.system.sra.gmManager.gmAnarchy.addAnarchy(count);
+    }
   }
 
   async npcConsumesAnarchy(count) {
