@@ -2,7 +2,7 @@ import { SRA } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 
-export class SRABaseItemSheet extends ItemSheet {
+export class SRAItemSheet extends ItemSheet {
 
   get title() {
     return game.i18n.localize(SRA.itemType.singular[this.item.type]) + ': ' + this.item.name;

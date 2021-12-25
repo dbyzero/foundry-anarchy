@@ -16,7 +16,7 @@ const CHECKBARS = {
 }
 
 
-export class SRABaseActor extends Actor {
+export class SRAActor extends Actor {
 
   prepareData() {
     super.prepareData();

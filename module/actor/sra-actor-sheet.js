@@ -6,7 +6,7 @@ import { ConfirmationDialog } from "../confirmation.js";
 import { SheetHelper } from "../sheet-helper.js";
 import { Enums } from "../enums.js";
 
-export class SRABaseCharacterSheet extends ActorSheet {
+export class SRAActorSheet extends ActorSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/${this.actor.data.type}.hbs`;

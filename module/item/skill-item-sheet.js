@@ -1,9 +1,9 @@
 import { SRA } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
-import { SRABaseItemSheet } from "./base-item-sheet.js";
+import { SRAItemSheet } from "./base-item-sheet.js";
 
-export class SRASkillSheet extends SRABaseItemSheet {
+export class SRASkillSheet extends SRAItemSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/item/skill.hbs`;

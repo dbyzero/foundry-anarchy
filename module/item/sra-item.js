@@ -1,10 +1,10 @@
 import { ErrorManager } from "../error-manager.js";
 import { Weapon } from "./weapon.js";
 
-export class SRABaseItem extends Item {
+export class SRAItem extends Item {
 
   static init() {
-    Hooks.on("createItem", (item, options, id) => SRABaseItem.onCreateItem(item, options, id));
+    Hooks.on("createItem", (item, options, id) => SRAItem.onCreateItem(item, options, id));
   }
 
   static async onCreateItem(item, options, id) {
