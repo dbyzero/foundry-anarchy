@@ -30,12 +30,13 @@
       </div>
     </div>
     <div class="form-group">
-      <label>{{> 'systems/shadowrun-anarchy/templates/common/damagecode.hbs'
+      <label>
+        {{> 'systems/shadowrun-anarchy/templates/common/damage-code.hbs'
             strength=data.data.strength
             damage=data.data.damage
             monitor=data.data.monitor
             noArmor=data.data.noArmor
-          }}
+        }}
       </label>
       <div>
         <select name="data.monitor" data-dtype="String">

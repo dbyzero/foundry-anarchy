@@ -131,6 +131,7 @@
         "damageShort": "DV",
         "areaShort": "Zone",
         "noArmorShort": "(CA)",
+        "meleeWithoutActor": "Pas de personnage",
         "range": {
           "max": "Portée maximale"
         }

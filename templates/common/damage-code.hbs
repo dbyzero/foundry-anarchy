@@ -6,14 +6,12 @@
     monitor: 'stun' // damage is stun/physical
   }
 }}
-{{#if strength}}
-({{toUpperCase (substring (localize (concat 'SRA.attributes.strength')) 0 3)}}/2 + {{damage}})
+{{#if actorStrength}}
+  {{damageValue damage strength actorStrength}}
 {{~else}}
-{{damage}}
-{{~/if~}}{{damageLetter monitor}}
+  {{damageCode damage strength}}{{~/if}}{{damageLetter monitor}}
 {{#if noArmor}}
 <i class="fas fa-user-times" title="{{localize 'SRA.item.weapon.noArmor'}}"></i>
 {{else}}
 <i class="fas fa-user-shield" title="{{localize 'SRA.item.weapon.withArmor'}}"></i>
 {{/if}}
-

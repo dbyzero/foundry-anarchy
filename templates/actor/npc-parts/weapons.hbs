@@ -5,19 +5,19 @@
   </h2>
   <ul class="alterne-list">
     <li class="list-header flexrow list-item">
-      <span class="flex-shrink-start"></span>
+      <span class="flex-shrink-start">
+        <i class="fas fa-pen item-control-transparent"></i>
+        <i class="fas fa-pen item-control-transparent"></i>
+      </span>
       <span class="flex-grow-2">{{localize 'SRA.itemType.singular.weapon'}}</span>
       <span class="flex-grow-2">{{localize 'SRA.item.weapon.damageShort'}}</span>
       <span class="flex-shrink">{{localize 'SRA.item.weapon.areaShort'}}</span>
       <span class="flex-shrink">{{localize 'SRA.range.short'}}</span>
       <span class="flex-shrink">{{localize 'SRA.range.medium'}}</span>
       <span class="flex-shrink">{{localize 'SRA.range.long'}}</span>
-      <span class="flex-shrink-end">
-        <i class="fas fa-pen item-control-transparent"></i>
-      </span>
     </li>
     {{#each items.weapon as |weapon|}}
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/weapon.hbs" weapon}}
+    {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/weapon.hbs" weapon}}
     {{/each}}
   </ul>
 </div>

@@ -12,11 +12,11 @@
   }
 }}
 <div class="checkbar-root" data-monitor-code="{{code}}" title="{{localize labelkey}}">
-  <div 
+  <div {{#if rowlength}}
     style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
-  >
+  {{/if}}>
   {{#for 0 max}}
-    {{#if (and (eq 0 (modulo this ../rowlength)) (gt this 0))}}
+    {{#if (and ../rowlength (eq 0 (modulo this ../rowlength)) (gt this 0))}}
       </div>
       <div style="grid-column: span {{../rowlength}} / span {{../rowlength}}; grid-template-columns: repeat({{../rowlength}}, minmax(0, 1fr));">
     {{/if}}
@@ -28,7 +28,7 @@
     {{/if}}
 
     {{#if ../adjust}}
-      {{#if (gt this ../rowlength)}}
+      {{#if (and  ../rowlength (gt this ../rowlength))}}
         {{#if (or (eq ../rowlength (sum 1 (modulo this ../rowlength))) (eq (sum this 1) ../max))}}
           <label>-{{divint this ../rowlength}}</label>
         {{/if}}

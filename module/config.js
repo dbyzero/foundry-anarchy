@@ -130,6 +130,7 @@ export const SRA = {
             damageShort: 'SRA.item.weapon.damageShort',
             areaShort: 'SRA.item.weapon.areaShort',
             noArmorShort: 'SRA.item.weapon.noArmorShort',
+            meleeWithoutActor: 'SRA.item.weapon.meleeWithoutActor',
             range: {
                 max: 'SRA.item.weapon.range.max'
             }

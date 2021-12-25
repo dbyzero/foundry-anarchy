@@ -1,9 +1,5 @@
 <li class="flexrow list-item item" data-item-id="{{_id}}" data-item-type="weapon">
-  <span class="flex-shrink-start">
-  {{#if img}}
-    <img class="sheet-item-img" src="{{img}}" alt="name"/>
-  {{/if}}
-  </span>
+  {{> 'systems/shadowrun-anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
   <span class="flex-grow-2">{{name}}</span>
   <span class="flex-grow-2">
     {{> 'systems/shadowrun-anarchy/templates/common/damage-code.hbs'
@@ -26,5 +22,4 @@
     {{either data.range.long 'OK'}}
     {{/if}}
   </span>
-  {{> 'systems/shadowrun-anarchy/templates/common/item-controls.hbs'}}
 </li>

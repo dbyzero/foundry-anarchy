@@ -1,5 +1,5 @@
-import { SRA } from "../config.js";
-import { Enums } from "../enums.js";
+import { ErrorManager } from "../error-manager.js";
+import { Weapon } from "./weapon.js";
 
 export class SRABaseItem extends Item {
 
@@ -24,4 +24,25 @@ export class SRABaseItem extends Item {
   isGeneralSkill() {
     return this.type == 'skill' && this.data.data.attribute != 'knowledge';
   }
+
+
+
+  /* Weapons related methods************* */
+  getDamageValue() {
+    ErrorManager.checkItemType(this, 'weapon');
+    return Weapon.getDamageValue(
+      this.data.data.damage,
+      this.data.data.strength,
+      this.parent?.data.data.attribute.strength.value);
+  }
+
+
+  getDamageCode() {
+    ErrorManager.checkItemType(this, 'weapon');
+    return Weapon.getDamageCode(
+      this.data.data.damage,
+      this.data.data.strength,
+      this.data.data.monitor);
+  }
 }
+

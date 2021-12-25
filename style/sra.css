@@ -1,5 +1,6 @@
 :root {
   --font-color: hsl(0, 0%, 83%);
+  --transparent: hsla(0, 0%, 0%, 0.0);
   --controls-color: hsla(100, 30%, 60%, 0.6);
   --checked-color: hsla(50, 80%, 50%, 0.6);
   --unchecked-color: hsla(130, 80%, 40%, 0.6);
@@ -9,52 +10,47 @@
   --border-light: hsla(200, 10%, 60%, 0.4);
   --hover-tint: hsla(210, 44%, 69%, 0.486);
   --background-dark:hsla(200, 5%, 30%, 0.8);
-  --lighter-npc: hsla(90, 29%, 30%, 0.2);
+  --lighter-npc: hsla(90, 29%, 30%, 0.15);
   --gradient-dark: repeating-linear-gradient(80deg,
-    hsla(0, 0%, 0%, 0.8) 0% 3%,
+    hsla(0, 0%, 0%, 0.8) 0% 5%,
     hsla(0, 0%, 15%, 0.8) 7%,
-    hsla(0, 0%, 10%, 0.9) 9% 12%,
+    hsla(0, 0%, 5%, 0.9) 9% 12%,
     hsla(0, 0%, 20%, 0.8) 16%,
-    hsla(0, 0%, 13%, 0.9) 18%,
     hsla(0, 0%, 0%, 0.8) 20% 25%, 
-    hsla(0, 0%, 10%, 0.8) 30%,
     hsla(0, 0%, 15%, 0.8) 38%,
-    hsla(0, 0%, 10%, 0.8) 41%, 
-    hsla(0, 0%, 5%, 0.8) 44%, 
+    hsla(0, 0%, 5%, 0.8) 42%, 
     hsla(0, 0%, 0%, 0.8) 50%);
-  --gradient-dark-npc: repeating-linear-gradient(80deg,
-    hsla(220, 10%, 10%, 0.8) 0% 3%,
-    hsla(220, 10%, 25%, 0.8) 7%,
-    hsla(220, 10%, 20%, 0.9) 9% 12%,
-    hsla(220, 10%, 30%, 0.8) 16%,
-    hsla(220, 10%, 23%, 0.9) 18%,
-    hsla(220, 10%, 10%, 0.8) 20% 25%, 
-    hsla(220, 10%, 20%, 0.8) 30%,
-    hsla(220, 10%, 25%, 0.8) 38%,
-    hsla(220, 10%, 20%, 0.8) 41%, 
-    hsla(220, 10%, 15%, 0.8) 44%, 
-    hsla(220, 10%, 10%, 0.8) 50%);
-  --gradient-dark-transparent: repeating-linear-gradient(80deg,
-    hsla(0, 0%, 0%, 0.5) 0% 3%,
-    hsla(0, 0%, 15%, 0.5) 7%,
-    hsla(0, 0%, 10%, 0.5) 9% 12%,
-    hsla(0, 0%, 20%, 0.5) 16%,
-    hsla(0, 0%, 13%, 0.5) 18%,
-    hsla(0, 0%, 0%, 0.5) 20% 25%, 
-    hsla(0, 0%, 10%, 0.5) 30%,
-    hsla(0, 0%, 15%, 0.5) 38%,
-    hsla(0, 0%, 10%, 0.5) 41%, 
-    hsla(0, 0%, 5%, 0.5) 44%, 
-    hsla(0, 0%, 0%, 0.5) 50%);
-  --gradient-silver: linear-gradient(45deg, rgba(61, 55, 93, 0.4), rgba(178, 179, 196, 0.4), rgba(59, 62, 63, 0.6), rgba(206, 204, 199, 0.4), rgba(61, 46, 49, 0.4));
-  --gradient-silver-light-opaque: linear-gradient(30deg, rgba(208, 203, 236, 0.9), rgba(216, 217, 230, 0.9), rgba(130, 138, 141, 0.9), rgba(165, 159, 146, 0.9), rgba(204, 195, 197, 0.9));
-  --gradient-gold: repeating-linear-gradient(30deg,
+  --gradient-silver: linear-gradient(45deg,
+    hsla(249, 26%, 29%, 0.4),
+    hsla(237, 13%, 73%, 0.4), 
+    hsla(195, 3%, 24%, 0.6), 
+    hsla(43, 7%, 79%, 0.4), 
+    hsla(348, 14%, 21%, 0.4));
+  --gradient-ellipse-silver: radial-gradient(ellipse farthest-corner at 20% 20%,
+    hsla(249, 26%, 29%, 0.4),
+    hsla(237, 13%, 73%, 0.4), 
+    hsla(195, 19%, 29%, 0.6), 
+    hsla(239, 43%, 72%, 0.4), 
+    hsla(184, 22%, 31%, 0.4));
+  --gradient-silver-light-opaque: linear-gradient(30deg,
+    hsla(249, 46%, 86%, 0.9), 
+    hsla(236, 22%, 87%, 0.9), 
+    hsla(196, 5%, 53%, 0.9),
+    hsla(41, 10%, 61%, 0.9),
+    hsla(347, 8%, 78%, 0.9));
+  --gradient-gold: repeating-linear-gradient(60deg,
     hsla(40, 50%, 50%, 0.4),
     hsla(55, 92%, 86%, 0.4),
     hsla(41, 63%, 43%, 0.4), 
     hsla(55, 89%, 85%, 0.4), 
     hsla(38, 72%, 39%, 0.4));
-  --gradient-purple-black: linear-gradient(130deg,  rgba(0, 0, 0, 0.7), rgba(100, 45, 124, 0.4), rgba(82, 17, 131, 0.4),rgba(100, 45, 124, 0.4), rgba(0, 0, 0, 0.7));
+  --gradient-purple-black: radial-gradient(ellipse farthest-corner at 20% 20%,
+    hsla(0, 0%, 0%, 0.7),
+    hsla(282, 47%, 33%, 0.4),
+    hsla(274, 77%, 40%, 0.4),
+    hsla(282, 47%, 33%, 0.4),
+    hsla(319, 30%, 10%, 0.9),
+    hsla(0, 0%, 0%, 0.7));
 }
 
 h1, h2, h3, h4 {
@@ -82,7 +78,6 @@ div.app.window-app.sheet .window-content select option{
   color: var(--font-color);
 }
 
-
 div.item.flexcol {
   gap: 2px;
   align-items: flex-start;
@@ -95,21 +90,47 @@ div.item.flexrow {
   justify-content: space-between;
   vertical-align: top;
 }
-div.flex-group-left {
+.flex-group-left {
   gap: 2px;
+  display: flex;
+  flex-wrap: nowrap;
   align-items: flex-start;
-  justify-content:space-between;
+  justify-content: left;
   vertical-align: top;
 }
 
 .flex-grow-3 { flex-grow: 3; }
+.flex-grow,
 .flex-grow-2 { flex-grow: 2; }
 .flex-grow-0 { flex-grow: 0; }
 .flex-wrap { flex-wrap: wrap; }
 .flex-shrink { flex: 'flex-shrink'; }
 .flex-end { justify-content: flex-end; }
-.flex-shrink-end { flex: 'flex-shrink'; flex-grow: 0; justify-content: flex-end; }
-.flex-shrink-start { flex: 'flex-shrink'; flex-grow: 0.5; justify-content: flex-start; min-width: 32px;}
+.flex-shrink-end {
+  flex: 'flex-shrink';
+  flex-grow: 0;
+  align-items: flex-end;
+}
+.flex-shrink-control-start {
+  flex: 'flex-shrink';
+  flex-grow: 1rem;
+  justify-content: left;
+  max-width: 2rem;
+}
+.flex-shrink-start {
+  flex: 'flex-shrink';
+  flex-grow: 0.5;
+  justify-content:
+  flex-start;
+  min-width: 32px;
+}
+.flex-shrink-left { 
+  flex-grow: 0;
+  flex-wrap: nowrap;
+  flex-basis: content;
+  flex-direction: row;
+  justify-content: left;
+}
 
 .grid-3col {
   grid-column: span 3 / span 3;
@@ -227,10 +248,22 @@ div.item.style-attribute {
   min-width: auto;  
   max-width: 6rem;
 }
-div.item.style-attribute input {
+div.item input.style-attribute-value-large {
   max-width: 2rem;
   font-size: large;
 }
+div.item input.style-attribute-value-small {
+  max-width: 1rem;
+}
+
+div input.style-armor-header-label {
+  flex-grow: 1.5;
+}
+div input.style-armor-header-value {
+  max-width: 2rem;
+  flex: 'flex-shrink'; 
+}
+
 div.item.style-skill {
   background: var(--gradient-silver);
 }
@@ -238,10 +271,12 @@ div.item.style-gear,
 div.item.style-contact{
   background: var(--wordlist-color) !important;
 }
-div.item.style-shadowamp,
-div.item.style-quality {
+div.item.style-shadowamp {
   background: var(--gradient-silver);
-}  
+}
+div.item.style-quality {
+  background: var(--gradient-ellipse-silver);
+}
 div.item.style-quality.style-quality-negative {
   background: var(--gradient-purple-black);
   border-style: dashed;
@@ -287,6 +322,11 @@ a.click-checkbar-element.checked-element i {
 a.click-checkbar-element.unchecked-element i {
   color: var(--unchecked-color);
 }
+i.item-control-transparent {
+  font-size: small;
+  color: var(--transparent);
+}
+
 div.form-group {
   align-items: flex-start;
 }

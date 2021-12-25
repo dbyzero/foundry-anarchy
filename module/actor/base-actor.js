@@ -151,6 +151,12 @@ export class SRABaseActor extends Actor {
     return selected ? selected.value : `?`;
   }
 
+  getSkillValue(skillId, specialization = undefined) {
+    const skill = this.items.get(skillId);
+    const attribute = this.data.data.attributes[skill.data.data.attribute];
+    return skill.data.data.value + attribute.value + (specialization && skill.data.data.specialization ? 2 : 0);
+  }
+
   getWounds(skillCode) {
     // TODO: for matrix skill, should use the matrix condition monitor of the cyberdeck
 

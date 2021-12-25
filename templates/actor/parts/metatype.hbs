@@ -1,14 +1,9 @@
 <div class="define-item-type metatype">
   {{#if items.metatype}}
-    {{#each items.metatype as | metatype |}}
-    <span class="item" data-item-id="{{metatype._id}}">
-    <label>{{metatype.name}}</label>
-    <a class="item-control click-item-delete" title="{{localize SRA.common.del}}"><i class="fas fa-trash"></i></a>
-    </span>
-    {{/each}}
+  {{#each items.metatype as | metatype |}}
+  <span>{{metatype.name}}</span>
+  {{/each}}
   {{else}}
-  <span>{{localize SRA.actor.noMetatype}}
-      {{!-- <a class="item-control click-item-add-metatype" title="{{localize SRA.common.add}}"><i class="fas fa-plus-circle"></i></a> --}}
-  </span>
+  <span>{{localize SRA.actor.noMetatype}}</span>
   {{/if}}
 </div>
