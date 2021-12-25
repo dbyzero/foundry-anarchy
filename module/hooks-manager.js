@@ -29,9 +29,7 @@ export class HooksManager {
     };
     CONFIG.Actor.documentClass = SRACharacter;
     CONFIG.Item.documentClass = SRABaseItem;
-    CONFIG.Combat.initiative = {
-      formula: "1d6"
-    }
+    CONFIG.Combat.initiative = { formula: "2d6" }
 
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
@@ -40,14 +38,21 @@ export class HooksManager {
 
     Enums.registerEnums();
     HooksManager.registerSheets();
-    
-    await HandlebarsManager.init();
+
 
     // initialize remote calls registry first
     RemoteCall.init();
     Users.init();
+    GMAnarchy.init();
+    GMDifficulty.init();
+    GMManager.init();
     SRABaseItem.init();
+    await HandlebarsManager.init();
     console.log('Shadowrun Anarchy | init done');
+  }
+
+  static async onReady() {
+    GMManager.create();
   }
 
   static registerSheets() {
@@ -72,13 +77,5 @@ export class HooksManager {
       types: ["skill"],
       makeDefault: true
     });
-  }
-
-  static async onReady() {
-    GMAnarchy.init();
-    GMDifficulty.init();
-    GMManager.init();
-
-    GMManager.create();
   }
 }
