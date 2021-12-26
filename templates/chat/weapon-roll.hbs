@@ -46,6 +46,12 @@
   </div>
 </div>
 
+{{#unless modifiers.edge.used}}
+<div>
+  {{> 'systems/shadowrun-anarchy/templates/chat/edge-reroll-button.hbs'}}
+</div>
+{{/unless}}
+
 <div>
   <div class="alterne-list">
   {{> 'systems/shadowrun-anarchy/templates/chat/risk-outcome.hbs'}}

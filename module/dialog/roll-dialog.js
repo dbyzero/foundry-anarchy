@@ -1,7 +1,7 @@
 import { SRA } from "../config.js";
 import { Enums } from "../enums.js";
-import { SRARoll } from "../roll.js";
 import { Modifiers } from "../modifiers.js";
+import { SRARollManager } from "../roll-manager.js";
 
 /**
  * Extend the base Dialog entity to select roll parameters
@@ -58,7 +58,7 @@ export class SRARollDialog extends Dialog {
       content: html,
       default: 'roll',
       buttons: {
-        'roll': { label: game.i18n.localize(SRA.common.roll.button), callback: () => SRARollDialog.onRoll(this.rollData) }
+        'roll': { label: game.i18n.localize(SRA.common.roll.button), callback: async () => await SRARollManager.roll(rollData) }
       },
     };
     const options = {
@@ -71,19 +71,6 @@ export class SRARollDialog extends Dialog {
     super(config, options);
 
     this.rollData = rollData;
-  }
-
-  static async onRoll(rollData) {
-    rollData.param = Modifiers.computeRollParameters(rollData);
-    await rollData.actor.spendEdge(rollData.param.edge);
-    await rollData.actor.spendAnarchy(rollData.param.anarchy);
-
-    rollData.roll = new SRARoll(rollData.param);
-    await rollData.roll.evaluate();
-
-    const flavor = await renderTemplate(`systems/shadowrun-anarchy/templates/chat/${rollData.mode}-roll.hbs`, rollData);
-    const message = await rollData.roll.toMessage({ flavor: flavor }, { create: false });
-    ChatMessage.create(message);
   }
 
   activateListeners(html) {

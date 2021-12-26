@@ -13,6 +13,7 @@ import { Users } from './users.js';
 import { GMAnarchy } from './app/gm-anarchy.js';
 import { GMDifficulty } from './app/gm-difficulty.js';
 import { NPCSheet } from './actor/npc-sheet.js';
+import { ChatManager } from './chat/chat-manager.js';
 
 export class HooksManager {
 
@@ -47,6 +48,7 @@ export class HooksManager {
     GMDifficulty.init();
     GMManager.init();
     SRAItem.init();
+    ChatManager.init();
     await HandlebarsManager.init();
     console.log('Shadowrun Anarchy | init done');
   }

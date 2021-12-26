@@ -338,7 +338,7 @@ input.item-field-value-numeric {
 .style-button {
   background: var(--gradient-silver);
   border-radius: 6px;
-  border: 3px ridge var(--border-medium);
+  border: 2px groove var(--border-medium);
   display: inline-block;
   cursor: pointer;
   margin: 2px;
@@ -347,9 +347,7 @@ input.item-field-value-numeric {
   height: fit-content;
   width: fit-content;
 }
-
 .style-button:hover {
-  background: var(--gradient-silver);
   background-color: var(--hover-tint);
 }
 .style-button:active {
@@ -357,7 +355,6 @@ input.item-field-value-numeric {
   top: 1px;
   left: 1px;
 }
-
 
 .window-app.sheet .window-content .tooltip:hover .tooltiptext {
   top: 2rem;

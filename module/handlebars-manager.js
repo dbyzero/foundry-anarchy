@@ -59,11 +59,11 @@ export const partials = [
   //-- chat
   'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs',
   'systems/shadowrun-anarchy/templates/chat/risk-outcome.hbs',
+  'systems/shadowrun-anarchy/templates/chat/edge-reroll-button.hbs',
   //-- apps
   'systems/shadowrun-anarchy/templates/app/gm-anarchy.hbs',
   'systems/shadowrun-anarchy/templates/app/gm-difficulty.hbs',
   'systems/shadowrun-anarchy/templates/app/gm-difficulty-buttons.hbs',
-
 ];
 
 export class HandlebarsManager {
