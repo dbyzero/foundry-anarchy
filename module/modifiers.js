@@ -84,7 +84,7 @@ export class Modifiers {
   }
 
   static _prepareEdge(actor) {
-    return actor.data.data.counters.edge.value >= actor.data.data.attributes.edge.value ? undefined : {
+    return actor.data.data.counters.edge.value <= 0 ? undefined : {
       type: 'edge',
       label: game.i18n.localize(SRA.common.roll.modifiers.edge) + ' (' + actor.data.data.counters.edge.value + '/' + actor.data.data.attributes.edge.value + ')',
       category: 'other',

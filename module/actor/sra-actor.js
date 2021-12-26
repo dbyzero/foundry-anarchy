@@ -138,22 +138,21 @@ export class SRAActor extends Actor {
 
   async spendAnarchy(count) {
     if (this.hasPlayerOwner) {
-      let value = this.getAnarchy();
-      ErrorManager.checkSufficient(SRA.actor.counters.anarchy, count, value);
+      let current = this.getAnarchy();
+      ErrorManager.checkSufficient(SRA.actor.counters.anarchy, count, current);
       await this._playerGivesAnarchyToGM(count);
-      await this.update({ 'data.counters.anarchy.value': (value - count) });
+      await this.update({ 'data.counters.anarchy.value': (current - count) });
     }
     else {
       await this.npcConsumesAnarchy(count);
     }
   }
 
-  async spendEdge(spend) {
-    if (spend) {
+  async spendEdge(count) {
+    if (count) {
       let current = this.data.data.counters.edge.value;
-      let available = this.data.data.attributes.edge.value - current;
-      ErrorManager.checkSufficient(SRA.actor.counters.edge, spend, available);
-      await this.update({ 'data.counters.edge.value': (current + 1) });
+      ErrorManager.checkSufficient(SRA.actor.counters.edge, count, current);
+      await this.update({ 'data.counters.edge.value': (current - count) });
     }
   }
 
