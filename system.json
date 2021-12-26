@@ -14,9 +14,9 @@
     "allowBugReporter": true
   },
   "license": "LICENSE.txt",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "9",
   "templateVersion": 1,
   "scripts": [],
   "esmodules": [
