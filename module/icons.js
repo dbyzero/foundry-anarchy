@@ -1,7 +1,7 @@
 export class Icons {
 
-  static fontAwesome(fa) {
-    return `<i class="${fa}"></i>`;
+  static fontAwesome(faClass) {
+    return `<i class="${faClass}"></i>`;
   }
 
 }

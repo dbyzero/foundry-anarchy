@@ -53,9 +53,10 @@ export const partials = [
   //-- common&technical partials
   'systems/shadowrun-anarchy/templates/common/checkbar.hbs',
   'systems/shadowrun-anarchy/templates/common/damage-code.hbs',
-  'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
-  'systems/shadowrun-anarchy/templates/common/item-control-add.hbs',
   'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs',
+  'systems/shadowrun-anarchy/templates/common/item-control-add.hbs',
+  'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
+
   //-- dialogs
   'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs',
   //-- chat
