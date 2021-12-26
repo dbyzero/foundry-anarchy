@@ -62,14 +62,14 @@ export class SRAActor extends Actor {
     }
   }
 
-  async _setAnarchy(checkbar, value) {
+  async _setAnarchy(checkbar, newValue) {
     if (!this.hasPlayerOwner) {
-      await game.system.sra.gmManager.gmAnarchy.gmAnarchy.gmAnarchy.gmAnarchy.gmAnarchy.setAnarchy(newValue);
+      await game.system.sra.gmManager.gmAnarchy.setAnarchy(newValue);
       this.sheet.render(false);
     }
     else {
       const current = this.data.data.counters.anarchy.value;
-      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
+      ErrorManager.checkOutOfRange(checkbar.resource, newValue, 0, checkbar.maxForActor(this));
       if (!game.user.isGM) {
         Users.blindMessageToGM({
           from: game.user.id,
@@ -78,14 +78,14 @@ export class SRAActor extends Actor {
               user: game.user.name,
               actor: this.name,
               from: current,
-              to: value
+              to: newValue
             })
         });
       }
-      if (value < current) {
-        await this._playerGivesAnarchyToGM(current - value);
+      if (newValue < current) {
+        await this._playerGivesAnarchyToGM(current - newValue);
       }
-      await this.update({ [`${checkbar.dataPath}`]: value });
+      await this.update({ [`${checkbar.dataPath}`]: newValue });
     }
   }
 
