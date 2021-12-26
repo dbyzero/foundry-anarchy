@@ -8,12 +8,17 @@ Shadowrun: Anarchy is a new way to get into the best cyberpunk/urban fantasy act
 
 # Legal mentions
 
-The system code is under license GNU GENERAL PUBLIC LICENSE
+The system code is under license [CC BY-NC-SA 4.0](./LICENSE.md)
 
 Shadowrun is registered trademarks and/or trademarks of The Topps Company, Inc. in the United States and/or other countries.
 
-Editor: Catalyst Game Lab
-French version: Black Book Editions
+Shadowrun Anarchy Editor: Catalyst Game Lab
+Shadowrun Anarchy French version: Black Book Editions
 
-This is a fan project, we are in no way associated with Topps or Catalyst Games Lab.
+This is a fan project, we are in no way associated with The Topps Company Inc., Catalyst Games Lab or Black Book Editions.
+
+# The current Anarchy development team
+
+- Pretre (Rules insights, contributo)
+- VincentVK (development)
 
