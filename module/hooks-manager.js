@@ -29,7 +29,7 @@ export class HooksManager {
     };
     CONFIG.Actor.documentClass = SRAActor;
     CONFIG.Item.documentClass = SRAItem;
-    CONFIG.Combat.initiative = { formula: "2d6" }
+    CONFIG.Combat.initiative = { formula: "2d6 + max(@attributes.agility.value, @attributes.logic.value)" }
 
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
     console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
