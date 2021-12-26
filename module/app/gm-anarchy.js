@@ -1,6 +1,7 @@
 import { SRA } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
+import { Icons } from "../icons.js";
 import { RemoteCall } from "../remotecall.js";
 
 const ANARCHY_GM = "anarchy-gm";
@@ -82,8 +83,8 @@ export class GMAnarchy {
       labelkey: SRA.gmManager.gmAnarchy,
       rowlength: 10,
       adjust: false,
-      checkicon: 'fas fa-sun',
-      uncheckicon: 'far fa-sun',
+      iconChecked: Icons.fontAwesome('fas fa-sun'),
+      iconUnchecked: Icons.fontAwesome('far fa-sun'),
     });
   }
 

@@ -15,12 +15,11 @@ export class ChatManager {
   }
 
   static async onRenderChatMessage(app, html, msg) {
-    console.log('ChatManager.onRenderChatMessage', app, html, msg);
-
     html.find(".click-edge-reroll").click(async event => {
-      const json = $(event.currentTarget).attr('data-json');
       const messageId = $(event.currentTarget).closest('.chat-message').attr('data-message-id');
-      const rollData = ChatRollData.rollDataFromJSON(json)
+      const json = $(event.currentTarget).attr('data-json');
+      const rollData = ChatRollData.rollDataFromJSON(json);
+      // TODO: indicate edge was used for reroll
       await SRARollManager.edgeReroll(rollData);
       ChatManager.removeChatMessage(messageId);
     });

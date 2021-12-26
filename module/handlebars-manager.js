@@ -1,6 +1,7 @@
 import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
+import { Icons } from "./icons.js";
 import { Weapon } from "./item/weapon.js";
 import { Misc } from "./misc.js";
 
@@ -53,6 +54,7 @@ export const partials = [
   'systems/shadowrun-anarchy/templates/common/checkbar.hbs',
   'systems/shadowrun-anarchy/templates/common/damage-code.hbs',
   'systems/shadowrun-anarchy/templates/common/item-controls.hbs',
+  'systems/shadowrun-anarchy/templates/common/item-control-add.hbs',
   'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs',
   //-- dialogs
   'systems/shadowrun-anarchy/templates/dialog/roll-modifier.hbs',
@@ -91,6 +93,8 @@ export class HandlebarsManager {
     Handlebars.registerHelper('isInteger', a => a !== undefined && Number.isInteger(a));
     Handlebars.registerHelper('actorAttribute', (actor, attribute) => actor.getAttributeValue(attribute));
     Handlebars.registerHelper('localizeAttribute', Enums.localizeAttribute);
+    Handlebars.registerHelper('iconFA', Icons.fontAwesome);
+
   }
 
   static hbsFor(start, end, options) {

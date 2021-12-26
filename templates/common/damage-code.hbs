@@ -11,7 +11,7 @@
 {{~else}}
   {{damageCode damage strength}}{{~/if}}{{damageLetter monitor}}
 {{#if noArmor}}
-<i class="fas fa-user-times" title="{{localize 'SRA.item.weapon.noArmor'}}"></i>
+<span title="{{localize 'SRA.item.weapon.noArmor'}}">{{{iconFA 'fas fa-user-times'}}}</span>
 {{else}}
-<i class="fas fa-user-shield" title="{{localize 'SRA.item.weapon.withArmor'}}"></i>
+<span title="{{localize 'SRA.item.weapon.withArmor'}}">{{{iconFA 'fas fa-user-shield'}}}</span>
 {{/if}}

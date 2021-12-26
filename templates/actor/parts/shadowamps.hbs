@@ -1,7 +1,7 @@
 <div class="define-item-type shadowamp style-shadowamp-list" data-item-type="shadowamp">
   <h2>
     <label>{{localize 'SRA.itemType.plural.shadowamp'}}</label>
-    <a class="item-control click-item-add" title="{{localize SRA.common.add}}"><i class="fas fa-plus-circle"></i></a>
+    {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'shadowamp'}}
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.shadowamp as |shadowamp|}}

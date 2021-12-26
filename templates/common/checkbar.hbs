@@ -7,8 +7,8 @@
     labelkey: "SRA.actor.monitors.stun", label key (to internationalize), used also for css class
     rowlength: 3, // count of checks per row
     adjust: true, // indicates to compute & display adjustment,
-    checkicon: 'fas fa-circle',
-    uncheckicon: 'far fa-circle',
+    iconChecked: "<i class='fas fa-circle'></i>" , or "<img src='systems/shadowrun-anarchy/icons/svg/icon.svg'/>""
+    iconUnchecked: "<i class='far fa-circle'></i>"
   }
 }}
 <div class="checkbar-root" data-monitor-code="{{code}}" title="{{localize labelkey}}">
@@ -22,9 +22,9 @@
     {{/if}}
 
     {{#if (lt this ../value)}}
-      <a class="click-checkbar-element checked-element" data-index="{{this}}" data-checked="true"><i class="{{either ../checkicon 'fas fa-circle'}}"></i></a>
+      <a class="click-checkbar-element checked-element" data-index="{{this}}" data-checked="true">{{{either ../iconChecked (iconFA 'fas fa-circle')}}}</a>
     {{else}}
-      <a class="click-checkbar-element unchecked-element" data-index="{{this}}"><i class="{{either ../uncheckicon 'far fa-circle'}}"></i></a>
+      <a class="click-checkbar-element unchecked-element" data-index="{{this}}">{{{either ../iconUnchecked (iconFA 'far fa-circle')}}}</a>
     {{/if}}
 
     {{#if ../adjust}}

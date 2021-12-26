@@ -1,7 +1,7 @@
 <div class="define-item-type skill" data-item-type="skill">
   <h2>
     <label>{{localize 'SRA.itemType.plural.skill'}}</label>
-    <a class="item-control click-item-add" title="{{localize SRA.common.add}}"><i class="fas fa-plus-circle"></i></a>
+    {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'skill'}}
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.skill as |skill|}}

@@ -1,7 +1,7 @@
 <div class="define-item-type gear" data-item-type="gear">
   <h2>
     <label>{{localize 'SRA.itemType.plural.gear'}}</label>
-    <a class="item-control click-item-add" title="{{localize SRA.common.add}}"><i class="fas fa-plus-circle"></i></a>
+    {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'gear'}}
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.gear as |gear|}}
