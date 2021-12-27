@@ -1,11 +1,11 @@
-import { SRAActor } from './actor/sra-actor.js'
+import { AnarchyActor } from './actor/anarchy-actor.js'
 import { CharacterSheet } from './actor/character-sheet.js';
-import { SRA } from './config.js';
-import { SYSTEM_NAME } from './constants.js';
+import { ANARCHY } from './config.js';
+import { LOG_HEAD, SYSTEM_NAME } from './constants.js';
 import { HandlebarsManager } from './handlebars-manager.js';
-import { SRAItemSheet } from './item/base-item-sheet.js';
-import { SRASkillSheet } from './item/skill-item-sheet.js';
-import { SRAItem } from './item/sra-item.js';
+import { AnarchyItemSheet } from './item/base-item-sheet.js';
+import { AnarchySkillSheet } from './item/skill-item-sheet.js';
+import { AnarchyItem } from './item/anarchy-item.js';
 import { Enums } from './enums.js';
 import { GMManager } from './app/gm-manager.js';
 import { RemoteCall } from './remotecall.js';
@@ -18,24 +18,24 @@ import { ChatManager } from './chat/chat-manager.js';
 export class HooksManager {
 
   static register() {
-    console.log('Shadowrun Anarchy | Registering system hooks');
+    console.log(LOG_HEAD + 'HooksManager.Registering system hooks');
     Hooks.once('init', HooksManager.onInit);
     Hooks.once('ready', async () => await HooksManager.onReady());
   }
 
   static async onInit() {
-    console.log('Shadowrun Anarchy | onInit | loading system');
-    game.system.sra = {
-      SRAActor
+    console.log(LOG_HEAD + 'HooksManager.onInit | loading system');
+    game.system.anarchy = {
+      AnarchyActor
     };
-    CONFIG.Actor.documentClass = SRAActor;
-    CONFIG.Item.documentClass = SRAItem;
+    CONFIG.Actor.documentClass = AnarchyActor;
+    CONFIG.Item.documentClass = AnarchyItem;
     CONFIG.Combat.initiative = { formula: "2d6 + max(@attributes.agility.value, @attributes.logic.value)" }
 
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.actor.characterSheet));
-    console.log('Shadowrun Anarchy | ', game.i18n.localize(SRA.item.sheet));
+    console.log(LOG_HEAD + game.i18n.localize(ANARCHY.actor.characterSheet));
+    console.log(LOG_HEAD + game.i18n.localize(ANARCHY.item.sheet));
 
-    CONFIG.SRA = SRA;
+    CONFIG.ANARCHY = ANARCHY;
 
     Enums.registerEnums();
     HooksManager.registerSheets();
@@ -47,10 +47,10 @@ export class HooksManager {
     GMAnarchy.init();
     GMDifficulty.init();
     GMManager.init();
-    SRAItem.init();
+    AnarchyItem.init();
     ChatManager.init();
     await HandlebarsManager.init();
-    console.log('Shadowrun Anarchy | init done');
+    console.log(LOG_HEAD + 'init done');
   }
 
   static async onReady() {
@@ -60,22 +60,22 @@ export class HooksManager {
   static registerSheets() {
     Actors.unregisterSheet('core', ActorSheet);
     Actors.registerSheet(SYSTEM_NAME, CharacterSheet, {
-      label: game.i18n.localize(SRA.actor.characterSheet),
+      label: game.i18n.localize(ANARCHY.actor.characterSheet),
       makeDefault: true,
       types: ['character']
     });
     Actors.registerSheet(SYSTEM_NAME, NPCSheet, {
-      label: game.i18n.localize(SRA.actor.npcSheet),
+      label: game.i18n.localize(ANARCHY.actor.npcSheet),
       makeDefault: false,
       types: ['character']
     });
 
     Items.unregisterSheet('core', ItemSheet);
-    Items.registerSheet(SYSTEM_NAME, SRAItemSheet, {
+    Items.registerSheet(SYSTEM_NAME, AnarchyItemSheet, {
       types: ["metatype", "quality", "shadowamp", "weapon", "gear", "contact"],
       makeDefault: true
     });
-    Items.registerSheet(SYSTEM_NAME, SRASkillSheet, {
+    Items.registerSheet(SYSTEM_NAME, AnarchySkillSheet, {
       types: ["skill"],
       makeDefault: true
     });

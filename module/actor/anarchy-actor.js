@@ -1,6 +1,6 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { BASE_MONITOR } from "../constants.js";
-import { SRARollDialog } from "../dialog/roll-dialog.js";
+import { AnarchyRollDialog } from "../dialog/roll-dialog.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
@@ -8,15 +8,15 @@ import { Users } from "../users.js";
 
 
 const CHECKBARS = {
-  physical: { dataPath: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: SRA.actor.monitors.physical },
-  stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: SRA.actor.monitors.stun },
-  armor: { dataPath: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: SRA.actor.monitors.armor },
-  anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: SRA.actor.counters.anarchy },
-  edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: SRA.actor.counters.edge }
+  physical: { dataPath: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: ANARCHY.actor.monitors.physical },
+  stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: ANARCHY.actor.monitors.stun },
+  armor: { dataPath: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: ANARCHY.actor.monitors.armor },
+  anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: ANARCHY.actor.counters.anarchy },
+  edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge }
 }
 
 
-export class SRAActor extends Actor {
+export class AnarchyActor extends Actor {
 
   prepareData() {
     super.prepareData();
@@ -64,7 +64,7 @@ export class SRAActor extends Actor {
 
   async _setAnarchy(checkbar, newValue) {
     if (!this.hasPlayerOwner) {
-      await game.system.sra.gmManager.gmAnarchy.setAnarchy(newValue);
+      await game.system.anarchy.gmManager.gmAnarchy.setAnarchy(newValue);
       this.sheet.render(false);
     }
     else {
@@ -73,7 +73,7 @@ export class SRAActor extends Actor {
       if (!game.user.isGM) {
         Users.blindMessageToGM({
           from: game.user.id,
-          content: game.i18n.format(SRA.gmManager.playerChangedAnarchy,
+          content: game.i18n.format(ANARCHY.gmManager.playerChangedAnarchy,
             {
               user: game.user.name,
               actor: this.name,
@@ -94,52 +94,52 @@ export class SRAActor extends Actor {
       ChatMessage.create({
         user: game.user,
         whisper: ChatMessage.getWhisperRecipients('GM'),
-        content: game.i18n.format(SRA.gmManager.gmReceivedAnarchy,
+        content: game.i18n.format(ANARCHY.gmManager.gmReceivedAnarchy,
           {
             anarchy: count,
             actor: this.name
           })
       });
-      await game.system.sra.gmManager.gmAnarchy.addAnarchy(count);
+      await game.system.anarchy.gmManager.gmAnarchy.addAnarchy(count);
     }
   }
 
   async npcConsumesAnarchy(count) {
-    await game.system.sra.gmManager.gmAnarchy.addAnarchy(-count);
+    await game.system.anarchy.gmManager.gmAnarchy.addAnarchy(-count);
   }
 
   async skillRoll(skill, specialization) {
-    const rollData = SRARollDialog.prepareSkillRollData(this, skill, specialization);
+    const rollData = AnarchyRollDialog.prepareSkillRollData(this, skill, specialization);
     await this._roll(rollData);
   }
 
   async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
-    const rollData = SRARollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
+    const rollData = AnarchyRollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
     await this._roll(rollData);
   }
 
   async weaponRoll(weapon) {
     const skill = this.items.find(it => it.type == 'skill' && it.data.data.code === weapon.data.data.skill);
-    const rollData = SRARollDialog.prepareWeaponRollData(this, skill, weapon);
+    const rollData = AnarchyRollDialog.prepareWeaponRollData(this, skill, weapon);
     await this._roll(rollData);
   }
 
   async _roll(rollData) {
-    const dialog = await SRARollDialog.create(rollData);
+    const dialog = await AnarchyRollDialog.create(rollData);
     dialog.render(true);
   }
 
   getAnarchy() {
-    return this.hasPlayerOwner ? this.data.data.counters.anarchy.value : game.system.sra.gmManager.gmAnarchy.getAnarchy();
+    return this.hasPlayerOwner ? this.data.data.counters.anarchy.value : game.system.anarchy.gmManager.gmAnarchy.getAnarchy();
   }
   getAnarchyMax() {
-    return this.hasPlayerOwner ? this.data.data.counters.anarchy.max : game.system.sra.gmManager.gmAnarchy.getAnarchyMax();
+    return this.hasPlayerOwner ? this.data.data.counters.anarchy.max : game.system.anarchy.gmManager.gmAnarchy.getAnarchyMax();
   }
 
   async spendAnarchy(count) {
     if (this.hasPlayerOwner) {
       let current = this.getAnarchy();
-      ErrorManager.checkSufficient(SRA.actor.counters.anarchy, count, current);
+      ErrorManager.checkSufficient(ANARCHY.actor.counters.anarchy, count, current);
       await this._playerGivesAnarchyToGM(count);
       await this.update({ 'data.counters.anarchy.value': (current - count) });
     }
@@ -151,7 +151,7 @@ export class SRAActor extends Actor {
   async spendEdge(count) {
     if (count) {
       let current = this.data.data.counters.edge.value;
-      ErrorManager.checkSufficient(SRA.actor.counters.edge, count, current);
+      ErrorManager.checkSufficient(ANARCHY.actor.counters.edge, count, current);
       await this.update({ 'data.counters.edge.value': (current - count) });
     }
   }

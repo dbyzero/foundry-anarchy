@@ -8,48 +8,48 @@
     <div>{{localizeAttribute attribute}}: {{actorAttribute actor attribute}}</div>
     <div>{{skill.name}}: {{either skill.data.data.value 0}}</div>
     {{#if modifiers.specialization.used}}
-    <div>{{localize SRA.item.skill.specialization}} {{specialization}}: {{numberFormat modifiers.specialization.value decimals=0 sign=true}}</div>
+    <div>{{localize ANARCHY.item.skill.specialization}} {{specialization}}: {{numberFormat modifiers.specialization.value decimals=0 sign=true}}</div>
     {{/if}}
-    {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
-    {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
-    {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
+    {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
+    {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
+    {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
   </div>
 </div>
 <br>
 {{!-- Roll successes explanation --}}
 <div class="tooltip tooltip-dotted">
   <h3 class="chat-roll-title">
-    {{localize SRA.common.roll.success}}: {{roll.hits}}
+    {{localize ANARCHY.common.roll.success}}: {{roll.hits}}
   </h3>
   <div class="tooltiptext tooltip-roll-modifiers">
-    <div>{{localize SRA.common.roll.success}}: {{roll.roll.total}} / {{roll.param.pool}}</div>
+    <div>{{localize ANARCHY.common.roll.success}}: {{roll.roll.total}} / {{roll.param.pool}}</div>
     {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
-    <div>{{localize SRA.common.roll.risk.prowess}}: 1</div>
+    <div>{{localize ANARCHY.common.roll.risk.prowess}}: 1</div>
     {{/if}}
     {{#if roll.subrolls.reroll}}
-    <div>{{localize SRA.common.roll.rerollSuccess}}: {{roll.subrolls.reroll.total}} / {{roll.param.reroll}}</div>
+    <div>{{localize ANARCHY.common.roll.rerollSuccess}}: {{roll.subrolls.reroll.total}} / {{roll.param.reroll}}</div>
     {{/if}}
     {{#if roll.subrolls.rerollForced}}
-    <div>{{localize SRA.common.roll.rerollForcedLoss}}: -{{roll.param.rerollForced}}</div>
-    <div>{{localize SRA.common.roll.rerollForcedSuccess}}: {{roll.subrolls.rerollForced.total}} / {{roll.param.rerollForced}}</div>
+    <div>{{localize ANARCHY.common.roll.rerollForcedLoss}}: -{{roll.param.rerollForced}}</div>
+    <div>{{localize ANARCHY.common.roll.rerollForcedSuccess}}: {{roll.subrolls.rerollForced.total}} / {{roll.param.rerollForced}}</div>
     {{/if}}
   </div>
 </div>
 
 {{#unless modifiers.edge.used}}
 <div>
-  {{> 'systems/shadowrun-anarchy/templates/chat/edge-reroll-button.hbs'}}
+  {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
 </div>
 {{/unless}}
 
 <div>
   <div class="alterne-list">
-  {{> 'systems/shadowrun-anarchy/templates/chat/risk-outcome.hbs'}}
+  {{> 'systems/anarchy/templates/chat/risk-outcome.hbs'}}
   {{#if modifiers.anarchyDisposition.used}}
-  <div>{{localize SRA.common.roll.modifiers.anarchyDisposition}}
+  <div>{{localize ANARCHY.common.roll.modifiers.anarchyDisposition}}
   {{/if}}
-  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}
-  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentRerollForced}}
-  {{> 'systems/shadowrun-anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentReduce}}
+  {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}
+  {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentRerollForced}}
+  {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentReduce}}
   </div>
 </div>

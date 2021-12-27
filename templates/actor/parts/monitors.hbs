@@ -1,14 +1,14 @@
 <h3>
-  {{localize 'SRA.actor.monitors.conditionMonitors'}}
+  {{localize 'ANARCHY.actor.monitors.conditionMonitors'}}
 </h3>
 <div class="flexrow flex-wrap">
   <div class="flexcol">
-    <h4>{{localize 'SRA.actor.monitors.physical'}}</h4>
-    {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+    <h4>{{localize 'ANARCHY.actor.monitors.physical'}}</h4>
+    {{> "systems/anarchy/templates/common/checkbar.hbs"
       code='physical'
       value=data.data.monitors.physical.value
       max=data.data.monitors.physical.max
-      labelkey='SRA.actor.monitors.physical'
+      labelkey='ANARCHY.actor.monitors.physical'
       rowlength=3
       adjust=true
       iconChecked=(iconFA 'fas fa-heartbeat')
@@ -16,12 +16,12 @@
     }}
   </div>
   <div class="flexcol">
-    <h4>{{localize 'SRA.actor.monitors.stun'}}</h4>
-    {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+    <h4>{{localize 'ANARCHY.actor.monitors.stun'}}</h4>
+    {{> "systems/anarchy/templates/common/checkbar.hbs"
       code='stun'
       value=data.data.monitors.stun.value
       max=data.data.monitors.stun.max
-      labelkey='SRA.actor.monitors.stun'
+      labelkey='ANARCHY.actor.monitors.stun'
       rowlength=3
       adjust=true
       iconChecked=(iconFA 'fas fa-bahai')

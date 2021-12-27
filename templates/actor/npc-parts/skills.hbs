@@ -1,11 +1,11 @@
 <div class="define-item-type skill" data-item-type="skill">
   <h2>
-    <label>{{localize 'SRA.itemType.plural.skill'}}</label>
-    {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'skill'}}
+    <label>{{localize 'ANARCHY.itemType.plural.skill'}}</label>
+    {{> 'systems/anarchy/templates/common/item-control-add.hbs' 'skill'}}
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.skill as |skill|}}
-    {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/skill.hbs" skill}}
+    {{> "systems/anarchy/templates/actor/npc-parts/skill.hbs" skill}}
     {{/each}}
   </div>
 </div>

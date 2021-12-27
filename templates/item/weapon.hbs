@@ -1,23 +1,23 @@
 <form class="{{options.cssClass}}" autocomplete="off">
   <header class="sheet-header">
     <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-    {{> 'systems/shadowrun-anarchy/templates/item/parts/itemname.hbs'
-      labelkey='SRA.itemType.singular.weapon'
+    {{> 'systems/anarchy/templates/item/parts/itemname.hbs'
+      labelkey='ANARCHY.itemType.singular.weapon'
       type="weapon"
     }}
   </header>
   <section class="sheet-body">
     <div class="form-group">
-      <label for="data.skill">{{localize 'SRA.item.weapon.skill'}} </label>
+      <label for="data.skill">{{localize 'ANARCHY.item.weapon.skill'}} </label>
       <select name="data.skill" data-dtype="String">
           {{#select data.data.skill}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
+          {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
           {{/select}}
       </select>
     </div>
     <div class="form-group">
       <label for="data.damage">
-        {{localize 'SRA.item.weapon.damage'}}
+        {{localize 'ANARCHY.item.weapon.damage'}}
       </label>
       <div class="flexrow flex-wrap">
         <input class="item-field-value-numeric" type="number" data-dtype="Number"
@@ -25,13 +25,13 @@
         />
 
         <input class="item-field-value" name="data.strength" type="checkbox" {{checked data.data.strength}} >
-          <label >{{localize 'SRA.item.weapon.strength'}}</label>
+          <label >{{localize 'ANARCHY.item.weapon.strength'}}</label>
         </input>
       </div>
     </div>
     <div class="form-group">
       <label>
-        {{> 'systems/shadowrun-anarchy/templates/common/damage-code.hbs'
+        {{> 'systems/anarchy/templates/common/damage-code.hbs'
             strength=data.data.strength
             damage=data.data.damage
             monitor=data.data.monitor
@@ -41,40 +41,40 @@
       <div>
         <select name="data.monitor" data-dtype="String">
           {{#select data.data.monitor}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.monitors}}
+          {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.monitors}}
           {{/select}}
         </select>
 
         <input class="item-field-value" name="data.noArmor" type="checkbox" {{checked data.data.noArmor}}>
-          <label>{{localize 'SRA.item.weapon.noArmor'}}</label>
+          <label>{{localize 'ANARCHY.item.weapon.noArmor'}}</label>
         </input>
       </div>
     </div>
     <div class="form-group">
-      <label for="data.area" >{{localize 'SRA.item.weapon.area'}} </label>
+      <label for="data.area" >{{localize 'ANARCHY.item.weapon.area'}} </label>
       <select name="data.area" data-dtype="String">
         {{#select data.data.area}}
-        {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.areas}}
+        {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.areas}}
         {{/select}}
       </select>
     </div>
     <div class="form-group">
-        <label for="data.range.max" >{{localize 'SRA.item.weapon.range.max'}} </label>
+        <label for="data.range.max" >{{localize 'ANARCHY.item.weapon.range.max'}} </label>
         <select name="data.range.max" data-dtype="String">
           {{#select data.data.range.max}}
-          {{> 'systems/shadowrun-anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.ranges}}
+          {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.ranges}}
           {{/select}}
         </select>
     </div>
     <div class="form-group">
-        <label for="data.range.short" >{{localize 'SRA.range.short'}} </label>
+        <label for="data.range.short" >{{localize 'ANARCHY.range.short'}} </label>
         <input class="item-field-value-numeric" type="number" data-dtype="Number"
           name="data.range.short" value="{{numberFormat data.data.range.short decimals=0 sign=false}}"
         />
     </div>
     {{#unless (eq data.data.range.max "short")}}
       <div class="form-group">
-          <label for="data.range.medium" >{{localize 'SRA.range.medium'}} </label>
+          <label for="data.range.medium" >{{localize 'ANARCHY.range.medium'}} </label>
           <input class="item-field-value-numeric" type="number" data-dtype="Number"
             name="data.range.medium" value="{{numberFormat data.data.range.medium decimals=0 sign=false}}"
           />
@@ -83,13 +83,13 @@
 
     {{#if (eq data.data.range.max "long")}}
     <div class="form-group">
-        <label for="data.range.long" >{{localize 'SRA.range.long'}} </label>
+        <label for="data.range.long" >{{localize 'ANARCHY.range.long'}} </label>
         <input class="item-field-value-numeric" type="number" data-dtype="Number"
           name="data.range.long" value="{{numberFormat data.data.range.long decimals=0 sign=false}}"
         />
     </div>
     {{/if}}
-    {{> 'systems/shadowrun-anarchy/templates/item/parts/references.hbs'}}
+    {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
   </section>
 
 </form>

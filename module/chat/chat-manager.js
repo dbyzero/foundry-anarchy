@@ -1,5 +1,5 @@
 import { RemoteCall } from "../remotecall.js";
-import { SRARollManager } from "../roll-manager.js";
+import { AnarchyRollManager } from "../roll-manager.js";
 import { ChatRollData } from "./chat-roll-data.js";
 
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
@@ -20,7 +20,7 @@ export class ChatManager {
       const json = $(event.currentTarget).attr('data-json');
       const rollData = ChatRollData.rollDataFromJSON(json);
       // TODO: indicate edge was used for reroll
-      await SRARollManager.edgeReroll(rollData);
+      await AnarchyRollManager.edgeReroll(rollData);
       ChatManager.removeChatMessage(messageId);
     });
   }

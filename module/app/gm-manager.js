@@ -1,5 +1,5 @@
 import { HandleDragApplication } from "./handle-drag.js";
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
 import { GMAnarchy } from "./gm-anarchy.js";
 import { GMDifficulty } from "./gm-difficulty.js";
@@ -7,7 +7,7 @@ import { GMDifficulty } from "./gm-difficulty.js";
 const GM_MANAGER = "gm-manager";
 const GM_MANAGER_POSITION = "gm-manager-position";
 const GM_MANAGER_INITIAL_POSITION = { top: 200, left: 200 };
-const GM_MANAGER_TEMPLATE = 'systems/shadowrun-anarchy/templates/app/gm-manager.hbs';
+const GM_MANAGER_TEMPLATE = 'systems/anarchy/templates/app/gm-manager.hbs';
 
 
 export class GMManager extends Application {
@@ -17,10 +17,10 @@ export class GMManager extends Application {
   }
 
   static create() {
-    game.system.sra.gmManager = new GMManager();
+    game.system.anarchy.gmManager = new GMManager();
 
     if (game.user.isGM) {
-      game.system.sra.gmManager.render(true);
+      game.system.anarchy.gmManager.render(true);
     }
 
   }
@@ -45,7 +45,7 @@ export class GMManager extends Application {
   static get defaultOptions() {
     let options = super.defaultOptions;
     options.id = GM_MANAGER;
-    options.title = game.i18n.localize(SRA.gmManager.title);
+    options.title = game.i18n.localize(ANARCHY.gmManager.title);
     options.template = GM_MANAGER_TEMPLATE;
     options.popOut = false;
     options.resizable = false;
@@ -59,7 +59,7 @@ export class GMManager extends Application {
     return {
       anarchy: this.gmAnarchy.getAnarchyData(),
       difficultyPools: this.gmDifficulty.getDifficultyData(),
-      SRA: SRA
+      ANARCHY: ANARCHY
     }
   }
 

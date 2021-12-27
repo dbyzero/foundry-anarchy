@@ -4,79 +4,79 @@
     <div class="flexcol">
       <div class="flexrow flex-group-left">
         <div class="flex-grow-2">
-            <input name="name" type="text" value="{{data.name}}" placeholder="{{localize SRA.actor.actorName}}"/>
+            <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
         </div>
         <div class="flex-shrink">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/genre.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/genre.hbs"}}
         </div>
         <div class="flex-shrink">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/metatype.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
         </div>
       </div>
       <div class="flexrow flex-group-left">
         <div>
-          {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/essence.hbs"}}
+          {{> "systems/anarchy/templates/actor/npc-parts/essence.hbs"}}
         </div>
         <div class="flex-shrink">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
         </div>
       </div>
       <div class="flexrow">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
       </div>
     </div>
   </header>
   <section class="sheet-body">
     <div class="flexrow">
       {{#each data.data.attributes as |attribute key|}}
-      {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/attribute.hbs" attribute=attribute key=key}}
+      {{> "systems/anarchy/templates/actor/npc-parts/attribute.hbs" attribute=attribute key=key}}
       {{/each}}
     </div>
     <div class="flexrow">
       <div class="style-monitor-counters">
-        <span class="flexcol">{{> "systems/shadowrun-anarchy/templates/actor/parts/armor-header.hbs"}}</span>
-        <span class="flexrow">{{> "systems/shadowrun-anarchy/templates/actor/npc-parts/armor.hbs"}}</span>
+        <span class="flexcol">{{> "systems/anarchy/templates/actor/parts/armor-header.hbs"}}</span>
+        <span class="flexrow">{{> "systems/anarchy/templates/actor/npc-parts/armor.hbs"}}</span>
         <span class="flexrow">
-          {{localize (concat 'SRA.actor.counters.edge')}}:
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/edge.hbs"}}
+          {{localize (concat 'ANARCHY.actor.counters.edge')}}:
+          {{> "systems/anarchy/templates/actor/parts/edge.hbs"}}
         </span>
         <span class="flexrow">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy-header.hbs"}}
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}
         </span>
       </div>
-      <div class="style-monitor-counters">{{> "systems/shadowrun-anarchy/templates/actor/npc-parts/monitors.hbs"}}</div>
+      <div class="style-monitor-counters">{{> "systems/anarchy/templates/actor/npc-parts/monitors.hbs"}}</div>
     </div>
     <div class="flexrow">
       <div class="flexcol">
-        {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/skills.hbs"}}
+        {{> "systems/anarchy/templates/actor/npc-parts/skills.hbs"}}
         </div>
       <div class="flexcol flex-grow-2">
-      {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/weapons.hbs"}}
+      {{> "systems/anarchy/templates/actor/npc-parts/weapons.hbs"}}
       </div>
     </div>
     <div class="flexcol">
       <h2 class="flex-group-left">
         <span>
-          <label>{{localize 'SRA.itemType.plural.shadowamp'}}</label>
-          {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'shadowamp'}}
+          <label>{{localize 'ANARCHY.itemType.plural.shadowamp'}}</label>
+          {{> 'systems/anarchy/templates/common/item-control-add.hbs' 'shadowamp'}}
           <label>/</label>
-          <label>{{localize 'SRA.itemType.plural.quality'}}</label>
-          {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'quality'}}
+          <label>{{localize 'ANARCHY.itemType.plural.quality'}}</label>
+          {{> 'systems/anarchy/templates/common/item-control-add.hbs' 'quality'}}
         </span>
       </h2>
       <div class="flexrow flex-wrap">
         {{#each items.shadowamp as |shadowamp|}}
-        {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/shadowamp.hbs" shadowamp}}
+        {{> "systems/anarchy/templates/actor/npc-parts/shadowamp.hbs" shadowamp}}
         {{/each}}
         {{#each items.quality as |quality|}}
-        {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/quality.hbs" quality}}
+        {{> "systems/anarchy/templates/actor/npc-parts/quality.hbs" quality}}
         {{/each}}
       </div>
     </div>
     <div>
-    {{> 'systems/shadowrun-anarchy/templates/actor/parts/description.hbs'}}
-    {{> 'systems/shadowrun-anarchy/templates/actor/parts/gmnotes.hbs'}}
+    {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
+    {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}
     </div>
   </section>
 </form>

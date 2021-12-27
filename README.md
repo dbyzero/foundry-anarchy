@@ -1,4 +1,4 @@
-# Foundry system for Shadowrun Anarchy
+# Foundry system for Shadowrun Anarchy - or any Anarchy hack
 
 Shadowrun. The Sixth World. Orks in pinstripe suits with uzis; mohawked dwarves jacked into vehicles racing through megasprawls at breakneck speed; humans casting fireballs at corporate-trained paracritters; elves hacking the Matrix for a datasteal of the latest tech or working to topple an upstart corp. It’s where man meets magic and machine.
 
@@ -19,6 +19,6 @@ This is a fan project, we are in no way associated with The Topps Company Inc., 
 
 # The current Anarchy development team
 
-- Pretre (Rules insights, contributo)
+- Pretre (Rules insights, contributor)
 - VincentVK (development)
 

@@ -1,15 +1,15 @@
 <div>
   <hr>
   <div class="form-group">
-    <label for="sourceReference">{{localize 'SRA.common.sourceReference'}} </label>
+    <label for="sourceReference">{{localize 'ANARCHY.common.sourceReference'}} </label>
     <input class="item-field-value" type="text" data-dtype="String"
         name="data.sourceReference" value="{{data.data.sourceReference}}" 
-        placeholder="{{localize 'SRA.common.sourceReferenceHelp'}}"
+        placeholder="{{localize 'ANARCHY.common.sourceReferenceHelp'}}"
     />
   </div>
   <hr>
   <div class="flexcol">
-    <span><label>{{localize 'SRA.common.description'}}</label></span>
+    <span><label>{{localize 'ANARCHY.common.description'}}</label></span>
     <div class="form-group editor">
       {{editor
         target="data.description"
@@ -23,7 +23,7 @@
 {{#if options.isGM}}
   <hr>
   <div class="flexcol">
-    <span><label>{{localize 'SRA.common.gmnotes'}}</label></span>
+    <span><label>{{localize 'ANARCHY.common.gmnotes'}}</label></span>
     <div class="form-group editor">
       {{editor
         target="data.gmnotes"

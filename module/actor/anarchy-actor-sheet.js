@@ -1,4 +1,4 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Misc } from "../misc.js";
 import { Essence } from "../essence.js";
@@ -6,7 +6,7 @@ import { ConfirmationDialog } from "../confirmation.js";
 import { SheetHelper } from "../sheet-helper.js";
 import { Enums } from "../enums.js";
 
-export class SRAActorSheet extends ActorSheet {
+export class AnarchyActorSheet extends ActorSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/${this.actor.data.type}.hbs`;
@@ -29,7 +29,7 @@ export class SRAActorSheet extends ActorSheet {
         adjust: Essence.getAdjust(this.actor.data.data.counters.essence.value)
       },
       ENUMS: Enums.getEnums(),
-      SRA: SRA
+      ANARCHY: ANARCHY
     });
     Misc.classifyInto(hbsData.items, hbsData.data.items);
     return hbsData;
@@ -41,7 +41,7 @@ export class SRAActorSheet extends ActorSheet {
     // cues, dispositions, keywords
     html.find('.click-wordlist-add').click(async event => {
       const wordlist = SheetHelper.getWordList(event);
-      const word = game.i18n.localize(SRA.common.newEntry);
+      const word = game.i18n.localize(ANARCHY.common.newEntry);
       this.actor.createWordlistWord(wordlist, word);
     });
 
@@ -119,7 +119,7 @@ export class SRAActorSheet extends ActorSheet {
 
   /* -------------------------------------------- */
   async createItem(type) {
-    const name = game.i18n.format(SRA.common.newName, { type: game.i18n.localize(SRA.itemType.singular[type]) });
+    const name = game.i18n.format(ANARCHY.common.newName, { type: game.i18n.localize(ANARCHY.itemType.singular[type]) });
     await this.actor.createEmbeddedDocuments('Item', [{ name: name, type: type }], { renderSheet: true });
   }
 

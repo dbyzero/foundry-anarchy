@@ -17,12 +17,12 @@ test:
 build:
   stage: build
   script:
-    - zip shadowrun-anarchy.zip -r *.js *.json *.md *.txt locale module packs style templates -x ".*"
+    - zip anarchy.zip -r *.js *.json *.md *.txt locale module packs style templates -x ".*"
   artifacts:
-    name: shadowrun-anarchy
+    name: anarchy
     when: on_success
     paths:
-      - shadowrun-anarchy.zip
+      - anarchy.zip
   when: on_success
   only:
     - tags

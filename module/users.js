@@ -1,4 +1,4 @@
-import { SRA } from "./config.js";
+import { ANARCHY } from "./config.js";
 import { Misc } from "./misc.js";
 import { RemoteCall } from "./remotecall.js";
 
@@ -19,7 +19,7 @@ export class Users {
         user: chatMessageData.user,
         whisper: ChatMessage.getWhisperRecipients('GM'),
         blind: true,
-        content: game.i18n.format(SRA.chat.blindMessageToGM, {
+        content: game.i18n.format(ANARCHY.chat.blindMessageToGM, {
           user: game.user.name,
           message: chatMessageData.content
         })

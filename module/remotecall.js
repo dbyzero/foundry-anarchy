@@ -4,33 +4,33 @@ import { Users } from "./users.js";
 export class RemoteCall {
 
   static init() {
-    game.system.sra.remoteCall = new RemoteCall();
-    game.socket.on(SYSTEM_SOCKET, async sockMsg => game.system.sra.remoteCall.onSocketMessage(sockMsg));
+    game.system.anarchy.remoteCall = new RemoteCall();
+    game.socket.on(SYSTEM_SOCKET, async sockMsg => game.system.anarchy.remoteCall.onSocketMessage(sockMsg));
   }
-  
+
   constructor() {
     this.remoteCalls = {};
   }
-  
+
   static async register(msg, remoteCall) {
-    game.system.sra.remoteCall._register(msg, remoteCall);
+    game.system.anarchy.remoteCall._register(msg, remoteCall);
   }
 
   async _register(msg, remoteCall) {
-      if (this.remoteCalls[msg]) {
-        throw `RemoteCall msg ${msg} is already registered`;
-      }
-      mergeObject(remoteCall, {
-        callback: data => { console.log('SRA:RemoteCall [', msg, '] (', data, ')'); },
-        condition: user => true,
-        multiple: false /* true if multiple users should handle the message */
-      }, {overwrite:false});
-      this.remoteCalls[msg] = remoteCall;
-      console.log('SRA:RemoteCall registered', msg);
+    if (this.remoteCalls[msg]) {
+      throw `RemoteCall msg ${msg} is already registered`;
     }
-    
+    mergeObject(remoteCall, {
+      callback: data => { console.log('ANARCHY:RemoteCall [', msg, '] (', data, ')'); },
+      condition: user => true,
+      multiple: false /* true if multiple users should handle the message */
+    }, { overwrite: false });
+    this.remoteCalls[msg] = remoteCall;
+    console.log('ANARCHY:RemoteCall registered', msg);
+  }
+
   static call(msg, data) {
-    return game.system.sra.remoteCall._remoteCall(msg, data);
+    return game.system.anarchy.remoteCall._remoteCall(msg, data);
   }
 
   _remoteCall(msg, data) {
@@ -56,11 +56,11 @@ export class RemoteCall {
         remoteCall.callback(sockMsg.data);
       }
       else {
-        console.log('SRA:RemoteCall.onSocketMessage(', sockMsg, ') ignored :', userMatchCondition, isMultiple, isSelectedGM);
+        console.log('ANARCHY:RemoteCall.onSocketMessage(', sockMsg, ') ignored :', userMatchCondition, isMultiple, isSelectedGM);
       }
     }
     else {
-      console.warn('SRA:RemoteCall: No callback registered for', sockMsg);
+      console.warn('ANARCHY:RemoteCall: No callback registered for', sockMsg);
     }
   }
 

@@ -1,4 +1,4 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 
 export class Weapon {
 
@@ -10,7 +10,7 @@ export class Weapon {
       }
       else {
         console.warn('Melee weapon not attached to an actor');
-        return game.i18n.localize(SRA.item.weapon.meleeWithoutActor);
+        return game.i18n.localize(ANARCHY.item.weapon.meleeWithoutActor);
       }
     }
     return dmg;
@@ -19,7 +19,7 @@ export class Weapon {
   static getDamageCode(damage, strength) {
     let code = '';
     if (strength) {
-      code += game.i18n.localize(SRA.attributes.strength).substring(0, 3).toUpperCase() + '/2 + ';
+      code += game.i18n.localize(ANARCHY.attributes.strength).substring(0, 3).toUpperCase() + '/2 + ';
     }
     code += String(damage);
     return code;

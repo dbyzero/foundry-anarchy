@@ -1,4 +1,4 @@
-import { SRA } from "./config.js";
+import { ANARCHY } from "./config.js";
 import { Icons } from "./icons.js";
 
 const defaultSkillsAttribute = {
@@ -42,14 +42,14 @@ const actorDescriptionTypeLists = {
 }
 
 const defaultAttributeActions = [
-  { actionCode: "catch", labelkey: SRA.attributeActions.catch, attribute: "agility", attribute2: "agility", icon: Icons.fontAwesome('fas fa-baseball-ball') },
-  { actionCode: "defense", labelkey: SRA.attributeActions.defense, attribute: "agility", attribute2: "logic", icon: Icons.fontAwesome('fas fa-shield-alt') },
-  { actionCode: "judgeIntentions", labelkey: SRA.attributeActions.judgeIntentions, attribute: "charisma", attribute2: "charisma", icon: Icons.fontAwesome('fas fa-theater-masks') },
-  { actionCode: "perception", labelkey: SRA.attributeActions.perception, attribute: "logic", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-eye') },
-  { actionCode: "resistTorture", labelkey: SRA.attributeActions.resistTorture, attribute: "strength", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-angry') },
-  { actionCode: "composure", labelkey: SRA.attributeActions.composure, attribute: "charisma", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-meh') },
-  { actionCode: "memory", labelkey: SRA.attributeActions.memory, attribute: "logic", attribute2: "logic", icon: Icons.fontAwesome('fas fa-brain') },
-  { actionCode: "lifting", labelkey: SRA.attributeActions.lifting, attribute: "strength", attribute2: "strength", icon: Icons.fontAwesome('fas fa-dumbbell') },
+  { actionCode: "catch", labelkey: ANARCHY.attributeActions.catch, attribute: "agility", attribute2: "agility", icon: Icons.fontAwesome('fas fa-baseball-ball') },
+  { actionCode: "defense", labelkey: ANARCHY.attributeActions.defense, attribute: "agility", attribute2: "logic", icon: Icons.fontAwesome('fas fa-shield-alt') },
+  { actionCode: "judgeIntentions", labelkey: ANARCHY.attributeActions.judgeIntentions, attribute: "charisma", attribute2: "charisma", icon: Icons.fontAwesome('fas fa-theater-masks') },
+  { actionCode: "perception", labelkey: ANARCHY.attributeActions.perception, attribute: "logic", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-eye') },
+  { actionCode: "resistTorture", labelkey: ANARCHY.attributeActions.resistTorture, attribute: "strength", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-angry') },
+  { actionCode: "composure", labelkey: ANARCHY.attributeActions.composure, attribute: "charisma", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-meh') },
+  { actionCode: "memory", labelkey: ANARCHY.attributeActions.memory, attribute: "logic", attribute2: "logic", icon: Icons.fontAwesome('fas fa-brain') },
+  { actionCode: "lifting", labelkey: ANARCHY.attributeActions.lifting, attribute: "strength", attribute2: "strength", icon: Icons.fontAwesome('fas fa-dumbbell') },
 ]
 export class Enums {
   static ENUMS;
@@ -69,16 +69,16 @@ export class Enums {
   static registerEnums() {
     // Customisation of skills will have to be done based on system settings
     Enums.skillsAttribute = defaultSkillsAttribute;
-    Enums.hbsSkills = Enums.mapObjetToValueLabel(SRA.skill);
-    Enums.hbsAttributes = Enums.mapObjetToValueLabel(SRA.attributes)
+    Enums.hbsSkills = Enums.mapObjetToValueLabel(ANARCHY.skill);
+    Enums.hbsAttributes = Enums.mapObjetToValueLabel(ANARCHY.attributes)
       .filter(a => a.value != 'knowledge' && a.value != 'noAttribute');
-    Enums.hbsItemTypes = Enums.mapObjetToValueLabel(SRA.itemType);
-    Enums.hbsCapacities = Enums.mapObjetToValueLabel(SRA.capacity);
-    Enums.hbsMonitors = Enums.mapObjetToValueLabel(SRA.monitor);
-    Enums.hbsMonitorLetters = Enums.mapObjetToValueLabel(SRA.monitorLetter);
-    Enums.hbsShadowampCategories = Enums.mapObjetToValueLabel(SRA.shadowampCategory);
-    Enums.hbsAreas = Enums.mapObjetToValueLabel(SRA.area);
-    Enums.hbsRanges = Enums.mapObjetToValueLabel(SRA.range);
+    Enums.hbsItemTypes = Enums.mapObjetToValueLabel(ANARCHY.itemType);
+    Enums.hbsCapacities = Enums.mapObjetToValueLabel(ANARCHY.capacity);
+    Enums.hbsMonitors = Enums.mapObjetToValueLabel(ANARCHY.monitor);
+    Enums.hbsMonitorLetters = Enums.mapObjetToValueLabel(ANARCHY.monitorLetter);
+    Enums.hbsShadowampCategories = Enums.mapObjetToValueLabel(ANARCHY.shadowampCategory);
+    Enums.hbsAreas = Enums.mapObjetToValueLabel(ANARCHY.area);
+    Enums.hbsRanges = Enums.mapObjetToValueLabel(ANARCHY.range);
     Enums.attributeActions = defaultAttributeActions;
   }
 
@@ -113,10 +113,10 @@ export class Enums {
   }
 
   static localizeAttribute(attribute) {
-    if (!SRA.attributes[attribute]) {
-      return game.i18n.localize(SRA.attributes['noAttribute']);
+    if (!ANARCHY.attributes[attribute]) {
+      return game.i18n.localize(ANARCHY.attributes['noAttribute']);
     }
-    return game.i18n.localize(SRA.attributes[attribute]);
+    return game.i18n.localize(ANARCHY.attributes[attribute]);
   }
 
   static getSkillAttribute(code) {

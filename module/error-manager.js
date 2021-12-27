@@ -1,10 +1,10 @@
-import { SRA } from "./config.js";
+import { ANARCHY } from "./config.js";
 
 export class ErrorManager {
 
   static checkSufficient(resource, required, available) {
     if (required > available) {
-      const error = game.i18n.format(SRA.common.errors.insufficient, {
+      const error = game.i18n.format(ANARCHY.common.errors.insufficient, {
         resource: game.i18n.localize(resource),
         required: required,
         available: available
@@ -16,7 +16,7 @@ export class ErrorManager {
 
   static checkOutOfRange(resource, value, min, max) {
     if (value < min || value > max) {
-      const error = game.i18n.format(SRA.common.errors.outOfRange, {
+      const error = game.i18n.format(ANARCHY.common.errors.outOfRange, {
         resource: game.i18n.localize(resource),
         value: value, min: min, max: max
       });
@@ -27,7 +27,7 @@ export class ErrorManager {
 
   static checkUserGM() {
     if (!game.user.isGM) {
-      const error = game.i18n.localize(SRA.common.errors.onlyGM);
+      const error = game.i18n.localize(ANARCHY.common.errors.onlyGM);
       ui.notifications.error(error);
       throw error;
     }
@@ -35,8 +35,8 @@ export class ErrorManager {
 
   static checkItemType(item, expectedType) {
     if (item.type != expectedType) {
-      const error = game.i18n.format(SRA.common.errors.expectedType, {
-        type: game.i18n.localize(item.type ? (SRA.itemType.singular[item.type]) : item.type),
+      const error = game.i18n.format(ANARCHY.common.errors.expectedType, {
+        type: game.i18n.localize(item.type ? (ANARCHY.itemType.singular[item.type]) : item.type),
         expectedType: game.i18n.localize(expectedType)
       });
       ui.notifications.error(error);

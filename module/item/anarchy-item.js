@@ -1,12 +1,12 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Weapon } from "./weapon.js";
 
-export class SRAItem extends Item {
+export class AnarchyItem extends Item {
 
   static init() {
-    Hooks.on("createItem", (item, options, id) => SRAItem.onCreateItem(item, options, id));
+    Hooks.on("createItem", (item, options, id) => AnarchyItem.onCreateItem(item, options, id));
   }
 
   static async onCreateItem(item, options, id) {

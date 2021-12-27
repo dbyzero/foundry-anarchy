@@ -1,15 +1,15 @@
 {
-  "name": "shadowrun-anarchy",
-  "title": "Shadowrun Anarchy",
-  "description": "Shadowrun Anarchy RPG for FoundryVTT",
+  "name": "anarchy",
+  "title": "Anarchy",
+  "description": "Shadowrun Anarchy RPG, and hacks, for FoundryVTT",
   "author": "VincentVK",
   "authors": [
     {
       "name": "VincentVK"
     }
   ],
-  "url": "https://gitlab.com/vincent.vandeme/shadowrun-anarchy",
-  "bugs": "https://gitlab.com/vincent.vandeme/shadowrun-anarchy/-/issues",
+  "url": "https://gitlab.com/vincent.vandeme/anarchy",
+  "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
   "flags": {
     "allowBugReporter": true
   },
@@ -20,10 +20,10 @@
   "templateVersion": 1,
   "scripts": [],
   "esmodules": [
-    "module/sra.js"
+    "module/anarchy.js"
   ],
   "styles": [
-    "style/sra.css"
+    "style/anarchy.css"
   ],
   "languages": [
     {
@@ -41,8 +41,8 @@
     {
       "name": "items",
       "label": "Items",
-      "system": "shadowrun-anarchy",
-      "module": "shadowrun-anarchy",
+      "system": "anarchy",
+      "module": "anarchy",
       "path": "./packs/items.db",
       "entity": "Item",
       "tags": [
@@ -52,8 +52,8 @@
     {
       "name": "gm-info",
       "label": "Gamemaster information",
-      "system": "shadowrun-anarchy",
-      "module": "shadowrun-anarchy",
+      "system": "anarchy",
+      "module": "anarchy",
       "path": "./packs/gm-info.db",
       "entity": "JournalEntry",
       "tags": [
@@ -64,8 +64,8 @@
   "system": [],
   "dependencies": [],
   "socket": true,
-  "manifest": "https://gitlab.com/vincent.vandeme/shadowrun-anarchy/raw/v0.2/system.json",
-  "download": "https://gitlab.com/vincent.vandeme/shadowrun-anarchy/-/archive/v0.2/shadowrun-anarchy-master.zip",
+  "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/v0.2/system.json",
+  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/v0.2/anarchy-master.zip",
   "protected": false,
   "gridDistance": 1,
   "gridUnits": "m",

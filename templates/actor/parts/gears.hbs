@@ -1,11 +1,11 @@
 <div class="define-item-type gear" data-item-type="gear">
   <h2>
-    <label>{{localize 'SRA.itemType.plural.gear'}}</label>
-    {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'gear'}}
+    <label>{{localize 'ANARCHY.itemType.plural.gear'}}</label>
+    {{> 'systems/anarchy/templates/common/item-control-add.hbs' 'gear'}}
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.gear as |gear|}}
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/gear.hbs" gear}}
+    {{> "systems/anarchy/templates/actor/parts/gear.hbs" gear}}
     {{/each}}
   </div>
 </div>

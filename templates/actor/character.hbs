@@ -5,28 +5,28 @@
       <div class="flexrow">
         <div class="flex-grow-2 flexcol">
           <h1 class="actor-name flexrow">
-            <input name="name" type="text" value="{{data.name}}" placeholder="{{localize SRA.actor.actorName}}"/>
+            <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
           </h1>
           <div class="flexrow">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/attributebuttons.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
           </div>
         </div>
         <div class="flexcol flex-shrink">
           <div class="flexrow">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/metatype.hbs"}}
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/genre.hbs"}}
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/capacity.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/genre.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
           </div>
           <div class="flexrow">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/karma.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/karma.hbs"}}
           </div>
           <div class="flexrow">
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/essence.hbs"}}
+          {{> "systems/anarchy/templates/actor/parts/essence.hbs"}}
           </div>
         </div>
       </div>
       <div class="flexrow">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/attributes.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
       </div>
       <div class="flexrow">
       </div>
@@ -35,55 +35,55 @@
   <section class="sheet-body">
     <div class="flexrow">
       <div class="flexcol style-keyword-list">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.keywords}}
+      {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.keywords}}
       </div>
       <div class="flexcol flex-grow-3 style-disposition-list">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='disposition' values=data.data.dispositions}}
+      {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='disposition' values=data.data.dispositions}}
       </div>
       <div class="flexcol style-cue-list">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/wordlist.hbs" listName='cue' values=data.data.cues}}
+      {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='cue' values=data.data.cues}}
       </div>
     </div>
     <div class="flexcol style-content-block">
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/skills.hbs"}}
+    {{> "systems/anarchy/templates/actor/parts/skills.hbs"}}
     </div>
     <div class="flexcol style-content-block">
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/shadowamps.hbs"}}
+    {{> "systems/anarchy/templates/actor/parts/shadowamps.hbs"}}
     </div>
     <div class="flexcol style-content-block">
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/qualities.hbs"}}
+    {{> "systems/anarchy/templates/actor/parts/qualities.hbs"}}
     </div>
     <div class="flexcol style-content-block">
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/weapons.hbs"}}
+    {{> "systems/anarchy/templates/actor/parts/weapons.hbs"}}
     </div>
     <div class="flexrow">
       <div class="style-content-block">
         <div class="flexcol">
-          <h3>{{> "systems/shadowrun-anarchy/templates/actor/parts/armor-header.hbs"}}</h3>
-          {{> "systems/shadowrun-anarchy/templates/actor/parts/armor.hbs"}}
+          <h3>{{> "systems/anarchy/templates/actor/parts/armor-header.hbs"}}</h3>
+          {{> "systems/anarchy/templates/actor/parts/armor.hbs"}}
         </div>
         <hr>
           <div class="flexrow">
-            <span class="flex-shrink">{{localize (concat 'SRA.actor.counters.edge')}}</span>
-            <span class="flex-grow-3">{{> "systems/shadowrun-anarchy/templates/actor/parts/edge.hbs"}}</span>
+            <span class="flex-shrink">{{localize (concat 'ANARCHY.actor.counters.edge')}}</span>
+            <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/edge.hbs"}}</span>
           </div>
         <hr>
-        <div class="SRA-anarchy flexrow">
-          <span class="flex-shrink">{{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy-header.hbs"}}</span>
-          <span class="flex-grow-3">{{> "systems/shadowrun-anarchy/templates/actor/parts/anarchy.hbs"}}</span>
+        <div class="ANARCHY-anarchy flexrow">
+          <span class="flex-shrink">{{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}</span>
+          <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}</span>
         </div>
       </div>
       <div class="style-content-block">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/monitors.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/monitors.hbs"}}
       </div>
       <div class="style-content-block">
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/gears.hbs"}}
-      {{> "systems/shadowrun-anarchy/templates/actor/parts/contacts.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/gears.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/contacts.hbs"}}
       </div>
     </div>
     <div class="style-content-block">
-      {{> 'systems/shadowrun-anarchy/templates/actor/parts/description.hbs'}}
-      {{> 'systems/shadowrun-anarchy/templates/actor/parts/gmnotes.hbs'}}
+      {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
+      {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}
     </div>
   </section>
 </form>

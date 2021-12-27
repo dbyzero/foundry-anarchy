@@ -1,4 +1,4 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
 import { Icons } from "../icons.js";
@@ -18,7 +18,7 @@ export class GMAnarchy {
     });
 
     RemoteCall.register(GM_ADD_ANARCHY, {
-      callback: data => game.system.sra.gmManager.gmAnarchy.addAnarchy(data),
+      callback: data => game.system.anarchy.gmManager.gmAnarchy.addAnarchy(data),
       condition: user => user.isGM
     });
   }
@@ -44,7 +44,7 @@ export class GMAnarchy {
 
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
-      ErrorManager.checkSufficient(SRA.gmManager.gmAnarchy, -count, this.anarchy);
+      ErrorManager.checkSufficient(ANARCHY.gmManager.gmAnarchy, -count, this.anarchy);
       await this.setAnarchy(this.anarchy + count);
     }
   }
@@ -76,11 +76,11 @@ export class GMAnarchy {
   }
 
   async _renderBar() {
-    return await renderTemplate("systems/shadowrun-anarchy/templates/common/checkbar.hbs", {
+    return await renderTemplate("systems/anarchy/templates/common/checkbar.hbs", {
       code: 'anarchy',
       value: this.getAnarchy(),
       max: this.getAnarchyMax(),
-      labelkey: SRA.gmManager.gmAnarchy,
+      labelkey: ANARCHY.gmManager.gmAnarchy,
       rowlength: 10,
       adjust: false,
       iconChecked: Icons.fontAwesome('fas fa-sun'),

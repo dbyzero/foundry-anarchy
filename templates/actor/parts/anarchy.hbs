@@ -1,9 +1,9 @@
 {{#if options.ownAnarchy}}
-  {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+  {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='anarchy'
     value=options.anarchy.value
     max=options.anarchy.max
-    labelkey=SRA.actor.counters.anarchy
+    labelkey=ANARCHY.actor.counters.anarchy
     rowlength=10
     adjust=false
     iconChecked=(iconFA 'fas fa-star')
@@ -11,11 +11,11 @@
   }}
 {{else}}
   {{#if options.isGM}}
-  {{> "systems/shadowrun-anarchy/templates/common/checkbar.hbs"
+  {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='anarchy'
     value=options.anarchy.value
     max=options.anarchy.max
-    labelkey=SRA.gmManager.gmAnarchy
+    labelkey=ANARCHY.gmManager.gmAnarchy
     rowlength=10
     adjust=false
     iconChecked=(iconFA 'fas fa-sun')

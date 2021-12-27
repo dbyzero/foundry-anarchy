@@ -1,11 +1,11 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 
-export class SRAItemSheet extends ItemSheet {
+export class AnarchyItemSheet extends ItemSheet {
 
   get title() {
-    return game.i18n.localize(SRA.itemType.singular[this.item.type]) + ': ' + this.item.name;
+    return game.i18n.localize(ANARCHY.itemType.singular[this.item.type]) + ': ' + this.item.name;
   }
 
   get template() {
@@ -23,7 +23,7 @@ export class SRAItemSheet extends ItemSheet {
         cssClass: this.isEditable ? "editable" : "locked"
       },
       ENUMS: Enums.getEnums(),
-      SRA: SRA
+      ANARCHY: ANARCHY
     });
     return hbsData;
   }

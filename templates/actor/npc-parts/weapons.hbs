@@ -1,7 +1,7 @@
 <div class="define-item-type weapon" data-item-type="weapon">
   <h2>
-      <label>{{localize 'SRA.itemType.plural.weapon'}}</label>
-      {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'weapon'}}
+      <label>{{localize 'ANARCHY.itemType.plural.weapon'}}</label>
+      {{> 'systems/anarchy/templates/common/item-control-add.hbs' 'weapon'}}
   </h2>
   <ul class="alterne-list">
     <li class="list-header flexrow list-item">
@@ -9,15 +9,15 @@
         {{{iconFA 'fas fa-pen item-control-transparent'}}}
         {{{iconFA 'fas fa-pen item-control-transparent'}}}
       </span>
-      <span class="flex-grow-2">{{localize 'SRA.itemType.singular.weapon'}}</span>
-      <span class="flex-grow-2">{{localize 'SRA.item.weapon.damageShort'}}</span>
-      <span class="flex-shrink">{{localize 'SRA.item.weapon.areaShort'}}</span>
-      <span class="flex-shrink">{{localize 'SRA.range.short'}}</span>
-      <span class="flex-shrink">{{localize 'SRA.range.medium'}}</span>
-      <span class="flex-shrink">{{localize 'SRA.range.long'}}</span>
+      <span class="flex-grow-2">{{localize 'ANARCHY.itemType.singular.weapon'}}</span>
+      <span class="flex-grow-2">{{localize 'ANARCHY.item.weapon.damageShort'}}</span>
+      <span class="flex-shrink">{{localize 'ANARCHY.item.weapon.areaShort'}}</span>
+      <span class="flex-shrink">{{localize 'ANARCHY.range.short'}}</span>
+      <span class="flex-shrink">{{localize 'ANARCHY.range.medium'}}</span>
+      <span class="flex-shrink">{{localize 'ANARCHY.range.long'}}</span>
     </li>
     {{#each items.weapon as |weapon|}}
-    {{> "systems/shadowrun-anarchy/templates/actor/npc-parts/weapon.hbs" weapon}}
+    {{> "systems/anarchy/templates/actor/npc-parts/weapon.hbs" weapon}}
     {{/each}}
   </ul>
 </div>

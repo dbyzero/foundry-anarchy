@@ -1,7 +1,7 @@
 import { TEMPLATES_PATH } from "../constants.js";
-import { SRAActorSheet } from "./sra-actor-sheet.js";
+import { AnarchyActorSheet } from "./sra-actor-sheet.js";
 
-export class CharacterSheet extends SRAActorSheet {
+export class CharacterSheet extends AnarchyActorSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/character.hbs`;

@@ -1,8 +1,8 @@
 <li class="flexrow list-item item" data-item-id="{{_id}}" data-item-type="weapon">
-  {{> 'systems/shadowrun-anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
+  {{> 'systems/anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
   <span class="flex-grow-2"><a class="click-weapon-roll">{{name}}</a></span>
   <span class="flex-grow-2">
-    {{> 'systems/shadowrun-anarchy/templates/common/damage-code.hbs'
+    {{> 'systems/anarchy/templates/common/damage-code.hbs'
       strength=data.strength
       actorStrength=@root.actor.data.data.attributes.strength.value
       damage=data.damage
@@ -10,7 +10,7 @@
       noArmor=data.noArmor
     }}
   </span>
-  <span class="flex-shrink">{{localize (concat 'SRA.area.' (either data.area 'none'))}}</span>
+  <span class="flex-shrink">{{localize (concat 'ANARCHY.area.' (either data.area 'none'))}}</span>
   <span class="flex-shrink">{{either data.range.short 'OK'}}</span>
   <span class="flex-shrink">
     {{#unless (eq data.range.max "short")}}

@@ -1,9 +1,9 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
-import { SRAItemSheet } from "./base-item-sheet.js";
+import { AnarchyItemSheet } from "./base-item-sheet.js";
 
-export class SRASkillSheet extends SRAItemSheet {
+export class AnarchySkillSheet extends AnarchyItemSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/item/skill.hbs`;
@@ -22,8 +22,8 @@ export class SRASkillSheet extends SRAItemSheet {
     html.find('.select-skill-code').change(async event => {
       if (this.object.isGeneralSkill()) {
         const newSkillCode = event.currentTarget.value;
-        if (newSkillCode && SRA.skill[newSkillCode]) {
-          const newName = game.i18n.localize(SRA.skill[newSkillCode]);
+        if (newSkillCode && ANARCHY.skill[newSkillCode]) {
+          const newName = game.i18n.localize(ANARCHY.skill[newSkillCode]);
           await this.object.update({
             "name": newName,
             "data.code": newSkillCode,

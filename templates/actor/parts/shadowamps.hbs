@@ -1,11 +1,11 @@
 <div class="define-item-type shadowamp style-shadowamp-list" data-item-type="shadowamp">
   <h2>
-    <label>{{localize 'SRA.itemType.plural.shadowamp'}}</label>
-    {{> 'systems/shadowrun-anarchy/templates/common/item-control-add.hbs' 'shadowamp'}}
+    <label>{{localize 'ANARCHY.itemType.plural.shadowamp'}}</label>
+    {{> 'systems/anarchy/templates/common/item-control-add.hbs' 'shadowamp'}}
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.shadowamp as |shadowamp|}}
-    {{> "systems/shadowrun-anarchy/templates/actor/parts/shadowamp.hbs" shadowamp}}
+    {{> "systems/anarchy/templates/actor/parts/shadowamp.hbs" shadowamp}}
     {{/each}}
   </div>
 </div>

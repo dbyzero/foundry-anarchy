@@ -1,4 +1,4 @@
-import { SRA } from "./config.js";
+import { ANARCHY } from "./config.js";
 import { ANARCHY_DICE_BONUS, SPECIALIZATION_BONUS, TARGET_SUCCESS, TARGET_SUCCESS_EDGE } from "./constants.js";
 
 export class Modifiers {
@@ -61,7 +61,7 @@ export class Modifiers {
     const anarchy = actor.getAnarchy();
     return anarchy <= 0 ? undefined : {
       type: 'anarchyDisposition',
-      label: game.i18n.localize(SRA.common.roll.modifiers.anarchyDisposition) + ' (' + anarchy + ')',
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.anarchyDisposition) + ' (' + anarchy + ')',
       value: ANARCHY_DICE_BONUS,
       category: 'pool',
       isAnarchy: true,
@@ -74,7 +74,7 @@ export class Modifiers {
     const anarchy = actor.getAnarchy();
     return anarchy <= 0 ? undefined : {
       type: 'anarchyRisk',
-      label: game.i18n.localize(SRA.common.roll.modifiers.anarchyRisk) + ' (' + anarchy + ')',
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.anarchyRisk) + ' (' + anarchy + ')',
       category: 'other',
       isAnarchy: true,
       value: 1,
@@ -86,7 +86,7 @@ export class Modifiers {
   static _prepareEdge(actor) {
     return actor.data.data.counters.edge.value <= 0 ? undefined : {
       type: 'edge',
-      label: game.i18n.localize(SRA.common.roll.modifiers.edge) + ' (' + actor.data.data.counters.edge.value + '/' + actor.data.data.attributes.edge.value + ')',
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.edge) + ' (' + actor.data.data.counters.edge.value + '/' + actor.data.data.attributes.edge.value + ')',
       category: 'other',
       value: 1,
       optional: true,
@@ -97,7 +97,7 @@ export class Modifiers {
   static _prepareSpecialization(actor, specialization) {
     return specialization ? {
       type: 'specialization',
-      label: game.i18n.localize(SRA.common.roll.modifiers.specialization) + ' ' + specialization,
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.specialization) + ' ' + specialization,
       category: 'pool',
       optional: true,
       used: true,
@@ -110,7 +110,7 @@ export class Modifiers {
     const wounds = actor.getWounds(skill?.data.data.code);
     return wounds == 0 ? undefined : {
       type: 'wounds',
-      label: game.i18n.localize(SRA.common.roll.modifiers.wounds),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.wounds),
       category: 'pool',
       value: wounds,
       optional: true,
@@ -124,7 +124,7 @@ export class Modifiers {
     const ranges = weapon.getRanges();
     return {
       type: 'range',
-      label: game.i18n.localize(SRA.common.roll.modifiers.range),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.range),
       options: ranges,
       category: 'pool',
       value: ranges[0].value,
@@ -137,7 +137,7 @@ export class Modifiers {
   static _prepareOther(actor) {
     return {
       type: 'other',
-      label: game.i18n.localize(SRA.common.roll.modifiers.other),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.other),
       category: 'pool',
       value: 0,
       editable: true,
@@ -148,7 +148,7 @@ export class Modifiers {
   static _prepareReroll(actor) {
     return {
       type: 'reroll',
-      label: game.i18n.localize(SRA.common.roll.modifiers.reroll),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.reroll),
       category: 'reroll',
       value: 0,
       editable: true,
@@ -158,7 +158,7 @@ export class Modifiers {
   static _prepareRerollForced(actor) {
     return {
       type: 'rerollForced',
-      label: game.i18n.localize(SRA.common.roll.modifiers.rerollForced),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.rerollForced),
       category: 'reroll',
       value: 0,
       editable: true,
@@ -168,7 +168,7 @@ export class Modifiers {
   static _prepareOpponentReroll(actor) {
     return {
       type: 'opponentRerollForced',
-      label: game.i18n.localize(SRA.common.roll.modifiers.opponentRerollForced),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.opponentRerollForced),
       category: 'opponent',
       value: 0,
       editable: true,
@@ -179,7 +179,7 @@ export class Modifiers {
   static _prepareOpponentReduce(actor) {
     return {
       type: 'opponentReduce',
-      label: game.i18n.localize(SRA.common.roll.modifiers.opponentReduce),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.opponentReduce),
       category: 'opponent',
       value: 0,
       editable: true,

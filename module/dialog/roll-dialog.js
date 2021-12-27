@@ -1,13 +1,13 @@
-import { SRA } from "../config.js";
+import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { Modifiers } from "../modifiers.js";
-import { SRARollManager } from "../roll-manager.js";
+import { AnarchyRollManager } from "../roll-manager.js";
 
 /**
  * Extend the base Dialog entity to select roll parameters
  * @extends {Dialog}
  */
-export class SRARollDialog extends Dialog {
+export class AnarchyRollDialog extends Dialog {
 
   static prepareSkillRollData(actor, skill, specialization) {
     return {
@@ -47,9 +47,9 @@ export class SRARollDialog extends Dialog {
   static async create(rollData) {
     rollData.anarchy = rollData.actor.getAnarchy();
     rollData.ENUMS = Enums.getEnums();
-    rollData.SRA = SRA;
-    const html = await renderTemplate(`systems/shadowrun-anarchy/templates/dialog/sra-roll.hbs`, rollData);
-    return new SRARollDialog(rollData, html);
+    rollData.ANARCHY = ANARCHY;
+    const html = await renderTemplate(`systems/anarchy/templates/dialog/anarchy-roll.hbs`, rollData);
+    return new AnarchyRollDialog(rollData, html);
   }
 
   constructor(rollData, html) {
@@ -58,11 +58,11 @@ export class SRARollDialog extends Dialog {
       content: html,
       default: 'roll',
       buttons: {
-        'roll': { label: game.i18n.localize(SRA.common.roll.button), callback: async () => await SRARollManager.roll(rollData) }
+        'roll': { label: game.i18n.localize(ANARCHY.common.roll.button), callback: async () => await AnarchyRollManager.roll(rollData) }
       },
     };
     const options = {
-      classes: ["sra-dialog"],
+      classes: ["anarchy-dialog"],
       width: 450,
       height: 530,
       'z-index': 99999,

@@ -1,4 +1,4 @@
-export class SRARoll {
+export class AnarchyRoll {
 
   /**
    * @param {*} param : { pool: 1, reroll: 0, risk: 0, rerollForced: 0, target: 5 }
