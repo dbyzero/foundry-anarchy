@@ -10,6 +10,7 @@
   --border-light: hsla(200, 10%, 60%, 0.4);
   --hover-tint: hsla(210, 44%, 69%, 0.486);
   --background-dark:hsla(200, 5%, 30%, 0.8);
+  --background-black: hsla(0, 0%, 0%, 0.8);
   --lighter-npc: hsla(90, 29%, 30%, 0.15);
   --gradient-dark: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.8) 0% 5%,
@@ -58,7 +59,7 @@ h1, h2, h3, h4 {
 }
 
 div.app.window-app.sheet .window-content {
-  background: var(--gradient-dark);
+  background: var(--background-black);
   color: var(--font-color);
 }
 div.app.window-app.sheet .window-content > form.npc-character-sheet {
@@ -420,7 +421,7 @@ input.item-field-value-numeric {
   padding: 0;
   border: 1px solid var(--border-medium);
   border-radius: 3%;
-  background: var(--gradient-dark);
+  background: var(--background-black);
   z-index: 100;
 }
 
