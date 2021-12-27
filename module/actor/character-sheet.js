@@ -1,5 +1,5 @@
 import { TEMPLATES_PATH } from "../constants.js";
-import { AnarchyActorSheet } from "./sra-actor-sheet.js";
+import { AnarchyActorSheet } from "./anarchy-actor-sheet.js";
 
 export class CharacterSheet extends AnarchyActorSheet {
 
