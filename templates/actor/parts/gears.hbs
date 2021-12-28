@@ -1,7 +1,7 @@
 <div class="define-item-type gear" data-item-type="gear">
   <h2>
     <label>{{localize 'ANARCHY.itemType.plural.gear'}}</label>
-    {{> 'systems/anarchy/templates/common/item-control-add.hbs' 'gear'}}
+    {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='gear'}}
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.gear as |gear|}}
