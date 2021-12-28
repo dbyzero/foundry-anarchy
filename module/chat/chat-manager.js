@@ -1,8 +1,27 @@
+import { ANARCHY } from "../config.js";
+import { Enums } from "../enums.js";
+import { HOOK_GET_HANDLEPAR_PARTIALS } from "../handlebars-manager.js";
 import { RemoteCall } from "../remotecall.js";
 import { AnarchyRollManager } from "../roll-manager.js";
 import { ChatRollData } from "./chat-roll-data.js";
 
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
+const HBS_CHAT_TEMPLATES = [
+  'systems/anarchy/templates/chat/roll-modifier.hbs',
+  'systems/anarchy/templates/chat/risk-outcome.hbs',
+  'systems/anarchy/templates/chat/edge-reroll-button.hbs',
+  'systems/anarchy/templates/chat/parts/actor-image.hbs',
+  'systems/anarchy/templates/chat/parts/attribute/title.hbs',
+  'systems/anarchy/templates/chat/parts/attribute/pool.hbs',
+  'systems/anarchy/templates/chat/parts/attribute/result.hbs',
+  'systems/anarchy/templates/chat/parts/skill/title.hbs',
+  'systems/anarchy/templates/chat/parts/skill/pool.hbs',
+  'systems/anarchy/templates/chat/parts/skill/result.hbs',
+  'systems/anarchy/templates/chat/parts/weapon/title.hbs',
+  'systems/anarchy/templates/chat/parts/weapon/pool.hbs',
+  'systems/anarchy/templates/chat/parts/weapon/result.hbs',
+];
+
 export class ChatManager {
 
   static async init() {
@@ -12,6 +31,26 @@ export class ChatManager {
       callback: data => ChatManager.removeChatMessage(data),
       condition: user => user.isGM
     });
+
+    Hooks.on(HOOK_GET_HANDLEPAR_PARTIALS, list => HBS_CHAT_TEMPLATES.forEach(it => list.push(it)));
+  }
+
+
+  static async displayRollInChat(rollData, addJson = false) {
+    if (addJson) {
+      rollData.json = ChatRollData.rollDataToJSON(rollData);
+    }
+
+    rollData.ANARCHY = ANARCHY;
+    rollData.ENUMS = Enums.getEnums();
+    rollData.options = rollData.options ?? {};
+    rollData.options.classes = rollData.options.classes ?? [];
+    rollData.options.classes.push(game.system.anarchy.styles.selectCssClass());
+
+    const flavor = await renderTemplate('systems/anarchy/templates/chat/anarchy-roll.hbs', rollData);
+    const message = await rollData.roll.toMessage({ flavor: flavor }, { create: false });
+
+    ChatMessage.create(message);
   }
 
   static async onRenderChatMessage(app, html, msg) {

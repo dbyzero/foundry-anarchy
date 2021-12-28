@@ -1,8 +1,9 @@
 import { ANARCHY } from "./config.js";
 import { LOG_HEAD, SYSTEM_NAME } from "./constants.js";
 
+export const HOOK_LOAD_STYLES = 'anarchy-loadStyles';
+
 const DEFAULT_CSS_CLASS = 'default-css-class';
-const HOOK_LOAD_STYLES = 'anarchy-loadStyles';
 const CSS_DEFAULT = 'root-style-anarchy';
 
 const DEFAULT_STYLES = [
@@ -16,8 +17,6 @@ const DEFAULT_STYLES = [
  */
 export class Styles {
   static init() {
-
-
     game.system.anarchy.styles = new Styles();
   }
 
@@ -27,6 +26,7 @@ export class Styles {
     Hooks.once('ready', () => this.onReady());
     this.styles = {};
   }
+
   async onReady() {
     Hooks.callAll(HOOK_LOAD_STYLES, this.styles);
     console.log(LOG_HEAD + 'Loaded styles', this.styles);

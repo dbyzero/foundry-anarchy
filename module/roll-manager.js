@@ -1,3 +1,4 @@
+import { ChatManager } from "./chat/chat-manager.js";
 import { ChatRollData } from "./chat/chat-roll-data.js";
 import { ANARCHY } from "./config.js";
 import { Enums } from "./enums.js";
@@ -10,30 +11,18 @@ export class AnarchyRollManager {
     rollData.param = Modifiers.computeRollParameters(rollData);
     await rollData.actor.spendEdge(rollData.param.edge);
     await rollData.actor.spendAnarchy(rollData.param.anarchy);
-
-    await AnarchyRollManager._rollAndChat(rollData, true);
+    await AnarchyRollManager._roll(rollData);
+    await ChatManager.displayRollInChat(rollData, true);
   }
 
   static async edgeReroll(rollData) {
     await rollData.actor.spendEdge(1);
-    await AnarchyRollManager._rollAndChat(rollData,);
+    await AnarchyRollManager._roll(rollData);
+    await ChatManager.displayRollInChat(rollData, addJson);
   }
 
-  static async _rollAndChat(rollData, addJson = false) {
+  static async _roll(rollData) {
     rollData.roll = new AnarchyRoll(rollData.param);
     await rollData.roll.evaluate();
-
-    if (addJson) {
-      rollData.json = ChatRollData.rollDataToJSON(rollData);
-    }
-
-    rollData.ANARCHY = ANARCHY;
-    rollData.ENUMS = Enums.getEnums();
-
-    const flavor = await renderTemplate(`systems/anarchy/templates/chat/${rollData.mode}-roll.hbs`, rollData);
-    const message = await rollData.roll.toMessage({ flavor: flavor }, { create: false });
-
-    ChatMessage.create(message);
   }
-
 }

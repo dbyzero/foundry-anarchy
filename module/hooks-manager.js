@@ -55,7 +55,7 @@ export class HooksManager {
     AnarchyItem.init();
     ChatManager.init();
     Styles.init();
-    await HandlebarsManager.init();
+    HandlebarsManager.init();
     console.log(LOG_HEAD + 'HooksManager.onInit | done');
     Hooks.once('ready', () => this.onReady());
   }

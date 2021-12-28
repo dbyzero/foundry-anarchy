@@ -23,7 +23,7 @@
     hsla(0, 0%, 15%, 0.8) 38%,
     hsla(0, 0%, 5%, 0.8) 42%, 
     hsla(0, 0%, 0%, 0.8) 50%);
-  --gradient-silver: linear-gradient(45deg,
+  --gradient-silver: linear-gradient(135deg,
     hsla(249, 26%, 29%, 0.4),
     hsla(237, 13%, 73%, 0.4), 
     hsla(195, 3%, 24%, 0.6), 
@@ -35,13 +35,13 @@
     hsla(195, 19%, 29%, 0.6), 
     hsla(239, 43%, 72%, 0.4), 
     hsla(184, 22%, 31%, 0.4));
-  --gradient-silver-light-opaque: linear-gradient(30deg,
+  --gradient-silver-light-opaque: linear-gradient(150deg,
     hsla(249, 46%, 86%, 0.9), 
     hsla(236, 22%, 87%, 0.9), 
     hsla(196, 5%, 53%, 0.9),
     hsla(41, 10%, 61%, 0.9),
     hsla(347, 8%, 78%, 0.9));
-  --gradient-gold: repeating-linear-gradient(60deg,
+  --gradient-gold: repeating-linear-gradient(120deg,
     hsla(40, 50%, 50%, 0.4),
     hsla(55, 92%, 86%, 0.4),
     hsla(41, 63%, 43%, 0.4), 
@@ -59,6 +59,9 @@
 /* common anarchy sheets styles*/
 h1, h2, h3 { font-weight: bold; }
 h4 { font-weight: 500; }
+h3, h4 {
+    padding: 0.25rem;
+}
 
 img.anarchy-img {
   -webkit-box-flex: 0;
@@ -70,9 +73,7 @@ img.anarchy-img {
   vertical-align: top;
 }
 
-.anarchy-dialog img.actor-img ,
-.anarchy-dialog img.skill-img ,
-.anarchy-dialog img.weapon-img {
+:is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img) {
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   width: 48px;
@@ -139,6 +140,17 @@ div.anarchy-cues input{
   border-width: 1px;
   border-style: inset;
   border-color: var(--border-light);
+}
+
+li.item {
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-width: 1px;
+  border-color: var(--border-light);
+  border-style: solid;
+  vertical-align: top !important;
+  flex-basis: content;
 }
 
 div.item {
@@ -258,7 +270,7 @@ li.flexrow.item span {
   margin: 0.1rem;
   box-shadow: inset 0px 0px 1px var(--border-medium);
   padding: 0.1rem;
-  flex: 1 1 3rem;
+  /* flex: 1 1 3rem; */
   display: flex !important;
   align-items: baseline !important;
 }
@@ -297,7 +309,6 @@ div.item.flexcol {
   align-items: flex-start;
 }
 
-li.item.flexrow,
 div.item.flexrow {
   gap: 1px;
   align-items: flex-start;
@@ -321,8 +332,9 @@ div.item.flexrow {
 .flex-shrink { flex: 'flex-shrink'; }
 .flex-end { justify-content: flex-end; }
 .flex-shrink-end {
-  flex: 'flex-shrink';
+  flex: content;
   flex-grow: 0;
+  vertical-align: top;
   align-items: flex-end;
 }
 .flex-shrink-control-start {
@@ -377,22 +389,22 @@ input.type-numeric {
 }
 
 /* Default Anarchy style */
-.sheet.root-style-anarchy .window-content {
+.root-style-anarchy .window-content {
   background: var(--background-blue);
   color: var(--font-color);
 }
 
-.sheet.root-style-anarchy .window-content form.npc-character-sheet {
+.root-style-anarchy .window-content form.npc-character-sheet {
   background: var(--lighter-npc);
 }
 
-.sheet.root-style-anarchy input,
-.sheet.root-style-anarchy select,
-.sheet.root-style-anarchy label,
-.sheet.root-style-anarchy button {
+.root-style-anarchy input,
+.root-style-anarchy select,
+.root-style-anarchy label,
+.root-style-anarchy button {
   color: var(--font-color);
 }  
-.sheet.root-style-anarchy .window-content select option{
+.root-style-anarchy .window-content select option{
   background-color: var(--background-blue);
   color: var(--font-color);
 }  
@@ -401,22 +413,22 @@ input.type-numeric {
 }
 
 /* Shadowrun Anarchy style */
-.sheet.root-style-anarchy-shadowrun .window-content {
+.root-style-anarchy-shadowrun .window-content {
   background: var(--background-black);
   color: var(--font-color);
 }
 
-.sheet.root-style-anarchy-shadowrun .window-content form.npc-character-sheet {
+.root-style-anarchy-shadowrun .window-content form.npc-character-sheet {
   background: var(--lighter-npc);
 }
 
-.sheet.root-style-anarchy-shadowrun input,
-.sheet.root-style-anarchy-shadowrun select,
-.sheet.root-style-anarchy-shadowrun label,
-.sheet.root-style-anarchy-shadowrun button {
+.root-style-anarchy-shadowrun input,
+.root-style-anarchy-shadowrun select,
+.root-style-anarchy-shadowrun label,
+.root-style-anarchy-shadowrun button {
   color: var(--font-color);
 }  
-.sheet.root-style-anarchy-shadowrun .window-content select option{
+.root-style-anarchy-shadowrun .window-content select option{
   background-color: var(--background-dark);
   color: var(--font-color);
 }
@@ -428,21 +440,21 @@ input.type-numeric {
 }
 
 /* Dark glass style */
-.sheet.root-style-darkglass .window-content {
+.root-style-darkglass .window-content {
   background: var(--gradient-dark);
   color: var(--font-color);
 }
-.sheet.root-style-darkglass .window-content form.npc-character-sheet {
+.root-style-darkglass .window-content form.npc-character-sheet {
   background: var(--lighter-npc);
 }
 
-.sheet.root-style-darkglass input,
-.sheet.root-style-darkglass select,
-.sheet.root-style-darkglass label,
-.sheet.root-style-darkglass button {
+.root-style-darkglass input,
+.root-style-darkglass select,
+.root-style-darkglass label,
+.root-style-darkglass button {
   color: var(--font-color);
 }
-.sheet.root-style-darkglass select option{
+.root-style-darkglass select option{
   background-color: var(--background-dark);
   color: var(--font-color);
 }

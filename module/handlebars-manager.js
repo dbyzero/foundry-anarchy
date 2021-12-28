@@ -5,7 +5,11 @@ import { Icons } from "./icons.js";
 import { Weapon } from "./item/weapon.js";
 import { Misc } from "./misc.js";
 
-export const partials = [
+
+export const HOOK_GET_HANDLEPAR_PARTIALS = "anarchy-getHandlebarPartials";
+export const HOOK_GET_HANDLEPAR_HELPERS = "anarchy-getHandlebarHelpers";
+
+const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/anarchy-header.hbs',
   'systems/anarchy/templates/actor/parts/anarchy.hbs',
   'systems/anarchy/templates/actor/parts/armor-header.hbs',
@@ -63,6 +67,16 @@ export const partials = [
   'systems/anarchy/templates/chat/roll-modifier.hbs',
   'systems/anarchy/templates/chat/risk-outcome.hbs',
   'systems/anarchy/templates/chat/edge-reroll-button.hbs',
+  'systems/anarchy/templates/chat/parts/actor-image.hbs',
+  'systems/anarchy/templates/chat/parts/attribute/title.hbs',
+  'systems/anarchy/templates/chat/parts/attribute/pool.hbs',
+  'systems/anarchy/templates/chat/parts/attribute/result.hbs',
+  'systems/anarchy/templates/chat/parts/skill/title.hbs',
+  'systems/anarchy/templates/chat/parts/skill/pool.hbs',
+  'systems/anarchy/templates/chat/parts/skill/result.hbs',
+  'systems/anarchy/templates/chat/parts/weapon/title.hbs',
+  'systems/anarchy/templates/chat/parts/weapon/pool.hbs',
+  'systems/anarchy/templates/chat/parts/weapon/result.hbs',
   //-- apps
   'systems/anarchy/templates/app/gm-anarchy.hbs',
   'systems/anarchy/templates/app/gm-difficulty.hbs',
@@ -71,8 +85,23 @@ export const partials = [
 
 export class HandlebarsManager {
 
-  static async init() {
-    await loadTemplates(partials);
+  static init() {
+    game.system.anarchy.hooks.register(HOOK_GET_HANDLEPAR_PARTIALS);
+    game.system.anarchy.hooks.register(HOOK_GET_HANDLEPAR_HELPERS);
+    Hooks.once(HOOK_GET_HANDLEPAR_PARTIALS, list => HBS_PARTIAL_TEMPLATES.forEach(tpl => list.push(tpl)));
+    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => {
+      HandlebarsManager.register();
+    });
+    Hooks.once('ready', () => HandlebarsManager.onReady());
+  }
+
+  static async onReady() {
+    let partials = [];
+    Hooks.callAll(HOOK_GET_HANDLEPAR_HELPERS);
+    Hooks.off(HOOK_GET_HANDLEPAR_HELPERS, () => { });
+    Hooks.callAll(HOOK_GET_HANDLEPAR_PARTIALS, partials);
+    Hooks.off(HOOK_GET_HANDLEPAR_PARTIALS, () => { });
+    await loadTemplates(Misc.distinct(partials));
   }
 
   static async register() {
@@ -84,7 +113,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('damageValue', Weapon.getDamageValue);
     Handlebars.registerHelper('skillValue', (actor, skillId) => actor.getSkillValue(skillId, false));
     Handlebars.registerHelper('specializationValue', (actor, skillId) => actor.getSkillValue(skillId, true));
-    Handlebars.registerHelper('for', HandlebarsManager.hbsFor);
+    Handlebars.registerHelper('for', HandlebarsManager.hbsForLoop);
     Handlebars.registerHelper('modulo', (value, divisor) => value % divisor);
     Handlebars.registerHelper('divint', Misc.divint);
     Handlebars.registerHelper('divup', Misc.divup);
@@ -95,10 +124,9 @@ export class HandlebarsManager {
     Handlebars.registerHelper('actorAttribute', (actor, attribute) => actor.getAttributeValue(attribute));
     Handlebars.registerHelper('localizeAttribute', Enums.localizeAttribute);
     Handlebars.registerHelper('iconFA', Icons.fontAwesome);
-
   }
 
-  static hbsFor(start, end, options) {
+  static hbsForLoop(start, end, options) {
     let accum = '';
     for (let i = start; i < end; ++i) {
       accum += options.fn(i);

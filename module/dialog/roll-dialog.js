@@ -105,6 +105,7 @@ export class AnarchyRollDialog extends Dialog {
       const modifier = $(event.currentTarget).attr('data-modifier')
       this.rollData.modifiers[modifier].value = Number.parseInt(event.currentTarget.value);
     });
+
     html.find('.select-option-modifier').change(event => {
       const selected = Number.parseInt(event.currentTarget.value);
       const modifier = $(event.currentTarget).attr('data-modifier')
