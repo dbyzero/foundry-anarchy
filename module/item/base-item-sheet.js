@@ -13,6 +13,9 @@ export class AnarchyItemSheet extends ItemSheet {
   }
 
   getData(options) {
+    let cssClass = game.system.anarchy.styles.selectCssClass(this.itrm.data.data.style);
+    cssClass += ' ' + (this.isEditable ? "editable" : "locked");
+
     let hbsData = mergeObject(
       super.getData(options), {
       options: {
@@ -20,7 +23,7 @@ export class AnarchyItemSheet extends ItemSheet {
         owner: this.document.isOwner,
         isOwned: (this.actor != undefined),
         editable: this.isEditable,
-        cssClass: this.isEditable ? "editable" : "locked"
+        cssClass: cssClass
       },
       ENUMS: Enums.getEnums(),
       ANARCHY: ANARCHY

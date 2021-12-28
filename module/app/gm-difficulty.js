@@ -6,12 +6,11 @@ const GM_DIFFICULTY_POOLS = "gm-difficulty-pools";
 export class GMDifficulty {
 
   static init() {
-    const defaultDifficulty = game.i18n.localize(ANARCHY.gmManager.gmDifficulty.default);
+    const defaultDifficulty = game.i18n.localize(ANARCHY.settings.gmDifficulty.default);
     game.settings.register(SYSTEM_NAME, GM_DIFFICULTY_POOLS, {
       scope: "world",
-      name: game.i18n.localize(ANARCHY.gmManager.gmDifficulty.name),
-      hint: game.i18n.localize(ANARCHY.gmManager.gmDifficulty.hint),
-      scope: "world",
+      name: game.i18n.localize(ANARCHY.settings.gmDifficulty.name),
+      hint: game.i18n.localize(ANARCHY.settings.gmDifficulty.hint),
       config: true,
       default: defaultDifficulty,
       type: String
@@ -65,7 +64,7 @@ export class GMDifficulty {
     const difficulty = $(event.currentTarget).attr('data-difficulty');
     const roll = new Roll(`${pool}d6cs>=5`);
     await roll.evaluate();
-    const flavor = game.i18n.format(ANARCHY.gmManager.gmDifficulty.chatMessage, {
+    const flavor = game.i18n.format(ANARCHY.settings.gmDifficulty.chatMessage, {
       pool: pool,
       difficulty: difficulty,
       success: roll.total

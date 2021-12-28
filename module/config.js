@@ -1,15 +1,21 @@
 export const ANARCHY = {
+    settings: {
+        defaultCssClass: {
+            name: 'ANARCHY.settings.defaultCssClass.name',
+            hint: 'ANARCHY.settings.defaultCssClass.hint'
+        },
+        gmDifficulty: {
+            name: 'ANARCHY.settings.gmDifficulty.name',
+            hint: 'ANARCHY.settings.gmDifficulty.hint',
+            default: 'ANARCHY.settings.gmDifficulty.default',
+            chatMessage: 'ANARCHY.settings.gmDifficulty.chatMessage',
+        }
+    },
     gmManager: {
         title: 'ANARCHY.gmManager.title',
         gmAnarchy: 'ANARCHY.gmManager.gmAnarchy',
         playerChangedAnarchy: 'ANARCHY.gmManager.playerChangedAnarchy',
         gmReceivedAnarchy: 'ANARCHY.gmManager.gmReceivedAnarchy',
-        gmDifficulty: {
-            name: 'ANARCHY.gmManager.gmDifficulty.name',
-            hint: 'ANARCHY.gmManager.gmDifficulty.hint',
-            default: 'ANARCHY.gmManager.gmDifficulty.default',
-            chatMessage: 'ANARCHY.gmManager.gmDifficulty.chatMessage',
-        }
     },
     chat: {
         blindMessageToGM: 'ANARCHY.chat.blindMessageToGM'

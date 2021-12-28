@@ -1,16 +1,22 @@
 {
   "ANARCHY": {
-    "gmManager": {
-      "title": "Gestion du MJ",
-      "gmAnarchy": "Anarchie MJ",
-      "playerChangedAnarchy": "Le joueur {user} a passé l'anarchy de {actor} de {from} à {to}",
-      "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchie de {actor}",
+    "settings": {
+      "defaultCssClass": {
+        "name": "Style des fenêtres Anarchy",
+        "hint": "Sélectionne le style utilisées pour les personnages, objets, et Gestion du MJ"
+      },
       "gmDifficulty": {
         "name": "Réserves de difficulté",
         "hint": "Les valeurs des réserves de dés pour différentes difficultés, représentées comme 'Triviale:4,Facile:6' ...",
         "default": "Triviale:4,Facile:6,Moyenne:8,Difficile:10,Très difficile:12",
         "chatMessage": "La difficulté {difficulty} ({pool}d6) est de {success}"
       }
+    },
+    "gmManager": {
+      "title": "Gestion du MJ",
+      "gmAnarchy": "Anarchie MJ",
+      "playerChangedAnarchy": "Le joueur {user} a passé l'anarchy de {actor} de {from} à {to}",
+      "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchie de {actor}"
     },
     "chat": {
       "blindMessageToGM": "Message aveugle de {user}:<br>{message}"
