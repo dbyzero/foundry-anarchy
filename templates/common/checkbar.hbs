@@ -22,9 +22,9 @@
     {{/if}}
 
     {{#if (lt this ../value)}}
-      <a class="click-checkbar-element checked-element" data-index="{{this}}" data-checked="true">{{{../iconChecked}}}</a>
+      <a class="click-checkbar-element" data-index="{{this}}" data-checked="true">{{{../iconChecked}}}</a>
     {{else}}
-      <a class="click-checkbar-element unchecked-element" data-index="{{this}}">{{{../iconUnchecked}}}</a>
+      <a class="click-checkbar-element" data-index="{{this}}" data-checked="false">{{{../iconUnchecked}}}</a>
     {{/if}}
 
     {{#if ../adjust}}

@@ -29,8 +29,8 @@
     </div>
 
     <div class="flexcol">
-      <ul class="alterne-list list-modifiers">
-        <li class="flexrow list-item select-attribute">
+      <ul class="alternate-items list-modifiers">
+        <li class="flexrow select-attribute">
           <label class="flex-grow-2" for="select.attribute">{{localize ANARCHY.common.roll.attribute}}</label>
           <span class="flex-end">
             <select name="select.attribute" class="select-skill-attribute" data-dtype="String">
@@ -43,8 +43,13 @@
           </span>
         </li>
         {{#if (or (eq mode 'skill') (eq mode 'weapon'))}}
-          <li class="flexrow list-item">
+          <li class="flexrow">
+            {{#if (eq mode 'skill')}}
             <label class="flex-grow-2">{{localize (concat 'ANARCHY.skill.' skill.data.data.code)}}</label>
+            {{/if}}
+            {{#if (eq mode 'weapon')}}
+            <label class="flex-grow-2">{{localize (concat 'ANARCHY.skill.' weapon.data.data.skill)}}</label>
+            {{/if}}
             <span class="flex-end">
               <input class="item-field-value input-select-modifier"
                 type="number" data-dtype="Number"
@@ -54,7 +59,7 @@
           {{> 'systems/anarchy/templates/dialog/roll-modifier.hbs' modifiers.specialization}}
         {{/if}}
         {{#if (eq mode 'attribute')}}
-          <li class="flexrow list-item select-attribute">
+          <li class="flexrow select-attribute">
             <label class="flex-grow-2">{{localize ANARCHY.common.roll.attribute2}}</label>
             <span class="flex-end">
               <select class="select-attribute2" data-dtype="String">

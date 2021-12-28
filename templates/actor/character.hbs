@@ -34,30 +34,30 @@
   </header>
   <section class="sheet-body">
     <div class="flexrow">
-      <div class="flexcol style-keyword-list">
+      <div class="flexcol anarchy-keywords">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.keywords}}
       </div>
-      <div class="flexcol flex-grow-3 style-disposition-list">
+      <div class="flexcol flex-grow-3 anarchy-dispositions">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='disposition' values=data.data.dispositions}}
       </div>
-      <div class="flexcol style-cue-list">
+      <div class="flexcol anarchy-cues">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='cue' values=data.data.cues}}
       </div>
     </div>
-    <div class="flexcol style-content-block">
+    <div class="flexcol anarchy-block">
     {{> "systems/anarchy/templates/actor/parts/skills.hbs"}}
     </div>
-    <div class="flexcol style-content-block">
+    <div class="flexcol anarchy-block">
     {{> "systems/anarchy/templates/actor/parts/shadowamps.hbs"}}
     </div>
-    <div class="flexcol style-content-block">
+    <div class="flexcol anarchy-block">
     {{> "systems/anarchy/templates/actor/parts/qualities.hbs"}}
     </div>
-    <div class="flexcol style-content-block">
+    <div class="flexcol anarchy-block">
     {{> "systems/anarchy/templates/actor/parts/weapons.hbs"}}
     </div>
     <div class="flexrow">
-      <div class="style-content-block">
+      <div class="anarchy-block">
         <div class="flexcol">
           <h3>{{> "systems/anarchy/templates/actor/parts/armor-header.hbs"}}</h3>
           {{> "systems/anarchy/templates/actor/parts/armor.hbs"}}
@@ -73,15 +73,15 @@
           <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}</span>
         </div>
       </div>
-      <div class="style-content-block">
+      <div class="anarchy-block">
       {{> "systems/anarchy/templates/actor/parts/monitors.hbs"}}
       </div>
-      <div class="style-content-block">
+      <div class="anarchy-block">
       {{> "systems/anarchy/templates/actor/parts/gears.hbs"}}
       {{> "systems/anarchy/templates/actor/parts/contacts.hbs"}}
       </div>
     </div>
-    <div class="style-content-block">
+    <div class="anarchy-block">
       {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
       {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}
     </div>

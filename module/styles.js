@@ -3,12 +3,12 @@ import { LOG_HEAD, SYSTEM_NAME } from "./constants.js";
 
 const DEFAULT_CSS_CLASS = 'default-css-class';
 const HOOK_LOAD_STYLES = 'anarchy-loadStyles';
-const CSS_DEFAULT = 'style-anarchy';
+const CSS_DEFAULT = 'root-style-anarchy';
 
 const DEFAULT_STYLES = [
   { name: 'Default', cssClass: CSS_DEFAULT },
-  { name: 'Shadowrun Anarchy', cssClass: 'style-anarchy-shadowrun' },
-  { name: 'Dark glass', cssClass: 'style-darkglass' },
+  { name: 'Shadowrun Anarchy', cssClass: 'root-style-anarchy-shadowrun' },
+  { name: 'Dark glass', cssClass: 'root-style-darkglass' },
 ]
 
 /**

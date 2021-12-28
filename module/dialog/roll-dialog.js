@@ -109,10 +109,10 @@ export class AnarchyRollDialog extends Dialog {
       const selected = Number.parseInt(event.currentTarget.value);
       const modifier = $(event.currentTarget).attr('data-modifier')
       this.rollData.modifiers[modifier].value = selected;
-      this.rollData.modifiers[modifier].selectedLabel = html.find(`.list-modifiers .list-item[data-modifier='${modifier}'] select option:selected`)
+      this.rollData.modifiers[modifier].selectedLabel = html.find(`.list-modifiers .item[data-modifier='${modifier}'] select option:selected`)
         .text()
 
-      html.find(`.list-modifiers .list-item[data-modifier='${modifier}'] .selected-option-modifier-value`)
+      html.find(`.list-modifiers .item[data-modifier='${modifier}'] .selected-option-modifier-value`)
         .text(selected);
     });
 

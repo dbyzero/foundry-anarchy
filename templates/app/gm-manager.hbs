@@ -1,13 +1,11 @@
 <div id="gm-manager">
-  <div class="gm-manager">
-    <div class="gm-manager-header">
-      <p class="gm-manager-move-handle">{{localize ANARCHY.gmManager.title}}</p>
-    </div>
-    <div class="gm-manager-content">
-      {{> "systems/anarchy/templates/app/gm-anarchy.hbs"}}
-    </div>
-    <div class="gm-manager-content">
-      {{> "systems/anarchy/templates/app/gm-difficulty.hbs"}}
-    </div>
+  <div class="header gm-manager-move-handle">
+    <label>{{localize ANARCHY.gmManager.title}}</label>
+  </div>
+  <div class="content">
+    {{> "systems/anarchy/templates/app/gm-anarchy.hbs"}}
+  </div>
+  <div class="content">
+    {{> "systems/anarchy/templates/app/gm-difficulty.hbs"}}
   </div>
 </div>

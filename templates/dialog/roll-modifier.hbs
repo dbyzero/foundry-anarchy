@@ -9,7 +9,7 @@
   }
  --}}
  {{#if type}}
-  <li class="flexrow list-item" data-modifier="{{type}}">
+  <li class="flexrow" data-modifier="{{type}}">
     <label class="flex-grow-2" >{{label}}</label>
 
     <span class="flex-shrink">
@@ -28,7 +28,7 @@
           </select>
           <label class="selected-option-modifier-value">{{numberFormat value decimals=0 sign=false}}</label>
         {{else}}
-          <input class="item-field-value-numeric input-select-modifier"
+          <input class="type-numeric input-select-modifier"
             data-modifier="{{type}}"
             type="number" data-dtype="Number" maxlength="2"
             value="{{either value 0}}"/>

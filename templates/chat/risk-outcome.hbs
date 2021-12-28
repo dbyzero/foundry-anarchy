@@ -1,8 +1,8 @@
   {{#if modifiers.anarchyRisk.used}}
     {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
-    <div class="style-chat-anarchy-risk-prowess">{{localize ANARCHY.common.roll.risk.prowess}}</div>
+    <div class="anarchy-risk-prowess">{{localize ANARCHY.common.roll.risk.prowess}}</div>
     {{else if (eq roll.subrolls.risk.outcome 'glitch')}}
-    <div class="style-chat-anarchy-risk-glitch">{{localize ANARCHY.common.roll.risk.glitch}}</div>
+    <div class="anarchy-risk-glitch">{{localize ANARCHY.common.roll.risk.glitch}}</div>
     {{else if (eq roll.subrolls.risk.outcome 'nothing')}}
     <div>{{localize ANARCHY.common.roll.risk.nothing}}</div>
     {{/if}}
