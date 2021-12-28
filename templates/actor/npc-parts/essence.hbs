@@ -1,8 +1,8 @@
 <div class="flexrow">
 <label class="attribute-label" for="data.counters.essence.value">{{localize ANARCHY.actor.counters.essence}}</label>
-<input class="attribute-value" type="text" maxlength="3" size=3
+<input class="attribute-value" type="number" maxlength="4" size=4
   data-dtype="Number" min="0" max="6"
-  name="data.counters.essence.value" value="{{numberFormat data.data.counters.essence.value decimals=0 sign=false}}" 
+  name="data.counters.essence.value" value="{{numberFormat data.data.counters.essence.value decimals=2 sign=false}}" 
 />
 <label>{{localize ANARCHY.actor.essence.adjustShort}} {{essence.adjust}}</label>
 </div>

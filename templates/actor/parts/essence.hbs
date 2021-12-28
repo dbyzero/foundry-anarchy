@@ -1,8 +1,8 @@
 <div class="flexrow">
 <label class="attribute-label flex-shrink" for="data.counters.essence.value">{{localize 'ANARCHY.actor.counters.essence'}}</label>
-<input class="attribute-value flex-shrink" type="text" maxlength="3" size=3
-  data-dtype="Number" min="0.5" max="6"
-  name="data.counters.essence.value" value="{{numberFormat data.data.counters.essence.value decimals=0 sign=false}}" 
+<input class="attribute-value" type="number" maxlength="4" size=4
+  data-dtype="Number" min="0" max="6"
+  name="data.counters.essence.value" value="{{numberFormat data.data.counters.essence.value decimals=2 sign=false}}" 
 />
 <label class="flex-grow-3">{{essence.adjust}} {{localize ANARCHY.actor.essence.adjustments}}</label>
 </div>
