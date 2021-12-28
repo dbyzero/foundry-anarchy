@@ -1,7 +1,7 @@
-<form class="click-skill-roll-dialog">
+<form class="anarchy-dialog roll-dialog">
   <div class="flexcol">
     <div class="flexrow">
-      <img class="dialog-img flex-shrink" src="{{actor.img}}" alt="{{actor.name}}"/>
+      <img class="anarchy-img actor-img flex-shrink" src="{{actor.img}}" alt="{{actor.name}}"/>
       {{#if (eq mode 'attribute')}}
         <div class="flex-grow-3">
           <h2 class="dialog-roll-title">
@@ -15,13 +15,13 @@
         </div>
       {{/if}}
       {{#if (eq mode 'skill')}}
-        <img class="dialog-img flex-shrink" src="{{skill.img}}" alt="{{skill.name}}"/>
+        <img class="anarchy-img skill-img flex-shrink" src="{{skill.img}}" alt="{{skill.name}}"/>
         <div class="flex-grow-3">
           <h2 class="dialog-roll-title">{{actor.name}} - {{skill.name}}</h2>
         </div>
       {{/if}}
       {{#if (eq mode 'weapon')}}
-        <img class="dialog-img flex-shrink" src="{{weapon.img}}" alt="{{weapon.name}}"/>
+        <img class="anarchy-img weapon-img flex-shrink" src="{{weapon.img}}" alt="{{weapon.name}}"/>
         <div class="flex-grow-3">
           <h2 class="dialog-roll-title">{{actor.name}} - {{weapon.name}}</h2>
         </div>

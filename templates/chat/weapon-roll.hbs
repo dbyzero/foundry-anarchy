@@ -1,65 +1,79 @@
-<img class="chat-img" src="{{actor.img}}" alt="{{actor.name}}"/>
-{{!-- Dice pool explanation --}}
-<div class="tooltip tooltip-dotted">
-  <h3 class="chat-roll-title">
-    {{actor.name}} - {{weapon.name}} : {{roll.pool}}
-  </h3>
-  <div class="tooltiptext tooltip-roll-modifiers">
-    <div>{{localizeAttribute attribute}}: {{actorAttribute actor attribute}}</div>
-    <div>{{skill.name}}: {{either skill.data.data.value 0}}</div>
-    {{#if modifiers.specialization.used}}
-    <div>{{localize ANARCHY.item.skill.specialization}} {{specialization}}: {{numberFormat modifiers.specialization.value decimals=0 sign=true}}</div>
-    {{/if}}
-    {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
-    {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.range}}
-    {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
-    {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
-  </div>
-</div>
-<br>
-{{!-- Roll successes explanation --}}
-<div class="tooltip tooltip-dotted">
-  <h3 class="chat-roll-title">
-    {{localize ANARCHY.common.roll.success}}: {{roll.hits}}
+<div class="flexrow">
+  <img class="anarchy-img actor-img" src="{{actor.img}}" alt="{{actor.name}}"/>
+  <div class="flexcol">
+    {{!-- Dice pool explanation --}}
+    <div class="tooltip tooltip-dotted">
+      <h3 class="chat-roll-title">
+        {{actor.name}} - {{weapon.name}} : {{roll.pool}}
+      </h3>
+      <div class="tooltiptext tooltip-roll-modifiers">
+        <div>{{localizeAttribute attribute}}: {{actorAttribute actor attribute}}</div>
+        <div>{{skill.name}}: {{either skill.data.data.value 0}}</div>
+        {{#if modifiers.specialization.used}}
+        <div>{{localize ANARCHY.item.skill.specialization}} {{specialization}}: {{numberFormat modifiers.specialization.value decimals=0 sign=true}}</div>
+        {{/if}}
+        {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
+        {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.range}}
+        {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
+        {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
+      </div>
+    </div>
     <br>
-    {{localize 'ANARCHY.item.weapon.damage'}}
-    {{> 'systems/anarchy/templates/common/damage-code.hbs'
-        strength=weapon.data.data.strength
-        actorStrength=actor.data.data.attributes.strength.value
-        damage=weapon.data.data.damage
-        monitor=weapon.data.data.monitor
-        noArmor=weapon.data.data.noArmor
-    }}
-  </h3>
-  <div class="tooltiptext tooltip-roll-modifiers">
-    <div>{{localize ANARCHY.common.roll.success}}: {{roll.roll.total}} / {{roll.param.pool}}</div>
-    {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
-    <div>{{localize ANARCHY.common.roll.risk.prowess}}: 1</div>
-    {{/if}}
-    {{#if roll.subrolls.reroll}}
-    <div>{{localize ANARCHY.common.roll.rerollSuccess}}: {{roll.subrolls.reroll.total}} / {{roll.param.reroll}}</div>
-    {{/if}}
-    {{#if roll.subrolls.rerollForced}}
-    <div>{{localize ANARCHY.common.roll.rerollForcedLoss}}: -{{roll.param.rerollForced}}</div>
-    <div>{{localize ANARCHY.common.roll.rerollForcedSuccess}}: {{roll.subrolls.rerollForced.total}} / {{roll.param.rerollForced}}</div>
-    {{/if}}
-  </div>
-</div>
+    {{!-- Roll successes explanation --}} 
+    <div class="tooltip tooltip-dotted">
+      <h3 class="chat-roll-title">
+        {{localize ANARCHY.common.roll.success}}: {{roll.hits}}
+        <br>
+        {{localize 'ANARCHY.item.weapon.damage'}}
+        {{> 'systems/anarchy/templates/common/damage-code.hbs'
+            strength=weapon.data.data.strength
+            actorStrength=actor.data.data.attributes.strength.value
+            damage=weapon.data.data.damage
+            monitor=weapon.data.data.monitor
+            noArmor=weapon.data.data.noArmor
+        }}
+      </h3>
+      <div class="tooltiptext tooltip-roll-modifiers">
+        <div>
+          {{localize ANARCHY.common.roll.success}}: {{roll.roll.total}} / {{roll.param.pool}}
+        </div>
+        {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
+        <div>
+          {{localize ANARCHY.common.roll.risk.prowess}}: 1
+        </div>
+        {{/if}}
+        {{#if roll.subrolls.reroll}}
+        <div>
+          {{localize ANARCHY.common.roll.rerollSuccess}}: {{roll.subrolls.reroll.total}} / {{roll.param.reroll}}
+        </div>
+        {{/if}}
+        {{#if roll.subrolls.rerollForced}}
+        <div>
+          {{localize ANARCHY.common.roll.rerollForcedLoss}}: -{{roll.param.rerollForced}}
+        </div>
+        <div>
+          {{localize ANARCHY.common.roll.rerollForcedSuccess}}: {{roll.subrolls.rerollForced.total}} / {{roll.param.rerollForced}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
 
-{{#unless modifiers.edge.used}}
-<div>
-  {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
-</div>
-{{/unless}}
+    {{#unless modifiers.edge.used}}
+    <div>
+      {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
+    </div>
+    {{/unless}}
 
-<div>
-  <div class="alternate-items">
-  {{> 'systems/anarchy/templates/chat/risk-outcome.hbs'}}
-  {{#if modifiers.anarchyDisposition.used}}
-  <div>{{localize ANARCHY.common.roll.modifiers.anarchyDisposition}}
-  {{/if}}
-  {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}
-  {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentRerollForced}}
-  {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentReduce}}
+    <div>
+      <div class="alternate-items">
+      {{> 'systems/anarchy/templates/chat/risk-outcome.hbs'}}
+      {{#if modifiers.anarchyDisposition.used}}
+      <div>{{localize ANARCHY.common.roll.modifiers.anarchyDisposition}}
+      {{/if}}
+      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}
+      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentRerollForced}}
+      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentReduce}}
+      </div>
+    </div>
   </div>
 </div>

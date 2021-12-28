@@ -8,9 +8,9 @@
     />
   </div>
   <hr>
-  <div class="flexcol">
+  <div class="form-group flexcol">
     <span><label>{{localize 'ANARCHY.common.description'}}</label></span>
-    <div class="form-group editor">
+    <div class="editor">
       {{editor
         target="data.description"
         owner=options.owner
@@ -22,9 +22,9 @@
 
 {{#if options.isGM}}
   <hr>
-  <div class="flexcol">
+  <div class="form-group flexcol">
     <span><label>{{localize 'ANARCHY.common.gmnotes'}}</label></span>
-    <div class="form-group editor">
+    <div class="editor">
       {{editor
         target="data.gmnotes"
         owner=options.owner

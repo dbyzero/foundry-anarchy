@@ -1,3 +1,4 @@
+/** common definittions **/
 :root {
   --font-color: hsl(0, 0%, 83%);
   --transparent: hsla(0, 0%, 0%, 0.0);
@@ -55,127 +56,51 @@
     hsla(0, 0%, 0%, 0.7));
 }
 
-h1, h2, h3, h4 {
-  font-weight: bold;
-}
+/* common anarchy sheets styles*/
+h1, h2, h3 { font-weight: bold; }
+h4 { font-weight: 500; }
 
-
-/* Default Anarchy style */
-.sheet.root-style-anarchy .window-content {
-  background: var(--background-blue);
-  color: var(--font-color);
-}
-
-.sheet.root-style-anarchy .window-content form.npc-character-sheet {
-  background: var(--lighter-npc);
-}
-
-.sheet.root-style-anarchy input,
-.sheet.root-style-anarchy select,
-.sheet.root-style-anarchy label,
-.sheet.root-style-anarchy button {
-  color: var(--font-color);
-}  
-.sheet.root-style-anarchy .window-content select option{
-  background-color: var(--background-blue);
-  color: var(--font-color);
-}  
-.root-style-anarchy .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
-}
-
-/* Shadowrun Anarchy style */
-.sheet.root-style-anarchy-shadowrun .window-content {
-  background: var(--background-black);
-  color: var(--font-color);
-}
-
-.sheet.root-style-anarchy-shadowrun .window-content form.npc-character-sheet {
-  background: var(--lighter-npc);
-}
-
-.sheet.root-style-anarchy-shadowrun input,
-.sheet.root-style-anarchy-shadowrun select,
-.sheet.root-style-anarchy-shadowrun label,
-.sheet.root-style-anarchy-shadowrun button {
-  color: var(--font-color);
-}  
-.sheet.root-style-anarchy-shadowrun .window-content select option{
-  background-color: var(--background-dark);
-  color: var(--font-color);
-}
-.root-style-anarchy-shadowrun .tox .tox-editor-container {
-  background: var(--gradient-silver-light-opaque);
-}
-.root-style-anarchy-shadowrun .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
-}
-
-/* Dark glass style */
-.sheet.root-style-darkglass .window-content {
-  background: var(--gradient-dark);
-  color: var(--font-color);
-}
-.sheet.root-style-darkglass .window-content form.npc-character-sheet {
-  background: var(--lighter-npc);
-}
-
-.sheet.root-style-darkglass input,
-.sheet.root-style-darkglass select,
-.sheet.root-style-darkglass label,
-.sheet.root-style-darkglass button {
-  color: var(--font-color);
-}
-.sheet.root-style-darkglass select option{
-  background-color: var(--background-dark);
-  color: var(--font-color);
-}
-.root-style-darkglass .tox .tox-editor-container {
-  background: var(--gradient-silver-light-opaque);
-}
-.root-style-darkglass .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
-}
-
-
-
-.dialog-img,
-.chat-img {
+img.anarchy-img {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 48px;
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
   border: 0;
   padding: 2px;
   float: left;
   border-radius: 6px;
-  object-fit: cover;
+  object-fit: contain;
+  vertical-align: top;
 }
 
-.sheet-header .profile-img {
-  -webkit-box-flex: 0;
+.anarchy-dialog img.actor-img ,
+.anarchy-dialog img.skill-img ,
+.anarchy-dialog img.weapon-img {
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+}
+.chat-message img.actor-img {
+  -ms-flex: 0 0 64px;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+}
+
+.sheet-header img.profile-img {
   -ms-flex: 0 0 128px;
   flex: 0 0 128px;
   height: 128px;
   width: 128px;
   margin-right: 10px;
-  object-fit: cover;
   object-position: 50% 0;
-  border-radius: 6px;
 }
 
-.sheet-item-img {
+img.anarchy-img.item-img {
+  -ms-flex: 0 0 32px;
+  flex: 0 0 32px;
   width: 32px;
   height: 32px;
   flex-grow: 0;
   margin-right: 0.1rem;
-  vertical-align: top;
-  border-radius: 6px;
-}
-
-div.form-group {
-  align-items: flex-start;
 }
 
 div.anarchy-block,
@@ -430,6 +355,11 @@ div.item.flexrow {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* TODO: redefine the role of these groups */
+div.form-group {
+  align-items: flex-start;
+}
+
 /* form input and controls */
 .editor {
   border: 2;
@@ -444,6 +374,83 @@ div.item.flexrow {
 
 input.type-numeric {
   max-width: 2rem;
+}
+
+/* Default Anarchy style */
+.sheet.root-style-anarchy .window-content {
+  background: var(--background-blue);
+  color: var(--font-color);
+}
+
+.sheet.root-style-anarchy .window-content form.npc-character-sheet {
+  background: var(--lighter-npc);
+}
+
+.sheet.root-style-anarchy input,
+.sheet.root-style-anarchy select,
+.sheet.root-style-anarchy label,
+.sheet.root-style-anarchy button {
+  color: var(--font-color);
+}  
+.sheet.root-style-anarchy .window-content select option{
+  background-color: var(--background-blue);
+  color: var(--font-color);
+}  
+.root-style-anarchy .tooltip .tooltip-roll-modifiers {
+  background: var(--gradient-silver-light-opaque);
+}
+
+/* Shadowrun Anarchy style */
+.sheet.root-style-anarchy-shadowrun .window-content {
+  background: var(--background-black);
+  color: var(--font-color);
+}
+
+.sheet.root-style-anarchy-shadowrun .window-content form.npc-character-sheet {
+  background: var(--lighter-npc);
+}
+
+.sheet.root-style-anarchy-shadowrun input,
+.sheet.root-style-anarchy-shadowrun select,
+.sheet.root-style-anarchy-shadowrun label,
+.sheet.root-style-anarchy-shadowrun button {
+  color: var(--font-color);
+}  
+.sheet.root-style-anarchy-shadowrun .window-content select option{
+  background-color: var(--background-dark);
+  color: var(--font-color);
+}
+.root-style-anarchy-shadowrun .tox .tox-editor-container {
+  background: var(--gradient-silver-light-opaque);
+}
+.root-style-anarchy-shadowrun .tooltip .tooltip-roll-modifiers {
+  background: var(--gradient-silver-light-opaque);
+}
+
+/* Dark glass style */
+.sheet.root-style-darkglass .window-content {
+  background: var(--gradient-dark);
+  color: var(--font-color);
+}
+.sheet.root-style-darkglass .window-content form.npc-character-sheet {
+  background: var(--lighter-npc);
+}
+
+.sheet.root-style-darkglass input,
+.sheet.root-style-darkglass select,
+.sheet.root-style-darkglass label,
+.sheet.root-style-darkglass button {
+  color: var(--font-color);
+}
+.sheet.root-style-darkglass select option{
+  background-color: var(--background-dark);
+  color: var(--font-color);
+}
+.root-style-darkglass .tox .tox-editor-container {
+  background: var(--gradient-silver-light-opaque);
+}
+.root-style-darkglass .tooltip .tooltip-roll-modifiers {
+  background: var(--gradient-silver-light-opaque);
 }
 
 /* Tooltips container */

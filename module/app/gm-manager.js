@@ -66,7 +66,7 @@ export class GMManager extends Application {
   async activateListeners(html) {
     super.activateListeners(html);
 
-    html.find('.gm-manager-move-handle').mousedown(event => this.handleDrag.onMouseDown(event));
+    html.find('.app-title-bar').mousedown(event => this.handleDrag.onMouseDown(event));
 
     this.gmAnarchy.activateListeners(html)
     this.gmDifficulty.activateListeners(html)
