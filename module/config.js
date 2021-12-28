@@ -13,7 +13,7 @@ export const ANARCHY = {
     },
     gmManager: {
         title: 'ANARCHY.gmManager.title',
-        gmAnarchy: 'ANARCHY.gmManager.gmAnarchy',
+        danger: 'ANARCHY.gmManager.danger',
         playerChangedAnarchy: 'ANARCHY.gmManager.playerChangedAnarchy',
         gmReceivedAnarchy: 'ANARCHY.gmManager.gmReceivedAnarchy',
     },

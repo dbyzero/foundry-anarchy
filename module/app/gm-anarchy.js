@@ -44,7 +44,7 @@ export class GMAnarchy {
 
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
-      ErrorManager.checkSufficient(ANARCHY.gmManager.gmAnarchy, -count, this.anarchy);
+      ErrorManager.checkSufficient(ANARCHY.gmManager.danger, -count, this.anarchy);
       await this.setAnarchy(this.anarchy + count);
     }
   }
@@ -80,11 +80,11 @@ export class GMAnarchy {
       code: 'anarchy',
       value: this.getAnarchy(),
       max: this.getAnarchyMax(),
-      labelkey: ANARCHY.gmManager.gmAnarchy,
+      labelkey: ANARCHY.gmManager.danger,
       rowlength: 10,
       adjust: false,
-      iconChecked: Icons.fontAwesome('fas fa-sun'),
-      iconUnchecked: Icons.fontAwesome('far fa-sun'),
+      iconChecked: Icons.iconSrc('icons/danger-point.webp', 'checkbar-img'),
+      iconUnchecked: Icons.iconSrc('icons/danger-point-off.webp', 'checkbar-img'),
     });
   }
 

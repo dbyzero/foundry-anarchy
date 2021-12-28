@@ -1,15 +1,15 @@
 <div class="ANARCHY-anarchy flexrow">
-	<label>{{localize ANARCHY.gmManager.gmAnarchy}}</label>
+	<label>{{localize ANARCHY.gmManager.danger}}</label>
 	<span class="flex-grow-2 gm-anarchy-bar">
 	{{> "systems/anarchy/templates/common/checkbar.hbs"
 		code='anarchy'
 		value=anarchy.value
 		max=anarchy.max
-		labelkey=ANARCHY.gmManager.gmAnarchy
+		labelkey=ANARCHY.gmManager.danger
 		rowlength=10
 		adjust=false
-		iconChecked=(iconFA 'fas fa-sun')
-		iconUnchecked=(iconFA 'far fa-sun')
+    iconChecked=(iconSrc 'icons/danger-point.webp' 'checkbar-img')
+    iconUnchecked=(iconSrc 'icons/danger-point-off.webp' 'checkbar-img')
 	}}
 	</span>
 </div>

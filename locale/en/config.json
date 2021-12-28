@@ -14,7 +14,7 @@
     },
     "gmManager": {
       "title": "GM manager",
-      "gmAnarchy": "GM Anarchy",
+      "danger": "Danger",
       "playerChangedAnarchy": "User {user} changed {actor}'s anarchy from {from} to {to}",
       "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}"
     },

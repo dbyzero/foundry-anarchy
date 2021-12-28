@@ -6,8 +6,8 @@
     labelkey=ANARCHY.actor.counters.anarchy
     rowlength=10
     adjust=false
-    iconChecked=(iconFA 'fas fa-star')
-    iconUnchecked=(iconFA 'far fa-star')
+    iconChecked=(iconSrc 'icons/anarchy-point.webp' 'checkbar-img')
+    iconUnchecked=(iconSrc 'icons/anarchy-point-off.webp' 'checkbar-img')
   }}
 {{else}}
   {{#if options.isGM}}
@@ -15,11 +15,11 @@
     code='anarchy'
     value=options.anarchy.value
     max=options.anarchy.max
-    labelkey=ANARCHY.gmManager.gmAnarchy
+    labelkey=ANARCHY.gmManager.danger
     rowlength=10
     adjust=false
-    iconChecked=(iconFA 'fas fa-sun')
-    iconUnchecked=(iconFA 'far fa-sun')
+    iconChecked=(iconSrc 'icons/danger-point.webp' 'checkbar-img')
+    iconUnchecked=(iconSrc 'icons/danger-point-off.webp' 'checkbar-img')
   }}
   {{/if}}
 {{/if}}

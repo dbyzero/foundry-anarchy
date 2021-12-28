@@ -14,7 +14,7 @@
     },
     "gmManager": {
       "title": "Gestion du MJ",
-      "gmAnarchy": "Anarchie MJ",
+      "danger": "Danger",
       "playerChangedAnarchy": "Le joueur {user} a passé l'anarchy de {actor} de {from} à {to}",
       "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchie de {actor}"
     },

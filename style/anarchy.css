@@ -3,8 +3,8 @@
   --font-color: hsl(0, 0%, 83%);
   --transparent: hsla(0, 0%, 0%, 0.0);
   --controls-color: hsla(100, 30%, 60%, 0.6);
-  --checked-color: hsla(50, 80%, 50%, 0.6);
-  --unchecked-color: hsla(130, 80%, 40%, 0.6);
+  --checked-color: hsla(207, 100%, 80%, 1);
+  --unchecked-color: hsla(207, 10%, 50%, 1);
   --wordlist-color: hsla(200, 50%, 70%, 0.3);
   --border-dark:hsla(200, 10%, 30%, 0.4);
   --border-medium:hsla(200, 10%, 45%, 0.4);
@@ -85,6 +85,7 @@ img.anarchy-img {
   width: 48px;
   height: 48px;
 }
+
 .chat-message img.actor-img {
   -ms-flex: 0 0 64px;
   flex: 0 0 64px;
@@ -108,6 +109,23 @@ img.anarchy-img.item-img {
   height: 32px;
   flex-grow: 0;
   margin-right: 0.1rem;
+}
+
+img.checkbar-img {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  background-position: center;
+  background-size: cover;
+  border: none;
+}
+img.checkbar-img:hover {
+  background-color: var(--hover-tint);
+}
+img.checkbar-img:active {
+  position: relative;
+  top: 1px;
 }
 
 div.anarchy-block,

@@ -124,6 +124,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('actorAttribute', (actor, attribute) => actor.getAttributeValue(attribute));
     Handlebars.registerHelper('localizeAttribute', Enums.localizeAttribute);
     Handlebars.registerHelper('iconFA', Icons.fontAwesome);
+    Handlebars.registerHelper('iconSrc', Icons.iconSrc);
   }
 
   static hbsForLoop(start, end, options) {
