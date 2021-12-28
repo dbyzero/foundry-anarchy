@@ -7,7 +7,7 @@ export const SYSTEM_NAME = 'anarchy';
 export const SYSTEM_SOCKET = `system.${SYSTEM_NAME}`;
 export const SYSTEM_PATH = `systems/${SYSTEM_NAME}`;
 export const TEMPLATES_PATH = `systems/${SYSTEM_NAME}/templates`;
-export const LOG_HEAD = 'Anarchy|';
+export const LOG_HEAD = 'Anarchy | ';
 
 export const ANARCHY_DICE_BONUS = 3;
 export const SPECIALIZATION_BONUS = 2;

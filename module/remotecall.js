@@ -1,4 +1,4 @@
-import { SYSTEM_SOCKET } from "./constants.js";
+import { LOG_HEAD, SYSTEM_SOCKET } from "./constants.js";
 import { Users } from "./users.js";
 
 export class RemoteCall {
@@ -21,12 +21,12 @@ export class RemoteCall {
       throw `RemoteCall msg ${msg} is already registered`;
     }
     mergeObject(remoteCall, {
-      callback: data => { console.log('ANARCHY:RemoteCall [', msg, '] (', data, ')'); },
+      callback: data => { console.log(LOG_HEAD + 'RemoteCall [', msg, '] (', data, ')'); },
       condition: user => true,
       multiple: false /* true if multiple users should handle the message */
     }, { overwrite: false });
     this.remoteCalls[msg] = remoteCall;
-    console.log('ANARCHY:RemoteCall registered', msg);
+    console.log(LOG_HEAD + 'RemoteCall registered', msg);
   }
 
   static call(msg, data) {

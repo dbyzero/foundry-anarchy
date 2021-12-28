@@ -14,6 +14,7 @@ import { GMAnarchy } from './app/gm-anarchy.js';
 import { GMDifficulty } from './app/gm-difficulty.js';
 import { NPCSheet } from './actor/npc-sheet.js';
 import { ChatManager } from './chat/chat-manager.js';
+import { Styles } from './styles.js';
 
 export class HooksManager {
 
@@ -25,7 +26,6 @@ export class HooksManager {
     this.hooks = [];
     console.log(LOG_HEAD + 'HooksManager.Registering system hooks');
     Hooks.once('init', () => this.onInit());
-    Hooks.once('ready', () => this.onReady());
   }
 
   async onInit() {
@@ -54,8 +54,10 @@ export class HooksManager {
     GMManager.init();
     AnarchyItem.init();
     ChatManager.init();
+    Styles.init();
     await HandlebarsManager.init();
     console.log(LOG_HEAD + 'HooksManager.onInit | done');
+    Hooks.once('ready', () => this.onReady());
   }
 
   async onReady() {
@@ -92,6 +94,7 @@ export class HooksManager {
       throw "For safety Anarchy Hooks names must be prefixed by anarchy'-'"
     }
     this.hooks.push(name);
+    console.log(LOG_HEAD + 'registered hook ' + name);
   }
 
 }
