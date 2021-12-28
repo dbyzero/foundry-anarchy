@@ -1,4 +1,3 @@
-import { ANARCHY } from "./config.js"
 
 const essenceRange = [
   { from: 5, to: 6, adjust: 0 },

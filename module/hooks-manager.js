@@ -17,17 +17,22 @@ import { ChatManager } from './chat/chat-manager.js';
 
 export class HooksManager {
 
-  static register() {
-    console.log(LOG_HEAD + 'HooksManager.Registering system hooks');
-    Hooks.once('init', HooksManager.onInit);
-    Hooks.once('ready', async () => await HooksManager.onReady());
+  static initialize() {
+    new HooksManager();
   }
 
-  static async onInit() {
-    console.log(LOG_HEAD + 'HooksManager.onInit | loading system');
+  constructor() {
+    this.hooks = [];
+    console.log(LOG_HEAD + 'HooksManager.Registering system hooks');
+    Hooks.once('init', () => this.onInit());
+    Hooks.once('ready', () => this.onReady());
+  }
+
+  async onInit() {
     game.system.anarchy = {
-      AnarchyActor
+      hooks: this
     };
+    console.log(LOG_HEAD + 'HooksManager.onInit | loading system');
     CONFIG.Actor.documentClass = AnarchyActor;
     CONFIG.Item.documentClass = AnarchyItem;
     CONFIG.Combat.initiative = { formula: "2d6 + max(@attributes.agility.value, @attributes.logic.value)" }
@@ -35,11 +40,11 @@ export class HooksManager {
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.actor.characterSheet));
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.item.sheet));
 
-    CONFIG.ANARCHY = ANARCHY;
-
     Enums.registerEnums();
-    HooksManager.registerSheets();
+    CONFIG.ENUMS = Enums.getEnums();
+    CONFIG.ANARCHY = ANARCHY;;
 
+    this.loadSheets();
 
     // initialize remote calls registry first
     RemoteCall.init();
@@ -50,14 +55,15 @@ export class HooksManager {
     AnarchyItem.init();
     ChatManager.init();
     await HandlebarsManager.init();
-    console.log(LOG_HEAD + 'init done');
+    console.log(LOG_HEAD + 'HooksManager.onInit | done');
   }
 
-  static async onReady() {
+  async onReady() {
+    console.log(LOG_HEAD + 'HooksManager.onReady');
     GMManager.create();
   }
 
-  static registerSheets() {
+  loadSheets() {
     Actors.unregisterSheet('core', ActorSheet);
     Actors.registerSheet(SYSTEM_NAME, CharacterSheet, {
       label: game.i18n.localize(ANARCHY.actor.characterSheet),
@@ -80,4 +86,12 @@ export class HooksManager {
       makeDefault: true
     });
   }
+
+  register(name) {
+    if (!name.startsWith(SYSTEM_NAME + '-')) {
+      throw "For safety Anarchy Hooks names must be prefixed by anarchy'-'"
+    }
+    this.hooks.push(name);
+  }
+
 }

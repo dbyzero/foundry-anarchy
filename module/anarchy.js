@@ -5,6 +5,7 @@ import { HooksManager } from "./hooks-manager.js";
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
-HooksManager.register();
+
+HooksManager.initialize();
 HandlebarsManager.register();
 

@@ -5,6 +5,7 @@
     ],
     "templates": {
       "description": {
+        "style": "anarchy",
         "genre": "",
         "capacity": "mundane",
         "ownAnarchy": false,
@@ -93,6 +94,7 @@
     ],
     "templates": {
       "references": {
+        "style": "anarchy",
         "sourceReference": "",
         "description": "",
         "gmnotes": ""
