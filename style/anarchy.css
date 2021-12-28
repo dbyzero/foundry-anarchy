@@ -11,6 +11,7 @@
   --hover-tint: hsla(210, 44%, 69%, 0.486);
   --background-dark:hsla(200, 5%, 30%, 0.8);
   --background-black: hsla(0, 0%, 0%, 0.8);
+  --background-blue: hsla(250, 95%, 30%, 0.9);
   --lighter-npc: hsla(90, 29%, 30%, 0.15);
   --gradient-dark: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.8) 0% 5%,
@@ -58,27 +59,70 @@ h1, h2, h3, h4 {
   font-weight: bold;
 }
 
-div.app.window-app.sheet .window-content {
-  background: var(--background-black);
+
+/* Default Anarchy style */
+.sheet.style-anarchy .window-content {
+  background: var(--background-blue);
   color: var(--font-color);
 }
-div.app.window-app.sheet .window-content > form.npc-character-sheet {
+
+.sheet.style-anarchy .window-content form.npc-character-sheet {
   background: var(--lighter-npc);
 }
 
+.sheet.style-anarchy input,
+.sheet.style-anarchy select,
+.sheet.style-anarchy label,
+.sheet.style-anarchy button {
+  color: var(--font-color);
+}  
+.sheet.style-anarchy .window-content select option{
+  background-color: var(--background-blue);
+  color: var(--font-color);
+}  
 
-div.app.window-app.sheet .window-content input,
-div.app.window-app.sheet .window-content select,
-div.app.window-app.sheet .window-content label,
-div.app.window-app.sheet .window-content button {
+/* Shadowrun Anarchy style */
+.sheet.style-anarchy-shadowrun .window-content {
+  background: var(--background-black);
   color: var(--font-color);
 }
 
-div.app.window-app.sheet .window-content select option{
+.sheet.style-anarchy-shadowrun .window-content form.npc-character-sheet {
+  background: var(--lighter-npc);
+}
+
+.sheet.style-anarchy-shadowrun input,
+.sheet.style-anarchy-shadowrun select,
+.sheet.style-anarchy-shadowrun label,
+.sheet.style-anarchy-shadowrun button {
+  color: var(--font-color);
+}  
+.sheet.style-anarchy-shadowrun .window-content select option{
+  background-color: var(--background-dark);
+  color: var(--font-color);
+}  
+
+/* Dark glass style */
+.sheet.style-darkglass .window-content {
+  background: var(--gradient-dark);
+  color: var(--font-color);
+}
+.sheet.style-darkglass .window-content form.npc-character-sheet {
+  background: var(--lighter-npc);
+}
+
+.sheet.style-darkglass input,
+.sheet.style-darkglass select,
+.sheet.style-darkglass label,
+.sheet.style-darkglass button {
+  color: var(--font-color);
+}
+.sheet.style-darkglass select option{
   background-color: var(--background-dark);
   color: var(--font-color);
 }
 
+/* Common styles */
 div.item.flexcol {
   gap: 2px;
   align-items: flex-start;

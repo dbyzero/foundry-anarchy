@@ -8,7 +8,7 @@ const CSS_DEFAULT = 'style-anarchy';
 const DEFAULT_STYLES = [
   { name: 'Default', cssClass: CSS_DEFAULT },
   { name: 'Shadowrun Anarchy', cssClass: 'style-anarchy-shadowrun' },
-  { name: 'Dark glass', cssClass: 'style-anarchy-darkglass' },
+  { name: 'Dark glass', cssClass: 'style-darkglass' },
 ]
 
 /**
@@ -42,8 +42,8 @@ export class Styles {
       type: String
     });
   }
-  selectCssClass(style) {
-    if (this.styles[style]) {
+  selectCssClass(style = undefined) {
+    if (style && this.styles[style]) {
       return style;
     }
     return game.settings.get(SYSTEM_NAME, DEFAULT_CSS_CLASS);

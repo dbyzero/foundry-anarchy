@@ -7,4 +7,9 @@ export class NPCSheet extends AnarchyActorSheet {
     return `${TEMPLATES_PATH}/actor/npc-sheet.hbs`;
   }
 
+  getData(options) {
+    let hbsData = super.getData(options);
+    hbsData.options.classes.push('npc-character-sheet');
+    return hbsData;
+  }
 }
