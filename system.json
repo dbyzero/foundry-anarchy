@@ -14,7 +14,7 @@
     "allowBugReporter": true
   },
   "license": "LICENSE.txt",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "templateVersion": 1,
