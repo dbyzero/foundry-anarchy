@@ -2,7 +2,7 @@
 :root {
   --font-color: hsl(0, 0%, 83%);
   --transparent: hsla(0, 0%, 0%, 0.0);
-  --controls-color: hsla(100, 30%, 60%, 0.6);
+  --controls-color: hsla(207, 30%, 60%, 0.6);
   --checked-color: hsla(207, 100%, 80%, 1);
   --unchecked-color: hsla(207, 10%, 50%, 1);
   --wordlist-color: hsla(200, 50%, 70%, 0.3);
@@ -11,8 +11,8 @@
   --border-light: hsla(200, 10%, 60%, 0.4);
   --hover-tint: hsla(210, 44%, 69%, 0.486);
   --background-dark:hsla(200, 5%, 30%, 0.8);
-  --background-black: hsla(0, 0%, 0%, 0.8);
-  --background-blue: hsla(250, 95%, 30%, 0.9);
+  --background-black: hsla(0, 0%, 10%, 0.8);
+  --background-blue: hsla(250, 50%, 20%, 0.9);
   --lighter-npc: hsla(90, 29%, 30%, 0.15);
   --gradient-dark: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.8) 0% 5%,
