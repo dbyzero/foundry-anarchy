@@ -18,7 +18,7 @@ export class AnarchyRollManager {
   static async edgeReroll(rollData) {
     await rollData.actor.spendEdge(1);
     await AnarchyRollManager._roll(rollData);
-    await ChatManager.displayRollInChat(rollData, addJson);
+    await ChatManager.displayRollInChat(rollData, false);
   }
 
   static async _roll(rollData) {
