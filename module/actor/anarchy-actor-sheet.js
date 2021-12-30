@@ -12,6 +12,13 @@ export class AnarchyActorSheet extends ActorSheet {
     return `${TEMPLATES_PATH}/actor/${this.actor.data.type}.hbs`;
   }
 
+  /** @override */
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      dragDrop: [{ dragSelector: ".item ", dropSelector: null }],
+    });
+  }
+
   getData(options) {
     let hbsData = mergeObject(
       super.getData(options), {
@@ -125,5 +132,22 @@ export class AnarchyActorSheet extends ActorSheet {
     await this.actor.createEmbeddedDocuments('Item', [{ name: name, type: type }], { renderSheet: true });
   }
 
+  async _onDropItem(event, dragData) {
+    const destItemId = $(event.target).closest('.item').attr('data-item-id');
+    /*
+      TODO:
+      if destItemId
+        if Same type
+          move before the item
+        else
+          for now do nothing.
+      else
+        if in container
+          is it before or after items? move at begining or at end
+
+    //const callSuper = await this.actor.processDropItem(dropParams);
+    */
+    await super._onDropItem(event, dragData)
+  }
 
 }

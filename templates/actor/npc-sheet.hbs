@@ -55,20 +55,23 @@
       {{> "systems/anarchy/templates/actor/npc-parts/weapons.hbs"}}
       </div>
     </div>
-    <div class="flexcol">
-      <h2 class="flex-group-left">
-        <span>
-          <label>{{localize 'ANARCHY.itemType.plural.shadowamp'}}</label>
-          {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='shadowamp'}}
-          <label>/</label>
-          <label>{{localize 'ANARCHY.itemType.plural.quality'}}</label>
-          {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='quality'}}
-        </span>
+    <div class="define-item-type item-container" data-item-type="shadowamp">
+      <h2>
+        <label>{{localize 'ANARCHY.itemType.plural.shadowamp'}}</label>
+        {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='shadowamp'}}
       </h2>
-      <div class="flexrow flex-wrap">
+        <div class="flexrow flex-wrap">
         {{#each items.shadowamp as |shadowamp|}}
         {{> "systems/anarchy/templates/actor/npc-parts/shadowamp.hbs" shadowamp}}
         {{/each}}
+      </div>
+    </div>
+    <div class="define-item-type item-container" data-item-type="quality">
+      <h2>
+          <label>{{localize 'ANARCHY.itemType.plural.quality'}}</label>
+          {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='quality'}}
+      </h2>
+      <div class="flexrow flex-wrap">
         {{#each items.quality as |quality|}}
         {{> "systems/anarchy/templates/actor/npc-parts/quality.hbs" quality}}
         {{/each}}
