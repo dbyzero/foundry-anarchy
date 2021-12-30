@@ -239,6 +239,14 @@ div.item.anarchy-quality.negative {
   height: fit-content;
   width: fit-content;
 }
+
+.chat-message .anarchy-button{
+  background: var(--gradient-silver-light-opaque);
+}
+.chat-message .anarchy-button label{
+  color: var(--font-dark);
+}
+
 .anarchy-button:hover {
   background-color: var(--hover-tint);
 }
@@ -437,7 +445,7 @@ input.type-numeric {
 }
 
 /* Shadowrun Anarchy style */
-.root-style-anarchy-shadowrun .window-content {
+.root-style-anarchy-shadowrun .window-content  {
   background: var(--background-black);
   color: var(--font-color);
 }
@@ -464,7 +472,7 @@ input.type-numeric {
 }
 
 /* Dark glass style */
-.root-style-darkglass .window-content {
+.root-style-darkglass .window-content  {
   background: var(--gradient-dark);
   color: var(--font-color);
 }
