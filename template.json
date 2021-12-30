@@ -5,15 +5,8 @@
     ],
     "templates": {
       "description": {
-        "style": "",
-        "genre": "",
-        "capacity": "mundane",
-        "ownAnarchy": false,
         "description": "",
-        "gmnotes": "",
-        "keywords": [],
-        "dispositions": [],
-        "cues": []
+        "gmnotes": ""
       },
       "counters": {
         "counters": {
@@ -71,6 +64,8 @@
             "max": 9
           }
         }
+      "shortcuts": {
+        "shortcuts": []
       }
     },
     "character": {
@@ -79,6 +74,14 @@
         "attributes",
         "counters",
         "monitors"
+      ],
+      "style": "",
+      "genre": "",
+      "capacity": "mundane",
+      "ownAnarchy": false,
+      "keywords": [],
+      "dispositions": [],
+      "cues": []
       ]
     }
   },

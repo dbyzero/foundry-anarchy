@@ -6,15 +6,14 @@ import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { Users } from "../users.js";
 
-
 const CHECKBARS = {
   physical: { dataPath: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: ANARCHY.actor.monitors.physical },
   stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: ANARCHY.actor.monitors.stun },
+  matrix: { dataPath: 'data.monitors.matrix.value', maxForActor: actor => actor.data.data.monitors.matrix.max, resource: ANARCHY.actor.monitors.matrix },
   armor: { dataPath: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: ANARCHY.actor.monitors.armor },
   anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: ANARCHY.actor.counters.anarchy },
   edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge }
 }
-
 
 export class AnarchyActor extends Actor {
 

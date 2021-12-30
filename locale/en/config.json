@@ -103,6 +103,7 @@
         "conditionMonitors": "Condition monitors",
         "physical": "Physical",
         "stun": "Stun",
+        "matrix": "Matrix",
         "armor": "Armor"
       }
     },

@@ -102,6 +102,7 @@ export const ANARCHY = {
             conditionMonitors: 'ANARCHY.actor.monitors.conditionMonitors',
             physical: 'ANARCHY.actor.monitors.physical',
             stun: 'ANARCHY.actor.monitors.stun',
+            matrix: 'ANARCHY.actor.monitors.matrix',
             armor: 'ANARCHY.actor.monitors.armor'
         }
     },
