@@ -34,7 +34,7 @@ export class AnarchyActorSheet extends ActorSheet {
         }
       },
       essence: {
-        adjust: Essence.getAdjust(this.actor.data.data.counters.essence.value)
+        adjust: Essence.getAdjust(this.actor.data.data.counters?.essence?.value)
       },
       ENUMS: Enums.getEnums(),
       ANARCHY: ANARCHY

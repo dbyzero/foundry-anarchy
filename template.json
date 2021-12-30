@@ -1,7 +1,9 @@
 {
   "Actor": {
     "types": [
-      "character"
+      "character",
+      "vehicle",
+      "device"
     ],
     "templates": {
       "description": {
@@ -64,6 +66,20 @@
             "max": 9
           }
         }
+      },
+      "matrix": {
+        "connectable": false,
+        "monitors": {
+          "matrix": {
+            "value": 0,
+            "max": 10
+          }
+        },
+        "marks": []
+      },
+      "ownership": {
+        "ownerId": ""
+      },
       "shortcuts": {
         "shortcuts": []
       }
@@ -73,7 +89,8 @@
         "description",
         "attributes",
         "counters",
-        "monitors"
+        "monitors",
+        "shortcuts"
       ],
       "style": "",
       "genre": "",
@@ -82,6 +99,36 @@
       "keywords": [],
       "dispositions": [],
       "cues": []
+    },
+    "vehicle": {
+      "templates": [
+        "description",
+        "matrix",
+        "ownership",
+        "shortcuts"
+      ],
+      "monitors": {
+        "shielding": {
+          "value": 0,
+          "max": 15
+        }
+      },
+      "size": "vehicle",
+      "skill": "pilotingGround",
+      "passengers": 4,
+      "resistance": 2,
+      "handling": 1,
+      "autopilot": 0,
+      "stealth": 0,
+      "moves": 0,
+      "attacks": 0
+    },
+    "device": {
+      "templates": [
+        "description",
+        "matrix",
+        "ownership",
+        "shortcuts"
       ]
     }
   },
