@@ -1,6 +1,7 @@
 /** common definittions **/
 :root {
   --font-color: hsl(0, 0%, 83%);
+  --font-dark: hsla(0,10%,10%,0.5);
   --transparent: hsla(0, 0%, 0%, 0.0);
   --controls-color: hsla(207, 30%, 60%, 0.6);
   --checked-color: hsla(207, 100%, 80%, 1);
@@ -198,7 +199,7 @@ div.item.anarchy-attribute input.larger {
   font-size: large;
 }
 div.item.anarchy-attribute  input.small {
-  max-width: 1rem;
+  max-width: 1.5rem;
 }
 
 div.anarchy-armor input[name='data.monitors.armor.label'] {
