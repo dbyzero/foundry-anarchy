@@ -9,7 +9,7 @@
         "name": "Default difficulty pools",
         "hint": "The default difficulty pools, represented as 'Trivial:4,Easy:6' ...",
         "default": "Trivial:4,Easy:6,Average:8,Hard:10,Very hard:12",
-        "chatMessage": "The difficulty {difficulty} ({pool}) dice is {success}"
+        "chatMessage": "The difficulty {difficulty} ({pool}d6) is {success}"
       }
     },
     "gmManager": {
