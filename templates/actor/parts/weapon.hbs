@@ -4,7 +4,12 @@
     <a class="click-weapon-roll"><img class="anarchy-img item-img" src="{{img}}" alt="name"/></a>
   {{/if}}
   </span>
-  <span class="flex-grow-2"><a class="click-weapon-roll">{{name}}</a></span>
+  <span class="flex-grow-2"><a class="click-weapon-roll">{{name}}</a>
+    {{#if data.description}}
+    <br>
+    {{{data.description}}}
+    {{/if}}
+  </span>
   <span class="flex-grow-2">
     {{> 'systems/anarchy/templates/common/damage-code.hbs'
       strength=data.strength
