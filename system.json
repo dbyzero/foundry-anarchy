@@ -14,10 +14,10 @@
     "allowBugReporter": true
   },
   "license": "LICENSE.txt",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
-  "templateVersion": 1,
+  "templateVersion": 2,
   "scripts": [],
   "esmodules": [
     "module/anarchy.js"
