@@ -209,7 +209,7 @@ export const ANARCHY = {
         resistTorture: 'ANARCHY.attributeActions.resistTorture',
         composure: 'ANARCHY.attributeActions.composure',
         memory: 'ANARCHY.attributeActions.memory',
-        lifting: 'ANARCHY.attributeActions.lifting',
+        lift: 'ANARCHY.attributeActions.lift',
     },
     skill: {
         athletics: 'ANARCHY.skill.athletics',

@@ -206,11 +206,11 @@
       "catch": "Catch object",
       "defense": "Defense",
       "judgeIntentions": "Judge intentions",
-      "perception": "Perception",
-      "resistTorture": "Resist torture",
-      "composure": "Composure",
+      "perception": "Perception / Mental resistance",
+      "resistTorture": "Resist torture / Physical resistance",
+      "composure": "Composure / Social resistance",
       "memory": "Memory",
-      "lifting": "Lifting/carrying"
+      "lift": "Lift/carry"
     },
     "skill": {
       "athletics": "Athletics",

@@ -1,10 +1,10 @@
 import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
-import { Misc } from "../misc.js";
 import { Essence } from "../essence.js";
 import { ConfirmationDialog } from "../confirmation.js";
 import { SheetHelper } from "../sheet-helper.js";
 import { Enums } from "../enums.js";
+import { Misc } from "../misc.js";
 
 export class AnarchyActorSheet extends ActorSheet {
 

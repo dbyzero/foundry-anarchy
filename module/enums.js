@@ -42,14 +42,14 @@ const actorDescriptionTypeLists = {
 }
 
 const defaultAttributeActions = [
-  { actionCode: "catch", labelkey: ANARCHY.attributeActions.catch, attribute: "agility", attribute2: "agility", icon: Icons.fontAwesome('fas fa-baseball-ball') },
   { actionCode: "defense", labelkey: ANARCHY.attributeActions.defense, attribute: "agility", attribute2: "logic", icon: Icons.fontAwesome('fas fa-shield-alt') },
   { actionCode: "judgeIntentions", labelkey: ANARCHY.attributeActions.judgeIntentions, attribute: "charisma", attribute2: "charisma", icon: Icons.fontAwesome('fas fa-theater-masks') },
   { actionCode: "perception", labelkey: ANARCHY.attributeActions.perception, attribute: "logic", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-eye') },
   { actionCode: "resistTorture", labelkey: ANARCHY.attributeActions.resistTorture, attribute: "strength", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-angry') },
   { actionCode: "composure", labelkey: ANARCHY.attributeActions.composure, attribute: "charisma", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-meh') },
   { actionCode: "memory", labelkey: ANARCHY.attributeActions.memory, attribute: "logic", attribute2: "logic", icon: Icons.fontAwesome('fas fa-brain') },
-  { actionCode: "lifting", labelkey: ANARCHY.attributeActions.lifting, attribute: "strength", attribute2: "strength", icon: Icons.fontAwesome('fas fa-dumbbell') },
+  { actionCode: "catch", labelkey: ANARCHY.attributeActions.catch, attribute: "agility", attribute2: "agility", icon: Icons.fontAwesome('fas fa-baseball-ball') },
+  { actionCode: "lift", labelkey: ANARCHY.attributeActions.lift, attribute: "strength", attribute2: "strength", icon: Icons.fontAwesome('fas fa-dumbbell') },
 ]
 export class Enums {
   static ENUMS;
