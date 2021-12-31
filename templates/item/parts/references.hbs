@@ -8,29 +8,33 @@
     />
   </div>
   <hr>
-  <div class="form-group flexcol">
-    <span><label>{{localize 'ANARCHY.common.description'}}</label></span>
-    <div class="editor">
-      {{editor
-        target="data.description"
-        owner=options.owner
-        content=data.data.description
-        button=true
-        editable=options.editable}}
+  <div class="form-group">
+    <div class="flexcol">
+      <span><label>{{localize 'ANARCHY.common.description'}}</label></span>
+      <div class="editor">
+        {{editor
+          target="data.description"
+          owner=options.owner
+          content=data.data.description
+          button=true
+          editable=options.editable}}
+      </div>
     </div>
   </div>
 
 {{#if options.isGM}}
   <hr>
-  <div class="form-group flexcol">
-    <span><label>{{localize 'ANARCHY.common.gmnotes'}}</label></span>
-    <div class="editor">
-      {{editor
-        target="data.gmnotes"
-        owner=options.owner
-        content=data.data.gmnotes
-        button=true
-        editable=options.editable}}
+  <div class="form-group">
+    <div class="flexcol">
+      <span><label>{{localize 'ANARCHY.common.gmnotes'}}</label></span>
+      <div class="editor">
+        {{editor
+          target="data.gmnotes"
+          owner=options.owner
+          content=data.data.gmnotes
+          button=true
+          editable=options.editable}}
+      </div>
     </div>
   </div>
 {{/if}}
