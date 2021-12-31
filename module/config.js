@@ -183,15 +183,16 @@ export const ANARCHY = {
         matrix: 'ANARCHY.monitorLetter.matrix'
     },
     shadowampCategory: {
-        cyberware: 'ANARCHY.shadowampCategory.cyberware',
-        bioware: 'ANARCHY.shadowampCategory.bioware',
-        cyberdeck: 'ANARCHY.shadowampCategory.cyberdeck',
-        program: 'ANARCHY.shadowampCategory.program',
-        complexForm: 'ANARCHY.shadowampCategory.complexForm',
-        drone: 'ANARCHY.shadowampCategory.drone',
-        spell: 'ANARCHY.shadowampCategory.spell',
         adeptPower: 'ANARCHY.shadowampCategory.adeptPower',
+        bioware: 'ANARCHY.shadowampCategory.bioware',
+        complexForm: 'ANARCHY.shadowampCategory.complexForm',
+        cyberdeck: 'ANARCHY.shadowampCategory.cyberdeck',
+        cyberware: 'ANARCHY.shadowampCategory.cyberware',
+        drone: 'ANARCHY.shadowampCategory.drone',
         equipment: 'ANARCHY.shadowampCategory.equipment',
+        focus: 'ANARCHY.shadowampCategory.focus',
+        program: 'ANARCHY.shadowampCategory.program',
+        spell: 'ANARCHY.shadowampCategory.spell',
         special: 'ANARCHY.shadowampCategory.special'
     },
     attributes: {

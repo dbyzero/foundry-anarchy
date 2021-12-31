@@ -184,15 +184,16 @@
       "matrix": "M"
     },
     "shadowampCategory": {
-      "cyberware": "Cyberware",
-      "bioware": "Bioware",
-      "cyberdeck": "Cyberdeck",
-      "program": "Programme",
-      "complexForm": "Forme complexe",
-      "drone": "Drone",
-      "spell": "Sort",
       "adeptPower": "Pouvoir d'adepte",
+      "bioware": "Bioware",
+      "complexForm": "Forme complexe",
+      "cyberdeck": "Cyberdeck",
+      "cyberware": "Cyberware",
+      "drone": "Drone",
       "equipment": "Equipement",
+      "focus": "Focus (évaillés)",
+      "program": "Programme",
+      "spell": "Sort",
       "special": "Spécial"
     },
     "attributes": {
