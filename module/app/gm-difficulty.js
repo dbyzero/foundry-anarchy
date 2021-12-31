@@ -35,7 +35,10 @@ export class GMDifficulty {
     const setting = game.settings.get(SYSTEM_NAME, GM_DIFFICULTY_POOLS);
     this.difficultyPools = setting.split(',').map(it => {
       const kv = it.split(':');
-      return { difficulty: kv[0], pool: kv[1] };
+      if (kv[1]) {
+        return { difficulty: kv[0], pool: kv[1] };
+      }
+      return { pool: Number(kv[0]) };
     });
   }
 
@@ -66,7 +69,7 @@ export class GMDifficulty {
     await roll.evaluate();
     const flavor = game.i18n.format(ANARCHY.settings.gmDifficulty.chatMessage, {
       pool: pool,
-      difficulty: difficulty,
+      difficulty: difficulty ?? pool,
       success: roll.total
     });
     const message = await roll.toMessage({ flavor: flavor }, { create: false });
