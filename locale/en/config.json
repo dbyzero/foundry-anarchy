@@ -109,6 +109,9 @@
     },
     "item": {
       "sheet": "Sheet for ",
+      "common": {
+        "inactive": "Inactive for actor"
+      },
       "skill": {
         "code": "Internal code",
         "copyDefault": "Copy default skill",

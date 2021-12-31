@@ -1,4 +1,4 @@
-<div class="flexrow item anarchy-gear" data-item-id="{{_id}}" data-item-type="gear" draggable="true">
+<div class="flexrow item anarchy-gear {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="gear" draggable="true">
   {{#if img}}
   <img class="anarchy-img item-img" src="{{img}}" alt="name"/>
   {{/if}}

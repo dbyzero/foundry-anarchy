@@ -108,6 +108,9 @@ export const ANARCHY = {
     },
     item: {
         sheet: 'ANARCHY.item.sheet',
+        common: {
+            inactive: 'ANARCHY.item.common.inactive',
+        },
         skill: {
             code: 'ANARCHY.item.skill.code',
             copyDefault: 'ANARCHY.item.skill.useDefault',

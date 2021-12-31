@@ -52,6 +52,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/npc-parts/weapon.hbs',
   'systems/anarchy/templates/actor/npc-parts/weapons.hbs',
   //-- item
+  'systems/anarchy/templates/item/parts/inactive.hbs',
   'systems/anarchy/templates/item/parts/itemname.hbs',
   'systems/anarchy/templates/item/parts/references.hbs',
   //-- common&technical partials

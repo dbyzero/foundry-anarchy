@@ -1,4 +1,4 @@
- <div class="flexrow define-item-type item anarchy-shadowamp" data-item-id="{{_id}}" data-item-type="shadowamp" draggable="true">
+ <div class="flexrow define-item-type item anarchy-shadowamp {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="shadowamp" draggable="true">
   {{> 'systems/anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
   <div>
     <label>{{name}}</label>

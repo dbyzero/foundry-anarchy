@@ -109,6 +109,9 @@
     },
     "item": {
       "sheet": "Fiche de ",
+      "common": {
+        "inactive": "Inactif pour l'acteur"
+      },
       "skill": {
         "isKnowledge": "Connaissance",
         "code": "Code interne",

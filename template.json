@@ -147,6 +147,9 @@
         "sourceReference": "",
         "description": "",
         "gmnotes": ""
+      },
+      "inactive": {
+        "inactive": false
       }
     },
     "metatype": {
@@ -184,6 +187,7 @@
     },
     "skill": {
       "templates": [
+        "inactive",
         "references"
       ],
       "code": "",
@@ -194,12 +198,14 @@
     },
     "quality": {
       "templates": [
+        "inactive",
         "references"
       ],
       "positive": true
     },
     "shadowamp": {
       "templates": [
+        "inactive",
         "references"
       ],
       "category": "special",
@@ -209,6 +215,7 @@
     },
     "weapon": {
       "templates": [
+        "inactive",
         "references"
       ],
       "skill": "",
@@ -227,11 +234,13 @@
     },
     "gear": {
       "templates": [
+        "inactive",
         "references"
       ]
     },
     "contact": {
       "templates": [
+        "inactive",
         "references"
       ]
     }

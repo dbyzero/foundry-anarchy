@@ -15,6 +15,9 @@
   --background-black: hsla(0, 0%, 10%, 0.8);
   --background-blue: hsla(250, 50%, 20%, 0.9);
   --lighter-npc: hsla(90, 29%, 30%, 0.15);
+  --background-inactive: repeating-linear-gradient(60deg,
+    hsla(0, 0%, 40%, 0.5) 0px 5px,
+    hsla(0, 0%, 80%, 0.5) 5px 10px);
   --gradient-dark: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.8) 0% 5%,
     hsla(0, 0%, 15%, 0.8) 7%,
@@ -166,7 +169,9 @@ div.anarchy-cues input{
   border-style: inset;
   border-color: var(--border-light);
 }
-
+.item.item-inactive {
+  background: var(--background-inactive) !important;
+}
 li.item {
   gap: 1px;
   align-items: flex-start;
