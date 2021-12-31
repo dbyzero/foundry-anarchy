@@ -15,7 +15,9 @@ export class AnarchyActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
+      isGM: game.user.isGM,
       dragDrop: [{ dragSelector: ".item ", dropSelector: null }],
+      classes: [game.system.anarchy.styles.selectCssClass(), "sheet", "actor"],
     });
   }
 
@@ -24,14 +26,13 @@ export class AnarchyActorSheet extends ActorSheet {
       super.getData(options), {
       items: {},
       options: {
-        isGM: game.user.isGM,
         owner: this.document.isOwner,
         cssClass: this.isEditable ? "editable" : "locked",
-        ownAnarchy: this.document.hasPlayerOwner,
-        anarchy: {
-          value: this.actor.getAnarchy(),
-          max: this.actor.getAnarchyMax()
-        }
+      },
+      anarchy: {
+        player: this.document.hasPlayerOwner,
+        value: this.actor.getAnarchy(),
+        max: this.actor.getAnarchyMax()
       },
       essence: {
         adjust: Essence.getAdjust(this.actor.data.data.counters?.essence?.value)
@@ -39,7 +40,6 @@ export class AnarchyActorSheet extends ActorSheet {
       ENUMS: Enums.getEnums(),
       ANARCHY: ANARCHY
     });
-    hbsData.options.classes.push(game.system.anarchy.styles.selectCssClass(this.actor.data.data.style));
     Misc.classifyInto(hbsData.items, hbsData.data.items);
     return hbsData;
   }

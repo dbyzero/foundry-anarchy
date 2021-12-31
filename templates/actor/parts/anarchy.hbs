@@ -1,8 +1,8 @@
-{{#if options.ownAnarchy}}
+{{#if anarchy.player}}
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='anarchy'
-    value=options.anarchy.value
-    max=options.anarchy.max
+    value=anarchy.value
+    max=anarchy.max
     labelkey=ANARCHY.actor.counters.anarchy
     rowlength=10
     adjust=false
@@ -13,8 +13,8 @@
   {{#if options.isGM}}
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='anarchy'
-    value=options.anarchy.value
-    max=options.anarchy.max
+    value=anarchy.value
+    max=anarchy.max
     labelkey=ANARCHY.gmManager.danger
     rowlength=10
     adjust=false
