@@ -1,9 +1,9 @@
 import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
-import { AnarchyItemSheet } from "./base-item-sheet.js";
+import { BaseItemSheet } from "./base-item-sheet.js";
 
-export class AnarchySkillSheet extends AnarchyItemSheet {
+export class SkillItemSheet extends BaseItemSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/item/skill.hbs`;

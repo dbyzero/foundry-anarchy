@@ -1,21 +1,33 @@
 import { ANARCHY } from "../config.js";
-import { BASE_MONITOR } from "../constants.js";
 import { AnarchyRollDialog } from "../dialog/roll-dialog.js";
+import { BASE_MONITOR } from "../constants.js";
+import { BaseActor } from "./base-actor.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { Users } from "../users.js";
 
-const CHECKBARS = {
-  physical: { dataPath: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: ANARCHY.actor.monitors.physical },
-  stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: ANARCHY.actor.monitors.stun },
-  matrix: { dataPath: 'data.monitors.matrix.value', maxForActor: actor => actor.data.data.monitors.matrix.max, resource: ANARCHY.actor.monitors.matrix },
-  armor: { dataPath: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: ANARCHY.actor.monitors.armor },
-  anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: ANARCHY.actor.counters.anarchy },
-  edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge }
+const essenceRange = [
+  { from: 5, to: 6, adjust: 0 },
+  { from: 3, to: 5, adjust: -1 },
+  { from: 1, to: 3, adjust: -2 },
+  { from: 0, to: 1, adjust: -3 }
+]
+export class CharacterEssence {
+  static getAdjust(essence) {
+    return this.getRangeDetails(essence)?.adjust ?? 0;
+  }
+
+  static getRangeDetails(essence) {
+    return essenceRange.find(r => r.from < essence && essence <= r.to) ?? essenceRange[0];
+  }
 }
 
-export class AnarchyActor extends Actor {
+export class CharacterActor extends BaseActor {
+
+  constructor(data, context = {}) {
+    super(data, context);
+  }
 
   prepareData() {
     super.prepareData();
@@ -52,7 +64,7 @@ export class AnarchyActor extends Actor {
     const checkbar = CHECKBARS[monitor];
     if (checkbar) {
       if (monitor == 'anarchy') {
-        await this._setAnarchy(checkbar, value);
+        await this.setAnarchy(checkbar, value);
       }
       else {
         ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
@@ -61,7 +73,7 @@ export class AnarchyActor extends Actor {
     }
   }
 
-  async _setAnarchy(checkbar, newValue) {
+  async setAnarchy(checkbar, newValue) {
     if (!this.hasPlayerOwner) {
       await game.system.anarchy.gmManager.gmAnarchy.setAnarchy(newValue);
       this.sheet.render(false);
@@ -82,29 +94,10 @@ export class AnarchyActor extends Actor {
         });
       }
       if (newValue < current) {
-        await this._playerGivesAnarchyToGM(current - newValue);
+        await game.system.anarchy.gmManager.gmAnarchy.actorGivesAnarchyToGM(this, current - newValue);
       }
       await this.update({ [`${checkbar.dataPath}`]: newValue });
     }
-  }
-
-  async _playerGivesAnarchyToGM(count) {
-    if (count > 0) {
-      ChatMessage.create({
-        user: game.user,
-        whisper: ChatMessage.getWhisperRecipients('GM'),
-        content: game.i18n.format(ANARCHY.gmManager.gmReceivedAnarchy,
-          {
-            anarchy: count,
-            actor: this.name
-          })
-      });
-      await game.system.anarchy.gmManager.gmAnarchy.addAnarchy(count);
-    }
-  }
-
-  async npcConsumesAnarchy(count) {
-    await game.system.anarchy.gmManager.gmAnarchy.addAnarchy(-count);
   }
 
   async skillRoll(skill, specialization) {
@@ -136,14 +129,16 @@ export class AnarchyActor extends Actor {
   }
 
   async spendAnarchy(count) {
-    if (this.hasPlayerOwner) {
-      let current = this.getAnarchy();
-      ErrorManager.checkSufficient(ANARCHY.actor.counters.anarchy, count, current);
-      await this._playerGivesAnarchyToGM(count);
-      await this.update({ 'data.counters.anarchy.value': (current - count) });
-    }
-    else {
-      await this.npcConsumesAnarchy(count);
+    if (count) {
+      if (this.hasPlayerOwner) {
+        let current = this.getAnarchy();
+        ErrorManager.checkSufficient(ANARCHY.actor.counters.anarchy, count, current);
+        await game.system.anarchy.gmManager.gmAnarchy.actorGivesAnarchyToGM(this, count);
+        await this.update({ 'data.counters.anarchy.value': (current - count) });
+      }
+      else {
+        await game.system.anarchy.gmManager.gmAnarchy.npcConsumesAnarchy(this, count);
+      }
     }
   }
 

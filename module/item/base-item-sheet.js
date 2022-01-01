@@ -2,7 +2,7 @@ import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 
-export class AnarchyItemSheet extends ItemSheet {
+export class BaseItemSheet extends ItemSheet {
 
   get title() {
     return game.i18n.localize(ANARCHY.itemType.singular[this.item.type]) + ': ' + this.item.name;

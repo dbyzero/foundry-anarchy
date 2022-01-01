@@ -1,12 +1,11 @@
 import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
-import { Essence } from "../essence.js";
 import { ConfirmationDialog } from "../confirmation.js";
 import { SheetHelper } from "../sheet-helper.js";
-import { Enums } from "../enums.js";
 import { Misc } from "../misc.js";
+import { Enums } from "../enums.js";
 
-export class AnarchyActorSheet extends ActorSheet {
+export class BaseActorSheet extends ActorSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/${this.actor.data.type}.hbs`;
@@ -29,14 +28,6 @@ export class AnarchyActorSheet extends ActorSheet {
         owner: this.document.isOwner,
         cssClass: this.isEditable ? "editable" : "locked",
       },
-      anarchy: {
-        player: this.document.hasPlayerOwner,
-        value: this.actor.getAnarchy(),
-        max: this.actor.getAnarchyMax()
-      },
-      essence: {
-        adjust: Essence.getAdjust(this.actor.data.data.counters?.essence?.value)
-      },
       ENUMS: Enums.getEnums(),
       ANARCHY: ANARCHY
     });
@@ -47,29 +38,11 @@ export class AnarchyActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    // cues, dispositions, keywords
-    html.find('.click-wordlist-add').click(async event => {
-      const wordlist = SheetHelper.getWordList(event);
-      const word = game.i18n.localize(ANARCHY.common.newEntry);
-      this.actor.createWordlistWord(wordlist, word);
-    });
-
-    html.find('.change-wordlist-value').change(async event => {
-      const updated = event.currentTarget.value;
-      const previous = SheetHelper.getWord(event);
-      const wordlist = SheetHelper.getWordList(event);
-      await this.actor.updateWordlistWord(wordlist, previous, updated);
-    });
-
-    html.find('.click-wordlist-delete').click(async event => {
-      const previous = SheetHelper.getWord(event);
-      const wordlist = SheetHelper.getWordList(event);
-      this.actor.deleteWordlistWord(wordlist, previous);
-    });
-
     // items standard actions (add/edit/delete)
     html.find('.click-item-add').click(async event => {
-      this.createItem(SheetHelper.getItemType(event))
+      const itemType = SheetHelper.getItemType(event);
+      const name = game.i18n.format(ANARCHY.common.newName, { type: game.i18n.localize(ANARCHY.itemType.singular[itemType]) });
+      await this.actor.createEmbeddedDocuments('Item', [{ name: name, type: itemType }], { renderSheet: true });
     });
 
     html.find('.click-item-edit').click(async event => {
@@ -99,7 +72,7 @@ export class AnarchyActorSheet extends ActorSheet {
 
     // rolls
     html.find('.click-skill-roll').click(async event => {
-      const specialization = SheetHelper.getClosestElementData(event, "item-specialization", ".click-skill-roll");
+      const specialization = $(event.currentTarget).closest('.click-skill-roll').attr('data-item-specialization')
       const itemId = SheetHelper.getItemId(event);
       const item = this.actor.items.get(itemId);
       this.actor.skillRoll(item, specialization);
@@ -117,37 +90,12 @@ export class AnarchyActorSheet extends ActorSheet {
       this.actor.attributeRoll(attribute, attribute2, actionCode);
     });
 
-    // rolls
     html.find('.click-weapon-roll').click(async event => {
       const itemId = SheetHelper.getItemId(event);
       const weapon = this.actor.items.get(itemId);
       this.actor.weaponRoll(weapon);
     });
 
-  }
-
-  /* -------------------------------------------- */
-  async createItem(type) {
-    const name = game.i18n.format(ANARCHY.common.newName, { type: game.i18n.localize(ANARCHY.itemType.singular[type]) });
-    await this.actor.createEmbeddedDocuments('Item', [{ name: name, type: type }], { renderSheet: true });
-  }
-
-  async _onDropItem(event, dragData) {
-    const destItemId = $(event.target).closest('.item').attr('data-item-id');
-    /*
-      TODO:
-      if destItemId
-        if Same type
-          move before the item
-        else
-          for now do nothing.
-      else
-        if in container
-          is it before or after items? move at begining or at end
-
-    //const callSuper = await this.actor.processDropItem(dropParams);
-    */
-    await super._onDropItem(event, dragData)
   }
 
 }

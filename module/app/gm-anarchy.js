@@ -42,6 +42,26 @@ export class GMAnarchy {
     return this.anarchy + 1;
   }
 
+
+  async actorGivesAnarchyToGM(actor, count) {
+    if (count > 0) {
+      ChatMessage.create({
+        user: game.user,
+        whisper: ChatMessage.getWhisperRecipients('GM'),
+        content: game.i18n.format(ANARCHY.gmManager.gmReceivedAnarchy,
+          {
+            anarchy: count,
+            actor: actor.name
+          })
+      });
+      await this.addAnarchy(count);
+    }
+  }
+
+  async npcConsumesAnarchy(actor, count) {
+    await this.addAnarchy(-count);
+  }
+
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
       ErrorManager.checkSufficient(ANARCHY.gmManager.danger, -count, this.anarchy);
