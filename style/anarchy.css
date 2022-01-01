@@ -1,7 +1,8 @@
-/** common definittions **/
+/** common definitions **/
 :root {
-  --font-color: hsl(0, 0%, 83%);
-  --font-dark: hsla(0,10%,10%,0.5);
+  --font-color-light: hsla(0, 0%, 83%, 0.9);
+  --font-color-dark: hsla(0, 10%, 10%, 0.9);
+  --font-color-half-dark: hsla(0, 10%, 10%, 0.5);
   --transparent: hsla(0, 0%, 0%, 0.0);
   --controls-color: hsla(207, 30%, 60%, 0.6);
   --checked-color: hsla(207, 100%, 80%, 1);
@@ -15,6 +16,7 @@
   --background-black: hsla(0, 0%, 10%, 0.8);
   --background-blue: hsla(250, 50%, 20%, 0.9);
   --lighter-npc: hsla(90, 29%, 30%, 0.15);
+  --darker-npc: hsla(90, 29%, 70%, 0.15);
   --background-inactive: repeating-linear-gradient(60deg,
     hsla(0, 0%, 40%, 0.5) 0px 5px,
     hsla(0, 0%, 80%, 0.5) 5px 10px);
@@ -58,7 +60,12 @@
     hsla(282, 47%, 33%, 0.4),
     hsla(319, 30%, 10%, 0.9),
     hsla(0, 0%, 0%, 0.7));
+
+  /* specifics for root-style-anarchy */
+  --anarchy-background: hsla(44, 5%, 95%, 0.9) url("background-anarchy.webp") no-repeat;
+  --anarchy-font: hsla(0, 10%, 10%, 1);
 }
+
 #logo {
   content : url(anarchy-logo.webp);
   width: 100px;
@@ -250,7 +257,7 @@ div.item.anarchy-quality.negative {
   background: var(--gradient-silver-light-opaque);
 }
 .chat-message .anarchy-button label{
-  color: var(--font-dark);
+  color: var(--font-color-dark);
 }
 
 .anarchy-button:hover {
@@ -285,11 +292,11 @@ div#gm-manager div.header{
 	margin: 2px;
 	padding: 2px;
   border-bottom: 1px solid var(--border-light);
-  color: var(--font-color);
+  color: var(--font-color-light);
 }
 div#gm-manager div.content {
   padding: 3px;
-  color: var(--font-color);
+  color: var(--font-color-light);
   vertical-align: top;
 }
 
@@ -428,32 +435,47 @@ input.type-numeric {
 
 /* Default Anarchy style */
 .root-style-anarchy .window-content {
-  background: var(--background-blue);
-  color: var(--font-color);
+  background: var(--anarchy-background);
+  color: var(--anarchy-font);
 }
 
 .root-style-anarchy .window-content form.npc-character-sheet {
-  background: var(--lighter-npc);
+  background: var(--darker-npc);
 }
 
 .root-style-anarchy input,
 .root-style-anarchy select,
 .root-style-anarchy label,
 .root-style-anarchy button {
-  color: var(--font-color);
+  color: var(--anarchy-font);
 }  
 .root-style-anarchy .window-content select option{
-  background-color: var(--background-blue);
-  color: var(--font-color);
+  background: var(--anarchy-background);
+  color: var(--anarchy-font);
 }  
 .root-style-anarchy .tooltip .tooltip-roll-modifiers {
   background: var(--gradient-silver-light-opaque);
 }
 
+.root-style-anarchy div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) {
+  border: none;
+  background-color: var(--transparent);
+}
+.root-style-anarchy div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) input {
+  border-color: var(--border-dark);
+}
+
+
 /* Shadowrun Anarchy style */
 .root-style-anarchy-shadowrun .window-content  {
   background: var(--background-black);
-  color: var(--font-color);
+  color: var(--font-color-light);
 }
 
 .root-style-anarchy-shadowrun .window-content form.npc-character-sheet {
@@ -464,11 +486,11 @@ input.type-numeric {
 .root-style-anarchy-shadowrun select,
 .root-style-anarchy-shadowrun label,
 .root-style-anarchy-shadowrun button {
-  color: var(--font-color);
+  color: var(--font-color-light);
 }  
 .root-style-anarchy-shadowrun .window-content select option{
   background-color: var(--background-dark);
-  color: var(--font-color);
+  color: var(--font-color-light);
 }
 .root-style-anarchy-shadowrun .tox .tox-editor-container {
   background: var(--gradient-silver-light-opaque);
@@ -480,7 +502,7 @@ input.type-numeric {
 /* Dark glass style */
 .root-style-darkglass .window-content  {
   background: var(--gradient-dark);
-  color: var(--font-color);
+  color: var(--font-color-light);
 }
 .root-style-darkglass .window-content form.npc-character-sheet {
   background: var(--lighter-npc);
@@ -490,11 +512,11 @@ input.type-numeric {
 .root-style-darkglass select,
 .root-style-darkglass label,
 .root-style-darkglass button {
-  color: var(--font-color);
+  color: var(--font-color-light);
 }
 .root-style-darkglass select option{
   background-color: var(--background-dark);
-  color: var(--font-color);
+  color: var(--font-color-light);
 }
 .root-style-darkglass .tox .tox-editor-container {
   background: var(--gradient-silver-light-opaque);
