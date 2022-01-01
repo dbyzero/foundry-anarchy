@@ -1,30 +1,30 @@
 import { ANARCHY } from "../config.js";
-import { SYSTEM_NAME } from "../constants.js";
+import { LOG_HEAD, SYSTEM_NAME } from "../constants.js";
 
 const GM_DIFFICULTY_POOLS = "gm-difficulty-pools";
 
+const GM_DIFFICULTY_POOL_KEY = `${SYSTEM_NAME}.${GM_DIFFICULTY_POOLS}`;
 export class GMDifficulty {
 
-  static init() {
-    const defaultDifficulty = game.i18n.localize(ANARCHY.settings.gmDifficulty.default);
+  constructor() {
+    Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
+    Hooks.once('ready', () => this.onReady());
+  }
+
+  onReady() {
     game.settings.register(SYSTEM_NAME, GM_DIFFICULTY_POOLS, {
       scope: "world",
       name: game.i18n.localize(ANARCHY.settings.gmDifficulty.name),
       hint: game.i18n.localize(ANARCHY.settings.gmDifficulty.hint),
       config: true,
-      default: defaultDifficulty,
+      default: game.i18n.localize(ANARCHY.settings.gmDifficulty.default),
       type: String
     });
-  }
-
-  constructor() {
     this.loadDifficultySettings();
-    Hooks.on("createSetting", async (setting, options, id) => this.onUpdateSetting(setting, options, id));
-    Hooks.on("updateSetting", async (setting, options, id) => this.onUpdateSetting(setting, options, id));
   }
 
-  async onUpdateSetting(setting, options, id) {
-    if (setting.key == `${SYSTEM_NAME}.${GM_DIFFICULTY_POOLS}`) {
+  async onUpdateSetting(setting, update, options, id) {
+    if (setting.key == GM_DIFFICULTY_POOL_KEY) {
       this.loadDifficultySettings();
       this._rebuild();
       game.system.anarchy.gmManager.render(false);

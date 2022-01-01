@@ -4,11 +4,11 @@ import { RemoteCall } from "./remotecall.js";
 
 const BLIND_MESSAGE_TO_GM = 'Users.blindMessageToGM';
 
-export class Users {
+export class AnarchyUsers {
 
   static init() {
     RemoteCall.register(BLIND_MESSAGE_TO_GM, {
-      callback: data => Users.blindMessageToGM(data),
+      callback: data => AnarchyUsers.blindMessageToGM(data),
       condition: user => user.isGM
     })
   }
@@ -39,6 +39,6 @@ export class Users {
    * @returns true pour un seul utilisateur: le premier GM connecté par ordre d'id
    */
   static isUniqueConnectedGM(user) {
-    return user.id == Users.firstConnectedGM()?.id;
+    return user.id == AnarchyUsers.firstConnectedGM()?.id;
   }
 }

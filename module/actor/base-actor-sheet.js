@@ -5,7 +5,7 @@ import { SheetHelper } from "../sheet-helper.js";
 import { Misc } from "../misc.js";
 import { Enums } from "../enums.js";
 
-export class BaseActorSheet extends ActorSheet {
+export class AnarchyBaseActorSheet extends ActorSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/${this.actor.data.type}.hbs`;

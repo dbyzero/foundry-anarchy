@@ -1,33 +1,19 @@
 import { HandleDragApplication } from "./handle-drag.js";
 import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
-import { GMAnarchy } from "./gm-anarchy.js";
 import { GMDifficulty } from "./gm-difficulty.js";
+
 
 const GM_MANAGER = "gm-manager";
 const GM_MANAGER_POSITION = "gm-manager-position";
 const GM_MANAGER_INITIAL_POSITION = { top: 200, left: 200 };
 const GM_MANAGER_TEMPLATE = 'systems/anarchy/templates/app/gm-manager.hbs';
 
-
 export class GMManager extends Application {
-
-  static init() {
-
-  }
-
-  static create() {
-    game.system.anarchy.gmManager = new GMManager();
-
-    if (game.user.isGM) {
-      game.system.anarchy.gmManager.render(true);
-    }
-
-  }
 
   constructor() {
     super();
-    this.gmAnarchy = new GMAnarchy();
+    this.gmAnarchy = game.system.anarchy.gmAnarchy;
     this.gmDifficulty = new GMDifficulty();
     this.handleDrag = new HandleDragApplication(
       doc => doc.getElementById("gm-manager"),
@@ -39,6 +25,12 @@ export class GMManager extends Application {
           keyPosition: GM_MANAGER_POSITION
         }
       })
+    Hooks.once('ready', () => this.onReady());
+  }
+  onReady() {
+    if (game.user.isGM) {
+      game.system.anarchy.gmManager.render(true);
+    }
   }
 
   /* -------------------------------------------- */

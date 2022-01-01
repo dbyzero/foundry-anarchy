@@ -9,7 +9,7 @@ const GM_ADD_ANARCHY = 'GMManager.addAnarchy';
 
 export class GMAnarchy {
 
-  static init() {
+  constructor() {
     game.settings.register(SYSTEM_NAME, ANARCHY_GM, {
       scope: "world",
       config: false,
@@ -21,14 +21,12 @@ export class GMAnarchy {
       callback: data => game.system.anarchy.gmManager.gmAnarchy.addAnarchy(data),
       condition: user => user.isGM
     });
-  }
-
-  constructor() {
     this.anarchy = game.settings.get(SYSTEM_NAME, ANARCHY_GM);
   }
 
   getAnarchyData() {
     return {
+      idGM: true,
       value: this.getAnarchy(),
       max: this.getAnarchyMax(),
     }
@@ -73,7 +71,7 @@ export class GMAnarchy {
     this.anarchy = newAnarchy;
     game.settings.set(SYSTEM_NAME, ANARCHY_GM, newAnarchy);
     await this._rebuild();
-    this._syncAllNPCSheetAnarchy();
+    this._syncGMAnarchySheets();
   }
 
   async activateListeners(html) {
@@ -108,20 +106,12 @@ export class GMAnarchy {
     });
   }
 
-  _syncAllNPCSheetAnarchy() {
-    for (let actor of game.actors) {
-      this._syncNPCSheetAnarchy(actor);
-    }
-    for (let token of game.canvas.tokens.documentCollection.values()) {
-      if (token.actor && !token.data.actorLink) {
-        this._syncNPCSheetAnarchy(token.actor);
-      }
-    }
-  }
-
-  _syncNPCSheetAnarchy(actor) {
-    if (!actor.hasPlayerOwner) {
-      actor.sheet?.render(actor.sheet.rendered);
-    }
+  _syncGMAnarchySheets() {
+    game.canvas.tokens.documentCollection.values()
+      .filter(token => token.actor && !token.data.actorLink)
+      .map(token => token.actor)
+      .concat(game.actors)
+      .filter(actor => !actor.hasPlayerOwner)
+      .forEach(actor => actor.sheet?.render(actor.sheet.rendered));
   }
 }

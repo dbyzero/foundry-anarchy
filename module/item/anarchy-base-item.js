@@ -2,10 +2,10 @@ import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Weapon } from "./weapon.js";
 
-export class AnarchyItem extends Item {
+export class AnarchyBaseItem extends Item {
 
   static init() {
-    Hooks.on("createItem", (item, options, id) => AnarchyItem.onCreateItem(item, options, id));
+    Hooks.on("createItem", (item, options, id) => AnarchyBaseItem.onCreateItem(item, options, id));
   }
 
   static async onCreateItem(item, options, id) {

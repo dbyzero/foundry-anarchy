@@ -1,12 +1,8 @@
 import { ANARCHY } from "../config.js";
-import { BASE_MONITOR } from "../constants.js";
 import { AnarchyRollDialog } from "../dialog/roll-dialog.js";
-import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
-import { Misc } from "../misc.js";
-import { Users } from "../users.js";
 
-const CHECKBARS = {
+export const CHECKBARS = {
   physical: { dataPath: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: ANARCHY.actor.monitors.physical },
   stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: ANARCHY.actor.monitors.stun },
   matrix: { dataPath: 'data.monitors.matrix.value', maxForActor: actor => actor.data.data.monitors.matrix.max, resource: ANARCHY.actor.monitors.matrix },
@@ -15,7 +11,7 @@ const CHECKBARS = {
   edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge }
 }
 
-export class BaseActor extends Actor {
+export class AnarchyBaseActor extends Actor {
 
   constructor(data, context = {}) {
     if (!context.anarchy?.ready) {

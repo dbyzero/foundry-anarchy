@@ -1,15 +1,11 @@
 import { LOG_HEAD, SYSTEM_SOCKET } from "./constants.js";
-import { Users } from "./users.js";
+import { AnarchyUsers } from "./users.js";
 
 export class RemoteCall {
 
-  static init() {
-    game.system.anarchy.remoteCall = new RemoteCall();
-    game.socket.on(SYSTEM_SOCKET, async sockMsg => game.system.anarchy.remoteCall.onSocketMessage(sockMsg));
-  }
-
   constructor() {
     this.remoteCalls = {};
+    game.socket.on(SYSTEM_SOCKET, async sockMsg => this.onSocketMessage(sockMsg));
   }
 
   static async register(msg, remoteCall) {
@@ -37,7 +33,7 @@ export class RemoteCall {
     const remoteCall = this.remoteCalls[msg];
     if (!remoteCall ||
       remoteCall.condition(game.user) ||
-      (!remoteCall.multiple && Users.isUniqueConnectedGM(game.user))
+      (!remoteCall.multiple && AnarchyUsers.isUniqueConnectedGM(game.user))
     ) {
       return false;
     }
@@ -45,22 +41,21 @@ export class RemoteCall {
     return true;
   }
 
-
   async onSocketMessage(sockMsg) {
     const remoteCall = this.remoteCalls[sockMsg.msg];
     if (remoteCall) {
       const userMatchCondition = remoteCall.condition(game.user);
       const isMultiple = remoteCall.multiple;
-      const isSelectedGM = Users.isUniqueConnectedGM(game.user);
+      const isSelectedGM = AnarchyUsers.isUniqueConnectedGM(game.user);
       if (userMatchCondition && (isMultiple || isSelectedGM)) {
         remoteCall.callback(sockMsg.data);
       }
       else {
-        console.log('ANARCHY:RemoteCall.onSocketMessage(', sockMsg, ') ignored :', userMatchCondition, isMultiple, isSelectedGM);
+        console.log(LOG_HEAD + 'RemoteCall.onSocketMessage(', sockMsg, ') ignored :', userMatchCondition, isMultiple, isSelectedGM);
       }
     }
     else {
-      console.warn('ANARCHY:RemoteCall: No callback registered for', sockMsg);
+      console.log(LOG_HEAD + 'RemoteCall: No callback registered for', sockMsg);
     }
   }
 

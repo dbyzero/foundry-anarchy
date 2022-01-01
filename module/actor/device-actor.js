@@ -1,7 +1,7 @@
-import { BaseActor } from "./base-actor.js";
+import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 
-export class DeviceActor extends BaseActor {
+export class DeviceActor extends AnarchyBaseActor {
 
   constructor(data, context = {}) {
     super(data, context);

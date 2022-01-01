@@ -16,10 +16,6 @@ const DEFAULT_STYLES = [
  * The Styles class manages the addition of different styles
  */
 export class Styles {
-  static init() {
-    game.system.anarchy.styles = new Styles();
-  }
-
   constructor() {
     game.system.anarchy.hooks.register(HOOK_LOAD_STYLES);
     Hooks.once(HOOK_LOAD_STYLES, styles => DEFAULT_STYLES.forEach(it => styles[it.cssClass] = it.name));

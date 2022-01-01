@@ -1,11 +1,10 @@
 import { ANARCHY } from "../config.js";
-import { BaseActorSheet } from "./base-actor-sheet.js";
+import { AnarchyBaseActorSheet } from "./base-actor-sheet.js";
 import { CharacterEssence } from "./character-actor.js";
-import { Misc } from "../misc.js";
 import { SheetHelper } from "../sheet-helper.js";
 import { TEMPLATES_PATH } from "../constants.js";
 
-export class CharacterActorSheet extends BaseActorSheet {
+export class CharacterActorSheet extends AnarchyBaseActorSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/character.hbs`;

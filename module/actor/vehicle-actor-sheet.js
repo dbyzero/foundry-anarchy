@@ -1,6 +1,6 @@
-import { BaseActorSheet } from "./base-actor-sheet.js";
+import { AnarchyBaseActorSheet } from "./base-actor-sheet.js";
 
-export class VehicleActorSheet extends BaseActorSheet {
+export class VehicleActorSheet extends AnarchyBaseActorSheet {
 
   getData(options) {
     let hbsData = mergeObject(

@@ -86,17 +86,15 @@ const HBS_PARTIAL_TEMPLATES = [
 
 export class HandlebarsManager {
 
-  static init() {
+  constructor() {
     game.system.anarchy.hooks.register(HOOK_GET_HANDLEPAR_PARTIALS);
     game.system.anarchy.hooks.register(HOOK_GET_HANDLEPAR_HELPERS);
     Hooks.once(HOOK_GET_HANDLEPAR_PARTIALS, list => HBS_PARTIAL_TEMPLATES.forEach(tpl => list.push(tpl)));
-    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => {
-      HandlebarsManager.register();
-    });
-    Hooks.once('ready', () => HandlebarsManager.onReady());
+    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => this.registerBasicHelpers());
+    Hooks.once('ready', () => this.onReady());
   }
 
-  static async onReady() {
+  async onReady() {
     let partials = [];
     Hooks.callAll(HOOK_GET_HANDLEPAR_HELPERS);
     Hooks.off(HOOK_GET_HANDLEPAR_HELPERS, () => { });
@@ -105,7 +103,7 @@ export class HandlebarsManager {
     await loadTemplates(Misc.distinct(partials));
   }
 
-  static async register() {
+  registerBasicHelpers() {
     Handlebars.registerHelper('concat', (...args) => Misc.join(args.slice(0, -1)));
     Handlebars.registerHelper('substring', (str, from, to) => str?.substring(from, to));
     Handlebars.registerHelper('toUpperCase', Grammar.toUpperCaseNoAccent);

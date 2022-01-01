@@ -1,11 +1,11 @@
 import { ANARCHY } from "../config.js";
 import { AnarchyRollDialog } from "../dialog/roll-dialog.js";
 import { BASE_MONITOR } from "../constants.js";
-import { BaseActor } from "./base-actor.js";
+import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
-import { Users } from "../users.js";
+import { AnarchyUsers } from "../users.js";
 
 const essenceRange = [
   { from: 5, to: 6, adjust: 0 },
@@ -23,7 +23,7 @@ export class CharacterEssence {
   }
 }
 
-export class CharacterActor extends BaseActor {
+export class CharacterActor extends AnarchyBaseActor {
 
   constructor(data, context = {}) {
     super(data, context);
@@ -82,7 +82,7 @@ export class CharacterActor extends BaseActor {
       const current = this.data.data.counters.anarchy.value;
       ErrorManager.checkOutOfRange(checkbar.resource, newValue, 0, checkbar.maxForActor(this));
       if (!game.user.isGM) {
-        Users.blindMessageToGM({
+        AnarchyUsers.blindMessageToGM({
           from: game.user.id,
           content: game.i18n.format(ANARCHY.gmManager.playerChangedAnarchy,
             {

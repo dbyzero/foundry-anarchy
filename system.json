@@ -20,7 +20,7 @@
   "templateVersion": 2,
   "scripts": [],
   "esmodules": [
-    "module/anarchy.js"
+    "module/start.js"
   ],
   "styles": [
     "style/anarchy.css"
