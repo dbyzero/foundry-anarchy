@@ -1,0 +1,34 @@
+<div class="checkbar-root" data-monitor-code="anarchy" >
+  <div {{#if rowlength}}
+    style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
+  {{/if}}>
+  {{log 'anarchy-bar' value max scene}}
+
+  {{#for 0 max}}
+    {{> 'systems/anarchy/templates/common/check-element.hbs'
+      code='anarchy'
+      rowlength=../rowlength
+      labelkey=../labelkey
+      current=this
+      value=../value
+      max=../max
+      iconChecked=../iconChecked
+      iconUnchecked=../iconUnchecked
+    }}
+  {{/for}}
+  {{#if scene}}
+    {{#for 0 scene}}
+      {{> 'systems/anarchy/templates/common/check-element.hbs'
+        code='scene-anarchy'
+        labelkey=../ANARCHY.common.anarchy.sceneAnarchy
+        rowlength=../rowlength
+        current=this
+        value=../scene
+        max=../scene
+        iconChecked=(iconSrc 'icons/anarchy-point-scene.webp' 'checkbar-img')
+        iconUnchecked=../iconUnchecked
+      }}
+    {{/for}}
+  {{/if}}
+  </div>
+</div>

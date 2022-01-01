@@ -24,6 +24,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     let hbsData = mergeObject(
       super.getData(options), {
       items: {},
+      anarchy: this.actor.getAnarchy(),
       options: {
         owner: this.document.isOwner,
         cssClass: this.isEditable ? "editable" : "locked",

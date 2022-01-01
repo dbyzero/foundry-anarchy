@@ -14,7 +14,6 @@
     },
     "gmManager": {
       "title": "GM manager",
-      "danger": "Danger",
       "playerChangedAnarchy": "User {user} changed {actor}'s anarchy from {from} to {to}",
       "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}"
     },
@@ -70,7 +69,12 @@
       "sourceReference": "Source reference",
       "sourceReferenceHelp": "rulebook, page, ...",
       "description": "Description",
-      "gmnotes": "GM notes"
+      "gmnotes": "GM notes",
+      "anarchy": {
+        "anarchy": "Anarchy",
+        "sceneAnarchy": "Scene Anarchy",
+        "danger": "Danger"
+      }
     },
     "actor": {
       "characterSheet": "Character sheet",

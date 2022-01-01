@@ -27,6 +27,7 @@ export class GMManager extends Application {
       })
     Hooks.once('ready', () => this.onReady());
   }
+
   onReady() {
     if (game.user.isGM) {
       game.system.anarchy.gmManager.render(true);
@@ -49,7 +50,7 @@ export class GMManager extends Application {
   getData() {
     this.handleDrag.setPosition();
     return {
-      anarchy: this.gmAnarchy.getAnarchyData(),
+      anarchy: this.gmAnarchy.getAnarchy(),
       difficultyPools: this.gmDifficulty.getDifficultyData(),
       ANARCHY: ANARCHY
     }

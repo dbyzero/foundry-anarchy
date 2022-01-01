@@ -14,7 +14,6 @@
     },
     "gmManager": {
       "title": "Gestion du MJ",
-      "danger": "Danger",
       "playerChangedAnarchy": "Le joueur {user} a passé l'anarchy de {actor} de {from} à {to}",
       "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchie de {actor}"
     },
@@ -70,7 +69,12 @@
       "sourceReference": "Référence source",
       "sourceReferenceHelp": "livre, page, ...",
       "description": "Description",
-      "gmnotes": "Notes du MJ"
+      "gmnotes": "Notes du MJ",
+      "anarchy": {
+        "anarchy": "Anarchie",
+        "sceneAnarchy": "Anarchie de scène",
+        "danger": "Danger"
+      }
     },
     "actor": {
       "characterSheet": "Fiche de personnage",

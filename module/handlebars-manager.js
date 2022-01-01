@@ -56,12 +56,13 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/item/parts/itemname.hbs',
   'systems/anarchy/templates/item/parts/references.hbs',
   //-- common&technical partials
+  'systems/anarchy/templates/common/anarchy-bar.hbs',
+  'systems/anarchy/templates/common/check-element.hbs',
   'systems/anarchy/templates/common/checkbar.hbs',
   'systems/anarchy/templates/common/damage-code.hbs',
   'systems/anarchy/templates/common/enum-value-label.hbs',
   'systems/anarchy/templates/common/item-control-add.hbs',
   'systems/anarchy/templates/common/item-controls.hbs',
-
   //-- dialogs
   'systems/anarchy/templates/dialog/roll-modifier.hbs',
   //-- chat

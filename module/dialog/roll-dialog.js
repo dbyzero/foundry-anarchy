@@ -45,7 +45,7 @@ export class AnarchyRollDialog extends Dialog {
   }
 
   static async create(rollData) {
-    rollData.anarchy = rollData.actor.getAnarchy();
+    rollData.anarchy = rollData.actor.getAnarchyValue();
     rollData.ENUMS = Enums.getEnums();
     rollData.ANARCHY = ANARCHY;
     const html = await renderTemplate(`systems/anarchy/templates/dialog/anarchy-roll.hbs`, rollData);

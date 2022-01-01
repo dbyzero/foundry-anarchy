@@ -1,5 +1,7 @@
-{{#if anarchy.player}}
-{{localize ANARCHY.actor.counters.anarchy}}
+{{#if anarchy.isGM}}
+  {{#if options.isGM}}
+    {{localize ANARCHY.common.anarchy.danger}}
+  {{/if}}
 {{else}}
-{{localize ANARCHY.gmManager.danger}}
+  {{localize ANARCHY.common.anarchy.anarchy}}
 {{/if}}

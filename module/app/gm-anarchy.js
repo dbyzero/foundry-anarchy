@@ -24,22 +24,22 @@ export class GMAnarchy {
     this.anarchy = game.settings.get(SYSTEM_NAME, ANARCHY_GM);
   }
 
-  getAnarchyData() {
+  getAnarchy() {
     return {
-      idGM: true,
-      value: this.getAnarchy(),
-      max: this.getAnarchyMax(),
+      isGM: true,
+      value: this.anarchy,
+      max: this.anarchy + 1,
+      scene: 0
     }
   }
 
-  getAnarchy() {
-    return this.anarchy;
+  getAnarchyValue() {
+    return this.getAnarchy().value;
   }
 
   getAnarchyMax() {
-    return this.anarchy + 1;
+    return this.getAnarchy().max;
   }
-
 
   async actorGivesAnarchyToGM(actor, count) {
     if (count > 0) {
@@ -62,7 +62,7 @@ export class GMAnarchy {
 
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
-      ErrorManager.checkSufficient(ANARCHY.gmManager.danger, -count, this.anarchy);
+      ErrorManager.checkSufficient(ANARCHY.common.anarchy.danger, -count, this.anarchy);
       await this.setAnarchy(this.anarchy + count);
     }
   }
@@ -94,12 +94,12 @@ export class GMAnarchy {
   }
 
   async _renderBar() {
-    return await renderTemplate("systems/anarchy/templates/common/checkbar.hbs", {
-      code: 'anarchy',
-      value: this.getAnarchy(),
-      max: this.getAnarchyMax(),
-      labelkey: ANARCHY.gmManager.danger,
+    return await renderTemplate("systems/anarchy/templates/common/anarchy-bar.hbs", {
       rowlength: 10,
+      value: this.getAnarchy().value,
+      max: this.getAnarchy().max,
+      scene: this.getAnarchy().scene,
+      labelkey: ANARCHY.common.anarchy.danger,
       adjust: false,
       iconChecked: Icons.iconSrc('icons/danger-point.webp', 'checkbar-img'),
       iconUnchecked: Icons.iconSrc('icons/danger-point-off.webp', 'checkbar-img'),

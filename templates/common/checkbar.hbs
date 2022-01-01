@@ -11,22 +11,21 @@
     iconUnchecked: "<i class='far fa-circle'></i>"
   }
 }}
-<div class="checkbar-root" data-monitor-code="{{code}}" title="{{localize labelkey}}">
+<div class="checkbar-root" data-monitor-code="{{code}}">
   <div {{#if rowlength}}
     style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
   {{/if}}>
   {{#for 0 max}}
-    {{#if (and ../rowlength (eq 0 (modulo this ../rowlength)) (gt this 0))}}
-      </div>
-      <div style="grid-column: span {{../rowlength}} / span {{../rowlength}}; grid-template-columns: repeat({{../rowlength}}, minmax(0, 1fr));">
-    {{/if}}
-
-    {{#if (lt this ../value)}}
-      <a class="click-checkbar-element" data-index="{{this}}" data-checked="true">{{{../iconChecked}}}</a>
-    {{else}}
-      <a class="click-checkbar-element" data-index="{{this}}" data-checked="false">{{{../iconUnchecked}}}</a>
-    {{/if}}
-
+    {{> 'systems/anarchy/templates/common/check-element.hbs'
+      code=../code
+      rowlength=../rowlength
+      current=this
+      labelkey=../labelkey
+      value=../value
+      max=../max
+      iconChecked=../iconChecked
+      iconUnchecked=../iconUnchecked
+    }}
     {{#if (and ../adjust ../rowlength)}}
       {{#if (or (eq ../rowlength (sum 1 (modulo this ../rowlength))) (eq (sum this 1) ../max))}}
         <label>-{{sum 1 (divint this ../rowlength)}}</label>

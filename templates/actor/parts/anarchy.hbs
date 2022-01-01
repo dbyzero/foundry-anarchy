@@ -1,26 +1,26 @@
-{{#if anarchy.player}}
-  {{> "systems/anarchy/templates/common/checkbar.hbs"
-    code='anarchy'
-    value=anarchy.value
-    max=anarchy.max
-    labelkey=ANARCHY.actor.counters.anarchy
-    rowlength=10
-    adjust=false
-    iconChecked=(iconSrc 'icons/anarchy-point.webp' 'checkbar-img')
-    iconUnchecked=(iconSrc 'icons/anarchy-point-off.webp' 'checkbar-img')
-  }}
-{{else}}
+{{#if anarchy.isGM}}
   {{#if options.isGM}}
-  {{> "systems/anarchy/templates/common/checkbar.hbs"
-    code='anarchy'
+  {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
+    rowlength=10
     value=anarchy.value
     max=anarchy.max
-    labelkey=ANARCHY.gmManager.danger
-    rowlength=10
-    adjust=false
+    scene=anarchy.scene
+    labelkey=ANARCHY.common.anarchy.danger
     iconChecked=(iconSrc 'icons/danger-point.webp' 'checkbar-img')
     iconUnchecked=(iconSrc 'icons/danger-point-off.webp' 'checkbar-img')
+    iconScene=(iconSrc 'icons/anarchy-point-scene.webp' 'checkbar-img')
   }}
   {{/if}}
+{{else}}
+  {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
+    rowlength=10
+    value=anarchy.value
+    max=anarchy.max
+    scene=anarchy.scene
+    labelkey=ANARCHY.common.anarchy.anarchy
+    iconChecked=(iconSrc 'icons/anarchy-point.webp' 'checkbar-img')
+    iconUnchecked=(iconSrc 'icons/anarchy-point-off.webp' 'checkbar-img')
+    iconScene=(iconSrc 'icons/anarchy-point-scene.webp' 'checkbar-img')
+  }}
 {{/if}}
 

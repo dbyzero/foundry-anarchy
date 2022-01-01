@@ -8,7 +8,6 @@ import { ChatManager } from './chat/chat-manager.js';
 import { DeviceActorSheet } from './actor/device-actor-sheet.js';
 import { Enums } from './enums.js';
 import { GMAnarchy } from './app/gm-anarchy.js';
-import { GMDifficulty } from './app/gm-difficulty.js';
 import { GMManager } from './app/gm-manager.js';
 import { HandlebarsManager } from './handlebars-manager.js';
 import { LOG_HEAD, SYSTEM_NAME } from './constants.js';

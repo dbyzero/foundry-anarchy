@@ -13,7 +13,6 @@ export const ANARCHY = {
     },
     gmManager: {
         title: 'ANARCHY.gmManager.title',
-        danger: 'ANARCHY.gmManager.danger',
         playerChangedAnarchy: 'ANARCHY.gmManager.playerChangedAnarchy',
         gmReceivedAnarchy: 'ANARCHY.gmManager.gmReceivedAnarchy',
     },
@@ -69,7 +68,12 @@ export const ANARCHY = {
         sourceReference: 'ANARCHY.common.sourceReference',
         sourceReferenceHelp: 'ANARCHY.common.sourceReferenceHelp',
         description: 'ANARCHY.common.description',
-        gmnotes: 'ANARCHY.common.gmnotes'
+        gmnotes: 'ANARCHY.common.gmnotes',
+        anarchy: {
+            anarchy: 'ANARCHY.common.anarchy.anarchy',
+            sceneAnarchy: 'ANARCHY.common.anarchy.sceneAnarchy',
+            danger: 'ANARCHY.common.anarchy.danger',
+        },
     },
     actor: {
         characterSheet: 'ANARCHY.actor.characterSheet',
@@ -95,7 +99,6 @@ export const ANARCHY = {
             essence: 'ANARCHY.actor.counters.essence',
             karma: 'ANARCHY.actor.counters.karma',
             karmaTotal: 'ANARCHY.actor.counters.karmaTotal',
-            anarchy: 'ANARCHY.actor.counters.anarchy',
             edge: 'ANARCHY.actor.counters.edge',
         },
         monitors: {

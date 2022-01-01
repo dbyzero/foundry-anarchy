@@ -58,7 +58,7 @@ export class Modifiers {
   }
 
   static _prepareAnarchyDisposition(actor) {
-    const anarchy = actor.getAnarchy();
+    const anarchy = actor.getAnarchyValue();
     return anarchy <= 0 ? undefined : {
       type: 'anarchyDisposition',
       label: game.i18n.localize(ANARCHY.common.roll.modifiers.anarchyDisposition) + ' (' + anarchy + ')',
@@ -71,7 +71,7 @@ export class Modifiers {
   }
 
   static _prepareAnarchyRisk(actor) {
-    const anarchy = actor.getAnarchy();
+    const anarchy = actor.getAnarchyValue();
     return anarchy <= 0 ? undefined : {
       type: 'anarchyRisk',
       label: game.i18n.localize(ANARCHY.common.roll.modifiers.anarchyRisk) + ' (' + anarchy + ')',

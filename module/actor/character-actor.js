@@ -122,17 +122,21 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   getAnarchy() {
-    return this.hasPlayerOwner ? this.data.data.counters.anarchy.value : game.system.anarchy.gmManager.gmAnarchy.getAnarchy();
-  }
-  getAnarchyMax() {
-    return this.hasPlayerOwner ? this.data.data.counters.anarchy.max : game.system.anarchy.gmManager.gmAnarchy.getAnarchyMax();
+    if (this.hasPlayerOwner) {
+      return {
+        value: this.data.data.counters.anarchy.value,
+        max: this.data.data.counters.anarchy.max,
+        scene: 0
+      };
+    }
+    return super.getAnarchy();
   }
 
   async spendAnarchy(count) {
     if (count) {
       if (this.hasPlayerOwner) {
-        let current = this.getAnarchy();
-        ErrorManager.checkSufficient(ANARCHY.actor.counters.anarchy, count, current);
+        let current = this.getAnarchyValue();
+        ErrorManager.checkSufficient(ANARCHY.common.anarchy.anarchy, count, current);
         await game.system.anarchy.gmManager.gmAnarchy.actorGivesAnarchyToGM(this, count);
         await this.update({ 'data.counters.anarchy.value': (current - count) });
       }

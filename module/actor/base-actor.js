@@ -7,7 +7,7 @@ export const CHECKBARS = {
   stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: ANARCHY.actor.monitors.stun },
   matrix: { dataPath: 'data.monitors.matrix.value', maxForActor: actor => actor.data.data.monitors.matrix.max, resource: ANARCHY.actor.monitors.matrix },
   armor: { dataPath: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: ANARCHY.actor.monitors.armor },
-  anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: ANARCHY.actor.counters.anarchy },
+  anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: ANARCHY.common.anarchy.anarchy },
   edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge }
 }
 
@@ -31,7 +31,6 @@ export class AnarchyBaseActor extends Actor {
   prepareDerivedData() {
     super.prepareDerivedData();
   }
-
 
   async skillRoll(skill, specialization) {
     const rollData = AnarchyRollDialog.prepareSkillRollData(this, skill, specialization);
@@ -72,12 +71,24 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getAnarchy() {
+    if (!this.hasPlayerOwner) {
+      return game.system.anarchy.gmAnarchy.getAnarchy();
+    }
+    return {
+      isGM: !this.hasPlayerOwner,
+      value: 0,
+      max: 0,
+      scene: 0
+    }
+  }
+
+  getAnarchyValue() {
     // TODO
-    return 0;
+    return this.getAnarchy().value ?? 0;
   }
   getAnarchyMax() {
     // TODO
-    return 0;
+    return this.getAnarchy().max ?? 0;
   }
 
   async spendAnarchy(count) {

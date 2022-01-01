@@ -13,11 +13,6 @@ export class CharacterActorSheet extends AnarchyBaseActorSheet {
   getData(options) {
     let hbsData = mergeObject(
       super.getData(options), {
-      anarchy: {
-        player: this.document.hasPlayerOwner,
-        value: this.actor.getAnarchy(),
-        max: this.actor.getAnarchyMax()
-      },
       essence: {
         adjust: CharacterEssence.getAdjust(this.actor.data.data.counters?.essence?.value)
       },
