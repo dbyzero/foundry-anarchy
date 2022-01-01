@@ -103,7 +103,8 @@ export const ANARCHY = {
             physical: 'ANARCHY.actor.monitors.physical',
             stun: 'ANARCHY.actor.monitors.stun',
             matrix: 'ANARCHY.actor.monitors.matrix',
-            armor: 'ANARCHY.actor.monitors.armor'
+            armor: 'ANARCHY.actor.monitors.armor',
+            structure: 'ANARCHY.actor.monitors.structure',
         }
     },
     item: {
@@ -175,7 +176,7 @@ export const ANARCHY = {
     monitor: {
         physical: 'ANARCHY.monitor.physical',
         stun: 'ANARCHY.monitor.stun',
-        matrix: 'ANARCHY.monitor.matrix'
+        matrix: 'ANARCHY.monitor.matrix',
     },
     monitorLetter: {
         physical: 'ANARCHY.monitorLetter.physical',
@@ -204,6 +205,8 @@ export const ANARCHY = {
         edge: 'ANARCHY.attributes.edge',
         knowledge: 'ANARCHY.attributes.knowledge',
         noAttribute: 'ANARCHY.attributes.noAttributes',
+        autopilot: 'ANARCHY.attributes.autopilot',
+        firewall: 'ANARCHY.attributes.firewall',
     },
     attributeActions: {
         catch: 'ANARCHY.attributeActions.catch',

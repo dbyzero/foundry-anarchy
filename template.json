@@ -107,21 +107,25 @@
         "ownership",
         "shortcuts"
       ],
+      "attributes": {
+        "autopilot": {
+          "value": 0
+        }
+      },
       "monitors": {
-        "shielding": {
+        "structure": {
           "value": 0,
           "max": 15
         }
       },
+      "handling": 1,
+      "resistance": 2,
+      "moves": 0,
+      "attacks": 0,
+      "stealth": 0,
       "size": "vehicle",
       "skill": "pilotingGround",
-      "passengers": 4,
-      "resistance": 2,
-      "handling": 1,
-      "autopilot": 0,
-      "stealth": 0,
-      "moves": 0,
-      "attacks": 0
+      "passengers": 4
     },
     "device": {
       "templates": [
@@ -129,7 +133,15 @@
         "matrix",
         "ownership",
         "shortcuts"
-      ]
+      ],
+      "attributes": {
+        "firewall": {
+          "value": 0
+        },
+        "logic": {
+          "value": 0
+        }
+      }
     }
   },
   "Item": {

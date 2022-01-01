@@ -1,0 +1,42 @@
+<form class="{{options.cssClass}} character-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+    <div class="flexcol">
+      <h1 class="actor-name flexrow">
+        <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+      </h1>
+      {{!-- <div class="flexrow">
+      {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
+      </div> --}}
+      {{!-- <div class="flexrow">
+      {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
+      </div> --}}
+    </div>
+  </header>
+  <section class="sheet-body">
+    <div class="flexcol anarchy-block">
+    {{> "systems/anarchy/templates/actor/parts/skills.hbs"}}
+    </div>
+    <div class="flexcol anarchy-block">
+    {{> "systems/anarchy/templates/actor/parts/shadowamps.hbs"}}
+    </div>
+    <div class="flexcol anarchy-block">
+    {{> "systems/anarchy/templates/actor/parts/weapons.hbs"}}
+    </div>
+    <div class="flexrow">
+      {{!-- <div class="armor-block">
+        <div class="flexcol">
+          <h3>{{> "systems/anarchy/templates/actor/parts/armor-header.hbs"}}</h3>
+          {{> "systems/anarchy/templates/actor/parts/armor.hbs"}}
+        </div>
+      </div> --}}
+      <div class="anarchy-block">
+      {{> "systems/anarchy/templates/actor/parts/monitors.hbs"}}
+      </div>
+    </div>
+    <div class="anarchy-block">
+      {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
+      {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}
+    </div>
+  </section>
+</form>

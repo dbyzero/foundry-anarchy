@@ -104,7 +104,8 @@
         "physical": "Physique",
         "stun": "Etourdissant",
         "matrix": "Matriciel",
-        "armor": "Armure"
+        "armor": "Armure",
+        "structure": "Blindage"
       }
     },
     "item": {
@@ -204,7 +205,9 @@
       "charisma": "Charisme",
       "edge": "Chance",
       "knowledge": "Connaissance",
-      "noAttribute": "Pas d'attribut choisi"
+      "noAttribute": "Pas d'attribut choisi",
+      "autopilot": "Autopilote",
+      "firewall": "Firewall"
     },
     "attributeActions": {
       "catch": "Attraper au vol",

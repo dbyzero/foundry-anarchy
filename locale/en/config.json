@@ -104,7 +104,8 @@
         "physical": "Physical",
         "stun": "Stun",
         "matrix": "Matrix",
-        "armor": "Armor"
+        "armor": "Armor",
+        "structure": "Structure"
       }
     },
     "item": {
@@ -204,7 +205,9 @@
       "charisma": "Charisma",
       "edge": "Edge",
       "knowledge": "Knowledge",
-      "noAttribute": "No attribute chosen"
+      "noAttribute": "No attribute chosen",
+      "autopilot": "Autopilot",
+      "firewall": "Firewall"
     },
     "attributeActions": {
       "catch": "Catch object",

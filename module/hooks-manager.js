@@ -15,6 +15,8 @@ import { GMDifficulty } from './app/gm-difficulty.js';
 import { NPCSheet } from './actor/npc-sheet.js';
 import { ChatManager } from './chat/chat-manager.js';
 import { Styles } from './styles.js';
+import { VehicleSheet } from './actor/vehicle-sheet.js';
+import { DeviceSheet } from './actor/device-sheet.js';
 
 export class HooksManager {
 
@@ -76,6 +78,16 @@ export class HooksManager {
       label: game.i18n.localize(ANARCHY.actor.npcSheet),
       makeDefault: false,
       types: ['character']
+    });
+    Actors.registerSheet(SYSTEM_NAME, VehicleSheet, {
+      label: game.i18n.localize(ANARCHY.actor.characterSheet),
+      makeDefault: true,
+      types: ['vehicle']
+    });
+    Actors.registerSheet(SYSTEM_NAME, DeviceSheet, {
+      label: game.i18n.localize(ANARCHY.actor.characterSheet),
+      makeDefault: true,
+      types: ['device']
     });
 
     Items.unregisterSheet('core', ItemSheet);

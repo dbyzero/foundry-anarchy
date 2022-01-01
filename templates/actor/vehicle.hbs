@@ -1,0 +1,60 @@
+<form class="{{options.cssClass}} character-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+    <div class="flexcol">
+      <h1 class="actor-name flexrow">
+        <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+      </h1>
+      {{!-- <div class="flexrow">
+      {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
+      </div> --}}
+      {{log 'vehicle' this}}
+      <div class="flexrow">
+      {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
+      </div>
+    </div>
+  </header>
+  <section class="sheet-body">
+    <div class="flexcol anarchy-block">
+    {{> "systems/anarchy/templates/actor/parts/skills.hbs"}}
+    </div>
+    <div class="flexcol anarchy-block">
+    {{> "systems/anarchy/templates/actor/parts/shadowamps.hbs"}}
+    </div>
+    <div class="flexcol anarchy-block">
+    {{> "systems/anarchy/templates/actor/parts/weapons.hbs"}}
+    </div>
+    <h2></h2>
+    <div class="flexrow">
+      <div class="anarchy-block">
+        <div class="flexrow">
+          <span class="flex-shrink">{{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}</span>
+          <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}</span>
+        </div>
+      </div>
+      <div class="anarchy-block">
+        <h3>
+          {{localize ANARCHY.actor.monitors.conditionMonitors}}
+        </h3>
+        <div class="flexrow flex-wrap">
+          <div class="flexcol">
+            <h4>{{localize ANARCHY.monitors.structure}}</h4>
+            {{> "systems/anarchy/templates/common/checkbar.hbs"
+              code='structure'
+              value=data.data.monitors.structure.value
+              max=data.data.monitors.structure.max
+              labelkey='ANARCHY.actor.monitors.structure'
+              rowlength=9
+              iconChecked=(iconFA 'fas fa-car-crash')
+              iconUnchecked=(iconFA 'fas fa-car-alt')
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="anarchy-block">
+      {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
+      {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}
+    </div>
+  </section>
+</form>

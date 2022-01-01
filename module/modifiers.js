@@ -84,7 +84,10 @@ export class Modifiers {
   }
 
   static _prepareEdge(actor) {
-    return actor.data.data.counters.edge.value <= 0 ? undefined : {
+    if ((actor.data.data.counters?.edge?.value ?? 0) <= 0) {
+      return undefined;
+    }
+    return {
       type: 'edge',
       label: game.i18n.localize(ANARCHY.common.roll.modifiers.edge) + ' (' + actor.data.data.counters.edge.value + '/' + actor.data.data.attributes.edge.value + ')',
       category: 'other',
