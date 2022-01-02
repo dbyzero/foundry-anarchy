@@ -15,7 +15,7 @@
     "gmManager": {
       "title": "Gestion du MJ",
       "playerChangedAnarchy": "Le joueur {user} a passé l'anarchy de {actor} de {from} à {to}",
-      "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchie de {actor}"
+      "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchy de {actor}"
     },
     "chat": {
       "blindMessageToGM": "Message aveugle de {user}:<br>{message}"
@@ -37,8 +37,8 @@
         "modifiers": {
           "edge": "Utiliser la chance",
           "specialization": "Utiliser la spécialisation",
-          "anarchyDisposition": "Anarchie - Bien disposé",
-          "anarchyRisk": "Anarchie - Prise de risques",
+          "anarchyDisposition": "Anarchy - Bien disposé",
+          "anarchyRisk": "Anarchy - Prise de risques",
           "wounds": "Modificateur de blessures",
           "range": "Portée",
           "other": "Autres modificateurs",
@@ -50,9 +50,9 @@
         "totalSuccess": "Succès finaux",
         "success": "Succès",
         "risk": {
-          "prowess": "Anarchie - Prise de risque: Exploit",
-          "nothing": "Anarchie - Prise de risque: sans effet",
-          "glitch": "Anarchie - Prise de risque: Complication"
+          "prowess": "Anarchy - Prise de risque: Exploit",
+          "nothing": "Anarchy - Prise de risque: sans effet",
+          "glitch": "Anarchy - Prise de risque: Complication"
         },
         "rerollSuccess": "Succès sur relance",
         "rerollForcedLoss": "Relances forcées",
@@ -76,8 +76,8 @@
       "description": "Description",
       "gmnotes": "Notes du MJ",
       "anarchy": {
-        "anarchy": "Anarchie",
-        "sceneAnarchy": "Anarchie de scène",
+        "anarchy": "Anarchy",
+        "sceneAnarchy": "Anarchy de scène",
         "danger": "Danger"
       }
     },
@@ -105,7 +105,7 @@
         "essence": "Essence",
         "karma": "Karma",
         "karmaTotal": "Total",
-        "anarchy": "Anarchie",
+        "anarchy": "Anarchy",
         "edge": "Chance"
       },
       "monitors": {
