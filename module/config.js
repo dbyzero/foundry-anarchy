@@ -57,7 +57,8 @@ export const ANARCHY = {
         },
         confirmation: {
             del: 'ANARCHY.common.confirmation.del',
-            delitem: 'ANARCHY.common.confirmation.delitem'
+            delItem: 'ANARCHY.common.confirmation.delItem',
+            delOwner: 'ANARCHY.common.confirmation.delOwner',
         },
         errors: {
             insufficient: 'ANARCHY.common.errors.insufficient',
@@ -108,6 +109,10 @@ export const ANARCHY = {
             matrix: 'ANARCHY.actor.monitors.matrix',
             armor: 'ANARCHY.actor.monitors.armor',
             structure: 'ANARCHY.actor.monitors.structure',
+        },
+        ownership: {
+            owner: 'ANARCHY.actor.ownership.owner',
+            unknown: 'ANARCHY.actor.ownership.unknown',
         }
     },
     item: {

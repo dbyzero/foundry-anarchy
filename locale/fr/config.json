@@ -58,7 +58,8 @@
       },
       "confirmation": {
         "del": "Confirmer la suppression",
-        "delitem": "Confirmer la suppression de {name} ({type})"
+        "delItem": "Confirmer la suppression de {name} ({type})",
+        "delOwner": "Confirmer le détachement du propriétaire {name}"
       },
       "errors": {
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
@@ -110,6 +111,10 @@
         "matrix": "Matriciel",
         "armor": "Armure",
         "structure": "Blindage"
+      },
+      "ownership": {
+        "owner": "Propriétaire",
+        "unknown": "inconnu"
       }
     },
     "item": {

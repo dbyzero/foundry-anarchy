@@ -58,7 +58,8 @@
       },
       "confirmation": {
         "del": "Confirm removal",
-        "delitem": "Confirm removal of {name} ({type})"
+        "delItem": "Confirm removal of {name} ({type})",
+        "delowner": "Confirm detach from owner {name}"
       },
       "errors": {
         "insufficient": "Not enough {resource}: required {required}, available {available}",
@@ -110,6 +111,10 @@
         "matrix": "Matrix",
         "armor": "Armor",
         "structure": "Structure"
+      },
+      "ownership": {
+        "owner": "Owner",
+        "unknown": "Unknown"
       }
     },
     "item": {

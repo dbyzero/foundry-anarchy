@@ -90,18 +90,12 @@ img.anarchy-img {
   vertical-align: top;
 }
 
-:is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img) {
+:is(.anarchy-dialog, .chat-message) :is(
+    img.actor-img, img.skill-img ,img.weapon-img) {
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   width: 48px;
   height: 48px;
-}
-
-.chat-message img.actor-img {
-  -ms-flex: 0 0 64px;
-  flex: 0 0 64px;
-  width: 64px;
-  height: 64px;
 }
 
 .sheet-header img.profile-img {
@@ -111,6 +105,13 @@ img.anarchy-img {
   width: 128px;
   margin-right: 10px;
   object-position: 50% 0;
+}
+
+img.anarchy-img.actor-img {
+  -ms-flex: 0 0 64px;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
 }
 
 img.anarchy-img.item-img {

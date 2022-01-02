@@ -25,6 +25,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
       super.getData(options), {
       items: {},
       anarchy: this.actor.getAnarchy(),
+      ownerActor: this.actor.getOwnerActor(),
       options: {
         owner: this.document.isOwner,
         cssClass: this.isEditable ? "editable" : "locked",
@@ -55,12 +56,18 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     html.find('.click-item-delete').click(async event => {
       const itemId = SheetHelper.getItemId(event);
       const item = this.actor.items.get(itemId);
-      ConfirmationDialog.confirmDeleteItem(item, () => {
-        this.actor.deleteEmbeddedDocuments('Item', [itemId]);
+      ConfirmationDialog.confirmDeleteItem(item, async () => {
+        await this.actor.deleteEmbeddedDocuments('Item', [itemId]);
         this.render(true);
       });
     });
 
+    html.find('.click-owner-delete').click(async event => {
+      ConfirmationDialog.confirmDetachOwnerActor(this.actor.getOwnerActor(), async () => {
+        await this.actor.attachToOwnerActor();
+        this.render(true);
+      });
+    });
     // counters & monitors
     html.find('a.click-checkbar-element').click(async event => {
       const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');

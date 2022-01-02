@@ -45,4 +45,9 @@ export class CharacterActorSheet extends AnarchyBaseActorSheet {
 
   }
 
+  async _onDropActor(event, dragData) {
+    const droppedActor = game.actors.get(dragData.id);
+    droppedActor.attachToOwnerActor(this.actor);
+    super._onDropActor(event, dragData);
+  }
 }

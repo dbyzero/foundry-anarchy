@@ -1,5 +1,4 @@
 import { AnarchyBaseActor } from "./base-actor.js";
-import { ErrorManager } from "../error-manager.js";
 
 export class VehicleActor extends AnarchyBaseActor {
 
@@ -14,4 +13,10 @@ export class VehicleActor extends AnarchyBaseActor {
   prepareDerivedData() {
     super.prepareDerivedData();
   }
+
+  isActorWithOwnerId() { return true; }
+
+  async attachToOwner(owner) {
+  }
+
 }

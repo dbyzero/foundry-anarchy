@@ -31,6 +31,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/karma.hbs',
   'systems/anarchy/templates/actor/parts/metatype.hbs',
   'systems/anarchy/templates/actor/parts/monitors.hbs',
+  'systems/anarchy/templates/actor/parts/ownership.hbs',
   'systems/anarchy/templates/actor/parts/qualities.hbs',
   'systems/anarchy/templates/actor/parts/quality.hbs',
   'systems/anarchy/templates/actor/parts/shadowamp.hbs',

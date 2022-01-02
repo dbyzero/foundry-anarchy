@@ -1,0 +1,15 @@
+<div class="flexcol">
+  {{#if ownerActor}}
+  <span class="flexrow">
+    <img class="anarchy-img actor-img" src="{{ownerActor.img}}"/>
+    <a class="item-control click-owner-delete" title="{{localize ANARCHY.common.del}}">
+      {{{iconFA 'fas fa-trash'}}}
+    </a>
+  </span>
+  <span>
+    {{localize ANARCHY.actor.ownership.owner}}: {{ownerActor.name}}
+  </span>
+  {{else}}
+    <label>{{localize ANARCHY.actor.ownership.owner}} {{localize ANARCHY.actor.ownership.unknown}}</label>
+  {{/if}}
+</div>

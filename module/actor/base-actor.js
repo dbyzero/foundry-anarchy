@@ -119,4 +119,26 @@ export class AnarchyBaseActor extends Actor {
     const metatypeIds = this.items.filter(it => it.isMetatype()).map(it => it.id);
     this.deleteEmbeddedDocuments("Item", metatypeIds);
   }
+
+  isActorWithOwnerId() { return false; }
+
+  /**
+   * @param ownerActor the Actor who becomes the owner of this Actor
+   */
+  async attachToOwnerActor(ownerActor = undefined) {
+    if (this.isActorWithOwnerId()) {
+      // TODO: check behavior on tokens
+      if (ownerActor?.hasPlayerOwner) {
+        // TODO: enforce player to have rights if owner hasPlayer
+      }
+      await this.update({ 'data.ownerId': ownerActor?.id ?? '' });
+    }
+  }
+
+  getOwnerActor() {
+    if (this.isActorWithOwnerId() && this.data.data.ownerId) {
+      return game.actors.get(this.data.data.ownerId);
+    }
+    return undefined;
+  }
 }
