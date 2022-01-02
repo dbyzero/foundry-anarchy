@@ -122,6 +122,9 @@ img.anarchy-img.actor-img {
   flex: 0 0 64px;
   width: 64px;
   height: 64px;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: black;
 }
 
 img.anarchy-img.item-img {

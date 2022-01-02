@@ -28,5 +28,4 @@ export class DeviceActor extends AnarchyBaseActor {
     }
   }
 
-  isActorWithOwnerId() { return true; }
 }

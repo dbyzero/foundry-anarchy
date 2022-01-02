@@ -47,4 +47,35 @@ export class ConfirmationDialog {
     });
     dialog.render(true);
   }
+
+
+  static async confirmAttachOrCopy(owner, owned, onAttach = () => { }, onAttachCopy = () => { }) {
+    let dialog = new Dialog({
+      title: game.i18n.localize(ANARCHY.common.confirmation.attach),
+      content: game.i18n.format(ANARCHY.common.confirmation.attachOrCopy, {
+        ownerName: owner.name,
+        ownerType: game.i18n.localize(ANARCHY.actorType.singular[owner.type]),
+        ownedName: owned.name,
+        ownedType: game.i18n.localize(ANARCHY.actorType.singular[owned.type])
+      }),
+      buttons: {
+        attach: {
+          icon: Icons.fontAwesome('fas fa-user-tag'),
+          label: game.i18n.localize(ANARCHY.common.attach),
+          callback: onAttach
+        },
+        attachCopy: {
+          icon: Icons.fontAwesome('fas fa-user-plus'),
+          label: game.i18n.localize(ANARCHY.common.attachCopy),
+          callback: onAttachCopy
+        },
+        cancel: {
+          icon: Icons.fontAwesome('fas fa-times'),
+          label: game.i18n.localize(ANARCHY.common.cancel)
+        }
+      },
+      default: "cancel"
+    });
+    dialog.render(true);
+  }
 }

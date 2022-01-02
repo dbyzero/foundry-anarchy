@@ -27,6 +27,8 @@
       "add": "Ajouter",
       "edit": "Modifier",
       "del": "Supprimer",
+      "attach": "Changer le propriétaire",
+      "attachCopy": "Donner une copie",
       "roll": {
         "button": "Lancer",
         "title": "Jet de {name} {specialization}",
@@ -59,7 +61,9 @@
       "confirmation": {
         "del": "Confirmer la suppression",
         "delItem": "Confirmer la suppression de {name} ({type})",
-        "delOwner": "Confirmer le détachement du propriétaire {name}"
+        "delOwner": "Confirmer le détachement du propriétaire {name}",
+        "attach": "Changement de propriétaire",
+        "attachOrCopy": "Attacher le {ownedType} {ownedName} au {ownerType} {ownerName}"
       },
       "errors": {
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
@@ -115,6 +119,18 @@
       "ownership": {
         "owner": "Propriétaire",
         "unknown": "inconnu"
+      }
+    },
+    "actorType": {
+      "singular": {
+        "character": "Personnage",
+        "vehicle": "Véhicule",
+        "device": "Objet électronique"
+      },
+      "plural": {
+        "character": "Personnages",
+        "vehicle": "Véhicules",
+        "device": "Objets électroniques"
       }
     },
     "item": {

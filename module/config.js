@@ -26,6 +26,8 @@ export const ANARCHY = {
         add: 'ANARCHY.common.add',
         edit: 'ANARCHY.common.edit',
         del: 'ANARCHY.common.del',
+        attach: 'ANARCHY.common.attach',
+        attachCopy: 'ANARCHY.common.attachCopy',
         roll: {
             button: 'ANARCHY.common.roll.button',
             title: 'ANARCHY.common.roll.title',
@@ -59,6 +61,8 @@ export const ANARCHY = {
             del: 'ANARCHY.common.confirmation.del',
             delItem: 'ANARCHY.common.confirmation.delItem',
             delOwner: 'ANARCHY.common.confirmation.delOwner',
+            attach: 'ANARCHY.common.confirmation.attach',
+            attachOrCopy: 'ANARCHY.common.confirmation.attachOrCopy',
         },
         errors: {
             insufficient: 'ANARCHY.common.errors.insufficient',
@@ -113,6 +117,18 @@ export const ANARCHY = {
         ownership: {
             owner: 'ANARCHY.actor.ownership.owner',
             unknown: 'ANARCHY.actor.ownership.unknown',
+        }
+    },
+    actorType: {
+        singular: {
+            character: 'ANARCHY.actorType.singular.character',
+            vehicle: 'ANARCHY.actorType.singular.vehicle',
+            device: 'ANARCHY.actorType.singular.device',
+        },
+        plural: {
+            character: 'ANARCHY.actorType.singular.character',
+            vehicle: 'ANARCHY.actorType.singular.vehicle',
+            device: 'ANARCHY.actorType.singular.device',
         }
     },
     item: {

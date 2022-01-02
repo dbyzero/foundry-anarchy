@@ -103,7 +103,16 @@ export class AnarchyBaseActorSheet extends ActorSheet {
       const weapon = this.actor.items.get(itemId);
       this.actor.weaponRoll(weapon);
     });
-
   }
 
+  async _onDropActor(event, dragData) {
+
+    const owned = game.actors.get(dragData.id);
+    if (owned) {
+      ConfirmationDialog.confirmAttachOrCopy(this.actor, owned,
+        async () => await owned.attachToOwnerActor(this.actor),
+        async () => await owned.attachToOwnerActor(this.actor, 'copy'));
+    }
+    super._onDropActor(event, dragData);
+  }
 }

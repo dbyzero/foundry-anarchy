@@ -90,6 +90,7 @@
         "attributes",
         "counters",
         "monitors",
+        "ownership",
         "shortcuts"
       ],
       "style": "",

@@ -42,12 +42,6 @@ export class CharacterActorSheet extends AnarchyBaseActorSheet {
       const wordlist = SheetHelper.getWordList(event);
       this.actor.deleteWordlistWord(wordlist, previous);
     });
-
   }
 
-  async _onDropActor(event, dragData) {
-    const droppedActor = game.actors.get(dragData.id);
-    droppedActor.attachToOwnerActor(this.actor);
-    super._onDropActor(event, dragData);
-  }
 }

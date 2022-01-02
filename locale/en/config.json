@@ -27,6 +27,8 @@
       "add": "Add",
       "edit": "Edit",
       "del": "Remove",
+      "attach": "Change owner",
+      "attachCopy": "Give a copy",
       "roll": {
         "button": "Roll",
         "title": "Roll {name} {specialization}",
@@ -59,7 +61,9 @@
       "confirmation": {
         "del": "Confirm removal",
         "delItem": "Confirm removal of {name} ({type})",
-        "delowner": "Confirm detach from owner {name}"
+        "delowner": "Confirm detach from owner {name}",
+        "attach": "Attach actor to owner",
+        "attachOrCopy": "Attach {ownedType} {ownedName} to {ownerType} {ownerName}, or create a copy first"
       },
       "errors": {
         "insufficient": "Not enough {resource}: required {required}, available {available}",
@@ -115,6 +119,18 @@
       "ownership": {
         "owner": "Owner",
         "unknown": "Unknown"
+      }
+    },
+    "actorType": {
+      "singular": {
+        "character": "Character",
+        "vehicle": "Vehicle",
+        "device": "Device"
+      },
+      "plural": {
+        "character": "Characters",
+        "vehicle": "Vehicles",
+        "device": "Devices"
       }
     },
     "item": {

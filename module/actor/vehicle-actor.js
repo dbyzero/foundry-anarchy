@@ -14,9 +14,4 @@ export class VehicleActor extends AnarchyBaseActor {
     super.prepareDerivedData();
   }
 
-  isActorWithOwnerId() { return true; }
-
-  async attachToOwner(owner) {
-  }
-
 }

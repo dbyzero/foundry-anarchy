@@ -120,23 +120,27 @@ export class AnarchyBaseActor extends Actor {
     this.deleteEmbeddedDocuments("Item", metatypeIds);
   }
 
-  isActorWithOwnerId() { return false; }
-
   /**
    * @param ownerActor the Actor who becomes the owner of this Actor
    */
-  async attachToOwnerActor(ownerActor = undefined) {
-    if (this.isActorWithOwnerId()) {
-      // TODO: check behavior on tokens
-      if (ownerActor?.hasPlayerOwner) {
-        // TODO: enforce player to have rights if owner hasPlayer
-      }
-      await this.update({ 'data.ownerId': ownerActor?.id ?? '' });
+  async attachToOwnerActor(ownerActor = undefined, attachOrCopy = 'attach') {
+    if (ownerActor?.id == this.id) {
+      return;
     }
+    if (ownerActor?.hasPlayerOwner) {
+      // TODO: enforce player to have rights if owner hasPlayer
+    }
+    let actorToAttach = this;
+    if (attachOrCopy == 'copy') {
+      const cloneTmp = this.clone();
+      const created = await Actor.createDocuments([cloneTmp.data]);
+      actorToAttach = created[0];
+    }
+    await actorToAttach.update({ 'data.ownerId': ownerActor?.id ?? '' });
   }
 
   getOwnerActor() {
-    if (this.isActorWithOwnerId() && this.data.data.ownerId) {
+    if (this.data.data.ownerId) {
       return game.actors.get(this.data.data.ownerId);
     }
     return undefined;
