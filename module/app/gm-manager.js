@@ -52,7 +52,10 @@ export class GMManager extends Application {
     return {
       anarchy: this.gmAnarchy.getAnarchy(),
       difficultyPools: this.gmDifficulty.getDifficultyData(),
-      ANARCHY: ANARCHY
+      ANARCHY: ANARCHY,
+      options: {
+        classes: [game.system.anarchy.styles.selectCssClass()]
+      }
     }
   }
 

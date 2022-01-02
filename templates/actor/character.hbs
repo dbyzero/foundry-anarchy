@@ -69,7 +69,7 @@
             <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/edge.hbs"}}</span>
           </div>
         <hr>
-        <div class="ANARCHY-anarchy flexrow">
+        <div class="flexrow">
           <span class="flex-shrink">{{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}</span>
           <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}</span>
         </div>
@@ -77,8 +77,12 @@
       <div class="anarchy-block">
       {{> "systems/anarchy/templates/actor/parts/monitors.hbs"}}
       </div>
-      <div class="anarchy-block">
+    </div>
+    <div class="anarchy-block flexrow">
+      <div>
       {{> "systems/anarchy/templates/actor/parts/gears.hbs"}}
+      </div>
+      <div>
       {{> "systems/anarchy/templates/actor/parts/contacts.hbs"}}
       </div>
     </div>

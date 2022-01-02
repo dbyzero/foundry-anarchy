@@ -2,7 +2,6 @@
   <div {{#if rowlength}}
     style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
   {{/if}}>
-  {{log 'anarchy-bar' value max scene}}
 
   {{#for 0 max}}
     {{> 'systems/anarchy/templates/common/check-element.hbs'

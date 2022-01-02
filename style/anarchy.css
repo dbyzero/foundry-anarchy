@@ -62,8 +62,19 @@
     hsla(0, 0%, 0%, 0.7));
 
   /* specifics for root-style-anarchy */
-  --anarchy-background: hsla(44, 5%, 95%, 0.9) url("background-anarchy.webp") no-repeat;
+  --anarchy-background: url("background-anarchy.webp") no-repeat;
   --anarchy-font: hsla(0, 10%, 10%, 1);
+  --anarchy-attributes-background: hsla(47, 90%, 50%, 0.5);
+  --anarchy-item-background: hsla(44, 0%, 100%, 0.5);
+  --anarchy-quality-negative-background: hsla(0, 0%, 70%, 0.5);
+  --anarchy-controls-color: hsla(207, 40%, 60%, 0.7);
+  --anarchy-tooltip-background: hsla(207, 40%, 70%, 1);
+  --anarchy-button-background: hsla(47, 40%, 70%, 1);
+  --anarchy-weapon-background: hsla(0, 0%, 80%, 0.3);
+  --anarchy-weapon-background-odd: hsla(0, 0%, 70%, 0.3);
+  --anarchy-weapon-background-even: hsla(0, 0%, 50%, 0.3);
+  --anarchy-item-img-background: var(--anarchy-controls-color);
+
 }
 
 #logo {
@@ -90,8 +101,7 @@ img.anarchy-img {
   vertical-align: top;
 }
 
-:is(.anarchy-dialog, .chat-message) :is(
-    img.actor-img, img.skill-img ,img.weapon-img) {
+:is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img) {
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   width: 48px;
@@ -203,7 +213,7 @@ div.item {
 }
 
 div.item.anarchy-attribute {
-  background: var(--gradient-gold) !important;
+  background: var(--gradient-gold);
   min-width: auto;  
   max-width: 6rem;
 }
@@ -276,7 +286,7 @@ div#gm-manager {
   display: block;
   z-index: 100;
 
-  min-width: 206px;
+  min-width: 300px;
   grid-row: 2;
   grid-column: 1;
   height: fit-content;
@@ -285,7 +295,6 @@ div#gm-manager {
   border: 1px solid var(--border-medium);
   border-radius: 3%;
   background: var(--background-black);
-  z-index: 100;
 }
 
 div#gm-manager div.header{
@@ -295,6 +304,7 @@ div#gm-manager div.header{
   border-bottom: 1px solid var(--border-light);
   color: var(--font-color-light);
 }
+
 div#gm-manager div.content {
   padding: 3px;
   color: var(--font-color-light);
@@ -316,7 +326,6 @@ li.flexrow.item span {
   margin: 0.1rem;
   box-shadow: inset 0px 0px 1px var(--border-medium);
   padding: 0.1rem;
-  /* flex: 1 1 3rem; */
   display: flex !important;
   align-items: baseline !important;
 }
@@ -435,6 +444,30 @@ input.type-numeric {
 }
 
 /* Default Anarchy style */
+div#gm-manager.root-style-anarchy{
+  min-width: 300px !important;
+  background: var(--anarchy-background);
+  color: var(--anarchy-font);
+}
+
+div#gm-manager.root-style-anarchy div.header{
+  display: grid;
+  margin: 2px;
+  padding: 2px;
+  border-bottom: 1px solid var(--border-light);
+}
+div#gm-manager.root-style-anarchy div.content {
+  padding: 3px;
+  vertical-align: top;
+}
+div#gm-manager.root-style-anarchy label{
+  color: var(--anarchy-font);
+}
+div#gm-manager.root-style-anarchy .anarchy-button label{
+  background: var(--anarchy-button-background);
+  color: var(--anarchy-font);
+}
+
 .root-style-anarchy .window-content {
   background: var(--anarchy-background);
   color: var(--anarchy-font);
@@ -442,6 +475,33 @@ input.type-numeric {
 
 .root-style-anarchy .window-content form.npc-character-sheet {
   background: var(--darker-npc);
+}
+.root-style-anarchy div.item.anarchy-attribute {
+ background: var(--anarchy-attributes-background);
+}
+.root-style-anarchy div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality),
+.root-style-anarchy div:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) input {
+  background: var(--anarchy-item-background);
+}
+.root-style-anarchy .anarchy-weapon > .item{
+  background: var(--anarchy-weapon-background);
+}
+.root-style-anarchy .anarchy-weapon > .item:hover {
+  background: var(--border-light);
+}
+.root-style-anarchy .anarchy-weapon > .item:nth-child(even) {
+  background: var(--anarchy-weapon-background-even);
+}
+.root-style-anarchy .anarchy-weapon > .item:nth-child(odd) {
+  background: var(--anarchy-weapon-background-odd);
+}
+
+.root-style-anarchy div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality) img{
+  background: var(--anarchy-item-img-background);
+}
+.root-style-anarchy div.item.anarchy-quality.negative {
+  background: var(--anarchy-quality-negative-background);
+  border-style: dashed;
 }
 
 .root-style-anarchy input,
@@ -454,8 +514,12 @@ input.type-numeric {
   background: var(--anarchy-background);
   color: var(--anarchy-font);
 }  
+.root-style-anarchy .anarchy-button {
+  background: var(--anarchy-button-background);
+  color: var(--anarchy-font)
+}
 .root-style-anarchy .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
+  background: var(--anarchy-tooltip-background);
 }
 
 .root-style-anarchy div:is(
@@ -472,6 +536,11 @@ input.type-numeric {
   border-color: var(--border-dark);
 }
 
+.root-style-anarchy a.item-control i,
+.root-style-anarchy a.item-control img {
+  font-size: small;
+  color: var(--anarchy-controls-color);
+}
 
 /* Shadowrun Anarchy style */
 .root-style-anarchy-shadowrun .window-content  {

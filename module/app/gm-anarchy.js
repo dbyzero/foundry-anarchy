@@ -95,7 +95,7 @@ export class GMAnarchy {
 
   async _renderBar() {
     return await renderTemplate("systems/anarchy/templates/common/anarchy-bar.hbs", {
-      rowlength: 10,
+      rowlength: 6,
       value: this.getAnarchy().value,
       max: this.getAnarchy().max,
       scene: this.getAnarchy().scene,
@@ -107,11 +107,19 @@ export class GMAnarchy {
   }
 
   _syncGMAnarchySheets() {
-    game.canvas.tokens.documentCollection.values()
-      .filter(token => token.actor && !token.data.actorLink)
-      .map(token => token.actor)
-      .concat(game.actors)
-      .filter(actor => !actor.hasPlayerOwner)
-      .forEach(actor => actor.sheet?.render(actor.sheet.rendered));
+    for (let actor of game.actors) {
+      this._syncNPCSheetAnarchy(actor);
+    }
+    for (let token of game.canvas.tokens.documentCollection.values()) {
+      if (token.actor && !token.data.actorLink) {
+        this._syncNPCSheetAnarchy(token.actor);
+      }
+    }
+  }
+
+  _syncNPCSheetAnarchy(actor) {
+    if (!actor.hasPlayerOwner) {
+      actor.sheet?.render(actor.sheet.rendered);
+    }
   }
 }
