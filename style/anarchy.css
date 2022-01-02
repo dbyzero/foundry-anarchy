@@ -63,7 +63,7 @@
     hsla(0, 0%, 0%, 0.7));
 
   /* specifics for root-style-anarchy */
-  --anarchy-background: url("background-anarchy.webp") no-repeat;
+  --anarchy-background: url("background-anarchy.webp") repeat;
   --anarchy-font: hsla(0, 10%, 10%, 1);
   --anarchy-attributes-background: hsla(47, 90%, 50%, 0.5);
   --anarchy-item-background: hsla(44, 0%, 100%, 0.5);
@@ -472,6 +472,7 @@ input.type-numeric {
 div#gm-manager.root-style-anarchy{
   min-width: 300px !important;
   background: var(--anarchy-background);
+  background-size: 50%;
   color: var(--anarchy-font);
 }
 
@@ -495,6 +496,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
 
 .root-style-anarchy .window-content {
   background: var(--anarchy-background);
+  background-size: 50%;
   color: var(--anarchy-font);
 }
 
@@ -537,6 +539,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
 }  
 .root-style-anarchy .window-content select option{
   background: var(--anarchy-background);
+  background-size: 50%;
   color: var(--anarchy-font);
 }  
 .root-style-anarchy .anarchy-button {
