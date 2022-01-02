@@ -114,6 +114,15 @@ export const ANARCHY = {
             armor: 'ANARCHY.actor.monitors.armor',
             structure: 'ANARCHY.actor.monitors.structure',
         },
+        vehicle: {
+            handling: 'ANARCHY.actor.vehicle.handling',
+            resistance: 'ANARCHY.actor.vehicle.resistance',
+            moves: 'ANARCHY.actor.vehicle.moves',
+            attacks: 'ANARCHY.actor.vehicle.attacks',
+            stealth: 'ANARCHY.actor.vehicle.stealth',
+            category: 'ANARCHY.actor.vehicle.category',
+            skill: 'ANARCHY.actor.vehicle.skill'
+        },
         ownership: {
             owner: 'ANARCHY.actor.ownership.owner',
             unknown: 'ANARCHY.actor.ownership.unknown',
@@ -282,6 +291,19 @@ export const ANARCHY = {
         short: 'ANARCHY.range.short',
         medium: 'ANARCHY.range.medium',
         long: 'ANARCHY.range.long',
+    },
+    vehicleCategory: {
+        miniDrone: 'ANARCHY.vehicleCategory.miniDrone',
+        smallDrone: 'ANARCHY.vehicleCategory.smallDrone',
+        mediumDrone: 'ANARCHY.vehicleCategory.mediumDrone',
+        largeDrone: 'ANARCHY.vehicleCategory.largeDrone',
+        motorcycle: 'ANARCHY.vehicleCategory.motorcycle',
+        smallCar: 'ANARCHY.vehicleCategory.smallCar',
+        largeCar: 'ANARCHY.vehicleCategory.largeCar',
+        van: 'ANARCHY.vehicleCategory.van',
+        truck: 'ANARCHY.vehicleCategory.truck',
+        aircraft: 'ANARCHY.vehicleCategory.aircraft',
+        boat: 'ANARCHY.vehicleCategory.boat',
     }
 };
 

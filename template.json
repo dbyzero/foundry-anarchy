@@ -124,7 +124,7 @@
       "moves": 0,
       "attacks": 0,
       "stealth": 0,
-      "size": "vehicle",
+      "category": "",
       "skill": "pilotingGround",
       "passengers": 4
     },

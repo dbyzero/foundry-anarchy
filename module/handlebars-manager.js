@@ -41,6 +41,9 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/weapon.hbs',
   'systems/anarchy/templates/actor/parts/weapons.hbs',
   'systems/anarchy/templates/actor/parts/wordlist.hbs',
+  // Vehicles
+  'systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs',
+  'systems/anarchy/templates/actor/vehicle/vehicle-structure.hbs',
   //-- NPC
   'systems/anarchy/templates/actor/npc-parts/armor.hbs',
   'systems/anarchy/templates/actor/npc-parts/attribute.hbs',

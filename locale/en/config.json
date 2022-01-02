@@ -116,6 +116,15 @@
         "armor": "Armor",
         "structure": "Structure"
       },
+      "vehicle": {
+        "handling": "Handling",
+        "resistance": "Resistance",
+        "moves": "Moves",
+        "attacks": "Attacks",
+        "stealth": "Stealth",
+        "category": "Category",
+        "skill": "Skill"
+      },
       "ownership": {
         "owner": "Owner",
         "unknown": "Unknown"
@@ -280,6 +289,19 @@
       "short": "Short",
       "medium": "Medium",
       "long": "Long"
+    },
+    "vehicleCategory": {
+      "miniDrone": "Mini drone",
+      "smallDrone": "Small drone",
+      "mediumDrone": "Medium drone",
+      "largeDrone": "Large drone",
+      "motorcycle": "Motorcycle",
+      "smallCar": "Small car",
+      "largeCar": "Large car",
+      "van": "Van",
+      "truck": "Truck",
+      "aircraft": "Aircraft",
+      "boat": "Boat"
     }
   }
 }

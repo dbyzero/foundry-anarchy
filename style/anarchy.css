@@ -5,7 +5,8 @@
   --font-color-half-dark: hsla(0, 10%, 10%, 0.5);
   --transparent: hsla(0, 0%, 0%, 0.0);
   --controls-color: hsla(207, 30%, 60%, 0.6);
-  --checked-color: hsla(207, 100%, 80%, 1);
+  --checked-resource-color: hsla(207, 100%, 80%, 1);
+  --checked-monitor-color: hsla(9, 70%, 30%, 0.9);
   --unchecked-color: hsla(207, 10%, 50%, 1);
   --wordlist-color: hsla(200, 50%, 70%, 0.3);
   --border-dark:hsla(200, 10%, 30%, 0.4);
@@ -228,6 +229,24 @@ div.item.anarchy-attribute  input.small {
   max-width: 1.5rem;
 }
 
+div.item.anarchy-vehicle-attribute {
+  background: var(--anarchy-item-background);
+  min-width: auto;  
+  max-width: 6rem;
+}
+div.item.anarchy-vehicle-attribute input {
+  max-width: 2rem;
+  font-size: large;
+}
+div.item.anarchy-vehicle-structure {
+  background: var(--anarchy-item-background);
+}
+div.item.anarchy-vehicle-attribute-long {
+  background: var(--anarchy-item-background);
+  min-width: auto;
+  max-width: 10rem;
+}
+
 div.anarchy-armor input[name='data.monitors.armor.label'] {
   flex-grow: 2;
 }
@@ -350,8 +369,11 @@ a.item-control img {
   color: var(--controls-color);
 }
 
+div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+  color: var(--checked-resource-color);
+}
 a.click-checkbar-element[data-checked=true] i {
-  color: var(--checked-color);
+  color: var(--checked-monitor-color);
 }
 a.click-checkbar-element[data-checked=false] i {
   color: var(--unchecked-color);

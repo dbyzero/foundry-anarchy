@@ -116,6 +116,15 @@
         "armor": "Armure",
         "structure": "Blindage"
       },
+      "vehicle": {
+        "handling": "Mobilité",
+        "resistance": "Résistance",
+        "moves": "Déplacements",
+        "attacks": "Attaques",
+        "stealth": "Furtivité",
+        "category": "Catégorie",
+        "skill": "Compétence"
+      },
       "ownership": {
         "owner": "Propriétaire",
         "unknown": "inconnu"
@@ -280,6 +289,19 @@
       "short": "Courte",
       "medium": "Moyenne",
       "long": "Longue"
+    },
+    "vehicleCategory": {
+      "miniDrone": "Mini drone",
+      "smallDrone": "Petit drone",
+      "mediumDrone": "Drone moyen",
+      "largeDrone": "Grand drone",
+      "motorcycle": "Moto",
+      "smallCar": "Petite voiture",
+      "largeCar": "Grosse voiture",
+      "van": "Van",
+      "truck": "Camion",
+      "aircraft": "Aeronef",
+      "boat": "Bateau"
     }
   }
 }

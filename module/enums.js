@@ -79,6 +79,7 @@ export class Enums {
     Enums.hbsShadowampCategories = Enums.mapObjetToValueLabel(ANARCHY.shadowampCategory);
     Enums.hbsAreas = Enums.mapObjetToValueLabel(ANARCHY.area);
     Enums.hbsRanges = Enums.mapObjetToValueLabel(ANARCHY.range);
+    Enums.hbsVehicleCategories = Enums.mapObjetToValueLabel(ANARCHY.vehicleCategory);
     Enums.attributeActions = defaultAttributeActions;
   }
 
@@ -92,6 +93,7 @@ export class Enums {
       skills: Enums.hbsSkills,
       areas: Enums.hbsAreas,
       ranges: Enums.hbsRanges,
+      vehicleCategories: Enums.hbsVehicleCategories,
       attributeActions: Enums.attributeActions
     };
   }

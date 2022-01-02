@@ -13,6 +13,10 @@
       </div> --}}
       <div class="flexrow">
       {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
+      {{> "systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs"}}
+      </div>
+      <div class="flexrow">
+      {{> "systems/anarchy/templates/actor/vehicle/vehicle-structure.hbs"}}
       </div>
     </div>
   </header>
@@ -32,25 +36,6 @@
         <div class="flexrow">
           <span class="flex-shrink">{{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}</span>
           <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}</span>
-        </div>
-      </div>
-      <div class="anarchy-block">
-        <h3>
-          {{localize ANARCHY.actor.monitors.conditionMonitors}}
-        </h3>
-        <div class="flexrow flex-wrap">
-          <div class="flexcol">
-            <h4>{{localize ANARCHY.monitors.structure}}</h4>
-            {{> "systems/anarchy/templates/common/checkbar.hbs"
-              code='structure'
-              value=data.data.monitors.structure.value
-              max=data.data.monitors.structure.max
-              labelkey='ANARCHY.actor.monitors.structure'
-              rowlength=9
-              iconChecked=(iconFA 'fas fa-car-crash')
-              iconUnchecked=(iconFA 'fas fa-car-alt')
-            }}
-          </div>
         </div>
       </div>
     </div>
