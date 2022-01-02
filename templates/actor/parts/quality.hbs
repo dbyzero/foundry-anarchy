@@ -1,6 +1,6 @@
 <div class="flexrow define-item-type item anarchy-quality {{#unless data.positive}}negative{{/unless}} {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="quality" draggable="true">
   {{#if img}}
-  <img class="anarchy-img item-img" src="{{img}}" alt="name"/>
+  <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
   {{/if}}
   <div class="flexcol">
     <label>{{name}}</label>

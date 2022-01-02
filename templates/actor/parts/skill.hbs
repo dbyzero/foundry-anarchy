@@ -1,6 +1,6 @@
 <div class="flexrow item anarchy-skill {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
   {{#if img}}
-  <img class="anarchy-img item-img" src="{{img}}" alt="name"/>
+  <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
   {{/if}}
   {{#if (eq data.attribute 'knowledge')}}
   <span title="{{localize 'ANARCHY.attributes.knowledge'}}">

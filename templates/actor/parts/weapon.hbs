@@ -1,7 +1,7 @@
 <li class="flexrow item {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="weapon" draggable="true">
   <span class="flex-shrink-start">
   {{#if img}}
-    <a class="click-weapon-roll"><img class="anarchy-img item-img" src="{{img}}" alt="name"/></a>
+    <a class="click-weapon-roll"><img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/></a>
   {{/if}}
   </span>
   <span class="flex-grow-2"><a class="click-weapon-roll">{{name}}</a>
