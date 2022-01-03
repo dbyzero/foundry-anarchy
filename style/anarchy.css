@@ -63,7 +63,7 @@
     hsla(0, 0%, 0%, 0.7));
 
   /* specifics for root-style-anarchy */
-  --anarchy-background: url("background-anarchy.webp") repeat;
+  --anarchy-background: url("anarchy-background.webp") repeat;
   --anarchy-font: hsla(0, 10%, 10%, 1);
   --anarchy-attributes-background: hsla(47, 90%, 50%, 0.5);
   --anarchy-item-background: hsla(44, 0%, 100%, 0.5);
@@ -83,6 +83,14 @@
   width: 100px;
   height: 57px;
 }
+#pause > img {
+  content: url(anarchy-pause.webp);
+  height: 256px;
+  width: 256px;
+  top: -60px;
+  left: calc(50% - 125px);
+}
+
 
 
 /* common anarchy sheets styles*/
@@ -425,8 +433,7 @@ div.item.flexrow {
 .flex-shrink-start {
   flex: 'flex-shrink';
   flex-grow: 0.5;
-  justify-content:
-  flex-start;
+  justify-content: flex-start;
   min-width: 32px;
 }
 .flex-shrink-left { 
@@ -499,7 +506,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   color: var(--anarchy-font);
 }
 
-.root-style-anarchy .window-content form.npc-character-sheet {
+.root-style-anarchy .window-content form.npc-sheet {
   background: var(--darker-npc);
 }
 .root-style-anarchy div.item.anarchy-attribute {
@@ -575,7 +582,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   color: var(--font-color-light);
 }
 
-.root-style-anarchy-shadowrun .window-content form.npc-character-sheet {
+.root-style-anarchy-shadowrun .window-content form.npc-sheet {
   background: var(--lighter-npc);
 }
 
@@ -601,7 +608,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   background: var(--gradient-dark);
   color: var(--font-color-light);
 }
-.root-style-darkglass .window-content form.npc-character-sheet {
+.root-style-darkglass .window-content form.npc-sheet {
   background: var(--lighter-npc);
 }
 

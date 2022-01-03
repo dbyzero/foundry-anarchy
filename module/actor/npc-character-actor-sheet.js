@@ -9,7 +9,7 @@ export class NPCCharacterActorSheet extends CharacterActorSheet {
 
   getData(options) {
     let hbsData = super.getData(options);
-    hbsData.options.classes.push('npc-character-sheet');
+    hbsData.options.classes.push('npc-sheet');
     return hbsData;
   }
 }
