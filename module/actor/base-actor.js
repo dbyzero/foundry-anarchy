@@ -94,7 +94,9 @@ export class AnarchyBaseActor extends Actor {
   }
 
   async spendEdge(count) {
-    throw 'No edge for selected actor';
+    if (count > 0) {
+      throw 'No edge for selected actor';
+    }
   }
 
   getAttributeValue(attribute) {
