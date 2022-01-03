@@ -110,7 +110,10 @@
       ],
       "attributes": {
         "autopilot": {
-          "value": 0
+          "value": 6
+        },
+        "firewall": {
+          "value": 6
         }
       },
       "monitors": {
@@ -136,11 +139,11 @@
         "shortcuts"
       ],
       "attributes": {
-        "firewall": {
-          "value": 1
-        },
         "system": {
-          "value": 1
+          "value": 6
+        },
+        "firewall": {
+          "value": 6
         }
       }
     }
