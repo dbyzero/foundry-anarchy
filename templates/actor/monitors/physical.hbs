@@ -1,0 +1,13 @@
+<div class="flexcol">
+  <label>{{localize 'ANARCHY.actor.monitors.physical'}}</label>
+  {{> "systems/anarchy/templates/common/checkbar.hbs"
+    code='physical'
+    value=data.data.monitors.physical.value
+    max=data.data.monitors.physical.max
+    labelkey='ANARCHY.actor.monitors.physical'
+    rowlength=3
+    adjust=true
+    iconChecked=(iconFA 'fas fa-heartbeat')
+    iconUnchecked=(iconFA 'far fa-heart')
+  }}
+</div>

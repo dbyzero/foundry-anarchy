@@ -10,10 +10,14 @@ export const HOOK_GET_HANDLEPAR_PARTIALS = "anarchy-getHandlebarPartials";
 export const HOOK_GET_HANDLEPAR_HELPERS = "anarchy-getHandlebarHelpers";
 
 const HBS_PARTIAL_TEMPLATES = [
-  'systems/anarchy/templates/actor/parts/anarchy-header.hbs',
-  'systems/anarchy/templates/actor/parts/anarchy.hbs',
-  'systems/anarchy/templates/actor/parts/armor-header.hbs',
-  'systems/anarchy/templates/actor/parts/armor.hbs',
+  'systems/anarchy/templates/actor/monitors/anarchy.hbs',
+  'systems/anarchy/templates/actor/monitors/armor.hbs',
+  'systems/anarchy/templates/actor/monitors/edge.hbs',
+  'systems/anarchy/templates/actor/monitors/matrix.hbs',
+  'systems/anarchy/templates/actor/monitors/physical.hbs',
+  'systems/anarchy/templates/actor/monitors/structure.hbs',
+  'systems/anarchy/templates/actor/monitors/stun.hbs',
+
   'systems/anarchy/templates/actor/parts/attribute.hbs',
   'systems/anarchy/templates/actor/parts/attributebutton.hbs',
   'systems/anarchy/templates/actor/parts/attributebuttons.hbs',
@@ -22,7 +26,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/contact.hbs',
   'systems/anarchy/templates/actor/parts/contacts.hbs',
   'systems/anarchy/templates/actor/parts/description.hbs',
-  'systems/anarchy/templates/actor/parts/edge.hbs',
   'systems/anarchy/templates/actor/parts/essence.hbs',
   'systems/anarchy/templates/actor/parts/gear.hbs',
   'systems/anarchy/templates/actor/parts/gears.hbs',
@@ -30,7 +33,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/gmnotes.hbs',
   'systems/anarchy/templates/actor/parts/karma.hbs',
   'systems/anarchy/templates/actor/parts/metatype.hbs',
-  'systems/anarchy/templates/actor/parts/monitors.hbs',
   'systems/anarchy/templates/actor/parts/ownership.hbs',
   'systems/anarchy/templates/actor/parts/qualities.hbs',
   'systems/anarchy/templates/actor/parts/quality.hbs',
@@ -43,12 +45,11 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/wordlist.hbs',
   // Vehicles
   'systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs',
-  'systems/anarchy/templates/actor/vehicle/vehicle-structure.hbs',
+  'systems/anarchy/templates/actor/vehicle/vehicle-model.hbs',
+  // monitors
   //-- NPC
-  'systems/anarchy/templates/actor/npc-parts/armor.hbs',
   'systems/anarchy/templates/actor/npc-parts/attribute.hbs',
   'systems/anarchy/templates/actor/npc-parts/essence.hbs',
-  'systems/anarchy/templates/actor/npc-parts/monitors.hbs',
   'systems/anarchy/templates/actor/npc-parts/quality.hbs',
   'systems/anarchy/templates/actor/npc-parts/shadowamp.hbs',
   'systems/anarchy/templates/actor/npc-parts/skill.hbs',

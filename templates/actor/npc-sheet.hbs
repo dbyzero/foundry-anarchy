@@ -34,19 +34,17 @@
       {{/each}}
     </div>
     <div class="flexrow">
-      <div class="anarchy-counter">
-        <span class="flexcol">{{> "systems/anarchy/templates/actor/parts/armor-header.hbs"}}</span>
-        <span class="flexrow">{{> "systems/anarchy/templates/actor/npc-parts/armor.hbs"}}</span>
-        <span class="flexrow">
-          {{localize (concat 'ANARCHY.actor.counters.edge')}}:
-          {{> "systems/anarchy/templates/actor/parts/edge.hbs"}}
-        </span>
-        <span class="flexrow">
-          {{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}
-          {{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}
-        </span>
+      <div class="anarchy-block flexcol">
+        {{> "systems/anarchy/templates/actor/monitors/edge.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
       </div>
-      <div class="anarchy-counter">{{> "systems/anarchy/templates/actor/npc-parts/monitors.hbs"}}</div>
+      <div class="anarchy-block">
+        {{> "systems/anarchy/templates/actor/monitors/armor.hbs"}}
+      </div>
+      <div class="anarchy-block flexrow flex-wrap">
+        {{> "systems/anarchy/templates/actor/monitors/physical.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/stun.hbs"}}
+      </div>
     </div>
     <div class="flexrow">
       <div class="flexcol">

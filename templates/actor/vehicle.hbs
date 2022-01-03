@@ -12,11 +12,13 @@
       {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
       </div> --}}
       <div class="flexrow">
-      {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
-      {{> "systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs"}}
+        {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
+        {{> "systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs"}}
       </div>
       <div class="flexrow">
-      {{> "systems/anarchy/templates/actor/vehicle/vehicle-structure.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/structure.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/matrix.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
       </div>
     </div>
   </header>
@@ -31,13 +33,8 @@
     {{> "systems/anarchy/templates/actor/parts/weapons.hbs"}}
     </div>
     <h2></h2>
-    <div class="flexrow">
-      <div class="anarchy-block">
-        <div class="flexrow">
-          <span class="flex-shrink">{{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}</span>
-          <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}</span>
-        </div>
-      </div>
+    <div class="anarchy-block">
+      {{> "systems/anarchy/templates/actor/vehicle/vehicle-model.hbs"}}
     </div>
     <div class="anarchy-block">
       {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}

@@ -110,9 +110,9 @@
       },
       "monitors": {
         "conditionMonitors": "Condition monitors",
-        "physical": "Physical",
-        "stun": "Stun",
-        "matrix": "Matrix",
+        "physical": "Physical monitor",
+        "stun": "Stun monitor",
+        "matrix": "Matrix monitor",
         "armor": "Armor",
         "structure": "Structure"
       },

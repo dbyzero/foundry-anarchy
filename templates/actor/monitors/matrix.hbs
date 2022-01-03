@@ -1,0 +1,23 @@
+<div class="flexcol anarchy-monitor">
+    <label>{{localize 'ANARCHY.actor.monitors.matrix'}}</label>
+    {{> "systems/anarchy/templates/common/checkbar.hbs"
+      code='matrix'
+      value=data.data.monitors.matrix.value
+      max=data.data.monitors.matrix.max
+      labelkey='ANARCHY.actor.monitors.matrix'
+      rowlength=9
+      iconChecked=(iconFA 'fas fa-keyboard')
+      iconUnchecked=(iconFA 'far fa-keyboard')
+    }}
+      {{!-- fas fa-exclamation-circle --}}
+      {{!-- fas fa-exclamation-circle --}}
+      {{!-- <i class="fas fa-laptop-medical"></i>
+      <i class="fas fa-laptop"></i>
+      <i class="fas fa-laptop-code"></i> 
+      <i class="fas fa-virus"></i>
+      <i class="fas fa-bug"></i>
+      <i class="fas fa-robot"></i>
+      <i class="fas fa-video"></i>
+      
+      --}}
+</div>

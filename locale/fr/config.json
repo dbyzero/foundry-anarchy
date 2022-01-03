@@ -112,7 +112,7 @@
         "conditionMonitors": "Moniteurs de condition",
         "physical": "Physique",
         "stun": "Etourdissant",
-        "matrix": "Matriciel",
+        "matrix": "Moniteur matriciel",
         "armor": "Armure",
         "structure": "Blindage"
       },

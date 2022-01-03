@@ -1,0 +1,16 @@
+<div class="anarchy-vehicle-model">
+  <label for="data.category">{{localize ANARCHY.actor.vehicle.category}}</label>
+  <select name="data.category" data-dtype="String">
+    {{#select data.data.category}}
+    {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.vehicleCategories  noEmpty=true}}
+    {{/select}}
+  </select>
+</div>
+<div class="anarchy-vehicle-model">
+  <label for="data.skill">{{localize ANARCHY.actor.vehicle.skill}}</label>
+  <select name="data.skill" data-dtype="String">
+      {{#select data.data.skill}}
+      {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills  noEmpty=true}}
+      {{/select}}
+  </select>
+</div>

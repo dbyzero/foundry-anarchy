@@ -1,0 +1,12 @@
+<div class="flexcol anarchy-monitor">
+  <label>{{localize ANARCHY.actor.monitors.structure}}</label>
+  {{> "systems/anarchy/templates/common/checkbar.hbs"
+    code='structure'
+    value=data.data.monitors.structure.value
+    max=data.data.monitors.structure.max
+    labelkey='ANARCHY.actor.monitors.structure'
+    rowlength=9
+    iconChecked=(iconFA 'fas fa-car-crash')
+    iconUnchecked=(iconFA 'fas fa-car-alt')
+  }}
+</div>

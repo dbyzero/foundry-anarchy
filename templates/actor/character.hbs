@@ -59,24 +59,16 @@
     </div>
     <h2></h2>
     <div class="flexrow">
-      <div class="anarchy-block">
-        <div class="flexcol">
-          <h3>{{> "systems/anarchy/templates/actor/parts/armor-header.hbs"}}</h3>
-          {{> "systems/anarchy/templates/actor/parts/armor.hbs"}}
-        </div>
-        <hr>
-          <div class="flexrow">
-            <span class="flex-shrink">{{localize (concat 'ANARCHY.actor.counters.edge')}}</span>
-            <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/edge.hbs"}}</span>
-          </div>
-        <hr>
-        <div class="flexrow">
-          <span class="flex-shrink">{{> "systems/anarchy/templates/actor/parts/anarchy-header.hbs"}}</span>
-          <span class="flex-grow-3">{{> "systems/anarchy/templates/actor/parts/anarchy.hbs"}}</span>
-        </div>
+      <div class="anarchy-block flexcol">
+        {{> "systems/anarchy/templates/actor/monitors/edge.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
       </div>
       <div class="anarchy-block">
-      {{> "systems/anarchy/templates/actor/parts/monitors.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/armor.hbs"}}
+      </div>
+      <div class="anarchy-block flexrow flex-wrap">
+        {{> "systems/anarchy/templates/actor/monitors/physical.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/stun.hbs"}}
       </div>
     </div>
     <div class="anarchy-block flexrow">

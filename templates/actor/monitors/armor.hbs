@@ -1,0 +1,18 @@
+<div class="flexcol anarchy-monitor">
+  <h3 class="anarchy-armor flexrow">
+      <input class="label" name="data.monitors.armor.label" type="text" data-dtype="String"
+          value="{{data.data.monitors.armor.label}}" placeholder="{{localize 'ANARCHY.actor.monitors.armor'}}"/>
+      <input class="value" name="data.monitors.armor.max" type="number" data-dtype="Number" 
+          value="{{data.data.monitors.armor.max}}"/>
+
+  </h3>
+  {{> "systems/anarchy/templates/common/checkbar.hbs"
+    code='armor'
+    value=data.data.monitors.armor.value
+    max=data.data.monitors.armor.max
+    rowlength=6
+    adjust=false
+    iconChecked=(iconFA 'fas fa-skull-crossbones')
+    iconUnchecked=(iconFA 'fas fa-shield-alt')
+  }}
+</div>

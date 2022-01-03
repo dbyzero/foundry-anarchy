@@ -109,13 +109,13 @@ img.anarchy-img {
   height: 48px;
 }
 
-.sheet-header img.profile-img {
+.sheet header.sheet-header img.profile-img {
   -ms-flex: 0 0 128px;
   flex: 0 0 128px;
   height: 128px;
   width: 128px;
-  margin-right: 10px;
-  object-position: 50% 0;
+  margin-right: 5px;
+  object-position: 50% 0%;
 }
 
 img.anarchy-img.actor-img {
@@ -154,8 +154,7 @@ img.checkbar-img:active {
   top: 1px;
 }
 
-div.anarchy-block,
-div.anarchy-counter {
+div.anarchy-block {
   margin: 2px;
   padding: 2px;
 }
@@ -229,28 +228,28 @@ div.item.anarchy-attribute  input.small {
   max-width: 1.5rem;
 }
 
-div.item.anarchy-vehicle-attribute {
+div.anarchy-vehicle-attribute {
   background: var(--anarchy-item-background);
   min-width: auto;  
   max-width: 6rem;
 }
-div.item.anarchy-vehicle-attribute input {
+div.anarchy-vehicle-attribute input {
   max-width: 2rem;
   font-size: large;
 }
-div.item.anarchy-vehicle-structure {
+div.anarchy-monitor {
   background: var(--anarchy-item-background);
 }
-div.item.anarchy-vehicle-attribute-long {
+select.anarchy-vehicle-model {
   background: var(--anarchy-item-background);
-  min-width: auto;
+  width: fit-content;
   max-width: 10rem;
 }
 
-div.anarchy-armor input[name='data.monitors.armor.label'] {
+.anarchy-armor input[name='data.monitors.armor.label'] {
   flex-grow: 2;
 }
-div.anarchy-armor input[name='data.monitors.armor.value'] {
+.anarchy-armor input[name='data.monitors.armor.max'] {
   max-width: 2rem;
   flex: 'flex-shrink'; 
 }
