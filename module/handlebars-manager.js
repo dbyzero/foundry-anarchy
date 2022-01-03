@@ -47,7 +47,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/weapons.hbs',
   //-- NPC
   'systems/anarchy/templates/actor/npc-parts/attribute.hbs',
-  'systems/anarchy/templates/actor/npc-parts/essence.hbs',
   'systems/anarchy/templates/actor/npc-parts/quality.hbs',
   'systems/anarchy/templates/actor/npc-parts/shadowamp.hbs',
   'systems/anarchy/templates/actor/npc-parts/skill.hbs',

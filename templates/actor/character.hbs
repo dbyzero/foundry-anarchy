@@ -1,39 +1,27 @@
 <form class="{{options.cssClass}} character-sheet" autocomplete="off">
   <header class="sheet-header">
     <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
-    <div class="flexcol">
-      <div class="flexrow">
-        <h1 class="actor-name">
-          <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
-        </h1>
-        <div class="flexcol flex-shrink">
-          <div class="flexrow flex-shrink">
-          {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
-          {{> "systems/anarchy/templates/actor/parts/genre.hbs"}}
-          {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
-          </div>
-          <div class="flexrow flex-shrink">
-          {{> "systems/anarchy/templates/actor/parts/karma.hbs"}}
-          </div>
-          <div class="flexrow flex-shrink">
-          {{> "systems/anarchy/templates/actor/parts/essence.hbs"}}
-          </div>
-        </div>
-        <div class="flexcol flex-shrink">
-          {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
-        </div>
-      </div>
-      <div class="flexrow">
-      {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
-      </div>
-      <div class="flexrow">
-      {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
-      </div>
-      <div class="flexrow">
-      </div>
+    <h1 class="actor-name flex-grow-3">
+      <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+    </h1>
+    <div class="flex-grow-0">
+      {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/genre.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/karma.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/essence.hbs"}}
+    </div>
+    <div class="flexcol flex-shrink-end">
+      {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
     </div>
   </header>
   <section class="sheet-body">
+    <div class="flexrow">
+    {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
+    </div>
+    <div class="flexrow">
+    {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
+    </div>
     <div class="flexrow">
       <div class="flexcol anarchy-keywords">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.keywords}}

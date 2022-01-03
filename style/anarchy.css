@@ -114,7 +114,7 @@ img.anarchy-img {
   width: 48px;
   height: 48px;
 }
-
+.sheet header.sheet-header h1,
 .sheet header.sheet-header > div{
   flex: 1;
   flex-grow: 1;
@@ -431,7 +431,7 @@ div.item.flexrow {
   vertical-align: top;
 }
 
-.flex-grow-3 { flex-grow: 3; flex-basis: auto;}
+.flex-grow-3 { flex-grow: 3; }
 .flex-grow,
 .flex-grow-2 { flex-grow: 2; }
 .flex-grow-0 { flex-grow: 0; }
