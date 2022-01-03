@@ -32,11 +32,12 @@ export class AnarchyRoll {
       await this.subrolls.rerollForced.evaluate();
       this.subrolls.total += this.subrolls.rerollForced.total;
     }
+    // taking risks
     if (this.param.risk > 0) {
-      this.subrolls.risk = new Roll(`${this.param.risk}d6`);
+      this.subrolls.risk = new Roll(`${this.param.risk}d6cs>4`);
       await this.subrolls.risk.evaluate();
-      this.subrolls.glitch = this.subrolls.risk.terms[0].total == 1;
-      this.subrolls.prowess = this.subrolls.risk.terms[0].total > 4;
+      this.subrolls.glitch = this.subrolls.risk.terms[0].results.filter(it => it.result == 1).length;
+      this.subrolls.prowess = this.subrolls.risk.total;
       if (this.subrolls.prowess) {
         this.subrolls.total++;
       }
