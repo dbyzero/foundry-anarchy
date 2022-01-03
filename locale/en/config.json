@@ -241,7 +241,8 @@
       "knowledge": "Knowledge",
       "noAttribute": "No attribute chosen",
       "autopilot": "Autopilot",
-      "firewall": "Firewall"
+      "firewall": "Firewall",
+      "system": "System"
     },
     "attributeActions": {
       "catch": "Catch object",

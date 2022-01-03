@@ -139,7 +139,7 @@
         "firewall": {
           "value": 1
         },
-        "logic": {
+        "system": {
           "value": 1
         }
       }

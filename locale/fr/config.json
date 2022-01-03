@@ -241,7 +241,8 @@
       "knowledge": "Connaissance",
       "noAttribute": "Pas d'attribut choisi",
       "autopilot": "Autopilote",
-      "firewall": "Firewall"
+      "firewall": "Firewall",
+      "system": "Système"
     },
     "attributeActions": {
       "catch": "Attraper au vol",

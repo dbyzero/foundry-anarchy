@@ -240,6 +240,7 @@ export const ANARCHY = {
         noAttribute: 'ANARCHY.attributes.noAttributes',
         autopilot: 'ANARCHY.attributes.autopilot',
         firewall: 'ANARCHY.attributes.firewall',
+        system: 'ANARCHY.attributes.system',
     },
     attributeActions: {
         catch: 'ANARCHY.attributeActions.catch',
