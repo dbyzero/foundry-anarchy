@@ -85,13 +85,11 @@
 }
 #pause > img {
   content: url(anarchy-pause.webp);
-  height: 256px;
-  width: 256px;
-  top: -60px;
-  left: calc(50% - 125px);
+  height: 192px;
+  width: 192px;
+  top: -35px;
+  left: calc(50% - 96px);
 }
-
-
 
 /* common anarchy sheets styles*/
 h1, h2, h3 { font-weight: bold; }
