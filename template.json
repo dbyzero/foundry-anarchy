@@ -20,11 +20,11 @@
             "total": 0
           },
           "anarchy": {
-            "value": 0,
+            "value": 3,
             "max": 6
           },
           "edge": {
-            "value": 0
+            "value": 1
           }
         }
       },
@@ -137,10 +137,10 @@
       ],
       "attributes": {
         "firewall": {
-          "value": 0
+          "value": 1
         },
         "logic": {
-          "value": 0
+          "value": 1
         }
       }
     }
