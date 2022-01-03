@@ -57,7 +57,8 @@ export class AnarchySystem {
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.actor.characterSheet));
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.item.sheet));
 
-    Enums.registerEnums();
+    Enums.init();
+
     CONFIG.ENUMS = Enums.getEnums();
     CONFIG.ANARCHY = ANARCHY;
 

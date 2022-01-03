@@ -14,6 +14,26 @@ export class Misc {
     return 0;
   }
 
+  static bySortedArray(sortedArray) {
+    return it => sortedArray.indexOf(it);
+  }
+
+  static ascendingBySortedArray(sortedArray) {
+    return Misc.ascending(Misc.bySortedArray(sortedArray));
+  }
+
+  static sortedMap(map, compareFunction = (a, b) => 0) {
+    return Object.keys(map)
+      .sort(compareFunction)
+      .reduce((obj, key) => {
+        obj[key] = map[key];
+        return obj;
+      },
+        {});
+
+  }
+
+
   static distinct(array) {
     return [...new Set(array)];
   }

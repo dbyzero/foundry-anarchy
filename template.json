@@ -7,6 +7,7 @@
     ],
     "templates": {
       "description": {
+        "ownerId": "",
         "description": "",
         "gmnotes": ""
       },
@@ -28,12 +29,12 @@
           }
         }
       },
-      "attributes": {
+      "attributes-living": {
         "attributes": {
-          "strength": {
+          "agility": {
             "value": 1
           },
-          "agility": {
+          "strength": {
             "value": 1
           },
           "willpower": {
@@ -50,15 +51,32 @@
           }
         }
       },
-      "monitors": {
+      "attributes-matrix": {
+        "attributes": {
+          "system": {
+            "value": 6
+          },
+          "firewall": {
+            "value": 6
+          }
+        },
+        "attributes-vehicle": {
+          "autopilot": {
+            "value": 6
+          }
+        }
+      },
+      "monitors-living": {
         "monitors": {
           "physical": {
             "value": 0,
-            "max": 10
+            "max": 10,
+            "resistance": 0
           },
           "stun": {
             "value": 0,
-            "max": 10
+            "max": 10,
+            "resistance": 0
           },
           "armor": {
             "label": "Armor",
@@ -67,18 +85,29 @@
           }
         }
       },
-      "matrix": {
-        "connectable": false,
+      "monitors-vehicle": {
+        "monitors": {
+          "structure": {
+            "value": 0,
+            "max": 15,
+            "resistance": 2
+          }
+        }
+      },
+      "monitors-matrix": {
         "monitors": {
           "matrix": {
             "value": 0,
-            "max": 6
+            "max": 6,
+            "resistance": 0
           }
-        },
-        "marks": []
+        }
       },
-      "ownership": {
-        "ownerId": ""
+      "monitors-marks": {
+        "monitors": {
+          "marks": [],
+          "resistance": 0
+        }
       },
       "shortcuts": {
         "shortcuts": []
@@ -87,9 +116,10 @@
     "character": {
       "templates": [
         "description",
-        "attributes",
+        "attributes-living",
+        "monitors-living",
+        "monitors-matrix",
         "counters",
-        "monitors",
         "ownership",
         "shortcuts"
       ],
@@ -104,8 +134,10 @@
     "vehicle": {
       "templates": [
         "description",
-        "matrix",
-        "ownership",
+        "attributes-vehicle",
+        "monitors-vehicle",
+        "attributes-matrix",
+        "monitors-matrix",
         "shortcuts"
       ],
       "attributes": {
@@ -116,14 +148,7 @@
           "value": 6
         }
       },
-      "monitors": {
-        "structure": {
-          "value": 0,
-          "max": 15
-        }
-      },
       "handling": 1,
-      "resistance": 2,
       "moves": 0,
       "attacks": 0,
       "stealth": 0,
@@ -134,8 +159,8 @@
     "device": {
       "templates": [
         "description",
-        "matrix",
-        "ownership",
+        "attributes-matrix",
+        "monitors-matrix",
         "shortcuts"
       ],
       "attributes": {

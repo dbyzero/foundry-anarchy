@@ -1,5 +1,7 @@
 import { ANARCHY } from "./config.js";
+import { HOOK_GET_HANDLEPAR_HELPERS } from "./handlebars-manager.js";
 import { Icons } from "./icons.js";
+import { Misc } from "./misc.js";
 
 const defaultSkillsAttribute = {
   athletics: 'strength',
@@ -63,10 +65,11 @@ export class Enums {
   static hbsShadowampCategories;
   static hbsAreas;
   static hbsRanges;
-  static hbsAllAttributes
+
+  static sortedAttributeKeys;
 
   // this method is the place to add settings-based entries in the enums
-  static registerEnums() {
+  static init() {
     // Customisation of skills will have to be done based on system settings
     Enums.skillsAttribute = defaultSkillsAttribute;
     Enums.hbsSkills = Enums.mapObjetToValueLabel(ANARCHY.skill);
@@ -81,6 +84,14 @@ export class Enums {
     Enums.hbsRanges = Enums.mapObjetToValueLabel(ANARCHY.range);
     Enums.hbsVehicleCategories = Enums.mapObjetToValueLabel(ANARCHY.vehicleCategory);
     Enums.attributeActions = defaultAttributeActions;
+
+    Enums.sortedAttributeKeys = Object.keys(ANARCHY.attributes);
+
+    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => Enums.registerHandleBarHelpers());
+  }
+
+  static registerHandleBarHelpers() {
+    Handlebars.registerHelper('sortedAttributes', map => Misc.sortedMap(map, Misc.ascendingBySortedArray(Enums.sortedAttributeKeys)));
   }
 
   static getEnums() {
