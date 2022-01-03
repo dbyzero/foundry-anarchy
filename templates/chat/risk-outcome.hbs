@@ -1,9 +1,9 @@
-  {{#if modifiers.anarchyRisk.used}}
-    {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
-    <div class="anarchy-risk-prowess">{{localize ANARCHY.common.roll.risk.prowess}}</div>
-    {{else if (eq roll.subrolls.risk.outcome 'glitch')}}
-    <div class="anarchy-risk-glitch">{{localize ANARCHY.common.roll.risk.glitch}}</div>
-    {{else if (eq roll.subrolls.risk.outcome 'nothing')}}
-    <div>{{localize ANARCHY.common.roll.risk.nothing}}</div>
-    {{/if}}
-  {{/if}}
+{{#if modifiers.anarchyRisk.used}}
+  <div class="anarchy-risk-{{roll.subrolls.risk.outcome}}">
+    {{localize ANARCHY.common.roll.modifiers.anarchyRisk}}:
+    <span class="anarchy-risk-dice {{roll.subrolls.risk.outcome}}">
+      {{{iconD6 roll.subrolls.risk.terms.[0].results.[0].result}}}
+    </span>
+    {{localize (concat 'ANARCHY.common.roll.risk.' roll.subrolls.risk.outcome)}}
+  </div>
+{{/if}}

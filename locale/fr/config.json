@@ -50,9 +50,9 @@
         "totalSuccess": "Succès finaux",
         "success": "Succès",
         "risk": {
-          "prowess": "Anarchy - Prise de risque: Exploit",
-          "nothing": "Anarchy - Prise de risque: sans effet",
-          "glitch": "Anarchy - Prise de risque: Complication"
+          "prowess": "Exploit!",
+          "nothing": "Sans effet",
+          "glitch": "Complication"
         },
         "rerollSuccess": "Succès sur relance",
         "rerollForcedLoss": "Relances forcées",
@@ -105,8 +105,7 @@
         "essence": "Essence",
         "karma": "Karma",
         "karmaTotal": "Total",
-        "anarchy": "Anarchy",
-        "edge": "Chance"
+        "anarchy": "Anarchy"
       },
       "monitors": {
         "conditionMonitors": "Moniteurs de condition",

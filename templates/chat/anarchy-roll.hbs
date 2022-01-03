@@ -19,34 +19,34 @@
       {{localize ANARCHY.common.roll.success}}: {{roll.hits}}
       {{> (concat 'systems/anarchy/templates/chat/parts/' mode '/result.hbs')}}
       <div class="tooltiptext tooltip-roll-modifiers">
-        <div>{{localize ANARCHY.common.roll.success}}: {{roll.roll.total}} / {{roll.param.pool}}</div>
+        <div>{{localize ANARCHY.common.roll.success}}: {{roll.roll.total}} ({{roll.param.pool}})</div>
         {{#if roll.subrolls.reroll}}
-        <div>{{localize ANARCHY.common.roll.rerollSuccess}}: {{roll.subrolls.reroll.total}} / {{roll.param.reroll}}</div>
+        <div>{{localize ANARCHY.common.roll.rerollSuccess}}: +{{roll.subrolls.reroll.total}}  ({{roll.param.reroll}})</div>
         {{/if}}
         {{#if roll.subrolls.rerollForced}}
         <div>{{localize ANARCHY.common.roll.rerollForcedLoss}}: -{{roll.param.rerollForced}}</div>
-        <div>{{localize ANARCHY.common.roll.rerollForcedSuccess}}: {{roll.subrolls.rerollForced.total}} / {{roll.param.rerollForced}}</div>
+        <div>{{localize ANARCHY.common.roll.rerollForcedSuccess}}: +{{roll.subrolls.rerollForced.total}}</div>
         {{/if}}
         {{#if (eq roll.subrolls.risk.outcome 'prowess')}}
-        <div>{{localize 'ANARCHY.common.roll.risk.prowess'}}: 1</div>
+        <div>{{localize ANARCHY.common.roll.modifiers.anarchyRisk}}: +1</div>
         {{/if}}
       </div>
     </h4>
 
-    {{#unless modifiers.edge.used}}
-    <div>
-      {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
-    </div>
-    {{/unless}}
-
     <div>
       <div class="alternate-items">
-      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyRisk}}
+      {{> 'systems/anarchy/templates/chat/risk-outcome.hbs'}}
       {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
       {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}
       {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentRerollForced}}
       {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentReduce}}
       </div>
     </div>
+
+    {{#unless modifiers.edge.used}}
+    <div>
+      {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
+    </div>
+    {{/unless}}
   </div>
 </div>

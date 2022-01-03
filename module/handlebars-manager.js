@@ -70,20 +70,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/item-controls.hbs',
   // dialogs
   'systems/anarchy/templates/dialog/roll-modifier.hbs',
-  // chat
-  'systems/anarchy/templates/chat/roll-modifier.hbs',
-  'systems/anarchy/templates/chat/risk-outcome.hbs',
-  'systems/anarchy/templates/chat/edge-reroll-button.hbs',
-  'systems/anarchy/templates/chat/parts/actor-image.hbs',
-  'systems/anarchy/templates/chat/parts/attribute/title.hbs',
-  'systems/anarchy/templates/chat/parts/attribute/pool.hbs',
-  'systems/anarchy/templates/chat/parts/attribute/result.hbs',
-  'systems/anarchy/templates/chat/parts/skill/title.hbs',
-  'systems/anarchy/templates/chat/parts/skill/pool.hbs',
-  'systems/anarchy/templates/chat/parts/skill/result.hbs',
-  'systems/anarchy/templates/chat/parts/weapon/title.hbs',
-  'systems/anarchy/templates/chat/parts/weapon/pool.hbs',
-  'systems/anarchy/templates/chat/parts/weapon/result.hbs',
   // apps
   'systems/anarchy/templates/app/gm-anarchy.hbs',
   'systems/anarchy/templates/app/gm-difficulty.hbs',
@@ -130,6 +116,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('localizeAttribute', Enums.localizeAttribute);
     Handlebars.registerHelper('iconFA', Icons.fontAwesome);
     Handlebars.registerHelper('iconSrc', Icons.iconSrc);
+    Handlebars.registerHelper('iconD6', Icons.iconD6);
   }
 
   static hbsForLoop(start, end, options) {

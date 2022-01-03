@@ -50,9 +50,9 @@
         "totalSuccess": "Total successes",
         "success": "Successes",
         "risk": {
-          "prowess": "Anarchy - Risk taken: Prowess",
-          "nothing": "Anarchy - Risk taken: no effect",
-          "glitch": "Anarchy - Risk taken: Glitch"
+          "prowess": "Prowess",
+          "nothing": "no effect",
+          "glitch": "Glitch"
         },
         "rerollSuccess": "Successes after reroll",
         "rerollForcedLoss": "Forced reroll",

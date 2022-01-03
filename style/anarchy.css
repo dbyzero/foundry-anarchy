@@ -62,12 +62,15 @@
     hsla(319, 30%, 10%, 0.9),
     hsla(0, 0%, 0%, 0.7));
 
+  --color-dice-prowess: hsla(47, 60%, 40%, 1);
+  --color-dice-glitch: hsla(300, 80%, 20%, 1);
+
   /* specifics for root-style-anarchy */
   --anarchy-background: url("anarchy-background.webp") repeat;
   --anarchy-font: hsla(0, 10%, 10%, 1);
   --anarchy-attributes-background: hsla(47, 90%, 50%, 0.5);
   --anarchy-item-background: hsla(44, 0%, 100%, 0.5);
-  --anarchy-quality-negative-background: hsla(0, 0%, 70%, 0.5);
+  --anarchy-negative-background: hsla(300, 80%, 20%, 0.2);
   --anarchy-controls-color: hsla(207, 40%, 60%, 0.7);
   --anarchy-tooltip-background: hsla(207, 40%, 70%, 1);
   --anarchy-button-background: hsla(47, 40%, 70%, 1);
@@ -206,17 +209,25 @@ div.anarchy-block {
   padding: 2px;
 }
 
+
+div.anarchy-risk-glitch span i.fas {
+  color: var(--color-dice-glitch);
+}
+div.anarchy-risk-prowess span i.fas {
+  color: var(--color-dice-prowess);
+}
 div.anarchy-risk-glitch {
   margin: 1px;
   padding: 1px;
   border-radius: 6px;
-  background: var(--gradient-purple-black) !important;
+  background: var(--anarchy-negative-background);
 }
+
 div.anarchy-risk-prowess {
   margin: 1px;
   padding: 1px;
   border-radius: 6px;
-  background: var(--gradient-gold) !important;
+  background: var(--gradient-gold);
 }
 
 div.anarchy-keywords,
@@ -556,7 +567,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   background: var(--anarchy-item-img-background);
 }
 .root-style-anarchy div.item.anarchy-quality.negative {
-  background: var(--anarchy-quality-negative-background);
+  background: var(--anarchy-negative-background);
   border-style: dashed;
 }
 

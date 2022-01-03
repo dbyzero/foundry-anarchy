@@ -38,6 +38,7 @@ export class AnarchyRoll {
       await this.subrolls.risk.evaluate();
       this.subrolls.glitch = this.subrolls.risk.terms[0].results.filter(it => it.result == 1).length;
       this.subrolls.prowess = this.subrolls.risk.total;
+      this.subrolls.riskDice = this.subrolls.risk.terms[0].results[0].result;
       if (this.subrolls.prowess) {
         this.subrolls.total++;
       }
