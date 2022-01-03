@@ -1,9 +1,14 @@
-<div class="anarchy-metatype">
-  {{#if items.metatype}}
+{{#if items.metatype}}
   {{#each items.metatype as | metatype |}}
-  <span>{{metatype.name}}</span>
+  <div class="define-item-type metaitem anarchy-metatype" data-item-id="{{metatype._id}}" data-item-type="metatype">
+    <span>{{metatype.name}}</span>
+    <a class="item-control click-item-delete" title="{{localize ANARCHY.common.del}}">
+      {{{iconFA 'fas fa-trash'}}}
+    </a>
+  </div>
   {{/each}}
-  {{else}}
+{{else}}
+<div class="anarchy-metatype">
   <span>{{localize ANARCHY.actor.noMetatype}}</span>
-  {{/if}}
 </div>
+{{/if}}

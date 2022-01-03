@@ -10,6 +10,7 @@ export const HOOK_GET_HANDLEPAR_PARTIALS = "anarchy-getHandlebarPartials";
 export const HOOK_GET_HANDLEPAR_HELPERS = "anarchy-getHandlebarHelpers";
 
 const HBS_PARTIAL_TEMPLATES = [
+  // -- monitors
   'systems/anarchy/templates/actor/monitors/anarchy.hbs',
   'systems/anarchy/templates/actor/monitors/armor.hbs',
   'systems/anarchy/templates/actor/monitors/edge.hbs',
@@ -17,22 +18,24 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/monitors/physical.hbs',
   'systems/anarchy/templates/actor/monitors/structure.hbs',
   'systems/anarchy/templates/actor/monitors/stun.hbs',
-
-  'systems/anarchy/templates/actor/parts/attribute.hbs',
-  'systems/anarchy/templates/actor/parts/attributebutton.hbs',
-  'systems/anarchy/templates/actor/parts/attributebuttons.hbs',
-  'systems/anarchy/templates/actor/parts/attributes.hbs',
+  // character
   'systems/anarchy/templates/actor/parts/capacity.hbs',
   'systems/anarchy/templates/actor/parts/contact.hbs',
   'systems/anarchy/templates/actor/parts/contacts.hbs',
-  'systems/anarchy/templates/actor/parts/description.hbs',
   'systems/anarchy/templates/actor/parts/essence.hbs',
   'systems/anarchy/templates/actor/parts/gear.hbs',
   'systems/anarchy/templates/actor/parts/gears.hbs',
   'systems/anarchy/templates/actor/parts/genre.hbs',
-  'systems/anarchy/templates/actor/parts/gmnotes.hbs',
   'systems/anarchy/templates/actor/parts/karma.hbs',
   'systems/anarchy/templates/actor/parts/metatype.hbs',
+  'systems/anarchy/templates/actor/parts/wordlist.hbs',
+  // actor common
+  'systems/anarchy/templates/actor/parts/attributebutton.hbs',
+  'systems/anarchy/templates/actor/parts/attributebuttons.hbs',
+  'systems/anarchy/templates/actor/parts/attribute.hbs',
+  'systems/anarchy/templates/actor/parts/attributes.hbs',
+  'systems/anarchy/templates/actor/parts/description.hbs',
+  'systems/anarchy/templates/actor/parts/gmnotes.hbs',
   'systems/anarchy/templates/actor/parts/ownership.hbs',
   'systems/anarchy/templates/actor/parts/qualities.hbs',
   'systems/anarchy/templates/actor/parts/quality.hbs',
@@ -42,11 +45,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/skills.hbs',
   'systems/anarchy/templates/actor/parts/weapon.hbs',
   'systems/anarchy/templates/actor/parts/weapons.hbs',
-  'systems/anarchy/templates/actor/parts/wordlist.hbs',
-  // Vehicles
-  'systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs',
-  'systems/anarchy/templates/actor/vehicle/vehicle-model.hbs',
-  // monitors
   //-- NPC
   'systems/anarchy/templates/actor/npc-parts/attribute.hbs',
   'systems/anarchy/templates/actor/npc-parts/essence.hbs',
@@ -56,11 +54,14 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/npc-parts/skills.hbs',
   'systems/anarchy/templates/actor/npc-parts/weapon.hbs',
   'systems/anarchy/templates/actor/npc-parts/weapons.hbs',
-  //-- item
+  // Vehicles
+  'systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs',
+  'systems/anarchy/templates/actor/vehicle/vehicle-model.hbs',
+  // item
   'systems/anarchy/templates/item/parts/inactive.hbs',
   'systems/anarchy/templates/item/parts/itemname.hbs',
   'systems/anarchy/templates/item/parts/references.hbs',
-  //-- common&technical partials
+  // common&technical partials
   'systems/anarchy/templates/common/anarchy-bar.hbs',
   'systems/anarchy/templates/common/check-element.hbs',
   'systems/anarchy/templates/common/checkbar.hbs',
@@ -68,9 +69,9 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/enum-value-label.hbs',
   'systems/anarchy/templates/common/item-control-add.hbs',
   'systems/anarchy/templates/common/item-controls.hbs',
-  //-- dialogs
+  // dialogs
   'systems/anarchy/templates/dialog/roll-modifier.hbs',
-  //-- chat
+  // chat
   'systems/anarchy/templates/chat/roll-modifier.hbs',
   'systems/anarchy/templates/chat/risk-outcome.hbs',
   'systems/anarchy/templates/chat/edge-reroll-button.hbs',
@@ -84,7 +85,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/chat/parts/weapon/title.hbs',
   'systems/anarchy/templates/chat/parts/weapon/pool.hbs',
   'systems/anarchy/templates/chat/parts/weapon/result.hbs',
-  //-- apps
+  // apps
   'systems/anarchy/templates/app/gm-anarchy.hbs',
   'systems/anarchy/templates/app/gm-difficulty.hbs',
   'systems/anarchy/templates/app/gm-difficulty-buttons.hbs',

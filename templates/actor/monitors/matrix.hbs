@@ -1,15 +1,17 @@
 <div class="flexcol anarchy-monitor">
-    <label>{{localize 'ANARCHY.actor.monitors.matrix'}}
-       <input class="value" name="data.monitors.matrix.max" type="number" data-dtype="Number" 
-          value="{{data.data.monitors.matrix.max}}"/>
-    </label>
-    {{> "systems/anarchy/templates/common/checkbar.hbs"
-      code='matrix'
-      value=data.data.monitors.matrix.value
-      max=data.data.monitors.matrix.max
-      labelkey='ANARCHY.actor.monitors.matrix'
-      rowlength=6
-      iconChecked=(iconFA 'fas fa-laptop-medical')
-      iconUnchecked=(iconFA 'fas fa-laptop')
-    }}
+  <label class="flexrow">
+    {{localize 'ANARCHY.actor.monitors.matrix'}}
+      <input type="number" data-dtype="Number" maxlength="2" 
+        class="value" name="data.monitors.matrix.max" 
+        value="{{data.data.monitors.matrix.max}}"/>
+  </label>
+  {{> "systems/anarchy/templates/common/checkbar.hbs"
+    code='matrix'
+    value=data.data.monitors.matrix.value
+    max=data.data.monitors.matrix.max
+    labelkey='ANARCHY.actor.monitors.matrix'
+    rowlength=6
+    iconChecked=(iconFA 'fas fa-laptop-medical')
+    iconUnchecked=(iconFA 'fas fa-laptop')
+  }}
 </div>

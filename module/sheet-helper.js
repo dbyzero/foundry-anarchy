@@ -2,7 +2,8 @@
 export class SheetHelper {
 
   static getItemId(event) {
-    return $(event.currentTarget).closest('.item').attr('data-item-id');
+    return $(event.currentTarget).closest('.item').attr('data-item-id')
+      ?? $(event.currentTarget).closest('.metaitem').attr('data-item-id');
   }
 
   static getItemType(event) {

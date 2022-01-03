@@ -1,12 +1,10 @@
 {{#if ownerActor}}
-<div class="flexcol flex-shrink">
-  <img class="anarchy-img actor-img" src="{{ownerActor.img}}"/>
-  <span>
-    {{localize ANARCHY.actor.ownership.owner}}:<br>
-    {{ownerActor.name}}
-    <a class="item-control click-owner-delete" title="{{localize ANARCHY.common.del}}">
-      {{{iconFA 'fas fa-trash'}}}
-    </a>
-  </span>
+<div class="flex-shrink-end">
+  {{localize ANARCHY.actor.ownership.owner}}:<br>
+  <img class="anarchy-img owner-actor-img" src="{{ownerActor.img}}"/>
+  {{ownerActor.name}}
+  <a class="item-control click-owner-delete" title="{{localize ANARCHY.common.del}}">
+    {{{iconFA 'fas fa-trash'}}}
+  </a>
 </div>
 {{/if}}

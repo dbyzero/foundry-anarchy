@@ -1,5 +1,11 @@
 <div class="flexcol anarchy-monitor">
-  <label>{{localize ANARCHY.actor.monitors.structure}}</label>
+  <label class="flexrow">
+    {{localize ANARCHY.actor.monitors.structure}}
+    <input type="number" data-dtype="Number" maxlength="2"
+      class="value" name="data.monitors.structure.max"
+      value="{{data.data.monitors.structure.max}}" 
+    />
+  </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='structure'
     value=data.data.monitors.structure.value

@@ -1,25 +1,28 @@
 <form class="{{options.cssClass}} npc-sheet" autocomplete="off">
   <header class="sheet-header">
     <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
-    <div class="flexcol">
-      <div class="flexrow flex-group-left">
-        <div class="flex-grow-2">
-            <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+    <div class="flexcol flex-grow-3">
+      <div class="flexrow anarchy-block">
+        <div class="flexcol">
+          <div class="flexrow">
+            <div class="flex-grow-2">
+                <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+            </div>
+            <div class="flex-shrink">
+              {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
+            </div>
+          </div>
+          <div class="flexrow">
+            <div>
+              {{> "systems/anarchy/templates/actor/npc-parts/essence.hbs"}}
+            </div>
+            <div class="flex-shrink">
+              {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
+            </div>
+          </div>
         </div>
-        <div class="flex-shrink">
-          {{> "systems/anarchy/templates/actor/parts/genre.hbs"}}
-        </div>
-        <div class="flex-shrink">
-          {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
-        </div>
+        <div class="anarchy-block flex-shrink-end">
         {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
-      </div>
-      <div class="flexrow flex-group-left">
-        <div>
-          {{> "systems/anarchy/templates/actor/npc-parts/essence.hbs"}}
-        </div>
-        <div class="flex-shrink">
-          {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
         </div>
       </div>
       <div class="flexrow">
@@ -34,14 +37,16 @@
       {{/each}}
     </div>
     <div class="flexrow">
-      <div class="anarchy-block flexcol">
+      <div class="flexcol anarchy-block">
         {{> "systems/anarchy/templates/actor/monitors/edge.hbs"}}
+        {{#unless anarchy.isGM}}
         {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
+        {{/unless}}
       </div>
       <div class="anarchy-block">
         {{> "systems/anarchy/templates/actor/monitors/armor.hbs"}}
       </div>
-      <div class="anarchy-block flexrow flex-wrap">
+      <div class="flexrow anarchy-block flex-wrap">
         {{> "systems/anarchy/templates/actor/monitors/physical.hbs"}}
         {{> "systems/anarchy/templates/actor/monitors/stun.hbs"}}
       </div>
