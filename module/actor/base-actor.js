@@ -55,20 +55,20 @@ export class AnarchyBaseActor extends Actor {
   }
 
   async setCounter(monitor, value) {
-    const checkbar = CHECKBARS[monitor];
-    if (checkbar) {
-      if (monitor == 'anarchy') {
-        await this.setAnarchy(checkbar, value);
-      }
-      else {
-        ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
-        await this.update({ [`${checkbar.dataPath}`]: value });
-      }
+    if (monitor == 'anarchy') {
+      await this.setAnarchy(value);
+    }
+    else if (CHECKBARS[monitor]) {
+      ErrorManager.checkOutOfRange(CHECKBARS[monitor].resource, value, 0, CHECKBARS[monitor].maxForActor(this));
+      await this.update({ [`${CHECKBARS[monitor].dataPath}`]: value });
     }
   }
 
-  async setAnarchy(checkbar, newValue) {
-    // TODO
+  async setAnarchy(newValue) {
+    if (!this.hasPlayerOwner) {
+      await game.system.anarchy.gmManager.gmAnarchy.setAnarchy(newValue);
+      this.sheet.render(false);
+    }
   }
 
   getAnarchy() {
@@ -84,20 +84,17 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getAnarchyValue() {
-    // TODO
     return this.getAnarchy().value ?? 0;
-  }
-  getAnarchyMax() {
-    // TODO
-    return this.getAnarchy().max ?? 0;
   }
 
   async spendAnarchy(count) {
-    // TODO
+    if (count && !this.hasPlayerOwner) {
+      await game.system.anarchy.gmManager.gmAnarchy.npcConsumesAnarchy(this, count);
+    }
   }
 
   async spendEdge(count) {
-    // TODO
+    throw 'No edge for selected actor';
   }
 
   getAttributeValue(attribute) {

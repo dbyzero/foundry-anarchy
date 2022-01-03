@@ -60,27 +60,10 @@ export class CharacterActor extends AnarchyBaseActor {
     await this.update({ [`data.${listType}`]: values });
   }
 
-  async setCounter(monitor, value) {
-    const checkbar = CHECKBARS[monitor];
-    if (checkbar) {
-      if (monitor == 'anarchy') {
-        await this.setAnarchy(checkbar, value);
-      }
-      else {
-        ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.maxForActor(this));
-        await this.update({ [`${checkbar.dataPath}`]: value });
-      }
-    }
-  }
-
-  async setAnarchy(checkbar, newValue) {
-    if (!this.hasPlayerOwner) {
-      await game.system.anarchy.gmManager.gmAnarchy.setAnarchy(newValue);
-      this.sheet.render(false);
-    }
-    else {
+  async setAnarchy(newValue) {
+    if (this.hasPlayerOwner) {
       const current = this.data.data.counters.anarchy.value;
-      ErrorManager.checkOutOfRange(checkbar.resource, newValue, 0, checkbar.maxForActor(this));
+      ErrorManager.checkOutOfRange(CHECKBARS.anarchy.resource, newValue, 0, CHECKBARS.anarchy.maxForActor(this));
       if (!game.user.isGM) {
         AnarchyUsers.blindMessageToGM({
           from: game.user.id,
@@ -96,7 +79,10 @@ export class CharacterActor extends AnarchyBaseActor {
       if (newValue < current) {
         await game.system.anarchy.gmManager.gmAnarchy.actorGivesAnarchyToGM(this, current - newValue);
       }
-      await this.update({ [`${checkbar.dataPath}`]: newValue });
+      await this.update({ [`${CHECKBARS.anarchy.dataPath}`]: newValue });
+    }
+    else {
+      super.setAnarchy(newValue);
     }
   }
 
@@ -141,7 +127,7 @@ export class CharacterActor extends AnarchyBaseActor {
         await this.update({ 'data.counters.anarchy.value': (current - count) });
       }
       else {
-        await game.system.anarchy.gmManager.gmAnarchy.npcConsumesAnarchy(this, count);
+        super.spendAnarchy(count);
       }
     }
   }

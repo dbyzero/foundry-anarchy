@@ -33,14 +33,6 @@ export class GMAnarchy {
     }
   }
 
-  getAnarchyValue() {
-    return this.getAnarchy().value;
-  }
-
-  getAnarchyMax() {
-    return this.getAnarchy().max;
-  }
-
   async actorGivesAnarchyToGM(actor, count) {
     if (count > 0) {
       ChatMessage.create({
