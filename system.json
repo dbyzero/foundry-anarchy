@@ -50,6 +50,17 @@
       ]
     },
     {
+      "name": "macros",
+      "label": "Macros",
+      "system": "anarchy",
+      "module": "anarchy",
+      "path": "./packs/macros.db",
+      "entity": "Macro",
+      "tags": [
+        "macro"
+      ]
+    },
+    {
       "name": "gm-info",
       "label": "Gamemaster information",
       "system": "anarchy",
