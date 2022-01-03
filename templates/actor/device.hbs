@@ -2,14 +2,21 @@
   <header class="sheet-header">
     <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
     <div class="flexcol">
-      <h1 class="actor-name flexrow">
-        <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
-      </h1>
+      <div class="flexrow">
+        <h1 class="actor-name">
+          <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+        </h1>
+        {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
+      </div> 
       {{!-- <div class="flexrow">
       {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
       </div> --}}
       <div class="flexrow">
       {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
+      </div>
+      <div class="anarchy-block flexrow">
+        {{> "systems/anarchy/templates/actor/monitors/matrix.hbs"}}
+        {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
       </div>
     </div>
   </header>

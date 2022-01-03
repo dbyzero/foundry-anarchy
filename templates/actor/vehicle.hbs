@@ -15,14 +15,14 @@
         {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
         {{> "systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs"}}
       </div>
-      <div class="flexrow">
-        {{> "systems/anarchy/templates/actor/monitors/structure.hbs"}}
-        {{> "systems/anarchy/templates/actor/monitors/matrix.hbs"}}
-        {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
-      </div>
     </div>
   </header>
   <section class="sheet-body">
+    <div class="flexrow anarchy-block flex-shrink-start">
+      {{> "systems/anarchy/templates/actor/monitors/structure.hbs"}}
+      {{> "systems/anarchy/templates/actor/monitors/matrix.hbs"}}
+      {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
+    </div>
     <div class="flexcol anarchy-block">
     {{> "systems/anarchy/templates/actor/parts/skills.hbs"}}
     </div>

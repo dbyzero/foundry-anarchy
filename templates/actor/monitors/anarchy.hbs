@@ -1,6 +1,6 @@
 {{#if anarchy.max}}
-<div class="flexcol anarchy-monitor">
-  <label class="flex-shrink">
+<div class="flexcol anarchy-monitor anarchy-monitor-anarchy">
+  <label>
     {{#if anarchy.isGM}}
       {{#if options.isGM}}
         {{localize ANARCHY.common.anarchy.danger}}
@@ -9,32 +9,30 @@
       {{localize ANARCHY.common.anarchy.anarchy}}
     {{/if}}
   </label>
-  <span class="flex-grow-3">
-    {{#if anarchy.isGM}}
-      {{#if options.isGM}}
-      {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
-        rowlength=10
-        value=anarchy.value
-        max=anarchy.max
-        scene=anarchy.scene
-        labelkey=ANARCHY.common.anarchy.danger
-        iconChecked=(iconSrc 'icons/danger-point.webp' 'checkbar-img')
-        iconUnchecked=(iconSrc 'icons/danger-point-off.webp' 'checkbar-img')
-        iconScene=(iconSrc 'icons/anarchy-point-scene.webp' 'checkbar-img')
-      }}
-      {{/if}}
-    {{else}}
-      {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
-        rowlength=10
-        value=anarchy.value
-        max=anarchy.max
-        scene=anarchy.scene
-        labelkey=ANARCHY.common.anarchy.anarchy
-        iconChecked=(iconSrc 'icons/anarchy-point.webp' 'checkbar-img')
-        iconUnchecked=(iconSrc 'icons/anarchy-point-off.webp' 'checkbar-img')
-        iconScene=(iconSrc 'icons/anarchy-point-scene.webp' 'checkbar-img')
-      }}
+  {{#if anarchy.isGM}}
+    {{#if options.isGM}}
+    {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
+      rowlength=6
+      value=anarchy.value
+      max=anarchy.max
+      scene=anarchy.scene
+      labelkey=ANARCHY.common.anarchy.danger
+      iconChecked=(iconSrc 'icons/danger-point.webp' 'checkbar-img')
+      iconUnchecked=(iconSrc 'icons/danger-point-off.webp' 'checkbar-img')
+      iconScene=(iconSrc 'icons/anarchy-point-scene.webp' 'checkbar-img')
+    }}
     {{/if}}
-  </span>
+  {{else}}
+    {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
+      rowlength=10
+      value=anarchy.value
+      max=anarchy.max
+      scene=anarchy.scene
+      labelkey=ANARCHY.common.anarchy.anarchy
+      iconChecked=(iconSrc 'icons/anarchy-point.webp' 'checkbar-img')
+      iconUnchecked=(iconSrc 'icons/anarchy-point-off.webp' 'checkbar-img')
+      iconScene=(iconSrc 'icons/anarchy-point-scene.webp' 'checkbar-img')
+    }}
+  {{/if}}
 </div>
 {{/if}}

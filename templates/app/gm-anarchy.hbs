@@ -1,8 +1,8 @@
-<div class="ANARCHY-anarchy flexrow">
-	<label class="flex-shrink-start">{{localize ANARCHY.common.anarchy.danger}}</label>
-	<span class="flex-grow-2 gm-anarchy-bar">
+<div class="flexrow anarchy-monitor anarchy-monitor-anarchy">
+	<label>{{localize ANARCHY.common.anarchy.danger}}</label>
+	<span class="flex-grow-3 gm-anarchy-bar">
 		{{> "systems/anarchy/templates/common/anarchy-bar.hbs"
-			rowlength=0
+			rowlength=6
 			value=anarchy.value
 			max=anarchy.max
 			scene=anarchy.scene

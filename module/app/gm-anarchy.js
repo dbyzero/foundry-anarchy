@@ -92,9 +92,9 @@ export class GMAnarchy {
       max: this.getAnarchy().max,
       scene: this.getAnarchy().scene,
       labelkey: ANARCHY.common.anarchy.danger,
-      adjust: false,
       iconChecked: Icons.iconSrc('icons/danger-point.webp', 'checkbar-img'),
       iconUnchecked: Icons.iconSrc('icons/danger-point-off.webp', 'checkbar-img'),
+      iconScene: Icons.iconSrc('icons/anarchy-point-scene.webp', 'checkbar-img')
     });
   }
 

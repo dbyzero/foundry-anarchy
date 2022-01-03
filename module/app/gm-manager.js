@@ -43,7 +43,7 @@ export class GMManager extends Application {
     options.popOut = false;
     options.resizable = false;
     options.height = "auto";
-    options.width = 200;
+    options.width = "auto";
     return options;
   }
 
