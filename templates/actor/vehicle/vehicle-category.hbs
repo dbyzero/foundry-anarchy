@@ -1,0 +1,8 @@
+<label class="info-label" for="data.category">
+  {{localize ANARCHY.actor.vehicle.category}}
+</label>
+<select class="info-value" name="data.category" data-dtype="String">
+  {{#select data.data.category}}
+  {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.vehicleCategories  noEmpty=true}}
+  {{/select}}
+</select>

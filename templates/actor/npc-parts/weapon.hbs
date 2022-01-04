@@ -1,29 +1,19 @@
-<li class="flexrow item anarchy-weapon {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="weapon" draggable="true">
-  {{> 'systems/anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
-  <span class="flex-grow-2"><a class="click-weapon-roll">{{name}}</a></span>
-  <span class="flex-grow-2">
-    {{> 'systems/anarchy/templates/common/damage-code.hbs'
-      strength=data.strength
-      actorStrength=@root.actor.data.data.attributes.strength.value
-      damage=data.damage
-      monitor=data.monitor
-      noArmor=data.noArmor
-    }}
-  </span>
-  <span class="flex-shrink">{{localize (concat 'ANARCHY.area.' (either data.area 'none'))}}</span>
-  <span class="flex-shrink">{{either data.range.short 'OK'}}</span>
-  <span class="flex-shrink">
-    {{#unless (eq data.range.max "short")}}
-    {{either data.range.medium 'OK'}}
-    {{/unless}}
-  </span>
-  <span class="flex-shrink">
-    {{#if (eq data.range.max "long")}}
-    {{either data.range.long 'OK'}}
-    {{/if}}
-  </span>
-  {{#if data.description}}
-  <br>
-  <span>{{{data.description}}}</span>
-  {{/if}}
+<li class="item anarchy-item anarchy-weapon {{#if data.inactive}}item-inactive{{/if}}" draggable="true"
+    data-item-id="{{_id}}" data-item-type="weapon">
+  <div class="weapon-column weapon-summary">
+    <a class="click-weapon-roll">
+      {{name}}, 
+      {{> 'systems/anarchy/templates/common/damage-code.hbs'
+        strength=data.strength
+        actorStrength=@root.actor.data.data.attributes.strength.value
+        damage=data.damage
+        monitor=data.monitor
+        noArmor=data.noArmor
+      }}
+    {{> 'systems/anarchy/templates/actor/parts/weapon-range.hbs'}}
+    </a>
+  </div>
+  <div class="weapon-column weapon-controls">
+    {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
+  </div>
 </li>

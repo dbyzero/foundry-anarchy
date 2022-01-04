@@ -1,21 +1,11 @@
-<div class="define-item-type anarchy-weapon " data-item-type="weapon">
+<div class="define-item-type" data-item-type="weapon">
   <h2>
-      <label>{{localize 'ANARCHY.itemType.plural.weapon'}}</label>
+    <label class="items-group-label">
+      {{localize 'ANARCHY.itemType.plural.weapon'}}
       {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='weapon'}}
+    </label>
   </h2>
-  <ul class="alternate-items anarchy-weapon">
-    <li class="list-header flexrow">
-      <span class="flex-shrink-start">
-        {{{iconFA 'fas fa-pen hide-fontawesome'}}}
-        {{{iconFA 'fas fa-pen hide-fontawesome'}}}
-      </span>
-      <span class="flex-grow-2">{{localize 'ANARCHY.itemType.singular.weapon'}}</span>
-      <span class="flex-grow-2">{{localize 'ANARCHY.item.weapon.damageShort'}}</span>
-      <span class="flex-shrink">{{localize 'ANARCHY.item.weapon.areaShort'}}</span>
-      <span class="flex-shrink">{{localize 'ANARCHY.range.short'}}</span>
-      <span class="flex-shrink">{{localize 'ANARCHY.range.medium'}}</span>
-      <span class="flex-shrink">{{localize 'ANARCHY.range.long'}}</span>
-    </li>
+  <ul class="weapon-list">
     {{#each items.weapon as |weapon|}}
     {{> "systems/anarchy/templates/actor/npc-parts/weapon.hbs" weapon}}
     {{/each}}

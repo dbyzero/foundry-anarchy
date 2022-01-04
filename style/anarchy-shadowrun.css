@@ -65,12 +65,6 @@
   background: var(--anarchy-tint-npc);
 }
 
-.style-anarchy-shadowrun .window-content form:is(.character-sheet) section {
-  flex: content;
-  flex-direction: column;
-  flex-grow: unset;
-  flex-basis: content;
-}
 .style-anarchy-shadowrun .sheet header.sheet-header h1,
 .style-anarchy-shadowrun .sheet header.sheet-header .passport-header{
   flex: auto;
@@ -84,50 +78,57 @@
   margin: 2px;
 }
 
-.style-anarchy-shadowrun .passport-img {
-  display: flex;
-  height: 128px;
-  width: 128px;
-  min-width: 128px;
-  margin-right: 5px;
-}
 .style-anarchy-shadowrun .passport-img img{
-  height: 128px;
-  width: 128px;
-  object-position: 50% 0%;
+  object-position: center;
   border-radius: 6px;
-}
-.style-anarchy-shadowrun.npc-sheet .passport-img {
-  height: 92px;
-  width: 92px;
-  min-width: 92px;
   margin-right: 2px;
 }
-.style-anarchy-shadowrun.npc-sheet .passport-img img{
-  height: 92px;
-  width: 92px;
-  object-position: 50% 0%;
-  border-radius: 6px;
+.style-anarchy-shadowrun .character-sheet .passport-img {
+  min-width: 128px; min-height: 128px;
+}
+.style-anarchy-shadowrun .character-sheet .passport-img img{
+  height: 128px; width: 128px;
+}
+.style-anarchy-shadowrun .npc-sheet .passport-img
+.style-anarchy-shadowrun .vehicle-sheet .passport-img {
+  min-height: 92px; min-width: 92px;
+}
+.style-anarchy-shadowrun .npc-sheet .passport-img img {
+  height: 92px; width: 92px;
+}
+.style-anarchy-shadowrun .vehicle-sheet .passport-img img{
+  height: 92px; width: 92px;
+  background-color: var(--anarchy-background-item-img);
+}
+.style-anarchy-shadowrun .device-sheet .passport-img {
+  min-height: 64px; min-width: 64px;
+}
+.style-anarchy-shadowrun .device-sheet .passport-img img{
+  height: 64px; width: 64px;
+  background-color: var(--anarchy-background-item-img);
 }
 
-.style-anarchy-shadowrun .passport-column {
+.style-anarchy-shadowrun .character-sheet .passport-column {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+.style-anarchy-shadowrun .character-sheet .passport-column {
   width: calc(100% - 128px);
   min-height: 128px;
 }
-.style-anarchy-shadowrun.npc-sheet .passport-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+.style-anarchy-shadowrun .npc-sheet .passport-column ,
+.style-anarchy-shadowrun .vehicle-sheet .passport-column {
   width: calc(100% - 92px);
   min-height: 92px;
 }
+.style-anarchy-shadowrun .device-sheet .passport-column {
+  width: calc(100% - 64px);
+  min-height: 64px;
+}
 
-.style-anarchy-shadowrun :is(.passport-details-row, .passport-actions-row) {
+.style-anarchy-shadowrun .passport-details-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -135,48 +136,60 @@
   width: 100%;
 }
 
-.style-anarchy-shadowrun .passport-detail {
+.style-anarchy-shadowrun :is(.passport-owner,.passport-detail,.passport-action) {
   display: flex;
   flex-direction: row;
-  min-width: 120px;
-  height: 30px;
   justify-content: left;
   text-align: left;
+  height: 32px;
+}
+.style-anarchy-shadowrun .passport-detail {
   width: calc(49% - 2px);
   box-shadow: 2px 2px 4px var(--anarchy-color-border);
 }
-.style-anarchy-shadowrun .info-label {
-  display: flex;
-  justify-content: left;
-  white-space: nowrap;
-  height: 100%;
-  padding: 5px;
+.style-anarchy-shadowrun .passport-owner {
+  width: calc(49% - 2px);
 }
-.style-anarchy-shadowrun :is(.passport-detail, .passport-detail-large) :is(input,label,select).info-value {
-  font-weight: bold;
-  text-align: start;
-  border: none;
-  height: 100%;
-  width: 100%;
-  padding-left: 5px;
-}
-
-.style-anarchy-shadowrun .passport-action {
-  display: flex;
-  flex-direction: row;
-  min-width: 120px;
-  height: 32px;
-  justify-content: left;
-  text-align: left;
-}
-
-.style-anarchy-shadowrun .passport-action img.owner-actor-img {
+.style-anarchy-shadowrun :is(.passport-detail,.passport-owner,.passport-action) img.owner-actor-img {
   -ms-flex: 0 0 32px;
   flex: 0 0 32px;
   width: 32px;
   height: 32px;
   opacity: 0.8;
   object-position: 50% 0%;
+}
+
+.style-anarchy-shadowrun .info-label {
+  display: flex;
+  justify-content: left;
+  white-space: nowrap;
+  height: 100%;
+  padding: 3px;
+}
+.style-anarchy-shadowrun :is(input, label, select).info-value {
+  font-weight: bold;
+  text-align: start;
+  border: none;
+  border-radius: 0px;
+  height: 100%;
+  width: 100%;
+  padding-left: 3px;
+}
+
+.style-anarchy-shadowrun .monitors-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 0;
+}
+
+.style-anarchy-shadowrun .monitors-row .anarchy-monitor {
+  flex: content;
+  flex-grow: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 4px;
+  max-width: 9rem;
 }
 
 .style-anarchy-shadowrun :is(.section-group,.section-attributes) {
@@ -208,7 +221,7 @@
   box-shadow: var(--anarchy-shadow-attribute);
 }
 
-.style-anarchy-shadowrun.npc-sheet .attribute-box{
+.style-anarchy-shadowrun :is(.npc-sheet,.device-sheet,.vehicle-sheet) .attribute-box{
   min-width: 3rem;
   max-width: 6rem;
   flex-direction: row;
@@ -230,7 +243,7 @@
   border-style: none;
   max-width: 2rem;
 }
-.style-anarchy-shadowrun.npc-sheet .attribute-box input{
+.style-anarchy-shadowrun :is(.npc-sheet,.device-sheet,.vehicle-sheet) .attribute-box input {
   font-size: small;
   max-width: 1.5rem;
 }
@@ -238,12 +251,12 @@
 .style-anarchy-shadowrun .wordlist {
   display: flex;
   flex-direction: column;
-  
+
   border-radius: 6px;
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-light);
-  
+
   background-color: var(--wordlist-color);
 
   align-items: center;
@@ -285,7 +298,7 @@
   justify-content: center;
 }
 
-.style-anarchy-shadowrun.npc-sheet .items-group > div h2 {
+.style-anarchy-shadowrun:is(.npc-sheet,.device-sheet) .items-group > div h2 {
   text-align: center;
   font-size: small;
   border: none;
@@ -300,7 +313,7 @@
   justify-content: flex-start;
   vertical-align: top;
 }
-.style-anarchy-shadowrun.npc-sheet .items-group .items-group-list {
+.style-anarchy-shadowrun:is(.npc-sheet,.device-sheet) .items-group .items-group-list {
   gap: 1px;
 }
 
@@ -323,16 +336,16 @@
   max-width: 16rem;
   box-shadow: var(--anarchy-shadow-attribute);
 }
-.style-anarchy-shadowrun.npc-sheet .items-group div.item {
+.style-anarchy-shadowrun:is(.npc-sheet,.device-sheet) .items-group div.item {
   gap: 1px;
   margin: 2px;
   max-width: 12rem;
 }
 
-.style-anarchy-shadowrun .items-group .weapon-list {
-  padding: 2px
-}
-.style-anarchy-shadowrun .items-group .weapon-list div.weapon-header {
+
+
+/* Weapons lists */
+.style-anarchy-shadowrun .weapon-list :is(.weapon-header,.item) {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -340,33 +353,16 @@
   align-items: flex-start;
   justify-content: space-evenly;
   vertical-align: top;
-
-  background: var(--anarchy-background-item);
+  
   width: 100%;
   gap: 1px;
-}
-
-.style-anarchy-shadowrun .weapon-header.weapon-header > span {
-  display: flex;
-  margin: 2px 0px;
-  justify-content: flex-start;
-  align-self: center;
+  padding: 2px;
   text-align: left;
-}
-
-.style-anarchy-shadowrun .weapon-list .item {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  vertical-align: top;
-  text-align: left;
-  background: var(--anarchy-background-item);
-  width: 100%;
-  gap: 1px;
-  padding: 1px;
   align-items: center;
 }
-
+.style-anarchy-shadowrun .weapon-list .weapon-header{
+  background: var(--anarchy-background-item);
+}
 .style-anarchy-shadowrun .weapon-list .item:nth-child(even) {
   background: var(--anarchy-tint-weapon-even);
 }
@@ -377,53 +373,49 @@
   background: var(--anarchy-tint-weapon-hover);
 }
 
+.style-anarchy-shadowrun .weapon-list .weapon-header > span {
+  margin: 2px 0px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
 .style-anarchy-shadowrun .weapon-list .item .weapon-column {
   width: 100%;
   margin: 0px 2px;
   justify-content: flex-start;
 }
 
-.style-anarchy-shadowrun .weapon-list .weapon-header .weapon-img,
-.style-anarchy-shadowrun .weapon-list .item .weapon-column.weapon-img {
-  width: 32px;
+.style-anarchy-shadowrun .weapon-list .weapon-column.weapon-img { width: 32px; }
+.style-anarchy-shadowrun .weapon-list .weapon-column.weapon-dmg{ width: 6rem; }
+.style-anarchy-shadowrun .weapon-list .weapon-column.weapon-stat { width: 4rem; }
+.style-anarchy-shadowrun .weapon-list .weapon-column.weapon-controls { width: 2rem; }
+.style-anarchy-shadowrun .weapon-list .weapon-column.weapon-txt {
+  width: calc(100% - 20rem - 32px);
 }
-.style-anarchy-shadowrun .weapon-list .weapon-header .weapon-txt,
-.style-anarchy-shadowrun .weapon-list .item .weapon-column.weapon-txt {
-  width: calc(100% - 20rem - 32px - 7px);
-}
-.style-anarchy-shadowrun .weapon-list .weapon-header .weapon-dmg,
-.style-anarchy-shadowrun .weapon-list .item .weapon-column.weapon-dmg{
-  width: 6rem;
-}
-.style-anarchy-shadowrun .weapon-list .weapon-header .weapon-stat,
-  .style-anarchy-shadowrun .weapon-list .item .weapon-column.weapon-stat {
-  width: 4rem;
-}
-.style-anarchy-shadowrun .weapon-list .weapon-header .weapon-controls,
-.style-anarchy-shadowrun .weapon-list .item .weapon-column.weapon-controls {
-  width: 2rem;
+.style-anarchy-shadowrun .weapon-list .weapon-column.weapon-summary {
+  width: calc(100% - 2rem);
 }
 
 
-.style-anarchy-shadowrun :is(div,li).item:is(.anarchy-skill,.anarchy-gear,.anarchy-weapon,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality) img{
+.style-anarchy-shadowrun :is(div,li).item.anarchy-item {
+  display: flex;
+  flex-direction: row;
+}
+.style-anarchy-shadowrun :is(div,li).item.anarchy-item img {
   background: var(--anarchy-background-item-img);
 }
-.style-anarchy-shadowrun div.item.anarchy-quality.negative {
+.style-anarchy-shadowrun .item.anarchy-quality.negative {
   background: var(--anarchy-background-negative);
   border-style: dashed;
 }
 
-.style-anarchy-shadowrun input,
-.style-anarchy-shadowrun select,
-.style-anarchy-shadowrun label,
-.style-anarchy-shadowrun button {
+.style-anarchy-shadowrun :is(input, select, label, button) {
   color: var(--anarchy-color-font);
 }  
 .style-anarchy-shadowrun .window-content select option{
   background: var(--anarchy-background);
   color: var(--anarchy-color-font);
 }
-
 
 .style-anarchy-shadowrun .anarchy-button label {
   background: var(--anarchy-background-button);
@@ -452,10 +444,9 @@
 .style-anarchy-shadowrun .anarchy-button:active {
   border: 3px inset var(--anarchy-color-button-border);
   position: relative;
-  top: 1px;
-  left: 1px;
+  top: -1px;
+  left: -1px;
 }
-
 
 .style-anarchy-shadowrun .tooltip .tooltip-roll-modifiers {
   background: var(--anarchy-background-tooltip);

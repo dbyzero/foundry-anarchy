@@ -44,6 +44,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/shadowamps.hbs',
   'systems/anarchy/templates/actor/parts/skill.hbs',
   'systems/anarchy/templates/actor/parts/skills.hbs',
+  'systems/anarchy/templates/actor/parts/weapon-range.hbs',
   'systems/anarchy/templates/actor/parts/weapon.hbs',
   'systems/anarchy/templates/actor/parts/weapons.hbs',
   //-- NPC
@@ -57,7 +58,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/npc-parts/weapons.hbs',
   // Vehicles
   'systems/anarchy/templates/actor/vehicle/vehicle-attributes.hbs',
-  'systems/anarchy/templates/actor/vehicle/vehicle-model.hbs',
+  'systems/anarchy/templates/actor/vehicle/vehicle-category.hbs',
+  'systems/anarchy/templates/actor/vehicle/vehicle-skill.hbs',
   // item
   'systems/anarchy/templates/item/parts/inactive.hbs',
   'systems/anarchy/templates/item/parts/itemname.hbs',

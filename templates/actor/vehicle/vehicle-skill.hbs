@@ -1,0 +1,5 @@
+<select class="info-value" name="data.skill" data-dtype="String">
+    {{#select data.data.skill}}
+    {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills  noEmpty=true}}
+    {{/select}}
+</select>

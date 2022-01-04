@@ -64,6 +64,21 @@
 
   --color-dice-prowess: hsla(47, 60%, 40%, 1);
   --color-dice-glitch: hsla(300, 80%, 20%, 1);
+
+  /* specifics for style-anarchy-shadowrun */
+  --anarchy-background: url("anarchy-background.webp") repeat;
+  --anarchy-font: hsla(0, 10%, 10%, 1);
+  --anarchy-attributes-background: hsla(47, 90%, 50%, 0.5);
+  --anarchy-item-background: hsla(44, 0%, 100%, 0.5);
+  --anarchy-negative-background: hsla(300, 80%, 20%, 0.2);
+  --anarchy-controls-color: hsla(207, 40%, 60%, 0.7);
+  --anarchy-tooltip-background: hsla(207, 40%, 70%, 1);
+  --anarchy-button-background: hsla(47, 40%, 70%, 1);
+  --anarchy-weapon-background: hsla(0, 0%, 80%, 0.3);
+  --anarchy-weapon-background-odd: hsla(0, 0%, 70%, 0.3);
+  --anarchy-weapon-background-even: hsla(0, 0%, 50%, 0.3);
+  --anarchy-item-img-background: var(--anarchy-controls-color);
+
 }
 
 #logo {
@@ -102,7 +117,12 @@ img.anarchy-img {
   width: 48px;
   height: 48px;
 }
-/* 
+.sheet header.sheet-header h1,
+.sheet header.sheet-header > div{
+  flex: 1;
+  flex-grow: 1;
+  flex-basis: auto;
+}
 .sheet header.sheet-header img.profile-img {
   -ms-flex: 0 0 128px;
   flex: 0 0 128px;
@@ -110,7 +130,17 @@ img.anarchy-img {
   width: 128px;
   margin-right: 5px;
   object-position: 50% 0%;
-} */
+}
+input.anarchy-character-genre {
+  max-width: 6rem;
+}
+.sheet header.sheet-header img.anarchy-img.owner-actor-img {
+  -ms-flex: 0 0 32px;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+}
 
 img.anarchy-img.actor-img {
   -ms-flex: 0 0 64px;
@@ -134,7 +164,7 @@ div.anarchy-monitor {
   align-items: flex-start;
   justify-content: flex-start;
   margin: 2px;
-  min-width: 4rem;
+  min-width: 6rem;
   max-width: 9rem;
 }
 
@@ -180,16 +210,11 @@ div.anarchy-block {
 }
 
 
-div.anarchy-risk-nothing span i.fas {
-  font-size: x-large;
-}
 div.anarchy-risk-glitch span i.fas {
   color: var(--color-dice-glitch);
-  font-size: x-large;
 }
 div.anarchy-risk-prowess span i.fas {
   color: var(--color-dice-prowess);
-  font-size: x-large;
 }
 div.anarchy-risk-glitch {
   margin: 1px;
@@ -238,12 +263,33 @@ div.item {
   flex-basis: auto;
 }
 
+div.item.anarchy-attribute {
+  background: var(--gradient-gold);
+  min-width: auto;  
+  max-width: 6rem;
+}
+div.item.anarchy-attribute input.larger,
+div.anarchy-secondary-attribute input {
+  font-size: large;
+}
+div.item.anarchy-attribute input.small {
+  max-width: 1.5rem;
+}
+
+div.anarchy-secondary-attribute {
+  background: var(--anarchy-item-background);
+  min-width: auto;  
+  max-width: 6rem;
+}
 select.anarchy-vehicle-model {
   background: var(--anarchy-item-background);
   width: fit-content;
   max-width: 10rem;
 }
 
+div.item.anarchy-skill {
+  background: var(--gradient-silver);
+}
 div.item.anarchy-gear,
 div.item.anarchy-contact {
   background: var(--wordlist-color) !important;
@@ -325,10 +371,10 @@ div.item.anarchy-quality.negative {
   color: var(--font-color-dark);
 }
 
-.chat-message .anarchy-button:hover {
+.anarchy-button:hover {
   background-color: var(--hover-tint);
 }
-.chat-message .anarchy-button:active {
+.anarchy-button:active {
   position: relative;
   top: 1px;
   left: 1px;
@@ -488,8 +534,107 @@ input.anarchy-essence[type='number'] {
   max-width: 3rem;
 }
 
+/* Default Anarchy style */
+#gm-manager.style-anarchy-shadowrun{
+  min-width: 300px !important;
+  background: var(--anarchy-background);
+  background-size: 50%;
+  color: var(--anarchy-font);
+}
 
-/* Shadowrun Dark Anarchy style */
+#gm-manager.style-anarchy-shadowrun div.header{
+  display: grid;
+  margin: 2px;
+  padding: 2px;
+  border-bottom: 1px solid var(--border-light);
+}
+#gm-manager.style-anarchy-shadowrun div {
+  padding: 2px;
+  vertical-align: top;
+}
+#gm-manager.style-anarchy-shadowrun label{
+  color: var(--anarchy-font);
+}
+#gm-manager.style-anarchy-shadowrun .anarchy-button label{
+  background: var(--anarchy-button-background);
+  color: var(--anarchy-font);
+}
+
+.style-anarchy-shadowrun .window-content {
+  background: var(--anarchy-background);
+  background-size: 50%;
+  color: var(--anarchy-font);
+}
+
+.style-anarchy-shadowrun .window-content form.npc-sheet {
+  background: var(--darker-npc);
+}
+.style-anarchy-shadowrun div.item.anarchy-attribute {
+ background: var(--anarchy-attributes-background);
+}
+.style-anarchy-shadowrun div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality),
+.style-anarchy-shadowrun div:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) input {
+  background: var(--anarchy-item-background);
+}
+
+.style-anarchy-shadowrun .anarchy-weapon > .item:hover {
+  background: var(--border-light);
+}
+.style-anarchy-shadowrun .anarchy-weapon > .item:nth-child(even) {
+  background: var(--anarchy-weapon-background-even);
+}
+.style-anarchy-shadowrun .anarchy-weapon > .item:nth-child(odd) {
+  background: var(--anarchy-weapon-background-odd);
+}
+
+.style-anarchy-shadowrun div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality) img{
+  background: var(--anarchy-item-img-background);
+}
+.style-anarchy-shadowrun div.item.anarchy-quality.negative {
+  background: var(--anarchy-negative-background);
+  border-style: dashed;
+}
+
+.style-anarchy-shadowrun input,
+.style-anarchy-shadowrun select,
+.style-anarchy-shadowrun label,
+.style-anarchy-shadowrun button {
+  color: var(--anarchy-font);
+}  
+.style-anarchy-shadowrun .window-content select option{
+  background: var(--anarchy-background);
+  background-size: 50%;
+  color: var(--anarchy-font);
+}  
+.style-anarchy-shadowrun .anarchy-button {
+  background: var(--anarchy-button-background);
+  color: var(--anarchy-font)
+}
+.style-anarchy-shadowrun .tooltip .tooltip-roll-modifiers {
+  background: var(--anarchy-tooltip-background);
+}
+
+.style-anarchy-shadowrun div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) {
+  border: none;
+  background-color: var(--transparent);
+}
+.style-anarchy-shadowrun div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) input {
+  border-color: var(--border-dark);
+}
+
+.style-anarchy-shadowrun a.item-control i,
+.style-anarchy-shadowrun a.item-control img {
+  font-size: small;
+  color: var(--anarchy-controls-color);
+}
+
+/* Shadowrun Anarchy style */
 .style-shadowrun-dark .window-content  {
   background: var(--background-black);
   color: var(--font-color-light);

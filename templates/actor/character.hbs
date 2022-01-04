@@ -25,12 +25,12 @@
             {{> "systems/anarchy/templates/actor/character/essence.hbs"}}
           </div>
         </div>
-        <div class="passport-actions-row">
+        <div class=".passport-details-row">
           <div class="passport-action">
             {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
           </div>
           {{#if ownerActor}}
-          <div class="passport-action">
+          <div class="passport-owner">
             {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
           </div>
           {{/if}}
@@ -86,7 +86,6 @@
       {{> "systems/anarchy/templates/actor/parts/contacts.hbs"}}
       </div>
     </div>
-
 
     <div class="anarchy-block">
       {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}

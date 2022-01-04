@@ -1,0 +1,11 @@
+{{#if data.area}}{{#unless (eq data.area '-')}}
+{{data.area}},
+{{/unless}}{{/if}}
+{{either data.range.short 'OK'}}/
+{{~#if (eq data.range.max "short")}}-
+{{~else}}{{either data.range.medium 'OK'}}
+{{/if~}}/
+{{~#if (eq data.range.max "long")~}}
+{{either data.range.long 'OK'}}
+{{~else~}}-
+{{/if}}
