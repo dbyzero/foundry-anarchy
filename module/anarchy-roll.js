@@ -12,7 +12,7 @@ export class AnarchyRoll {
   }
 
   async evaluate() {
-    await this.roll.evaluate();
+    await this.roll.evaluate({ async: true });
 
     this.subrolls.total = this.roll.total;
 
@@ -20,7 +20,7 @@ export class AnarchyRoll {
     let rerolls = Math.min(this.param.pool - this.subrolls.total, this.param.reroll);
     if (rerolls > 0) {
       this.subrolls.reroll = new Roll(`${rerolls}d6cs>=${this.param.target}`);
-      await this.subrolls.reroll.evaluate();
+      await this.subrolls.reroll.evaluate({ async: true });
       this.subrolls.total += this.subrolls.reroll.total;
     }
 
@@ -29,13 +29,13 @@ export class AnarchyRoll {
     if (rerolls > 0) {
       this.subrolls.total -= rerolls;
       this.subrolls.rerollForced = new Roll(`${rerolls}d6cs>=${this.param.target}`)
-      await this.subrolls.rerollForced.evaluate();
+      await this.subrolls.rerollForced.evaluate({ async: true });
       this.subrolls.total += this.subrolls.rerollForced.total;
     }
     // taking risks
     if (this.param.risk > 0) {
-      this.subrolls.risk = new Roll(`${this.param.risk}d6cs>4`);
-      await this.subrolls.risk.evaluate();
+      this.subrolls.risk = new Roll(`${this.param.risk}d6cs>=5`);
+      await this.subrolls.risk.evaluate({ async: true });
       this.subrolls.glitch = this.subrolls.risk.terms[0].results.filter(it => it.result == 1).length;
       this.subrolls.prowess = this.subrolls.risk.total;
       this.subrolls.riskDice = this.subrolls.risk.terms[0].results[0].result;

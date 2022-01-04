@@ -1,9 +1,6 @@
 import { ChatManager } from "./chat/chat-manager.js";
-import { ChatRollData } from "./chat/chat-roll-data.js";
-import { ANARCHY } from "./config.js";
-import { Enums } from "./enums.js";
 import { Modifiers } from "./modifiers.js";
-import { AnarchyRoll } from "./roll.js";
+import { AnarchyRoll } from "./anarchy-roll.js";
 
 export class AnarchyRollManager {
 
@@ -25,4 +22,5 @@ export class AnarchyRollManager {
     rollData.roll = new AnarchyRoll(rollData.param);
     await rollData.roll.evaluate();
   }
+
 }
