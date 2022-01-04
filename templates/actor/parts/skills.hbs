@@ -1,9 +1,11 @@
-<div class="define-item-type item-container" data-item-type="skill">
+<div class="define-item-type" data-item-type="skill">
   <h2>
-    <label>{{localize 'ANARCHY.itemType.plural.skill'}}</label>
-    {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='skill'}}
+    <label class="items-group-label">
+      {{localize 'ANARCHY.itemType.plural.skill'}}
+      {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='skill'}}
+    </label>
   </h2>
-  <div class="flexrow flex-wrap">
+  <div class="items-group-list">
     {{#each items.skill as |skill|}}
     {{> "systems/anarchy/templates/actor/parts/skill.hbs" skill}}
     {{/each}}

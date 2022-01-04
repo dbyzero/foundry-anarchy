@@ -1,7 +1,9 @@
-<div class="define-item-type item-container" data-item-type="contact">
+<div class="define-item-type" data-item-type="contact">
   <h2>
-    <label>{{localize 'ANARCHY.itemType.plural.contact'}}</label>
-    {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='contact'}}
+    <label class="items-group-label">
+      {{localize 'ANARCHY.itemType.plural.contact'}}
+      {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='contact'}}
+    </label>
   </h2>
   <div class="flexrow flex-wrap">
     {{#each items.contact as |contact|}}

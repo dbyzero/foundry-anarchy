@@ -39,42 +39,33 @@
     </div>
   </header>
   <section class="sheet-body">
-    <div class="attributes-header">
-      <div class="attribute-row">
-        {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
-      </div>
+    <div class="section-attributes anarchy-attributes">
+      {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
     </div>
-    {{!-- <div class="flexrow">
-    {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
-    </div>
-    <div class="flexrow">
-    {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
-    </div> --}}
-    <div class="flexrow">
-      <div class="flexcol anarchy-keywords">
+    <div class="section-group anarchy-wordlists">
+      <div class="wordlist anarchy-keywords">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.keywords}}
       </div>
-      <div class="flexcol flex-grow-3 anarchy-dispositions">
+      <div class="wordlist anarchy-dispositions">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='disposition' values=data.data.dispositions}}
       </div>
-      <div class="flexcol anarchy-cues">
+      <div class="wordlist anarchy-cues">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='cue' values=data.data.cues}}
       </div>
     </div>
-    <div class="flexcol anarchy-block">
+    <div class="section-group items-group">
     {{> "systems/anarchy/templates/actor/parts/skills.hbs"}}
     </div>
-    <div class="flexcol anarchy-block">
+    <div class="section-group items-group">
     {{> "systems/anarchy/templates/actor/parts/shadowamps.hbs"}}
     </div>
-    <div class="flexcol anarchy-block">
+    <div class="section-group items-group">
     {{> "systems/anarchy/templates/actor/parts/qualities.hbs"}}
     </div>
-    <div class="flexcol anarchy-block">
+    <div class="section-group items-group">
     {{> "systems/anarchy/templates/actor/parts/weapons.hbs"}}
     </div>
-    <h2></h2>
-    <div class="flexrow">
+    <div class="section-group">
       <div class="anarchy-block flexcol">
         {{> "systems/anarchy/templates/actor/monitors/edge.hbs"}}
         {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
@@ -87,14 +78,16 @@
         {{> "systems/anarchy/templates/actor/monitors/stun.hbs"}}
       </div>
     </div>
-    <div class="anarchy-block flexrow">
-      <div>
+    <div class="section-group">
+      <div class="items-group half-width">
       {{> "systems/anarchy/templates/actor/parts/gears.hbs"}}
       </div>
-      <div>
+      <div class="items-group half-width">
       {{> "systems/anarchy/templates/actor/parts/contacts.hbs"}}
       </div>
     </div>
+
+
     <div class="anarchy-block">
       {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
       {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}

@@ -1,9 +1,11 @@
-<div class="define-item-type item-container" data-item-type="gear">
+<div class="define-item-type" data-item-type="gear">
   <h2>
-    <label>{{localize 'ANARCHY.itemType.plural.gear'}}</label>
-    {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='gear'}}
+    <label class="items-group-label">
+      {{localize 'ANARCHY.itemType.plural.gear'}}
+      {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='gear'}}
+    </label>
   </h2>
-  <div class="flexrow flex-wrap">
+  <div class="items-group-list">
     {{#each items.gear as |gear|}}
     {{> "systems/anarchy/templates/actor/parts/gear.hbs" gear}}
     {{/each}}

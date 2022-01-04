@@ -110,13 +110,6 @@ img.anarchy-img {
   margin-right: 5px;
   object-position: 50% 0%;
 }
-.sheet header.sheet-header img.anarchy-img.owner-actor-img {
-  -ms-flex: 0 0 32px;
-  flex: 0 0 32px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.5;
-}
 
 img.anarchy-img.actor-img {
   -ms-flex: 0 0 64px;
@@ -250,9 +243,6 @@ select.anarchy-vehicle-model {
   max-width: 10rem;
 }
 
-div.item.anarchy-skill {
-  background: var(--gradient-silver);
-}
 div.item.anarchy-gear,
 div.item.anarchy-contact {
   background: var(--wordlist-color) !important;
@@ -334,16 +324,16 @@ div.item.anarchy-quality.negative {
   color: var(--font-color-dark);
 }
 
-.anarchy-button:hover {
+.chat-message .anarchy-button:hover {
   background-color: var(--hover-tint);
 }
-.anarchy-button:active {
+.chat-message .anarchy-button:active {
   position: relative;
   top: 1px;
   left: 1px;
 }
 
-div#gm-manager {
+#gm-manager {
 	position: absolute;
   display: block;
   z-index: 100;
@@ -358,14 +348,14 @@ div#gm-manager {
   background: var(--background-black);
 }
 
-div#gm-manager header {
+#gm-manager header {
 	margin: 2px;
 	padding: 2px;
   border-bottom: 1px solid var(--border-light);
   color: var(--font-color-light);
 }
 
-div#gm-manager div.anarchy-monitor-anarchy {
+#gm-manager div.anarchy-monitor-anarchy {
   align-items: flex-start;
   max-width: fit-content;
 }
