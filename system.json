@@ -23,7 +23,8 @@
     "module/start.js"
   ],
   "styles": [
-    "style/anarchy.css"
+    "style/anarchy.css",
+    "style/anarchy-shadowrun.css"
   ],
   "languages": [
     {

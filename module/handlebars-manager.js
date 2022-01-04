@@ -19,16 +19,23 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/monitors/structure.hbs',
   'systems/anarchy/templates/actor/monitors/stun.hbs',
   // character
+  'systems/anarchy/templates/actor/character/capacity.hbs',
+  'systems/anarchy/templates/actor/character/essence.hbs',
+  'systems/anarchy/templates/actor/character/genre.hbs',
+  'systems/anarchy/templates/actor/character/karma.hbs',
+  'systems/anarchy/templates/actor/character/metatype.hbs',
+  // character parts
   'systems/anarchy/templates/actor/parts/capacity.hbs',
-  'systems/anarchy/templates/actor/parts/contact.hbs',
-  'systems/anarchy/templates/actor/parts/contacts.hbs',
   'systems/anarchy/templates/actor/parts/essence.hbs',
-  'systems/anarchy/templates/actor/parts/gear.hbs',
-  'systems/anarchy/templates/actor/parts/gears.hbs',
   'systems/anarchy/templates/actor/parts/genre.hbs',
   'systems/anarchy/templates/actor/parts/karma.hbs',
   'systems/anarchy/templates/actor/parts/metatype.hbs',
+
   'systems/anarchy/templates/actor/parts/wordlist.hbs',
+  'systems/anarchy/templates/actor/parts/contact.hbs',
+  'systems/anarchy/templates/actor/parts/contacts.hbs',
+  'systems/anarchy/templates/actor/parts/gear.hbs',
+  'systems/anarchy/templates/actor/parts/gears.hbs',
   // actor common
   'systems/anarchy/templates/actor/parts/attributebutton.hbs',
   'systems/anarchy/templates/actor/parts/attributebuttons.hbs',

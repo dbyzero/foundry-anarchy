@@ -1,27 +1,55 @@
 <form class="{{options.cssClass}} character-sheet" autocomplete="off">
   <header class="sheet-header">
-    <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
-    <h1 class="actor-name flex-grow-3">
-      <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
-    </h1>
-    <div class="flex-grow-0">
-      {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
-      {{> "systems/anarchy/templates/actor/parts/genre.hbs"}}
-      {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
-      {{> "systems/anarchy/templates/actor/parts/karma.hbs"}}
-      {{> "systems/anarchy/templates/actor/parts/essence.hbs"}}
-    </div>
-    <div class="flexcol flex-shrink-end">
-      {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
+    <div class="passport-header">
+      <div class="passport-img">
+        <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+      </div>
+      <div class="passport-column">
+        <div class="passport-details-row">
+          <div class="passport-detail">
+            <input class="info-value" name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/metatype.hbs"}}
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/genre.hbs"}}
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/capacity.hbs"}}
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/karma.hbs"}}
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/essence.hbs"}}
+          </div>
+        </div>
+        <div class="passport-actions-row">
+          <div class="passport-action">
+            {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
+          </div>
+          {{#if ownerActor}}
+          <div class="passport-action">
+            {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
+          </div>
+          {{/if}}
+        </div>
+      </div>
     </div>
   </header>
   <section class="sheet-body">
-    <div class="flexrow">
+    <div class="attributes-header">
+      <div class="attribute-row">
+        {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
+      </div>
+    </div>
+    {{!-- <div class="flexrow">
     {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
     </div>
     <div class="flexrow">
     {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
-    </div>
+    </div> --}}
     <div class="flexrow">
       <div class="flexcol anarchy-keywords">
       {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.keywords}}

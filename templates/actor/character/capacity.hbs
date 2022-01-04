@@ -1,4 +1,6 @@
-<select class="character-capacity" name="data.capacity" data-dtype="String">
+<select class="info-value character-capacity" 
+  name="data.capacity"
+  data-dtype="String">
   {{#select data.data.capacity}}
   {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.capacities}}
   {{/select}}

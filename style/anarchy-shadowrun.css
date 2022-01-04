@@ -1,0 +1,268 @@
+/* specifics for root-style-anarchy */
+:root {
+  --anarchy-background: url("anarchy-background.webp") repeat;
+  --anarchy-background-attributes: hsla(47, 90%, 50%, 0.5);
+  --anarchy-background-item: hsla(44, 0%, 100%, 0.5);
+  --anarchy-background-item-img:hsla(207, 40%, 60%, 0.7);
+  --anarchy-background-negative: hsla(300, 80%, 20%, 0.2);
+
+  --anarchy-background-tooltip: hsla(207, 40%, 70%, 1);
+  --anarchy-background-button: hsla(47, 40%, 70%, 1);
+
+  --anarchy-background-weapon: hsla(0, 0%, 80%, 0.3);
+  
+  --anarchy-tint-weapon-odd: hsla(0, 0%, 70%, 0.3);
+  --anarchy-tint-weapon-even: hsla(0, 0%, 50%, 0.3);
+  --anarchy-tint-weapon-hover: hsla(200, 10%, 60%, 0.4);
+  --anarchy-tint-npc: hsla(90, 29%, 70%, 0.15);
+
+  --anarchy-transparent: hsla(0, 0%, 0%, 0.0);
+
+  --anarchy-color-font: hsla(0, 10%, 10%, 1);
+  --anarchy-color-border:hsla(200, 10%, 30%, 0.4);
+
+  --anarchy-color-dice-prowess: hsla(47, 60%, 40%, 1);
+  --anarchy-color-dice-glitch: hsla(300, 80%, 20%, 1);
+  --anarchy-color-controls: var(--anarchy-background-item-img);
+  --anarchy-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
+}
+
+div#gm-manager.root-style-anarchy {
+  min-width: 300px !important;
+  background: var(--anarchy-background);
+  background-size: 50%;
+  color: var(--anarchy-color-font);
+}
+
+div#gm-manager.root-style-anarchy div.header{
+  display: grid;
+  margin: 2px;
+  padding: 2px;
+  border-bottom: 1px solid var(--anarchy-color-border);
+}
+div#gm-manager.root-style-anarchy div {
+  padding: 2px;
+  vertical-align: top;
+}
+div#gm-manager.root-style-anarchy label{
+  color: var(--anarchy-color-font);
+}
+div#gm-manager.root-style-anarchy .anarchy-button label{
+  background: var(--anarchy-background-button);
+  color: var(--anarchy-color-font);
+}
+
+.root-style-anarchy .window-content form:is(.character-sheet) section {
+  flex: content;
+  flex-direction: column;
+  flex-grow: unset;
+  flex-basis: content;
+}
+.root-style-anarchy .sheet header.sheet-header h1,
+.root-style-anarchy .sheet header.sheet-header .passport-header{
+  flex: auto;
+  flex-grow: 1;
+  flex-basis: auto;
+}
+
+.root-style-anarchy .passport-header {
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+}
+
+.root-style-anarchy .passport-img {
+  display: flex;
+  height: 128px;
+  width: 128px;
+  min-width: 128px;
+  margin-right: 5px;
+}
+
+
+.root-style-anarchy .passport-img img{
+  height: 128px;
+  width: 128px;
+  object-position: 50% 0%;
+}
+
+.root-style-anarchy .passport-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 128px);
+  min-height: 128px;
+}
+
+.root-style-anarchy :is(.passport-details-row, .passport-actions-row) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.root-style-anarchy .passport-detail {
+  display: flex;
+  flex-direction: row;
+  min-width: 150px;
+  height: 32px;
+  justify-content: left;
+  text-align: left;
+  box-shadow: 2px 2px 4px var(--anarchy-color-border);
+  width: calc(49% - 2px);
+}
+
+.root-style-anarchy .passport-action {
+  display: flex;
+  flex-direction: row;
+  min-width: 150px;
+  height: 32px;
+  justify-content: left;
+  text-align: left;
+}
+
+.root-style-anarchy .info-label {
+  display: flex;
+  justify-content: left;
+  white-space: nowrap;
+  height: 100%;
+  padding: 5px;
+}
+
+.root-style-anarchy .attributes-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-bottom: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.root-style-anarchy .attribute-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+.root-style-anarchy .anarchy-attribute,
+.root-style-anarchy .anarchy-secondary-attribute {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: auto;  
+  max-width: 6rem;
+}
+
+.root-style-anarchy .anarchy-attribute {
+  background: var(--anarchy-background-attributes);
+}
+
+.root-style-anarchy .anarchy-secondary-attribute {
+  background: var(--anarchy-item-background);
+}
+
+.root-style-anarchy :is(.anarchy-attribute,.anarchy-secondary-attribute) input{
+  font-size: large;
+}
+.root-style-anarchy :is(.anarchy-attribute,.anarchy-secondary-attribute) input.small{
+  max-width: 1.5rem;
+}
+
+.sheet header.sheet-header img.anarchy-img.owner-actor-img {
+  -ms-flex: 0 0 32px;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+}
+
+.root-style-anarchy :is(.passport-detail, .passport-detail-large) input.info-value {
+  font-weight: bold;
+  text-align: start;
+  border: none;
+  height: 100%;
+  padding-left: 5px;
+}
+.root-style-anarchy :is(.passport-detail, .passport-detail-large) select.info-value {
+  font-weight: bold;
+  text-align: start;
+  border: none;
+  height: 100%;
+  width:100%;
+  padding-left: 5px;
+}
+
+
+.root-style-anarchy .window-content {
+  background: var(--anarchy-background);
+  background-size: 50%;
+  color: var(--anarchy-color-font);
+}
+
+.root-style-anarchy .window-content form.npc-sheet {
+  background: var(--anarchy-tint-npc);
+}
+
+.root-style-anarchy div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality),
+.root-style-anarchy div:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) input {
+  background: var(--anarchy-background-item);
+}
+
+.root-style-anarchy .anarchy-weapon > .item:hover {
+  background: var(--anarchy-tint-weapon-hover);
+}
+.root-style-anarchy .anarchy-weapon > .item:nth-child(even) {
+  background: var(--anarchy-tint-weapon-even);
+}
+.root-style-anarchy .anarchy-weapon > .item:nth-child(odd) {
+  background: var(--anarchy-tint-weapon-odd);
+}
+
+.root-style-anarchy div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality) img{
+  background: var(--anarchy-background-item-img);
+}
+.root-style-anarchy div.item.anarchy-quality.negative {
+  background: var(--anarchy-background-negative);
+  border-style: dashed;
+}
+
+.root-style-anarchy input,
+.root-style-anarchy select,
+.root-style-anarchy label,
+.root-style-anarchy button {
+  color: var(--anarchy-color-font);
+}  
+.root-style-anarchy .window-content select option{
+  background: var(--anarchy-background);
+  background-size: 50%;
+  color: var(--anarchy-color-font);
+}  
+.root-style-anarchy .anarchy-button {
+  background: var(--anarchy-background-button);
+  color: var(--anarchy-color-font)
+}
+.root-style-anarchy .tooltip .tooltip-roll-modifiers {
+  background: var(--anarchy-background-tooltip);
+}
+
+.root-style-anarchy div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) {
+  border: none;
+  background-color: var(--anarchy-transparent);
+}
+.root-style-anarchy div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) input {
+  border-color: var(--anarchy-color-border);
+}
+
+.root-style-anarchy a.item-control i,
+.root-style-anarchy a.item-control img {
+  font-size: small;
+  color: var(--anarchy-color-controls);
+}
+
