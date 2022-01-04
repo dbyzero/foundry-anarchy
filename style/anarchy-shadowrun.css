@@ -91,11 +91,21 @@
   min-width: 128px;
   margin-right: 5px;
 }
-
-
 .style-anarchy-shadowrun .passport-img img{
   height: 128px;
   width: 128px;
+  object-position: 50% 0%;
+  border-radius: 6px;
+}
+.style-anarchy-shadowrun.npc-sheet .passport-img {
+  height: 92px;
+  width: 92px;
+  min-width: 92px;
+  margin-right: 2px;
+}
+.style-anarchy-shadowrun.npc-sheet .passport-img img{
+  height: 92px;
+  width: 92px;
   object-position: 50% 0%;
   border-radius: 6px;
 }
@@ -107,6 +117,14 @@
   justify-content: space-between;
   width: calc(100% - 128px);
   min-height: 128px;
+}
+.style-anarchy-shadowrun.npc-sheet .passport-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 92px);
+  min-height: 92px;
 }
 
 .style-anarchy-shadowrun :is(.passport-details-row, .passport-actions-row) {
@@ -120,7 +138,7 @@
 .style-anarchy-shadowrun .passport-detail {
   display: flex;
   flex-direction: row;
-  min-width: 150px;
+  min-width: 120px;
   height: 30px;
   justify-content: left;
   text-align: left;
@@ -146,7 +164,7 @@
 .style-anarchy-shadowrun .passport-action {
   display: flex;
   flex-direction: row;
-  min-width: 150px;
+  min-width: 120px;
   height: 32px;
   justify-content: left;
   text-align: left;
@@ -176,21 +194,25 @@
   box-shadow: var(--anarchy-shadow-section);  
 }
 
-.style-anarchy-shadowrun :is(.anarchy-attribute,.anarchy-secondary-attribute) {
+.style-anarchy-shadowrun .attribute-box {
   display: flex;
   flex-direction: column;
   flex-basis: auto;
-  
   margin: 2px;
   padding: 2px;
-
   border-radius: 6px;
-
   align-items: center;
-  min-width: 5rem;
-  width: auto;
+  min-width: 4rem;
   max-width: 8rem;
+  width: auto;
   box-shadow: var(--anarchy-shadow-attribute);
+}
+
+.style-anarchy-shadowrun.npc-sheet .attribute-box{
+  min-width: 3rem;
+  max-width: 6rem;
+  flex-direction: row;
+  padding: 1px;
 }
 
 .style-anarchy-shadowrun .anarchy-attribute {
@@ -199,14 +221,17 @@
 .style-anarchy-shadowrun .anarchy-secondary-attribute {
   background: var(--anarchy-background-secondary-attributes);
 }
-.style-anarchy-shadowrun :is(.anarchy-attribute,.anarchy-secondary-attribute) input{
+
+.style-anarchy-shadowrun .attribute-box input {
   background: var(--anarchy-background-lighter);
   align-items: center;
   text-align: center;
   font-size: large;
   border-style: none;
+  max-width: 2rem;
 }
-.style-anarchy-shadowrun :is(.anarchy-attribute,.anarchy-secondary-attribute) input.small{
+.style-anarchy-shadowrun.npc-sheet .attribute-box input{
+  font-size: small;
   max-width: 1.5rem;
 }
 
@@ -244,6 +269,7 @@
   border: 1px inset var(--border-light);
   width: 100%;
 }
+
 .style-anarchy-shadowrun .items-group.half-width{
   width: calc(50% - 2px);
 }
@@ -259,6 +285,12 @@
   justify-content: center;
 }
 
+.style-anarchy-shadowrun.npc-sheet .items-group > div h2 {
+  text-align: center;
+  font-size: small;
+  border: none;
+}
+
 .style-anarchy-shadowrun .items-group .items-group-list {
   display: flex;
   flex-direction: row;
@@ -267,6 +299,9 @@
   align-items: flex-start;
   justify-content: flex-start;
   vertical-align: top;
+}
+.style-anarchy-shadowrun.npc-sheet .items-group .items-group-list {
+  gap: 1px;
 }
 
 .style-anarchy-shadowrun .items-group div.item {
@@ -282,13 +317,21 @@
   gap: 1px;
   margin: 2px;
   padding: 2px;
-
+  
   border:1px solid var(--border-light);
   border-radius: 6px;
   max-width: 16rem;
   box-shadow: var(--anarchy-shadow-attribute);
 }
+.style-anarchy-shadowrun.npc-sheet .items-group div.item {
+  gap: 1px;
+  margin: 2px;
+  max-width: 12rem;
+}
 
+.style-anarchy-shadowrun .items-group .weapon-list {
+  padding: 2px
+}
 .style-anarchy-shadowrun .items-group .weapon-list div.weapon-header {
   display: flex;
   flex-direction: row;

@@ -1,0 +1,13 @@
+<div class="define-item-type" data-item-type="quality">
+  <h2>
+    <label class="items-group-label">
+      {{localize 'ANARCHY.itemType.plural.quality'}}
+      {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='quality'}}
+    </label>
+  </h2>
+  <div class="items-group-list">
+    {{#each items.quality as |quality|}}
+    {{> "systems/anarchy/templates/actor/npc-parts/quality.hbs" quality}}
+    {{/each}}
+  </div>
+</div>

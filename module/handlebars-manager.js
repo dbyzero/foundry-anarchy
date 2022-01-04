@@ -25,12 +25,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/character/karma.hbs',
   'systems/anarchy/templates/actor/character/metatype.hbs',
   // character parts
-  'systems/anarchy/templates/actor/parts/capacity.hbs',
-  'systems/anarchy/templates/actor/parts/essence.hbs',
-  'systems/anarchy/templates/actor/parts/genre.hbs',
-  'systems/anarchy/templates/actor/parts/karma.hbs',
-  'systems/anarchy/templates/actor/parts/metatype.hbs',
-
   'systems/anarchy/templates/actor/parts/wordlist.hbs',
   'systems/anarchy/templates/actor/parts/contact.hbs',
   'systems/anarchy/templates/actor/parts/contacts.hbs',
@@ -53,9 +47,10 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/weapon.hbs',
   'systems/anarchy/templates/actor/parts/weapons.hbs',
   //-- NPC
-  'systems/anarchy/templates/actor/npc-parts/attribute.hbs',
   'systems/anarchy/templates/actor/npc-parts/quality.hbs',
+  'systems/anarchy/templates/actor/npc-parts/qualities.hbs',
   'systems/anarchy/templates/actor/npc-parts/shadowamp.hbs',
+  'systems/anarchy/templates/actor/npc-parts/shadowamps.hbs',
   'systems/anarchy/templates/actor/npc-parts/skill.hbs',
   'systems/anarchy/templates/actor/npc-parts/skills.hbs',
   'systems/anarchy/templates/actor/npc-parts/weapon.hbs',

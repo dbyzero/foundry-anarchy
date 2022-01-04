@@ -1,86 +1,74 @@
 <form class="{{options.cssClass}} npc-sheet" autocomplete="off">
   <header class="sheet-header">
-    <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
-    <div class="flexcol flex-grow-3">
-      <div class="flexrow anarchy-block">
-        <div class="flexcol">
-          <div class="flexrow">
-            <div class="flex-grow-2">
-                <input name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
-            </div>
-            <div class="flex-shrink">
-              {{> "systems/anarchy/templates/actor/parts/metatype.hbs"}}
-            </div>
-          </div>
-          <div class="flexrow">
-            <div>
-              {{> "systems/anarchy/templates/actor/parts/essence.hbs"}}
-            </div>
-            <div class="flex-shrink">
-              {{> "systems/anarchy/templates/actor/parts/capacity.hbs"}}
-            </div>
-          </div>
-        </div>
-        <div class="anarchy-block flex-shrink-end">
-        {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
-        </div>
+    <div class="passport-header">
+      <div class="passport-img">
+        <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
       </div>
-      <div class="flexrow">
-      {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
+      <div class="passport-column">
+        <div class="passport-details-row">
+          <div class="passport-detail">
+            <input class="info-value" name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/metatype.hbs"}}
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/capacity.hbs"}}
+          </div>
+          <div class="passport-detail">
+            {{> "systems/anarchy/templates/actor/character/essence.hbs"}}
+          </div>
+          <div class="passport-action">
+            {{> "systems/anarchy/templates/actor/parts/attributebuttons.hbs"}}
+          </div>
+          {{#if ownerActor}}
+          <div class="passport-action">
+            {{> 'systems/anarchy/templates/actor/parts/ownership.hbs'}}
+          </div>
+          {{/if}}
+        </div>
       </div>
     </div>
   </header>
+
   <section class="sheet-body">
-    <div class="flexrow">
-      {{#each (sortedAttributes data.data.attributes) as |attribute key|}}
-      {{> "systems/anarchy/templates/actor/npc-parts/attribute.hbs" attribute=attribute key=key}}
-      {{/each}}
+    <div class="section-attributes anarchy-attributes">
+      {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
     </div>
-    <div class="flexrow">
-      <div class="flexcol anarchy-block">
+    <div class="section-group">
+      <div class="anarchy-block">
+        {{> "systems/anarchy/templates/actor/monitors/armor.hbs"}}
+      </div>
+      <div class="anarchy-block flexrow flex-wrap">
+        {{> "systems/anarchy/templates/actor/monitors/physical.hbs"}}
+      </div>
+      <div class="anarchy-block flexrow flex-wrap">
+        {{> "systems/anarchy/templates/actor/monitors/stun.hbs"}}
+      </div>
+      <div class="anarchy-block flexcol">
         {{> "systems/anarchy/templates/actor/monitors/edge.hbs"}}
         {{#unless anarchy.isGM}}
         {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
         {{/unless}}
       </div>
-      <div class="anarchy-block">
-        {{> "systems/anarchy/templates/actor/monitors/armor.hbs"}}
-      </div>
-      <div class="flexrow anarchy-block flex-wrap">
-        {{> "systems/anarchy/templates/actor/monitors/physical.hbs"}}
-        {{> "systems/anarchy/templates/actor/monitors/stun.hbs"}}
-      </div>
     </div>
+
     <div class="flexrow">
-      <div class="flexcol">
+      <div class="section-group items-group half-width">
         {{> "systems/anarchy/templates/actor/npc-parts/skills.hbs"}}
-        </div>
-      <div class="flexcol flex-grow-2">
+      </div>
+      <div class="section-group items-group half-width">
       {{> "systems/anarchy/templates/actor/npc-parts/weapons.hbs"}}
       </div>
     </div>
-    <div class="define-item-type" data-item-type="shadowamp">
-      <h2>
-        <label>{{localize 'ANARCHY.itemType.plural.shadowamp'}}</label>
-        {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='shadowamp'}}
-      </h2>
-        <div class="flexrow flex-wrap">
-        {{#each items.shadowamp as |shadowamp|}}
-        {{> "systems/anarchy/templates/actor/npc-parts/shadowamp.hbs" shadowamp}}
-        {{/each}}
-      </div>
+
+    <div class="section-group items-group">
+    {{> "systems/anarchy/templates/actor/npc-parts/shadowamps.hbs"}}
     </div>
-    <div class="define-item-type" data-item-type="quality">
-      <h2>
-          <label>{{localize 'ANARCHY.itemType.plural.quality'}}</label>
-          {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='quality'}}
-      </h2>
-      <div class="flexrow flex-wrap">
-        {{#each items.quality as |quality|}}
-        {{> "systems/anarchy/templates/actor/npc-parts/quality.hbs" quality}}
-        {{/each}}
-      </div>
+    <div class="section-group items-group">
+    {{> "systems/anarchy/templates/actor/npc-parts/qualities.hbs"}}
     </div>
+
     <div>
     {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
     {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}
