@@ -1,4 +1,4 @@
-/* specifics for root-style-anarchy */
+/* specifics for style-anarchy-shadowrun */
 :root {
   --anarchy-background: url("anarchy-background.webp") repeat;
   --anarchy-background-attributes: hsla(47, 90%, 50%, 0.5);
@@ -27,51 +27,51 @@
   --anarchy-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
 }
 
-div#gm-manager.root-style-anarchy {
+div#gm-manager.style-anarchy-shadowrun {
   min-width: 300px !important;
   background: var(--anarchy-background);
   background-size: 50%;
   color: var(--anarchy-color-font);
 }
 
-div#gm-manager.root-style-anarchy div.header{
+div#gm-manager.style-anarchy-shadowrun div.header{
   display: grid;
   margin: 2px;
   padding: 2px;
   border-bottom: 1px solid var(--anarchy-color-border);
 }
-div#gm-manager.root-style-anarchy div {
+div#gm-manager.style-anarchy-shadowrun div {
   padding: 2px;
   vertical-align: top;
 }
-div#gm-manager.root-style-anarchy label{
+div#gm-manager.style-anarchy-shadowrun label{
   color: var(--anarchy-color-font);
 }
-div#gm-manager.root-style-anarchy .anarchy-button label{
+div#gm-manager.style-anarchy-shadowrun .anarchy-button label{
   background: var(--anarchy-background-button);
   color: var(--anarchy-color-font);
 }
 
-.root-style-anarchy .window-content form:is(.character-sheet) section {
+.style-anarchy-shadowrun .window-content form:is(.character-sheet) section {
   flex: content;
   flex-direction: column;
   flex-grow: unset;
   flex-basis: content;
 }
-.root-style-anarchy .sheet header.sheet-header h1,
-.root-style-anarchy .sheet header.sheet-header .passport-header{
+.style-anarchy-shadowrun .sheet header.sheet-header h1,
+.style-anarchy-shadowrun .sheet header.sheet-header .passport-header{
   flex: auto;
   flex-grow: 1;
   flex-basis: auto;
 }
 
-.root-style-anarchy .passport-header {
+.style-anarchy-shadowrun .passport-header {
   display: flex;
   flex-direction: row;
   margin: 2px;
 }
 
-.root-style-anarchy .passport-img {
+.style-anarchy-shadowrun .passport-img {
   display: flex;
   height: 128px;
   width: 128px;
@@ -80,13 +80,13 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
 }
 
 
-.root-style-anarchy .passport-img img{
+.style-anarchy-shadowrun .passport-img img{
   height: 128px;
   width: 128px;
   object-position: 50% 0%;
 }
 
-.root-style-anarchy .passport-column {
+.style-anarchy-shadowrun .passport-column {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,7 +95,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   min-height: 128px;
 }
 
-.root-style-anarchy :is(.passport-details-row, .passport-actions-row) {
+.style-anarchy-shadowrun :is(.passport-details-row, .passport-actions-row) {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -103,7 +103,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   flex-wrap: wrap;
 }
 
-.root-style-anarchy .passport-detail {
+.style-anarchy-shadowrun .passport-detail {
   display: flex;
   flex-direction: row;
   min-width: 150px;
@@ -114,7 +114,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   width: calc(49% - 2px);
 }
 
-.root-style-anarchy .passport-action {
+.style-anarchy-shadowrun .passport-action {
   display: flex;
   flex-direction: row;
   min-width: 150px;
@@ -123,7 +123,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   text-align: left;
 }
 
-.root-style-anarchy .info-label {
+.style-anarchy-shadowrun .info-label {
   display: flex;
   justify-content: left;
   white-space: nowrap;
@@ -131,7 +131,7 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   padding: 5px;
 }
 
-.root-style-anarchy .attributes-header {
+.style-anarchy-shadowrun .attributes-header {
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -140,13 +140,13 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   width: 100%;
 }
 
-.root-style-anarchy .attribute-row {
+.style-anarchy-shadowrun .attribute-row {
   display: flex;
   flex-direction: row;
   justify-content: left;
 }
-.root-style-anarchy .anarchy-attribute,
-.root-style-anarchy .anarchy-secondary-attribute {
+.style-anarchy-shadowrun .anarchy-attribute,
+.style-anarchy-shadowrun .anarchy-secondary-attribute {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,18 +154,18 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   max-width: 6rem;
 }
 
-.root-style-anarchy .anarchy-attribute {
+.style-anarchy-shadowrun .anarchy-attribute {
   background: var(--anarchy-background-attributes);
 }
 
-.root-style-anarchy .anarchy-secondary-attribute {
+.style-anarchy-shadowrun .anarchy-secondary-attribute {
   background: var(--anarchy-item-background);
 }
 
-.root-style-anarchy :is(.anarchy-attribute,.anarchy-secondary-attribute) input{
+.style-anarchy-shadowrun :is(.anarchy-attribute,.anarchy-secondary-attribute) input{
   font-size: large;
 }
-.root-style-anarchy :is(.anarchy-attribute,.anarchy-secondary-attribute) input.small{
+.style-anarchy-shadowrun :is(.anarchy-attribute,.anarchy-secondary-attribute) input.small{
   max-width: 1.5rem;
 }
 
@@ -177,14 +177,14 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
   opacity: 0.8;
 }
 
-.root-style-anarchy :is(.passport-detail, .passport-detail-large) input.info-value {
+.style-anarchy-shadowrun :is(.passport-detail, .passport-detail-large) input.info-value {
   font-weight: bold;
   text-align: start;
   border: none;
   height: 100%;
   padding-left: 5px;
 }
-.root-style-anarchy :is(.passport-detail, .passport-detail-large) select.info-value {
+.style-anarchy-shadowrun :is(.passport-detail, .passport-detail-large) select.info-value {
   font-weight: bold;
   text-align: start;
   border: none;
@@ -194,74 +194,74 @@ div#gm-manager.root-style-anarchy .anarchy-button label{
 }
 
 
-.root-style-anarchy .window-content {
+.style-anarchy-shadowrun .window-content {
   background: var(--anarchy-background);
   background-size: 50%;
   color: var(--anarchy-color-font);
 }
 
-.root-style-anarchy .window-content form.npc-sheet {
+.style-anarchy-shadowrun .window-content form.npc-sheet {
   background: var(--anarchy-tint-npc);
 }
 
-.root-style-anarchy div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality),
-.root-style-anarchy div:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) input {
+.style-anarchy-shadowrun div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality),
+.style-anarchy-shadowrun div:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) input {
   background: var(--anarchy-background-item);
 }
 
-.root-style-anarchy .anarchy-weapon > .item:hover {
+.style-anarchy-shadowrun .anarchy-weapon > .item:hover {
   background: var(--anarchy-tint-weapon-hover);
 }
-.root-style-anarchy .anarchy-weapon > .item:nth-child(even) {
+.style-anarchy-shadowrun .anarchy-weapon > .item:nth-child(even) {
   background: var(--anarchy-tint-weapon-even);
 }
-.root-style-anarchy .anarchy-weapon > .item:nth-child(odd) {
+.style-anarchy-shadowrun .anarchy-weapon > .item:nth-child(odd) {
   background: var(--anarchy-tint-weapon-odd);
 }
 
-.root-style-anarchy div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality) img{
+.style-anarchy-shadowrun div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality) img{
   background: var(--anarchy-background-item-img);
 }
-.root-style-anarchy div.item.anarchy-quality.negative {
+.style-anarchy-shadowrun div.item.anarchy-quality.negative {
   background: var(--anarchy-background-negative);
   border-style: dashed;
 }
 
-.root-style-anarchy input,
-.root-style-anarchy select,
-.root-style-anarchy label,
-.root-style-anarchy button {
+.style-anarchy-shadowrun input,
+.style-anarchy-shadowrun select,
+.style-anarchy-shadowrun label,
+.style-anarchy-shadowrun button {
   color: var(--anarchy-color-font);
 }  
-.root-style-anarchy .window-content select option{
+.style-anarchy-shadowrun .window-content select option{
   background: var(--anarchy-background);
   background-size: 50%;
   color: var(--anarchy-color-font);
 }  
-.root-style-anarchy .anarchy-button {
+.style-anarchy-shadowrun .anarchy-button {
   background: var(--anarchy-background-button);
   color: var(--anarchy-color-font)
 }
-.root-style-anarchy .tooltip .tooltip-roll-modifiers {
+.style-anarchy-shadowrun .tooltip .tooltip-roll-modifiers {
   background: var(--anarchy-background-tooltip);
 }
 
-.root-style-anarchy div:is(
+.style-anarchy-shadowrun div:is(
   .anarchy-keywords,
   .anarchy-dispositions,
   .anarchy-cues) {
   border: none;
   background-color: var(--anarchy-transparent);
 }
-.root-style-anarchy div:is(
+.style-anarchy-shadowrun div:is(
   .anarchy-keywords,
   .anarchy-dispositions,
   .anarchy-cues) input {
   border-color: var(--anarchy-color-border);
 }
 
-.root-style-anarchy a.item-control i,
-.root-style-anarchy a.item-control img {
+.style-anarchy-shadowrun a.item-control i,
+.style-anarchy-shadowrun a.item-control img {
   font-size: small;
   color: var(--anarchy-color-controls);
 }

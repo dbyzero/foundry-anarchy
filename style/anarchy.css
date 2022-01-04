@@ -499,55 +499,55 @@ input.anarchy-essence[type='number'] {
 
 
 /* Shadowrun Dark Anarchy style */
-.root-style-dark .window-content  {
+.style-shadowrun-dark .window-content  {
   background: var(--background-black);
   color: var(--font-color-light);
 }
 
-.root-style-dark .window-content form.npc-sheet {
+.style-shadowrun-dark .window-content form.npc-sheet {
   background: var(--lighter-npc);
 }
 
-.root-style-dark input,
-.root-style-dark select,
-.root-style-dark label,
-.root-style-dark button {
+.style-shadowrun-dark input,
+.style-shadowrun-dark select,
+.style-shadowrun-dark label,
+.style-shadowrun-dark button {
   color: var(--font-color-light);
 }  
-.root-style-dark .window-content select option{
+.style-shadowrun-dark .window-content select option{
   background-color: var(--background-dark);
   color: var(--font-color-light);
 }
-.root-style-dark .tox .tox-editor-container {
+.style-shadowrun-dark .tox .tox-editor-container {
   background: var(--gradient-silver-light-opaque);
 }
-.root-style-dark .tooltip .tooltip-roll-modifiers {
+.style-shadowrun-dark .tooltip .tooltip-roll-modifiers {
   background: var(--gradient-silver-light-opaque);
 }
 
 /* Dark glass style */
-.root-style-darkglass .window-content  {
+.style-shadowrun-darkglass .window-content  {
   background: var(--gradient-dark);
   color: var(--font-color-light);
 }
-.root-style-darkglass .window-content form.npc-sheet {
+.style-shadowrun-darkglass .window-content form.npc-sheet {
   background: var(--lighter-npc);
 }
 
-.root-style-darkglass input,
-.root-style-darkglass select,
-.root-style-darkglass label,
-.root-style-darkglass button {
+.style-shadowrun-darkglass input,
+.style-shadowrun-darkglass select,
+.style-shadowrun-darkglass label,
+.style-shadowrun-darkglass button {
   color: var(--font-color-light);
 }
-.root-style-darkglass select option{
+.style-shadowrun-darkglass select option{
   background-color: var(--background-dark);
   color: var(--font-color-light);
 }
-.root-style-darkglass .tox .tox-editor-container {
+.style-shadowrun-darkglass .tox .tox-editor-container {
   background: var(--gradient-silver-light-opaque);
 }
-.root-style-darkglass .tooltip .tooltip-roll-modifiers {
+.style-shadowrun-darkglass .tooltip .tooltip-roll-modifiers {
   background: var(--gradient-silver-light-opaque);
 }
 
