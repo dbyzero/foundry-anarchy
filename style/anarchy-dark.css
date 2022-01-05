@@ -1,0 +1,506 @@
+/* specifics for style-anarchy-dark */
+:root {
+  --anarchy-dark-background: hsla(0, 60%, 1%, 1);
+  --anarchy-dark-background-attributes: hsla(47, 100%, 55%, 0.75);
+  --anarchy-dark-background-secondary-attributes: hsla(47, 85%, 45%, 0.75);
+  --anarchy-dark-background-item: hsla(15, 60%, 15%, 0.5);
+  --anarchy-dark-background-item-img:hsla(31, 65%, 40%, 0.5);
+  --anarchy-dark-background-positive: hsla(180, 50%, 10%, 1);
+  --anarchy-dark-background-negative: hsla(300, 50%, 10%, 1);
+
+  --anarchy-dark-background-lighter: hsla(0, 0%, 100%, 0.2);
+
+  --anarchy-dark-background-tooltip: hsla(207, 40%, 70%, 1);
+  --anarchy-dark-background-button: var(--anarchy-dark-background-attributes);
+  --anarchy-dark-background-weapon: hsla(0, 0%, 80%, 0.3);
+  
+  --anarchy-dark-tint-weapon-odd: hsla(0, 0%, 70%, 0.3);
+  --anarchy-dark-tint-weapon-even: hsla(0, 0%, 50%, 0.3);
+  --anarchy-dark-tint-weapon-hover: hsla(200, 10%, 60%, 0.4);
+  --anarchy-dark-tint-npc: hsla(90, 29%, 70%, 0.15);
+  
+  --anarchy-dark-transparent: hsla(0, 0%, 0%, 0.0);
+  
+  --anarchy-dark-color-font: hsla(40, 80%, 90%, 1);
+  --anarchy-dark-color-button: hsla(0, 90%, 10%, 1);
+  --anarchy-dark-color-border:hsla(0, 90%, 30%, 0.8);
+  --anarchy-dark-color-attribute: var(--anarchy-dark-color-button);
+  --anarchy-dark-color-button-border: hsla(0, 70%, 30%, 0.5);
+
+  --anarchy-dark-color-dice-prowess: hsla(47, 60%, 40%, 1);
+  --anarchy-dark-color-dice-glitch: hsla(300, 80%, 20%, 1);
+  --anarchy-dark-color-controls: var(--anarchy-dark-background-item-img);
+  --anarchy-dark-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
+  --anarchy-dark-shadow-section: inset 0px 12px 12px -8px var(--anarchy-dark-color-border);
+  --anarchy-dark-shadow-attribute: 5px -5px 5px -2px var(--anarchy-dark-color-border);
+  --anarchy-dark-shadow-anarchy-button: 3px -3px 6px -3px var(--anarchy-dark-color-button-button);
+  --anarchy-dark-shadow-items-group: 5px 5px 5px -2px var(--anarchy-dark-color-border);
+
+  --anarchy-dark-color-resource-checked: hsla(39, 70%, 70%, 0.9);
+  --anarchy-dark-color-monitor-checked: hsla(9, 100%, 50%, 0.9);
+  --anarchy-dark-color-unchecked: hsla(39, 99%, 30%, 0.5);
+}
+
+
+#gm-manager.style-anarchy-dark {
+  min-width: 300px;
+  background: var(--anarchy-dark-background);
+  color: var(--anarchy-dark-color-font);
+}
+
+#gm-manager.style-anarchy-dark div.header{
+  border-bottom: 1px solid var(--anarchy-dark-color-border);
+}
+#gm-manager.style-anarchy-dark div {
+  padding: 2px;
+  vertical-align: top;
+}
+#gm-manager.style-anarchy-dark label {
+  color: var(--anarchy-dark-color-font);
+}
+#gm-manager.style-anarchy-dark a.anarchy-button,
+#gm-manager.style-anarchy-dark .anarchy-button{
+  background: var(--anarchy-dark-background-button);
+}
+#gm-manager.style-anarchy-dark .anarchy-button label {
+  color: var(--anarchy-dark-color-button);
+}
+
+.style-anarchy-dark .window-content {
+  background: var(--anarchy-dark-background);
+  color: var(--anarchy-dark-color-font);
+}
+
+.style-anarchy-dark .window-content form.npc-sheet {
+  background: var(--anarchy-dark-tint-npc);
+}
+
+.style-anarchy-dark .sheet header.sheet-header h1,
+.style-anarchy-dark .sheet header.sheet-header .passport-header{
+  flex: auto;
+  flex-grow: 1;
+  flex-basis: auto;
+}
+
+.style-anarchy-dark .passport-header {
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+}
+
+.style-anarchy-dark .passport-img img{
+  object-position: center;
+  border-radius: 6px;
+  margin-right: 2px;
+}
+.style-anarchy-dark .character-sheet .passport-img {
+  min-width: 128px; min-height: 128px;
+}
+.style-anarchy-dark .character-sheet .passport-img img{
+  height: 128px; width: 128px;
+}
+.style-anarchy-dark .npc-sheet .passport-img
+.style-anarchy-dark .vehicle-sheet .passport-img {
+  min-height: 92px; min-width: 92px;
+}
+.style-anarchy-dark .npc-sheet .passport-img img {
+  height: 92px; width: 92px;
+}
+.style-anarchy-dark .vehicle-sheet .passport-img img{
+  height: 92px; width: 92px;
+  background-color: var(--anarchy-dark-background-item-img);
+}
+.style-anarchy-dark .device-sheet .passport-img {
+  min-height: 64px; min-width: 64px;
+}
+.style-anarchy-dark .device-sheet .passport-img img{
+  height: 64px; width: 64px;
+  background-color: var(--anarchy-dark-background-item-img);
+}
+
+.style-anarchy-dark .character-sheet .passport-column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.style-anarchy-dark .character-sheet .passport-column {
+  width: calc(100% - 128px);
+  min-height: 128px;
+}
+.style-anarchy-dark .npc-sheet .passport-column ,
+.style-anarchy-dark .vehicle-sheet .passport-column {
+  width: calc(100% - 92px);
+  min-height: 92px;
+}
+.style-anarchy-dark .device-sheet .passport-column {
+  width: calc(100% - 64px);
+  min-height: 64px;
+}
+
+.style-anarchy-dark .passport-details-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.style-anarchy-dark :is(.passport-owner,.passport-detail,.passport-action) {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  vertical-align: text-bottom;
+  text-align: left;
+  height: 32px;
+}
+.style-anarchy-dark .passport-detail {
+  width: calc(49% - 2px);
+}
+.style-anarchy-dark .passport-owner {
+  width: calc(49% - 2px);
+}
+.style-anarchy-dark :is(.passport-detail,.passport-owner,.passport-action) img.owner-actor-img {
+  -ms-flex: 0 0 32px;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  object-position: 50% 0%;
+}
+
+.style-anarchy-dark .info-label {
+  justify-content: left;
+  align-self: baseline;
+  white-space: nowrap;
+  height: 100%;
+  padding: 1px;
+}
+.style-anarchy-dark :is(input, label, select).info-value {
+  align-self: baseline;
+  text-align: start;
+  border: none;
+  border-radius: 0px;
+  height: 100%;
+  width: 100%;
+  padding: 1px;
+}
+
+.style-anarchy-dark .monitors-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 0;
+}
+
+.style-anarchy-dark .monitors-row .anarchy-monitor {
+  flex: content;
+  flex-grow: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 4px;
+  max-width: 9rem;
+}
+
+.style-anarchy-dark :is(.section-group,.section-attributes) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  height: 100%;
+  width: 100%;
+}
+.style-anarchy-dark .section-group.column {
+  flex-direction: column;
+}
+
+.style-anarchy-dark .section-group {
+  border-top: 1px solid var(--anarchy-dark-color-border);
+  box-shadow: var(--anarchy-dark-shadow-section);  
+}
+.style-anarchy-dark .section-group h2{
+  border-bottom: none;
+}
+
+.style-anarchy-dark .attribute-box {
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 6px;
+  align-items: center;
+  min-width: 4rem;
+  max-width: 8rem;
+  width: auto;
+  box-shadow: var(--anarchy-dark-shadow-attribute);
+}
+
+.style-anarchy-dark :is(.npc-sheet,.device-sheet,.vehicle-sheet) .attribute-box{
+  min-width: 3rem;
+  max-width: 8rem;
+  flex-direction: row;
+  padding: 1px;
+}
+
+.style-anarchy-dark .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute),
+.style-anarchy-dark .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute) :is(input, select, label, button) {
+  color: var(--anarchy-dark-color-attribute);
+}
+
+.style-anarchy-dark .anarchy-attribute {
+  background: var(--anarchy-dark-background-attributes);
+}
+.style-anarchy-dark .anarchy-secondary-attribute {
+  background: var(--anarchy-dark-background-secondary-attributes);
+}
+
+.style-anarchy-dark .attribute-box input {
+  background: var(--anarchy-dark-background-lighter);
+  align-items: center;
+  text-align: center;
+  font-size: large;
+  border-style: none;
+  max-width: 2rem;
+}
+.style-anarchy-dark :is(.npc-sheet,.device-sheet,.vehicle-sheet) .attribute-box input {
+  font-size: small;
+  max-width: 1.5rem;
+}
+
+.style-anarchy-dark .wordlist {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-light);
+
+  background-color: var(--wordlist-color);
+
+  align-items: center;
+  min-width: auto;
+  margin: 2px;
+  padding: 2px;
+}
+
+.style-anarchy-dark .wordlist.anarchy-keywords {
+  width: calc(20% - 4px);
+}
+.style-anarchy-dark .wordlist.anarchy-cues {
+  width: calc(28% - 4px);
+}
+.style-anarchy-dark .wordlist.anarchy-dispositions {
+  width: calc(52% - 4px);
+}
+.style-anarchy-dark .wordlist:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) div {
+  width: 100%;
+}
+.style-anarchy-dark .wordlist:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) input {
+  background: var(--anarchy-dark-background-item);
+  border: 1px inset var(--border-light);
+  width: 100%;
+}
+
+.style-anarchy-dark .items-group.half-width{
+  width: calc(50% - 2px);
+}
+.style-anarchy-dark .items-group > div {
+  width: 100%;
+}
+.style-anarchy-dark .items-group > div h2 {
+  text-align: center;
+  border: none;
+}
+.style-anarchy-dark .items-group > div h2.section-group-header {
+  width: auto;
+  justify-content: center;
+}
+
+.style-anarchy-dark:is(.npc-sheet,.device-sheet) .items-group > div h2 {
+  text-align: center;
+  font-size: small;
+  border: none;
+}
+
+.style-anarchy-dark .items-group .items-group-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  vertical-align: top;
+}
+.style-anarchy-dark:is(.npc-sheet,.device-sheet) .items-group .items-group-list {
+  gap: 1px;
+}
+
+.style-anarchy-dark .items-group div.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  vertical-align: top;
+  background: var(--anarchy-dark-background-item);
+  
+  gap: 1px;
+  margin: 2px;
+  padding: 2px;
+  
+  border:1px solid var(--border-light);
+  border-radius: 6px;
+  max-width: 16rem;
+  box-shadow: var(--anarchy-dark-shadow-items-group);
+}
+.style-anarchy-dark:is(.npc-sheet,.device-sheet) .items-group div.item {
+  gap: 1px;
+  margin: 2px;
+  max-width: 12rem;
+}
+
+
+
+/* Weapons lists */
+.style-anarchy-dark .weapon-list :is(.weapon-header,.item) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-basis: auto;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  vertical-align: top;
+  
+  width: 100%;
+  gap: 1px;
+  padding: 2px;
+  text-align: left;
+  align-items: center;
+}
+.style-anarchy-dark .weapon-list .weapon-header{
+  background: var(--anarchy-dark-background-item);
+}
+.style-anarchy-dark .weapon-list .item:nth-child(even) {
+  background: var(--anarchy-dark-tint-weapon-even);
+}
+.style-anarchy-dark .weapon-list .item:nth-child(odd) {
+  background: var(--anarchy-dark-tint-weapon-odd);
+}
+.style-anarchy-dark .weapon-list .item:hover {
+  background: var(--anarchy-dark-tint-weapon-hover);
+}
+
+.style-anarchy-dark .weapon-list .weapon-header > span {
+  margin: 2px 0px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.style-anarchy-dark .weapon-list .item .weapon-column {
+  width: 100%;
+  margin: 0px 2px;
+  justify-content: flex-start;
+}
+
+.style-anarchy-dark .weapon-list .weapon-column.weapon-img { width: 32px; }
+.style-anarchy-dark .weapon-list .weapon-column.weapon-dmg{ width: 6rem; }
+.style-anarchy-dark .weapon-list .weapon-column.weapon-stat { width: 4rem; }
+.style-anarchy-dark .weapon-list .weapon-column.weapon-controls { width: 2rem; }
+.style-anarchy-dark .weapon-list .weapon-column.weapon-txt {
+  width: calc(100% - 20rem - 32px);
+}
+.style-anarchy-dark .weapon-list .weapon-column.weapon-summary {
+  width: calc(100% - 2rem);
+}
+
+
+.style-anarchy-dark :is(div,li).item.anarchy-item {
+  display: flex;
+  flex-direction: row;
+}
+.style-anarchy-dark :is(div,li).item.anarchy-item img {
+  background: var(--anarchy-dark-background-item-img);
+}
+.style-anarchy-dark .item.anarchy-quality.negative {
+  background: var(--anarchy-dark-background-negative);
+}
+.style-anarchy-dark .item.anarchy-quality.positive {
+  background: var(--anarchy-dark-background-positive);
+}
+
+.style-anarchy-dark :is(input, select, label, button) {
+  color: var(--anarchy-dark-color-font);
+}
+.style-anarchy-dark .window-content select option{
+  background: var(--anarchy-dark-background);
+  color: var(--anarchy-dark-color-font);
+}
+
+.style-anarchy-dark .anarchy-button label {
+  color: var(--anarchy-dark-color-button);
+}
+
+.style-anarchy-dark .anarchy-button {
+  background: var(--anarchy-dark-background-button);
+  color: var(--anarchy-dark-color-button);
+  /* border-radius: 6px; */
+  border: 1px outset var(--anarchy-dark-color-button-border);
+  box-shadow: var(--anarchy-dark-shadow-anarchy-button);
+  display: inline-block;
+  cursor: pointer;
+  margin: 2px;
+  padding: 3px 5px;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+}
+
+.style-anarchy-dark .anarchy-button:hover {
+  color: var(--hover-tint);
+}
+
+.style-anarchy-dark .anarchy-button:active {
+  border: 1px inset var(--anarchy-dark-color-button-border);
+  position: relative;
+  top: -1px;
+  left: -1px;
+}
+
+.style-anarchy-dark .tooltip .tooltip-roll-modifiers {
+  background: var(--anarchy-dark-background-tooltip);
+}
+
+.style-anarchy-dark div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) {
+  border: none;
+  background-color: var(--anarchy-dark-transparent);
+}
+.style-anarchy-dark div:is(
+  .anarchy-keywords,
+  .anarchy-dispositions,
+  .anarchy-cues) input {
+  border-color: var(--anarchy-dark-color-border);
+}
+
+.style-anarchy-dark a.item-control i,
+.style-anarchy-dark a.item-control img {
+  font-size: small;
+  color: var(--anarchy-dark-color-controls);
+}
+
+.style-anarchy-dark div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+  color: var(--anarchy-dark-color-resource-checked);
+}
+.style-anarchy-dark a.click-checkbar-element[data-checked=true] i {
+  color: var(--anarchy-dark-color-monitor-checked);
+}
+.style-anarchy-dark a.click-checkbar-element[data-checked=false] i {
+  color: var(--anarchy-dark-color-unchecked);
+}
+

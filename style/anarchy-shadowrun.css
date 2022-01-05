@@ -11,7 +11,7 @@
 
   --anarchy-background-tooltip: hsla(207, 40%, 70%, 1);
   --anarchy-background-button: var(--anarchy-background-attributes);
-  /* hsla(47, 40%, 70%, 1); */
+
   
   --anarchy-background-weapon: hsla(0, 0%, 80%, 0.3);
   
@@ -34,6 +34,10 @@
   --anarchy-shadow-attribute: 4px -4px 8px -4px var(--anarchy-color-border);
   --anarchy-shadow-anarchy-button: 3px -3px 6px -3px var(--anarchy-color-button-button);
   --anarchy-shadow-items-group: 3px -3px 6px -3px var(--anarchy-color-border);
+
+  --anarchy-color-resource-checked: hsla(207, 100%, 80%, 1);
+  --anarchy-color-monitor-checked: hsla(9, 70%, 30%, 0.9);
+  --anarchy-color-unchecked: hsla(207, 10%, 50%, 1);
 }
 
 #gm-manager.style-anarchy-shadowrun {
@@ -292,7 +296,7 @@
   text-align: center;
   border: none;
 }
-.style-anarchy-shadowrun .items-group > div h2 label {
+.style-anarchy-shadowrun .items-group > div h2.section-group-header {
   width: auto;
   justify-content: center;
 }
@@ -333,7 +337,7 @@
   border:1px solid var(--border-light);
   border-radius: 6px;
   max-width: 16rem;
-  box-shadow: var(--anarchy-shadow-attribute);
+  box-shadow: var(--anarchy-shadow-items-group);
 }
 .style-anarchy-shadowrun:is(.npc-sheet,.device-sheet) .items-group div.item {
   gap: 1px;
@@ -469,5 +473,15 @@
 .style-anarchy-shadowrun a.item-control img {
   font-size: small;
   color: var(--anarchy-color-controls);
+}
+
+.style-anarchy-shadowrun div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+  color: var(--anarchy-color-resource-checked);
+}
+.style-anarchy-shadowrun a.click-checkbar-element[data-checked=true] i {
+  color: var(--anarchy-color-monitor-checked);
+}
+.style-anarchy-shadowrun a.click-checkbar-element[data-checked=false] i {
+  color: var(--anarchy-color-unchecked);
 }
 

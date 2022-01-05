@@ -1,9 +1,7 @@
 <div class="define-item-type" data-item-type="gear">
-  <h2>
-    <label class="items-group-label">
-      {{localize 'ANARCHY.itemType.plural.gear'}}
-      {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='gear'}}
-    </label>
+  <h2 class="section-group-header">
+    {{localize 'ANARCHY.itemType.plural.gear'}}
+    {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='gear'}}
   </h2>
   <div class="items-group-list">
     {{#each items.gear as |gear|}}

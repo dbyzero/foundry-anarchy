@@ -1,9 +1,7 @@
 <div class="define-item-type" data-item-type="skill">
-  <h2>
-    <label class="items-group-label">
-      {{localize 'ANARCHY.itemType.plural.skill'}}
-      {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='skill'}}
-    </label>
+  <h2 class="section-group-header">
+    {{localize 'ANARCHY.itemType.plural.skill'}}
+    {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='skill'}}
   </h2>
   <div class="items-group-list">
     {{#each items.skill as |skill|}}

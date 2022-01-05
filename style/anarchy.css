@@ -5,9 +5,9 @@
   --font-color-half-dark: hsla(0, 10%, 10%, 0.5);
   --transparent: hsla(0, 0%, 0%, 0.0);
   --controls-color: hsla(207, 30%, 60%, 0.6);
-  --checked-resource-color: hsla(207, 100%, 80%, 1);
-  --checked-monitor-color: hsla(9, 70%, 30%, 0.9);
-  --unchecked-color: hsla(207, 10%, 50%, 1);
+  --color-resource-checked: hsla(207, 100%, 80%, 1);
+  --color-monitor-checked: hsla(9, 70%, 30%, 0.9);
+  --color-unchecked: hsla(207, 10%, 50%, 1);
   --wordlist-color: hsla(200, 50%, 70%, 0.3);
   --border-dark:hsla(200, 10%, 30%, 0.4);
   --border-medium:hsla(200, 10%, 45%, 0.4);
@@ -86,6 +86,21 @@ h3, h4 {
     padding: 0.25rem;
 }
 
+#gm-manager.style-anarchy-dark div.header{
+  display: grid;
+  margin: 2px;
+  padding: 2px;
+}
+
+.character-sheet .passport-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: space-between;
+}
+
+
 img.anarchy-img {
   -webkit-box-flex: 0;
   border: 0;
@@ -102,15 +117,6 @@ img.anarchy-img {
   width: 48px;
   height: 48px;
 }
-/* 
-.sheet header.sheet-header img.profile-img {
-  -ms-flex: 0 0 128px;
-  flex: 0 0 128px;
-  height: 128px;
-  width: 128px;
-  margin-right: 5px;
-  object-position: 50% 0%;
-} */
 
 img.anarchy-img.actor-img {
   -ms-flex: 0 0 64px;
@@ -246,7 +252,7 @@ select.anarchy-vehicle-model {
 
 div.item.anarchy-gear,
 div.item.anarchy-contact {
-  background: var(--wordlist-color) !important;
+  background: var(--wordlist-color);
 }
 div.item.anarchy-shadowamp {
   background: var(--gradient-silver);
@@ -388,13 +394,13 @@ a.item-control img {
 }
 
 div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
-  color: var(--checked-resource-color);
+  color: var(--color-resource-checked);
 }
 a.click-checkbar-element[data-checked=true] i {
-  color: var(--checked-monitor-color);
+  color: var(--color-monitor-checked);
 }
 a.click-checkbar-element[data-checked=false] i {
-  color: var(--unchecked-color);
+  color: var(--color-unchecked);
 }
 i.hide-fontawesome {
   font-size: small;
@@ -483,33 +489,6 @@ input.anarchy-essence[type='number'] {
   max-width: 3rem;
 }
 
-
-/* Shadowrun Dark Anarchy style */
-.style-shadowrun-dark .window-content  {
-  background: var(--background-black);
-  color: var(--font-color-light);
-}
-
-.style-shadowrun-dark .window-content form.npc-sheet {
-  background: var(--lighter-npc);
-}
-
-.style-shadowrun-dark input,
-.style-shadowrun-dark select,
-.style-shadowrun-dark label,
-.style-shadowrun-dark button {
-  color: var(--font-color-light);
-}  
-.style-shadowrun-dark .window-content select option{
-  background-color: var(--background-dark);
-  color: var(--font-color-light);
-}
-.style-shadowrun-dark .tox .tox-editor-container {
-  background: var(--gradient-silver-light-opaque);
-}
-.style-shadowrun-dark .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
-}
 
 /* Dark glass style */
 .style-shadowrun-darkglass .window-content  {
