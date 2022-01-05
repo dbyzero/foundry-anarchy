@@ -1,26 +1,5 @@
 /** common definitions **/
 :root {
-  --font-color-light: hsla(0, 0%, 83%, 0.9);
-  --font-color-dark: hsla(0, 10%, 10%, 0.9);
-  --font-color-half-dark: hsla(0, 10%, 10%, 0.5);
-  --transparent: hsla(0, 0%, 0%, 0.0);
-  --controls-color: hsla(207, 30%, 60%, 0.6);
-  --color-resource-checked: hsla(207, 100%, 80%, 1);
-  --color-monitor-checked: hsla(9, 70%, 30%, 0.9);
-  --color-unchecked: hsla(207, 10%, 50%, 1);
-  --wordlist-color: hsla(200, 50%, 70%, 0.3);
-  --border-dark:hsla(200, 10%, 30%, 0.4);
-  --border-medium:hsla(200, 10%, 45%, 0.4);
-  --border-light: hsla(200, 10%, 60%, 0.4);
-  --hover-tint: hsla(210, 44%, 69%, 0.486);
-  --background-dark:hsla(200, 5%, 30%, 0.8);
-  --background-black: hsla(0, 0%, 10%, 0.8);
-  --background-blue: hsla(250, 50%, 20%, 0.9);
-  --lighter-npc: hsla(90, 29%, 30%, 0.15);
-  --darker-npc: hsla(90, 29%, 70%, 0.15);
-  --background-inactive: repeating-linear-gradient(60deg,
-    hsla(0, 0%, 40%, 0.5) 0px 5px,
-    hsla(0, 0%, 80%, 0.5) 5px 10px);
   --gradient-dark: repeating-linear-gradient(80deg,
     hsla(0, 0%, 0%, 0.8) 0% 5%,
     hsla(0, 0%, 15%, 0.8) 7%,
@@ -62,205 +41,241 @@
     hsla(319, 30%, 10%, 0.9),
     hsla(0, 0%, 0%, 0.7));
 
+
+  --anarchy-darkglass-background: hsla(0, 60%, 1%, 1);
+  --anarchy-darkglass-background-attributes: var(--gradient-gold);
+  --anarchy-darkglass-background-secondary-attributes: hsla(47, 85%, 45%, 0.75);
+  --anarchy-darkglass-background-item: hsla(15, 60%, 15%, 0.5);
+  --anarchy-darkglass-background-item-img:hsla(31, 65%, 40%, 0.5);
+  --anarchy-darkglass-background-positive: hsla(180, 50%, 10%, 1);
+  --anarchy-darkglass-background-negative: hsla(300, 50%, 10%, 1);
+
+  --anarchy-darkglass-background-lighter: hsla(0, 0%, 100%, 0.2);
+  
+  --anarchy-darkglass-background-tooltip: hsla(207, 40%, 70%, 1);
+  --anarchy-darkglass-background-button: var(--anarchy-darkglass-background-attributes);
+  --anarchy-darkglass-background-weapon: hsla(0, 0%, 80%, 0.3);
+  
+  --anarchy-darkglass-tint-weapon-odd: hsla(0, 0%, 70%, 0.3);
+  --anarchy-darkglass-tint-weapon-even: hsla(0, 0%, 50%, 0.3);
+  --anarchy-darkglass-tint-weapon-hover: hsla(200, 10%, 60%, 0.4);
+  --anarchy-darkglass-tint-npc: hsla(90, 29%, 70%, 0.15);
+  
+  --anarchy-darkglass-transparent: hsla(0, 0%, 0%, 0.0);
+  
+  --anarchy-darkglass-color-font: hsla(40, 80%, 90%, 1);
+  --anarchy-darkglass-color-button: hsla(0, 90%, 10%, 1);
+  --anarchy-darkglass-color-border:hsla(0, 90%, 30%, 0.8);
+  --anarchy-darkglass-color-attribute: var(--anarchy-darkglass-color-button);
+  --anarchy-darkglass-color-button-border: hsla(0, 70%, 30%, 0.5);
+  --anarchy-darkglass-color-border-light: hsla(0, 0%, 100%, 0.3);
+  
+  --anarchy-darkglass-color-dice-prowess: hsla(47, 60%, 40%, 1);
+  --anarchy-darkglass-color-dice-glitch: hsla(300, 80%, 20%, 1);
+  --anarchy-darkglass-color-controls: var(--anarchy-darkglass-background-item-img);
+  --anarchy-darkglass-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
+  --anarchy-darkglass-shadow-section: inset 0px 12px 12px -8px var(--anarchy-darkglass-color-border);
+  --anarchy-darkglass-shadow-attribute: 5px -5px 5px -2px var(--anarchy-darkglass-color-border);
+  --anarchy-darkglass-shadow-anarchy-button: 3px -3px 6px -3px var(--anarchy-darkglass-color-button-button);
+  --anarchy-darkglass-shadow-items-group: 5px 5px 5px -2px var(--anarchy-darkglass-color-border);
+
+  --anarchy-darkglass-color-resource-checked: hsla(39, 70%, 70%, 0.9);
+  --anarchy-darkglass-color-monitor-checked: hsla(9, 100%, 50%, 0.9);
+  --anarchy-darkglass-color-unchecked: hsla(39, 99%, 30%, 0.5);
+  --font-color-light: hsla(0, 0%, 83%, 0.9);
+  --font-color-dark: hsla(0, 10%, 10%, 0.9);
+  --font-color-half-dark: hsla(0, 10%, 10%, 0.5);
+  --transparent: hsla(0, 0%, 0%, 0.0);
+  --controls-color: hsla(207, 30%, 60%, 0.6);
+  --color-resource-checked: hsla(207, 100%, 80%, 1);
+  --color-monitor-checked: hsla(9, 70%, 30%, 0.9);
+  --color-unchecked: hsla(207, 10%, 50%, 1);
+  --wordlist-color: hsla(200, 50%, 70%, 0.3);
+  --border-dark:hsla(200, 10%, 30%, 0.4);
+  --border-medium:hsla(200, 10%, 45%, 0.4);
+  --border-light: hsla(200, 10%, 60%, 0.4);
+  --hover-tint: hsla(210, 44%, 69%, 0.486);
+  --background-dark:hsla(200, 5%, 30%, 0.8);
+  --background-black: hsla(0, 0%, 10%, 0.8);
+  --background-blue: hsla(250, 50%, 20%, 0.9);
+  --lighter-npc: hsla(90, 29%, 30%, 0.15);
+  --darker-npc: hsla(90, 29%, 70%, 0.15);
+
   --color-dice-prowess: hsla(47, 60%, 40%, 1);
   --color-dice-glitch: hsla(300, 80%, 20%, 1);
 
-  /* specifics for style-anarchy-shadowrun */
-  --anarchy-background: url("anarchy-background.webp") repeat;
-  --anarchy-font: hsla(0, 10%, 10%, 1);
-  --anarchy-attributes-background: hsla(47, 90%, 50%, 0.5);
-  --anarchy-item-background: hsla(44, 0%, 100%, 0.5);
-  --anarchy-negative-background: hsla(300, 80%, 20%, 0.2);
-  --anarchy-controls-color: hsla(207, 40%, 60%, 0.7);
-  --anarchy-tooltip-background: hsla(207, 40%, 70%, 1);
-  --anarchy-button-background: hsla(47, 40%, 70%, 1);
-  --anarchy-weapon-background: hsla(0, 0%, 80%, 0.3);
-  --anarchy-weapon-background-odd: hsla(0, 0%, 70%, 0.3);
-  --anarchy-weapon-background-even: hsla(0, 0%, 50%, 0.3);
-  --anarchy-item-img-background: var(--anarchy-controls-color);
-
 }
 
-#logo {
-  content : url(anarchy-logo.webp);
-  width: 100px;
-  height: 57px;
-}
-#pause > img {
-  content: url(anarchy-pause.webp);
-  height: 192px;
-  width: 192px;
-  top: -35px;
-  left: calc(50% - 96px);
+#gm-manager.style-anarchy-darkglass {
+  background: var(--anarchy-darkglass-background);
+  color: var(--anarchy-darkglass-color-font);
 }
 
-/* common anarchy sheets styles*/
-h1, h2, h3 { font-weight: bold; }
-h4 { font-weight: 500; }
-h3, h4 {
-    padding: 0.25rem;
+#gm-manager.style-anarchy-darkglass div.header{
+  border-bottom: 1px solid var(--anarchy-darkglass-color-border);
 }
-
-img.anarchy-img {
-  -webkit-box-flex: 0;
-  border: 0;
-  padding: 2px;
-  float: left;
-  border-radius: 6px;
-  object-fit: contain;
-  vertical-align: top;
+#gm-manager.style-anarchy-darkglass label {
+  color: var(--anarchy-darkglass-color-font);
 }
-
-:is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img) {
-  -ms-flex: 0 0 48px;
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
+#gm-manager.style-anarchy-darkglass a.anarchy-button,
+#gm-manager.style-anarchy-darkglass .anarchy-button{
+  background: var(--anarchy-darkglass-background-button);
 }
-.sheet header.sheet-header h1,
-.sheet header.sheet-header > div{
-  flex: 1;
-  flex-grow: 1;
-  flex-basis: auto;
+#gm-manager.style-anarchy-darkglass .anarchy-button label {
+  color: var(--anarchy-darkglass-color-button);
 }
-.sheet header.sheet-header img.profile-img {
-  -ms-flex: 0 0 128px;
-  flex: 0 0 128px;
-  height: 128px;
-  width: 128px;
-  margin-right: 5px;
-  object-position: 50% 0%;
-}
-input.anarchy-character-genre {
-  max-width: 6rem;
-}
-.sheet header.sheet-header img.anarchy-img.owner-actor-img {
-  -ms-flex: 0 0 32px;
-  flex: 0 0 32px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.5;
-}
-
-img.anarchy-img.actor-img {
-  -ms-flex: 0 0 64px;
-  flex: 0 0 64px;
-  width: 64px;
-  height: 64px;
-}
-
-img.anarchy-img.item-img {
-  -ms-flex: 0 0 32px;
-  flex: 0 0 32px;
-  width: 32px;
-  height: 32px;
-  flex-grow: 0;
-  margin-right: 0.1rem;
-}
-
-div.anarchy-monitor {
-  flex: content;
-  flex-grow: 0;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin: 2px;
-  min-width: 6rem;
-  max-width: 9rem;
-}
-
-div.anarchy-monitor :is(label, h3) {
-  flex-grow: 0.5;
-  margin: 2px;
-}
-
-div.anarchy-monitor .check-rootbar {
-  height: max-content;
+#gm-manager.style-anarchy-darkglass header {
+  border-bottom: 1px solid var(--anarchy-darkglass-color-border-light);
+  color: var(--anarchy-darkglass-color-font);
 }
 
 
-.sheet .anarchy-monitor-anarchy {
-  flex: content;
-  min-width: 13rem !important;
+.style-anarchy-darkglass .window-content {
+  background: var(--anarchy-darkglass-background);
+  color: var(--anarchy-darkglass-color-font);
 }
 
-.sheet header.sheet-header img.checkbar-img,
-img.checkbar-img {
-  flex: none;
-  width: 2rem;
-  height: 2rem;
-  margin: 0px;
-  display: inline-block;
-  background-position: center;
-  background-size: cover;
-  border: none;
-}
-img.checkbar-img:hover {
-  background-color: var(--hover-tint);
-}
-img.checkbar-img:active {
-  position: relative;
-  top: 1px;
+.style-anarchy-darkglass .window-content form.npc-sheet {
+  background: var(--anarchy-darkglass-tint-npc);
 }
 
-div.anarchy-block {
-  flex: content;
-  flex-grow: 0;
-  margin: 2px;
-  padding: 2px;
+.style-anarchy-darkglass .vehicle-sheet .passport-img img{
+  background-color: var(--anarchy-darkglass-background-item-img);
+}
+.style-anarchy-darkglass .device-sheet .passport-img img{
+  background-color: var(--anarchy-darkglass-background-item-img);
 }
 
 
-div.anarchy-risk-glitch span i.fas {
-  color: var(--color-dice-glitch);
+.style-anarchy-darkglass .section-group {
+  border-top: 1px solid var(--anarchy-darkglass-color-border);
+  box-shadow: var(--anarchy-darkglass-shadow-section);  
 }
-div.anarchy-risk-prowess span i.fas {
-  color: var(--color-dice-prowess);
-}
-div.anarchy-risk-glitch {
-  margin: 1px;
-  padding: 1px;
-  border-radius: 6px;
-  background: var(--anarchy-negative-background);
+.style-anarchy-darkglass .section-group h2{
+  border-bottom: none;
 }
 
-div.anarchy-risk-prowess {
-  margin: 1px;
-  padding: 1px;
-  border-radius: 6px;
+.style-anarchy-darkglass .attribute-box {
+  box-shadow: var(--anarchy-darkglass-shadow-attribute);
+}
+
+.style-anarchy-darkglass .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute),
+.style-anarchy-darkglass .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute) :is(input, select, label, button) {
+  color: var(--anarchy-darkglass-color-attribute);
+}
+
+.style-anarchy-darkglass .anarchy-attribute {
   background: var(--gradient-gold);
+  background: var(--anarchy-darkglass-background-attributes);
+}
+.style-anarchy-darkglass .anarchy-secondary-attribute {
+  background: var(--anarchy-darkglass-background-secondary-attributes);
 }
 
-div.anarchy-keywords,
-div.anarchy-dispositions,
-div.anarchy-cues {
-  margin: 2px;
-  padding: 2px;
-  border-radius: 6px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-light);
-  background-color: var(--wordlist-color);
-}
-div.anarchy-keywords input,
-div.anarchy-dispositions input,
-div.anarchy-cues input{
-  border-width: 1px;
-  border-style: inset;
-  border-color: var(--border-light);
-}
-.item.item-inactive {
-  background: var(--background-inactive) !important;
+.style-anarchy-darkglass .attribute-box input {
+  background: var(--anarchy-darkglass-background-lighter);
 }
 
-div.item {
-  margin: 2px;
-  padding: 2px;
-  border-width: 1px;
-  border-color: var(--border-light);
-  border-style: solid;
-  border-radius: 6px;
-  max-width: 16rem;
-  flex-basis: auto;
+.style-anarchy-darkglass .wordlist {
+  border: 1px solid var(--anarchy-darkglass-color-border-light);
+}
+
+.style-anarchy-darkglass .wordlist:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) input {
+  /* border-color: var(--border-light);
+  background-color: var(--wordlist-color); */
+  background: var(--anarchy-darkglass-background-item);
+  border-style: none;
+}
+
+.style-anarchy-darkglass div:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) {
+  border: none;
+  /* border-color: var(--border-light);
+  background-color: var(--wordlist-color); */
+  background-color: var(--anarchy-darkglass-transparent);
+}
+
+
+.style-anarchy-darkglass .items-group div.item {
+  background: var(--anarchy-darkglass-background-item);
+  border:1px solid var(--anarchy-darkglass-color-border-light);
+  box-shadow: var(--anarchy-darkglass-shadow-items-group);
+}
+
+
+/* Weapons lists */
+.style-anarchy-darkglass .weapon-list .weapon-header{
+  background: var(--anarchy-darkglass-background-item);
+}
+.style-anarchy-darkglass .weapon-list .item:nth-child(even) {
+  background: var(--anarchy-darkglass-tint-weapon-even);
+}
+.style-anarchy-darkglass .weapon-list .item:nth-child(odd) {
+  background: var(--anarchy-darkglass-tint-weapon-odd);
+}
+.style-anarchy-darkglass .weapon-list .item:hover {
+  background: var(--anarchy-darkglass-tint-weapon-hover);
+}
+
+
+.style-anarchy-darkglass :is(div,li).item.anarchy-item img {
+  background: var(--anarchy-darkglass-background-item-img);
+}
+.style-anarchy-darkglass .item.anarchy-quality.negative {
+  background: var(--anarchy-darkglass-background-negative);
+}
+.style-anarchy-darkglass .item.anarchy-quality.positive {
+  background: var(--anarchy-darkglass-background-positive);
+}
+
+.style-anarchy-darkglass :is(input, select, label, button) {
+  color: var(--anarchy-darkglass-color-font);
+}
+.style-anarchy-darkglass .window-content select option{
+  background: var(--anarchy-darkglass-background);
+  color: var(--anarchy-darkglass-color-font);
+}
+
+.style-anarchy-darkglass .anarchy-button label {
+  color: var(--anarchy-darkglass-color-button);
+}
+
+.style-anarchy-darkglass .anarchy-button {
+  background: var(--anarchy-darkglass-background-button);
+  color: var(--anarchy-darkglass-color-button);
+  /* border-radius: 6px; */
+  border: 1px outset var(--anarchy-darkglass-color-button-border);
+  box-shadow: var(--anarchy-darkglass-shadow-anarchy-button);
+}
+
+.style-anarchy-darkglass .anarchy-button:hover {
+  color: var(--hover-tint);
+}
+
+.style-anarchy-darkglass .anarchy-button:active {
+  border: 1px inset var(--anarchy-darkglass-color-button-border);
+  position: relative;
+  top: -1px;
+  left: -1px;
+}
+
+.style-anarchy-darkglass .tooltip .tooltip-roll-modifiers {
+  background: var(--anarchy-darkglass-background-tooltip);
+}
+
+.style-anarchy-darkglass a.item-control i,
+.style-anarchy-darkglass a.item-control img {
+  font-size: small;
+  color: var(--anarchy-darkglass-color-controls);
+}
+
+.style-anarchy-darkglass div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+  color: var(--anarchy-darkglass-color-resource-checked);
+}
+.style-anarchy-darkglass a.click-checkbar-element[data-checked=true] i {
+  color: var(--anarchy-darkglass-color-monitor-checked);
+}
+.style-anarchy-darkglass a.click-checkbar-element[data-checked=false] i {
+  color: var(--anarchy-darkglass-color-unchecked);
 }
 
 div.item.anarchy-attribute {

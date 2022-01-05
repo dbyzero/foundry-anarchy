@@ -25,7 +25,8 @@
   "styles": [
     "style/anarchy.css",
     "style/anarchy-shadowrun.css",
-    "style/anarchy-dark.css"
+    "style/anarchy-dark.css",
+    "style/anarchy-darkglass.css"
   ],
   "languages": [
     {
