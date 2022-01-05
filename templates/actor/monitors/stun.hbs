@@ -1,5 +1,11 @@
 <div class="flexcol anarchy-monitor">
-  <label>{{localize 'ANARCHY.actor.monitors.stun'}}</label>
+  <label>
+    {{localize 'ANARCHY.actor.monitors.stun'}}
+    <input class="info-value" type="number" data-dtype="Number" maxlength="2"
+      name="data.monitors.stun.resistance"
+      value="{{data.data.monitors.stun.resistance}}" 
+    />
+  </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='stun'
     value=data.data.monitors.stun.value
