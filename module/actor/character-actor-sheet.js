@@ -10,6 +10,14 @@ export class CharacterActorSheet extends AnarchyBaseActorSheet {
     return `${TEMPLATES_PATH}/actor/character.hbs`;
   }
 
+  /** @override */
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      width: 720,
+      height: 700
+    });
+  }
+
   getData(options) {
     let hbsData = mergeObject(
       super.getData(options), {

@@ -7,6 +7,13 @@ export class NPCCharacterActorSheet extends CharacterActorSheet {
     return `${TEMPLATES_PATH}/actor/npc-sheet.hbs`;
   }
 
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      width: 450,
+      height: 550
+    });
+  }
+
   getData(options) {
     let hbsData = super.getData(options);
     hbsData.options.classes.push('npc-sheet');
