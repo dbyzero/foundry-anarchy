@@ -167,7 +167,6 @@
   padding: 3px;
 }
 .style-anarchy-shadowrun :is(input, label, select).info-value {
-  font-weight: bold;
   text-align: start;
   border: none;
   border-radius: 0px;
@@ -223,7 +222,7 @@
 
 .style-anarchy-shadowrun :is(.npc-sheet,.device-sheet,.vehicle-sheet) .attribute-box{
   min-width: 3rem;
-  max-width: 6rem;
+  max-width: 8rem;
   flex-direction: row;
   padding: 1px;
 }

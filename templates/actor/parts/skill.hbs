@@ -11,16 +11,19 @@
     <div class="flexcol">
       <span class="flexrow">
         <a class="click-skill-roll">
-          <label>{{name}}</label>
-          <label>{{data.value}} + {{localizeAttribute data.attribute}}</label>
+          <label>
+            {{name}}: {{data.value}} + {{localizeAttribute data.attribute}}
+          </label>
         </a>
       </span>
       {{#if data.specialization}}
         <span class="flexrow">
-          <a class="click-skill-roll" data-item-specialization="{{data.specialization}}">(
-            <label>{{data.specialization}}</label>
-            <label>{{sum data.value 2}} + {{localizeAttribute data.attribute}}</label>
-          )</a>
+          <a class="click-skill-roll" data-item-specialization="{{data.specialization}}">
+            <label>
+              ({{data.specialization}}:
+              {{sum data.value 2}} + {{localizeAttribute data.attribute}})
+            </label>
+          </a>
         </span>
       {{/if}}
     </div>

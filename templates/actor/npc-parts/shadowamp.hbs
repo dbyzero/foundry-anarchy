@@ -1,9 +1,9 @@
  <div class="flexrow define-item-type item anarchy-item anarchy-shadowamp {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="shadowamp" draggable="true">
-  {{> 'systems/anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
-  <div>
-    <label>{{name}}</label>
-    <label>({{localize 'ANARCHY.item.shadowamp.levelShort'}} {{data.level}})</label>
+  <label>
+    {{name}}
+    ({{localize 'ANARCHY.item.shadowamp.levelShort'}} {{data.level}})
     <br>
-    <label>{{{data.description}}}</label>
-  </div>
+    {{{data.description}}}
+  </label>
+  {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
 </div>

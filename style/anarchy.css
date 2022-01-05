@@ -435,12 +435,7 @@ div.item.flexrow {
   vertical-align: top;
   align-items: flex-end;
 }
-.flex-shrink-control-start {
-  flex: content;
-  flex-grow: 1rem;
-  justify-content: left;
-  max-width: 2rem;
-}
+
 .flex-shrink-start {
   flex: content;
   flex-grow: 0.5;

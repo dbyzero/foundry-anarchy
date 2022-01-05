@@ -1,8 +1,8 @@
 <div class="flexrow define-item-type item anarchy-item anarchy-quality {{#unless data.positive}}negative{{/unless}} {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="quality" draggable="true">
-  {{> 'systems/anarchy/templates/common/item-controls.hbs' controlDivClass='flex-shrink-control-start'}}
-  <div class="flexcol">
-    <label>{{name}}</label>
+  <label>
+    {{name}}
     <br>
-    <label class="item-description">{{{data.description}}}</label>
-  </div>
+    {{{data.description}}}
+  </label>
+  {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
 </div>
