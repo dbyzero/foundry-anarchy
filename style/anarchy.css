@@ -1,69 +1,22 @@
 /** common definitions **/
 :root {
-  --font-color-light: hsla(0, 0%, 83%, 0.9);
-  --font-color-dark: hsla(0, 10%, 10%, 0.9);
-  --font-color-half-dark: hsla(0, 10%, 10%, 0.5);
   --transparent: hsla(0, 0%, 0%, 0.0);
-  --controls-color: hsla(207, 30%, 60%, 0.6);
-  --color-resource-checked: hsla(207, 100%, 80%, 1);
-  --color-monitor-checked: hsla(9, 70%, 30%, 0.9);
-  --color-unchecked: hsla(207, 10%, 50%, 1);
-  --wordlist-color: hsla(200, 50%, 70%, 0.3);
-  --border-dark:hsla(200, 10%, 30%, 0.4);
-  --border-medium:hsla(200, 10%, 45%, 0.4);
-  --border-light: hsla(200, 10%, 60%, 0.4);
-  --hover-tint: hsla(210, 44%, 69%, 0.486);
-  --background-dark:hsla(200, 5%, 30%, 0.8);
-  --background-black: hsla(0, 0%, 10%, 0.8);
-  --background-blue: hsla(250, 50%, 20%, 0.9);
-  --lighter-npc: hsla(90, 29%, 30%, 0.15);
-  --darker-npc: hsla(90, 29%, 70%, 0.15);
   --background-inactive: repeating-linear-gradient(60deg,
     hsla(0, 0%, 40%, 0.5) 0px 5px,
     hsla(0, 0%, 80%, 0.5) 5px 10px);
-  --gradient-dark: repeating-linear-gradient(80deg,
-    hsla(0, 0%, 0%, 0.8) 0% 5%,
-    hsla(0, 0%, 15%, 0.8) 7%,
-    hsla(0, 0%, 5%, 0.9) 9% 12%,
-    hsla(0, 0%, 20%, 0.8) 16%,
-    hsla(0, 0%, 0%, 0.8) 20% 25%, 
-    hsla(0, 0%, 15%, 0.8) 38%,
-    hsla(0, 0%, 5%, 0.8) 42%, 
-    hsla(0, 0%, 0%, 0.8) 50%);
-  --gradient-silver: linear-gradient(135deg,
-    hsla(249, 26%, 29%, 0.4),
-    hsla(237, 13%, 73%, 0.4), 
-    hsla(195, 3%, 24%, 0.6), 
-    hsla(43, 7%, 79%, 0.4), 
-    hsla(348, 14%, 21%, 0.4));
-  --gradient-ellipse-silver: radial-gradient(ellipse farthest-corner at 20% 20%,
-    hsla(249, 26%, 29%, 0.4),
-    hsla(237, 13%, 73%, 0.4), 
-    hsla(195, 19%, 29%, 0.6), 
-    hsla(239, 43%, 72%, 0.4), 
-    hsla(184, 22%, 31%, 0.4));
-  --gradient-silver-light-opaque: linear-gradient(150deg,
-    hsla(249, 46%, 86%, 0.9), 
-    hsla(236, 22%, 87%, 0.9), 
-    hsla(196, 5%, 53%, 0.9),
-    hsla(41, 10%, 61%, 0.9),
-    hsla(347, 8%, 78%, 0.9));
+
+  --hover-tint: hsla(210, 44%, 69%, 0.486);
+  --background-negative: hsla(300, 80%, 20%, 0.2);
+
+  --color-dice-prowess: hsla(47, 60%, 40%, 1);
+  --color-dice-glitch: hsla(300, 80%, 20%, 1);
+
   --gradient-gold: repeating-linear-gradient(120deg,
     hsla(40, 50%, 50%, 0.4),
     hsla(55, 92%, 86%, 0.4),
     hsla(41, 63%, 43%, 0.4), 
     hsla(55, 89%, 85%, 0.4), 
     hsla(38, 72%, 39%, 0.4));
-  --gradient-purple-black: radial-gradient(ellipse farthest-corner at 20% 20%,
-    hsla(0, 0%, 0%, 0.7),
-    hsla(282, 47%, 33%, 0.4),
-    hsla(274, 77%, 40%, 0.4),
-    hsla(282, 47%, 33%, 0.4),
-    hsla(319, 30%, 10%, 0.9),
-    hsla(0, 0%, 0%, 0.7));
-
-  --color-dice-prowess: hsla(47, 60%, 40%, 1);
-  --color-dice-glitch: hsla(300, 80%, 20%, 1);
 }
 
 #logo {
@@ -82,22 +35,11 @@
 /* common anarchy sheets styles*/
 h1, h2, h3 { font-weight: bold; }
 h4 { font-weight: 500; }
-h3, h4 {
-    padding: 0.25rem;
-}
+h3, h4 { padding: 0.25rem; }
 
-#gm-manager.style-anarchy-dark div.header{
-  display: grid;
-  margin: 2px;
-  padding: 2px;
-}
-
-.character-sheet .passport-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  vertical-align: middle;
-  justify-content: space-between;
+a.item-control i,
+a.item-control img {
+  font-size: small;
 }
 
 
@@ -134,7 +76,155 @@ img.anarchy-img.item-img {
   margin-right: 0.1rem;
 }
 
-div.anarchy-monitor {
+
+#gm-manager {
+  min-width: 300px;
+}
+#gm-manager div.header{
+  display: grid;
+  margin: 2px;
+  padding: 2px;
+}
+#gm-manager div {
+  padding: 2px;
+  vertical-align: top;
+}
+#gm-manager {
+	position: absolute;
+  display: block;
+  z-index: 100;
+
+  grid-column: 1;
+  height: fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  border-radius: 6px;
+}
+
+#gm-manager header {
+	margin: 2px;
+	padding: 2px;
+}
+
+#gm-manager div.anarchy-monitor-anarchy {
+  align-items: flex-start;
+  max-width: fit-content;
+}
+
+
+.sheet header.sheet-header h1,
+.sheet header.sheet-header .passport-header{
+  flex: auto;
+  flex-grow: 1;
+  flex-basis: auto;
+}
+.passport-header {
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+}
+
+.passport-img img{
+  object-position: center;
+  border-radius: 6px;
+  margin-right: 2px;
+}
+.character-sheet .passport-img {
+  min-width: 128px; min-height: 128px;
+}
+.character-sheet .passport-img img{
+  height: 128px; width: 128px;
+}
+.npc-sheet .passport-img,
+.vehicle-sheet .passport-img {
+  min-height: 92px; min-width: 92px;
+}
+.npc-sheet .passport-img img,
+.vehicle-sheet .passport-img img{
+  height: 92px; width: 92px;
+}
+.device-sheet .passport-img {
+  min-height: 64px; min-width: 64px;
+}
+.device-sheet .passport-img img{
+  height: 64px; width: 64px;
+}
+
+.character-sheet .passport-column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.character-sheet .passport-column {
+  width: calc(100% - 128px);
+  min-height: 128px;
+}
+.npc-sheet .passport-column ,
+.vehicle-sheet .passport-column {
+  width: calc(100% - 92px);
+  min-height: 92px;
+}
+.device-sheet .passport-column {
+  width: calc(100% - 64px);
+  min-height: 64px;
+}
+
+.passport-details-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+:is(.passport-owner,.passport-detail,.passport-action) {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  vertical-align: text-bottom;
+  text-align: left;
+  height: 32px;
+}
+:is(.passport-detail,.passport-owner) {
+  width: calc(49% - 2px);
+}
+
+:is(.passport-detail,.passport-owner,.passport-action) img.owner-actor-img {
+  -ms-flex: 0 0 32px;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  object-position: 50% 0%;
+}
+
+.info-label {
+  justify-content: left;
+  align-self: baseline;
+  white-space: nowrap;
+  height: 100%;
+  padding: 1px;
+}
+:is(input, label, select).info-value {
+  align-self: baseline;
+  text-align: start;
+  border: none;
+  border-radius: 0px;
+  height: 100%;
+  width: 100%;
+  padding: 1px;
+}
+
+/* manage the monitors*/
+.monitors-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 0;
+}
+
+.anarchy-monitor {
   flex: content;
   flex-grow: 0;
   align-items: flex-start;
@@ -144,22 +234,19 @@ div.anarchy-monitor {
   max-width: 9rem;
 }
 
-div.anarchy-monitor :is(label, h3) {
+.anarchy-monitor :is(label, h3) {
   flex-grow: 0.5;
   margin: 2px;
 }
 
-div.anarchy-monitor .check-rootbar {
+.anarchy-monitor .check-rootbar {
   height: max-content;
 }
 
-
-.sheet .anarchy-monitor-anarchy {
-  flex: content;
+.anarchy-monitor-anarchy {
   min-width: 13rem !important;
 }
 
-.sheet header.sheet-header img.checkbar-img,
 img.checkbar-img {
   flex: none;
   width: 2rem;
@@ -178,143 +265,176 @@ img.checkbar-img:active {
   top: 1px;
 }
 
-div.anarchy-block {
-  flex: content;
-  flex-grow: 0;
+
+:is(.section-group,.section-attributes) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  height: 100%;
+  width: 100%;
+}
+.section-group.column {
+  flex-direction: column;
+}
+
+/* Manage the attributes */
+.attribute-box {
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
   margin: 2px;
   padding: 2px;
+  border-radius: 6px;
+  align-items: center;
+  min-width: 4rem;
+  max-width: 8rem;
+  width: auto;
 }
-
-
-div.anarchy-risk-nothing span i.fas {
-  font-size: x-large;
-}
-div.anarchy-risk-glitch span i.fas {
-  color: var(--color-dice-glitch);
-  font-size: x-large;
-}
-div.anarchy-risk-prowess span i.fas {
-  color: var(--color-dice-prowess);
-  font-size: x-large;
-}
-div.anarchy-risk-glitch {
-  margin: 1px;
+:is(.npc-sheet,.device-sheet,.vehicle-sheet) .attribute-box{
+  min-width: 3rem;
+  max-width: 8rem;
+  flex-direction: row;
   padding: 1px;
-  border-radius: 6px;
-  background: var(--anarchy-negative-background);
+}
+.attribute-box input {
+  align-items: center;
+  text-align: center;
+  font-size: large;
+  border-style: none;
+  max-width: 2rem;
+}
+:is(.npc-sheet,.device-sheet,.vehicle-sheet) .attribute-box input {
+  font-size: small;
+  max-width: 1.5rem;
 }
 
-div.anarchy-risk-prowess {
-  margin: 1px;
-  padding: 1px;
+/* Manage the list of keywords, cues, and dispositions*/
+.wordlist {
+  display: flex;
+  flex-direction: column;
   border-radius: 6px;
-  background: var(--gradient-gold);
-}
-
-div.anarchy-keywords,
-div.anarchy-dispositions,
-div.anarchy-cues {
+  align-items: center;
+  min-width: auto;
   margin: 2px;
   padding: 2px;
-  border-radius: 6px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-light);
-  background-color: var(--wordlist-color);
-}
-div.anarchy-keywords input,
-div.anarchy-dispositions input,
-div.anarchy-cues input{
-  border-width: 1px;
-  border-style: inset;
-  border-color: var(--border-light);
-}
-.item.item-inactive {
-  background: var(--background-inactive) !important;
 }
 
-div.item {
+.wordlist.anarchy-keywords {
+  width: calc(20% - 4px);
+}
+.wordlist.anarchy-cues {
+  width: calc(28% - 4px);
+}
+.wordlist.anarchy-dispositions {
+  width: calc(52% - 4px);
+}
+.wordlist :is(div, input) {
+  width: 100%;
+}
+
+/* The sections of items (shadowamps, skills, qualities, gears and equipements*/
+.items-group.half-width{
+  width: calc(50% - 2px);
+}
+.items-group > div {
+  width: 100%;
+}
+.items-group > div h2 {
+  text-align: center;
+  border: none;
+}
+.items-group > div h2.section-group-header {
+  width: auto;
+  justify-content: center;
+}
+
+:is(.npc-sheet,.device-sheet) .items-group > div h2 {
+  text-align: center;
+  font-size: small;
+  border: none;
+}
+
+.items-group .items-group-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  vertical-align: top;
+}
+:is(.npc-sheet,.device-sheet) .items-group .items-group-list {
+  gap: 1px;
+}
+.items-group div.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  vertical-align: top;
+  
+  gap: 1px;
   margin: 2px;
   padding: 2px;
-  border-width: 1px;
-  border-color: var(--border-light);
-  border-style: solid;
   border-radius: 6px;
   max-width: 16rem;
-  flex-basis: auto;
 }
-
-select.anarchy-vehicle-model {
-  background: var(--anarchy-item-background);
-  width: fit-content;
-  max-width: 10rem;
-}
-
-div.item.anarchy-gear,
-div.item.anarchy-contact {
-  background: var(--wordlist-color);
-}
-div.item.anarchy-shadowamp {
-  background: var(--gradient-silver);
-}
-div.item.anarchy-quality {
-  background: var(--gradient-ellipse-silver);
-}
-div.item.anarchy-quality.negative {
-  background: var(--gradient-purple-black);
-  border-style: dashed;
-}
-
-.flexrow.anarchy-weapon.list-header {
-  align-content: flex-start;
-  justify-content: flex-start;
-  font-weight: bold;
-  text-align: left;
-  flex-grow: 0;
-}
-.flexrow.anarchy-weapon.list-header span,
-.flexrow.anarchy-weapon.item span {
-  text-align: left;
-  flex-grow: 2;
-  flex: content;
-  justify-content: start;
-}
-.flexrow.anarchy-weapon.list-header.flex-shrink span,
-.flexrow.anarchy-weapon.item.flex-shrink span {
-  text-align: left;
-  flex-grow: 0;
-  flex: content;
-  justify-content: start;
-}
-.flexrow.anarchy-weapon.item span:first-child {
-  flex: content;
-  flex-grow: 0;
-  justify-content: start;
-  min-width: 32px;
-}
-.flexrow.anarchy-weapon.item span:last-child {
-  flex: content;
-  flex-grow: 0;
-  justify-content: start;
-  align-items: flex-end;
-  text-align: left;
-}
-.flexrow.anarchy-weapon.item {
+:is(.npc-sheet,.device-sheet) .items-group div.item {
   gap: 1px;
-  align-content: flex-start;
-  justify-content: flex-start;
-  border-width: 1px;
-  border-color: var(--border-light);
-  border-style: solid;
-  vertical-align: top !important;
-  flex-basis: content;
+  margin: 2px;
+  max-width: 12rem;
 }
 
+/* Weapons lists */
+.weapon-list :is(.weapon-header,.item) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-basis: auto;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  vertical-align: top;
+  
+  width: 100%;
+  gap: 1px;
+  padding: 2px;
+  text-align: left;
+  align-items: center;
+}
+
+.weapon-list .weapon-header > span {
+  margin: 2px 0px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.weapon-list .item .weapon-column {
+  width: 100%;
+  margin: 0px 2px;
+  justify-content: flex-start;
+}
+
+.weapon-list .weapon-column.weapon-img { width: 32px; }
+.weapon-list .weapon-column.weapon-dmg{ width: 3rem; }
+.weapon-list .weapon-column.weapon-stat { width: 3rem; }
+.weapon-list .weapon-column.weapon-controls { width: 2rem; }
+.weapon-list .weapon-column.weapon-txt {
+  width: calc(100% - 15rem - 32px);
+}
+.weapon-list .weapon-column.weapon-summary {
+  width: calc(100% - 2rem);
+}
+
+:is(div,li).item.anarchy-item {
+  display: flex;
+  flex-direction: row;
+}
 
 .anarchy-button {
-  background: var(--gradient-silver);
-  border-radius: 6px;
-  border: 2px groove var(--border-medium);
   display: inline-block;
   cursor: pointer;
   margin: 2px;
@@ -324,6 +444,23 @@ div.item.anarchy-quality.negative {
   width: fit-content;
 }
 
+
+
+
+div.anarchy-block {
+  flex: content;
+  flex-grow: 0;
+  margin: 2px;
+  padding: 2px;
+}
+
+
+.item.item-inactive {
+  background: var(--background-inactive) !important;
+}
+
+
+/* Generic styles - to separate */
 .chat-message .anarchy-button{
   background: var(--gradient-silver-light-opaque);
 }
@@ -340,34 +477,31 @@ div.item.anarchy-quality.negative {
   left: 1px;
 }
 
-#gm-manager {
-	position: absolute;
-  display: block;
-  z-index: 100;
-
-  grid-column: 1;
-  height: fit-content;
-  width: fit-content;
-  margin: 0;
-  padding: 0;
-  border: 1px solid var(--border-medium);
+div.anarchy-risk-nothing span i.fas {
+  font-size: x-large;
+}
+div.anarchy-risk-glitch span i.fas {
+  color: var(--color-dice-glitch);
+  font-size: x-large;
+}
+div.anarchy-risk-prowess span i.fas {
+  color: var(--color-dice-prowess);
+  font-size: x-large;
+}
+div.anarchy-risk-glitch {
+  margin: 1px;
+  padding: 1px;
   border-radius: 6px;
-  background: var(--background-black);
+  background: var(--background-negative);
 }
 
-#gm-manager header {
-	margin: 2px;
-	padding: 2px;
-  border-bottom: 1px solid var(--border-light);
-  color: var(--font-color-light);
+div.anarchy-risk-prowess {
+  margin: 1px;
+  padding: 1px;
+  border-radius: 6px;
+  background: var(--gradient-gold);
 }
 
-#gm-manager div.anarchy-monitor-anarchy {
-  align-items: flex-start;
-  max-width: fit-content;
-}
-
-/* Generic styles*/
 .alternate-items > .item {
   margin: 0.1rem;
   box-shadow: inset 0px 0px 1px var(--border-medium);
@@ -387,21 +521,16 @@ div.item.anarchy-quality.negative {
 }
 
 
-a.item-control i,
-a.item-control img {
-  font-size: small;
-  color: var(--controls-color);
-}
-
 div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
-  color: var(--color-resource-checked);
+  color: orange;
 }
 a.click-checkbar-element[data-checked=true] i {
-  color: var(--color-monitor-checked);
+  color: red;
 }
 a.click-checkbar-element[data-checked=false] i {
-  color: var(--color-unchecked);
+  color: gray;
 }
+
 i.hide-fontawesome {
   font-size: small;
   color: var(--transparent);

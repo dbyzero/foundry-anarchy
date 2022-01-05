@@ -350,18 +350,10 @@ div.item.anarchy-quality.negative {
   flex-basis: content;
 }
 
-
 .anarchy-button {
   background: var(--gradient-silver);
   border-radius: 6px;
   border: 2px groove var(--border-medium);
-  display: inline-block;
-  cursor: pointer;
-  margin: 2px;
-  padding: 3px 5px;
-  position: relative;
-  height: fit-content;
-  width: fit-content;
 }
 
 .chat-message .anarchy-button{
@@ -731,4 +723,51 @@ input.anarchy-essence[type='number'] {
   font-size: 0.8rem;
   font-weight: lighter;
   padding: 3px 0;
+}
+
+
+
+.flexrow.anarchy-weapon.list-header {
+  align-content: flex-start;
+  justify-content: flex-start;
+  font-weight: bold;
+  text-align: left;
+  flex-grow: 0;
+}
+.flexrow.anarchy-weapon.list-header span,
+.flexrow.anarchy-weapon.item span {
+  text-align: left;
+  flex-grow: 2;
+  flex: content;
+  justify-content: start;
+}
+.flexrow.anarchy-weapon.list-header.flex-shrink span,
+.flexrow.anarchy-weapon.item.flex-shrink span {
+  text-align: left;
+  flex-grow: 0;
+  flex: content;
+  justify-content: start;
+}
+.flexrow.anarchy-weapon.item span:first-child {
+  flex: content;
+  flex-grow: 0;
+  justify-content: start;
+  min-width: 32px;
+}
+.flexrow.anarchy-weapon.item span:last-child {
+  flex: content;
+  flex-grow: 0;
+  justify-content: start;
+  align-items: flex-end;
+  text-align: left;
+}
+.flexrow.anarchy-weapon.item {
+  gap: 1px;
+  align-content: flex-start;
+  justify-content: flex-start;
+  border-width: 1px;
+  border-color: var(--border-light);
+  border-style: solid;
+  vertical-align: top !important;
+  flex-basis: content;
 }
