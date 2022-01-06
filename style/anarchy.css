@@ -6,7 +6,7 @@
     hsla(0, 0%, 80%, 0.5) 5px 10px);
 
   --hover-tint: hsla(210, 44%, 69%, 0.486);
-  --background-negative: hsla(300, 80%, 20%, 0.2);
+  --default-background-glitch: hsla(300, 80%, 20%, 0.2);
 
   --color-dice-prowess: hsla(47, 60%, 40%, 1);
   --color-dice-glitch: hsla(300, 80%, 20%, 1);
@@ -502,7 +502,7 @@ div.anarchy-risk-glitch {
   margin: 1px;
   padding: 1px;
   border-radius: 6px;
-  background: var(--background-negative);
+  background: var(--default-background-glitch);
 }
 
 div.anarchy-risk-prowess {
