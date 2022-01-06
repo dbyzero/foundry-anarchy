@@ -17,6 +17,15 @@
     hsla(41, 63%, 43%, 0.4), 
     hsla(55, 89%, 85%, 0.4), 
     hsla(38, 72%, 39%, 0.4));
+  --gradient-silver: repeating-linear-gradient(135deg,
+    hsla(249, 26%, 29%, 0.2),
+    hsla(237, 13%, 73%, 0.2), 
+    hsla(195, 3%, 24%, 0.4), 
+    hsla(43, 7%, 79%, 0.2), 
+    hsla(348, 14%, 21%, 0.2));
+
+  --background-editor: var(--gradient-silver), hsla(0, 10%, 80%, 0.8);
+  --color-editor-font: hsla(0, 10%, 10%, 1);
 }
 
 #logo {
@@ -610,6 +619,10 @@ div.form-group {
 
 .tox .tox-edit-area {
   padding: 0 8px;
+}
+.tox .tox-editor-container {
+  background: var(--background-editor);
+  color: var(--color-editor-font);
 }
 
 input[type='number'] {
