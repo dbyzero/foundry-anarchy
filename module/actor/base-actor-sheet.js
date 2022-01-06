@@ -87,7 +87,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     });
 
     html.find('.click-roll-attribute').click(async event => {
-      const attribute = $(event.currentTarget).closest('.item').attr('data-attribute');
+      const attribute = $(event.currentTarget).closest('.anarchy-attribute').attr('data-attribute');
       this.actor.attributeRoll(attribute);
     });
 
