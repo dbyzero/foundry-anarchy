@@ -13,17 +13,15 @@
 
   --anarchy-background-tooltip: hsla(207, 40%, 70%, 1);
   --anarchy-background-button: var(--anarchy-background-attributes);
-
-  
   --anarchy-background-weapon: hsla(0, 0%, 80%, 0.3);
-  
+
   --anarchy-tint-weapon-odd: hsla(0, 0%, 70%, 0.3);
   --anarchy-tint-weapon-even: hsla(0, 0%, 50%, 0.3);
   --anarchy-tint-weapon-hover: hsla(200, 10%, 60%, 0.4);
   --anarchy-tint-npc: hsla(90, 29%, 70%, 0.15);
-  
-  --anarchy-transparent: hsla(0, 0%, 0%, 0.0);
-  
+  --anarchy-tint-hover: hsla(0, 60%, 50%, 1);
+
+  --anarchy-color-highlight: hsla(0, 0%, 30%, 1);
   --anarchy-color-font: hsla(0, 10%, 10%, 1);
   --anarchy-color-border:hsla(200, 20%, 30%, 0.5);
   --anarchy-color-button-border: hsla(47, 40%, 70%, 0.5);
@@ -52,6 +50,17 @@
 }
 #gm-manager.style-anarchy-shadowrun label{
   color: var(--anarchy-color-font);
+}
+
+#gm-manager.style-anarchy-shadowrun a:hover,
+#gm-manager.style-anarchy-shadowrun a:hover label,
+.style-anarchy-shadowrun :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover ,
+.style-anarchy-shadowrun :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
+.style-anarchy-shadowrun :is(a.item-control, .attribute-box):hover ,
+.style-anarchy-shadowrun :is(a.item-control, .attribute-box):hover :is(i, label, a),
+.style-anarchy-shadowrun .anarchy-item :is(a:hover, a.item-controls:hover i, a:hover label) {
+  color: var(--anarchy-color-highlight);
+  text-shadow: 0 0 4px var(--anarchy-tint-hover);
 }
 
 .style-anarchy-shadowrun .window-content {
@@ -148,10 +157,6 @@
   box-shadow: var(--anarchy-shadow-anarchy-button);
 }
 
-.style-anarchy-shadowrun .anarchy-button:hover {
-  color: var(--hover-tint);
-}
-
 .style-anarchy-shadowrun .anarchy-button:active {
   border: 3px inset var(--anarchy-color-button-border);
   position: relative;
@@ -167,7 +172,7 @@
 
 .style-anarchy-shadowrun .wordlist:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) {
   border: none;
-  background-color: var(--anarchy-transparent);
+  background-color: var(--transparent);
 }
 .style-anarchy-shadowrun .wordlist:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) input {
   border-color: var(--anarchy-color-border);
