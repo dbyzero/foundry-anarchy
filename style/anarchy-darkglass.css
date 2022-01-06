@@ -30,13 +30,13 @@
 
   --darkglass-controls: hsla(200, 20%, 40%, 0.7);
 
-
   --darkglass-background: var(--darkglass-gradient-dark);
   --darkglass-background-attributes: var(--darkglass-gradient-gold);
   --darkglass-background-secondary-attributes: var(--darkglass-gradient-gold /*-dark*/);
   --darkglass-background-item-major:hsla(0, 0%, 5%, 1);
   --darkglass-background-item: hsla(230, 30%, 15%, 1);
   --darkglass-background-item-img: var(--darkglass-controls);
+  --darkglass-background-select: hsla(0, 0%, 10%, 1);
   --darkglass-background-positive: hsla(160, 50%, 20%, 0.5);
   --darkglass-background-negative: hsla(300, 50%, 20%, 0.5);
 
@@ -50,9 +50,9 @@
   --darkglass-tint-weapon-even: hsla(230, 15%, 50%, 0.3);
   --darkglass-tint-weapon-hover: hsla(230, 40%, 50%, 0.4);
   --darkglass-tint-npc: hsla(90, 30%, 30%, 0.1);
-  --darkglass-tint-hover: hsla(51, 100%, 50%, 1);
+  --darkglass-tint-hover: hsla(187, 100%, 80%, 0.9);
 
-  --darkglass-color-highlight: hsla(220, 100%, 100%, 1);
+  --darkglass-color-highlight: hsla(47, 90%, 50%, 0.9);
   --darkglass-color-header: hsla(230, 50%, 70%, 0.7);
   --darkglass-color-font: hsla(40, 90%, 95%, 1);
   --darkglass-color-button: hsla(0, 90%, 10%, 1);
@@ -91,7 +91,7 @@
 .style-darkglass :is(a.item-control, .attribute-box):hover :is(i, label, a),
 .style-darkglass .anarchy-item :is(a:hover, a.item-controls:hover i, a:hover label) {
   color: var(--darkglass-color-highlight);
-  text-shadow: 0 0 4px var(--darkglass-tint-hover);
+  text-shadow: 0 0 3px var(--darkglass-tint-hover);
 }
 
 .style-darkglass .window-content {
@@ -193,7 +193,7 @@
   color: var(--darkglass-color-font);
 }
 .style-darkglass .window-content select option {
-  background: var(--darkglass-background);
+  background: var(--darkglass-background-select);
   color: var(--darkglass-color-font);
 }
 

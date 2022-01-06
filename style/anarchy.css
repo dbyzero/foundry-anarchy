@@ -632,33 +632,6 @@ input.anarchy-essence[type='number'] {
   max-width: 3rem;
 }
 
-
-/* Dark glass style */
-.style-shadowrun-darkglass .window-content  {
-  background: var(--darkglass-gradient-dark);
-  color: var(--font-color-light);
-}
-.style-shadowrun-darkglass .window-content form.npc-sheet {
-  background: var(--lighter-npc);
-}
-
-.style-shadowrun-darkglass input,
-.style-shadowrun-darkglass select,
-.style-shadowrun-darkglass label,
-.style-shadowrun-darkglass button {
-  color: var(--font-color-light);
-}
-.style-shadowrun-darkglass select option{
-  background-color: var(--background-dark);
-  color: var(--font-color-light);
-}
-.style-shadowrun-darkglass .tox .tox-editor-container {
-  background: var(--gradient-silver-light-opaque);
-}
-.style-shadowrun-darkglass .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
-}
-
 /* Tooltips container */
 .window-app.sheet .window-content .tooltip:hover .tooltiptext {
   top: 1rem;
