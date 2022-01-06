@@ -9,7 +9,7 @@ const CSS_DEFAULT = 'style-anarchy-shadowrun';
 const DEFAULT_STYLES = [
   { name: 'Shadowrun Anarchy', cssClass: CSS_DEFAULT },
   { name: 'Dark', cssClass: 'style-anarchy-dark' },
-  { name: 'Dark glass', cssClass: 'style-anarchy-darkglass' },
+  { name: 'Dark glass', cssClass: 'style-darkglass' },
 ]
 
 /**

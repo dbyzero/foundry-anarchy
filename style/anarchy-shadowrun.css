@@ -83,10 +83,10 @@
   box-shadow: var(--anarchy-shadow-attribute);
 }
 
-.style-anarchy-shadowrun .anarchy-attribute {
+.style-anarchy-shadowrun .attribute-box.anarchy-attribute {
   background: var(--anarchy-background-attributes);
 }
-.style-anarchy-shadowrun .anarchy-secondary-attribute {
+.style-anarchy-shadowrun .attribute-box.secondary-attribute {
   background: var(--anarchy-background-secondary-attributes);
 }
 

@@ -439,6 +439,7 @@ img.checkbar-img:active {
   cursor: pointer;
   margin: 2px;
   padding: 3px 5px;
+  border-radius: 4px;
   position: relative;
   height: fit-content;
   width: fit-content;
@@ -621,7 +622,7 @@ input.anarchy-essence[type='number'] {
 
 /* Dark glass style */
 .style-shadowrun-darkglass .window-content  {
-  background: var(--gradient-dark);
+  background: var(--darkglass-gradient-dark);
   color: var(--font-color-light);
 }
 .style-shadowrun-darkglass .window-content form.npc-sheet {

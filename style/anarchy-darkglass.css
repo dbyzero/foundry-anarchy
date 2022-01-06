@@ -1,788 +1,231 @@
 /** common definitions **/
 :root {
-  --gradient-dark: repeating-linear-gradient(80deg,
-    hsla(0, 0%, 0%, 0.8) 0% 5%,
-    hsla(0, 0%, 15%, 0.8) 7%,
-    hsla(0, 0%, 5%, 0.9) 9% 12%,
-    hsla(0, 0%, 20%, 0.8) 16%,
-    hsla(0, 0%, 0%, 0.8) 20% 25%,
+  --darkglass-gradient-dark: repeating-linear-gradient(80deg,
+    hsla(0, 0%, 0%, 0.6) 0% 5%,
+    hsla(0, 0%, 15%, 0.7) 7%,
+    hsla(0, 0%, 5%, 0.7) 9% 13%,
+    hsla(0, 0%, 20%, 0.9) 16%,
+    hsla(0, 0%, 0%, 0.6) 20% 25%,
     hsla(0, 0%, 15%, 0.8) 38%,
-    hsla(0, 0%, 5%, 0.8) 42%, 
-    hsla(0, 0%, 0%, 0.8) 50%);
-  --gradient-silver: linear-gradient(135deg,
-    hsla(249, 26%, 29%, 0.4),
-    hsla(237, 13%, 73%, 0.4), 
-    hsla(195, 3%, 24%, 0.6), 
-    hsla(43, 7%, 79%, 0.4), 
-    hsla(348, 14%, 21%, 0.4));
-  --gradient-ellipse-silver: radial-gradient(ellipse farthest-corner at 20% 20%,
-    hsla(249, 26%, 29%, 0.4),
-    hsla(237, 13%, 73%, 0.4), 
-    hsla(195, 19%, 29%, 0.6), 
-    hsla(239, 43%, 72%, 0.4), 
-    hsla(184, 22%, 31%, 0.4));
-  --gradient-silver-light-opaque: linear-gradient(150deg,
-    hsla(249, 46%, 86%, 0.9), 
-    hsla(236, 22%, 87%, 0.9), 
-    hsla(196, 5%, 53%, 0.9),
-    hsla(41, 10%, 61%, 0.9),
-    hsla(347, 8%, 78%, 0.9));
-  --gradient-gold: repeating-linear-gradient(120deg,
-    hsla(40, 50%, 50%, 0.4),
-    hsla(55, 92%, 86%, 0.4),
-    hsla(41, 63%, 43%, 0.4), 
-    hsla(55, 89%, 85%, 0.4), 
-    hsla(38, 72%, 39%, 0.4));
-  --gradient-purple-black: radial-gradient(ellipse farthest-corner at 20% 20%,
-    hsla(0, 0%, 0%, 0.7),
-    hsla(282, 47%, 33%, 0.4),
-    hsla(274, 77%, 40%, 0.4),
-    hsla(282, 47%, 33%, 0.4),
-    hsla(319, 30%, 10%, 0.9),
-    hsla(0, 0%, 0%, 0.7));
+    hsla(0, 0%, 5%, 0.7) 42%, 
+    hsla(0, 0%, 0%, 0.6) 50%);
+  --darkglass-gradient-gold: repeating-linear-gradient(120deg,
+    hsla(40, 50%, 50%, 0.7),
+    hsla(55, 92%, 86%, 0.7),
+    hsla(41, 63%, 43%, 0.7), 
+    hsla(55, 89%, 85%, 0.7), 
+    hsla(38, 72%, 39%, 0.7));
+  --darkglass-gradient-gold-dark: repeating-linear-gradient(100deg,
+    hsla(40, 50%, 50%, 0.5) 0% 25%,
+    hsla(55, 92%, 86%, 0.5) 35%,
+    hsla(41, 63%, 43%, 0.5) 45% 55%, 
+    hsla(55, 89%, 85%, 0.5) 65%, 
+    hsla(38, 72%, 39%, 0.5) 75% 100%);
+  --darkglass-gradient-silver: linear-gradient(110deg,
+    hsla(249, 26%, 29%, 0.7),
+    hsla(237, 13%, 73%, 0.7), 
+    hsla(195, 3%, 24%, 0.7), 
+    hsla(43, 7%, 79%, 0.7), 
+    hsla(348, 14%, 21%, 0.7));
+
+  --darkglass-controls: hsla(200, 20%, 40%, 0.7);
 
 
-  --anarchy-darkglass-background: hsla(0, 60%, 1%, 1);
-  --anarchy-darkglass-background-attributes: var(--gradient-gold);
-  --anarchy-darkglass-background-secondary-attributes: hsla(47, 85%, 45%, 0.75);
-  --anarchy-darkglass-background-item: hsla(15, 60%, 15%, 0.5);
-  --anarchy-darkglass-background-item-img:hsla(31, 65%, 40%, 0.5);
-  --anarchy-darkglass-background-positive: hsla(180, 50%, 10%, 1);
-  --anarchy-darkglass-background-negative: hsla(300, 50%, 10%, 1);
+  --darkglass-background: var(--darkglass-gradient-dark);
+  --darkglass-background-attributes: var(--darkglass-gradient-gold);
+  --darkglass-background-secondary-attributes: var(--darkglass-gradient-gold /*-dark*/);
+  --darkglass-background-item-major:hsla(0, 0%, 5%, 1);
+  --darkglass-background-item: hsla(230, 30%, 15%, 1);
+  --darkglass-background-item-img: var(--darkglass-controls);
+  --darkglass-background-positive: hsla(160, 50%, 20%, 0.5);
+  --darkglass-background-negative: hsla(300, 50%, 20%, 0.5);
 
-  --anarchy-darkglass-background-lighter: hsla(0, 0%, 100%, 0.2);
+  --darkglass-background-lighter: hsla(0, 0%, 100%, 0.2);
   
-  --anarchy-darkglass-background-tooltip: hsla(207, 40%, 70%, 1);
-  --anarchy-darkglass-background-button: var(--anarchy-darkglass-background-attributes);
-  --anarchy-darkglass-background-weapon: hsla(0, 0%, 80%, 0.3);
+  --darkglass-background-tooltip: hsla(207, 40%, 70%, 1);
+  --darkglass-background-button: var(--darkglass-background-attributes);
+  --darkglass-background-weapon: hsla(0, 0%, 80%, 0.3);
   
-  --anarchy-darkglass-tint-weapon-odd: hsla(0, 0%, 70%, 0.3);
-  --anarchy-darkglass-tint-weapon-even: hsla(0, 0%, 50%, 0.3);
-  --anarchy-darkglass-tint-weapon-hover: hsla(200, 10%, 60%, 0.4);
-  --anarchy-darkglass-tint-npc: hsla(90, 29%, 70%, 0.15);
+  --darkglass-tint-weapon-odd: hsla(230, 15%, 25%, 0.3);
+  --darkglass-tint-weapon-even: hsla(230, 15%, 50%, 0.3);
+  --darkglass-tint-weapon-hover: hsla(230, 40%, 50%, 0.4);
+  --darkglass-tint-npc: hsla(90, 30%, 30%, 0.1);
   
-  --anarchy-darkglass-transparent: hsla(0, 0%, 0%, 0.0);
+  --darkglass-transparent: hsla(0, 0%, 0%, 0.0);
   
-  --anarchy-darkglass-color-font: hsla(40, 80%, 90%, 1);
-  --anarchy-darkglass-color-button: hsla(0, 90%, 10%, 1);
-  --anarchy-darkglass-color-border:hsla(0, 90%, 30%, 0.8);
-  --anarchy-darkglass-color-attribute: var(--anarchy-darkglass-color-button);
-  --anarchy-darkglass-color-button-border: hsla(0, 70%, 30%, 0.5);
-  --anarchy-darkglass-color-border-light: hsla(0, 0%, 100%, 0.3);
+  --darkglass-color-header: hsla(230, 50%, 70%, 0.7);
+  --darkglass-color-font: hsla(40, 90%, 95%, 1);
+  --darkglass-color-button: hsla(0, 90%, 10%, 1);
+  --darkglass-color-border: var(--darkglass-controls);
+  --darkglass-color-attribute: var(--darkglass-color-font);
+  --darkglass-color-secondary-attribute: var(--darkglass-color-button);
+  --darkglass-color-button-border: hsla(0, 70%, 30%, 0.5);
+  --darkglass-color-border-light: hsla(0, 0%, 100%, 0.3);
   
-  --anarchy-darkglass-color-dice-prowess: hsla(47, 60%, 40%, 1);
-  --anarchy-darkglass-color-dice-glitch: hsla(300, 80%, 20%, 1);
-  --anarchy-darkglass-color-controls: var(--anarchy-darkglass-background-item-img);
-  --anarchy-darkglass-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
-  --anarchy-darkglass-shadow-section: inset 0px 12px 12px -8px var(--anarchy-darkglass-color-border);
-  --anarchy-darkglass-shadow-attribute: 5px -5px 5px -2px var(--anarchy-darkglass-color-border);
-  --anarchy-darkglass-shadow-anarchy-button: 3px -3px 6px -3px var(--anarchy-darkglass-color-button-button);
-  --anarchy-darkglass-shadow-items-group: 5px 5px 5px -2px var(--anarchy-darkglass-color-border);
+  --darkglass-color-controls: hsla(200,50%, 30%, 0.9);
+  --darkglass-shadow-section: inset 0px 12px 12px -8px var(--darkglass-color-border);
+  --darkglass-shadow-anarchy-button: 3px -3px 6px -3px var(--darkglass-color-button-button);
 
-  --anarchy-darkglass-color-resource-checked: hsla(39, 70%, 70%, 0.9);
-  --anarchy-darkglass-color-monitor-checked: hsla(9, 100%, 50%, 0.9);
-  --anarchy-darkglass-color-unchecked: hsla(39, 99%, 30%, 0.5);
-  --font-color-light: hsla(0, 0%, 83%, 0.9);
-  --font-color-dark: hsla(0, 10%, 10%, 0.9);
-  --font-color-half-dark: hsla(0, 10%, 10%, 0.5);
-  --transparent: hsla(0, 0%, 0%, 0.0);
-  --controls-color: hsla(207, 30%, 60%, 0.6);
-  --color-resource-checked: hsla(207, 100%, 80%, 1);
-  --color-monitor-checked: hsla(9, 70%, 30%, 0.9);
-  --color-unchecked: hsla(207, 10%, 50%, 1);
-  --wordlist-color: hsla(200, 50%, 70%, 0.3);
-  --border-dark:hsla(200, 10%, 30%, 0.4);
-  --border-medium:hsla(200, 10%, 45%, 0.4);
-  --border-light: hsla(200, 10%, 60%, 0.4);
-  --hover-tint: hsla(210, 44%, 69%, 0.486);
-  --background-dark:hsla(200, 5%, 30%, 0.8);
-  --background-black: hsla(0, 0%, 10%, 0.8);
-  --background-blue: hsla(250, 50%, 20%, 0.9);
-  --lighter-npc: hsla(90, 29%, 30%, 0.15);
-  --darker-npc: hsla(90, 29%, 70%, 0.15);
-
-  --color-dice-prowess: hsla(47, 60%, 40%, 1);
-  --color-dice-glitch: hsla(300, 80%, 20%, 1);
-
+  --darkglass-color-resource-checked: hsla(230, 90%, 70%, 0.8);
+  --darkglass-color-monitor-checked: hsla(9, 90%, 60%, 0.8);
+  --darkglass-color-unchecked: var(--darkglass-controls);
 }
 
-#gm-manager.style-anarchy-darkglass {
-  background: var(--anarchy-darkglass-background);
-  color: var(--anarchy-darkglass-color-font);
+#gm-manager.style-darkglass {
+  background: var(--darkglass-background);
+  color: var(--darkglass-color-font);
 }
-
-#gm-manager.style-anarchy-darkglass div.header{
-  border-bottom: 1px solid var(--anarchy-darkglass-color-border);
+#gm-manager.style-darkglass header {
+  border-bottom: 1px solid var(--darkglass-color-border-light);
+  color: var(--darkglass-color-font);
 }
-#gm-manager.style-anarchy-darkglass label {
-  color: var(--anarchy-darkglass-color-font);
-}
-#gm-manager.style-anarchy-darkglass a.anarchy-button,
-#gm-manager.style-anarchy-darkglass .anarchy-button{
-  background: var(--anarchy-darkglass-background-button);
-}
-#gm-manager.style-anarchy-darkglass .anarchy-button label {
-  color: var(--anarchy-darkglass-color-button);
-}
-#gm-manager.style-anarchy-darkglass header {
-  border-bottom: 1px solid var(--anarchy-darkglass-color-border-light);
-  color: var(--anarchy-darkglass-color-font);
+#gm-manager.style-darkglass label {
+  color: var(--darkglass-color-font);
 }
 
 
-.style-anarchy-darkglass .window-content {
-  background: var(--anarchy-darkglass-background);
-  color: var(--anarchy-darkglass-color-font);
+.style-darkglass .window-content {
+  background: var(--darkglass-background);
+  color: var(--darkglass-color-font);
 }
 
-.style-anarchy-darkglass .window-content form.npc-sheet {
-  background: var(--anarchy-darkglass-tint-npc);
+.style-darkglass .window-content form.npc-sheet {
+  background: var(--darkglass-tint-npc);
 }
 
-.style-anarchy-darkglass .vehicle-sheet .passport-img img{
-  background-color: var(--anarchy-darkglass-background-item-img);
+.style-darkglass .vehicle-sheet .passport-img img{
+  background-color: var(--darkglass-background-item-img);
 }
-.style-anarchy-darkglass .device-sheet .passport-img img{
-  background-color: var(--anarchy-darkglass-background-item-img);
+.style-darkglass .device-sheet .passport-img img{
+  background-color: var(--darkglass-background-item-img);
 }
 
 
-.style-anarchy-darkglass .section-group {
-  border-top: 1px solid var(--anarchy-darkglass-color-border);
-  box-shadow: var(--anarchy-darkglass-shadow-section);  
+.style-darkglass .section-group {
+  border-top: 1px solid var(--darkglass-color-border);
+  box-shadow: var(--darkglass-shadow-section);  
 }
-.style-anarchy-darkglass .section-group h2{
+.style-darkglass .section-group h3,
+.style-darkglass .section-group h2 {
   border-bottom: none;
+  color: var(--darkglass-color-header);
 }
 
-.style-anarchy-darkglass .attribute-box {
-  box-shadow: var(--anarchy-darkglass-shadow-attribute);
+.style-darkglass .attribute-box {
+  background: var(--darkglass-background-attributes);
+}
+.style-darkglass .attribute-box :is(input, select, label, button) {
+  color: var(--darkglass-color-attribute);
+}
+.style-darkglass .attribute-box input {
+  background: var(--darkglass-background-lighter);
+}
+  
+.style-darkglass .attribute-box.secondary-attribute :is(input, select, label, button) {
+  color: var(--darkglass-color-secondary-attribute);
+}
+.style-darkglass .attribute-box.secondary-attribute {
+  background: var(--darkglass-background-secondary-attributes);
 }
 
-.style-anarchy-darkglass .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute),
-.style-anarchy-darkglass .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute) :is(input, select, label, button) {
-  color: var(--anarchy-darkglass-color-attribute);
-}
 
-.style-anarchy-darkglass .anarchy-attribute {
-  background: var(--gradient-gold);
-  background: var(--anarchy-darkglass-background-attributes);
-}
-.style-anarchy-darkglass .anarchy-secondary-attribute {
-  background: var(--anarchy-darkglass-background-secondary-attributes);
-}
-
-.style-anarchy-darkglass .attribute-box input {
-  background: var(--anarchy-darkglass-background-lighter);
-}
-
-.style-anarchy-darkglass .wordlist {
-  border: 1px solid var(--anarchy-darkglass-color-border-light);
-}
-
-.style-anarchy-darkglass .wordlist:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) input {
-  /* border-color: var(--border-light);
-  background-color: var(--wordlist-color); */
-  background: var(--anarchy-darkglass-background-item);
+.style-darkglass .wordlist {
   border-style: none;
 }
 
-.style-anarchy-darkglass div:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) {
+.style-darkglass .wordlist input {
+  background: var(--darkglass-background-item);
+  border-style: none;
+}
+
+.style-darkglass div:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) {
   border: none;
-  /* border-color: var(--border-light);
-  background-color: var(--wordlist-color); */
-  background-color: var(--anarchy-darkglass-transparent);
+  background-color: var(--darkglass-transparent);
 }
 
 
-.style-anarchy-darkglass .items-group div.item {
-  background: var(--anarchy-darkglass-background-item);
-  border:1px solid var(--anarchy-darkglass-color-border-light);
-  box-shadow: var(--anarchy-darkglass-shadow-items-group);
+.style-darkglass .items-group div.item:is(.anarchy-skill,.anarchy-shadowamp,.anarchy-quality) {
+  background: var(--darkglass-background-item-major);
+  border-style: none;
+}
+.style-darkglass .items-group div.item:is(.anarchy-gear,.anarchy-contact) {
+  background: var(--darkglass-background-item);
+  border-style: none;
 }
 
 
 /* Weapons lists */
-.style-anarchy-darkglass .weapon-list .weapon-header{
-  background: var(--anarchy-darkglass-background-item);
+.style-darkglass .weapon-list .weapon-header{
+  background: var(--darkglass-background-item);
 }
-.style-anarchy-darkglass .weapon-list .item:nth-child(even) {
-  background: var(--anarchy-darkglass-tint-weapon-even);
+.style-darkglass .weapon-list .item:nth-child(even) {
+  background: var(--darkglass-tint-weapon-even);
 }
-.style-anarchy-darkglass .weapon-list .item:nth-child(odd) {
-  background: var(--anarchy-darkglass-tint-weapon-odd);
+.style-darkglass .weapon-list .item:nth-child(odd) {
+  background: var(--darkglass-tint-weapon-odd);
 }
-.style-anarchy-darkglass .weapon-list .item:hover {
-  background: var(--anarchy-darkglass-tint-weapon-hover);
-}
-
-
-.style-anarchy-darkglass :is(div,li).item.anarchy-item img {
-  background: var(--anarchy-darkglass-background-item-img);
-}
-.style-anarchy-darkglass .item.anarchy-quality.negative {
-  background: var(--anarchy-darkglass-background-negative);
-}
-.style-anarchy-darkglass .item.anarchy-quality.positive {
-  background: var(--anarchy-darkglass-background-positive);
+.style-darkglass .weapon-list .item:hover {
+  background: var(--darkglass-tint-weapon-hover);
 }
 
-.style-anarchy-darkglass :is(input, select, label, button) {
-  color: var(--anarchy-darkglass-color-font);
+
+.style-darkglass :is(div,li).item.anarchy-item img {
+  background: var(--darkglass-background-item-img);
 }
-.style-anarchy-darkglass .window-content select option{
-  background: var(--anarchy-darkglass-background);
-  color: var(--anarchy-darkglass-color-font);
+.style-darkglass .items-group div.item.anarchy-quality.negative {
+  background: var(--darkglass-background-negative);
+}
+.style-darkglass .items-group div.item.anarchy-quality.positive {
+  background: var(--darkglass-background-positive);
 }
 
-.style-anarchy-darkglass .anarchy-button label {
-  color: var(--anarchy-darkglass-color-button);
+.style-darkglass :is(input, select, label, button) {
+  color: var(--darkglass-color-font);
+}
+.style-darkglass .window-content select option {
+  background: var(--darkglass-background);
+  color: var(--darkglass-color-font);
 }
 
-.style-anarchy-darkglass .anarchy-button {
-  background: var(--anarchy-darkglass-background-button);
-  color: var(--anarchy-darkglass-color-button);
-  /* border-radius: 6px; */
-  border: 1px outset var(--anarchy-darkglass-color-button-border);
-  box-shadow: var(--anarchy-darkglass-shadow-anarchy-button);
+.style-darkglass .anarchy-button {
+  background: var(--darkglass-background-button);
+  color: var(--darkglass-color-button);
+  border: 1px outset var(--darkglass-color-button-border);
+  box-shadow: var(--darkglass-shadow-anarchy-button);
+}
+.style-darkglass a.anarchy-button,
+.style-darkglass .anarchy-button label {
+  color: var(--darkglass-color-font);
 }
 
-.style-anarchy-darkglass .anarchy-button:hover {
+.style-darkglass .anarchy-button:hover {
   color: var(--hover-tint);
 }
 
-.style-anarchy-darkglass .anarchy-button:active {
-  border: 1px inset var(--anarchy-darkglass-color-button-border);
+.style-darkglass .anarchy-button:active {
+  border: 1px inset var(--darkglass-color-button-border);
   position: relative;
   top: -1px;
   left: -1px;
 }
 
-.style-anarchy-darkglass .tooltip .tooltip-roll-modifiers {
-  background: var(--anarchy-darkglass-background-tooltip);
+.style-darkglass .tooltip .tooltip-roll-modifiers {
+  background: var(--darkglass-background-tooltip);
 }
 
-.style-anarchy-darkglass a.item-control i,
-.style-anarchy-darkglass a.item-control img {
+.style-darkglass a.item-control i,
+.style-darkglass a.item-control img {
   font-size: small;
-  color: var(--anarchy-darkglass-color-controls);
+  color: var(--darkglass-color-controls);
 }
 
-.style-anarchy-darkglass div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
-  color: var(--anarchy-darkglass-color-resource-checked);
+.style-darkglass div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+  color: var(--darkglass-color-resource-checked);
 }
-.style-anarchy-darkglass a.click-checkbar-element[data-checked=true] i {
-  color: var(--anarchy-darkglass-color-monitor-checked);
+.style-darkglass a.click-checkbar-element[data-checked=true] i {
+  color: var(--darkglass-color-monitor-checked);
 }
-.style-anarchy-darkglass a.click-checkbar-element[data-checked=false] i {
-  color: var(--anarchy-darkglass-color-unchecked);
-}
-
-div.item.anarchy-attribute {
-  background: var(--gradient-gold);
-  min-width: auto;  
-  max-width: 6rem;
-}
-div.item.anarchy-attribute input.larger,
-div.anarchy-secondary-attribute input {
-  font-size: large;
-}
-div.item.anarchy-attribute input.small {
-  max-width: 1.5rem;
+.style-darkglass a.click-checkbar-element[data-checked=false] i {
+  color: var(--darkglass-color-unchecked);
 }
 
-div.anarchy-secondary-attribute {
-  background: var(--anarchy-item-background);
-  min-width: auto;  
-  max-width: 6rem;
-}
-select.anarchy-vehicle-model {
-  background: var(--anarchy-item-background);
-  width: fit-content;
-  max-width: 10rem;
-}
-
-div.item.anarchy-skill {
-  background: var(--gradient-silver);
-}
-div.item.anarchy-gear,
-div.item.anarchy-contact {
-  background: var(--wordlist-color) !important;
-}
-div.item.anarchy-shadowamp {
-  background: var(--gradient-silver);
-}
-div.item.anarchy-quality {
-  background: var(--gradient-ellipse-silver);
-}
-div.item.anarchy-quality.negative {
-  background: var(--gradient-purple-black);
-  border-style: dashed;
-}
-
-.flexrow.anarchy-weapon.list-header {
-  align-content: flex-start;
-  justify-content: flex-start;
-  font-weight: bold;
-  text-align: left;
-  flex-grow: 0;
-}
-.flexrow.anarchy-weapon.list-header span,
-.flexrow.anarchy-weapon.item span {
-  text-align: left;
-  flex-grow: 2;
-  flex: content;
-  justify-content: start;
-}
-.flexrow.anarchy-weapon.list-header.flex-shrink span,
-.flexrow.anarchy-weapon.item.flex-shrink span {
-  text-align: left;
-  flex-grow: 0;
-  flex: content;
-  justify-content: start;
-}
-.flexrow.anarchy-weapon.item span:first-child {
-  flex: content;
-  flex-grow: 0;
-  justify-content: start;
-  min-width: 32px;
-}
-.flexrow.anarchy-weapon.item span:last-child {
-  flex: content;
-  flex-grow: 0;
-  justify-content: start;
-  align-items: flex-end;
-  text-align: left;
-}
-.flexrow.anarchy-weapon.item {
-  gap: 1px;
-  align-content: flex-start;
-  justify-content: flex-start;
-  border-width: 1px;
-  border-color: var(--border-light);
-  border-style: solid;
-  vertical-align: top !important;
-  flex-basis: content;
-}
-
-.anarchy-button {
-  background: var(--gradient-silver);
-  border-radius: 6px;
-  border: 2px groove var(--border-medium);
-}
-
-.chat-message .anarchy-button{
-  background: var(--gradient-silver-light-opaque);
-}
-.chat-message .anarchy-button label{
-  color: var(--font-color-dark);
-}
-
-.anarchy-button:hover {
-  background-color: var(--hover-tint);
-}
-.anarchy-button:active {
-  position: relative;
-  top: 1px;
-  left: 1px;
-}
-
-#gm-manager {
-	position: absolute;
-  display: block;
-  z-index: 100;
-
-  grid-column: 1;
-  height: fit-content;
-  width: fit-content;
-  margin: 0;
-  padding: 0;
-  border: 1px solid var(--border-medium);
-  border-radius: 6px;
-  background: var(--background-black);
-}
-
-#gm-manager header {
-	margin: 2px;
-	padding: 2px;
-  border-bottom: 1px solid var(--border-light);
-  color: var(--font-color-light);
-}
-
-#gm-manager div.anarchy-monitor-anarchy {
-  align-items: flex-start;
-  max-width: fit-content;
-}
-
-/* Generic styles*/
-.alternate-items > .item {
-  margin: 0.1rem;
-  box-shadow: inset 0px 0px 1px var(--border-medium);
-  padding: 0.1rem;
-  display: flex !important;
-  align-items: baseline !important;
-}
-
-.alternate-items > .item:hover {
-  background: var(--border-light);
-}
-.alternate-items > .item:nth-child(even) {
-  background: var(--border-dark);
-}
-.alternate-items > .item:nth-child(odd) {
-  background: var(--border-medium);
-}
-
-
-a.item-control i,
-a.item-control img {
-  font-size: small;
-  color: var(--controls-color);
-}
-
-div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
-  color: var(--color-resource-checked);
-}
-a.click-checkbar-element[data-checked=true] i {
-  color: var(--color-monitor-checked);
-}
-a.click-checkbar-element[data-checked=false] i {
-  color: var(--color-unchecked);
-}
-i.hide-fontawesome {
-  font-size: small;
-  color: var(--transparent);
-}
-
-/* Flex/grid configuration */
-div.item.flexcol {
-  gap: 2px;
-  align-items: flex-start;
-}
-
-div.item.flexrow {
-  gap: 1px;
-  align-items: flex-start;
-  justify-content: space-between;
-  vertical-align: top;
-}
-.flex-group-left {
-  gap: 2px;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: left;
-  vertical-align: top;
-}
-
-.flex-grow-3 { flex-grow: 3; }
-.flex-grow,
-.flex-grow-2 { flex-grow: 2; }
-.flex-grow-0 { flex-grow: 0; }
-.flex-wrap { flex-wrap: wrap; }
-.flex-shrink { flex: content; flex-grow: 0;}
-.flex-end { justify-content: flex-end; }
-.flex-shrink-end {
-  flex: content;
-  flex-grow: 0;
-  vertical-align: top;
-  align-items: flex-end;
-}
-.flex-shrink-control-start {
-  flex: content;
-  flex-grow: 1rem;
-  justify-content: left;
-  max-width: 2rem;
-}
-.flex-shrink-start {
-  flex: content;
-  flex-grow: 0.5;
-  justify-content: flex-start;
-  min-width: 32px;
-}
-.flex-shrink-left { 
-  flex-grow: 0;
-  flex-wrap: nowrap;
-  flex-basis: content;
-  flex-direction: row;
-  justify-content: left;
-}
-
-.grid-3col {
-  grid-column: span 3 / span 3;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.grid-2col {
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* TODO: redefine the role of these groups */
-div.form-group {
-  align-items: flex-start;
-}
-
-/* form input and controls */
-.editor {
-  border: 2;
-  height: 150px;
-  min-height: 80px;
-  padding: 0 3px;
-}
-
-.tox .tox-edit-area {
-  padding: 0 8px;
-}
-
-input[type='number'] {
-  max-width: 2rem;
-}
-input.anarchy-essence[type='number'] {
-  max-width: 3rem;
-}
-
-/* Default Anarchy style */
-#gm-manager.style-anarchy-shadowrun{
-  min-width: 300px !important;
-  background: var(--anarchy-background);
-  background-size: 50%;
-  color: var(--anarchy-font);
-}
-
-#gm-manager.style-anarchy-shadowrun div.header{
-  display: grid;
-  margin: 2px;
-  padding: 2px;
-  border-bottom: 1px solid var(--border-light);
-}
-#gm-manager.style-anarchy-shadowrun div {
-  padding: 2px;
-  vertical-align: top;
-}
-#gm-manager.style-anarchy-shadowrun label{
-  color: var(--anarchy-font);
-}
-#gm-manager.style-anarchy-shadowrun .anarchy-button label{
-  background: var(--anarchy-button-background);
-  color: var(--anarchy-font);
-}
-
-.style-anarchy-shadowrun .window-content {
-  background: var(--anarchy-background);
-  background-size: 50%;
-  color: var(--anarchy-font);
-}
-
-.style-anarchy-shadowrun .window-content form.npc-sheet {
-  background: var(--darker-npc);
-}
-.style-anarchy-shadowrun div.item.anarchy-attribute {
- background: var(--anarchy-attributes-background);
-}
-.style-anarchy-shadowrun div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality),
-.style-anarchy-shadowrun div:is(.anarchy-keywords,.anarchy-dispositions,.anarchy-cues) input {
-  background: var(--anarchy-item-background);
-}
-
-.style-anarchy-shadowrun .anarchy-weapon > .item:hover {
-  background: var(--border-light);
-}
-.style-anarchy-shadowrun .anarchy-weapon > .item:nth-child(even) {
-  background: var(--anarchy-weapon-background-even);
-}
-.style-anarchy-shadowrun .anarchy-weapon > .item:nth-child(odd) {
-  background: var(--anarchy-weapon-background-odd);
-}
-
-.style-anarchy-shadowrun div.item:is(.anarchy-skill,.anarchy-gear,.anarchy-contact,.anarchy-shadowamp,.anarchy-quality) img{
-  background: var(--anarchy-item-img-background);
-}
-.style-anarchy-shadowrun div.item.anarchy-quality.negative {
-  background: var(--anarchy-negative-background);
-  border-style: dashed;
-}
-
-.style-anarchy-shadowrun input,
-.style-anarchy-shadowrun select,
-.style-anarchy-shadowrun label,
-.style-anarchy-shadowrun button {
-  color: var(--anarchy-font);
-}  
-.style-anarchy-shadowrun .window-content select option{
-  background: var(--anarchy-background);
-  background-size: 50%;
-  color: var(--anarchy-font);
-}  
-.style-anarchy-shadowrun .anarchy-button {
-  background: var(--anarchy-button-background);
-  color: var(--anarchy-font)
-}
-.style-anarchy-shadowrun .tooltip .tooltip-roll-modifiers {
-  background: var(--anarchy-tooltip-background);
-}
-
-.style-anarchy-shadowrun div:is(
-  .anarchy-keywords,
-  .anarchy-dispositions,
-  .anarchy-cues) {
-  border: none;
-  background-color: var(--transparent);
-}
-.style-anarchy-shadowrun div:is(
-  .anarchy-keywords,
-  .anarchy-dispositions,
-  .anarchy-cues) input {
-  border-color: var(--border-dark);
-}
-
-.style-anarchy-shadowrun a.item-control i,
-.style-anarchy-shadowrun a.item-control img {
-  font-size: small;
-  color: var(--anarchy-controls-color);
-}
-
-/* Shadowrun Anarchy style */
-.style-shadowrun-dark .window-content  {
-  background: var(--background-black);
-  color: var(--font-color-light);
-}
-
-.style-shadowrun-dark .window-content form.npc-sheet {
-  background: var(--lighter-npc);
-}
-
-.style-shadowrun-dark input,
-.style-shadowrun-dark select,
-.style-shadowrun-dark label,
-.style-shadowrun-dark button {
-  color: var(--font-color-light);
-}  
-.style-shadowrun-dark .window-content select option{
-  background-color: var(--background-dark);
-  color: var(--font-color-light);
-}
-.style-shadowrun-dark .tox .tox-editor-container {
-  background: var(--gradient-silver-light-opaque);
-}
-.style-shadowrun-dark .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
-}
-
-/* Dark glass style */
-.style-shadowrun-darkglass .window-content  {
-  background: var(--gradient-dark);
-  color: var(--font-color-light);
-}
-.style-shadowrun-darkglass .window-content form.npc-sheet {
-  background: var(--lighter-npc);
-}
-
-.style-shadowrun-darkglass input,
-.style-shadowrun-darkglass select,
-.style-shadowrun-darkglass label,
-.style-shadowrun-darkglass button {
-  color: var(--font-color-light);
-}
-.style-shadowrun-darkglass select option{
-  background-color: var(--background-dark);
-  color: var(--font-color-light);
-}
-.style-shadowrun-darkglass .tox .tox-editor-container {
-  background: var(--gradient-silver-light-opaque);
-}
-.style-shadowrun-darkglass .tooltip .tooltip-roll-modifiers {
-  background: var(--gradient-silver-light-opaque);
-}
-
-/* Tooltips container */
-.window-app.sheet .window-content .tooltip:hover .tooltiptext {
-  top: 1rem;
-  left: 1rem;
-  margin: 0;
-  padding: 0.25rem;
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-.tooltip-dotted {
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  text-align: center;
-  /* Position the tooltip text */
-  top: 20px;
-  position: absolute;
-  z-index: 1;
-  
-  /* Fade in tooltip */
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip .tooltip-roll-modifiers {
-  z-index: 1000 ;
-  width: 200px;
-  left: -20px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: lighter;
-  padding: 3px 0;
-}
-
-
-
-.flexrow.anarchy-weapon.list-header {
-  align-content: flex-start;
-  justify-content: flex-start;
-  font-weight: bold;
-  text-align: left;
-  flex-grow: 0;
-}
-.flexrow.anarchy-weapon.list-header span,
-.flexrow.anarchy-weapon.item span {
-  text-align: left;
-  flex-grow: 2;
-  flex: content;
-  justify-content: start;
-}
-.flexrow.anarchy-weapon.list-header.flex-shrink span,
-.flexrow.anarchy-weapon.item.flex-shrink span {
-  text-align: left;
-  flex-grow: 0;
-  flex: content;
-  justify-content: start;
-}
-.flexrow.anarchy-weapon.item span:first-child {
-  flex: content;
-  flex-grow: 0;
-  justify-content: start;
-  min-width: 32px;
-}
-.flexrow.anarchy-weapon.item span:last-child {
-  flex: content;
-  flex-grow: 0;
-  justify-content: start;
-  align-items: flex-end;
-  text-align: left;
-}
-.flexrow.anarchy-weapon.item {
-  gap: 1px;
-  align-content: flex-start;
-  justify-content: flex-start;
-  border-width: 1px;
-  border-color: var(--border-light);
-  border-style: solid;
-  vertical-align: top !important;
-  flex-basis: content;
-}

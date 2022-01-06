@@ -1,10 +1,8 @@
 <h3 class="define-wordlist" data-wordlist="{{listName}}">
-  <label>
-    {{localize (concat 'ANARCHY.actor.plural.' listName)}}
-    <a class="item-control click-wordlist-add" title="{{localize ANARCHY.common.add}}">
-      {{{iconFA 'fas fa-plus-circle'}}}
-    </a>
-  </label>
+  {{localize (concat 'ANARCHY.actor.plural.' listName)}}
+  <a class="item-control click-wordlist-add" title="{{localize ANARCHY.common.add}}">
+    {{{iconFA 'fas fa-plus-circle'}}}
+  </a>
 </h3>
 {{#each values as |value index|}}
 <div class="define-wordlist" data-wordlist="{{../listName}}" data-word="{{value}}" data-index="{{index}}">

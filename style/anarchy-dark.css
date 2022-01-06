@@ -54,13 +54,6 @@
 #gm-manager.style-anarchy-dark label {
   color: var(--anarchy-dark-color-font);
 }
-#gm-manager.style-anarchy-dark a.anarchy-button,
-#gm-manager.style-anarchy-dark .anarchy-button{
-  background: var(--anarchy-dark-background-button);
-}
-#gm-manager.style-anarchy-dark .anarchy-button label {
-  color: var(--anarchy-dark-color-button);
-}
 #gm-manager.style-anarchy-dark header {
   border-bottom: 1px solid var(--anarchy-dark-color-border-light);
   color: var(--anarchy-dark-color-font);
@@ -96,15 +89,15 @@
   box-shadow: var(--anarchy-dark-shadow-attribute);
 }
 
-.style-anarchy-dark .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute),
-.style-anarchy-dark .window-content :is(.anarchy-attribute, .anarchy-secondary-attribute) :is(input, select, label, button) {
+.style-anarchy-dark .window-content .attribute-box,
+.style-anarchy-dark .window-content .attribute-box :is(input, select, label, button) {
   color: var(--anarchy-dark-color-attribute);
 }
 
-.style-anarchy-dark .anarchy-attribute {
+.style-anarchy-dark .attribute-box {
   background: var(--anarchy-dark-background-attributes);
 }
-.style-anarchy-dark .anarchy-secondary-attribute {
+.style-anarchy-dark .attribute-box.secondary-attribute {
   background: var(--anarchy-dark-background-secondary-attributes);
 }
 
@@ -167,16 +160,15 @@
   color: var(--anarchy-dark-color-font);
 }
 
-.style-anarchy-dark .anarchy-button label {
-  color: var(--anarchy-dark-color-button);
-}
-
 .style-anarchy-dark .anarchy-button {
   background: var(--anarchy-dark-background-button);
   color: var(--anarchy-dark-color-button);
-  /* border-radius: 6px; */
   border: 1px outset var(--anarchy-dark-color-button-border);
   box-shadow: var(--anarchy-dark-shadow-anarchy-button);
+}
+.style-anarchy-dark a.anarchy-button,
+.style-anarchy-dark .anarchy-button label {
+  color: var(--anarchy-dark-color-button);
 }
 
 .style-anarchy-dark .anarchy-button:hover {
