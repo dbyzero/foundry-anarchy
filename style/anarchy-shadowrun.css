@@ -47,8 +47,7 @@
   background: var(--anarchy-background);
   color: var(--anarchy-color-font);
 }
-
-#gm-manager.style-anarchy-shadowrun div.header{
+#gm-manager.style-anarchy-shadowrun header{
   border-bottom: 1px solid var(--anarchy-color-border);
 }
 #gm-manager.style-anarchy-shadowrun label{
