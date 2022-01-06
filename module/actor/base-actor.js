@@ -107,7 +107,7 @@ export class AnarchyBaseActor extends Actor {
   getSkillValue(skillId, specialization = undefined) {
     const skill = this.items.get(skillId);
     const attribute = this.data.data.attributes[skill.data.data.attribute];
-    return skill.data.data.value + attribute.value + (specialization && skill.data.data.specialization ? 2 : 0);
+    return skill.data.data.value + (attribute?.value ?? 0) + (specialization && skill.data.data.specialization ? 2 : 0);
   }
 
   getWounds(skillCode) {
