@@ -26,7 +26,7 @@ export class AnarchyRollDialog extends Dialog {
       actor: actor,
       attributeAction: attributeAction,
       attribute: attribute,
-      attribute2: attribute2 ?? attribute,
+      attribute2: attribute2,
       modifiers: Modifiers.build(actor)
     };
     return rollData;
