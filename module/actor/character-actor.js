@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { AnarchyRollDialog } from "../dialog/roll-dialog.js";
+import { RollDialog } from "../dialog/roll-dialog.js";
 import { BASE_MONITOR } from "../constants.js";
 import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
 import { Enums } from "../enums.js";
@@ -87,23 +87,23 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   async skillRoll(skill, specialization) {
-    const rollData = AnarchyRollDialog.prepareSkillRollData(this, skill, specialization);
+    const rollData = RollDialog.prepareSkillRollData(this, skill, specialization);
     await this._roll(rollData);
   }
 
   async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
-    const rollData = AnarchyRollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
+    const rollData = RollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
     await this._roll(rollData);
   }
 
   async weaponRoll(weapon) {
     const skill = this.items.find(it => it.type == 'skill' && it.data.data.code === weapon.data.data.skill);
-    const rollData = AnarchyRollDialog.prepareWeaponRollData(this, skill, weapon);
+    const rollData = RollDialog.prepareWeaponRollData(this, skill, weapon);
     await this._roll(rollData);
   }
 
   async _roll(rollData) {
-    const dialog = await AnarchyRollDialog.create(rollData);
+    const dialog = await RollDialog.create(rollData);
     dialog.render(true);
   }
 

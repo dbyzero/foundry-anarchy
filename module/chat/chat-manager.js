@@ -2,8 +2,7 @@ import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { HOOK_GET_HANDLEPAR_PARTIALS } from "../handlebars-manager.js";
 import { RemoteCall } from "../remotecall.js";
-import { AnarchyRollManager } from "../roll-manager.js";
-import { ChatRollData } from "./chat-roll-data.js";
+import { RollManager } from "../roll/roll-manager.js";
 
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
 const HBS_CHAT_TEMPLATES = [
@@ -38,7 +37,7 @@ export class ChatManager {
 
   static async displayRollInChat(rollData, addJson = false) {
     if (addJson) {
-      rollData.json = ChatRollData.rollDataToJSON(rollData);
+      rollData.json = RollManager.rollDataToJSON(rollData);
     }
 
     rollData.ANARCHY = ANARCHY;
@@ -48,18 +47,17 @@ export class ChatManager {
     rollData.options.classes.push(game.system.anarchy.styles.selectCssClass());
 
     const flavor = await renderTemplate('systems/anarchy/templates/chat/anarchy-roll.hbs', rollData);
-    const message = await rollData.roll.toMessage({ flavor: flavor }, { create: false });
-
-    ChatMessage.create(message);
+    await rollData.roll.toMessage({ flavor: flavor });
+    await rollData.roll.otherRollsToDiceSoNice();
   }
 
   static async onRenderChatMessage(app, html, msg) {
     html.find(".click-edge-reroll").click(async event => {
       const messageId = $(event.currentTarget).closest('.chat-message').attr('data-message-id');
       const json = $(event.currentTarget).attr('data-json');
-      const rollData = ChatRollData.rollDataFromJSON(json);
+      const rollData = RollManager.rollDataFromJSON(json);
       // TODO: indicate edge was used for reroll
-      await AnarchyRollManager.edgeReroll(rollData);
+      await RollManager.edgeReroll(rollData);
       ChatManager.removeChatMessage(messageId);
     });
   }

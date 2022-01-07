@@ -1,13 +1,13 @@
 import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { Modifiers } from "../modifiers.js";
-import { AnarchyRollManager } from "../roll-manager.js";
+import { RollManager } from "../roll/roll-manager.js";
 
 /**
  * Extend the base Dialog entity to select roll parameters
  * @extends {Dialog}
  */
-export class AnarchyRollDialog extends Dialog {
+export class RollDialog extends Dialog {
 
   static prepareSkillRollData(actor, skill, specialization) {
     return {
@@ -48,8 +48,8 @@ export class AnarchyRollDialog extends Dialog {
     rollData.anarchy = rollData.actor.getAnarchyValue();
     rollData.ENUMS = Enums.getEnums();
     rollData.ANARCHY = ANARCHY;
-    const html = await renderTemplate(`systems/anarchy/templates/dialog/anarchy-roll.hbs`, rollData);
-    return new AnarchyRollDialog(rollData, html);
+    const html = await renderTemplate(`systems/anarchy/templates/dialog/roll-dialog.hbs`, rollData);
+    return new RollDialog(rollData, html);
   }
 
   constructor(rollData, html) {
@@ -58,7 +58,7 @@ export class AnarchyRollDialog extends Dialog {
       content: html,
       default: 'roll',
       buttons: {
-        'roll': { label: game.i18n.localize(ANARCHY.common.roll.button), callback: async () => await AnarchyRollManager.roll(rollData) }
+        'roll': { label: game.i18n.localize(ANARCHY.common.roll.button), callback: async () => await RollManager.roll(rollData) }
       },
     };
     const options = {
