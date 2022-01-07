@@ -1,9 +1,9 @@
 {{#if modifiers.anarchyRisk.used}}
-  <div class="anarchy-risk-{{roll.subrolls.risk.outcome}}">
+  <div class="anarchy-risk-{{roll.outcome}}">
     {{localize ANARCHY.common.roll.modifiers.anarchyRisk}}:
-    <span class="anarchy-risk-dice {{roll.subrolls.risk.outcome}}">
+    <span class="anarchy-risk-dice {{roll.outcome}}">
       {{{iconD6 roll.subrolls.risk.terms.[0].results.[0].result}}}
     </span>
-    {{localize (concat 'ANARCHY.common.roll.risk.' roll.subrolls.risk.outcome)}}
+    {{localize (concat 'ANARCHY.common.roll.risk.' roll.outcome)}}
   </div>
 {{/if}}

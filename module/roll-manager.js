@@ -8,19 +8,20 @@ export class AnarchyRollManager {
     rollData.param = Modifiers.computeRollParameters(rollData);
     await rollData.actor.spendEdge(rollData.param.edge);
     await rollData.actor.spendAnarchy(rollData.param.anarchy);
-    await AnarchyRollManager._roll(rollData);
-    await ChatManager.displayRollInChat(rollData, true);
+    rollData.canEdgeRoll = rollData.param.edge != 0;
+    AnarchyRollManager._roll(rollData)
   }
 
   static async edgeReroll(rollData) {
+    rollData.canEdgeRoll = false;
     await rollData.actor.spendEdge(1);
-    await AnarchyRollManager._roll(rollData);
-    await ChatManager.displayRollInChat(rollData, false);
+    AnarchyRollManager._roll(rollData)
   }
 
   static async _roll(rollData) {
     rollData.roll = new AnarchyRoll(rollData.param);
     await rollData.roll.evaluate();
+    ChatManager.displayRollInChat(rollData, rollData.canEdgeRoll)
   }
 
 }
