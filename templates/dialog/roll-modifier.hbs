@@ -13,7 +13,7 @@
     <label class="flex-grow-2" >{{label}}</label>
 
     <span class="flex-shrink">
-    {{#if (and optional (not editable))}}
+    {{#if optional}}
     <input class="item-field-value flex-shrink check-use-modifier {{#if isAnarchy}}anarchy-modifier{{/if}}" data-modifier="{{type}}" type="checkbox" {{checked used}} />
     {{/if}}
 

@@ -39,6 +39,7 @@
           "specialization": "Utiliser la spécialisation",
           "anarchyDisposition": "Anarchy - Bien disposé",
           "anarchyRisk": "Anarchy - Prise de risques",
+          "glitch": "Dés de complication",
           "wounds": "Modificateur de blessures",
           "range": "Portée",
           "other": "Autres modificateurs",
@@ -47,10 +48,19 @@
           "opponentRerollForced": "Relance de succès adverses",
           "opponentReduce": "Malus de dés pour l'adversaire"
         },
+        "rollTheme": {
+          "dicePool": "Réserve de dés",
+          "reroll": "Relance d'échecs",
+          "removed": "Succès supprimés par l'adversaire",
+          "rerollRemoved": "Relance des succès supprimés",
+          "glitch": "Dés de complication",
+          "anarchyRisk": "Anarchy - Dés de prise de risques"
+        },
         "totalSuccess": "Succès finaux",
         "success": "Succès",
         "risk": {
           "prowess": "Exploit!",
+          "mixed": "Exploit et complication!",
           "nothing": "Sans effet",
           "glitch": "Complication"
         },

@@ -21,6 +21,7 @@ import { VehicleActor } from './actor/vehicle-actor.js';
 import { DeviceActor } from './actor/device-actor.js';
 import { HooksManager } from './hooks-manager.js';
 import { AnarchyDice } from './roll/dice.js';
+import { AnarchyRoll } from './roll/anarchy-roll.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -69,6 +70,7 @@ export class AnarchySystem {
     // initialize remote calls registry first
     AnarchyUsers.init();
     AnarchyDice.init();
+    AnarchyRoll.init();
     AnarchyBaseItem.init();
     ChatManager.init();
     console.log(LOG_HEAD + 'AnarchySystem.onInit | done');

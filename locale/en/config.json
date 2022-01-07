@@ -39,6 +39,7 @@
           "specialization": "Use specialization",
           "anarchyDisposition": "Anarchy - Dispositions",
           "anarchyRisk": "Anarchy - Take risks",
+          "glitch": "Glitch dice",
           "wounds": "Wounds modifiers",
           "range": "Range",
           "other": "Other modifiers",
@@ -47,10 +48,19 @@
           "opponentRerollForced": "Opponent must reroll successes",
           "opponentReduce": "Opponent pool reduction"
         },
+        "rollTheme": {
+          "dicePool": "Dice pool",
+          "reroll": "Failure rerolls",
+          "removed": "Success removed by opponent",
+          "rerollRemoved": "Reroll removed success",
+          "glitch": "Glitch dice",
+          "anarchyRisk": "Anarchy risk dice"
+        },
         "totalSuccess": "Total successes",
         "success": "Successes",
         "risk": {
           "prowess": "Prowess",
+          "mixed": "Prowess and Glitch",
           "nothing": "no effect",
           "glitch": "Glitch"
         },

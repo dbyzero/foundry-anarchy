@@ -64,7 +64,7 @@ export class RollDialog extends Dialog {
     const options = {
       classes: ["anarchy-dialog"],
       width: 450,
-      height: 530,
+      height: 570,
       'z-index': 99999,
     };
 

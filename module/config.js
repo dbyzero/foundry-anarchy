@@ -38,6 +38,7 @@ export const ANARCHY = {
                 specialization: 'ANARCHY.common.roll.modifiers.specialization',
                 anarchyDisposition: 'ANARCHY.common.roll.modifiers.anarchyDisposition',
                 anarchyRisk: 'ANARCHY.common.roll.modifiers.anarchyRisk',
+                glitch: 'ANARCHY.common.roll.modifiers.glitch',
                 wounds: 'ANARCHY.common.roll.modifiers.wounds',
                 range: 'ANARCHY.common.roll.modifiers.range',
                 other: 'ANARCHY.common.roll.modifiers.other',
@@ -46,11 +47,20 @@ export const ANARCHY = {
                 opponentRerollForced: 'ANARCHY.common.roll.modifiers.opponentRerollForced',
                 opponentReduce: 'ANARCHY.common.roll.modifiers.opponentReduce'
             },
+            rollTheme: {
+                dicePool: 'ANARCHY.common.roll.rollTheme.dicePool',
+                reroll: 'ANARCHY.common.roll.rollTheme.reroll',
+                removed: 'ANARCHY.common.roll.rollTheme.removed',
+                rerollRemoved: 'ANARCHY.common.roll.rollTheme.rerollRemoved',
+                glitch: 'ANARCHY.common.roll.rollTheme.glitch',
+                anarchyRisk: 'ANARCHY.common.roll.rollTheme.anarchyRisk',
+            },
             totalSuccess: 'ANARCHY.common.roll.totalSuccess',
             success: 'ANARCHY.common.roll.success',
             risk: {
                 prowess: 'ANARCHY.common.roll.risk.prowess',
                 nothing: 'ANARCHY.common.roll.risk.nothing',
+                mixed: 'ANARCHY.common.roll.risk.mixed',
                 glitch: 'ANARCHY.common.roll.risk.glitch',
             },
             rerollSuccess: 'ANARCHY.common.roll.rerollSuccess',

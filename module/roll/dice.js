@@ -3,7 +3,6 @@ import { SYSTEM_DESCRIPTION, SYSTEM_NAME, SYSTEM_PATH } from "../constants.js";
 const GLITCH_COLORSET = 'anarchy-glitch';
 const RISK_COLORSET = 'anarchy-risk';
 const DICE_GLITCH = `${SYSTEM_PATH}/style/danger-point.webp`;
-const DICE_NOTHING = `${SYSTEM_PATH}/style/anarchy-point-off.webp`;
 const DICE_PROWESS = `${SYSTEM_PATH}/style/anarchy-point.webp`;
 
 export class AnarchyDice {
@@ -69,8 +68,8 @@ export class AnarchyGlitchDie extends Die {
       category: "Anarchy",
       foreground: "white",
       background: "#5c0a5c",
-      outline: "#000000",
-      edge: "#e5e7c3",
+      outline: "none",
+      edge: "none",
       texture: "poison",
       material: 'metal',
     }

@@ -1,4 +1,19 @@
+import { ANARCHY } from "../config.js";
+
+const ROLL_THEME = {}
+
 export class AnarchyRoll {
+  static ROLL_THEME_POOL;
+  static init() {
+    Hooks.once('ready', () => AnarchyRoll.onReady());
+  }
+
+  static onReady() {
+    Object.entries(ANARCHY.common.roll.rollTheme).forEach(entry => {
+      ROLL_THEME[entry[0]] = game.i18n.localize(entry[1]);
+    });
+  }
+
   /**
    * @param {*} param : { pool: 1, reroll: 0, risk: 0, rerollForced: 0, target: 5 }
    */
@@ -29,16 +44,15 @@ export class AnarchyRoll {
   }
 
   async rollPool() {
-    this.subrolls.pool = new Roll(`${this.param.pool}d6cs>=${this.param.target}`)
+    this.subrolls.pool = new Roll(`${this.param.pool}d6cs>=${this.param.target}[${ROLL_THEME['dicePool']}]`)
     await this.subrolls.pool.evaluate({ async: true })
     this.total = this.subrolls.pool.total;
   }
 
   async rollRerolls() {
-    // reroll failures
     const rerolls = Math.min(this.param.pool - this.total, this.param.reroll);
     if (rerolls > 0) {
-      this.subrolls.reroll = new Roll(`${rerolls}d6cs>=${this.param.target}[earth]`);
+      this.subrolls.reroll = new Roll(`${rerolls}d6cs>=${this.param.target}[${ROLL_THEME['reroll']}]`);
       await this.subrolls.reroll.evaluate({ async: true });
       this.total += this.subrolls.reroll.total;
     }
@@ -47,9 +61,9 @@ export class AnarchyRoll {
   async rollRerollForced() {
     const removed = Math.min(this.total, this.param.rerollForced);
     if (removed > 0) {
-      this.subrolls.removed = new Roll(`${removed}d1cf=1[necrotic]`)
+      this.subrolls.removed = new Roll(`${removed}d1cf=1[${ROLL_THEME['removed']}]`)
       await this.subrolls.removed.evaluate({ async: true })
-      this.subrolls.rerollForced = new Roll(`${removed}d6cs>=${this.param.target}[earth]`)
+      this.subrolls.rerollForced = new Roll(`${removed}d6cs>=${this.param.target}[${ROLL_THEME['rerollRemoved']}]`)
       await this.subrolls.rerollForced.evaluate({ async: true })
       this.total -= removed;
       this.total += this.subrolls.rerollForced.total;
@@ -58,7 +72,7 @@ export class AnarchyRoll {
 
   async rollGlitchDice() {
     if (this.param.glitch > 0) {
-      this.subrolls.glitch = new Roll(`${this.param.glitch}dg`);
+      this.subrolls.glitch = new Roll(`${this.param.glitch}dgcs=0[${ROLL_THEME['glitch']}]`);
       await this.subrolls.glitch.evaluate({ async: true })
       this.glitch += this.subrolls.glitch.terms[0].results.filter(it => it.result == 1).length;
     }
@@ -66,7 +80,7 @@ export class AnarchyRoll {
 
   async rollAnarchyRisk() {
     if (this.param.risk > 0) {
-      this.subrolls.risk = new Roll(`${this.param.risk}dr`);
+      this.subrolls.risk = new Roll(`${this.param.risk}drcs>=5[${ROLL_THEME['anarchyRisk']}]`);
       await this.subrolls.risk.evaluate({ async: true })
       this.glitch += this.subrolls.risk.terms[0].results.filter(it => it.result == 1).length;
       this.prowess += this.subrolls.risk.terms[0].results.filter(it => it.result >= 5).length;

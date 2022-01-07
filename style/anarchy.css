@@ -4,13 +4,6 @@
   --background-inactive: repeating-linear-gradient(60deg,
     hsla(0, 0%, 40%, 0.5) 0px 5px,
     hsla(0, 0%, 80%, 0.5) 5px 10px);
-
-  --hover-tint: hsla(210, 44%, 69%, 0.486);
-  --default-background-glitch: hsla(300, 80%, 20%, 0.2);
-
-  --color-dice-prowess: hsla(47, 60%, 40%, 1);
-  --color-dice-glitch: hsla(300, 80%, 20%, 1);
-
   --gradient-gold: repeating-linear-gradient(120deg,
     hsla(40, 50%, 50%, 0.4),
     hsla(55, 92%, 86%, 0.4),
@@ -23,6 +16,16 @@
     hsla(195, 3%, 24%, 0.4), 
     hsla(43, 7%, 79%, 0.2), 
     hsla(348, 14%, 21%, 0.2));
+
+  --hover-tint: hsla(210, 44%, 69%, 0.486);
+  --default-background-glitch: hsla(300, 80%, 20%, 0.2);
+  --default-background-prowess: var(--gradient-gold);
+  --default-background-mixed:  var(--gradient-gold) hsla(300, 80%, 20%, 0.5);
+
+  --color-dice-glitch: hsla(300, 80%, 20%, 1);
+  --color-dice-mixed:  hsl(230, 80%, 30%, 1);
+  --color-dice-prowess: hsla(160, 80%, 40%, 1);
+
 
   --background-editor: var(--gradient-silver), hsla(0, 10%, 80%, 0.8);
   --color-editor-font: hsla(0, 10%, 10%, 1);
@@ -502,29 +505,31 @@ div.anarchy-block {
   left: 1px;
 }
 
-div.anarchy-risk-nothing span i.fas {
-  font-size: x-large;
-}
-div.anarchy-risk-glitch span i.fas {
-  color: var(--color-dice-glitch);
-  font-size: x-large;
-}
-div.anarchy-risk-prowess span i.fas {
-  color: var(--color-dice-prowess);
-  font-size: x-large;
-}
-div.anarchy-risk-glitch {
+div.risk-glitch {
   margin: 1px;
   padding: 1px;
   border-radius: 6px;
+}
+div.risk-glitch span i.fas {
+  font-size: large;
+}
+div.risk-glitch.risk-glitch-glitch span i.fas {
+  color: var(--color-dice-glitch);
+}
+div.risk-glitch.risk-glitch-mixed span i.fas {
+  color: var(--color-dice-mixed);
+}
+div.risk-glitch.risk-glitch-prowess span i.fas {
+  color: var(--color-dice-prowess);
+}
+div.risk-glitch.risk-glitch-glitch {
   background: var(--default-background-glitch);
 }
-
-div.anarchy-risk-prowess {
-  margin: 1px;
-  padding: 1px;
-  border-radius: 6px;
-  background: var(--gradient-gold);
+div.risk-glitch.risk-glitch-mixed {
+  background: var(--default-background-mixed);
+}
+div.risk-glitch.risk-glitch-prowess {
+  background: var(--default-background-prowess);
 }
 
 .alternate-items > .item {
