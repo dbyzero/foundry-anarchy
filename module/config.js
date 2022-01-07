@@ -113,10 +113,10 @@ export const ANARCHY = {
             matrix: 'ANARCHY.actor.monitors.matrix',
             armor: 'ANARCHY.actor.monitors.armor',
             structure: 'ANARCHY.actor.monitors.structure',
+            resistance: 'ANARCHY.actor.monitors.resistance',
         },
         vehicle: {
             handling: 'ANARCHY.actor.vehicle.handling',
-            resistance: 'ANARCHY.actor.vehicle.resistance',
             moves: 'ANARCHY.actor.vehicle.moves',
             attacks: 'ANARCHY.actor.vehicle.attacks',
             stealth: 'ANARCHY.actor.vehicle.stealth',

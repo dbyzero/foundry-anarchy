@@ -1,10 +1,6 @@
 <div class="flexcol anarchy-monitor">
-  <label class="info-label">
-    {{localize 'ANARCHY.actor.monitors.physical'}} /R
-    <input class="info-value" type="number" data-dtype="Number" maxlength="2"
-      name="data.monitors.physical.resistance"
-      value="{{data.data.monitors.physical.resistance}}" 
-    />
+  <label class="monitor-label">
+    {{localize ANARCHY.actor.monitors.physical}}
   </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='physical'
@@ -16,4 +12,11 @@
     iconChecked=(iconFA 'fas fa-heartbeat')
     iconUnchecked=(iconFA 'far fa-heart')
   }}
+  <label class="resitance-label">
+    {{localize ANARCHY.actor.monitors.resistance}}
+    <input class="info-value" type="number" data-dtype="Number" maxlength="2"
+      name="data.monitors.physical.resistance"
+      value="{{data.data.monitors.physical.resistance}}" 
+    />
+  </label>
 </div>

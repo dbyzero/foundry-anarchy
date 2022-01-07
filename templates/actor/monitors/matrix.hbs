@@ -1,14 +1,9 @@
 <div class="flexcol anarchy-monitor">
-  <label class="info-label">
+  <label class="monitor-label">
     {{localize 'ANARCHY.actor.monitors.matrix'}}
     <input class="info-value" type="number" data-dtype="Number" maxlength="2" 
       class="value" name="data.monitors.matrix.max" 
       value="{{data.data.monitors.matrix.max}}"
-    />
-    /R
-    <input class="info-value" type="number" data-dtype="Number" maxlength="2"
-      name="data.monitors.matrix.resistance"
-      value="{{data.data.monitors.matrix.resistance}}" 
     />
   </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
@@ -20,4 +15,11 @@
     iconChecked=(iconFA 'fas fa-laptop-medical')
     iconUnchecked=(iconFA 'fas fa-laptop')
   }}
+  <label class="resitance-label">
+    {{localize ANARCHY.actor.monitors.resistance}}
+    <input class="info-value" type="number" data-dtype="Number" maxlength="2"
+      name="data.monitors.matrix.resistance"
+      value="{{data.data.monitors.matrix.resistance}}" 
+    />
+  </label>
 </div>

@@ -113,11 +113,11 @@
         "stun": "Etourdissant",
         "matrix": "Matriciel",
         "armor": "Armure",
-        "structure": "Blindage"
+        "structure": "Blindage",
+        "resistance": "Résistance"
       },
       "vehicle": {
         "handling": "Mobilité",
-        "resistance": "Résistance",
         "moves": "Déplacements",
         "attacks": "Attaques",
         "stealth": "Furtivité",

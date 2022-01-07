@@ -114,11 +114,11 @@
         "stun": "Stun",
         "matrix": "Matrix",
         "armor": "Armor",
-        "structure": "Structure"
+        "structure": "Structure",
+        "resistance": "Resistance"
       },
       "vehicle": {
         "handling": "Handling",
-        "resistance": "Resistance",
         "moves": "Moves",
         "attacks": "Attacks",
         "stealth": "Stealth",

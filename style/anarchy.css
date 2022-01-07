@@ -207,8 +207,7 @@ img.anarchy-img.item-img {
   opacity: 0.8;
   object-position: 50% 0%;
 }
-
-.info-label {
+.monitor-label, .info-label {
   justify-content: left;
   align-self: baseline;
   white-space: nowrap;
@@ -219,8 +218,24 @@ img.anarchy-img.item-img {
   align-self: baseline;
   text-align: start;
   border: none;
-  border-radius: 0px;
   height: 100%;
+  width: 100%;
+  padding: 1px;
+}
+.resitance-label {
+  font-size: x-small;
+  justify-content: left;
+  align-self: baseline;
+  white-space: nowrap;
+  height: fit-content;
+  padding: 1px;
+}
+.resitance-label :is(input, label, select).info-value {
+  font-size: x-small;
+  align-self: baseline;
+  text-align: start;
+  border: none;
+  height: fit-content;
   width: 100%;
   padding: 1px;
 }
