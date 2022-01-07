@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { LOG_HEAD, SYSTEM_NAME } from "../constants.js";
+import { SYSTEM_NAME } from "../constants.js";
 
 const GM_DIFFICULTY_POOLS = "gm-difficulty-pools";
 
