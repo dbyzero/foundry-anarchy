@@ -97,15 +97,10 @@
       "actorName": "Nom",
       "genre": "Genre",
       "noMetatype": "No metatype, drag it!",
-      "singular": {
-        "keyword": "Mot clé",
-        "disposition": "Réplique",
-        "cue": "Comportement"
-      },
-      "plural": {
-        "keyword": "Mots clés",
-        "disposition": "Répliques",
-        "cue": "Comportements"
+      "words": {
+        "keywords": "Mots clés",
+        "cues": "Répliques",
+        "dispositions": "Comportements"
       },
       "essence": {
         "adjustments": "pour Magie, résonance, soins",

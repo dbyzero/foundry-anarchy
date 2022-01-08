@@ -25,7 +25,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/character/karma.hbs',
   'systems/anarchy/templates/actor/character/metatype.hbs',
   // character parts
-  'systems/anarchy/templates/actor/parts/wordlist.hbs',
+  'systems/anarchy/templates/actor/parts/words.hbs',
   'systems/anarchy/templates/actor/parts/contact.hbs',
   'systems/anarchy/templates/actor/parts/contacts.hbs',
   'systems/anarchy/templates/actor/parts/gear.hbs',

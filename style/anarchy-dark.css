@@ -113,11 +113,11 @@
   background: var(--dark-background-lighter);
 }
 
-.style-dark .wordlist {
+.style-dark .anarchy-words {
   border: 1px solid var(--dark-color-border-light);
 }
 
-.style-dark .wordlist:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) input {
+.style-dark .anarchy-words:is(.anarchy-keywords, .anarchy-dispositions, .anarchy-cues) input {
   background: var(--dark-background-item);
   border-style: none;
 }

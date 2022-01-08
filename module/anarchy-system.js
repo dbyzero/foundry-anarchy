@@ -22,6 +22,7 @@ import { DeviceActor } from './actor/device-actor.js';
 import { HooksManager } from './hooks-manager.js';
 import { AnarchyDice } from './roll/dice.js';
 import { AnarchyRoll } from './roll/anarchy-roll.js';
+import { Migrations } from './migrations.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -78,8 +79,12 @@ export class AnarchySystem {
   }
 
   async onReady() {
+    if (game.user.isGM) {
+      new Migrations().migrate();
+    }
     console.log(LOG_HEAD + 'AnarchySystem.onReady');
   }
+
 
   loadActorSheets() {
     Actors.unregisterSheet('core', ActorSheet);

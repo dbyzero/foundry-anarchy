@@ -139,11 +139,11 @@
 }
 
 
-.style-darkglass .wordlist {
+.style-darkglass .anarchy-words {
   border-style: none;
 }
 
-.style-darkglass .wordlist input {
+.style-darkglass .anarchy-words input {
   background: var(--darkglass-background-item);
   border-style: none;
 }

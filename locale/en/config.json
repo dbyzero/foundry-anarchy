@@ -97,15 +97,10 @@
       "actorName": "Name",
       "genre": "Genre",
       "noMetatype": "Pas de metatype, ajoutez le!",
-      "singular": {
-        "keyword": "Keyword",
-        "disposition": "Disposition",
-        "cue": "Cue"
-      },
-      "plural": {
-        "keyword": "Keywords",
-        "disposition": "Dispositions",
-        "cue": "Cues"
+      "words": {
+        "keywords": "Keywords",
+        "cues": "Cues",
+        "dispositions": "Dispositions"
       },
       "essence": {
         "adjustments": "to Magic, resonance, healing",

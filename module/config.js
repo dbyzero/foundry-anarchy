@@ -96,15 +96,10 @@ export const ANARCHY = {
         actorName: 'ANARCHY.actor.actorName',
         genre: 'ANARCHY.actor.genre',
         noMetatype: 'ANARCHY.actor.noMetatype',
-        singular: {
-            keyword: 'ANARCHY.actor.singular.keyword',
-            disposition: 'ANARCHY.actor.singular.disposition',
-            cue: 'ANARCHY.actor.singular.cue',
-        },
-        plural: {
-            keyword: 'ANARCHY.actor.plural.keyword',
-            disposition: 'ANARCHY.actor.plural.disposition',
-            cue: 'ANARCHY.actor.plural.cue',
+        words: {
+            keywords: 'ANARCHY.actor.words.keywords',
+            cues: 'ANARCHY.actor.words.cues',
+            dispositions: 'ANARCHY.actor.words.dispositions',
         },
         essence: {
             adjustments: 'ANARCHY.actor.essence.adjustments',

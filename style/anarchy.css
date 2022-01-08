@@ -340,9 +340,9 @@ img.checkbar-img:active {
 }
 
 /* Manage the list of keywords, cues, and dispositions*/
-.wordlist {
+.section-group.anarchy-words-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border-radius: 6px;
   align-items: center;
   min-width: auto;
@@ -350,16 +350,16 @@ img.checkbar-img:active {
   padding: 2px;
 }
 
-.wordlist.anarchy-keywords {
+.anarchy-words.anarchy-keywords {
   width: calc(20% - 4px);
 }
-.wordlist.anarchy-cues {
-  width: calc(28% - 4px);
-}
-.wordlist.anarchy-dispositions {
+.anarchy-words.anarchy-cues {
   width: calc(52% - 4px);
 }
-.wordlist :is(div, input) {
+.anarchy-words.anarchy-dispositions {
+  width: calc(28% - 4px);
+}
+.anarchy-words :is(div, input) {
   width: 100%;
 }
 
