@@ -1,3 +1,5 @@
+import { BASE_MONITOR } from "../constants.js";
+import { Misc } from "../misc.js";
 import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
 
 export class DeviceActor extends AnarchyBaseActor {
@@ -12,6 +14,8 @@ export class DeviceActor extends AnarchyBaseActor {
 
   prepareDerivedData() {
     super.prepareDerivedData();
+    this.data.data.monitors.matrix.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.system.value, 2)
+
   }
 
 }

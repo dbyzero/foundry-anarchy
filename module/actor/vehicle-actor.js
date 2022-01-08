@@ -12,6 +12,7 @@ export class VehicleActor extends AnarchyBaseActor {
 
   prepareDerivedData() {
     super.prepareDerivedData();
+    this.data.data.monitors.matrix.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.system.value, 2)
   }
 
 }
