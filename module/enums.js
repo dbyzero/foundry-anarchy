@@ -37,7 +37,7 @@ const defaultSkillsAttribute = {
   etiquette: 'charisma',
 };
 
-const actorDescriptionTypeLists = {
+const actorWordTypes = {
   keyword: "keywords",
   disposition: "dispositions",
   cue: "cues"
@@ -109,8 +109,8 @@ export class Enums {
     };
   }
 
-  static getActorDescriptionTypeLists() {
-    return actorDescriptionTypeLists;
+  static getActorWordTypes() {
+    return actorWordTypes;
   }
 
   static getMonitors() {
@@ -121,8 +121,8 @@ export class Enums {
     return Enums.hbsMonitorLetters;
   }
 
-  static getActorDescriptionType(wordlist) {
-    return actorDescriptionTypeLists[wordlist];
+  static getActorWordTypePlural(wordType) {
+    return actorWordTypes[wordType];
   }
 
   static localizeAttribute(attribute) {

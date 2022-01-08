@@ -2,7 +2,6 @@ import { ANARCHY } from "../config.js";
 import { RollDialog } from "../dialog/roll-dialog.js";
 import { BASE_MONITOR } from "../constants.js";
 import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
-import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { AnarchyUsers } from "../users.js";
@@ -25,6 +24,12 @@ export class CharacterEssence {
 
 export class CharacterActor extends AnarchyBaseActor {
 
+  static reindexWordIds(list) {
+    let index = 1;
+    list.forEach(it => it.id = (index++));
+    return list;
+  }
+
   constructor(data, context = {}) {
     super(data, context);
   }
@@ -39,25 +44,55 @@ export class CharacterActor extends AnarchyBaseActor {
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
   }
 
-  async createWordlistWord(wordlist, added) {
-    this._mutateWordlist(wordlist, values => values.concat([added]));
+  async createWord(wordType, added) {
+    this._mutateWords(wordType, values => values.concat([{ word: added, audio: '' }]));
   }
 
-  async updateWordlistWord(wordlist, previous, updated) {
-    this._mutateWordlist(wordlist, values => values.map(it => it == previous ? updated : it));
+  async sayWord(wordType, wordId) {
+    const wordsToSay = this.getWord(wordType, wordId);
+    if (wordsToSay) {
+      if (wordsToSay?.audio) {
+        // TODO: play audio file
+      }
+      ChatMessage.create({
+        speaker: { alias: this.token?.name ?? this.name },
+        content: wordsToSay.word
+      });
+    }
   }
 
-  async deleteWordlistWord(wordlist, word) {
-    this._mutateWordlist(wordlist, values => values.filter(it => it != word));
+  getWord(wordType, wordId) {
+    return wordType ? this.data.data[wordType].find(it => it.id == wordId) : undefined;
   }
 
-  async _mutateWordlist(wordlist, mutate = values => values) {
-    const listType = Enums.getActorDescriptionType(wordlist);
-    if (!listType) {
+  async editWord(wordType, wordId) {
+    // const listType = Enums.getActorWordTypePlural(wordType);
+    // if (!listType) {
+    //   return;
+    // }
+    //  const updateFunction = it => mergeObject(it, { word: updated }, { overwrite: true })
+    //  this._appyWordUpdate(wordType, previous,it => mergeObject(it, { word: updated }, { overwrite: true }));
+  }
+
+  async updateWord(wordType, wordId, updated) {
+    this._appyWordUpdate(wordType, wordId, it => mergeObject(it, { word: updated }, { overwrite: true }));
+  }
+
+  async _appyWordUpdate(wordType, wordId, updateFunction) {
+    this._mutateWords(wordType, values => values.map(it => it.id == wordId ? updateFunction(it) : it));
+  }
+
+  async deleteWord(wordType, deletedId) {
+    this._mutateWords(wordType, values => values.filter(it => it.word != deletedId));
+  }
+
+  async _mutateWords(wordType, mutate = values => values) {
+    if (!wordType) {
       return;
     }
-    let values = Misc.distinct(mutate(this.data.data[listType]));
-    await this.update({ [`data.${listType}`]: values });
+    let newValues = mutate(this.data.data[wordType]);
+    CharacterActor.reindexWordIds(newValues);
+    await this.update({ [`data.${wordType}`]: newValues });
   }
 
   async setAnarchy(newValue) {

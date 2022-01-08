@@ -42,15 +42,15 @@
     <div class="section-attributes anarchy-attributes">
       {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
     </div>
-    <div class="section-group anarchy-wordlists">
-      <div class="wordlist anarchy-keywords">
-      {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='keyword' values=data.data.keywords}}
+    <div class="section-group anarchy-words-section">
+      <div class="anarchy-words anarchy-keywords">
+      {{> "systems/anarchy/templates/actor/parts/words.hbs" wordType='keywords' values=data.data.keywords}}
       </div>
-      <div class="wordlist anarchy-dispositions">
-      {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='disposition' values=data.data.dispositions}}
+      <div class="anarchy-words anarchy-cues">
+      {{> "systems/anarchy/templates/actor/parts/words.hbs" wordType='cues' values=data.data.cues}}
       </div>
-      <div class="wordlist anarchy-cues">
-      {{> "systems/anarchy/templates/actor/parts/wordlist.hbs" listName='cue' values=data.data.cues}}
+      <div class="anarchy-words anarchy-dispositions">
+      {{> "systems/anarchy/templates/actor/parts/words.hbs" wordType='dispositions' values=data.data.dispositions}}
       </div>
     </div>
     <div class="section-group items-group">

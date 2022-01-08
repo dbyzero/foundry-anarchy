@@ -32,23 +32,37 @@ export class CharacterActorSheet extends AnarchyBaseActorSheet {
     super.activateListeners(html);
 
     // cues, dispositions, keywords
-    html.find('.click-wordlist-add').click(async event => {
-      const wordlist = SheetHelper.getWordList(event);
+    html.find('.click-word-add').click(async event => {
+      const wordType = SheetHelper.getWordType(event);
       const word = game.i18n.localize(ANARCHY.common.newEntry);
-      this.actor.createWordlistWord(wordlist, word);
+      this.actor.createWord(wordType, word);
     });
 
-    html.find('.change-wordlist-value').change(async event => {
+    html.find('.click-word-say').click(async event => {
+      const wordType = SheetHelper.getWordType(event);
+      const word = SheetHelper.getWordId(event);;
+      this.actor.sayWord(wordType, word);
+    });
+
+    /* When adding audio to cues, the edit will be used
+    // html.find('.click-word-edit').click(async event => {
+    //   const wordType = SheetHelper.getWordType(event);
+    //   const word = game.i18n.localize(ANARCHY.common.newEntry);
+    //   this.actor.editWord(wordType, word);
+    // });
+    */
+
+    html.find('.change-word-value').change(async event => {
       const updated = event.currentTarget.value;
-      const previous = SheetHelper.getWord(event);
-      const wordlist = SheetHelper.getWordList(event);
-      await this.actor.updateWordlistWord(wordlist, previous, updated);
+      const wordId = SheetHelper.getWordId(event);
+      const wordType = SheetHelper.getWordType(event);
+      await this.actor.updateWord(wordType, wordId, updated);
     });
 
-    html.find('.click-wordlist-delete').click(async event => {
-      const previous = SheetHelper.getWord(event);
-      const wordlist = SheetHelper.getWordList(event);
-      this.actor.deleteWordlistWord(wordlist, previous);
+    html.find('.click-word-delete').click(async event => {
+      const deletedId = SheetHelper.getWordId(event);
+      const wordType = SheetHelper.getWordType(event);
+      this.actor.deleteWord(wordType, deletedId);
     });
   }
 

@@ -10,11 +10,11 @@ export class SheetHelper {
     return $(event.currentTarget).closest('.define-item-type').attr('data-item-type');
   }
 
-  static getWord(event) {
-    return $(event.currentTarget).closest('.define-wordlist').attr('data-word')
+  static getWordId(event) {
+    return $(event.currentTarget).closest('.define-wordType').attr('data-word-id')
   }
 
-  static getWordList(event) {
-    return $(event.currentTarget).closest('.define-wordlist').attr('data-wordlist')
+  static getWordType(event) {
+    return $(event.currentTarget).closest('.define-wordType').attr('data-word-type')
   }
 }
