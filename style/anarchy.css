@@ -144,8 +144,10 @@ img.anarchy-img.item-img {
 }
 .character-sheet .passport-img {
   min-width: 128px; min-height: 128px;
+  height: 128px; width: 128px;
 }
 .character-sheet .passport-img img{
+  min-width: 128px; min-height: 128px;
   height: 128px; width: 128px;
 }
 .npc-sheet .passport-img,
