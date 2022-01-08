@@ -1,4 +1,6 @@
-import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
+import { BASE_MONITOR } from "../constants.js";
+import { Misc } from "../misc.js";
+import { AnarchyBaseActor } from "./base-actor.js";
 
 export class VehicleActor extends AnarchyBaseActor {
 
