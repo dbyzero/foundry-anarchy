@@ -250,14 +250,17 @@
       "system": "System"
     },
     "attributeActions": {
-      "catch": "Catch object",
       "defense": "Defense",
       "judgeIntentions": "Judge intentions",
       "perception": "Perception / Mental resistance",
       "resistTorture": "Resist torture / Physical resistance",
       "composure": "Composure / Social resistance",
       "memory": "Memory",
-      "lift": "Lift/carry"
+      "catch": "Catch object",
+      "lift": "Lift/carry",
+      "matrixDefense": "Matrix defense",
+      "matrixPerception": "Matrix perception",
+      "vehicleDefense": "Vehicle defense"
     },
     "skill": {
       "athletics": "Athletics",

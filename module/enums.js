@@ -1,6 +1,5 @@
 import { ANARCHY } from "./config.js";
 import { HOOK_GET_HANDLEPAR_HELPERS } from "./handlebars-manager.js";
-import { Icons } from "./icons.js";
 import { Misc } from "./misc.js";
 
 const defaultSkillsAttribute = {
@@ -43,16 +42,6 @@ const actorWordTypes = {
   cue: "cues"
 }
 
-const defaultAttributeActions = [
-  { actionCode: "defense", labelkey: ANARCHY.attributeActions.defense, attribute: "agility", attribute2: "logic", icon: Icons.fontAwesome('fas fa-shield-alt') },
-  { actionCode: "judgeIntentions", labelkey: ANARCHY.attributeActions.judgeIntentions, attribute: "charisma", attribute2: "charisma", icon: Icons.fontAwesome('fas fa-theater-masks') },
-  { actionCode: "perception", labelkey: ANARCHY.attributeActions.perception, attribute: "logic", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-eye') },
-  { actionCode: "resistTorture", labelkey: ANARCHY.attributeActions.resistTorture, attribute: "strength", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-angry') },
-  { actionCode: "composure", labelkey: ANARCHY.attributeActions.composure, attribute: "charisma", attribute2: "willpower", icon: Icons.fontAwesome('fas fa-meh') },
-  { actionCode: "memory", labelkey: ANARCHY.attributeActions.memory, attribute: "logic", attribute2: "logic", icon: Icons.fontAwesome('fas fa-brain') },
-  { actionCode: "catch", labelkey: ANARCHY.attributeActions.catch, attribute: "agility", attribute2: "agility", icon: Icons.fontAwesome('fas fa-baseball-ball') },
-  { actionCode: "lift", labelkey: ANARCHY.attributeActions.lift, attribute: "strength", attribute2: "strength", icon: Icons.fontAwesome('fas fa-dumbbell') },
-]
 export class Enums {
   static ENUMS;
   static hbsSkills;
@@ -83,8 +72,6 @@ export class Enums {
     Enums.hbsAreas = Enums.mapObjetToValueLabel(ANARCHY.area);
     Enums.hbsRanges = Enums.mapObjetToValueLabel(ANARCHY.range);
     Enums.hbsVehicleCategories = Enums.mapObjetToValueLabel(ANARCHY.vehicleCategory);
-    Enums.attributeActions = defaultAttributeActions;
-
     Enums.sortedAttributeKeys = Object.keys(ANARCHY.attributes);
 
     Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => Enums.registerHandleBarHelpers());
@@ -104,8 +91,7 @@ export class Enums {
       skills: Enums.hbsSkills,
       areas: Enums.hbsAreas,
       ranges: Enums.hbsRanges,
-      vehicleCategories: Enums.hbsVehicleCategories,
-      attributeActions: Enums.attributeActions
+      vehicleCategories: Enums.hbsVehicleCategories
     };
   }
 

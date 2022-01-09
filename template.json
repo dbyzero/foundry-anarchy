@@ -135,19 +135,11 @@
       "templates": [
         "description",
         "attributes-vehicle",
-        "monitors-vehicle",
         "attributes-matrix",
+        "monitors-vehicle",
         "monitors-matrix",
         "shortcuts"
       ],
-      "attributes": {
-        "autopilot": {
-          "value": 6
-        },
-        "firewall": {
-          "value": 6
-        }
-      },
       "handling": 1,
       "moves": 0,
       "attacks": 0,
