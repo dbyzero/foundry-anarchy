@@ -192,10 +192,18 @@ img.anarchy-img.item-img {
   justify-content: space-around;
   width: 100%;
 }
+.passport-action-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
 :is(.passport-owner,.passport-detail,.passport-action) {
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   vertical-align: text-bottom;
   text-align: left;
   height: 32px;

@@ -1,10 +1,11 @@
 import { ANARCHY } from "../config.js";
 import { RollDialog } from "../dialog/roll-dialog.js";
-import { BASE_MONITOR } from "../constants.js";
+import { BASE_MONITOR, TEMPLATE } from "../constants.js";
 import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { AnarchyUsers } from "../users.js";
+import { ACTION_CODE, AttributeActions } from "../attribute-actions.js";
 
 const essenceRange = [
   { from: 5, to: 6, adjust: 0 },
@@ -12,12 +13,13 @@ const essenceRange = [
   { from: 1, to: 3, adjust: -2 },
   { from: 0, to: 1, adjust: -3 }
 ]
+
 export class CharacterEssence {
   static getAdjust(essence) {
-    return this.getRangeDetails(essence)?.adjust ?? 0;
+    return this.getEssenceRange(essence)?.adjust ?? 0;
   }
 
-  static getRangeDetails(essence) {
+  static getEssenceRange(essence) {
     return essenceRange.find(r => r.from < essence && essence <= r.to) ?? essenceRange[0];
   }
 }
@@ -42,6 +44,17 @@ export class CharacterActor extends AnarchyBaseActor {
     super.prepareDerivedData();
     this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
+  }
+
+  getAttributes() {
+    return [
+      TEMPLATE.attributes.agility,
+      TEMPLATE.attributes.strength,
+      TEMPLATE.attributes.willpower,
+      TEMPLATE.attributes.logic,
+      TEMPLATE.attributes.charisma,
+      TEMPLATE.attributes.edge,
+    ];
   }
 
   async createWord(wordType, added) {

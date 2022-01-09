@@ -30,7 +30,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
         owner: this.document.isOwner,
         cssClass: this.isEditable ? "editable" : "locked",
       },
-      ENUMS: Enums.getEnums(),
+      ENUMS: mergeObject({ attributeActions: this.actor.getAttributeActions() }, Enums.getEnums()),
       ANARCHY: ANARCHY
     });
     Misc.classifyInto(hbsData.items, hbsData.data.items);
@@ -94,8 +94,8 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     html.find('.click-roll-attribute-action').click(async event => {
       const attribute = $(event.currentTarget).attr('data-attribute');
       const attribute2 = $(event.currentTarget).attr('data-attribute2');
-      const actionCode = $(event.currentTarget).attr('data-action-code');
-      this.actor.attributeRoll(attribute, attribute2, actionCode);
+      const code = $(event.currentTarget).attr('data-action-code');
+      this.actor.attributeRoll(attribute, attribute2, code);
     });
 
     html.find('.click-weapon-roll').click(async event => {

@@ -248,14 +248,17 @@ export const ANARCHY = {
         system: 'ANARCHY.attributes.system',
     },
     attributeActions: {
-        catch: 'ANARCHY.attributeActions.catch',
         defense: 'ANARCHY.attributeActions.defense',
         judgeIntentions: 'ANARCHY.attributeActions.judgeIntentions',
         perception: 'ANARCHY.attributeActions.perception',
         resistTorture: 'ANARCHY.attributeActions.resistTorture',
         composure: 'ANARCHY.attributeActions.composure',
         memory: 'ANARCHY.attributeActions.memory',
+        catch: 'ANARCHY.attributeActions.catch',
         lift: 'ANARCHY.attributeActions.lift',
+        matrixDefense: 'ANARCHY.attributeActions.matrixDefense',
+        matrixPerception: 'ANARCHY.attributeActions.matrixPerception',
+        vehicleDefense: 'ANARCHY.attributeActions.vehicleDefense',
     },
     skill: {
         athletics: 'ANARCHY.skill.athletics',

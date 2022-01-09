@@ -1,3 +1,4 @@
+import { AttributeActions } from "../attribute-actions.js";
 import { ANARCHY } from "../config.js";
 import { RollDialog } from "../dialog/roll-dialog.js";
 import { ErrorManager } from "../error-manager.js";
@@ -31,6 +32,15 @@ export class AnarchyBaseActor extends Actor {
 
   prepareDerivedData() {
     super.prepareDerivedData();
+  }
+
+  getAttributeActions() {
+    const attributes = [undefined].concat(this.getAttributes());
+    return AttributeActions.all(it => attributes.includes(it.attribute) && attributes.includes(it.attribute2));
+  }
+
+  getAttributes() {
+    return [];
   }
 
   async skillRoll(skill, specialization) {

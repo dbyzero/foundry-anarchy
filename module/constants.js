@@ -19,3 +19,16 @@ export const TARGET_SUCCESS_EDGE = 4;
 
 export const BASE_MONITOR = 8;
 
+export const TEMPLATE = {
+  attributes: {
+    agility: "agility",
+    strength: "strength",
+    willpower: "willpower",
+    logic: "logic",
+    charisma: "charisma",
+    edge: "edge",
+    autopilot: "autopilot",
+    firewall: "firewall",
+    system: "system",
+  }
+}

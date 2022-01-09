@@ -249,14 +249,17 @@
       "system": "Système"
     },
     "attributeActions": {
-      "catch": "Attraper au vol",
       "defense": "Défense",
       "judgeIntentions": "Jauger les intentions",
       "perception": "Perception",
       "resistTorture": "Résistance mentale",
       "composure": "Sang froid",
       "memory": "Mémoire",
-      "lift": "Soulever"
+      "catch": "Attraper au vol",
+      "lift": "Soulever",
+      "matrixDefense": "Défense matricielle",
+      "matrixPerception": "Perception matricielle",
+      "vehicleDefense": "Défense de véhicule"
     },
     "skill": {
       "athletics": "Athlétisme",
