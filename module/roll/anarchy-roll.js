@@ -1,4 +1,5 @@
 import { ANARCHY } from "../config.js";
+import { GLITCH_COLORSET, RISK_COLORSET } from "./dice.js";
 
 const ROLL_THEME = {}
 
@@ -40,7 +41,7 @@ export class AnarchyRoll {
     await this.rollRerollForced();
     await this.rollGlitchDice();
     await this.rollAnarchyRisk();
-    await this.determineOutcome();
+    this.determineOutcome();
   }
 
   async rollPool() {
@@ -74,6 +75,7 @@ export class AnarchyRoll {
     if (this.param.glitch > 0) {
       this.subrolls.glitch = new Roll(`${this.param.glitch}dgcs=0[${ROLL_THEME['glitch']}]`);
       await this.subrolls.glitch.evaluate({ async: true })
+      this.subrolls.glitch.dice[0].options.appearance = { colorset: GLITCH_COLORSET };
       this.glitch += this.subrolls.glitch.terms[0].results.filter(it => it.result == 1).length;
     }
   }
@@ -82,6 +84,7 @@ export class AnarchyRoll {
     if (this.param.risk > 0) {
       this.subrolls.risk = new Roll(`${this.param.risk}drcs>=5[${ROLL_THEME['anarchyRisk']}]`);
       await this.subrolls.risk.evaluate({ async: true })
+      this.subrolls.risk.dice[0].options.appearance = { colorset: RISK_COLORSET };
       this.glitch += this.subrolls.risk.terms[0].results.filter(it => it.result == 1).length;
       this.prowess += this.subrolls.risk.terms[0].results.filter(it => it.result >= 5).length;
       if (this.subrolls.risk.total > 0) {
@@ -98,11 +101,14 @@ export class AnarchyRoll {
         : this.glitch > 0
           ? 'nothing' // TODO: replace with an even glitch/exploit?
           : 'nothing');
-
   }
 
   async toMessage(messageData, options) {
     options = mergeObject(options ?? {}, { create: true });
+    return await this.toGroupedRoll().toMessage(messageData, options);
+  }
+
+  toGroupedRoll() {
     let index = 1;
     let rolls = [];
 
@@ -112,27 +118,16 @@ export class AnarchyRoll {
     this._addRoll(rolls, this.subrolls.rerollForced);
     this._addRoll(rolls, this.subrolls.risk);
     this._addRoll(rolls, this.subrolls.glitch);
+
     rolls.forEach(r => r.dice[0].options.rollOrder = (index++));
 
-    const pool = PoolTerm.fromRolls(rolls);
-    const roll = Roll.fromTerms([pool]);
-    return roll.toMessage(messageData, options);
+    return Roll.fromTerms([PoolTerm.fromRolls(rolls)]);
   }
 
   _addRoll(rolls, roll) {
     if (roll) {
       rolls.push(roll);
     }
-  }
-
-  async otherRollsToDiceSoNice() {
-    // if (game.dice3d) {
-    //   await this._displayDice(this.subrolls.pool);
-    //   await this._displayDice(this.subrolls.reroll);
-    //   await this._displayDice(this.subrolls.rerollForced);
-    //   await this._displayDice(this.subrolls.risk);
-    //   await this._displayDice(this.subrolls.glitch);
-    // }
   }
 
   async _displayDice(roll) {
