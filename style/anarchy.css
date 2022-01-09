@@ -699,3 +699,13 @@ input.anarchy-essence[type='number'] {
   font-weight: lighter;
   padding: 3px 0;
 }
+/*
+ * Simple, stupid, way to not see the whole dice roll formula (which can become quite long)
+ * TODO: add styles to ChatMessages, and for Anarchy system rolls, add a dedicated
+ * style to improve filtering here.
+ */
+div.dice-result div.dice-formula {
+  height: 0px;
+  border: 0px none;
+  color: var(--transparent);
+}
