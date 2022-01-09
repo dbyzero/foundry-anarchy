@@ -27,12 +27,16 @@ export class AnarchyUsers {
     }
   }
 
+  static getUsers(filter = () => true) {
+    return (game.version ? game.users : game.users.entities).filter(filter);
+  }
+
   static oneGM() {
-    return game.users.entities.find(u => u.isGM);
+    return AnarchyUsers.getUsers().find(u => u.isGM);
   }
 
   static firstConnectedGM() {
-    return game.users.entities.sort(Misc.ascending(u => u.id)).find(u => u.isGM && u.active);
+    return AnarchyUsers.getUsers(u => u.isGM && u.active).sort(Misc.ascending(u => u.id)).at(0);
   }
 
   /**
