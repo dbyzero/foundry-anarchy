@@ -1,6 +1,6 @@
- <div class="define-item-type item anarchy-item anarchy-shadowamp {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="shadowamp">
+ <div class="define-item-type item anarchy-shadowamp {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="shadowamp">
   <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
-  <div>
+  <div class="shadowamp-content">
     <label>{{name}}</label>
     <label>({{localize 'ANARCHY.item.shadowamp.levelShort'}} {{data.level}})</label>
     {{#if data.essence}}<label>{{localize 'ANARCHY.item.shadowamp.essenceShort'}} {{data.essence}}</label>{{/if}}

@@ -1,0 +1,34 @@
+<form class="{{options.cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+    {{> 'systems/anarchy/templates/item/parts/itemname.hbs'
+      labelkey='ANARCHY.itemType.singular.cyberdeck'
+      type="cyberdeck"
+    }}
+  </header>
+  <section class="sheet-body">
+    <div class="form-group">
+      <label for="data.attributes.firewall.value">{{localize 'ANARCHY.attributes.firewall'}} </label>
+      <input name="data.attributes.firewall.value" type="number" data-dtype="Number" size=2
+        value="{{data.data.attributes.firewall.value}}"/>
+    </div>
+    <div class="form-group">
+      <label for="data.programs">{{localize 'ANARCHY.item.cyberdeck.programs'}} </label>
+      <input name="data.programs" type="number" data-dtype="Number" size=2
+        value="{{data.data.programs}}"/>
+    </div>
+    <div class="form-group" title="{{localize 'ANARCHY.item.cyberdeck.processingHelp'}}">
+      <label for="data.processing">{{localize 'ANARCHY.item.cyberdeck.processing'}} </label>
+      <input name="data.processing" type="number" data-dtype="Number" size=2
+        value="{{data.data.processing}}"/>
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANARCHY.actor.monitors.conditionMonitors'}}</label>
+      {{> "systems/anarchy/templates/common/matrix.hbs"}}
+    </div>
+
+    {{> 'systems/anarchy/templates/item/parts/inactive.hbs'}}
+    {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
+  </section>
+
+</form>

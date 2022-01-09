@@ -1,0 +1,10 @@
+<div class="define-item-type" data-item-type="cyberdeck">
+  <h2 class="section-group-header">
+    {{localize 'ANARCHY.itemType.plural.cyberdeck'}}
+  </h2>
+  <div class="items-group-list">
+    {{#each items.cyberdeck as |cyberdeck|}}
+    {{> "systems/anarchy/templates/actor/parts/cyberdeck.hbs" cyberdeck}}
+    {{/each}}
+  </div>
+</div>

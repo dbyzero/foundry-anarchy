@@ -97,16 +97,11 @@
       "monitors-matrix": {
         "monitors": {
           "matrix": {
+            "marks": [],
             "value": 0,
             "max": 6,
             "resistance": 0
           }
-        }
-      },
-      "monitors-marks": {
-        "monitors": {
-          "marks": [],
-          "resistance": 0
         }
       },
       "shortcuts": {
@@ -167,13 +162,14 @@
   },
   "Item": {
     "types": [
+      "contact",
+      "cyberdeck",
+      "gear",
       "metatype",
-      "skill",
       "quality",
       "shadowamp",
-      "weapon",
-      "gear",
-      "contact"
+      "skill",
+      "weapon"
     ],
     "templates": {
       "references": {
@@ -183,6 +179,23 @@
       },
       "inactive": {
         "inactive": false
+      },
+      "attributes-matrix": {
+        "attributes": {
+          "firewall": {
+            "value": 1
+          }
+        }
+      },
+      "monitors-matrix": {
+        "monitors": {
+          "matrix": {
+            "marks": [],
+            "value": 0,
+            "max": 6,
+            "resistance": 0
+          }
+        }
       }
     },
     "metatype": {
@@ -264,6 +277,16 @@
         "medium": 0,
         "long": 0
       }
+    },
+    "cyberdeck": {
+      "templates": [
+        "attributes-matrix",
+        "monitors-matrix",
+        "inactive",
+        "references"
+      ],
+      "programs": 1,
+      "processing": 1
     },
     "gear": {
       "templates": [
