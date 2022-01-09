@@ -62,7 +62,7 @@ export class AnarchyRoll {
   async rollRerollForced() {
     const removed = Math.min(this.total, this.param.rerollForced);
     if (removed > 0) {
-      this.subrolls.removed = new Roll(`${removed}d1cf=1[${ROLL_THEME['removed']}]`)
+      this.subrolls.removed = new Roll(`-${removed}d1cf=1[${ROLL_THEME['removed']}]`)
       await this.subrolls.removed.evaluate({ async: true })
       this.subrolls.rerollForced = new Roll(`${removed}d6cs>=${this.param.target}[${ROLL_THEME['rerollRemoved']}]`)
       await this.subrolls.rerollForced.evaluate({ async: true })
