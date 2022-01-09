@@ -17,7 +17,7 @@ export class RollManager {
     rollData.param = Modifiers.computeRollParameters(rollData);
     await rollData.actor.spendEdge(rollData.param.edge);
     await rollData.actor.spendAnarchy(rollData.param.anarchy);
-    rollData.canEdgeRoll = rollData.param.edge != 0;
+    rollData.canEdgeRoll = rollData.param.edge == 0;
     RollManager._roll(rollData)
   }
 
