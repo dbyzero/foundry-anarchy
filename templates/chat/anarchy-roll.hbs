@@ -13,25 +13,6 @@
         {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
       </div>
     </h3>
-    <br>
-    {{!-- Roll successes explanation --}}
-    <h4 class="chat-roll-title tooltip tooltip-dotted">
-      {{localize ANARCHY.common.roll.success}}: {{roll.hits}}
-      {{> (concat 'systems/anarchy/templates/chat/parts/' mode '/result.hbs')}}
-      <div class="tooltiptext tooltip-roll-modifiers">
-        <div>{{localize ANARCHY.common.roll.success}}: {{roll.roll.total}} ({{roll.param.pool}})</div>
-        {{#if roll.subrolls.reroll}}
-        <div>{{localize ANARCHY.common.roll.rerollSuccess}}: +{{roll.subrolls.reroll.total}}  ({{roll.param.reroll}})</div>
-        {{/if}}
-        {{#if roll.subrolls.rerollForced}}
-        <div>{{localize ANARCHY.common.roll.rerollForcedLoss}}: -{{roll.param.rerollForced}}</div>
-        <div>{{localize ANARCHY.common.roll.rerollForcedSuccess}}: +{{roll.subrolls.rerollForced.total}}</div>
-        {{/if}}
-        {{#if (eq roll.outcome 'prowess')}}
-        <div>{{localize ANARCHY.common.roll.modifiers.anarchyRisk}}: +1</div>
-        {{/if}}
-      </div>
-    </h4>
 
     <div>
       <div class="alternate-items">
