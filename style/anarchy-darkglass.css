@@ -89,7 +89,7 @@
 .style-darkglass :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
 .style-darkglass :is(a.item-control, .attribute-box):hover ,
 .style-darkglass :is(a.item-control, .attribute-box):hover :is(i, label, a),
-.style-darkglass .anarchy-item :is(a:hover, a.item-controls:hover i, a:hover label) {
+.style-darkglass .item :is(a:hover, a.item-controls:hover i, a:hover label) {
   color: var(--darkglass-color-highlight);
   text-shadow: 0 0 3px var(--darkglass-tint-hover);
 }
@@ -153,8 +153,7 @@
   background-color: var(--transparent);
 }
 
-
-.style-darkglass .items-group div.item:is(.anarchy-skill,.anarchy-shadowamp,.anarchy-quality) {
+.style-darkglass .items-group div.item:is(.anarchy-skill,.anarchy-cyberdeck,.anarchy-shadowamp,.anarchy-quality) {
   background: var(--darkglass-background-item-major);
   border-style: none;
 }
@@ -179,7 +178,7 @@
 }
 
 
-.style-darkglass :is(div,li).item.anarchy-item img {
+.style-darkglass :is(div,li).item img {
   background: var(--darkglass-background-item-img);
 }
 .style-darkglass .items-group div.item.anarchy-quality.negative {

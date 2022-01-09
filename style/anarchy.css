@@ -385,7 +385,8 @@ img.checkbar-img:active {
 .items-group.third-width{
   width: calc(33% - 4px);
 }
-/* The sections of items (shadowamps, skills, qualities, gears and equipements*/
+
+/* The sections for items */
 .items-group > div {
   width: 100%;
 }
@@ -422,15 +423,54 @@ img.checkbar-img:active {
   flex-wrap: wrap;
   flex-basis: auto;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
   vertical-align: top;
   
   gap: 1px;
   margin: 2px;
   padding: 2px;
   border-radius: 6px;
-  max-width: 16rem;
+  max-width: 18rem;
 }
+div.define-item-type.item > img.anarchy-img {
+  max-width: 32px;
+  flex: none;
+  flex-grow: 0;
+  vertical-align: top;
+  align-items: flex-start;
+}
+div.define-item-type.item .shadowamp-content,
+div.define-item-type.item .item-content {
+  max-width: calc(100% - 32px - 16px);
+  text-justify: inter-word;
+  align-items: flex-start;
+}
+div.define-item-type.item div.item-controls {
+  max-width: 16px;
+  flex: content;
+  flex-grow: 0;
+  vertical-align: top;
+  align-items: flex-end;
+}
+.items-group div.item.anarchy-cyberdeck {
+  max-width: max-content;
+  width: max-content;
+}
+.items-group div.define-item-type.item.anarchy-cyberdeck .item-content {
+  display: flex;
+  flex-direction: row;
+  gap:3px;
+  margin: 2px;
+  padding: 2px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.items-group div.define-item-type.item.anarchy-cyberdeck .item-content .cyberdeck-details {
+  display: flex;
+  flex-direction: column;
+}
+
+
 :is(.npc-sheet,.device-sheet) .items-group div.item {
   gap: 1px;
   margin: 2px;
@@ -477,7 +517,8 @@ img.checkbar-img:active {
   width: calc(100% - 2rem);
 }
 
-:is(div,li).item.anarchy-item {
+:is(div,li).item,
+div.anarchy-button {
   display: flex;
   flex-direction: row;
 }

@@ -22,6 +22,7 @@ import { DeviceActorSheet } from './actor/device-actor-sheet.js';
 import { VehicleActorSheet } from './actor/vehicle-actor-sheet.js';
 import { NPCCharacterActorSheet } from './actor/npc-character-actor-sheet.js';
 import { ContactItemSheet } from './item/contact-item-sheet.js';
+import { CyberdeckItemSheet } from './item/cyberdeck-item-sheet.js';
 import { GearItemSheet } from './item/gear-item-sheet.js';
 import { MetatypeItemSheet } from './item/metatype-item-sheet.js';
 import { QualityItemSheet } from './item/quality-item-sheet.js';
@@ -118,6 +119,7 @@ export class AnarchySystem {
   loadItemSheets() {
     Items.unregisterSheet('core', ItemSheet);
     Items.registerSheet(SYSTEM_NAME, ContactItemSheet, { types: ["contact"], makeDefault: true });
+    Items.registerSheet(SYSTEM_NAME, CyberdeckItemSheet, { types: ["cyberdeck"], makeDefault: true });
     Items.registerSheet(SYSTEM_NAME, GearItemSheet, { types: ["gear"], makeDefault: true });
     Items.registerSheet(SYSTEM_NAME, MetatypeItemSheet, { types: ["metatype"], makeDefault: true });
     Items.registerSheet(SYSTEM_NAME, QualityItemSheet, { types: ["quality"], makeDefault: true });

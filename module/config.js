@@ -187,6 +187,11 @@ export const ANARCHY = {
             range: {
                 max: 'ANARCHY.item.weapon.range.max'
             }
+        },
+        cyberdeck: {
+            programs: 'ANARCHY.item.cyberdeck.programs',
+            processing: 'ANARCHY.item.cyberdeck.processing',
+            processingHelp: 'ANARCHY.item.cyberdeck.processingHelp'
         }
     },
     itemType: {
@@ -197,6 +202,7 @@ export const ANARCHY = {
             shadowamp: 'ANARCHY.itemType.singular.shadowamp',
             weapon: 'ANARCHY.itemType.singular.weapon',
             gear: 'ANARCHY.itemType.singular.gear',
+            cyberdeck: 'ANARCHY.itemType.singular.cyberdeck',
             contact: 'ANARCHY.itemType.singular.contact'
         },
         plural: {
@@ -206,6 +212,7 @@ export const ANARCHY = {
             shadowamp: 'ANARCHY.itemType.plural.shadowamp',
             weapon: 'ANARCHY.itemType.plural.weapon',
             gear: 'ANARCHY.itemType.plural.gear',
+            cyberdeck: 'ANARCHY.itemType.plural.cyberdeck',
             contact: 'ANARCHY.itemType.plural.contact'
         }
     },

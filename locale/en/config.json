@@ -189,6 +189,11 @@
         "range": {
           "max": "Maximum range"
         }
+      },
+      "cyberdeck": {
+        "programs": "Programs",
+        "processing": "Processing power",
+        "processingHelp": "re-rolls on matrix rolls"
       }
     },
     "itemType": {
@@ -199,6 +204,7 @@
         "shadowamp": "Shadow Amp",
         "weapon": "Weapon",
         "gear": "Gear",
+        "cyberdeck": "Cyberdeck",
         "contact": "Contact"
       },
       "plural": {
@@ -208,6 +214,7 @@
         "shadowamp": "Shadow Amps",
         "weapon": "Weapons",
         "gear": "Gears",
+        "cyberdeck": "Cyberdecks",
         "contact": "Contacts"
       }
     },

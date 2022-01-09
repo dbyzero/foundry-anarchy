@@ -188,6 +188,11 @@
         "range": {
           "max": "Portée maximale"
         }
+      },
+      "cyberdeck": {
+        "programs": "Programmes",
+        "processing": "Puissance de calcul",
+        "processingHelp": "relances sur tests matriciels"
       }
     },
     "itemType": {
@@ -198,6 +203,7 @@
         "shadowamp": "Atout",
         "weapon": "Arme",
         "gear": "Equipement",
+        "cyberdeck": "Cyberdeck",
         "contact": "Contact"
       },
       "plural": {
@@ -207,6 +213,7 @@
         "shadowamp": "Atouts",
         "weapon": "Armes",
         "gear": "Equipements",
+        "cyberdeck": "Cyberdecks",
         "contact": "Contacts"
       }
     },
