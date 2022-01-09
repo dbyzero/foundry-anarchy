@@ -79,10 +79,10 @@ export class AnarchySystem {
   }
 
   async onReady() {
+    console.log(LOG_HEAD + 'AnarchySystem.onReady');
     if (game.user.isGM) {
       new Migrations().migrate();
     }
-    console.log(LOG_HEAD + 'AnarchySystem.onReady');
   }
 
 

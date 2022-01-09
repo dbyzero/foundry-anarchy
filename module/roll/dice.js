@@ -1,7 +1,12 @@
+import { ANARCHY } from "../config.js";
 import { SYSTEM_DESCRIPTION, SYSTEM_NAME, SYSTEM_PATH } from "../constants.js";
 
-const GLITCH_COLORSET = 'anarchy-glitch';
-const RISK_COLORSET = 'anarchy-risk';
+export const GLITCH_COLORSET = 'glitch';
+export const RISK_COLORSET = 'risk';
+export const REROLL_COLORSET = 'reroll';
+export const REROLL_REMOVED_COLORSET = 'rerollRemoved';
+export const REMOVED_COLORSET = 'removed';
+
 const DICE_GLITCH = `${SYSTEM_PATH}/style/danger-point.webp`;
 const DICE_PROWESS = `${SYSTEM_PATH}/style/anarchy-point.webp`;
 
@@ -16,6 +21,8 @@ export class AnarchyDice {
   }
 
   static onReady() {
+    AnarchyDice.COLORSETS = AnarchyDice.loadColorsets();
+
     if (game.modules.get("dice-so-nice")?.active) {
       if (game.settings.get("core", "noCanvas")) {
         ui.notifications.warn("Dice So Nice! will not display dice sue to Foundry option 'Disable Game Canvas' ");
@@ -23,7 +30,51 @@ export class AnarchyDice {
     }
   }
 
+  static loadColorsets() {
+    return {
+      [REROLL_COLORSET]: {
+        name: REROLL_COLORSET,
+        description: game.i18n.localize(ANARCHY.common.roll.rollTheme.reroll),
+        category: SYSTEM_DESCRIPTION,
+      },
+      [REMOVED_COLORSET]: {
+        name: RISK_COLORSET,
+        description: game.i18n.localize(ANARCHY.common.roll.rollTheme.removed),
+        category: SYSTEM_DESCRIPTION,
+      },
+      [REROLL_REMOVED_COLORSET]: {
+        name: REROLL_REMOVED_COLORSET,
+        description: game.i18n.localize(ANARCHY.common.roll.rollTheme.rerollRemoved),
+        category: SYSTEM_DESCRIPTION,
+      },
+      [GLITCH_COLORSET]: {
+        name: GLITCH_COLORSET,
+        description: game.i18n.localize(ANARCHY.common.roll.rollTheme.glitch),
+        category: SYSTEM_DESCRIPTION,
+        foreground: "white",
+        background: "#5c0a5c",
+        outline: "none",
+        edge: "none",
+        texture: "poison",
+        material: 'metal',
+      },
+      [RISK_COLORSET]: {
+        name: RISK_COLORSET,
+        description: game.i18n.localize(ANARCHY.common.roll.rollTheme.anarchyRisk),
+        category: SYSTEM_DESCRIPTION,
+        foreground: "#faecd1",
+        background: "#040101",
+        outline: "none",
+        edge: "none",
+        texture: "fire",
+        material: 'metal',
+      }
+    }
+  }
+
+
   static diceSoNiceReady(dice3d) {
+
     AnarchyDice.dice3d = dice3d;
     game.settings.set("dice-so-nice", "enabledSimultaneousRollForMessage", false);
     dice3d.addSystem({ id: SYSTEM_NAME, name: SYSTEM_DESCRIPTION }, "preferred");
@@ -32,8 +83,7 @@ export class AnarchyDice {
      * https://gitlab.com/riccisi/foundryvtt-dice-so-nice/-/wikis/API/Hooks
      * https://gitlab.com/riccisi/foundryvtt-dice-so-nice/-/wikis/API/Customization
      */
-    dice3d.addColorset(AnarchyGlitchDie.diceSoNiceColorSet());
-    dice3d.addColorset(AnarchyRiskDie.diceSoNiceColorSet());
+    Object.values(AnarchyDice.COLORSETS).forEach(colorset => dice3d.addColorset(colorset));
     dice3d.addDicePreset(AnarchyGlitchDie.diceSoNiceData());
     dice3d.addDicePreset(AnarchyRiskDie.diceSoNiceData());
   }
@@ -60,20 +110,6 @@ export class AnarchyGlitchDie extends Die {
 
   /** @override */
   static DENOMINATION = "g";
-
-  static diceSoNiceColorSet() {
-    return {
-      name: GLITCH_COLORSET,
-      description: "Anarchy Dice - Glitch",
-      category: "Anarchy",
-      foreground: "white",
-      background: "#5c0a5c",
-      outline: "none",
-      edge: "none",
-      texture: "poison",
-      material: 'metal',
-    }
-  }
 
   static diceSoNiceData() {
     return {
@@ -103,22 +139,6 @@ export class AnarchyRiskDie extends Die {
       case "6": return AnarchyDice.img(DICE_PROWESS);
     }
     return result.result.toString();
-  }
-
-
-
-  static diceSoNiceColorSet() {
-    return {
-      name: RISK_COLORSET,
-      description: "Anarchy Dice - Risk",
-      category: "Anarchy",
-      foreground: "#faecd1",
-      background: "#040101",
-      outline: "none",
-      edge: "none",
-      texture: "fire",
-      material: 'metal',
-    }
   }
 
   static diceSoNiceData() {

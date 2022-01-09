@@ -48,7 +48,6 @@ export class ChatManager {
 
     const flavor = await renderTemplate('systems/anarchy/templates/chat/anarchy-roll.hbs', rollData);
     await rollData.roll.toMessage({ flavor: flavor });
-    await rollData.roll.otherRollsToDiceSoNice();
   }
 
   static async onRenderChatMessage(app, html, msg) {
