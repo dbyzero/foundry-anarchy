@@ -5,14 +5,6 @@
       labelkey='ANARCHY.itemType.singular.skill'
       type="skill"
     }}
-    {{#unless options.isKnowledge}}
-    <div class="form-group">
-      <label>{{localize 'ANARCHY.item.skill.copyDefault'}} </label>
-      <select class="select-skill-code" data-dtype="String">
-        {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
-      </select>
-    </div>
-    {{/unless}}
   </header>
   <section class="sheet-body">
     <div class="form-group">
@@ -22,8 +14,8 @@
     </div>
     {{#unless options.isKnowledge}}
     <div class="form-group">
-      <label for="data.code">{{localize 'ANARCHY.item.skill.code'}}</label>
-      <input class="item-field-value" type="text" name="data.code" value="{{data.data.code}}" data-dtype="String"/>
+      <label for="data.value">{{localize 'ANARCHY.item.skill.value'}} </label>
+      <input class="type-numeric" type="number" name="data.value" value="{{data.data.value}}" data-dtype="Number"/>
     </div>
     <div class="form-group">
       <label for="data.attribute">{{localize 'ANARCHY.item.skill.attribute'}} </label>
@@ -34,17 +26,24 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="data.value">{{localize 'ANARCHY.item.skill.value'}} </label>
-      <input class="type-numeric" type="number" name="data.value" value="{{data.data.value}}" data-dtype="Number"/>
-    </div>
-    {{/unless}}
-    <div class="form-group">
       <label for="data.specialization">{{localize 'ANARCHY.item.skill.specialization'}} </label>
       <input class="item-field-value" type="text" data-dtype="String"
           name="data.specialization" value="{{data.data.specialization}}"
           placeholder="{{localize 'ANARCHY.item.skill.specializationHelp'}}"
       />
     </div>
+
+    <div class="form-group">
+      <label>{{localize 'ANARCHY.item.skill.copyDefault'}} </label>
+      <select class="select-skill-code" data-dtype="String">
+        {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="data.code">{{localize 'ANARCHY.item.skill.code'}}</label>
+      <input class="item-field-value" type="text" name="data.code" value="{{data.data.code}}" data-dtype="String"/>
+    </div>
+    {{/unless}}
     {{> 'systems/anarchy/templates/item/parts/inactive.hbs'}}
     {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
   </section>
