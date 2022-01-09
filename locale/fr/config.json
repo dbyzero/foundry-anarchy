@@ -93,6 +93,8 @@
     },
     "actor": {
       "characterSheet": "Fiche de personnage",
+      "vehicleSheet": "Fiche de véhicule",
+      "deviceSheet": "Fiche d'objet virtuel",
       "npcSheet": "Fiche PNJ",
       "actorName": "Nom",
       "genre": "Genre",

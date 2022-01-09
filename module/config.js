@@ -92,6 +92,8 @@ export const ANARCHY = {
     },
     actor: {
         characterSheet: 'ANARCHY.actor.characterSheet',
+        vehicleSheet: 'ANARCHY.actor.vehicleSheet',
+        deviceSheet: 'ANARCHY.actor.deviceSheet',
         npcSheet: 'ANARCHY.actor.npcSheet',
         actorName: 'ANARCHY.actor.actorName',
         genre: 'ANARCHY.actor.genre',
