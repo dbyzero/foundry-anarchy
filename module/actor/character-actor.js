@@ -83,7 +83,7 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   async deleteWord(wordType, deletedId) {
-    this._mutateWords(wordType, values => values.filter(it => it.word != deletedId));
+    this._mutateWords(wordType, values => values.filter(it => it.id != deletedId));
   }
 
   async _mutateWords(wordType, mutate = values => values) {
