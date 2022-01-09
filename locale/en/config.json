@@ -132,7 +132,8 @@
       },
       "ownership": {
         "owner": "Owner",
-        "unknown": "Unknown"
+        "unknown": "Unknown",
+        "owned": "Owned"
       }
     },
     "actorType": {

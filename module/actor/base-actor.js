@@ -77,7 +77,7 @@ export class AnarchyBaseActor extends Actor {
   async setAnarchy(newValue) {
     if (!this.hasPlayerOwner) {
       await game.system.anarchy.gmManager.gmAnarchy.setAnarchy(newValue);
-      this.sheet.render(false);
+      this.render();
     }
   }
 
@@ -125,7 +125,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   async removeOtherMetatype(metatype) {
-    // only caharacters have a potential metatype
+    // only characters have a potential metatype
     const metatypeIds = this.items.filter(it => it.isMetatype()).map(it => it.id);
     this.deleteEmbeddedDocuments("Item", metatypeIds);
   }
@@ -147,6 +147,8 @@ export class AnarchyBaseActor extends Actor {
       actorToAttach = created[0];
     }
     await actorToAttach.update({ 'data.ownerId': ownerActor?.id ?? '' });
+    ownerActor?.render();
+    this.render();
   }
 
   getOwnerActor() {
@@ -154,5 +156,9 @@ export class AnarchyBaseActor extends Actor {
       return game.actors.get(this.data.data.ownerId);
     }
     return undefined;
+  }
+
+  getOwnedActors() {
+    return game.actors.filter(it => it.data.data.ownerId == this.id);
   }
 }

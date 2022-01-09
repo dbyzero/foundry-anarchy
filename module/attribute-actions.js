@@ -28,13 +28,12 @@ export const ACTION_CODE = {
   vehicleDefense: "vehicleDefense"
 }
 
-
 const ATTRIBUTE_ACTIONS = [
   action(ACTION_CODE.defense, ATTR.agility, ATTR.logic, Icons.fontAwesome('fas fa-shield-alt')),
   action(ACTION_CODE.resistTorture, ATTR.strength, ATTR.willpower, Icons.fontAwesome('fas fa-angry')),
-  action(ACTION_CODE.judgeIntentions, ATTR.charisma, ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks')),
   action(ACTION_CODE.perception, ATTR.logic, ATTR.willpower, Icons.fontAwesome('fas fa-eye')),
   action(ACTION_CODE.composure, ATTR.charisma, ATTR.willpower, Icons.fontAwesome('fas fa-meh')),
+  action(ACTION_CODE.judgeIntentions, ATTR.charisma, ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks')),
   action(ACTION_CODE.memory, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-brain')),
   action(ACTION_CODE.catch, ATTR.agility, ATTR.agility, Icons.fontAwesome('fas fa-baseball-ball')),
   action(ACTION_CODE.lift, ATTR.strength, ATTR.strength, Icons.fontAwesome('fas fa-dumbbell')),
