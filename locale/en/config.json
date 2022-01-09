@@ -93,7 +93,9 @@
     },
     "actor": {
       "characterSheet": "Character sheet",
-      "npcSheet": "NPC Sheet",
+      "vehicleSheet": "Vehicle sheet",
+      "deviceSheet": "Device sheet",
+      "npcSheet": "NPC sheet",
       "actorName": "Name",
       "genre": "Genre",
       "noMetatype": "Pas de metatype, ajoutez le!",
