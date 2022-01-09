@@ -37,6 +37,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/attributes.hbs',
   'systems/anarchy/templates/actor/parts/description.hbs',
   'systems/anarchy/templates/actor/parts/gmnotes.hbs',
+  'systems/anarchy/templates/actor/parts/owned-actor.hbs',
+  'systems/anarchy/templates/actor/parts/owned-actors.hbs',
   'systems/anarchy/templates/actor/parts/ownership.hbs',
   'systems/anarchy/templates/actor/parts/qualities.hbs',
   'systems/anarchy/templates/actor/parts/quality.hbs',

@@ -131,6 +131,7 @@ export const ANARCHY = {
         ownership: {
             owner: 'ANARCHY.actor.ownership.owner',
             unknown: 'ANARCHY.actor.ownership.unknown',
+            owned: 'ANARCHY.actor.ownership.owned',
         }
     },
     actorType: {

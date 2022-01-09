@@ -69,7 +69,7 @@ export class CharacterActor extends AnarchyBaseActor {
       }
       ChatMessage.create({
         speaker: { alias: this.token?.name ?? this.name },
-        content: wordsToSay.word
+        content: wordsToSay.word // TODO: improve the tchat content (add the character image)
       });
     }
   }
@@ -79,12 +79,7 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   async editWord(wordType, wordId) {
-    // const listType = Enums.getActorWordTypePlural(wordType);
-    // if (!listType) {
-    //   return;
-    // }
-    //  const updateFunction = it => mergeObject(it, { word: updated }, { overwrite: true })
-    //  this._appyWordUpdate(wordType, previous,it => mergeObject(it, { word: updated }, { overwrite: true }));
+    // TODO: dialog to edit the word audio
   }
 
   async updateWord(wordType, wordId, updated) {

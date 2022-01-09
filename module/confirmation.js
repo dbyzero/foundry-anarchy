@@ -26,11 +26,11 @@ export class ConfirmationDialog {
     dialog.render(true);
   }
 
-  static async confirmDetachOwnerActor(ownerActor, onConfirm = () => { }) {
+  static async confirmDetachOwnerActor(owner, owned, onConfirm = () => { }) {
     let dialog = new Dialog({
       title: game.i18n.localize(ANARCHY.common.confirmation.del),
       content: game.i18n.format(ANARCHY.common.confirmation.delOwner, {
-        name: ownerActor.name,
+        name: owner.name,
       }),
       buttons: {
         delete: {

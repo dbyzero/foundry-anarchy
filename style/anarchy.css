@@ -212,7 +212,15 @@ img.anarchy-img.item-img {
   width: calc(49% - 2px);
 }
 
-:is(.passport-detail,.passport-owner,.passport-action) img.owner-actor-img {
+img.owned-actor-img {
+  -ms-flex: 0 0 32px;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  object-position: 50% 50%;
+}
+img.owner-actor-img {
   -ms-flex: 0 0 32px;
   flex: 0 0 32px;
   width: 32px;
@@ -371,10 +379,13 @@ img.checkbar-img:active {
   width: 100%;
 }
 
-/* The sections of items (shadowamps, skills, qualities, gears and equipements*/
 .items-group.half-width{
   width: calc(50% - 2px);
 }
+.items-group.third-width{
+  width: calc(33% - 4px);
+}
+/* The sections of items (shadowamps, skills, qualities, gears and equipements*/
 .items-group > div {
   width: 100%;
 }

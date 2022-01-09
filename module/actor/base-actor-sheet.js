@@ -1,7 +1,6 @@
 import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { ConfirmationDialog } from "../confirmation.js";
-import { SheetHelper } from "../sheet-helper.js";
 import { Misc } from "../misc.js";
 import { Enums } from "../enums.js";
 
@@ -26,6 +25,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
       items: {},
       anarchy: this.actor.getAnarchy(),
       ownerActor: this.actor.getOwnerActor(),
+      ownedActors: this.actor.getOwnedActors(),
       options: {
         owner: this.document.isOwner,
         cssClass: this.isEditable ? "editable" : "locked",
@@ -42,77 +42,129 @@ export class AnarchyBaseActorSheet extends ActorSheet {
 
     // items standard actions (add/edit/delete)
     html.find('.click-item-add').click(async event => {
-      const itemType = SheetHelper.getItemType(event);
-      const name = game.i18n.format(ANARCHY.common.newName, { type: game.i18n.localize(ANARCHY.itemType.singular[itemType]) });
-      await this.actor.createEmbeddedDocuments('Item', [{ name: name, type: itemType }], { renderSheet: true });
+      await this.createNewItem(this.getEventItemType(event));
     });
 
     html.find('.click-item-edit').click(async event => {
-      const itemId = SheetHelper.getItemId(event);
-      const item = this.actor.items.get(itemId);
-      item.sheet.render(true);
+      this.getEventItem(event)?.sheet.render(true);
     });
 
     html.find('.click-item-delete').click(async event => {
-      const itemId = SheetHelper.getItemId(event);
-      const item = this.actor.items.get(itemId);
+      const item = this.getEventItem(event);
       ConfirmationDialog.confirmDeleteItem(item, async () => {
-        await this.actor.deleteEmbeddedDocuments('Item', [itemId]);
+        await this.actor.deleteEmbeddedDocuments('Item', [item.id]);
         this.render(true);
       });
     });
 
     html.find('.click-owner-delete').click(async event => {
-      ConfirmationDialog.confirmDetachOwnerActor(this.actor.getOwnerActor(), async () => {
-        await this.actor.attachToOwnerActor();
-        this.render(true);
-      });
+      this.detachFromOwner(this.actor.getOwnerActor(), this.actor);
     });
+    html.find('.click-owned-actor-view').click(async event => {
+      this.getEventOwnedActor(event)?.render(true);
+    });
+    html.find('.click-owned-actor-delete').click(async event => {
+      this.detachFromOwner(this.actor, this.getEventOwnedActor(event));
+    });
+
     // counters & monitors
     html.find('a.click-checkbar-element').click(async event => {
-      const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
-      const index = Number.parseInt($(event.currentTarget).attr('data-index'));
-      const checked = $(event.currentTarget).attr('data-checked') == 'true';
-      const newValue = index + (checked ? 0 : 1);
-
-      await this.actor.setCounter(monitor, newValue);
+      await this.switchMonitorCheck(
+        this.getEventMonitorCode(event),
+        this.getEventIndex(event),
+        this.isEventChecked(event)
+      );
     });
 
     // rolls
     html.find('.click-skill-roll').click(async event => {
-      const specialization = $(event.currentTarget).closest('.click-skill-roll').attr('data-item-specialization')
-      const itemId = SheetHelper.getItemId(event);
-      const item = this.actor.items.get(itemId);
-      this.actor.skillRoll(item, specialization);
+      this.actor.skillRoll(
+        this.getEventItem(event),
+        this.getEventSkillSpecialization(event));
     });
 
     html.find('.click-roll-attribute').click(async event => {
-      const attribute = $(event.currentTarget).closest('.anarchy-attribute').attr('data-attribute');
-      this.actor.attributeRoll(attribute);
+      this.actor.attributeRoll(this.getEventAttribute(event));
     });
 
     html.find('.click-roll-attribute-action').click(async event => {
-      const attribute = $(event.currentTarget).attr('data-attribute');
-      const attribute2 = $(event.currentTarget).attr('data-attribute2');
-      const code = $(event.currentTarget).attr('data-action-code');
-      this.actor.attributeRoll(attribute, attribute2, code);
+      this.actor.attributeRoll(
+        this.getEventAttribute(event, 'attribute'),
+        this.getEventAttribute(event, 'attribute2'),
+        this.getEventActionCode(event));
     });
 
     html.find('.click-weapon-roll').click(async event => {
-      const itemId = SheetHelper.getItemId(event);
-      const weapon = this.actor.items.get(itemId);
-      this.actor.weaponRoll(weapon);
+      this.actor.weaponRoll(this.getEventItem(event));
+    });
+  }
+
+  getEventItemType(event) {
+    return $(event.currentTarget).closest('.define-item-type').attr('data-item-type');
+  }
+
+  getEventAttribute(event, name = 'attribute') {
+    return $(event.currentTarget).closest('.anarchy-attribute').attr('data-' + name);
+  }
+
+  getEventItem(event) {
+    const itemId = $(event.currentTarget).closest('.item').attr('data-item-id')
+      ?? $(event.currentTarget).closest('.anarchy-metatype').attr('data-item-id');
+    return this.actor.items.get(itemId);
+  }
+
+  isEventChecked(event) {
+    return $(event.currentTarget).attr('data-checked') == 'true';
+  }
+
+  getEventSkillSpecialization(event) {
+    return $(event.currentTarget).closest('.click-skill-roll').attr('data-item-specialization');
+  }
+
+  getEventActionCode(event) {
+    return $(event.currentTarget).attr('data-action-code');
+  }
+
+  getEventMonitorCode(event) {
+    return $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
+  }
+
+  getEventIndex(event) {
+    return Number.parseInt($(event.currentTarget).attr('data-index'));
+  }
+
+  getEventOwnedActor(event) {
+    const ownedActorId = $(event.currentTarget).closest('.define-owned-actor').attr('data-actor-id');
+    return game.actors.get(ownedActorId);
+  }
+
+  async createNewItem(itemType) {
+    const name = game.i18n.format(ANARCHY.common.newName, { type: game.i18n.localize(ANARCHY.itemType.singular[itemType]) });
+    await this.actor.createEmbeddedDocuments('Item', [{ name: name, type: itemType }], { renderSheet: true });
+  }
+
+  detachFromOwner(owner, owned) {
+    ConfirmationDialog.confirmDetachOwnerActor(owner, owned, async () => {
+      await owned.attachToOwnerActor();
+      this.render(true);
     });
   }
 
   async _onDropActor(event, dragData) {
-
-    const owned = game.actors.get(dragData.id);
-    if (owned) {
-      ConfirmationDialog.confirmAttachOrCopy(this.actor, owned,
-        async () => await owned.attachToOwnerActor(this.actor),
-        async () => await owned.attachToOwnerActor(this.actor, 'copy'));
+    if (dragData.id != this.actor.id) {
+      const owned = game.actors.get(dragData.id);
+      if (owned) {
+        ConfirmationDialog.confirmAttachOrCopy(this.actor, owned,
+          async () => await owned.attachToOwnerActor(this.actor),
+          async () => await owned.attachToOwnerActor(this.actor, 'copy'));
+      }
     }
     super._onDropActor(event, dragData);
   }
+
+  async switchMonitorCheck(monitor, index, checked) {
+    const newValue = index + (checked ? 0 : 1);
+    await this.actor.setCounter(monitor, newValue);
+  }
+
 }

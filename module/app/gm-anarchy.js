@@ -111,7 +111,7 @@ export class GMAnarchy {
 
   _syncNPCSheetAnarchy(actor) {
     if (!actor.hasPlayerOwner) {
-      actor.sheet?.render(actor.sheet.rendered);
+      actor.render();
     }
   }
 }
