@@ -92,7 +92,7 @@ export class Modifiers {
       label: game.i18n.localize(ANARCHY.common.roll.modifiers.glitch),
       category: 'other',
       isAnarchy: false,
-      value: (wounds != 0 ? 1 : 0) + glitch ?? 0,
+      value: (wounds != 0 ? 1 : 0) + glitch ?? 0, // TODO: separate wound glitch from others?
       optional: glitch == 0,
       editable: true,
       used: wounds != 0 || glitch > 0
@@ -127,11 +127,11 @@ export class Modifiers {
 
   static _prepareWounds(actor, skill = undefined) {
     const wounds = actor.getWounds(skill?.data.data.code);
-    return wounds == 0 ? undefined : {
+    return wounds <= 0 ? undefined : {
       type: 'wounds',
       label: game.i18n.localize(ANARCHY.common.roll.modifiers.wounds),
       category: 'pool',
-      value: wounds,
+      value: - wounds,
       optional: true,
       used: true
     }
