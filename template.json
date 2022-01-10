@@ -173,12 +173,11 @@
     ],
     "templates": {
       "references": {
+        "equiped": true,
+        "inactive": false,
         "sourceReference": "",
         "description": "",
         "gmnotes": ""
-      },
-      "inactive": {
-        "inactive": false
       },
       "attributes-matrix": {
         "attributes": {

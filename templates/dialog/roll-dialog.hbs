@@ -2,54 +2,27 @@
   <div class="flexcol">
     <div class="flexrow">
       <img class="anarchy-img actor-img flex-shrink" src="{{actor.img}}" alt="{{actor.name}}" title="{{actor.name}}"/>
-      {{#if (eq mode 'attribute')}}
-        <div class="flex-grow-3">
-          <h2 class="dialog-roll-title">
-            {{actor.name}} - 
-            {{#if attributeAction}}
-              {{localize (concat 'ANARCHY.attributeActions.' attributeAction)}}
-            {{else}}
-              {{localizeAttribute attribute}}
-            {{/if}}
-          </h2>
-        </div>
-      {{/if}}
-      {{#if (eq mode 'skill')}}
-        <img class="anarchy-img skill-img flex-shrink" src="{{skill.img}}" alt="{{skill.name}}" title="{{skill.name}}"/>
-        <div class="flex-grow-3">
-          <h2 class="dialog-roll-title">{{actor.name}} - {{skill.name}}</h2>
-        </div>
-      {{/if}}
-      {{#if (eq mode 'weapon')}}
-        <img class="anarchy-img weapon-img flex-shrink" src="{{weapon.img}}" alt="{{weapon.name}}" title="{{weapon.name}}"/>
-        <div class="flex-grow-3">
-          <h2 class="dialog-roll-title">{{actor.name}} - {{weapon.name}}</h2>
-        </div>
-      {{/if}}
+      {{> (concat 'systems/anarchy/templates/dialog/parts/title-mode-' mode '.hbs')}}
     </div>
 
+    {{log 'dialog item' item}}
     <div class="flexcol">
       <ul class="alternate-items list-modifiers">
-        <li class="flexrow select-attribute">
-          <label class="flex-grow-2" for="select.attribute">{{localize ANARCHY.common.roll.attribute}}</label>
+        <li class="flexrow attribute-selector" data-selector="attribute" {{#if item}}data-item-id="{{item.id}}"{{/if}}>
+          <label class="flex-grow-2" for="select.attribute1">{{localize ANARCHY.common.roll.attribute}}</label>
           <span class="flex-end">
-            <select name="select.attribute" class="select-skill-attribute" data-dtype="String">
+            <select name="select.attribute1" class="select-attribute" data-dtype="String">
               {{#select attribute}}
               {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
               {{/select}}
             </select>
             <label>&nbsp;</label>
-            <label class="selected-attribute-value">{{actorAttribute actor attribute}}</label>
+            <label class="selected-attribute-value">{{actorAttribute attribute actor ''}}</label>
           </span>
         </li>
         {{#if (or (eq mode 'skill') (eq mode 'weapon'))}}
           <li class="flexrow">
-            {{#if (eq mode 'skill')}}
             <label class="flex-grow-2">{{localize (concat 'ANARCHY.skill.' skill.data.data.code)}}</label>
-            {{/if}}
-            {{#if (eq mode 'weapon')}}
-            <label class="flex-grow-2">{{localize (concat 'ANARCHY.skill.' weapon.data.data.skill)}}</label>
-            {{/if}}
             <span class="flex-end">
               <input class="item-field-value input-select-modifier"
                 type="number" data-dtype="Number"
@@ -59,16 +32,16 @@
           {{> 'systems/anarchy/templates/dialog/roll-modifier.hbs' modifiers.specialization}}
         {{/if}}
         {{#if (eq mode 'attribute')}}
-          <li class="flexrow select-attribute">
-            <label class="flex-grow-2">{{localize ANARCHY.common.roll.attribute2}}</label>
+          <li class="flexrow attribute-selector" data-selector="attribute2" {{#if item}}data-item-id="{{item.id}}"{{/if}}>
+            <label for="select.attribute2" class="flex-grow-2">{{localize ANARCHY.common.roll.attribute2}}</label>
             <span class="flex-end">
-              <select class="select-attribute2" data-dtype="String">
+              <select name="select.attribute2" class="select-attribute" data-dtype="String">
                   {{#select attribute2}}
                   {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
                   {{/select}}
               </select>
               <label>&nbsp;</label>
-              <label class="selected-attribute2-value">{{actorAttribute actor attribute2}}</label>
+              <label class="selected-attribute-value">{{actorAttribute attribute2 actor ''}}</label>
             </span>
           </li>
         {{/if}}

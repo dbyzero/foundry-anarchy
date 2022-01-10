@@ -1,4 +1,5 @@
 import { ANARCHY } from "../config.js";
+import { TEMPLATE } from "../constants.js";
 import { Enums } from "../enums.js";
 import { Modifiers } from "../modifiers.js";
 import { RollManager } from "../roll/roll-manager.js";
@@ -9,48 +10,66 @@ import { RollManager } from "../roll/roll-manager.js";
  */
 export class RollDialog extends Dialog {
 
-  static prepareSkillRollData(actor, skill, specialization) {
+  static prepareActorRoll(actor) {
     return {
-      mode: 'skill',
       actor: actor,
-      skill: skill,
-      attribute: skill?.data.data.attribute,
-      specialization: specialization,
-      modifiers: Modifiers.build(actor, skill, specialization),
-    };
+      attributes: actor.getAttributes(),
+      modifiers: Modifiers.actorModifiers(actor)
+    }
   }
 
-  static prepareAttributeRollData(actor, attribute, attribute2 = undefined, attributeAction = undefined) {
-    const rollData = {
+  static async actorAttributeRoll(actor, attribute, attribute2 = undefined, attributeAction = undefined) {
+    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: 'attribute',
-      actor: actor,
       attributeAction: attributeAction,
       attribute: attribute,
-      attribute2: attribute2,
-      modifiers: Modifiers.build(actor)
-    };
-    return rollData;
+      attribute2: attribute2
+    });
+    await RollDialog.create(rollData);
   }
 
-  static prepareWeaponRollData(actor, skill, weapon) {
-    return {
-      mode: 'weapon',
-      actor: actor,
+  static async actorSkillRoll(actor, skill, specialization) {
+    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+      mode: 'skill',
       skill: skill,
+      attribute: skill?.data.data.attribute ?? TEMPLATE.attributes.agility,
+      specialization: specialization,
+    });
+    mergeObject(rollData.modifiers, Modifiers.skillModifiers(actor, skill, specialization));
+    await RollDialog.create(rollData);
+  }
+
+  static async actorWeaponRoll(actor, skill, weapon) {
+    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+      mode: 'weapon',
       weapon: weapon,
-      attribute: skill?.data.data.attribute ?? 'agility',
+      skill: skill,
+      attribute: skill?.data.data.attribute ?? TEMPLATE.attributes.agility,
       specialization: skill?.data.data.specialization,
-      modifiers: Modifiers.build(actor, skill, skill?.data.data.specialization, weapon),
-    };
+    });
+    mergeObject(rollData.modifiers, Modifiers.skillModifiers(actor, skill, skill?.data.data.specialization));
+    mergeObject(rollData.modifiers, Modifiers.weaponModifiers(weapon));
+    await RollDialog.create(rollData);
+  }
+
+  static async itemAttributeRoll(item, attribute) {
+    const rollData = mergeObject(RollDialog.prepareActorRoll(item.actor), {
+      mode: 'attribute',
+      item: item,
+      attribute: attribute
+    });
+    rollData.attributes = mergeObject(rollData.attributes, item.getAttributes());
+    await RollDialog.create(rollData);
   }
 
   static async create(rollData) {
-    rollData.anarchy = rollData.actor.getAnarchyValue();
-    rollData.ENUMS = Enums.getEnums();
-    rollData.ANARCHY = ANARCHY;
+    mergeObject(rollData, {
+      anarchy: rollData.actor.getAnarchyValue(),
+      ENUMS: Enums.getEnums(attributeName => rollData.attributes.includes(attributeName)),
+      ANARCHY: ANARCHY
+    });
     const html = await renderTemplate(`systems/anarchy/templates/dialog/roll-dialog.hbs`, rollData);
-    const dialog = new RollDialog(rollData, html);
-    dialog.render(true);
+    new RollDialog(rollData, html).render(true);
   }
 
   constructor(rollData, html) {
@@ -78,17 +97,16 @@ export class RollDialog extends Dialog {
     super.activateListeners(html);
     this.bringToTop();
 
-    html.find('.select-skill-attribute').change((event) => {
-      this.rollData.attribute = event.currentTarget.value;
-      html.find('.select-attribute .selected-attribute-value').text(
-        this.rollData.actor.getAttributeValue(this.rollData.attribute)
-      );
-    });
-
-    html.find('.select-attribute2').change((event) => {
-      this.rollData.attribute2 = event.currentTarget.value;
-      html.find('.select-attribute .selected-attribute2-value').text(
-        this.rollData.actor.getAttributeValue(this.rollData.attribute2)
+    html.find('.select-attribute').change((event) => {
+      const actor = this.rollData.actor;
+      const selectedAttribute = event.currentTarget.value;
+      const attrSelector = $(event.currentTarget).closest('.attribute-selector');
+      const itemId = attrSelector.attr('data-item-id');
+      const item = itemId ? actor.items.get(itemId) : undefined;
+      const selector = attrSelector.attr('data-selector');
+      this.rollData[selector] = selectedAttribute;
+      html.find(`.attribute-selector[data-selector="${selector}"] .selected-attribute-value`).text(
+        actor.getAttributeValue(selectedAttribute, item)
       );
     });
 

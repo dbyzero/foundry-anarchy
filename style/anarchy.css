@@ -343,7 +343,7 @@ img.checkbar-img:active {
   flex-direction: row;
   padding: 1px;
 }
-.attribute-box input {
+.attribute-box .attribute-value {
   align-items: center;
   text-align: center;
   font-size: large;

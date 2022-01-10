@@ -6,7 +6,7 @@
       <label>{{localize 'ANARCHY.item.cyberdeck.programs'}} {{data.programs}}</label>
       <label>{{localize 'ANARCHY.item.cyberdeck.processing'}} {{data.processing}}</label>
     </div>
-    {{> "systems/anarchy/templates/actor/parts/attribute.hbs" attribute=data.attributes.firewall key='firewall'}}
+    {{> "systems/anarchy/templates/actor/parts/item-attribute.hbs" attribute=data.attributes.firewall key='firewall'}}
     {{> 'systems/anarchy/templates/actor/parts/matrix-cyberdeck.hbs'}}
     <label>{{{data.description}}}</label>
   </div>

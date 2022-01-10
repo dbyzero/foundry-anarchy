@@ -57,6 +57,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
       });
     });
 
+    // ownership management
     html.find('.click-owner-delete').click(async event => {
       this.detachFromOwner(this.actor.getOwnerActor(), this.actor);
     });
@@ -86,14 +87,18 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     });
 
     html.find('.click-roll-attribute').click(async event => {
-      this.actor.attributeRoll(this.getEventAttribute(event));
+      const handler = this.getEventItem(event) ?? this.actor;
+      handler.attributeRoll(
+        $(event.currentTarget).closest('.anarchy-attribute').attr('data-attribute')
+      );
     });
 
     html.find('.click-roll-attribute-action').click(async event => {
+      //TODO: add action buttons to cberdeck? //const handler = this.getEventItem(event) ?? this.actor;
       this.actor.attributeRoll(
-        this.getEventAttribute(event, 'attribute'),
-        this.getEventAttribute(event, 'attribute2'),
-        this.getEventActionCode(event));
+        $(event.currentTarget).attr('data-attribute'),
+        $(event.currentTarget).attr('data-attribute2'),
+        $(event.currentTarget).attr('data-action-code'));
     });
 
     html.find('.click-weapon-roll').click(async event => {
@@ -103,10 +108,6 @@ export class AnarchyBaseActorSheet extends ActorSheet {
 
   getEventItemType(event) {
     return $(event.currentTarget).closest('.define-item-type').attr('data-item-type');
-  }
-
-  getEventAttribute(event, name = 'attribute') {
-    return $(event.currentTarget).closest('.anarchy-attribute').attr('data-' + name);
   }
 
   getEventItem(event) {
@@ -156,6 +157,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     if (dragData.id != this.actor.id) {
       const owned = game.actors.get(dragData.id);
       if (owned) {
+        // check circular references: find a owner, without finding the owned id
         ConfirmationDialog.confirmAttachOrCopy(this.actor, owned,
           async () => await owned.attachToOwnerActor(this.actor),
           async () => await owned.attachToOwnerActor(this.actor, 'copy'));

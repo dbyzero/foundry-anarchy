@@ -3,20 +3,30 @@ import { ANARCHY_DICE_BONUS, SPECIALIZATION_BONUS, TARGET_SUCCESS, TARGET_SUCCES
 
 export class Modifiers {
 
-  static build(actor, skill = undefined, specialization = undefined, weapon = undefined, glitch = 0) {
+  static actorModifiers(actor, skill = undefined, specialization = undefined, weapon = undefined, glitch = 0) {
     return {
-      specialization: Modifiers._prepareSpecialization(actor, specialization),
-      wounds: Modifiers._prepareWounds(actor, skill),
-      range: Modifiers._prepareRange(weapon),
+      wounds: Modifiers._prepareWounds(actor),
       other: Modifiers._prepareOther(actor),
       reroll: Modifiers._prepareReroll(actor),
       rerollForced: Modifiers._prepareRerollForced(actor),
       anarchyDisposition: Modifiers._prepareAnarchyDisposition(actor),
       anarchyRisk: Modifiers._prepareAnarchyRisk(actor),
-      glitch: Modifiers._prepareGlitch(actor, skill, glitch),
+      glitch: Modifiers._prepareGlitch(actor, glitch),
       edge: Modifiers._prepareEdge(actor),
       opponentRerollForced: Modifiers._prepareOpponentReroll(actor),
       opponentReduce: Modifiers._prepareOpponentReduce(actor),
+    }
+  };
+
+  static weaponModifiers(weapon) {
+    return {
+      range: Modifiers._prepareRange(weapon),
+    }
+  };
+
+  static skillModifiers(actor, specialization = undefined) {
+    return {
+      specialization: Modifiers._prepareSpecialization(actor, specialization)
     }
   };
 
@@ -36,9 +46,9 @@ export class Modifiers {
   }
 
   static countPool(rollData) {
-    return (rollData.actor.data.data.attributes[rollData.attribute].value ?? 0)
+    return rollData.actor.getAttributeValue(rollData.attribute, rollData.item)
       + (rollData.skill?.data.data.value ?? 0)
-      + (rollData.attribute2 ? (rollData.actor.data.data.attributes[rollData.attribute2].value ?? 0) : 0)
+      + rollData.actor.getAttributeValue(rollData.attribute2, rollData.item)
       + Modifiers.valueIfUsed(rollData.modifiers.specialization)
       + Modifiers.valueIfUsed(rollData.modifiers.wounds)
       + Modifiers.valueIfUsed(rollData.modifiers.range)
@@ -85,8 +95,8 @@ export class Modifiers {
     }
   }
 
-  static _prepareGlitch(actor, skill, glitch) {
-    const wounds = actor.getWounds(skill?.data.data.code);
+  static _prepareGlitch(actor, glitch) {
+    const wounds = actor.getWounds();
     return {
       type: 'glitch',
       label: game.i18n.localize(ANARCHY.common.roll.modifiers.glitch),
@@ -125,8 +135,8 @@ export class Modifiers {
       : undefined;
   }
 
-  static _prepareWounds(actor, skill = undefined) {
-    const wounds = actor.getWounds(skill?.data.data.code);
+  static _prepareWounds(actor) {
+    const wounds = actor.getWounds();
     return wounds <= 0 ? undefined : {
       type: 'wounds',
       label: game.i18n.localize(ANARCHY.common.roll.modifiers.wounds),
