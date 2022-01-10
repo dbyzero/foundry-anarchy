@@ -69,11 +69,13 @@ export class AnarchyBaseActorSheet extends ActorSheet {
 
     // counters & monitors
     html.find('a.click-checkbar-element').click(async event => {
-      await this.switchMonitorCheck(
+      const handler = this.getEventItem(event) ?? this.actor;
+      await handler.switchMonitorCheck(
         this.getEventMonitorCode(event),
         this.getEventIndex(event),
         this.isEventChecked(event)
       );
+
     });
 
     // rolls
@@ -160,11 +162,6 @@ export class AnarchyBaseActorSheet extends ActorSheet {
       }
     }
     super._onDropActor(event, dragData);
-  }
-
-  async switchMonitorCheck(monitor, index, checked) {
-    const newValue = index + (checked ? 0 : 1);
-    await this.actor.setCounter(monitor, newValue);
   }
 
 }

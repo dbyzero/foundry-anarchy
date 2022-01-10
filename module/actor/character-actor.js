@@ -201,10 +201,4 @@ export class CharacterActor extends AnarchyBaseActor {
       - Misc.divint(this.data.data.monitors.physical.value, 3);
   }
 
-  async removeOtherMetatype(metatype) {
-    const metatypeIds = this.items.filter(it => it.isMetatype())
-      .filter(it => it.id != metatype.id)
-      .map(it => it.id);
-    this.deleteEmbeddedDocuments("Item", metatypeIds);
-  }
 }

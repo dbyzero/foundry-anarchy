@@ -2,7 +2,7 @@ import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
 import { Icons } from "./icons.js";
-import { Weapon } from "./item/weapon.js";
+import { WeaponItem } from "./item/weapon-item.js";
 import { Misc } from "./misc.js";
 
 
@@ -109,8 +109,8 @@ export class HandlebarsManager {
     Handlebars.registerHelper('substring', (str, from, to) => str?.substring(from, to));
     Handlebars.registerHelper('toUpperCase', Grammar.toUpperCaseNoAccent);
     Handlebars.registerHelper('damageLetter', Damage.letter);
-    Handlebars.registerHelper('damageCode', Weapon.getDamageCode);
-    Handlebars.registerHelper('damageValue', Weapon.getDamageValue);
+    Handlebars.registerHelper('damageCode', WeaponItem.damageCode);
+    Handlebars.registerHelper('damageValue', WeaponItem.damageValue);
     Handlebars.registerHelper('skillValue', (actor, skillId) => actor.getSkillValue(skillId, false));
     Handlebars.registerHelper('specializationValue', (actor, skillId) => actor.getSkillValue(skillId, true));
     Handlebars.registerHelper('for', HandlebarsManager.hbsForLoop);

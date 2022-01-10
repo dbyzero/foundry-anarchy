@@ -1,66 +1,39 @@
-import { Enums } from "../enums.js";
+import { CHECKBARS } from "../actor/base-actor.js";
 import { ErrorManager } from "../error-manager.js";
-import { Weapon } from "./weapon.js";
 
 export class AnarchyBaseItem extends Item {
 
   static init() {
-    Hooks.on("createItem", (item, options, id) => AnarchyBaseItem.onCreateItem(item, options, id));
+    Hooks.on("createItem", (item, options, id) => item.onCreateItem(item, options, id));
   }
 
-  static async onCreateItem(item, options, id) {
-    if (item.parent && item.isMetatype()) {
-      item.parent.removeOtherMetatype(item);
+  async onCreateItem(options, id) {
+  }
+
+  constructor(data, context = {}) {
+    if (!context.anarchy?.ready) {
+      mergeObject(context, { anarchy: { ready: true } });
+      const ItemConstructor = game.system.anarchy.itemClasses[data.type];
+      if (ItemConstructor) {
+        return new ItemConstructor(data, context);
+      }
+    }
+    super(data, context);
+  }
+
+  isMetatype() { return false; }
+
+  async switchMonitorCheck(monitor, index, checked) {
+    const newValue = index + (checked ? 0 : 1);
+    await this.setCounter(monitor, newValue);
+  }
+
+  async setCounter(monitor, value) {
+    if (CHECKBARS[monitor]) {
+      ErrorManager.checkOutOfRange(CHECKBARS[monitor].resource, value, 0, CHECKBARS[monitor].maxForActor(this));
+      await this.update({ [`${CHECKBARS[monitor].dataPath}`]: value });
     }
   }
 
-  isMetatype() {
-    return this.type == 'metatype';
-  }
-
-  isKnowledgeSkill() {
-    return this.type == 'skill' && this.data.data.attribute == 'knowledge';
-  }
-
-  isGeneralSkill() {
-    return this.type == 'skill' && this.data.data.attribute != 'knowledge';
-  }
-
-
-
-  /* Weapons related methods************* */
-  getDamageValue() {
-    ErrorManager.checkItemType(this, 'weapon');
-    return Weapon.getDamageValue(
-      this.data.data.damage,
-      this.data.data.strength,
-      this.parent?.data.data.attribute.strength.value);
-  }
-
-
-  getDamageCode() {
-    ErrorManager.checkItemType(this, 'weapon');
-    return Weapon.getDamageCode(
-      this.data.data.damage,
-      this.data.data.strength,
-      this.data.data.monitor);
-  }
-
-  getRanges() {
-    let ranges = [
-      this._getRange('short'),
-    ]
-    if (this.data.data.range.max != 'short') {
-      ranges.push(this._getRange('medium'));
-    }
-    if (this.data.data.range.max == 'long') {
-      ranges.push(this._getRange('long'));
-    }
-    return ranges
-  }
-
-  _getRange(range) {
-    return { value: this.data.data.range[range], label: Enums.getFromList(Enums.getEnums().ranges, range) };
-  }
 }
 

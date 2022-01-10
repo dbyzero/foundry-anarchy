@@ -5,10 +5,6 @@ import { BaseItemSheet } from "./base-item-sheet.js";
 
 export class SkillItemSheet extends BaseItemSheet {
 
-  get template() {
-    return `${TEMPLATES_PATH}/item/skill.hbs`;
-  }
-
   getData(options) {
     let hbsData = super.getData(options);
     hbsData.options.isKnowledge = this.object.isKnowledgeSkill();

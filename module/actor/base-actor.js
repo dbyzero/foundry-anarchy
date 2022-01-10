@@ -64,6 +64,11 @@ export class AnarchyBaseActor extends Actor {
     dialog.render(true);
   }
 
+  async switchMonitorCheck(monitor, index, checked) {
+    const newValue = index + (checked ? 0 : 1);
+    await this.setCounter(monitor, newValue);
+  }
+
   async setCounter(monitor, value) {
     if (monitor == 'anarchy') {
       await this.setAnarchy(value);
@@ -125,8 +130,8 @@ export class AnarchyBaseActor extends Actor {
   }
 
   async removeOtherMetatype(metatype) {
-    // only characters have a potential metatype
-    const metatypeIds = this.items.filter(it => it.isMetatype()).map(it => it.id);
+    const metatypeIds = this.items.filter(it => it.isMetatype() && it.id != metatype?.id)
+      .map(it => it.id);
     this.deleteEmbeddedDocuments("Item", metatypeIds);
   }
 
