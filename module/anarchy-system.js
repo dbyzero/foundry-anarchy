@@ -21,6 +21,9 @@ import { CharacterActorSheet } from './actor/character-actor-sheet.js';
 import { DeviceActorSheet } from './actor/device-actor-sheet.js';
 import { VehicleActorSheet } from './actor/vehicle-actor-sheet.js';
 import { NPCCharacterActorSheet } from './actor/npc-character-actor-sheet.js';
+import { SkillItem } from './item/skill-item.js';
+import { MetatypeItem } from './item/metatype-item.js';
+import { WeaponItem } from './item/weapon-item.js';
 import { ContactItemSheet } from './item/contact-item-sheet.js';
 import { CyberdeckItemSheet } from './item/cyberdeck-item-sheet.js';
 import { GearItemSheet } from './item/gear-item-sheet.js';
@@ -56,7 +59,12 @@ export class AnarchySystem {
       character: CharacterActor,
       vehicle: VehicleActor,
       device: DeviceActor
-    }
+    };
+    this.itemClasses = {
+      skill: SkillItem,
+      metatype: MetatypeItem,
+      weapon: WeaponItem
+    };
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit | loading system');
     CONFIG.Actor.documentClass = AnarchyBaseActor;
