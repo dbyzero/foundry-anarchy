@@ -49,7 +49,8 @@ export class RollDialog extends Dialog {
     rollData.ENUMS = Enums.getEnums();
     rollData.ANARCHY = ANARCHY;
     const html = await renderTemplate(`systems/anarchy/templates/dialog/roll-dialog.hbs`, rollData);
-    return new RollDialog(rollData, html);
+    const dialog = new RollDialog(rollData, html);
+    dialog.render(true);
   }
 
   constructor(rollData, html) {
