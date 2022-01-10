@@ -197,8 +197,8 @@ export class CharacterActor extends AnarchyBaseActor {
   getWounds(skillCode) {
     // TODO: for matrix skill, should use the matrix condition monitor of the cyberdeck
 
-    return -Misc.divint(this.data.data.monitors.stun.value, 3)
-      - Misc.divint(this.data.data.monitors.physical.value, 3);
+    return Misc.divint(this.data.data.monitors.stun.value, 3)
+      + Misc.divint(this.data.data.monitors.physical.value, 3);
   }
 
 }
