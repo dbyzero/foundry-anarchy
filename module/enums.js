@@ -81,9 +81,9 @@ export class Enums {
     Handlebars.registerHelper('sortedAttributes', map => Misc.sortedMap(map, Misc.ascendingBySortedArray(Enums.sortedAttributeKeys)));
   }
 
-  static getEnums() {
+  static getEnums(filterAttributes = it => true) {
     return {
-      attributes: Enums.hbsAttributes,
+      attributes: Enums.hbsAttributes.filter(it => filterAttributes(it.value)),
       itemTypes: Enums.hbsItemTypes,
       capacities: Enums.hbsCapacities,
       monitors: Enums.hbsMonitors,

@@ -5,9 +5,9 @@
   <div>
     {{!-- Dice pool explanation --}}
     <h3 class="chat-roll-title tooltip tooltip-dotted">
-      {{> (concat 'systems/anarchy/templates/chat/parts/' mode '/title.hbs')}}
+      {{> (concat 'systems/anarchy/templates/chat/parts/title-mode-' mode '.hbs')}}
       <div class="tooltiptext tooltip-roll-modifiers">
-        {{> (concat 'systems/anarchy/templates/chat/parts/' mode '/pool.hbs')}}
+        {{> (concat 'systems/anarchy/templates/chat/parts/pool-mode-' mode '.hbs')}}
         {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
         {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
         {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
@@ -16,6 +16,9 @@
 
     <div>
       <div class="alternate-items">
+      {{#if (eq mode 'weapon')}}
+      {{>'systems/anarchy/templates/chat/parts/result-mode-weapon.hbs'}}
+      {{/if}}
       {{> 'systems/anarchy/templates/chat/risk-outcome.hbs'}}
       {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
       {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}

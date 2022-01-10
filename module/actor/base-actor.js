@@ -40,23 +40,33 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getAttributes() {
-    return [];
+    return [undefined];
+  }
+
+  getAttributeValue(attribute, item = undefined) {
+    if (attribute) {
+      if (this.getAttributes().includes(attribute)) {
+        return this.data.data.attributes[attribute].value;
+      }
+      if (!item) {
+        item = this.items.find(item => item.isActive() && item.getAttributes().includes(attribute));
+      }
+      return item?.getAttributeValue(attribute) ?? 0;
+    }
+    return 0;
   }
 
   async skillRoll(skill, specialization) {
-    const rollData = RollDialog.prepareSkillRollData(this, skill, specialization);
-    await RollDialog.create(rollData);
+    await RollDialog.actorSkillRoll(this, skill, specialization);
   }
 
   async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
-    const rollData = RollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
-    await RollDialog.create(rollData);
+    await RollDialog.actorAttributeRoll(this, attribute, attribute2, attributeAction);
   }
 
   async weaponRoll(weapon) {
-    const skill = weapon.findSkill(this.items);
-    const rollData = RollDialog.prepareWeaponRollData(this, skill, weapon);
-    await RollDialog.create(rollData);
+    const skill = this.items.find(it => weapon.isWeaponSkill(it));
+    await RollDialog.actorWeaponRoll(this, skill, weapon);
   }
 
   async switchMonitorCheck(monitor, index, checked) {
@@ -109,18 +119,13 @@ export class AnarchyBaseActor extends Actor {
     }
   }
 
-  getAttributeValue(attribute) {
-    const selected = this.data.data.attributes[attribute];
-    return selected ? selected.value : `?`;
-  }
-
   getSkillValue(skillId, specialization = undefined) {
     const skill = this.items.get(skillId);
-    const attribute = this.data.data.attributes[skill.data.data.attribute];
+    const attribute = this.getAttributeValue(skill.data.data.attribute);
     return skill.data.data.value + (attribute?.value ?? 0) + (specialization && skill.data.data.specialization ? 2 : 0);
   }
 
-  getWounds(skillCode) {
+  getWounds() {
     return 0;
   }
 

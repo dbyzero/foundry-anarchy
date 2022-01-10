@@ -10,15 +10,13 @@ const HBS_CHAT_TEMPLATES = [
   'systems/anarchy/templates/chat/risk-outcome.hbs',
   'systems/anarchy/templates/chat/edge-reroll-button.hbs',
   'systems/anarchy/templates/chat/parts/actor-image.hbs',
-  'systems/anarchy/templates/chat/parts/attribute/title.hbs',
-  'systems/anarchy/templates/chat/parts/attribute/pool.hbs',
-  'systems/anarchy/templates/chat/parts/attribute/result.hbs',
-  'systems/anarchy/templates/chat/parts/skill/title.hbs',
-  'systems/anarchy/templates/chat/parts/skill/pool.hbs',
-  'systems/anarchy/templates/chat/parts/skill/result.hbs',
-  'systems/anarchy/templates/chat/parts/weapon/title.hbs',
-  'systems/anarchy/templates/chat/parts/weapon/pool.hbs',
-  'systems/anarchy/templates/chat/parts/weapon/result.hbs',
+  'systems/anarchy/templates/chat/parts/title-mode-attribute.hbs',
+  'systems/anarchy/templates/chat/parts/title-mode-skill.hbs',
+  'systems/anarchy/templates/chat/parts/title-mode-weapon.hbs',
+  'systems/anarchy/templates/chat/parts/pool-mode-attribute.hbs',
+  'systems/anarchy/templates/chat/parts/pool-mode-skill.hbs',
+  'systems/anarchy/templates/chat/parts/pool-mode-weapon.hbs',
+  'systems/anarchy/templates/chat/parts/result-mode-weapon.hbs',
 ];
 
 export class ChatManager {

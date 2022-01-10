@@ -45,6 +45,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/quality.hbs',
   'systems/anarchy/templates/actor/parts/shadowamp.hbs',
   'systems/anarchy/templates/actor/parts/shadowamps.hbs',
+  'systems/anarchy/templates/actor/parts/item-attribute.hbs',
   'systems/anarchy/templates/actor/parts/cyberdeck.hbs',
   'systems/anarchy/templates/actor/parts/cyberdecks.hbs',
   'systems/anarchy/templates/actor/parts/skill.hbs',
@@ -79,6 +80,9 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/item-controls.hbs',
   // dialogs
   'systems/anarchy/templates/dialog/roll-modifier.hbs',
+  'systems/anarchy/templates/dialog/parts/title-mode-attribute.hbs',
+  'systems/anarchy/templates/dialog/parts/title-mode-skill.hbs',
+  'systems/anarchy/templates/dialog/parts/title-mode-weapon.hbs',
   // apps
   'systems/anarchy/templates/app/gm-anarchy.hbs',
   'systems/anarchy/templates/app/gm-difficulty.hbs',
@@ -121,7 +125,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('diff', (v1, v2) => v1 - v2);
     Handlebars.registerHelper('either', (a, b) => a ? a : b);
     Handlebars.registerHelper('isInteger', a => a !== undefined && Number.isInteger(a));
-    Handlebars.registerHelper('actorAttribute', (actor, attribute) => actor.getAttributeValue(attribute));
+    Handlebars.registerHelper('actorAttribute', (attribute, actor, item = undefined) => actor.getAttributeValue(attribute, item));
     Handlebars.registerHelper('localizeAttribute', Enums.localizeAttribute);
     Handlebars.registerHelper('iconFA', Icons.fontAwesome);
     Handlebars.registerHelper('iconSrc', Icons.iconSrc);

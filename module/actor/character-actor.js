@@ -1,11 +1,9 @@
 import { ANARCHY } from "../config.js";
-import { RollDialog } from "../dialog/roll-dialog.js";
 import { BASE_MONITOR, TEMPLATE } from "../constants.js";
 import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { AnarchyUsers } from "../users.js";
-import { ACTION_CODE, AttributeActions } from "../attribute-actions.js";
 
 const essenceRange = [
   { from: 5, to: 6, adjust: 0 },
@@ -53,7 +51,7 @@ export class CharacterActor extends AnarchyBaseActor {
       TEMPLATE.attributes.willpower,
       TEMPLATE.attributes.logic,
       TEMPLATE.attributes.charisma,
-      TEMPLATE.attributes.edge,
+      TEMPLATE.attributes.edge
     ];
   }
 
@@ -162,20 +160,13 @@ export class CharacterActor extends AnarchyBaseActor {
     }
   }
 
-  getAttributeValue(attribute) {
-    const selected = this.data.data.attributes[attribute];
-    return selected ? selected.value : `?`;
-  }
-
   getSkillValue(skillId, specialization = undefined) {
     const skill = this.items.get(skillId);
     const attribute = this.data.data.attributes[skill.data.data.attribute];
     return skill.data.data.value + (attribute?.value ?? 0) + (specialization && skill.data.data.specialization ? 2 : 0);
   }
 
-  getWounds(skillCode) {
-    // TODO: for matrix skill, should use the matrix condition monitor of the cyberdeck
-
+  getWounds() {
     return Misc.divint(this.data.data.monitors.stun.value, 3)
       + Misc.divint(this.data.data.monitors.physical.value, 3);
   }

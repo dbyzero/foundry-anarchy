@@ -1,4 +1,4 @@
-  <div>{{localizeAttribute attribute}}: {{actorAttribute actor attribute}}</div>
+  <div>{{localizeAttribute attribute}}: {{actorAttribute attribute actor ''}}</div>
   <div>{{skill.name}}: {{either skill.data.data.value 0}}</div>
   {{#if modifiers.specialization.used}}
   <div>{{localize ANARCHY.item.skill.specialization}} {{specialization}}: {{numberFormat modifiers.specialization.value decimals=0 sign=true}}</div>

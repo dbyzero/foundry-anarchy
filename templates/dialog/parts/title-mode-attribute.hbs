@@ -1,0 +1,10 @@
+<div class="flex-grow-3">
+  <h2 class="dialog-roll-title">
+    {{actor.name}}{{#if item}} - {{item.name}}{{/if}}
+    {{#if attributeAction}}
+      {{localize (concat 'ANARCHY.attributeActions.' attributeAction)}}
+    {{else}}
+      {{localizeAttribute attribute}}
+    {{/if}}
+  </h2>
+</div>

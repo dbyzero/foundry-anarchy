@@ -1,5 +1,9 @@
 import { CHECKBARS } from "../actor/base-actor.js";
+import { AttributeActions } from "../attribute-actions.js";
+import { TEMPLATE } from "../constants.js";
+import { RollDialog } from "../dialog/roll-dialog.js";
 import { ErrorManager } from "../error-manager.js";
+import { Misc } from "../misc.js";
 
 export class AnarchyBaseItem extends Item {
 
@@ -21,7 +25,34 @@ export class AnarchyBaseItem extends Item {
     super(data, context);
   }
 
+  getAttributeActions() {
+    const attributes = Misc.distinct((this.parent?.getAttributes() ?? []).concat(this.getAttributes()).concat([[undefined]]));
+    return AttributeActions.all(it => attributes.includes(it.attribute) && attributes.includes(it.attribute2));
+  }
+
+  getAttributes() {
+    return [];
+  }
+
+  getAttributeValue(attribute) {
+    if (this.data.data.attributes) {
+      return this.data.data.attributes[attribute]?.value ?? 0;
+    }
+    return 0;
+  }
+
+  isActive() {
+    return this.data.data.equiped && !this.data.data.active;
+
+  }
+
   isMetatype() { return false; }
+
+  async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
+    if (this.parent) {
+      await RollDialog.itemAttributeRoll(this, attribute);
+    }
+  }
 
   async switchMonitorCheck(monitor, index, checked) {
     const newValue = index + (checked ? 0 : 1);

@@ -1,8 +1,8 @@
 <div class="attribute-box anarchy-attribute" data-attribute="{{key}}">
   <a class="click-roll-attribute">
     <label for="data.attributes.{{key}}.value">{{localizeAttribute key}}</label>
+    <div class="attribute-value">
+      {{attribute.value}}
+    </div>
   </a>
-  <input class="attribute-value larger" type="number" data-dtype="Number" maxlength="2"
-    name="data.attributes.{{key}}.value" value="{{attribute.value}}" 
-  />
 </div>
