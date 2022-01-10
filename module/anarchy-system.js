@@ -23,6 +23,7 @@ import { VehicleActorSheet } from './actor/vehicle-actor-sheet.js';
 import { NPCCharacterActorSheet } from './actor/npc-character-actor-sheet.js';
 import { SkillItem } from './item/skill-item.js';
 import { MetatypeItem } from './item/metatype-item.js';
+import { CyberdeckItem } from './item/cyberdeck-item.js';
 import { WeaponItem } from './item/weapon-item.js';
 import { ContactItemSheet } from './item/contact-item-sheet.js';
 import { CyberdeckItemSheet } from './item/cyberdeck-item-sheet.js';
@@ -63,6 +64,7 @@ export class AnarchySystem {
     this.itemClasses = {
       skill: SkillItem,
       metatype: MetatypeItem,
+      cyberdeck: CyberdeckItem,
       weapon: WeaponItem
     };
 
