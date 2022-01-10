@@ -129,27 +129,6 @@ export class CharacterActor extends AnarchyBaseActor {
     }
   }
 
-  async skillRoll(skill, specialization) {
-    const rollData = RollDialog.prepareSkillRollData(this, skill, specialization);
-    await this._roll(rollData);
-  }
-
-  async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
-    const rollData = RollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
-    await this._roll(rollData);
-  }
-
-  async weaponRoll(weapon) {
-    const skill = this.items.find(it => it.type == 'skill' && it.data.data.code === weapon.data.data.skill);
-    const rollData = RollDialog.prepareWeaponRollData(this, skill, weapon);
-    await this._roll(rollData);
-  }
-
-  async _roll(rollData) {
-    const dialog = await RollDialog.create(rollData);
-    dialog.render(true);
-  }
-
   getAnarchy() {
     if (this.hasPlayerOwner) {
       return {

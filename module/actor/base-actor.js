@@ -45,23 +45,18 @@ export class AnarchyBaseActor extends Actor {
 
   async skillRoll(skill, specialization) {
     const rollData = RollDialog.prepareSkillRollData(this, skill, specialization);
-    await this._roll(rollData);
+    await RollDialog.create(rollData);
   }
 
   async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
     const rollData = RollDialog.prepareAttributeRollData(this, attribute, attribute2, attributeAction);
-    await this._roll(rollData);
+    await RollDialog.create(rollData);
   }
 
   async weaponRoll(weapon) {
-    const skill = this.items.find(it => it.type == 'skill' && it.data.data.code === weapon.data.data.skill);
+    const skill = weapon.findSkill(this.items);
     const rollData = RollDialog.prepareWeaponRollData(this, skill, weapon);
-    await this._roll(rollData);
-  }
-
-  async _roll(rollData) {
-    const dialog = await RollDialog.create(rollData);
-    dialog.render(true);
+    await RollDialog.create(rollData);
   }
 
   async switchMonitorCheck(monitor, index, checked) {
