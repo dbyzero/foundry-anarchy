@@ -17,6 +17,13 @@ Shadowrun Anarchy French version: Black Book Editions
 
 This is a fan project, we are in no way associated with The Topps Company Inc., Catalyst Games Lab or Black Book Editions.
 
+Icons from game-icons.net
+  by Lorc under CC BY 3.0
+  by Delapouite under CC BY 3.0
+  by Skoll under CC BY 3.0
+
+ See [game-icons-sources.txt](./game-icons-sources.txt) for files renamed/modified
+
 # The current Anarchy development team
 
 - Pretre (Rules insights, contributor)
