@@ -5,6 +5,10 @@
         "name": "Style des fenêtres Anarchy",
         "hint": "Sélectionne le style utilisées pour les personnages, objets, et Gestion du MJ"
       },
+      "skillSet": {
+        "name": "Liste de compétences",
+        "hint": "Sélectionne la liste de compétences à utiliser"
+      },
       "gmDifficulty": {
         "name": "Réserves de difficulté",
         "hint": "Les valeurs des réserves de dés pour différentes difficultés, représentées comme 'Triviale:4,Facile:6' ...",
@@ -273,6 +277,7 @@
     },
     "skill": {
       "athletics": "Athlétisme",
+      "acrobatics": "Acrobaties",
       "closeCombat": "Corps à corps",
       "projectileWeapons": "Arme à projectiles",
       "firearms": "Armes à feu",

@@ -12,6 +12,7 @@ import { HooksManager } from './hooks-manager.js';
 import { AnarchyDice } from './roll/dice.js';
 import { AnarchyRoll } from './roll/anarchy-roll.js';
 import { Migrations } from './migrations.js';
+import { Skills } from './skills.js';
 import { AnarchyBaseItem } from './item/anarchy-base-item.js';
 import { AnarchyBaseActor } from './actor/base-actor.js';
 import { CharacterActor } from './actor/character-actor.js';
@@ -56,6 +57,7 @@ export class AnarchySystem {
     this.handlebarsManager = new HandlebarsManager();
     this.gmAnarchy = new GMAnarchy();
     this.gmManager = new GMManager();
+    this.skills = new Skills();
     this.actorClasses = {
       character: CharacterActor,
       vehicle: VehicleActor,
@@ -78,7 +80,6 @@ export class AnarchySystem {
 
     Enums.init();
 
-    CONFIG.ENUMS = Enums.getEnums();
     CONFIG.ANARCHY = ANARCHY;
 
     this.loadActorSheets();

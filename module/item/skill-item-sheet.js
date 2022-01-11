@@ -1,6 +1,3 @@
-import { ANARCHY } from "../config.js";
-import { TEMPLATES_PATH } from "../constants.js";
-import { Enums } from "../enums.js";
 import { BaseItemSheet } from "./base-item-sheet.js";
 
 export class SkillItemSheet extends BaseItemSheet {
@@ -17,13 +14,14 @@ export class SkillItemSheet extends BaseItemSheet {
 
     html.find('.select-skill-code').change(async event => {
       if (this.object.isGeneralSkill()) {
-        const newSkillCode = event.currentTarget.value;
-        if (newSkillCode && ANARCHY.skill[newSkillCode]) {
-          const newName = game.i18n.localize(ANARCHY.skill[newSkillCode]);
+        const skillCode = event.currentTarget.value;
+        const skill = game.system.anarchy.skills.get(skillCode);
+        if (skill) {
           await this.object.update({
-            "name": newName,
-            "data.code": newSkillCode,
-            "data.attribute": Enums.getSkillAttribute(newSkillCode)
+            name: game.i18n.localize(skill.labelkey),
+            img: skill.icon,
+            "data.code": skill.code,
+            "data.attribute": skill.attribute
           });
         }
       }
@@ -31,7 +29,7 @@ export class SkillItemSheet extends BaseItemSheet {
 
     html.find('.check-knowledge').click(async event => {
       const checkKnowledge = event.currentTarget.checked;
-      const newAttribute = checkKnowledge ? 'knowledge' : Enums.getSkillAttribute(this.object.data.data.code);
+      const newAttribute = checkKnowledge ? 'knowledge' : game.system.anarchy.skills.get(this.object.data.data.code)?.attribute;
       await this.object.update({ "data.attribute": newAttribute });
       this.render(true);
     });
