@@ -58,13 +58,13 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     });
 
     // ownership management
-    html.find('.click-owner-delete').click(async event => {
+    html.find('.click-owner-actor-unlink').click(async event => {
       this.detachFromOwner(this.actor.getOwnerActor(), this.actor);
     });
     html.find('.click-owned-actor-view').click(async event => {
-      this.getEventOwnedActor(event)?.render(true);
+      this.getEventOwnedActor(event)?.sheet.render(true);
     });
-    html.find('.click-owned-actor-delete').click(async event => {
+    html.find('.click-owned-actor-unlink').click(async event => {
       this.detachFromOwner(this.actor, this.getEventOwnedActor(event));
     });
 
