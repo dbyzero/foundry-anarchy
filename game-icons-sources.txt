@@ -58,6 +58,7 @@ skills/biotech.svg:                   health-capsule.svg
 skills/close-combat.svg:              sword-brandish.svg
 skills/con-art.svg:                   drama-masks.svg
 skills/conjuring.svg:                 cursed-star.svg
+skills/disguise.svg:                  duality-mask.svg
 skills/electronics.svg:               circuitry.svg
 skills/engineering.svg:               spanner.svg
 skills/escape-artist.svg:             acrobatic.svg
@@ -75,6 +76,7 @@ skills/pîloting-other.svg:            joystick.svg
 skills/piloting-other2.svg:           gear-stick.svg
 skills/projectile-weapons.svg:        high-shot.svg
 skills/projectile-weapons2.svg:       flying-shuriken.svg
+skills/skills.svg
 skills/sorcery.svg:                   magic-palm.svg
 skills/stealth.svg:                   domino-mask.svg
 skills/survival.svg:                  camping-tent.svg
