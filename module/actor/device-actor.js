@@ -5,7 +5,7 @@ import { AnarchyBaseActor } from "./base-actor.js";
 
 export class DeviceActor extends AnarchyBaseActor {
 
-  get defaultIcon() {
+  static get defaultIcon() {
     return `${ICONS_PATH}/actors/cctv-camera.svg`;
   }
 

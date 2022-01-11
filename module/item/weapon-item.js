@@ -5,7 +5,7 @@ import { AnarchyBaseItem } from "./anarchy-base-item.js";
 
 export class WeaponItem extends AnarchyBaseItem {
 
-  get defaultIcon() {
+  static get defaultIcon() {
     return `${ICONS_PATH}/weapons/mac-10.svg`;
   }
 

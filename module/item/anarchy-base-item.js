@@ -18,14 +18,16 @@ export class AnarchyBaseItem extends Item {
       mergeObject(context, { anarchy: { ready: true } });
       const ItemConstructor = game.system.anarchy.itemClasses[data.type];
       if (ItemConstructor) {
+        if (!data.img) {
+          data.img = ItemConstructor.defaultIcon;
+        }
         return new ItemConstructor(data, context);
       }
     }
     super(data, context);
-    data.img = this.defaultIcon;
   }
 
-  get defaultIcon() {
+  static get defaultIcon() {
     return undefined;
   }
 

@@ -1,11 +1,11 @@
-import { BASE_MONITOR, TEMPLATE } from "../constants.js";
+import { BASE_MONITOR, ICONS_PATH, TEMPLATE } from "../constants.js";
 import { Misc } from "../misc.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
 export class VehicleActor extends AnarchyBaseActor {
 
-  get defaultIcon() {
-    return `${ICONS_PATH}/vehicles/drone.svg`;
+  static get defaultIcon() {
+    return `${ICONS_PATH}/shadowamps/drone.svg`;
   }
 
   prepareData() {
