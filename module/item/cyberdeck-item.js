@@ -4,7 +4,7 @@ import { AnarchyBaseItem } from "./anarchy-base-item.js";
 
 export class CyberdeckItem extends AnarchyBaseItem {
 
-  get defaultIcon() {
+  static get defaultIcon() {
     return `${ICONS_PATH}/shadowamps/cyberdeck.svg`;
   }
 

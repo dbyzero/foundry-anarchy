@@ -3,7 +3,7 @@ import { AnarchyBaseItem } from "./anarchy-base-item.js";
 
 export class QualityItem extends AnarchyBaseItem {
 
-  get defaultIcon() {
+  static get defaultIcon() {
     return `${ICONS_PATH}/quality-positive.svg`;
   }
 

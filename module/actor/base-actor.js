@@ -20,14 +20,16 @@ export class AnarchyBaseActor extends Actor {
       mergeObject(context, { anarchy: { ready: true } });
       const ActorConstructor = game.system.anarchy.actorClasses[data.type];
       if (ActorConstructor) {
+        if (!data.img) {
+          data.img = ActorConstructor.defaultIcon;
+        }
         return new ActorConstructor(data, context);
       }
     }
     super(data, context);
-    data.img = this.defaultIcon;
   }
 
-  get defaultIcon() {
+  static get defaultIcon() {
     return undefined;
   }
 

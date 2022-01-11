@@ -3,7 +3,7 @@ import { AnarchyBaseItem } from "./anarchy-base-item.js";
 
 export class SkillItem extends AnarchyBaseItem {
 
-  get defaultIcon() {
+  static get defaultIcon() {
     return `${ICONS_PATH}/skills/skills.svg`;
   }
 
