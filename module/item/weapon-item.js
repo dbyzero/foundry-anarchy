@@ -1,8 +1,13 @@
+import { ICONS_PATH } from "../constants.js";
 import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { AnarchyBaseItem } from "./anarchy-base-item.js";
 
 export class WeaponItem extends AnarchyBaseItem {
+
+  get defaultIcon() {
+    return `${ICONS_PATH}/weapons/mac-10.svg`;
+  }
 
   isWeaponSkill(item) {
     return item.type == 'skill' && item.data.data.code === this.data.data.skill;

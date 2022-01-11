@@ -1,14 +1,14 @@
-import { ACTION_CODE, AttributeActions } from "../attribute-actions.js";
-import { BASE_MONITOR, TEMPLATE } from "../constants.js";
+import { BASE_MONITOR, ICONS_PATH, TEMPLATE } from "../constants.js";
 import { Misc } from "../misc.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
 
 export class DeviceActor extends AnarchyBaseActor {
 
-  constructor(data, context = {}) {
-    super(data, context);
+  get defaultIcon() {
+    return `${ICONS_PATH}/actors/cctv-camera.svg`;
   }
+
 
   prepareData() {
     super.prepareData();

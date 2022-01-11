@@ -1,6 +1,5 @@
 import { CHECKBARS } from "../actor/base-actor.js";
 import { AttributeActions } from "../attribute-actions.js";
-import { TEMPLATE } from "../constants.js";
 import { RollDialog } from "../dialog/roll-dialog.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
@@ -8,7 +7,7 @@ import { Misc } from "../misc.js";
 export class AnarchyBaseItem extends Item {
 
   static init() {
-    Hooks.on("createItem", (item, options, id) => item.onCreateItem(item, options, id));
+    Hooks.on("createItem", (item, options, id) => item.onCreateItem(options, id));
   }
 
   async onCreateItem(options, id) {
@@ -23,6 +22,11 @@ export class AnarchyBaseItem extends Item {
       }
     }
     super(data, context);
+    data.img = this.defaultIcon;
+  }
+
+  get defaultIcon() {
+    return undefined;
   }
 
   getAttributeActions() {
