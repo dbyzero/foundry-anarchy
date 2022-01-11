@@ -2,6 +2,7 @@
 {{#if attributeAction}}
   {{localize (concat 'ANARCHY.attributeActions.' attributeAction)}}
   <br>
+{{else}}:
 {{/if}}
 {{localizeAttribute attribute}}
 {{~#if attribute2}}+{{localizeAttribute attribute2}}{{/if~}}
