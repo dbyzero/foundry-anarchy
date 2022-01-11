@@ -477,6 +477,10 @@ div.define-item-type.item div.item-controls {
   max-width: 12rem;
 }
 
+:is(.npc-sheet,.device-sheet) .items-group div.item.anarchy-cyberdeck {
+  max-width: max-content;
+}
+
 /* Weapons lists */
 .weapon-list :is(.weapon-header,.item) {
   display: flex;
