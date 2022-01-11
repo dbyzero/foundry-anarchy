@@ -1,12 +1,11 @@
-import { ACTION_CODE, AttributeActions } from "../attribute-actions.js";
 import { BASE_MONITOR, TEMPLATE } from "../constants.js";
 import { Misc } from "../misc.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
 export class VehicleActor extends AnarchyBaseActor {
 
-  constructor(data, context = {}) {
-    super(data, context);
+  get defaultIcon() {
+    return `${ICONS_PATH}/vehicles/drone.svg`;
   }
 
   prepareData() {

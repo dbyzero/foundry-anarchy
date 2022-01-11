@@ -1,5 +1,7 @@
 ./quality-negative.svg:               anarchy.svg
 ./quality-positive.svg:               anarchy.svg
+./vitruvian-man.svg
+
 actors/airtight-hatch.svg
 actors/cctv-camera.svg
 actors/cpu.svg
@@ -76,7 +78,7 @@ skills/pîloting-other.svg:            joystick.svg
 skills/piloting-other2.svg:           gear-stick.svg
 skills/projectile-weapons.svg:        high-shot.svg
 skills/projectile-weapons2.svg:       flying-shuriken.svg
-skills/skills.svg
+skills/skill.svg                      skills.svg
 skills/sorcery.svg:                   magic-palm.svg
 skills/stealth.svg:                   domino-mask.svg
 skills/survival.svg:                  camping-tent.svg

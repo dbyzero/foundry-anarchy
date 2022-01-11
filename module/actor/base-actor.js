@@ -24,6 +24,11 @@ export class AnarchyBaseActor extends Actor {
       }
     }
     super(data, context);
+    data.img = this.defaultIcon;
+  }
+
+  get defaultIcon() {
+    return undefined;
   }
 
   prepareData() {

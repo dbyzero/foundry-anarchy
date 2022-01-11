@@ -34,6 +34,10 @@ import { QualityItemSheet } from './item/quality-item-sheet.js';
 import { ShadowampItemSheet } from './item/shadowamp-item-sheet.js';
 import { SkillItemSheet } from './item/skill-item-sheet.js';
 import { WeaponItemSheet } from './item/weapon-item-sheet.js';
+import { ContactItem } from './item/contact-item.js';
+import { GearItem } from './item/gear-item.js';
+import { QualityItem } from './item/quality-item.js';
+import { ShadowampItem } from './item/shadowamp-item.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -50,6 +54,21 @@ export class AnarchySystem {
     game.system.anarchy = this;
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit');
+    this.actorClasses = {
+      character: CharacterActor,
+      vehicle: VehicleActor,
+      device: DeviceActor
+    };
+    this.itemClasses = {
+      contact: ContactItem,
+      cyberdeck: CyberdeckItem,
+      gear: GearItem,
+      metatype: MetatypeItem,
+      quality: QualityItem,
+      shadowamp: ShadowampItem,
+      skill: SkillItem,
+      weapon: WeaponItem
+    };
 
     this.remoteCall = new RemoteCall();
     this.hooks = new HooksManager();
@@ -58,17 +77,6 @@ export class AnarchySystem {
     this.gmAnarchy = new GMAnarchy();
     this.gmManager = new GMManager();
     this.skills = new Skills();
-    this.actorClasses = {
-      character: CharacterActor,
-      vehicle: VehicleActor,
-      device: DeviceActor
-    };
-    this.itemClasses = {
-      skill: SkillItem,
-      metatype: MetatypeItem,
-      cyberdeck: CyberdeckItem,
-      weapon: WeaponItem
-    };
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit | loading system');
     CONFIG.Actor.documentClass = AnarchyBaseActor;
