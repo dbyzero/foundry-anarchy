@@ -4,7 +4,6 @@ import { GLITCH_COLORSET, RISK_COLORSET } from "./dice.js";
 const ROLL_THEME = {}
 
 export class AnarchyRoll {
-  static ROLL_THEME_POOL;
   static init() {
     Hooks.once('ready', () => AnarchyRoll.onReady());
   }

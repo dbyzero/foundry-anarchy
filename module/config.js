@@ -4,6 +4,10 @@ export const ANARCHY = {
             name: 'ANARCHY.settings.defaultCssClass.name',
             hint: 'ANARCHY.settings.defaultCssClass.hint'
         },
+        skillSet: {
+            name: 'ANARCHY.settings.skillSet.name',
+            hint: 'ANARCHY.settings.skillSet.hint'
+        },
         gmDifficulty: {
             name: 'ANARCHY.settings.gmDifficulty.name',
             hint: 'ANARCHY.settings.gmDifficulty.hint',
@@ -272,6 +276,7 @@ export const ANARCHY = {
     },
     skill: {
         athletics: 'ANARCHY.skill.athletics',
+        acrobatics: 'ANARCHY.skill.acrobatics',
         closeCombat: 'ANARCHY.skill.closeCombat',
         projectileWeapons: 'ANARCHY.skill.projectileWeapons',
         firearms: 'ANARCHY.skill.firearms',

@@ -2,40 +2,6 @@ import { ANARCHY } from "./config.js";
 import { HOOK_GET_HANDLEPAR_HELPERS } from "./handlebars-manager.js";
 import { Misc } from "./misc.js";
 
-const defaultSkillsAttribute = {
-  athletics: 'strength',
-
-  closeCombat: 'agility',
-  projectileWeapons: 'agility',
-  firearms: 'agility',
-  heavyWeapons: 'agility',
-  vehicleWeapons: 'agility',
-  stealth: 'agility',
-  pilotingGround: 'agility',
-  pilotingOther: 'agility',
-  escapeArtist: 'agility',
-
-  conjuring: 'willpower',
-  sorcery: 'willpower',
-  astralCombat: 'willpower',
-  survival: 'willpower',
-
-  biotech: 'logic',
-  hacking: 'logic',
-  electronics: 'logic',
-  engineering: 'logic',
-  tracking: 'logic',
-  tasking: 'logic',
-
-  con: 'charisma',
-  intimidation: 'charisma',
-  negotiation: 'charisma',
-  disguise: 'charisma',
-
-  animals: 'charisma',
-  etiquette: 'charisma',
-};
-
 const actorWordTypes = {
   keyword: "keywords",
   disposition: "dispositions",
@@ -44,8 +10,6 @@ const actorWordTypes = {
 
 export class Enums {
   static ENUMS;
-  static hbsSkills;
-  static skillsAttribute;
   static hbsAttributes;
   static hbsItemTypes;
   static hbsCapacities;
@@ -59,9 +23,6 @@ export class Enums {
 
   // this method is the place to add settings-based entries in the enums
   static init() {
-    // Customisation of skills will have to be done based on system settings
-    Enums.skillsAttribute = defaultSkillsAttribute;
-    Enums.hbsSkills = Enums.mapObjetToValueLabel(ANARCHY.skill);
     Enums.hbsAttributes = Enums.mapObjetToValueLabel(ANARCHY.attributes)
       .filter(a => a.value != 'knowledge' && a.value != 'noAttribute');
     Enums.hbsItemTypes = Enums.mapObjetToValueLabel(ANARCHY.itemType);
@@ -88,7 +49,7 @@ export class Enums {
       capacities: Enums.hbsCapacities,
       monitors: Enums.hbsMonitors,
       shadowampCategories: Enums.hbsShadowampCategories,
-      skills: Enums.hbsSkills,
+      skills: game.system.anarchy.skills.getSkillLabels(),
       areas: Enums.hbsAreas,
       ranges: Enums.hbsRanges,
       vehicleCategories: Enums.hbsVehicleCategories
@@ -116,17 +77,6 @@ export class Enums {
       return game.i18n.localize(ANARCHY.attributes['noAttribute']);
     }
     return game.i18n.localize(ANARCHY.attributes[attribute]);
-  }
-
-  static getSkillAttribute(code) {
-    if (Enums.isDefaultSkill(code)) {
-      return defaultSkillsAttribute[code];
-    }
-    return '';
-  }
-
-  static isDefaultSkill(code) {
-    return code && defaultSkillsAttribute[code];
   }
 
   static getFromList(list, value, key = 'value', label = 'label') {

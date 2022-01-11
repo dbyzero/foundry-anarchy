@@ -8,6 +8,8 @@ export const SYSTEM_DESCRIPTION = "Anarchy";
 export const SYSTEM_SOCKET = `system.${SYSTEM_NAME}`;
 export const SYSTEM_PATH = `systems/${SYSTEM_NAME}`;
 export const TEMPLATES_PATH = `systems/${SYSTEM_NAME}/templates`;
+export const ICONS_PATH = `${SYSTEM_PATH}/icons`;
+export const ICONS_SKILLS_PATH = `${ICONS_PATH}/skills`;
 export const LOG_HEAD = 'Anarchy | ';
 
 export const ANARCHY_DICE_BONUS = 3;
