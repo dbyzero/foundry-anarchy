@@ -1,28 +1,25 @@
 {{#if anarchy.max}}
 <div class="flexcol anarchy-monitor anarchy-monitor-anarchy">
-  <label class="info-label">
-    {{#if anarchy.isGM}}
-      {{#if options.isGM}}
-        {{localize ANARCHY.common.anarchy.danger}}
-      {{/if}}
-    {{else}}
-      {{localize ANARCHY.common.anarchy.anarchy}}
-    {{/if}}
-  </label>
   {{#if anarchy.isGM}}
     {{#if options.isGM}}
-    {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
-      rowlength=6
-      value=anarchy.value
-      max=anarchy.max
-      scene=anarchy.scene
-      labelkey=ANARCHY.common.anarchy.danger
-      iconChecked=(iconSrc 'style/danger-point.webp' 'checkbar-img')
-      iconUnchecked=(iconSrc 'style/danger-point-off.webp' 'checkbar-img')
-      iconScene=(iconSrc 'style/anarchy-point-scene.webp' 'checkbar-img')
-    }}
+      <label class="info-label">
+          {{localize ANARCHY.common.anarchy.danger}}
+      </label>
+      {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
+        rowlength=6
+        value=anarchy.value
+        max=anarchy.max
+        scene=anarchy.scene
+        labelkey=ANARCHY.common.anarchy.danger
+        iconChecked=(iconSrc 'style/danger-point.webp' 'checkbar-img')
+        iconUnchecked=(iconSrc 'style/danger-point-off.webp' 'checkbar-img')
+        iconScene=(iconSrc 'style/anarchy-point-scene.webp' 'checkbar-img')
+      }}
     {{/if}}
   {{else}}
+    <label class="info-label">
+      {{localize ANARCHY.common.anarchy.anarchy}}
+    </label>
     {{> "systems/anarchy/templates/common/anarchy-bar.hbs"
       rowlength=10
       value=anarchy.value

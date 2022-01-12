@@ -1,8 +1,8 @@
-import { CHECKBARS } from "../actor/base-actor.js";
+import { Checkbars } from "../common/checkbars.js";
 import { AttributeActions } from "../attribute-actions.js";
 import { RollDialog } from "../dialog/roll-dialog.js";
-import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
+import { TEMPLATE } from "../constants.js";
 
 export class AnarchyBaseItem extends Item {
 
@@ -47,6 +47,8 @@ export class AnarchyBaseItem extends Item {
     return 0;
   }
 
+  hasOwnAnarchy() { return false; }
+  hasGMAnarchy() { return false; }
 
   isMetatype() { return this.type == TEMPLATE.itemType.metatype; }
   isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }
@@ -60,16 +62,13 @@ export class AnarchyBaseItem extends Item {
     }
   }
 
-  async switchMonitorCheck(monitor, index, checked) {
-    const newValue = index + (checked ? 0 : 1);
-    await this.setCounter(monitor, newValue);
+  async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
+    await Checkbars.switchMonitorCheck(this, monitor, index, checked, sourceActorId);
   }
 
   async setCounter(monitor, value) {
-    if (CHECKBARS[monitor]) {
-      ErrorManager.checkOutOfRange(CHECKBARS[monitor].resource, value, 0, CHECKBARS[monitor].maxForActor(this));
-      await this.update({ [`${CHECKBARS[monitor].dataPath}`]: value });
-    }
+    await Checkbars.setCounter(this, monitor, value);
+  }
   }
 
 }
