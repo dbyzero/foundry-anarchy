@@ -47,12 +47,12 @@ export class AnarchyBaseItem extends Item {
     return 0;
   }
 
-  isActive() {
-    return this.data.data.equiped && !this.data.data.active;
 
-  }
+  isMetatype() { return this.type == TEMPLATE.itemType.metatype; }
+  isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }
 
-  isMetatype() { return false; }
+  isActive() { return this.data.data.equiped && this.data.data.active; }
+
 
   async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
     if (this.parent) {

@@ -22,15 +22,35 @@ export const TARGET_SUCCESS_EDGE = 4;
 export const BASE_MONITOR = 8;
 
 export const TEMPLATE = {
+  actorTypes: {
+    character: 'character',
+    vehicle: 'vehicle',
+    device: 'device',
+  },
+  itemType: {
+    metatype: 'metatype',
+    skill: 'skill',
+    quality: 'quality',
+    shadowamp: 'shadowamp',
+    weapon: 'weapon',
+    gear: 'gear',
+    cyberdeck: 'cyberdeck',
+    contact: 'contact',
+  },
   attributes: {
-    agility: "agility",
-    strength: "strength",
-    willpower: "willpower",
-    logic: "logic",
-    charisma: "charisma",
-    edge: "edge",
-    autopilot: "autopilot",
-    firewall: "firewall",
-    system: "system",
+    agility: 'agility',
+    strength: 'strength',
+    willpower: 'willpower',
+    logic: 'logic',
+    charisma: 'charisma',
+    edge: 'edge',
+    autopilot: 'autopilot',
+    firewall: 'firewall',
+    system: 'system',
+  },
+  capacities: {
+    mundane: 'mundane',
+    awakened: 'awakened',
+    emerged: 'emerged',
   }
 }
