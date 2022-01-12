@@ -7,9 +7,5 @@
     {{#if code}}data-monitor-code="{{code}}"{{/if}}
     data-index="{{current}}"
     data-checked="{{lt current value}}">
-  {{#if (lt current value)}}
-    {{{iconChecked}}}
-  {{else}}
-    {{{iconUnchecked}}}
-  {{/if}}
+  {{{iconCheckbar code (lt current value)}}}
 </a>

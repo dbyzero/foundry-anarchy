@@ -5,7 +5,6 @@
       {{> (concat 'systems/anarchy/templates/dialog/parts/title-mode-' mode '.hbs')}}
     </div>
 
-    {{log 'dialog item' item}}
     <div class="flexcol">
       <ul class="alternate-items list-modifiers">
         <li class="flexrow attribute-selector" data-selector="attribute" {{#if item}}data-item-id="{{item.id}}"{{/if}}>

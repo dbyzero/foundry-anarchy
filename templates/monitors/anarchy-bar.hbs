@@ -2,30 +2,25 @@
   <div {{#if rowlength}}
     style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
   {{/if}}>
-
   {{#for 0 max}}
     {{> 'systems/anarchy/templates/common/check-element.hbs'
-      code='anarchy'
+      code=../code
       rowlength=../rowlength
       labelkey=../labelkey
       current=this
       value=../value
       max=../max
-      iconChecked=../iconChecked
-      iconUnchecked=../iconUnchecked
     }}
   {{/for}}
   {{#if scene}}
     {{#for 0 scene}}
       {{> 'systems/anarchy/templates/common/check-element.hbs'
-        code='scene-anarchy'
-        labelkey=../ANARCHY.common.anarchy.sceneAnarchy
+        code='sceneAnarchy'
+        labelkey='ANARCHY.actor.counters.sceneAnarchy'
         rowlength=../rowlength
         current=this
         value=../scene
         max=../scene
-        iconChecked=(iconSrc 'style/anarchy-point-scene.webp' 'checkbar-img')
-        iconUnchecked=../iconUnchecked
       }}
     {{/for}}
   {{/if}}

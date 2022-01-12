@@ -24,6 +24,10 @@
             "value": 3,
             "max": 6
           },
+          "sceneAnarchy": {
+            "value": 0,
+            "max": 3
+          },
           "edge": {
             "value": 1
           }

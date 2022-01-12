@@ -91,11 +91,6 @@ export const ANARCHY = {
         sourceReferenceHelp: 'ANARCHY.common.sourceReferenceHelp',
         description: 'ANARCHY.common.description',
         gmnotes: 'ANARCHY.common.gmnotes',
-        anarchy: {
-            anarchy: 'ANARCHY.common.anarchy.anarchy',
-            sceneAnarchy: 'ANARCHY.common.anarchy.sceneAnarchy',
-            danger: 'ANARCHY.common.anarchy.danger',
-        },
     },
     actor: {
         characterSheet: 'ANARCHY.actor.characterSheet',
@@ -119,6 +114,9 @@ export const ANARCHY = {
             karma: 'ANARCHY.actor.counters.karma',
             karmaTotal: 'ANARCHY.actor.counters.karmaTotal',
             edge: 'ANARCHY.actor.counters.edge',
+            anarchy: 'ANARCHY.actor.counters.anarchy',
+            sceneAnarchy: 'ANARCHY.actor.counters.sceneAnarchy',
+            danger: 'ANARCHY.actor.counters.danger',
         },
         monitors: {
             conditionMonitors: 'ANARCHY.actor.monitors.conditionMonitors',
@@ -233,11 +231,13 @@ export const ANARCHY = {
         physical: 'ANARCHY.monitor.physical',
         stun: 'ANARCHY.monitor.stun',
         matrix: 'ANARCHY.monitor.matrix',
+        marks: 'ANARCHY.monitor.marks',
     },
     monitorLetter: {
         physical: 'ANARCHY.monitorLetter.physical',
         stun: 'ANARCHY.monitorLetter.stun',
-        matrix: 'ANARCHY.monitorLetter.matrix'
+        matrix: 'ANARCHY.monitorLetter.matrix',
+        marks: 'ANARCHY.monitorLetter.marks',
     },
     shadowampCategory: {
         adeptPower: 'ANARCHY.shadowampCategory.adeptPower',

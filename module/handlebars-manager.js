@@ -11,14 +11,14 @@ export const HOOK_GET_HANDLEPAR_HELPERS = "anarchy-getHandlebarHelpers";
 
 const HBS_PARTIAL_TEMPLATES = [
   // -- monitors
-  'systems/anarchy/templates/actor/monitors/anarchy.hbs',
-  'systems/anarchy/templates/actor/monitors/armor.hbs',
-  'systems/anarchy/templates/actor/monitors/edge.hbs',
+  'systems/anarchy/templates/monitors/anarchy.hbs',
+  'systems/anarchy/templates/monitors/armor.hbs',
+  'systems/anarchy/templates/monitors/edge.hbs',
   'systems/anarchy/templates/actor/parts/matrix-cyberdeck.hbs',
-  'systems/anarchy/templates/common/matrix.hbs',
-  'systems/anarchy/templates/actor/monitors/physical.hbs',
-  'systems/anarchy/templates/actor/monitors/structure.hbs',
-  'systems/anarchy/templates/actor/monitors/stun.hbs',
+  'systems/anarchy/templates/monitors/matrix.hbs',
+  'systems/anarchy/templates/monitors/physical.hbs',
+  'systems/anarchy/templates/monitors/structure.hbs',
+  'systems/anarchy/templates/monitors/stun.hbs',
   // character
   'systems/anarchy/templates/actor/character/capacity.hbs',
   'systems/anarchy/templates/actor/character/essence.hbs',
@@ -40,8 +40,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/gmnotes.hbs',
   'systems/anarchy/templates/actor/parts/owned-actor.hbs',
   'systems/anarchy/templates/actor/parts/owned-actors.hbs',
-  'systems/anarchy/templates/actor/monitors/marks-actor.hbs',
-  'systems/anarchy/templates/actor/monitors/marks.hbs',
+  'systems/anarchy/templates/monitors/marks-actor.hbs',
+  'systems/anarchy/templates/monitors/marks.hbs',
   'systems/anarchy/templates/actor/parts/ownership.hbs',
   'systems/anarchy/templates/actor/parts/qualities.hbs',
   'systems/anarchy/templates/actor/parts/quality.hbs',
@@ -73,7 +73,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/item/parts/itemname.hbs',
   'systems/anarchy/templates/item/parts/references.hbs',
   // common&technical partials
-  'systems/anarchy/templates/common/anarchy-bar.hbs',
+  'systems/anarchy/templates/monitors/anarchy-bar.hbs',
   'systems/anarchy/templates/common/check-element.hbs',
   'systems/anarchy/templates/common/checkbar.hbs',
   'systems/anarchy/templates/common/damage-code.hbs',
@@ -116,9 +116,11 @@ export class HandlebarsManager {
     Handlebars.registerHelper('concat', (...args) => Misc.join(args.slice(0, -1)));
     Handlebars.registerHelper('substring', (str, from, to) => str?.substring(from, to));
     Handlebars.registerHelper('toUpperCase', Grammar.toUpperCaseNoAccent);
-    Handlebars.registerHelper('damageLetter', Damage.letter);
-    Handlebars.registerHelper('damageCode', WeaponItem.damageCode);
-    Handlebars.registerHelper('damageValue', WeaponItem.damageValue);
+    Handlebars.registerHelper('weaponDamageLetter', Damage.letter);
+    Handlebars.registerHelper('weaponDamageCode', WeaponItem.damageCode);
+    Handlebars.registerHelper('weaponDamageValue', WeaponItem.damageValue);
+    Handlebars.registerHelper('weaponArmorMode', WeaponItem.armorMode);
+
     Handlebars.registerHelper('skillValue', (actor, skillId) => actor.getSkillValue(skillId, false));
     Handlebars.registerHelper('specializationValue', (actor, skillId) => actor.getSkillValue(skillId, true));
     Handlebars.registerHelper('for', HandlebarsManager.hbsForLoop);

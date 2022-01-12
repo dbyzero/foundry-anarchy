@@ -1,21 +1,124 @@
 import { ErrorManager } from "../error-manager.js";
 import { ANARCHY } from "../config.js";
 import { AnarchyUsers } from "../users.js";
+import { Icons } from "../icons.js";
+import { HOOK_GET_HANDLEPAR_HELPERS } from "../handlebars-manager.js";
+import { Enums } from "../enums.js";
+
+const MONITORS = ANARCHY.actor.monitors;
+const COUNTERS = ANARCHY.actor.counters;
 
 export const CHECKBARS = {
-  physical: { dataPath: 'data.monitors.physical.value', max: it => it.data.data.monitors.physical.max, resource: ANARCHY.actor.monitors.physical },
-  stun: { dataPath: 'data.monitors.stun.value', max: it => it.data.data.monitors.stun.max, resource: ANARCHY.actor.monitors.stun },
-  matrix: { dataPath: 'data.monitors.matrix.value', max: it => it.data.data.monitors.matrix.max, resource: ANARCHY.actor.monitors.matrix },
-  armor: { dataPath: 'data.monitors.armor.value', max: it => it.data.data.monitors.armor.max, resource: ANARCHY.actor.monitors.armor },
-  anarchy: { dataPath: 'data.counters.anarchy.value', max: it => it.data.data.counters.anarchy.max, resource: ANARCHY.common.anarchy.anarchy },
-  edge: { dataPath: 'data.counters.edge.value', max: it => it.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge },
-  structure: { dataPath: 'data.monitors.structure.value', max: it => it.data.data.monitors.structure.max, resource: ANARCHY.actor.monitors.structure },
-  marks: { dataPath: undefined, max: it => 9, resource: ANARCHY.actor.monitors.marks }
-
+  armor: {
+    path: 'data.monitors.armor.value',
+    max: it => it.data.data.monitors.armor.max,
+    iconChecked: Icons.fontAwesome('fas fa-skull-crossbones'),
+    iconUnchecked: Icons.fontAwesome('fas fa-shield-alt'),
+    iconHit: Icons.fontAwesome('fas fa-bahai'),
+    resource: MONITORS.armor
+  },
+  stun: {
+    path: 'data.monitors.stun.value',
+    max: it => it.data.data.monitors.stun.max,
+    iconChecked: Icons.fontAwesome('fas fa-grimace'),
+    iconUnchecked: Icons.fontAwesome('far fa-smile'),
+    iconHit: Icons.fontAwesome('fas fa-bahai'),
+    resource: MONITORS.stun,
+    useArmor: true
+  },
+  physical: {
+    path: 'data.monitors.physical.value',
+    max: it => it.data.data.monitors.physical.max,
+    iconChecked: Icons.fontAwesome('fas fa-heartbeat'),
+    iconUnchecked: Icons.fontAwesome('far fa-heart'),
+    iconHit: Icons.fontAwesome('fas fa-bahai'),
+    resource: MONITORS.physical,
+    useArmor: true
+  },
+  structure: {
+    path: 'data.monitors.structure.value',
+    max: it => it.data.data.monitors.structure.max,
+    iconChecked: Icons.fontAwesome('fas fa-car-crash'),
+    iconUnchecked: Icons.fontAwesome('fas fa-car-alt'),
+    iconHit: Icons.fontAwesome('fas fa-bahai'),
+    resource: MONITORS.structure
+  },
+  matrix: {
+    path: 'data.monitors.matrix.value',
+    max: it => it.data.data.monitors.matrix.max,
+    iconChecked: Icons.fontAwesome('fas fa-laptop-medical'),
+    iconUnchecked: Icons.fontAwesome('fas fa-laptop'),
+    iconHit: Icons.fontAwesome('fas fa-laptop-code'),
+    resource: MONITORS.matrix
+  },
+  marks: {
+    path: undefined,
+    max: it => 9,
+    iconChecked: Icons.fontAwesome('fas fa-bookmark'),
+    iconUnchecked: Icons.fontAwesome('far fa-bookmark'),
+    iconHit: Icons.fontAwesome('fas fa-fingerprint'),
+    resource: MONITORS.marks
+  },
+  anarchy: {
+    path: 'data.counters.anarchy.value',
+    max: it => it.data.data.counters.anarchy.max,
+    iconChecked: Icons.iconSrc('style/anarchy-point.webp', 'checkbar-img'),
+    iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
+    resource: COUNTERS.anarchy
+  },
+  danger: {
+    path: 'data.counters.anarchy.value',
+    max: it => it.data.data.counters.anarchy.max,
+    iconChecked: Icons.iconSrc('style/danger-point.webp', 'checkbar-img'),
+    iconUnchecked: Icons.iconSrc('style/danger-point-off.webp', 'checkbar-img'),
+    resource: COUNTERS.anarchy
+  },
+  sceneAnarchy: {
+    path: 'data.counters.anarchy.value',
+    max: it => (it.data.data.counters.sceneAnarchy.value + 1),
+    iconChecked: Icons.iconSrc('style/anarchy-point-scene.webp', 'checkbar-img'),
+    iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
+    resource: COUNTERS.sceneAnarchy
+  },
+  edge: {
+    path: 'data.counters.edge.value',
+    max: it => it.data.data.attributes.edge.value,
+    iconChecked: Icons.fontAwesome('fas fa-star'),
+    iconUnchecked: Icons.fontAwesome('far fa-star'),
+    resource: COUNTERS.edge
+  },
 }
 
 export class Checkbars {
 
+  static init() {
+    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => Checkbars.registerHandleBarHelpers());
+  }
+
+  static registerHandleBarHelpers() {
+    Handlebars.registerHelper('iconCheckbar', Checkbars.iconCheckbar);
+    Handlebars.registerHelper('iconCheckbarHit', Checkbars.iconHit);
+  }
+
+  static iconCheckbar(monitor, checked) {
+    return checked ? Checkbars.iconChecked(monitor) : Checkbars.iconUnchecked(monitor)
+  }
+
+  static iconChecked(monitor) {
+    return CHECKBARS[monitor]?.iconChecked;
+  }
+
+  static iconUnchecked(monitor) {
+    return CHECKBARS[monitor]?.iconUnchecked;
+  }
+
+  static iconHit(monitor) {
+    return CHECKBARS[monitor]?.iconHit ?? CHECKBARS[monitor]?.iconChecked;
+  }
+
+  static useArmor(monitor) {
+    return CHECKBARS[monitor]?.useArmor;
+  }
 
   static newValue(index, checked) {
     return index + (checked ? 0 : 1);
@@ -36,9 +139,9 @@ export class Checkbars {
 
   static async setCheckbar(target, monitor, value) {
     const checkbar = CHECKBARS[monitor];
-    if (checkbar) {
+    if (checkbar && checkbar.path) {
       ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.max(target));
-      await target.update({ [`${checkbar.dataPath}`]: value });
+      await target.update({ [checkbar.path]: value });
     }
   }
 

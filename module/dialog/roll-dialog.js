@@ -47,7 +47,7 @@ export class RollDialog extends Dialog {
       attribute: skill?.data.data.attribute ?? TEMPLATE.attributes.agility,
       specialization: skill?.data.data.specialization,
     });
-    mergeObject(rollData.modifiers, Modifiers.skillModifiers(actor, skill, skill?.data.data.specialization));
+    mergeObject(rollData.modifiers, Modifiers.skillModifiers(actor, skill, rollData.specialization));
     mergeObject(rollData.modifiers, Modifiers.weaponModifiers(weapon));
     await RollDialog.create(rollData);
   }

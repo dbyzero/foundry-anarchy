@@ -91,12 +91,7 @@
       "sourceReference": "Référence source",
       "sourceReferenceHelp": "livre, page, ...",
       "description": "Description",
-      "gmnotes": "Notes du MJ",
-      "anarchy": {
-        "anarchy": "Anarchy",
-        "sceneAnarchy": "Anarchy de scène",
-        "danger": "Danger"
-      }
+      "gmnotes": "Notes du MJ"
     },
     "actor": {
       "characterSheet": "Fiche de personnage",
@@ -119,7 +114,10 @@
         "essence": "Essence",
         "karma": "Karma",
         "karmaTotal": "Total",
-        "anarchy": "Anarchy"
+        "edge": "Chance",
+        "anarchy": "Anarchy",
+        "sceneAnarchy": "Anarchy de scène",
+        "danger": "Danger"
       },
       "monitors": {
         "conditionMonitors": "Moniteurs de condition",
@@ -233,12 +231,14 @@
     "monitor": {
       "physical": "Physique",
       "stun": "Etourdissant",
-      "matrix": "Matriciel"
+      "matrix": "Matriciel",
+      "marks": "Marks"
     },
     "monitorLetter": {
       "physical": "P",
       "stun": "E",
-      "matrix": "M"
+      "matrix": "M",
+      "marks": "K"
     },
     "shadowampCategory": {
       "adeptPower": "Pouvoir d'adepte",

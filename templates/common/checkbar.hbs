@@ -20,11 +20,9 @@
       code=../code
       rowlength=../rowlength
       current=this
-      labelkey=../labelkey
+      labelkey=(either ../labelkey (concat 'ANARCHY.actor.monitors.' code))
       value=../value
       max=../max
-      iconChecked=../iconChecked
-      iconUnchecked=../iconUnchecked
     }}
     {{#if (and ../adjust ../rowlength)}}
       {{#if (or (eq ../rowlength (sum 1 (modulo this ../rowlength))) (eq (sum this 1) ../max))}}

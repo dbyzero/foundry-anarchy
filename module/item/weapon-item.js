@@ -2,6 +2,7 @@ import { ICONS_PATH } from "../constants.js";
 import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { AnarchyBaseItem } from "./anarchy-base-item.js";
+import { Checkbars } from "../common/checkbars.js";
 
 export class WeaponItem extends AnarchyBaseItem {
 
@@ -21,7 +22,10 @@ export class WeaponItem extends AnarchyBaseItem {
     );
   }
 
-  static damageValue(damage, strength, actorStrength) {
+  static damageValue(monitor, damage, strength, actorStrength) {
+    if (monitor == 'marks') {
+      return '';
+    }
     let dmg = Number(damage);
     if (strength) {
       if (actorStrength !== undefined) {
@@ -38,12 +42,23 @@ export class WeaponItem extends AnarchyBaseItem {
 
   getDamageCode() {
     return WeaponItem.damageCode(
+      this.data.data.monitor,
       this.data.data.damage,
       this.data.data.strength,
     );
   }
 
-  static damageCode(damage, strength) {
+  static armorMode(monitor, noArmor) {
+    if (Checkbars.useArmor(monitor)) {
+      return noArmor ? 'noArmor' : 'withArmor'
+    }
+    return '';
+  }
+
+  static damageCode(monitor, damage, strength) {
+    if (monitor == 'marks') {
+      return '';
+    }
     let code = '';
     if (strength) {
       code += game.i18n.localize(ANARCHY.attributes.strength).substring(0, 3).toUpperCase() + '/2 + ';

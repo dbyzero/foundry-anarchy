@@ -517,11 +517,11 @@ div.define-item-type.item div.item-controls {
 }
 
 .weapon-list .weapon-column.weapon-img { width: 32px; }
-.weapon-list .weapon-column.weapon-dmg{ width: 3rem; }
+.weapon-list .weapon-column.weapon-dmg { width: 4.5rem; }
 .weapon-list .weapon-column.weapon-stat { width: 3.5rem; }
 .weapon-list .weapon-column.weapon-controls { width: 2rem; }
 .weapon-list .weapon-column.weapon-txt {
-  width: calc(100% - 17rem - 32px);
+  width: calc(100% - 18rem - 32px);
 }
 .weapon-list .weapon-column.weapon-summary {
   width: calc(100% - 2rem);
