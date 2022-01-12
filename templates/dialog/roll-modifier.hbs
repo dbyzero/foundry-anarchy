@@ -11,6 +11,7 @@
  {{#if type}}
   <li class="flexrow" data-modifier="{{type}}">
     <label class="flex-grow-2" >{{label}}</label>
+    {{log 'roll-modifier' this}}
 
     <span class="flex-shrink">
     {{#if optional}}

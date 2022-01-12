@@ -18,7 +18,7 @@
       actorStrength=@root.actor.data.data.attributes.strength.value
       damage=data.damage
       monitor=data.monitor
-      noArmor=data.noArmor
+      armor=(weaponArmorMode data.monitor data.noArmor)
     }}
   </div>
   <div class="weapon-column weapon-stat">

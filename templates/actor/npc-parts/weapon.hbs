@@ -8,7 +8,7 @@
         actorStrength=@root.actor.data.data.attributes.strength.value
         damage=data.damage
         monitor=data.monitor
-        noArmor=data.noArmor
+        armor=(weaponArmorMode data.monitor data.noArmor)
       }}
     {{> 'systems/anarchy/templates/actor/parts/weapon-range.hbs'}}
     </a>

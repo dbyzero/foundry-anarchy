@@ -1,0 +1,14 @@
+{{#if anarchy.max}}
+<div class="flexcol anarchy-monitor anarchy-monitor-anarchy">
+  {{#unless (or anarchy.isGM @root.options.isOwned)}}
+    {{> "systems/anarchy/templates/monitors/anarchy-bar.hbs"
+      code='anarchy'
+      labelkey='ANARCHY.actor.counters.anarchy'
+      rowlength=10
+      value=anarchy.value
+      max=anarchy.max
+      scene=anarchy.scene
+    }}
+  {{/unless}}
+</div>
+{{/if}}

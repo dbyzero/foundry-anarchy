@@ -54,7 +54,7 @@ export class GMAnarchy {
 
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
-      ErrorManager.checkSufficient(ANARCHY.common.anarchy.danger, -count, this.anarchy);
+      ErrorManager.checkSufficient(ANARCHY.actor.counters.danger, -count, this.anarchy);
       await this.setAnarchy(this.anarchy + count);
     }
   }
@@ -86,15 +86,13 @@ export class GMAnarchy {
   }
 
   async _renderBar() {
-    return await renderTemplate("systems/anarchy/templates/common/anarchy-bar.hbs", {
+    return await renderTemplate("systems/anarchy/templates/monitors/anarchy-bar.hbs", {
+      code: 'danger',
       rowlength: 6,
       value: this.getAnarchy().value,
       max: this.getAnarchy().max,
       scene: this.getAnarchy().scene,
-      labelkey: ANARCHY.common.anarchy.danger,
-      iconChecked: Icons.iconSrc('style/danger-point.webp', 'checkbar-img'),
-      iconUnchecked: Icons.iconSrc('style/danger-point-off.webp', 'checkbar-img'),
-      iconScene: Icons.iconSrc('style/anarchy-point-scene.webp', 'checkbar-img')
+      labelkey: ANARCHY.actor.counters.danger
     });
   }
 

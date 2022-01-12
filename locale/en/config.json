@@ -91,12 +91,7 @@
       "sourceReference": "Source reference",
       "sourceReferenceHelp": "rulebook, page, ...",
       "description": "Description",
-      "gmnotes": "GM notes",
-      "anarchy": {
-        "anarchy": "Anarchy",
-        "sceneAnarchy": "Scene Anarchy",
-        "danger": "Danger"
-      }
+      "gmnotes": "GM notes"
     },
     "actor": {
       "characterSheet": "Character sheet",
@@ -119,8 +114,10 @@
         "essence": "Essence",
         "karma": "Karma",
         "karmaTotal": "Total",
+        "edge": "Edge",
         "anarchy": "Anarchy",
-        "edge": "Edge"
+        "sceneAnarchy": "Scene Anarchy",
+        "danger": "Danger"
       },
       "monitors": {
         "conditionMonitors": "Condition monitors",
@@ -234,12 +231,14 @@
     "monitor": {
       "physical": "Physical",
       "stun": "Stun",
-      "matrix": "Matrix"
+      "matrix": "Matrix",
+      "marks": "Marks"
     },
     "monitorLetter": {
       "physical": "P",
       "stun": "S",
-      "matrix": "M"
+      "matrix": "M",
+      "marks": "K"
     },
     "shadowampCategory": {
       "adeptPower": "Adept power",

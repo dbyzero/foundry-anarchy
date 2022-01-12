@@ -24,7 +24,7 @@ export class Modifiers {
     }
   };
 
-  static skillModifiers(actor, specialization = undefined) {
+  static skillModifiers(actor, skill, specialization = undefined) {
     return {
       specialization: Modifiers._prepareSpecialization(actor, specialization)
     }

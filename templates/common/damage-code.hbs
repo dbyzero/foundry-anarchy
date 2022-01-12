@@ -7,11 +7,15 @@
   }
 }}
 {{#if actorStrength}}
-  {{damageValue damage strength actorStrength}}
+  {{weaponDamageValue monitor damage strength actorStrength}}
 {{~else}}
-  {{damageCode damage strength}}{{~/if}}{{damageLetter monitor}}
-{{#if noArmor}}
+  {{weaponDamageCode monitor damage strength}}
+{{~/if~}}
+{{weaponDamageLetter monitor}}
+{{{iconCheckbarHit monitor}}}
+
+{{#if (eq armor 'noArmor')}}
 <span title="{{localize 'ANARCHY.item.weapon.noArmor'}}">{{{iconFA 'fas fa-user-times'}}}</span>
-{{else}}
+{{else if (eq armor 'withArmor')}}
 <span title="{{localize 'ANARCHY.item.weapon.withArmor'}}">{{{iconFA 'fas fa-user-shield'}}}</span>
 {{/if}}

@@ -38,6 +38,7 @@ import { ContactItem } from './item/contact-item.js';
 import { GearItem } from './item/gear-item.js';
 import { QualityItem } from './item/quality-item.js';
 import { ShadowampItem } from './item/shadowamp-item.js';
+import { Checkbars } from './common/checkbars.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -87,6 +88,7 @@ export class AnarchySystem {
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.item.sheet));
 
     Enums.init();
+    Checkbars.init();
 
     CONFIG.ANARCHY = ANARCHY;
 
@@ -124,12 +126,12 @@ export class AnarchySystem {
       types: ['character']
     });
     Actors.registerSheet(SYSTEM_NAME, VehicleActorSheet, {
-      label: game.i18n.localize(ANARCHY.actor.characterSheet),
+      label: game.i18n.localize(ANARCHY.actor.vehicleSheet),
       makeDefault: true,
       types: ['vehicle']
     });
     Actors.registerSheet(SYSTEM_NAME, DeviceActorSheet, {
-      label: game.i18n.localize(ANARCHY.actor.characterSheet),
+      label: game.i18n.localize(ANARCHY.actor.deviceSheet),
       makeDefault: true,
       types: ['device']
     });
