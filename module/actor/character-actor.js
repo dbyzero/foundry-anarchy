@@ -24,7 +24,7 @@ export class CharacterEssence {
 
 export class CharacterActor extends AnarchyBaseActor {
 
-  static _reindexWordIds(list) {
+  static reindexWordIds(list) {
     let index = 1;
     list.forEach(it => it.id = (index++));
     return list;
@@ -93,7 +93,7 @@ export class CharacterActor extends AnarchyBaseActor {
       return;
     }
     let newValues = mutate(this.data.data[wordType]);
-    CharacterActor._reindexWordIds(newValues);
+    CharacterActor.reindexWordIds(newValues);
     await this.update({ [`data.${wordType}`]: newValues });
   }
 
