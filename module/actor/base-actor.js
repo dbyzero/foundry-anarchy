@@ -33,6 +33,8 @@ export class AnarchyBaseActor extends Actor {
     return undefined;
   }
 
+  isCharacter() { return this.type == 'character'; }
+
   prepareData() {
     super.prepareData();
   }
