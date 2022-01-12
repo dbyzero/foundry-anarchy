@@ -10,6 +10,7 @@ export const CHECKBARS = {
   anarchy: { dataPath: 'data.counters.anarchy.value', max: it => it.data.data.counters.anarchy.max, resource: ANARCHY.common.anarchy.anarchy },
   edge: { dataPath: 'data.counters.edge.value', max: it => it.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge },
   structure: { dataPath: 'data.monitors.structure.value', max: it => it.data.data.monitors.structure.max, resource: ANARCHY.actor.monitors.structure },
+  marks: { dataPath: undefined, max: it => 9, resource: ANARCHY.actor.monitors.marks }
 
 }
 
@@ -25,6 +26,8 @@ export class Checkbars {
 
   static async setCounter(target, monitor, value, sourceActorId = undefined) {
     switch (monitor) {
+      case 'marks':
+        return await Checkbars.setActorMarks(target, value, sourceActorId);
       case 'anarchy':
         return await Checkbars.setAnarchy(target, value);
     }
@@ -73,4 +76,29 @@ export class Checkbars {
     });
   }
 
+  static getActorMarks(target, sourceActorId) {
+    return Checkbars._findActorMarks(target.data.data.monitors.matrix.marks, sourceActorId);
+  }
+
+  static async addActorMark(target, sourceActorId) {
+    const previous = Checkbars._findActorMarks(target.data.data.monitors.matrix.marks, sourceActorId);
+    Checkbars.setActorMarks(target, (previous.marks ?? 0) + 1, sourceActorId);
+  }
+
+  static async setActorMarks(target, value, sourceActorId) {
+    if (target.canReceiveMarks()) {
+      let targetMarks = deepClone(target.data.data.monitors.matrix.marks);
+      ErrorManager.checkOutOfRange(CHECKBARS.marks.resource, value, 0, CHECKBARS.marks.max(target));
+      const sourceActorMarks = Checkbars._findActorMarks(targetMarks, sourceActorId);
+      if (sourceActorMarks.marks == undefined) {
+        targetMarks.push(sourceActorMarks);
+      }
+      sourceActorMarks.marks = Math.max(0, value);
+      await target.update({ ['data.monitors.matrix.marks']: targetMarks.filter(target => target.marks > 0) });
+    }
+  }
+
+  static _findActorMarks(marks, sourceActorId) {
+    return marks.find(source => source.actorId == sourceActorId) ?? { actorId: sourceActorId };
+  }
 }

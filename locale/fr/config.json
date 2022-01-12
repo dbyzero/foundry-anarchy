@@ -79,6 +79,9 @@
         "attach": "Changement de propriétaire",
         "attachOrCopy": "Attacher le {ownedType} {ownedName} au {ownerType} {ownerName}"
       },
+      "selection": {
+        "actorSettingMarks": "Choisir l'acteur qui pose un Marks sur {name}"
+      },
       "errors": {
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
         "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]",
@@ -125,7 +128,8 @@
         "matrix": "Matriciel",
         "armor": "Armure",
         "structure": "Blindage",
-        "resistance": "Résistance"
+        "resistance": "Résistance",
+        "marks": "Marks"
       },
       "vehicle": {
         "handling": "Mobilité",

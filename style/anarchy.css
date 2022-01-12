@@ -220,7 +220,7 @@ img.owned-actor-img {
   opacity: 0.8;
   object-position: 50% 50%;
 }
-img.owner-actor-img {
+img.actor-reference-img {
   -ms-flex: 0 0 32px;
   flex: 0 0 32px;
   width: 32px;
@@ -405,6 +405,7 @@ img.checkbar-img:active {
   border: none;
 }
 
+.actor-marks .marks-group-list,
 .items-group .items-group-list {
   display: flex;
   flex-direction: row;
@@ -417,6 +418,11 @@ img.checkbar-img:active {
 :is(.npc-sheet,.device-sheet) .items-group .items-group-list {
   gap: 1px;
 }
+.actor-marks .marks-group-list .anarchy-marks {
+  display: flex;
+  flex-direction: row;
+}
+
 .items-group div.item {
   display: flex;
   flex-direction: row;

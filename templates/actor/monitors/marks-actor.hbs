@@ -1,0 +1,16 @@
+<div class="anarchy-marks" data-actor-id="{{actorId}}">
+  <div>
+    {{> 'systems/anarchy/templates/common/actor-reference.hbs' (getActor actorId)}}
+  </div>
+  <div>
+    {{> "systems/anarchy/templates/common/checkbar.hbs"
+    code='marks'
+    value=marks
+    max=(sum marks 1)
+    labelkey='ANARCHY.actor.monitors.marks'
+    iconChecked=(iconFA 'fas fa-bookmark')
+    iconUnchecked=(iconFA 'far fa-bookmark')
+    sourceActorId=actorId
+  }}
+  </div>
+</div>

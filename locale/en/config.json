@@ -79,6 +79,9 @@
         "attach": "Attach actor to owner",
         "attachOrCopy": "Attach {ownedType} {ownedName} to {ownerType} {ownerName}, or create a copy first"
       },
+      "selection": {
+        "actorSettingMarks": "Select actor setting Marks on {name}"
+      },
       "errors": {
         "insufficient": "Not enough {resource}: required {required}, available {available}",
         "outOfRange": "Cannot set {resource} to {value}, out of range [{min} , {max}]",
@@ -126,7 +129,8 @@
         "matrix": "Matrix",
         "armor": "Armor",
         "structure": "Structure",
-        "resistance": "Resistance"
+        "resistance": "Resistance",
+        "marks": "Marks"
       },
       "vehicle": {
         "handling": "Handling",

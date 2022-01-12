@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { TEMPLATE } from "../constants.js";
+import { TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { Modifiers } from "../modifiers.js";
 import { RollManager } from "../roll/roll-manager.js";
@@ -68,7 +68,7 @@ export class RollDialog extends Dialog {
       ENUMS: Enums.getEnums(attributeName => rollData.attributes.includes(attributeName)),
       ANARCHY: ANARCHY
     });
-    const html = await renderTemplate(`systems/anarchy/templates/dialog/roll-dialog.hbs`, rollData);
+    const html = await renderTemplate(`${TEMPLATES_PATH}/dialog/roll-dialog.hbs`, rollData);
     new RollDialog(rollData, html).render(true);
   }
 

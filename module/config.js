@@ -78,6 +78,9 @@ export const ANARCHY = {
             attach: 'ANARCHY.common.confirmation.attach',
             attachOrCopy: 'ANARCHY.common.confirmation.attachOrCopy',
         },
+        selection: {
+            actorSettingMarks: 'ANARCHY.common.selection.actorSettingMarks'
+        },
         errors: {
             insufficient: 'ANARCHY.common.errors.insufficient',
             outOfRange: 'ANARCHY.common.errors.outOfRange',
@@ -125,6 +128,7 @@ export const ANARCHY = {
             armor: 'ANARCHY.actor.monitors.armor',
             structure: 'ANARCHY.actor.monitors.structure',
             resistance: 'ANARCHY.actor.monitors.resistance',
+            marks: 'ANARCHY.actor.monitors.marks',
         },
         vehicle: {
             handling: 'ANARCHY.actor.vehicle.handling',

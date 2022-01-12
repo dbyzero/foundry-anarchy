@@ -38,7 +38,7 @@
       {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
     </div>
     <div class="section-group monitors-row">
-      <div class="anarchy-block">
+      <div class="anarchy-block flexcol">
         {{> "systems/anarchy/templates/actor/monitors/armor.hbs"}}
       </div>
       <div class="anarchy-block flexrow flex-wrap">
@@ -48,11 +48,16 @@
         {{> "systems/anarchy/templates/actor/monitors/stun.hbs"}}
       </div>
       <div class="anarchy-block flexcol">
-        {{> "systems/anarchy/templates/actor/monitors/edge.hbs"}}
-        {{#unless anarchy.isGM}}
+        {{#if (and anarchy.isGM)}}
         {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
-        {{/unless}}
+        {{/if}}
+        {{> "systems/anarchy/templates/actor/monitors/edge.hbs"}}
       </div>
+      {{#if data.data.monitors.matrix.canMark}}
+      <div class="anarchy-block">
+        {{> "systems/anarchy/templates/actor/monitors/marks.hbs"}}
+      </div>
+      {{/if}}
     </div>
 
     <div class="section-group">
@@ -63,7 +68,6 @@
       {{> "systems/anarchy/templates/actor/npc-parts/weapons.hbs"}}
       </div>
     </div>
-
     <div class="section-group items-group">
     {{> "systems/anarchy/templates/actor/npc-parts/shadowamps.hbs"}}
     </div>

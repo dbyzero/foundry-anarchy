@@ -40,6 +40,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/gmnotes.hbs',
   'systems/anarchy/templates/actor/parts/owned-actor.hbs',
   'systems/anarchy/templates/actor/parts/owned-actors.hbs',
+  'systems/anarchy/templates/actor/monitors/marks-actor.hbs',
+  'systems/anarchy/templates/actor/monitors/marks.hbs',
   'systems/anarchy/templates/actor/parts/ownership.hbs',
   'systems/anarchy/templates/actor/parts/qualities.hbs',
   'systems/anarchy/templates/actor/parts/quality.hbs',
@@ -78,11 +80,13 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/enum-value-label.hbs',
   'systems/anarchy/templates/common/item-control-add.hbs',
   'systems/anarchy/templates/common/item-controls.hbs',
+  'systems/anarchy/templates/common/actor-reference.hbs',
   // dialogs
   'systems/anarchy/templates/dialog/roll-modifier.hbs',
   'systems/anarchy/templates/dialog/parts/title-mode-attribute.hbs',
   'systems/anarchy/templates/dialog/parts/title-mode-skill.hbs',
   'systems/anarchy/templates/dialog/parts/title-mode-weapon.hbs',
+
   // apps
   'systems/anarchy/templates/app/gm-anarchy.hbs',
   'systems/anarchy/templates/app/gm-difficulty.hbs',
@@ -130,6 +134,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('iconFA', Icons.fontAwesome);
     Handlebars.registerHelper('iconSrc', Icons.iconSrc);
     Handlebars.registerHelper('iconD6', Icons.iconD6);
+    Handlebars.registerHelper('getActor', id => game.actors.get(id));
   }
 
   static hbsForLoop(start, end, options) {

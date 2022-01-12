@@ -1,0 +1,16 @@
+{{#if data.data.monitors.matrix.canMark}}
+<div class="flexcol anarchy-monitor actor-marks">
+  <label class="monitor-label">
+    {{localize 'ANARCHY.actor.monitors.marks'}}
+    <a class="item-control click-add-mark-actor" 
+        title="{{localize 'ANARCHY.common.add'}}">
+      {{{iconFA 'fas fa-fingerprint'}}}
+    </a>
+  </label>
+  <div class="marks-group-list">
+    {{#each data.data.monitors.matrix.marks as |marks|}}
+    {{> "systems/anarchy/templates/actor/monitors/marks-actor.hbs" marks}}
+    {{/each}}
+  </div>
+</div>
+{{/if}}

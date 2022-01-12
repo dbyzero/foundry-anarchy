@@ -78,7 +78,27 @@ export class AnarchyBaseActor extends Actor {
     await Checkbars.setCounter(this, monitor, value, sourceActorId);
   }
 
+  canSetMarks() {
+    return false;
   }
+
+  canReceiveMarks() {
+    return this.data.data.monitors?.matrix?.canMark;
+  }
+
+  async switchActorMarksCheck(index, checked, sourceActorId) {
+    await Checkbars.switchMonitorCheck(this, 'marks', index, checked, sourceActorId);
+  }
+
+  async addActorMark(sourceActorId) {
+    await Checkbars.addActorMark(this, sourceActorId);
+  }
+
+  getActorMarks(sourceActorId) {
+    return Checkbars.getActorMarks(this, sourceActorId)?.marks;
+
+  }
+
 
   getAnarchy() {
     if (this.hasGMAnarchy()) {
