@@ -27,8 +27,15 @@
       {{> "systems/anarchy/templates/actor/parts/attributes.hbs"}}
     </div>
     <div class="section-group monitors-row">
-      {{> "systems/anarchy/templates/common/matrix.hbs"}}
-      {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
+      <div class="anarchy-block">
+        {{> "systems/anarchy/templates/common/matrix.hbs"}}
+      </div>
+      <div class="anarchy-block">
+      {{> "systems/anarchy/templates/actor/monitors/marks.hbs"}}
+      </div>
+      <div class="anarchy-block">
+        {{> "systems/anarchy/templates/actor/monitors/anarchy.hbs"}}
+      </div>
     </div>
     <div class="section-group items-group">
     {{> "systems/anarchy/templates/actor/npc-parts/skills.hbs"}}

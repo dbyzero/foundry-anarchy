@@ -142,4 +142,8 @@ export class CharacterActor extends AnarchyBaseActor {
       + Misc.divint(this.data.data.monitors.physical.value, 3);
   }
 
+  canSetMarks() {
+    return this.data.data.capacity == TEMPLATE.capacities.emerged || this.items.find(it => it.isCyberdeck());
+  }
+
 }

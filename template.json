@@ -97,6 +97,7 @@
       "monitors-matrix": {
         "monitors": {
           "matrix": {
+            "canMark": true,
             "marks": [],
             "value": 0,
             "max": 6,
@@ -113,7 +114,6 @@
         "description",
         "attributes-living",
         "monitors-living",
-        "monitors-matrix",
         "counters",
         "ownership",
         "shortcuts"
@@ -189,6 +189,7 @@
       "monitors-matrix": {
         "monitors": {
           "matrix": {
+            "canMark": true,
             "marks": [],
             "value": 0,
             "max": 6,

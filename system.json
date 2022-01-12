@@ -17,7 +17,7 @@
   "version": "0.3.6",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
-  "templateVersion": 2,
+  "templateVersion": 3,
   "scripts": [],
   "esmodules": [
     "module/start.js"

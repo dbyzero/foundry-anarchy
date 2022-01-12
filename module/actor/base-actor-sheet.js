@@ -3,6 +3,7 @@ import { TEMPLATES_PATH } from "../constants.js";
 import { ConfirmationDialog } from "../confirmation.js";
 import { Misc } from "../misc.js";
 import { Enums } from "../enums.js";
+import { SelectActor } from "../dialog/select-actor.js";
 
 export class AnarchyBaseActorSheet extends ActorSheet {
 
@@ -71,12 +72,19 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     // counters & monitors
     html.find('a.click-checkbar-element').click(async event => {
       const handler = this.getEventItem(event) ?? this.actor;
+      const monitor = this.getEventMonitorCode(event);
+      const sourceActorId = monitor == 'marks' ?
+        $(event.currentTarget).closest('.anarchy-marks').attr('data-actor-id')
+        : undefined;
       await handler.switchMonitorCheck(
-        this.getEventMonitorCode(event),
+        monitor,
         this.getEventIndex(event),
-        this.isEventChecked(event)
+        this.isEventChecked(event),
+        sourceActorId
       );
-
+    });
+    html.find('a.click-add-mark-actor').click(async event => {
+      this.onClickAddMark();
     });
 
     // rolls
@@ -166,4 +174,13 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     super._onDropActor(event, dragData);
   }
 
+  async onClickAddMark() {
+    if (this.actor.canReceiveMarks()) {
+      const title = game.i18n.format(ANARCHY.common.selection.actorSettingMarks, { name: this.actor.name });
+      await SelectActor.selectActor(title,
+        game.actors.filter(actor => !this.actor.getActorMarks(actor.id) && actor.canSetMarks()),
+        actor => this.actor.addActorMark(actor.id)
+      );
+    }
+  }
 }

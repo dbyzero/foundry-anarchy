@@ -55,6 +55,7 @@ export class AnarchyBaseItem extends Item {
 
   isActive() { return this.data.data.equiped && this.data.data.active; }
 
+  canReceiveMarks() { return this.data.data.monitors?.matrix?.canMark; }
 
   async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
     if (this.parent) {
@@ -69,6 +70,13 @@ export class AnarchyBaseItem extends Item {
   async setCounter(monitor, value) {
     await Checkbars.setCounter(this, monitor, value);
   }
+
+  async switchActorMarksCheck(index, checked, sourceActorId) {
+    await Checkbars.switchMonitorCheck(this, 'marks', index, checked, sourceActorId);
+  }
+
+  async addActorMark(sourceActorId) {
+    await Checkbars.addActorMark(this, sourceActorId);
   }
 
 }

@@ -1,17 +1,8 @@
 <div class="item define-owned-actor" data-actor-id="{{id}}">
   <a class="click-owned-actor-view">
-  <img class="anarchy-img owned-actor-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
+    {{> 'systems/anarchy/templates/common/actor-reference.hbs' this}}
   </a>
-  <span>
-    <a class="click-owned-actor-view">
-      <label>
-        {{name}}
-      </label>
-    </a>
-  </span>
-  <div class="flex-shrink-end">
-    <a class="item-control click-owned-actor-unlink" title="{{localize ANARCHY.common.del}}">
-      {{{iconFA 'fas fa-trash'}}}
-    </a>
-  </div>
+  <a class="item-control click-owned-actor-unlink" title="{{localize ANARCHY.common.del}}">
+    {{{iconFA 'fas fa-trash'}}}
+  </a>
 </div>

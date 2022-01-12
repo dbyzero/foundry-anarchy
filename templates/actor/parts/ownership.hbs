@@ -1,7 +1,6 @@
 {{#if ownerActor}}
 <label class="info-label">
-  <img class="anarchy-img owner-actor-img" src="{{ownerActor.img}}"/>
-  {{ownerActor.name}}
+  {{> 'systems/anarchy/templates/common/actor-reference.hbs' ownerActor}}
   <a class="item-control click-owner-actor-unlink" title="{{localize ANARCHY.common.del}}">
     {{{iconFA 'fas fa-trash'}}}
   </a>
