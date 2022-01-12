@@ -1,9 +1,8 @@
 import { ANARCHY } from "../config.js";
 import { BASE_MONITOR, TEMPLATE } from "../constants.js";
-import { AnarchyBaseActor, CHECKBARS } from "./base-actor.js";
+import { AnarchyBaseActor } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
-import { AnarchyUsers } from "../users.js";
 
 const essenceRange = [
   { from: 5, to: 6, adjust: 0 },
@@ -29,6 +28,8 @@ export class CharacterActor extends AnarchyBaseActor {
     list.forEach(it => it.id = (index++));
     return list;
   }
+
+  hasOwnAnarchy() { return this.hasPlayerOwner; }
 
   prepareData() {
     super.prepareData();
@@ -97,34 +98,8 @@ export class CharacterActor extends AnarchyBaseActor {
     await this.update({ [`data.${wordType}`]: newValues });
   }
 
-  async setAnarchy(newValue) {
-    if (this.hasPlayerOwner) {
-      const current = this.data.data.counters.anarchy.value;
-      ErrorManager.checkOutOfRange(CHECKBARS.anarchy.resource, newValue, 0, CHECKBARS.anarchy.maxForActor(this));
-      if (!game.user.isGM) {
-        AnarchyUsers.blindMessageToGM({
-          from: game.user.id,
-          content: game.i18n.format(ANARCHY.gmManager.playerChangedAnarchy,
-            {
-              user: game.user.name,
-              actor: this.name,
-              from: current,
-              to: newValue
-            })
-        });
-      }
-      if (newValue < current) {
-        await game.system.anarchy.gmManager.gmAnarchy.actorGivesAnarchyToGM(this, current - newValue);
-      }
-      await this.update({ [`${CHECKBARS.anarchy.dataPath}`]: newValue });
-    }
-    else {
-      super.setAnarchy(newValue);
-    }
-  }
-
   getAnarchy() {
-    if (this.hasPlayerOwner) {
+    if (this.hasOwnAnarchy()) {
       return {
         value: this.data.data.counters.anarchy.value,
         max: this.data.data.counters.anarchy.max,

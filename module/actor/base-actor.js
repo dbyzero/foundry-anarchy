@@ -1,17 +1,6 @@
 import { AttributeActions } from "../attribute-actions.js";
-import { ANARCHY } from "../config.js";
+import { Checkbars } from "../common/checkbars.js";
 import { RollDialog } from "../dialog/roll-dialog.js";
-import { ErrorManager } from "../error-manager.js";
-
-export const CHECKBARS = {
-  physical: { dataPath: 'data.monitors.physical.value', maxForActor: actor => actor.data.data.monitors.physical.max, resource: ANARCHY.actor.monitors.physical },
-  stun: { dataPath: 'data.monitors.stun.value', maxForActor: actor => actor.data.data.monitors.stun.max, resource: ANARCHY.actor.monitors.stun },
-  matrix: { dataPath: 'data.monitors.matrix.value', maxForActor: actor => actor.data.data.monitors.matrix.max, resource: ANARCHY.actor.monitors.matrix },
-  armor: { dataPath: 'data.monitors.armor.value', maxForActor: actor => actor.data.data.monitors.armor.max, resource: ANARCHY.actor.monitors.armor },
-  anarchy: { dataPath: 'data.counters.anarchy.value', maxForActor: actor => actor.data.data.counters.anarchy.max, resource: ANARCHY.common.anarchy.anarchy },
-  edge: { dataPath: 'data.counters.edge.value', maxForActor: actor => actor.data.data.attributes.edge.value, resource: ANARCHY.actor.counters.edge },
-  structure: { dataPath: 'data.monitors.structure.value', maxForActor: actor => actor.data.data.monitors.structure.max, resource: ANARCHY.actor.monitors.structure }
-}
 
 export class AnarchyBaseActor extends Actor {
 
@@ -34,6 +23,9 @@ export class AnarchyBaseActor extends Actor {
   }
 
   isCharacter() { return this.type == 'character'; }
+
+  hasOwnAnarchy() { return false; }
+  hasGMAnarchy() { return !this.hasPlayerOwner; }
 
   prepareData() {
     super.prepareData();
@@ -78,34 +70,22 @@ export class AnarchyBaseActor extends Actor {
     await RollDialog.actorWeaponRoll(this, skill, weapon);
   }
 
-  async switchMonitorCheck(monitor, index, checked) {
-    const newValue = index + (checked ? 0 : 1);
-    await this.setCounter(monitor, newValue);
+  async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
+    await Checkbars.switchMonitorCheck(this, monitor, index, checked, sourceActorId);
   }
 
-  async setCounter(monitor, value) {
-    if (monitor == 'anarchy') {
-      await this.setAnarchy(value);
-    }
-    else if (CHECKBARS[monitor]) {
-      ErrorManager.checkOutOfRange(CHECKBARS[monitor].resource, value, 0, CHECKBARS[monitor].maxForActor(this));
-      await this.update({ [`${CHECKBARS[monitor].dataPath}`]: value });
-    }
+  async setCounter(monitor, value, sourceActorId = undefined) {
+    await Checkbars.setCounter(this, monitor, value, sourceActorId);
   }
 
-  async setAnarchy(newValue) {
-    if (!this.hasPlayerOwner) {
-      await game.system.anarchy.gmManager.gmAnarchy.setAnarchy(newValue);
-      this.render();
-    }
   }
 
   getAnarchy() {
-    if (!this.hasPlayerOwner) {
+    if (this.hasGMAnarchy()) {
       return game.system.anarchy.gmAnarchy.getAnarchy();
     }
     return {
-      isGM: !this.hasPlayerOwner,
+      isGM: false,
       value: 0,
       max: 0,
       scene: 0
@@ -175,4 +155,5 @@ export class AnarchyBaseActor extends Actor {
   getOwnedActors() {
     return game.actors.filter(it => it.data.data.ownerId == this.id);
   }
+
 }
