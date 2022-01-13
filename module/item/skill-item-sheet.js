@@ -1,3 +1,4 @@
+import { TEMPLATE } from "../constants.js";
 import { BaseItemSheet } from "./base-item-sheet.js";
 
 export class SkillItemSheet extends BaseItemSheet {
@@ -29,7 +30,7 @@ export class SkillItemSheet extends BaseItemSheet {
 
     html.find('.check-knowledge').click(async event => {
       const checkKnowledge = event.currentTarget.checked;
-      const newAttribute = checkKnowledge ? 'knowledge' : game.system.anarchy.skills.get(this.object.data.data.code)?.attribute;
+      const newAttribute = checkKnowledge ? 'knowledge' : game.system.anarchy.skills.get(this.object.data.data.code)?.attribute ?? '';
       await this.object.update({ "data.attribute": newAttribute });
       this.render(true);
     });
