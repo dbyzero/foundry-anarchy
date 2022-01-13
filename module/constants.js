@@ -52,5 +52,17 @@ export const TEMPLATE = {
     mundane: 'mundane',
     awakened: 'awakened',
     emerged: 'emerged',
+  },
+  monitors: {
+    stun: 'stun',
+    armor: 'armor',
+    physical: 'physical',
+    structure: 'structure',
+    matrix: 'matrix',
+    marks: 'marks',
+    anarchy: 'anarchy',
+    danger: 'danger',
+    sceneAnarchy: 'sceneAnarchy',
+    edge: 'edge',
   }
 }
