@@ -19,7 +19,7 @@ export class GMAnarchy {
     game.settings.register(SYSTEM_NAME, GM_SCENE_ANARCHY, {
       scope: "world",
       config: false,
-      default: 1,
+      default: 0,
       type: Number
     });
 
@@ -67,9 +67,14 @@ export class GMAnarchy {
   }
 
   async setAnarchy(monitor, newAnarchy) {
-    this.anarchy = newAnarchy;
-    const setting = monitor == TEMPLATE.monitors.sceneAnarchy ? GM_SCENE_ANARCHY : GM_ANARCHY;
-    game.settings.set(SYSTEM_NAME, setting, newAnarchy);
+    if (monitor == TEMPLATE.monitors.sceneAnarchy) {
+      this.sceneAnarchy = newAnarchy;
+      game.settings.set(SYSTEM_NAME, GM_SCENE_ANARCHY, newAnarchy);
+    }
+    else {
+      this.anarchy = newAnarchy;
+      game.settings.set(SYSTEM_NAME, GM_ANARCHY, newAnarchy);
+    }
     await this._rebuild();
     this._syncGMAnarchySheets();
   }
@@ -85,12 +90,11 @@ export class GMAnarchy {
   }
 
   async _onClickAnarchyCheckbar(event) {
-    const current = $(event.currentTarget);
-    const index = Number.parseInt(current.attr('data-index'));
-    const isChecked = current.attr('data-checked') == 'true';
+    const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
+    const index = Number.parseInt($(event.currentTarget).attr('data-index'));
+    const isChecked = $(event.currentTarget).attr('data-checked') == 'true';
     const newAnarchy = index + (isChecked ? 0 : 1);
-
-    await this.setAnarchy(newAnarchy);
+    await this.setAnarchy(monitor, newAnarchy);
   }
 
   async _renderBar() {
