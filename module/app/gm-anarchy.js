@@ -1,16 +1,15 @@
 import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
-import { Icons } from "../icons.js";
 import { RemoteCall } from "../remotecall.js";
 
-const ANARCHY_GM = "anarchy-gm";
-const GM_ADD_ANARCHY = 'GMManager.addAnarchy';
+const GM_ANARCHY = "anarchy-gm";
+const GM_ADD_ANARCHY = 'GMAnarchy.addAnarchy';
 
 export class GMAnarchy {
 
   constructor() {
-    game.settings.register(SYSTEM_NAME, ANARCHY_GM, {
+    game.settings.register(SYSTEM_NAME, GM_ANARCHY, {
       scope: "world",
       config: false,
       default: 1,
@@ -18,10 +17,10 @@ export class GMAnarchy {
     });
 
     RemoteCall.register(GM_ADD_ANARCHY, {
-      callback: data => game.system.anarchy.gmManager.gmAnarchy.addAnarchy(data),
+      callback: data => game.system.anarchy.gmAnarchy.addAnarchy(data),
       condition: user => user.isGM
     });
-    this.anarchy = game.settings.get(SYSTEM_NAME, ANARCHY_GM);
+    this.anarchy = game.settings.get(SYSTEM_NAME, GM_ANARCHY);
   }
 
   getAnarchy() {

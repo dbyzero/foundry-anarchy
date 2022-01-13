@@ -18,7 +18,7 @@
     },
     "gmManager": {
       "title": "Gestion du MJ",
-      "playerChangedAnarchy": "Le joueur {user} a passé l'anarchy de {actor} de {from} à {to}",
+      "playerChangedAnarchy": "Le joueur {user} a passé {monitor} de {actor} de {from} à {to}",
       "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchy de {actor}"
     },
     "chat": {
