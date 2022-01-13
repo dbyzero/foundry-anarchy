@@ -23,10 +23,13 @@
         <input class="type-numeric" type="number" data-dtype="Number"
           name="data.damage" value="{{data.data.damage}}"
         />
-
-        <input class="item-field-value" name="data.strength" type="checkbox" {{checked data.data.strength}} >
-          <label >{{localize 'ANARCHY.item.weapon.strength'}}</label>
-        </input>
+        <span>+
+        <select name="data.damageAttribute" data-dtype="String">
+            {{#select data.data.damageAttribute}}
+            {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
+            {{/select}}
+        </select>
+        /2</span>
       </div>
     </div>
     <div class="form-group">

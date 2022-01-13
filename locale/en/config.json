@@ -190,7 +190,7 @@
         "damageShort": "DV",
         "areaShort": "Area",
         "noArmorShort": "(AP)",
-        "meleeWithoutActor": "No Actor",
+        "weaponWithoutActor": "No Actor",
         "range": {
           "max": "Maximum range"
         }
