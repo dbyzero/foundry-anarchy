@@ -118,7 +118,7 @@ export class AnarchyBaseActor extends Actor {
 
   async spendAnarchy(count) {
     if (count && !this.hasPlayerOwner) {
-      await game.system.anarchy.gmManager.gmAnarchy.npcConsumesAnarchy(this, count);
+      await game.system.anarchy.gmAnarchy.npcConsumesAnarchy(this, count);
     }
   }
 

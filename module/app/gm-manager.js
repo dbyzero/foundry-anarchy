@@ -46,7 +46,11 @@ export class GMManager extends Application {
     options.width = "auto";
     return options;
   }
-
+  async render(force, options) {
+    if (game.user.isGM) {
+      await super.render(force, options);
+    }
+  }
   getData() {
     this.handleDrag.setPosition();
     return {

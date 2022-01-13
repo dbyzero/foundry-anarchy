@@ -151,7 +151,7 @@ export class Checkbars {
     }
 
     if (target.hasGMAnarchy()) {
-      await game.system.anarchy.gmManager.gmAnarchy.setAnarchy(newValue);
+      await game.system.anarchy.gmAnarchy.setAnarchy(newValue);
       target.render();
       return;
     }
@@ -159,7 +159,7 @@ export class Checkbars {
     const current = target.data.data.counters.anarchy.value;
     await Checkbars.setCheckbar(target, monitor, newValue);
     if (newValue < current) {
-      await game.system.anarchy.gmManager.gmAnarchy.actorGivesAnarchyToGM(target, current - newValue);
+      await game.system.anarchy.gmAnarchy.actorGivesAnarchyToGM(target, current - newValue);
     }
     if (!game.user.isGM) {
       Checkbars.notifyAnarchyChange(target, current, newValue);
