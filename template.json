@@ -272,6 +272,7 @@
       "specialization": "",
       "strength": true,
       "damage": 0,
+      "damageAttribute": "",
       "noArmor": false,
       "monitor": "stun",
       "area": "",

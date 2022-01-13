@@ -1,4 +1,4 @@
-import { ICONS_PATH } from "../constants.js";
+import { ICONS_PATH, TEMPLATE } from "../constants.js";
 import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { AnarchyBaseItem } from "./anarchy-base-item.js";
@@ -16,36 +16,42 @@ export class WeaponItem extends AnarchyBaseItem {
 
   getDamageValue() {
     return WeaponItem.damageValue(
+      this.data.data.monitor,
       this.data.data.damage,
-      this.data.data.strength,
-      this.parent?.data.data.attribute.strength.value
+      this.data.data.damageAttribute,
+      this.parent?.data.data.attribute[this.data.data.damageAttribute]?.value
     );
   }
 
-  static damageValue(monitor, damage, strength, actorStrength) {
-    if (monitor == 'marks') {
-      return '';
-    }
+  static damageValue(monitor, damage, damageAttribute, actorAttribute) {
     let dmg = Number(damage);
-    if (strength) {
-      if (actorStrength !== undefined) {
-        dmg = dmg + Math.ceil(Number(actorStrength) / 2);
+    if (damageAttribute) {
+      if (actorAttribute !== undefined) {
+        dmg = dmg + Math.ceil(Number(actorAttribute) / 2);
       }
       else {
-        console.warn('Melee weapon not attached to an actor');
-        return game.i18n.localize(ANARCHY.item.weapon.meleeWithoutActor);
+        console.warn('Weapon not attached to an actor');
+        return game.i18n.localize(ANARCHY.item.weapon.weaponWithoutActor);
       }
     }
     return dmg;
   }
 
-
   getDamageCode() {
     return WeaponItem.damageCode(
       this.data.data.monitor,
       this.data.data.damage,
-      this.data.data.strength,
+      this.data.data.damageAttribute,
     );
+  }
+
+  static damageCode(monitor, damage, damageAttribute) {
+    let code = '';
+    if (damageAttribute && ANARCHY.attributes[damageAttribute]) {
+      code += game.i18n.localize(ANARCHY.attributes[damageAttribute]).substring(0, 3).toUpperCase() + '/2 + ';
+    }
+    code += String(damage);
+    return code;
   }
 
   static armorMode(monitor, noArmor) {
@@ -53,18 +59,6 @@ export class WeaponItem extends AnarchyBaseItem {
       return noArmor ? 'noArmor' : 'withArmor'
     }
     return '';
-  }
-
-  static damageCode(monitor, damage, strength) {
-    if (monitor == 'marks') {
-      return '';
-    }
-    let code = '';
-    if (strength) {
-      code += game.i18n.localize(ANARCHY.attributes.strength).substring(0, 3).toUpperCase() + '/2 + ';
-    }
-    code += String(damage);
-    return code;
   }
 
   getRanges() {

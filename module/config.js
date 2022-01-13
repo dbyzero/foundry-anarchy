@@ -189,7 +189,7 @@ export const ANARCHY = {
             damageShort: 'ANARCHY.item.weapon.damageShort',
             areaShort: 'ANARCHY.item.weapon.areaShort',
             noArmorShort: 'ANARCHY.item.weapon.noArmorShort',
-            meleeWithoutActor: 'ANARCHY.item.weapon.meleeWithoutActor',
+            weaponWithoutActor: 'ANARCHY.item.weapon.weaponWithoutActor',
             range: {
                 max: 'ANARCHY.item.weapon.range.max'
             }

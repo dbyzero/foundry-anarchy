@@ -1,8 +1,8 @@
 <br>
 {{localize 'ANARCHY.item.weapon.damage'}}
 {{> 'systems/anarchy/templates/common/damage-code.hbs'
-    strength=weapon.data.data.strength
-    actorStrength=actor.data.data.attributes.strength.value
+    damageAttribute=weapon.data.data.damageAttribute
+    actorAttribute=(actorAttribute weapon.data.data.damageAttribute actor)
     damage=weapon.data.data.damage
     monitor=weapon.data.data.monitor
     armor=(weaponArmorMode weapon.data.data.monitor weapon.data.data.noArmor)

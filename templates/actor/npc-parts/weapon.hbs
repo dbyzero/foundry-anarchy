@@ -4,8 +4,8 @@
     <a class="click-weapon-roll">
       {{name}}, 
       {{> 'systems/anarchy/templates/common/damage-code.hbs'
-        strength=data.strength
-        actorStrength=@root.actor.data.data.attributes.strength.value
+        damageAttribute=data.damageAttribute
+        actorAttribute=(actorAttribute data.damageAttribute @root.actor)
         damage=data.damage
         monitor=data.monitor
         armor=(weaponArmorMode data.monitor data.noArmor)

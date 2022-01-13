@@ -1,5 +1,5 @@
 import { CharacterActor } from "./actor/character-actor.js";
-import { LOG_HEAD, SYSTEM_NAME } from "./constants.js";
+import { LOG_HEAD, SYSTEM_NAME, TEMPLATE } from "./constants.js";
 
 export const DECLARE_MIGRATIONS = 'anarchy-declareMigration';
 
@@ -11,7 +11,7 @@ export class Migration {
   async migrate() { return () => { } };
 }
 
-class MigrationMoveWordsInObjects extends Migration {
+class _0_3_1_MigrationMoveWordsInObjects extends Migration {
   get version() { return '0.3.1' }
   get code() { return 'move-words-in-objects'; }
 
@@ -30,8 +30,30 @@ class MigrationMoveWordsInObjects extends Migration {
   }
 }
 
+class _0_3_8_MigrateWeaponDamage extends Migration {
+  get version() { return '0.3.8' }
+  get code() { return 'migrate-weapons-strength-damage'; }
+
+  async migrate() {
+    await game.actors.forEach(async actor => {
+      await this.actor.updateEmbeddedDocuments(actor.items.filter(item => this._isStrengthDamageItem(item))
+        .map(item => this._fixItemDamage(item)));
+    });
+    await Item.updateDocuments(game.items.filter(item => this._isStrengthDamageItem(item))
+      .map(item => this._fixItemDamage(item)));
+  }
+
+  _isStrengthDamageItem(it) {
+    return it.type == 'weapon' && it.data.data.strength;
+  }
+  _fixItemDamage(item) {
+    return { _id: item.id, 'data.damageAttribute': TEMPLATE.attributes.strength };
+  }
+}
+
 const SYSTEM_MIGRATIONS = [
-  new MigrationMoveWordsInObjects()
+  new _0_3_1_MigrationMoveWordsInObjects(),
+  new _0_3_8_MigrateWeaponDamage()
 ];
 
 
