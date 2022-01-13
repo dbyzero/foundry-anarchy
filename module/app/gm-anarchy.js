@@ -1,9 +1,10 @@
 import { ANARCHY } from "../config.js";
-import { SYSTEM_NAME } from "../constants.js";
+import { SYSTEM_NAME, TEMPLATE } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
 import { RemoteCall } from "../remotecall.js";
 
 const GM_ANARCHY = "anarchy-gm";
+const GM_SCENE_ANARCHY = "scene-anarchy-gm";
 const GM_ADD_ANARCHY = 'GMAnarchy.addAnarchy';
 
 export class GMAnarchy {
@@ -15,12 +16,19 @@ export class GMAnarchy {
       default: 1,
       type: Number
     });
+    game.settings.register(SYSTEM_NAME, GM_SCENE_ANARCHY, {
+      scope: "world",
+      config: false,
+      default: 1,
+      type: Number
+    });
 
     RemoteCall.register(GM_ADD_ANARCHY, {
       callback: data => game.system.anarchy.gmAnarchy.addAnarchy(data),
       condition: user => user.isGM
     });
     this.anarchy = game.settings.get(SYSTEM_NAME, GM_ANARCHY);
+    this.sceneAnarchy = game.settings.get(SYSTEM_NAME, GM_SCENE_ANARCHY);
   }
 
   getAnarchy() {
@@ -28,7 +36,7 @@ export class GMAnarchy {
       isGM: true,
       value: this.anarchy,
       max: this.anarchy + 1,
-      scene: 0
+      scene: this.sceneAnarchy
     }
   }
 
@@ -54,13 +62,14 @@ export class GMAnarchy {
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
       ErrorManager.checkSufficient(ANARCHY.actor.counters.danger, -count, this.anarchy);
-      await this.setAnarchy(this.anarchy + count);
+      await this.setAnarchy(TEMPLATE.monitors.anarchy, this.anarchy + count);
     }
   }
 
-  async setAnarchy(newAnarchy) {
+  async setAnarchy(monitor, newAnarchy) {
     this.anarchy = newAnarchy;
-    game.settings.set(SYSTEM_NAME, ANARCHY_GM, newAnarchy);
+    const setting = monitor == TEMPLATE.monitors.sceneAnarchy ? GM_SCENE_ANARCHY : GM_ANARCHY;
+    game.settings.set(SYSTEM_NAME, setting, newAnarchy);
     await this._rebuild();
     this._syncGMAnarchySheets();
   }

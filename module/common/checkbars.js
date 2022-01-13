@@ -132,7 +132,7 @@ export class Checkbars {
       case 'marks':
         return await Checkbars.setActorMarks(target, value, sourceActorId);
       case 'anarchy':
-        return await Checkbars.setAnarchy(target, value);
+        return await Checkbars.setAnarchy(target, monitor, value);
     }
     return await Checkbars.setCheckbar(target, monitor, value);
   }
@@ -145,34 +145,35 @@ export class Checkbars {
     }
   }
 
-  static async setAnarchy(target, newValue) {
+  static async setAnarchy(target, monitor, newValue) {
     if (!target.hasOwnAnarchy()) {
       return;
     }
 
     if (target.hasGMAnarchy()) {
-      await game.system.anarchy.gmAnarchy.setAnarchy(newValue);
+      await game.system.anarchy.gmAnarchy.setAnarchy(monitor, newValue);
       target.render();
       return;
     }
 
-    const current = target.data.data.counters.anarchy.value;
+    const current = target.data.data.counters[monitor].value;
     await Checkbars.setCheckbar(target, monitor, newValue);
     if (newValue < current) {
       await game.system.anarchy.gmAnarchy.actorGivesAnarchyToGM(target, current - newValue);
     }
     if (!game.user.isGM) {
-      Checkbars.notifyAnarchyChange(target, current, newValue);
+      Checkbars.notifyAnarchyChange(target, monitor, current, newValue);
     }
   }
 
-  static notifyAnarchyChange(target, current, newValue) {
+  static notifyAnarchyChange(target, monitor, current, newValue) {
     AnarchyUsers.blindMessageToGM({
       from: game.user.id,
       content: game.i18n.format(ANARCHY.gmManager.playerChangedAnarchy,
         {
           user: game.user.name,
           actor: target.name,
+          monitor: game.i18n.localize(ANARCHY.actor.counters[monitor]),
           from: current,
           to: newValue
         })
