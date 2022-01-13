@@ -244,6 +244,7 @@
       "attribute": "knowledge",
       "value": 0,
       "specialization": "",
+      "hasDrain": false,
       "listspecialization": []
     },
     "quality": {
