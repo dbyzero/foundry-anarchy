@@ -75,6 +75,19 @@
   background: var(--darkglass-background);
   color: var(--darkglass-color-font);
 }
+
+.style-darkglass .window-content::after,
+#gm-manager.style-darkglass::after {
+  content: "";
+  background: repeat center/50% url("background-texture.webp");
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
 #gm-manager.style-darkglass header {
   border-bottom: 1px solid var(--darkglass-color-border-light);
   color: var(--darkglass-color-font);
