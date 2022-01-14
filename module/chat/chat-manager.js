@@ -1,6 +1,6 @@
 import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
-import { HOOK_GET_HANDLEPAR_PARTIALS } from "../handlebars-manager.js";
+import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { RemoteCall } from "../remotecall.js";
 import { RollManager } from "../roll/roll-manager.js";
 
@@ -29,7 +29,7 @@ export class ChatManager {
       condition: user => user.isGM
     });
 
-    Hooks.on(HOOK_GET_HANDLEPAR_PARTIALS, list => HBS_CHAT_TEMPLATES.forEach(it => list.push(it)));
+    Hooks.on(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, list => HBS_CHAT_TEMPLATES.forEach(it => list.push(it)));
   }
 
 

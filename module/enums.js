@@ -1,5 +1,5 @@
 import { ANARCHY } from "./config.js";
-import { HOOK_GET_HANDLEPAR_HELPERS } from "./handlebars-manager.js";
+import { ANARCHY_HOOKS } from "./hooks-manager.js";
 import { Misc } from "./misc.js";
 
 const actorWordTypes = {
@@ -35,7 +35,7 @@ export class Enums {
     Enums.hbsVehicleCategories = Enums.mapObjetToValueLabel(ANARCHY.vehicleCategory);
     Enums.sortedAttributeKeys = Object.keys(ANARCHY.attributes);
 
-    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => Enums.registerHandleBarHelpers());
+    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => Enums.registerHandleBarHelpers());
   }
 
   static registerHandleBarHelpers() {

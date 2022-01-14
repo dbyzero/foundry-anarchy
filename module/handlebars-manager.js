@@ -1,13 +1,10 @@
 import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
+import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 import { Icons } from "./icons.js";
 import { WeaponItem } from "./item/weapon-item.js";
 import { Misc } from "./misc.js";
-
-
-export const HOOK_GET_HANDLEPAR_PARTIALS = "anarchy-getHandlebarPartials";
-export const HOOK_GET_HANDLEPAR_HELPERS = "anarchy-getHandlebarHelpers";
 
 const HBS_PARTIAL_TEMPLATES = [
   // -- monitors
@@ -96,19 +93,19 @@ const HBS_PARTIAL_TEMPLATES = [
 export class HandlebarsManager {
 
   constructor() {
-    game.system.anarchy.hooks.register(HOOK_GET_HANDLEPAR_PARTIALS);
-    game.system.anarchy.hooks.register(HOOK_GET_HANDLEPAR_HELPERS);
-    Hooks.once(HOOK_GET_HANDLEPAR_PARTIALS, list => HBS_PARTIAL_TEMPLATES.forEach(tpl => list.push(tpl)));
-    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => this.registerBasicHelpers());
+    HooksManager.register(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS);
+    HooksManager.register(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS);
+    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, list => HBS_PARTIAL_TEMPLATES.forEach(tpl => list.push(tpl)));
+    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => this.registerBasicHelpers());
     Hooks.once('ready', () => this.onReady());
   }
 
   async onReady() {
     let partials = [];
-    Hooks.callAll(HOOK_GET_HANDLEPAR_HELPERS);
-    Hooks.off(HOOK_GET_HANDLEPAR_HELPERS, () => { });
-    Hooks.callAll(HOOK_GET_HANDLEPAR_PARTIALS, partials);
-    Hooks.off(HOOK_GET_HANDLEPAR_PARTIALS, () => { });
+    Hooks.callAll(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS);
+    Hooks.off(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => { });
+    Hooks.callAll(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, partials);
+    Hooks.off(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, () => { });
     await loadTemplates(Misc.distinct(partials));
   }
 

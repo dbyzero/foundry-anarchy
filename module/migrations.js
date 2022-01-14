@@ -1,5 +1,6 @@
 import { CharacterActor } from "./actor/character-actor.js";
 import { LOG_HEAD, SYSTEM_NAME, TEMPLATE } from "./constants.js";
+import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 
 export const DECLARE_MIGRATIONS = 'anarchy-declareMigration';
 
@@ -59,9 +60,9 @@ const SYSTEM_MIGRATIONS = [
 
 export class Migrations {
   constructor() {
-    game.system.anarchy.hooks.register(DECLARE_MIGRATIONS);
+    HooksManager.register(ANARCHY_HOOKS.DECLARE_MIGRATIONS);
     this.migrations = []
-    Hooks.once(DECLARE_MIGRATIONS, list => SYSTEM_MIGRATIONS.forEach(m => list.push(m)));
+    Hooks.once(ANARCHY_HOOKS.DECLARE_MIGRATIONS, list => SYSTEM_MIGRATIONS.forEach(m => list.push(m)));
 
     game.settings.register(SYSTEM_NAME, "systemMigrationVersion", {
       name: "System Migration Version",
@@ -75,8 +76,8 @@ export class Migrations {
   migrate() {
     const currentVersion = game.settings.get(SYSTEM_NAME, "systemMigrationVersion");
     if (isNewerVersion(game.system.data.version, currentVersion)) {
-      Hooks.callAll(DECLARE_MIGRATIONS, this.migrations);
-      Hooks.off(DECLARE_MIGRATIONS, () => { });
+      Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, this.migrations);
+      Hooks.off(ANARCHY_HOOKS.DECLARE_MIGRATIONS, () => { });
       this.migrations = this.migrations.filter(m => isNewerVersion(m.version, currentVersion));
       if (this.migrations.length > 0) {
 
