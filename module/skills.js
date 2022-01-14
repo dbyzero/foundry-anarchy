@@ -1,8 +1,7 @@
 import { ANARCHY } from "./config.js";
-import { ICONS_SKILLS_PATH, LOG_HEAD, SYSTEM_NAME, SYSTEM_PATH, TEMPLATE } from "./constants.js";
+import { ICONS_SKILLS_PATH, SYSTEM_NAME, SYSTEM_PATH, TEMPLATE } from "./constants.js";
+import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 import { Misc } from "./misc.js";
-
-export const HOOK_PROVIDE_SKILL_SET = "anarchy-provideSkillSet";
 
 const SELECTED_SKILL_LIST = "selected-skill-list";
 const SELECTED_SKILL_LIST_KEY = `${SYSTEM_NAME}.${SELECTED_SKILL_LIST}`;
@@ -42,16 +41,18 @@ const ANARCHY_SKILLS = [
 export class Skills {
 
   constructor() {
-    game.system.anarchy.hooks.register(HOOK_PROVIDE_SKILL_SET);
-    Hooks.on(HOOK_PROVIDE_SKILL_SET, provide => provide('shadowrun-anarchy-en', 'Shadowrun Anarchy EN', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'en'), { lang: 'en' }));
-    Hooks.on(HOOK_PROVIDE_SKILL_SET, provide => provide('shadowrun-anarchy-fr', 'Shadowrun Anarchy FR', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'fr'), { lang: 'fr' }));
-    Hooks.once('ready', () => this.onReady());
-    Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
     this.skillSets = {};
+    HooksManager.register(ANARCHY_HOOKS.PROVIDE_SKILL_SET);
+    Hooks.on(ANARCHY_HOOKS.PROVIDE_SKILL_SET, provide => {
+      provide('shadowrun-anarchy-en', 'Shadowrun Anarchy EN', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'en'), { lang: 'en' });
+      provide('shadowrun-anarchy-fr', 'Shadowrun Anarchy FR', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'fr'), { lang: 'fr' });
+    });
+    Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
+    Hooks.once('ready', () => this.onReady());
   }
 
   async onReady() {
-    Hooks.callAll(HOOK_PROVIDE_SKILL_SET, (name, lang, skills, details) => {
+    Hooks.callAll(ANARCHY_HOOKS.PROVIDE_SKILL_SET, (name, lang, skills, details) => {
       const skillSet = this._prepareSkillSet(name, lang, skills, details)
       if (skillSet) {
         this.skillSets[skillSet.id] = skillSet;

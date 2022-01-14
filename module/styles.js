@@ -1,7 +1,6 @@
 import { ANARCHY } from "./config.js";
 import { LOG_HEAD, SYSTEM_NAME } from "./constants.js";
-
-export const HOOK_LOAD_STYLES = 'anarchy-loadStyles';
+import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 
 const DEFAULT_CSS_CLASS = 'default-css-class';
 const CSS_DEFAULT = 'style-anarchy-shadowrun';
@@ -17,16 +16,19 @@ const DEFAULT_STYLES = [
  */
 export class Styles {
   constructor() {
-    game.system.anarchy.hooks.register(HOOK_LOAD_STYLES);
-    Hooks.once(HOOK_LOAD_STYLES, styles => DEFAULT_STYLES.forEach(it => styles[it.cssClass] = it.name));
-    Hooks.once('ready', () => this.onReady());
     this.availableStyles = {};
+    HooksManager.register(ANARCHY_HOOKS.LOAD_STYLES);
+    HooksManager.register(ANARCHY_HOOKS.REGISTER_STYLES);
+
+    Hooks.once(ANARCHY_HOOKS.REGISTER_STYLES, register => DEFAULT_STYLES.forEach(it => register(it.cssClass, it.name)));
+    Hooks.once('ready', () => this.onReady());
   }
 
   async onReady() {
-    Hooks.callAll(HOOK_LOAD_STYLES, this.availableStyles);
+    Hooks.callAll(ANARCHY_HOOKS.REGISTER_STYLES, (style, name) => this.availableStyles[style] = name);
+    Hooks.callAll(ANARCHY_HOOKS.LOAD_STYLES, this.availableStyles);
+    Hooks.off(ANARCHY_HOOKS.LOAD_STYLES, () => { });
     console.log(LOG_HEAD + 'Loaded styles', this.availableStyles);
-    Hooks.off(HOOK_LOAD_STYLES, () => { });
 
     game.settings.register(SYSTEM_NAME, DEFAULT_CSS_CLASS, {
       scope: "world",

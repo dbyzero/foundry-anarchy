@@ -2,8 +2,7 @@ import { ErrorManager } from "../error-manager.js";
 import { ANARCHY } from "../config.js";
 import { AnarchyUsers } from "../users.js";
 import { Icons } from "../icons.js";
-import { HOOK_GET_HANDLEPAR_HELPERS } from "../handlebars-manager.js";
-import { Enums } from "../enums.js";
+import { ANARCHY_HOOKS } from "../hooks-manager.js";
 
 const MONITORS = ANARCHY.actor.monitors;
 const COUNTERS = ANARCHY.actor.counters;
@@ -92,7 +91,7 @@ export const CHECKBARS = {
 export class Checkbars {
 
   static init() {
-    Hooks.once(HOOK_GET_HANDLEPAR_HELPERS, () => Checkbars.registerHandleBarHelpers());
+    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => Checkbars.registerHandleBarHelpers());
   }
 
   static registerHandleBarHelpers() {
