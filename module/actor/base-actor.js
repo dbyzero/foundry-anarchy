@@ -99,6 +99,9 @@ export class AnarchyBaseActor extends Actor {
 
   }
 
+  getRemainingEdge() {
+    return this.data.data.counters?.edge?.value ?? 0
+  }
 
   getAnarchy() {
     if (this.hasGMAnarchy()) {
