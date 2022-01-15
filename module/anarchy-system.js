@@ -39,6 +39,7 @@ import { GearItem } from './item/gear-item.js';
 import { QualityItem } from './item/quality-item.js';
 import { ShadowampItem } from './item/shadowamp-item.js';
 import { Checkbars } from './common/checkbars.js';
+import { RollParameters } from './roll/roll-parameters.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -78,6 +79,7 @@ export class AnarchySystem {
     this.gmAnarchy = new GMAnarchy();
     this.gmManager = new GMManager();
     this.skills = new Skills();
+    this.rollParameters = new RollParameters();
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit | loading system');
     CONFIG.Actor.documentClass = AnarchyBaseActor;

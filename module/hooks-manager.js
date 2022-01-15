@@ -10,11 +10,20 @@ export const ANARCHY_HOOKS = {
    */
   REGISTER_STYLES: 'anarchy-registerStyles',
   /**
+   * Hook allowing to register additional roll parameters
+   */
+  REGISTER_ROLL_PARAMETERS: 'anarchy-registerRollParameters',
+  /**
+   * Hook allowing to modify some parameters (from Anarchy hacks modules).
+   * Setting property ignore=true allows to remove the parameter.
+   */
+  MODIFY_ROLL_PARAMETER: 'anarchy-forbidRollParameter',
+  /**
    * @deprecated will be removed before v1.0.0
    */
   LOAD_STYLES: 'anarchy-loadStyles',
   /**
-   * Hook allowing to provide alternate skill sets for Anarchy hacks
+   * Hook allowing to provide alternate skill sets for Anarchy hack modules
    */
   PROVIDE_SKILL_SET: 'anarchy-provideSkillSet',
 
