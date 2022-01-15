@@ -21,7 +21,13 @@
         </li>
         {{#if (or (eq mode 'skill') (eq mode 'weapon'))}}
           <li class="flexrow">
-            <label class="flex-grow-2">{{localize (concat 'ANARCHY.skill.' skill.data.data.code)}}</label>
+            <label class="flex-grow-2">
+              {{#if (eq mode 'skill')}}
+              {{skill.name}}
+              {{else}}
+              {{localize (concat 'ANARCHY.skill.' weapon.data.data.skill)}}
+              {{/if}}
+            </label>
             <span class="flex-end">
               <input class="item-field-value input-select-modifier"
                 type="number" data-dtype="Number"
