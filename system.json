@@ -32,12 +32,12 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "locale/en/config.json"
+      "path": "lang/en.json"
     },
     {
       "lang": "fr",
       "name": "Français",
-      "path": "locale/fr/config.json"
+      "path": "lang/fr.json"
     }
   ],
   "packs": [
