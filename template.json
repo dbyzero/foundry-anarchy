@@ -207,35 +207,7 @@
     "metatype": {
       "templates": [
         "references"
-      ],
-      "adjustments": {
-        "strength": {
-          "bonus": 0,
-          "max": 6
-        },
-        "agility": {
-          "bonus": 0,
-          "max": 6
-        },
-        "willpower": {
-          "bonus": 0,
-          "max": 6
-        },
-        "logic": {
-          "bonus": 0,
-          "max": 6
-        },
-        "charisma": {
-          "bonus": 0,
-          "max": 6
-        },
-        "edge": {
-          "bonus": 0,
-          "max": 6
-        },
-        "skillsbonus": 0,
-        "armorbonus": 0
-      }
+      ]
     },
     "skill": {
       "templates": [
