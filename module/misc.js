@@ -42,6 +42,10 @@ export class Misc {
     return (a, b) => a + b;
   }
 
+  static sumValues(list, value) {
+    return list.map(value).reduce(Misc.sum(), 0);
+  }
+
   static divint(value, divisor) {
     return Math.floor(value / divisor);
   }
