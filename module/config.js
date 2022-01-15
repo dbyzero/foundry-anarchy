@@ -43,6 +43,7 @@ export const ANARCHY = {
                 anarchyDisposition: 'ANARCHY.common.roll.modifiers.anarchyDisposition',
                 anarchyRisk: 'ANARCHY.common.roll.modifiers.anarchyRisk',
                 glitch: 'ANARCHY.common.roll.modifiers.glitch',
+                drain: 'ANARCHY.common.roll.modifiers.drain',
                 wounds: 'ANARCHY.common.roll.modifiers.wounds',
                 range: 'ANARCHY.common.roll.modifiers.range',
                 other: 'ANARCHY.common.roll.modifiers.other',
@@ -166,6 +167,7 @@ export const ANARCHY = {
             attribute: 'ANARCHY.item.skill.attribute',
             value: 'ANARCHY.item.skill.value',
             specialization: 'ANARCHY.item.skill.specialization',
+            hasDrain: 'ANARCHY.item.skill.hasDrain',
             specializationHelp: 'ANARCHY.item.skill.specializationHelp'
         },
         quality: {

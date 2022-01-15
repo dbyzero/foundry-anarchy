@@ -20,15 +20,15 @@ const ANARCHY_SKILLS = [
   { code: 'pilotingGround', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/piloting-ground.svg` },
   { code: 'pilotingOther', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/piloting-other.svg` },
   { code: 'escapeArtist', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/escape-artist.svg`, lang: 'en' },
-  { code: 'conjuring', attribute: ATTR.willpower, icon: `${ICONS_SKILLS_PATH}/conjuring.svg` },
-  { code: 'sorcery', attribute: ATTR.willpower, icon: `${ICONS_SKILLS_PATH}/sorcery.svg` },
+  { code: 'conjuring', attribute: ATTR.willpower, hasDrain: true, icon: `${ICONS_SKILLS_PATH}/conjuring.svg` },
+  { code: 'sorcery', attribute: ATTR.willpower, hasDrain: true, icon: `${ICONS_SKILLS_PATH}/sorcery.svg` },
   { code: 'astralCombat', attribute: ATTR.willpower, icon: `${ICONS_SKILLS_PATH}/astral-combat.svg` },
   { code: 'survival', attribute: ATTR.willpower, icon: `${ICONS_SKILLS_PATH}/survival.svg` },
   { code: 'biotech', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/biotech.svg` },
   { code: 'hacking', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/hacking.svg` },
   { code: 'electronics', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/electronics.svg` },
   { code: 'engineering', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/engineering.svg` },
-  { code: 'tasking', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/tasking.svg` },
+  { code: 'tasking', attribute: ATTR.logic, hasDrain: true, icon: `${ICONS_SKILLS_PATH}/tasking.svg` },
   { code: 'tracking', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/tracking.svg` },
   { code: 'animals', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/animals.svg`, lang: 'fr' },
   { code: 'con', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/con-art.svg` },
@@ -80,7 +80,7 @@ export class Skills {
 
   getSkillLabels() {
     const selected = this.getSelectedSkillSet();
-    return selected.skills.map(skill => { return { value: skill.code, label: skill.labelkey }; });
+    return selected.skills.map(skill => { return { value: skill.code, label: game.i18n.localize(skill.labelkey) }; });
   }
   getSelectedSkillSet() {
     return this.skillSets[this.selectedSkills];

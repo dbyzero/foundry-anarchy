@@ -44,6 +44,7 @@
           "anarchyDisposition": "Anarchy - Dispositions",
           "anarchyRisk": "Anarchy - Take risks",
           "glitch": "Glitch dice",
+          "drain": "Drain",
           "wounds": "Wounds modifiers",
           "range": "Range",
           "other": "Other modifiers",
@@ -167,7 +168,8 @@
         "attribute": "Attribute",
         "value": "Level",
         "specialization": "Specialisation",
-        "specializationHelp": "Type the name to choose a specialization"
+        "specializationHelp": "Type the name to choose a specialization",
+        "hasDrain": "Drain"
       },
       "quality": {
         "positive": "Positive if checked"

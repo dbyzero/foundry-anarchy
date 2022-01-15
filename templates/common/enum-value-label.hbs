@@ -12,5 +12,5 @@
 <option value=""></option>
 {{/unless}}
 {{#each entries as |entry|}}
-<option value="{{entry.value}}">{{localize entry.label}}</option>
+<option value="{{entry.value}}">{{#if entry.labelkey}}{{localize entry.labelkey}}{{else}}{{entry.label}}{{/if}}</option>
 {{/each}}
