@@ -75,7 +75,7 @@ export class WeaponItem extends AnarchyBaseItem {
   }
 
   _getRange(range) {
-    return { value: this.data.data.range[range], label: Enums.getFromList(Enums.getEnums().ranges, range) };
+    return { value: this.data.data.range[range], labelkey: Enums.getFromList(Enums.getEnums().ranges, range) };
   }
 
 }

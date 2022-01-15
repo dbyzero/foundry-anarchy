@@ -1,4 +1,3 @@
-import { TEMPLATE } from "../constants.js";
 import { BaseItemSheet } from "./base-item-sheet.js";
 
 export class SkillItemSheet extends BaseItemSheet {
@@ -22,7 +21,8 @@ export class SkillItemSheet extends BaseItemSheet {
             name: game.i18n.localize(skill.labelkey),
             img: skill.icon,
             "data.code": skill.code,
-            "data.attribute": skill.attribute
+            "data.attribute": skill.attribute,
+            "data.hasDrain": skill.hasDrain ? true : false
           });
         }
       }

@@ -44,6 +44,7 @@
           "anarchyDisposition": "Anarchy - Bien disposé",
           "anarchyRisk": "Anarchy - Prise de risque",
           "glitch": "Complications",
+          "drain": "Drain",
           "wounds": "Blessures",
           "range": "Portée",
           "other": "Autres modificateurs",
@@ -167,7 +168,8 @@
         "attribute": "Attribut",
         "value": "Niveau",
         "specialization": "Spécialisation",
-        "specializationHelp": "Saisissez un nom pour avoir cette spécialization"
+        "specializationHelp": "Saisissez un nom pour avoir cette spécialization",
+        "hasDrain": "Drain"
       },
       "quality": {
         "positive": "Avantage si cochée"

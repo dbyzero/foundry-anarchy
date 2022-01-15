@@ -86,6 +86,7 @@ export class RollManager {
     return {
       type: modifier.type,
       label: modifier.label,
+      labelkey: modifier.labelkey,
       category: modifier.category,
       isAnarchy: modifier.isAnarchy,
       value: modifier.value,

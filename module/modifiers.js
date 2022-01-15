@@ -157,7 +157,7 @@ export class Modifiers {
       options: ranges,
       category: 'pool',
       value: ranges[0].value,
-      selectedLabel: game.i18n.localize(ranges[0].label),
+      selectedLabel: game.i18n.localize(ranges[0].labelkey),
       editable: true,
       used: true
     }
