@@ -219,6 +219,7 @@
       "value": 0,
       "specialization": "",
       "hasDrain": false,
+      "hasConvergence": false,
       "listspecialization": []
     },
     "quality": {
