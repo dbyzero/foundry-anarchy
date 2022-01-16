@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { LOG_HEAD, TEMPLATE, TEMPLATES_PATH } from "../constants.js";
+import { LOG_HEAD, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { Misc } from "../misc.js";
@@ -16,7 +16,7 @@ export const ROLL_PARAMETER_CATEGORY = {
   opponent: 'opponent'
 }
 
-const DEFAULT_PARAMETERS = [
+const DEFAULT_ROLL_PARAMETERS = [
   // attribute1
   {
     code: 'attribute1',
@@ -281,7 +281,7 @@ export class RollParameters {
     HooksManager.register(ANARCHY_HOOKS.REGISTER_ROLL_PARAMETERS);
     HooksManager.register(ANARCHY_HOOKS.MODIFY_ROLL_PARAMETER);
     Hooks.on(ANARCHY_HOOKS.MODIFY_ROLL_PARAMETER, p => this._validate(p));
-    Hooks.once(ANARCHY_HOOKS.REGISTER_ROLL_PARAMETERS, register => DEFAULT_PARAMETERS.forEach(
+    Hooks.once(ANARCHY_HOOKS.REGISTER_ROLL_PARAMETERS, register => DEFAULT_ROLL_PARAMETERS.forEach(
       parameter => register(parameter)
     ));
     Hooks.once('ready', () => this.onReady());
