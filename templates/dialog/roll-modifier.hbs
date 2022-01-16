@@ -11,8 +11,6 @@
  {{#if type}}
   <li class="flexrow" data-modifier="{{type}}">
     <label class="flex-grow-2" >{{label}}</label>
-    {{log 'roll-modifier' this}}
-
     <span class="flex-shrink">
     {{#if optional}}
     <input class="item-field-value flex-shrink check-use-modifier {{#if isAnarchy}}anarchy-modifier{{/if}}" data-modifier="{{type}}" type="checkbox" {{checked used}} />

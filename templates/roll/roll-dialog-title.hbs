@@ -1,0 +1,11 @@
+{{actor.name}}
+{{#if (eq mode 'attribute')}}
+  {{#if item}} - {{item.name}}{{/if}}:
+  {{#if attributeAction}}
+    {{localize (concat 'ANARCHY.attributeActions.' attributeAction)}}
+  {{else}}
+    {{localizeAttribute attribute1}}
+  {{/if}}
+{{/if}}
+{{#if (eq mode 'skill')}} - {{skill.name}}{{/if}}
+{{#if (eq mode 'weapon')}} - {{weapon.name}}{{/if}}

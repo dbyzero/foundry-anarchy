@@ -73,6 +73,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/monitors/anarchy-bar.hbs',
   'systems/anarchy/templates/common/check-element.hbs',
   'systems/anarchy/templates/common/checkbar.hbs',
+  'systems/anarchy/templates/common/label.hbs',
   'systems/anarchy/templates/common/damage-code.hbs',
   'systems/anarchy/templates/common/enum-value-label.hbs',
   'systems/anarchy/templates/common/item-control-add.hbs',
@@ -83,7 +84,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/dialog/parts/title-mode-attribute.hbs',
   'systems/anarchy/templates/dialog/parts/title-mode-skill.hbs',
   'systems/anarchy/templates/dialog/parts/title-mode-weapon.hbs',
-
   // apps
   'systems/anarchy/templates/app/gm-anarchy.hbs',
   'systems/anarchy/templates/app/gm-difficulty.hbs',

@@ -1,0 +1,15 @@
+ <label class="parameter-label">
+  {{> 'systems/anarchy/templates/common/label.hbs' this}}
+</label>
+{{#if flags.editable}}
+<input class="parameter-value info-value type-numeric input-select-parameter"
+  type="number" data-dtype="Number" maxlength="2"
+  value="{{either value 0}}"/>
+{{else}}
+<label class="parameter-value info-value">
+  {{numberFormat (either value 0) decimals=0 sign=false}}
+</label>
+{{/if}}
+{{#if flags.optional}}
+<input class="parameter-selection check-optional" type="checkbox" {{checked used}} />
+{{/if}}

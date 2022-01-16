@@ -40,6 +40,7 @@ import { QualityItem } from './item/quality-item.js';
 import { ShadowampItem } from './item/shadowamp-item.js';
 import { Checkbars } from './common/checkbars.js';
 import { RollParameters } from './roll/roll-parameters.js';
+import { RollDialog } from './roll/roll-dialog.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -98,6 +99,7 @@ export class AnarchySystem {
     this.loadItemSheets();
 
     // initialize remote calls registry first
+    RollDialog.init();
     AnarchyUsers.init();
     AnarchyDice.init();
     AnarchyRoll.init();
