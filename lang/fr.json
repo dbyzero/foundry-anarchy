@@ -169,7 +169,8 @@
         "value": "Niveau",
         "specialization": "Spécialisation",
         "specializationHelp": "Saisissez un nom pour avoir cette spécialization",
-        "hasDrain": "Drain"
+        "hasDrain": "Drain",
+        "hasConvergence": "Convergence"
       },
       "quality": {
         "positive": "Avantage si cochée"

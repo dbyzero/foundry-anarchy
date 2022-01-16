@@ -22,7 +22,8 @@ export class SkillItemSheet extends BaseItemSheet {
             img: skill.icon,
             "data.code": skill.code,
             "data.attribute": skill.attribute,
-            "data.hasDrain": skill.hasDrain ? true : false
+            "data.hasDrain": skill.hasDrain ? true : false,
+            "data.hasConvergence": skill.hasConvergence ? true : false
           });
         }
       }

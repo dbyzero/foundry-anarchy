@@ -168,6 +168,7 @@ export const ANARCHY = {
             value: 'ANARCHY.item.skill.value',
             specialization: 'ANARCHY.item.skill.specialization',
             hasDrain: 'ANARCHY.item.skill.hasDrain',
+            hasConvergence: 'ANARCHY.item.skill.hasConvergence',
             specializationHelp: 'ANARCHY.item.skill.specializationHelp'
         },
         quality: {

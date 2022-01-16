@@ -169,7 +169,8 @@
         "value": "Level",
         "specialization": "Specialisation",
         "specializationHelp": "Type the name to choose a specialization",
-        "hasDrain": "Drain"
+        "hasDrain": "Drain",
+        "hasConvergence": "Convergence"
       },
       "quality": {
         "positive": "Positive if checked"
