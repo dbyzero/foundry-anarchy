@@ -51,7 +51,7 @@
           "reroll": "Relances",
           "rerollForced": "Relances de succès",
           "opponentRerollForced": "Relance de succès adverses",
-          "opponentReduce": "Malus de dés pour l'adversaire"
+          "opponentReduce": "Malus de dés adverse"
         },
         "rollTheme": {
           "dicePool": "Réserve de dés",

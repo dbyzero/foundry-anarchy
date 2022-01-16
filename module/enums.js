@@ -44,7 +44,7 @@ export class Enums {
 
   static getEnums(filterAttributes = it => true) {
     return {
-      attributes: Enums.hbsAttributes.filter(it => filterAttributes(it.value)),
+      attributes: Enums.getAttributes(filterAttributes),
       itemTypes: Enums.hbsItemTypes,
       capacities: Enums.hbsCapacities,
       monitors: Enums.hbsMonitors,
@@ -54,6 +54,10 @@ export class Enums {
       ranges: Enums.hbsRanges,
       vehicleCategories: Enums.hbsVehicleCategories
     };
+  }
+
+  static getAttributes(filterAttributes) {
+    return Enums.hbsAttributes.filter(it => filterAttributes(it.value));
   }
 
   static getActorWordTypes() {

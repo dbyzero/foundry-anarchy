@@ -1,8 +1,8 @@
 import { Checkbars } from "../common/checkbars.js";
 import { AttributeActions } from "../attribute-actions.js";
-import { RollDialog } from "../dialog/roll-dialog.js";
 import { Misc } from "../misc.js";
 import { TEMPLATE } from "../constants.js";
+import { RollDialog } from "../roll/roll-dialog.js";
 
 export class AnarchyBaseItem extends Item {
 

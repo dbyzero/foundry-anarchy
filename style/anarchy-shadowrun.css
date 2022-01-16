@@ -41,6 +41,13 @@
   --anarchy-color-unchecked: hsla(207, 10%, 50%, 1);
 }
 
+.window-app .style-anarchy-shadowrun.anarchy-dialog {
+  background: var(--anarchy-background);
+  color: var(--anarchy-color-font);
+  border: 3px outset var(--anarchy-color-button-border);
+  box-shadow: var(--anarchy-shadow-anarchy-button);
+}
+
 #gm-manager.style-anarchy-shadowrun {
   background: var(--anarchy-background);
   color: var(--anarchy-color-font);
@@ -193,4 +200,3 @@
 .style-anarchy-shadowrun a.click-checkbar-element[data-checked=false] i {
   color: var(--anarchy-color-unchecked);
 }
-

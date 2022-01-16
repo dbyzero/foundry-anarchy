@@ -1,5 +1,6 @@
 import { ANARCHY } from "../config.js";
-import { LOG_HEAD, TEMPLATE } from "../constants.js";
+import { LOG_HEAD, TEMPLATE, TEMPLATES_PATH } from "../constants.js";
+import { Enums } from "../enums.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { Misc } from "../misc.js";
 
@@ -7,7 +8,7 @@ export const ROLL_PARAMETER_CATEGORY = {
   title: 'title',
   pool: 'pool',
   reroll: 'reroll',
-  rerollSuccess: 'rerollSuccess',
+  rerollForced: 'rerollForced',
   glitch: 'glitch',
   drain: 'drain',
   edge: 'edge',
@@ -22,15 +23,18 @@ const DEFAULT_PARAMETERS = [
     options: {
       flags: {},
       order: 1, category: ROLL_PARAMETER_CATEGORY.pool,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO',
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-attribute.hbs`,
+      hbsTemplateChat: undefined, //``,
     },
-    condition: context => context.attribute1 || context.skill,
+    condition: context => ['skill', 'attribute', 'weapon'].includes(context.mode),
     factory: context => {
-      const attribute = context.attribute1 ?? context.skill?.data.data.attribute;
+      const attribute = context.attribute1 ?? context.skill?.data.data.attribute ?? '';
       return {
-        labelkey: TEMPLATE.attributes[attribute],
+        labelkey: ANARCHY.attributes[attribute],
         value: context.actor.getAttributeValue(attribute, context.activeItem),
+        flags: { editable: context.skill },
+        selected: attribute,
+        choices: Enums.getAttributes(it => context.attributes.includes(it))
       }
     }
   },
@@ -39,16 +43,18 @@ const DEFAULT_PARAMETERS = [
   {
     code: 'attribute2',
     options: {
-      flags: {},
       order: 1, category: ROLL_PARAMETER_CATEGORY.pool,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO',
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-attribute.hbs`,
+      hbsTemplateChat: undefined, //``,
     },
-    condition: context => context.attribute2 || context.attributeAction,
+    condition: context => context.mode == 'attribute',
     factory: context => {
       return {
-        labelkey: TEMPLATE.attributes[context.attribute2],
+        flags: { editable: !context.attributeAction },
+        labelkey: ANARCHY.attributes[context.attribute2],
         value: context.actor.getAttributeValue(context.attribute2, context.activeItem),
+        selected: context.attribute2,
+        choices: Enums.getAttributes(it => context.attributes.includes(it))
       };
     }
   },
@@ -57,15 +63,16 @@ const DEFAULT_PARAMETERS = [
   {
     code: 'skill',
     options: {
+      flags: {},
       order: 3, category: ROLL_PARAMETER_CATEGORY.pool,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     },
-    condition: context => context.skill,
+    condition: context => ['skill', 'weapon'].includes(context.mode),
     factory: context => {
       return {
-        label: context.skill.name,
-        value: context.skill.data.data.value,
+        label: context.skill?.name,
+        value: context.skill?.data.data.value ?? 0,
       };
     }
   },
@@ -76,13 +83,14 @@ const DEFAULT_PARAMETERS = [
       flags: { optional: true, },
       order: 4, category: ROLL_PARAMETER_CATEGORY.pool,
       value: 2,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
+      hbsTemplateChat: undefined, //``
     },
-    condition: context.skill?.data.data.specialization,
+    condition: context => (context.mode == 'skill' && context.specialization)
+      || (context.mode == 'weapon' && context.skill?.data.data.specialization),
     factory: context => {
       return {
-        label: context.skill.data.data.specialization,
+        label: context.specialization ?? context.skill.data.data.specialization,
         used: context.specialization,
       }
     }
@@ -94,12 +102,21 @@ const DEFAULT_PARAMETERS = [
       flags: { optional: true, },
       order: 10, category: ROLL_PARAMETER_CATEGORY.pool,
       labelkey: ANARCHY.common.roll.modifiers.wounds,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     },
     condition: context => context.actor.getWounds(),
+    onChecked: (p, checked) => {
+      p.value = checked ? - p.wounds : 0
+      p.used = checked
+    },
     factory: context => {
-      return { value: -  context.actor.getWounds() }
+      const wounds = context.actor.getWounds();
+      return {
+        wounds: wounds,
+        value: - wounds,
+        used: true,
+      }
     }
   },
   // weapon range
@@ -109,16 +126,16 @@ const DEFAULT_PARAMETERS = [
       flags: { editable: true, },
       order: 20, category: ROLL_PARAMETER_CATEGORY.pool,
       labelkey: ANARCHY.common.roll.modifiers.range,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-option.hbs`,
+      hbsTemplateChat: undefined, //``
     },
     condition: context => context.weapon,
     factory: context => {
       const ranges = context.weapon.getRanges();
       return {
         value: ranges[0].value,
-        options: ranges,
-        selectedOption: game.i18n.localize(ranges[0].labelkey)
+        choices: ranges,
+        selected: game.i18n.localize(ranges[0].labelkey)
       }
     }
   },
@@ -126,12 +143,12 @@ const DEFAULT_PARAMETERS = [
   {
     code: 'other',
     options: {
-      flags: { editable: true, },
-      order: 30, category: ROLL_PARAMETER_CATEGORY.pool,
+      flags: { editable: true },
+      order: 25, category: ROLL_PARAMETER_CATEGORY.pool,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.other,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     }
   },
   // rerolls
@@ -142,8 +159,8 @@ const DEFAULT_PARAMETERS = [
       order: 40, category: ROLL_PARAMETER_CATEGORY.reroll,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.reroll,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     }
   },
   // forced success rerolls
@@ -154,8 +171,8 @@ const DEFAULT_PARAMETERS = [
       order: 40, category: ROLL_PARAMETER_CATEGORY.rerollForced,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.rerollForced,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     }
   },
   // anarchy dispositions
@@ -163,24 +180,27 @@ const DEFAULT_PARAMETERS = [
     code: 'anarchyDisposition',
     options: {
       flags: { optional: true, isAnarchy: true, forceDisplay: true, },
-      order: 30, category: ROLL_PARAMETER_CATEGORY.pool,
-      value: 3,
+      order: 50, category: ROLL_PARAMETER_CATEGORY.pool,
+      value: 0,
       labelkey: ANARCHY.common.roll.modifiers.anarchyDisposition,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
+      hbsTemplateChat: undefined, //``
     },
-    condition: context => context.actor.getAnarchyValue() > 0
+    condition: context => context.actor.getAnarchyValue() > 0,
+    onChecked: (p, checked) => {
+      p.used = checked;
+      p.value = checked ? 3 : 0;
+    },
   },
   // anarchy take risks
   {
     code: 'anarchyRisk',
     options: {
       flags: { optional: true, isAnarchy: true, forceDisplay: true, },
-      order: 30, category: ROLL_PARAMETER_CATEGORY.risk,
-      value: 1,
+      order: 50, category: ROLL_PARAMETER_CATEGORY.risk,
       labelkey: ANARCHY.common.roll.modifiers.anarchyRisk,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
+      hbsTemplateChat: undefined, //``
     },
     condition: context => context.actor.getAnarchyValue() > 0
   },
@@ -189,11 +209,10 @@ const DEFAULT_PARAMETERS = [
     code: 'edge',
     options: {
       flags: { optional: true, forceDisplay: true, },
-      order: 30, category: ROLL_PARAMETER_CATEGORY.edge,
-      value: 1,
+      order: 50, category: ROLL_PARAMETER_CATEGORY.edge,
       labelkey: ANARCHY.common.roll.modifiers.edge,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
+      hbsTemplateChat: undefined, //``
     },
     condition: context => context.actor.getRemainingEdge()
   },
@@ -204,8 +223,8 @@ const DEFAULT_PARAMETERS = [
       flags: { editable: true, forceDisplay: true, },
       order: 30, category: ROLL_PARAMETER_CATEGORY.glitch,
       labelkey: ANARCHY.common.roll.modifiers.glitch,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     },
     factory: context => {
       const wounds = context.actor.getWounds();
@@ -214,6 +233,7 @@ const DEFAULT_PARAMETERS = [
       }
     }
   },
+  // Drain
   {
     code: 'drain',
     options: {
@@ -221,10 +241,10 @@ const DEFAULT_PARAMETERS = [
       order: 30, category: ROLL_PARAMETER_CATEGORY.drain,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.drain,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     },
-    condition: context => context.skill?.data.data.hasDrain
+    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasDrain
   },
   // reduce opponent pool
   {
@@ -234,9 +254,10 @@ const DEFAULT_PARAMETERS = [
       order: 100, category: ROLL_PARAMETER_CATEGORY.opponent,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.opponentReduce,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     },
+    condition: context => !context.attributeAction
   },
   // force opponent rerolls
   {
@@ -246,10 +267,10 @@ const DEFAULT_PARAMETERS = [
       order: 100, category: ROLL_PARAMETER_CATEGORY.opponent,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.opponentRerollForced,
-      hbsTemplateRoll: 'TODO',
-      hbsTemplateChat: 'TODO'
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
     },
-
+    condition: context => !context.attributeAction
   },
 
 ]
@@ -267,12 +288,17 @@ export class RollParameters {
   }
 
   async onReady() {
-    Hooks.callAll(ANARCHY_HOOKS.REGISTER_ROLL_PARAMETERS, rollParameter => {
+    Hooks.callAll(ANARCHY_HOOKS.REGISTER_ROLL_PARAMETERS, async rollParameter => {
       Hooks.callAll(ANARCHY_HOOKS.MODIFY_ROLL_PARAMETER, rollParameter);
       if (!rollParameter.ignore) {
-        this._register(rollParameter);
+        await this._register(rollParameter);
       }
     });
+    const templates = Misc.distinct([]
+      .concat(this.parameters.map(p => p.options.hbsTemplateRoll))
+      .concat(this.parameters.map(p => p.options.hbsTemplateChat))
+      .filter(it => it != undefined));
+    await loadTemplates(Misc.distinct(templates));
   }
 
   _validate(parameter) {
@@ -282,55 +308,54 @@ export class RollParameters {
     }
   }
 
-  _register(parameter) {
-    // TODO: check there is a code
+  async _register(parameter) {
     if (this.parameters.find(it => it.code == parameter.code)) {
       console.error(`${LOG_HEAD} RollParameter ${parameter.code} is already registered`, parameter, it);
       return;
     }
-    // TODO: add fallback handlebars templates for dialog/chat
+
+    if (!parameter.onChecked) {
+      parameter.onChecked = (p, checked) => p.used = checked;
+    }
+
+    parameter.onValue = (p, value) => p.value = value;
     this.parameters.push(parameter);
   }
 
-  build(context = {
-    mode: undefined,
-    attributeAction: undefined,
-    attribute1: undefined,
-    attribute2: undefined,
-    actor: undefined,
-    skill: undefined,
-    specialization: undefined,
-    weapon: undefined,
-    shadowamp: undefined,
-    activeItem: undefined,
-  }) {
-    const applicable = this.parameters.filter(p => !p.condition || p.condition(context));
-    const parameters = applicable.map(p => this._computeParameter(p, context));
-
-    return {
-      parameters: parameters,
-      context: context
+  async _optionalLoadTemplate(hbsTemplate) {
+    if (hbsTemplate) {
+      await loadTemplates([hbsTemplate]);
     }
   }
 
+  build(context) {
+    return this.parameters.filter(p => !p.condition || p.condition(context))
+      .map(p => this._computeParameter(p, context));
+  }
+
   compute(parameters) {
-    return Object.values(Misc.classify(parameters, it => it.category)).map(list => {
+    const actual = parameters.filter(it => it.used);
+    // TODO: 
+    return Object.values(Misc.classify(actual, it => it.category)).map(list => {
       return {
         category: list[0].category,
-        value: Misc.sumValues(list, it => it.value)
+        value: Misc.sumValues(list, it => it.value ?? (it.optional ? 1 : 0))
       };
     });
   }
 
   _computeParameter(param, context) {
-    const computed = { code: param.code };
+    const computed = {
+      code: param.code,
+      onChecked: param.onChecked,
+      onValue: param.onValue,
+    };
+    mergeObject(computed, param.options);
     if (param.factory) {
       mergeObject(computed, param.factory(context, param.options));
     }
-    mergeObject(computed, param.options);
-    if (!computed.label && computed.labelkey) {
-      computed.label = game.i18n.localize(computed.labelkey);
-    }
+    computed.used = computed.used || computed.value;
     return computed;
   }
+
 }

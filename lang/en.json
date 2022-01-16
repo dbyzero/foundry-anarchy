@@ -50,7 +50,7 @@
           "other": "Other modifiers",
           "reroll": "Rerolls",
           "rerollForced": "Rerolls successes",
-          "opponentRerollForced": "Opponent must reroll successes",
+          "opponentRerollForced": "Opponent must reroll",
           "opponentReduce": "Opponent pool reduction"
         },
         "rollTheme": {

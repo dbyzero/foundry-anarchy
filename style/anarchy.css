@@ -28,6 +28,7 @@
 
 
   --background-editor: var(--gradient-silver), hsla(0, 10%, 80%, 0.8);
+  --color-button: hsla(0, 10%, 10%, 1);
   --color-editor-font: hsla(0, 10%, 10%, 1);
 }
 
@@ -65,12 +66,20 @@ img.anarchy-img {
   vertical-align: top;
 }
 
+.anarchy-img-title :is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img) {
+  -ms-flex: 0 0 16px;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+}
+
 :is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img) {
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   width: 48px;
   height: 48px;
 }
+
 
 img.anarchy-img.actor-img {
   -ms-flex: 0 0 64px;
@@ -543,7 +552,17 @@ div.anarchy-button {
   height: fit-content;
   width: fit-content;
 }
-
+.anarchy-dialog .dialog-button{
+  display: inline-block;
+  cursor: pointer;
+  margin: 2px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  color: var(--color-button);
+}
 
 
 
@@ -778,4 +797,50 @@ div.dice-result div.dice-formula {
   height: 0px;
   border: 0px none;
   color: var(--transparent);
+}
+
+.roll-dialog div.roll-parameters{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 2px;
+}
+
+.roll-dialog div.roll-images{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 2px;
+}
+
+.roll-dialog div.roll-parameters div.parameter {
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  width: 100%;
+}
+
+.roll-dialog div.roll-parameters div.parameter :is(.info-label,.info-value) {
+  justify-content: left;
+  align-self: stretch;
+  white-space: nowrap;
+  height: 24px;
+  padding: 0px;
+  margin: 0px;
+}
+.roll-dialog div.roll-parameters div.parameter :is(.info-label,.info-value, select, input){
+  padding: 0px;
+  margin: 0px;
+  height: 24px;
+}
+.roll-dialog div.roll-parameters div.parameter .parameter-label {
+  width: calc(66% - 1rem);
+}
+.roll-dialog div.roll-parameters div.parameter .parameter-value {
+  width: calc(2rem);
+}
+.roll-dialog div.roll-parameters div.parameter .parameter-selection {
+  width: calc(33% - 1rem);
+  display: flex;
+  flex-direction: row;
 }

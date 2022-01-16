@@ -1,6 +1,6 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { Checkbars } from "../common/checkbars.js";
-import { RollDialog } from "../dialog/roll-dialog.js";
+import { RollDialog } from "../roll/roll-dialog.js";
 
 export class AnarchyBaseActor extends Actor {
 
@@ -44,6 +44,10 @@ export class AnarchyBaseActor extends Actor {
     return [undefined];
   }
 
+  getActorItemAttributes(item) {
+    return this.getAttributes().concat(item.getAttributes());
+  }
+
   getAttributeValue(attribute, item = undefined) {
     if (attribute) {
       if (this.getAttributes().includes(attribute)) {
@@ -57,17 +61,17 @@ export class AnarchyBaseActor extends Actor {
     return 0;
   }
 
-  async skillRoll(skill, specialization) {
-    await RollDialog.actorSkillRoll(this, skill, specialization);
+  async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
+    await RollDialog.attributeRoll(this, attribute, attribute2, attributeAction);
   }
 
-  async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
-    await RollDialog.actorAttributeRoll(this, attribute, attribute2, attributeAction);
+  async skillRoll(skill, specialization) {
+    await RollDialog.skillRoll(this, skill, specialization);
   }
 
   async weaponRoll(weapon) {
     const skill = this.items.find(it => weapon.isWeaponSkill(it));
-    await RollDialog.actorWeaponRoll(this, skill, weapon);
+    await RollDialog.weaponRoll(this, skill, weapon);
   }
 
   async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
