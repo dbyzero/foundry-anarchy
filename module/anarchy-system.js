@@ -87,7 +87,6 @@ export class AnarchySystem {
     CONFIG.Combat.documentClass = AnarchyCombat;
     CONFIG.Actor.documentClass = AnarchyBaseActor;
     CONFIG.Item.documentClass = AnarchyBaseItem;
-    CONFIG.Combat.initiative = { formula: "2d6" }
 
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.actor.characterSheet));
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.item.sheet));

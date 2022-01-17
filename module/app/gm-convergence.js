@@ -48,8 +48,6 @@ export class GMConvergence {
 
   async _gmRollConvergence(convergence, actorId) {
     const actor = game.actors.get(actorId);
-    ui.notifications.warn('Actor.rollConvergence: To be tested!');
-
     const rollConvergence = new Roll(`${convergence}dgcf=1[${game.i18n.localize(ANARCHY.common.roll.rollTheme.convergence)}]`);
     await rollConvergence.evaluate({ async: true });
     this.addConvergence(actor, rollConvergence.total);
