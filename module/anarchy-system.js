@@ -42,6 +42,7 @@ import { Checkbars } from './common/checkbars.js';
 import { RollParameters } from './roll/roll-parameters.js';
 import { RollDialog } from './roll/roll-dialog.js';
 import { GMConvergence } from './app/gm-convergence.js';
+import { AnarchyCombat } from './anarchy-combat.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -72,7 +73,6 @@ export class AnarchySystem {
       skill: SkillItem,
       weapon: WeaponItem
     };
-
     this.remoteCall = new RemoteCall(); // initialize remote calls registry first: used by other singleton managers
     this.hooks = new HooksManager();
     this.styles = new Styles();
@@ -84,9 +84,10 @@ export class AnarchySystem {
     this.rollParameters = new RollParameters();
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit | loading system');
+    CONFIG.Combat.documentClass = AnarchyCombat;
     CONFIG.Actor.documentClass = AnarchyBaseActor;
     CONFIG.Item.documentClass = AnarchyBaseItem;
-    CONFIG.Combat.initiative = { formula: "2d6 + max(@attributes.agility.value, @attributes.logic.value)" }
+    CONFIG.Combat.initiative = { formula: "2d6" }
 
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.actor.characterSheet));
     console.log(LOG_HEAD + game.i18n.localize(ANARCHY.item.sheet));

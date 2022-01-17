@@ -7,7 +7,6 @@ import { RollDialog } from "../roll/roll-dialog.js";
 
 export class AnarchyBaseActor extends Actor {
 
-
   constructor(data, context = {}) {
     if (!context.anarchy?.ready) {
       mergeObject(context, { anarchy: { ready: true } });
@@ -21,6 +20,11 @@ export class AnarchyBaseActor extends Actor {
     }
     super(data, context);
   }
+
+  static get initiative() {
+    return "2d6";
+  }
+
 
   static get defaultIcon() {
     return undefined;
