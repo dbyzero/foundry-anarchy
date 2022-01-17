@@ -5,6 +5,8 @@ import { RemoteCall } from "../remotecall.js";
 import { AnarchyUsers } from "../users.js";
 
 const CONVERGENCES = "convergences";
+
+const GM_CONVERGENCE_CONVERGENCES = `${SYSTEM_NAME}.${CONVERGENCES}`;
 const ROLL_CONVERGENCE = 'GMConvergence.rollConvergence';
 
 const HBS_TEMPLATE_CONVERGENCE = `${TEMPLATES_PATH}/app/gm-convergence.hbs`
@@ -19,6 +21,7 @@ export class GMConvergence {
       type: Array
     });
     this.convergences = game.settings.get(SYSTEM_NAME, CONVERGENCES);
+    Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
     Hooks.once('ready', () => this.onReady());
   }
 
@@ -63,7 +66,6 @@ export class GMConvergence {
     await this.setActorConvergence(actor, this.getConvergence(actor) + added);
   }
 
-
   async getConvergence(actor) {
     if (!game.user.isGM) {
       return 0; // undisclosed
@@ -80,12 +82,18 @@ export class GMConvergence {
     c.convergence = newConvergence;
     this.convergences = this.convergences.filter(it => it.convergence > 0);
     game.settings.set(SYSTEM_NAME, CONVERGENCES, this.convergences);
-    await this._rebuild();
   }
+
 
   async activateListeners(html) {
     this.toolbar = html.find(".gm-convergence-bar");
     await this._rebuild();
+  }
+
+  async onUpdateSetting(setting, update, options, id) {
+    if (setting.key == GM_CONVERGENCE_CONVERGENCES) {
+      await this._rebuild();
+    }
   }
 
   async _rebuild() {
