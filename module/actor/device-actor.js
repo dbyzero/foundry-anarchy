@@ -9,6 +9,9 @@ export class DeviceActor extends AnarchyBaseActor {
     return `${ICONS_PATH}/actors/cctv-camera.svg`;
   }
 
+  static get initiative() {
+    return "2d6 + @attributes.system.value";
+  }
 
   prepareData() {
     super.prepareData();

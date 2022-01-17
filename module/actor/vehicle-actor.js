@@ -8,6 +8,10 @@ export class VehicleActor extends AnarchyBaseActor {
     return `${ICONS_PATH}/shadowamps/drone.svg`;
   }
 
+  static get initiative() {
+    return "2d6 + max(@attributes.system.value, @attributes.autopilot.value)";
+  }
+
   prepareData() {
     super.prepareData();
   }

@@ -24,6 +24,10 @@ export class CharacterEssence {
 
 export class CharacterActor extends AnarchyBaseActor {
 
+  static get initiative() {
+    return "2d6 + max(@attributes.agility.value, @attributes.logic.value)";
+  }
+
   static reindexWordIds(list) {
     let index = 1;
     list.forEach(it => it.id = (index++));
