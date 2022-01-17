@@ -155,15 +155,7 @@
         "attributes-matrix",
         "monitors-matrix",
         "shortcuts"
-      ],
-      "attributes": {
-        "system": {
-          "value": 6
-        },
-        "firewall": {
-          "value": 6
-        }
-      }
+      ]
     }
   },
   "Item": {
@@ -185,14 +177,14 @@
         "description": "",
         "gmnotes": ""
       },
-      "attributes-matrix": {
+      "item-attributes-matrix": {
         "attributes": {
           "firewall": {
             "value": 1
           }
         }
       },
-      "monitors-matrix": {
+      "item-monitors-matrix": {
         "monitors": {
           "matrix": {
             "canMark": true,
@@ -261,8 +253,8 @@
     },
     "cyberdeck": {
       "templates": [
-        "attributes-matrix",
-        "monitors-matrix",
+        "item-attributes-matrix",
+        "item-monitors-matrix",
         "inactive",
         "references"
       ],
