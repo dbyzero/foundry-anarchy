@@ -6,11 +6,13 @@ import { RemoteCall } from "../remotecall.js";
 import { RollManager } from "../roll/roll-manager.js";
 
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
+const HBS_TEMPLATE_CHAT_ANARCHY_ROLL = `${TEMPLATES_PATH}/chat/anarchy-roll.hbs`;
 const HBS_CHAT_TEMPLATES = [
   `${TEMPLATES_PATH}/chat/roll-modifier.hbs`,
   `${TEMPLATES_PATH}/chat/risk-outcome.hbs`,
   `${TEMPLATES_PATH}/chat/edge-reroll-button.hbs`,
   `${TEMPLATES_PATH}/chat/parts/actor-image.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/generic-parameter.hbs`,
   `${TEMPLATES_PATH}/chat/parts/title-mode-attribute.hbs`,
   `${TEMPLATES_PATH}/chat/parts/title-mode-skill.hbs`,
   `${TEMPLATES_PATH}/chat/parts/title-mode-weapon.hbs`,
@@ -46,7 +48,7 @@ export class ChatManager {
     rollData.options.classes = rollData.options.classes ?? [];
     rollData.options.classes.push(game.system.anarchy.styles.selectCssClass());
 
-    const flavor = await renderTemplate(`${TEMPLATES_PATH}/chat/anarchy-roll.hbs`, rollData);
+    const flavor = await renderTemplate(HBS_TEMPLATE_CHAT_ANARCHY_ROLL, rollData);
     await rollData.roll.toMessage({ flavor: flavor });
   }
 

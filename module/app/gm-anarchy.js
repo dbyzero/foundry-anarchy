@@ -1,3 +1,4 @@
+import { Checkbars } from "../common/checkbars.js";
 import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME, TEMPLATE } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
@@ -93,7 +94,7 @@ export class GMAnarchy {
     const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
     const index = Number.parseInt($(event.currentTarget).attr('data-index'));
     const isChecked = $(event.currentTarget).attr('data-checked') == 'true';
-    const newAnarchy = index + (isChecked ? 0 : 1);
+    const newAnarchy = Checkbars.newValue(index, isChecked);
     await this.setAnarchy(monitor, newAnarchy);
   }
 

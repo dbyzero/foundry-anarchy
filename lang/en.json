@@ -135,7 +135,8 @@
         "armor": "Armor",
         "structure": "Structure",
         "resistance": "Resistance",
-        "marks": "Marks"
+        "marks": "Marks",
+        "convergence": "Convergence"
       },
       "vehicle": {
         "handling": "Handling",

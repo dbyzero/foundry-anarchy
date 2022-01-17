@@ -146,4 +146,26 @@ export class CharacterActor extends AnarchyBaseActor {
     return this.data.data.capacity == TEMPLATE.capacities.emerged || this.items.find(it => it.isCyberdeck());
   }
 
+  async rollDrain(drain) {
+    if (drain) {
+      const rollDrain = new Roll(`${drain}dgcf=1[${game.i18n.localize(ANARCHY.common.roll.rollTheme.drain)}]`);
+      await rollDrain.evaluate({ async: true });
+      await this.sufferDrain(rollDrain.total);
+      ChatManager.displayDrainInChat(this, rollDrain);// TODO: add info about actor current state
+    }
+  }
+
+  async sufferDrain(drain) {
+    if (drain != 0) {
+      await this.addCounter(TEMPLATE.monitors.stun, drain);
+    }
+  }
+
+  async rollConvergence(convergence) {
+    if (!convergence) {
+      return;
+    }
+    game.system.anarchy.gmConvergence.rollConvergence(this.id, convergence)
+  }
+
 }
