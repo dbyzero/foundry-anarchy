@@ -248,6 +248,11 @@ img.actor-reference-img {
   height: 100%;
   padding: 1px;
 }
+:is(div, label).chat-label :is(label,span,div,button,a.anarchy-button),
+:is(div, label).chat-messge :is(label,span,div,button,a.anarchy-button),
+:is(div, label).chat-label {
+  color: var(--color-chat);
+}
 :is(input, label, select).info-value {
   align-self: baseline;
   text-align: start;
@@ -783,7 +788,7 @@ input.anarchy-essence[type='number'] {
   transition: opacity 0.3s;
 }
 
-.tooltip .tooltip-roll-modifiers {
+.tooltip .tooltip-roll-parameters{
   z-index: 1000 ;
   width: 200px;
   left: -20px;

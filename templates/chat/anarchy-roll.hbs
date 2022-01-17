@@ -6,26 +6,42 @@
     {{!-- Dice pool explanation --}}
     <h3 class="chat-roll-title tooltip tooltip-dotted">
       {{> (concat 'systems/anarchy/templates/chat/parts/title-mode-' mode '.hbs')}}
-      <div class="tooltiptext tooltip-roll-modifiers">
-        {{> (concat 'systems/anarchy/templates/chat/parts/pool-mode-' mode '.hbs')}}
-        {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.wounds}}
-        {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.other}}
-        {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
+      <div class="tooltiptext tooltip-roll-parameters">
+        {{#each parameters as |parameter|}}
+          {{#unless parameter.flags.hideParameter}}
+            {{#unless parameter.flags.forceDisplay}}
+              {{#if parameter.used}}
+              <div class="parameter" data-parameter-code="{{parameter.code}}" {{#if item}}data-item-id="{{item.id}}"{{/if}}>
+                {{> (either parameter.hbsTemplateChat 'systems/anarchy/templates/chat/parts/generic-parameter.hbs') parameter}}
+              </div>
+              {{/if}}
+            {{/unless}}
+          {{/unless}}
+        {{/each}}
       </div>
     </h3>
 
-    <div>
-      <div class="alternate-items">
-      {{#if (eq mode 'weapon')}}
-      {{>'systems/anarchy/templates/chat/parts/result-mode-weapon.hbs'}}
-      {{/if}}
-      {{> 'systems/anarchy/templates/chat/risk-outcome.hbs'}}
-      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.anarchyDisposition}}
-      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.edge}}
-      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentRerollForced}}
-      {{> 'systems/anarchy/templates/chat/roll-modifier.hbs' modifiers.opponentReduce}}
-      </div>
+    {{#if (eq mode 'weapon')}}
+    <div class="alternate-items">
+    {{>'systems/anarchy/templates/chat/parts/result-mode-weapon.hbs'}}
     </div>
+    {{/if}}
+
+    {{#if parameters}}
+      <div class="alternate-items">
+        {{#each parameters as |parameter|}}
+          {{!-- {{#unless parameter.flags.hideParameter}} --}}
+            {{#if parameter.flags.forceDisplay}}
+              {{#if parameter.used}}
+              <div class="parameter chat-label">
+                {{> (either parameter.hbsTemplateChat 'systems/anarchy/templates/chat/parts/generic-parameter.hbs') parameter}}
+              </div>
+              {{/if}}
+            {{/if}}
+          {{!-- {{/unless}} --}}
+        {{/each}}
+      </div>
+    {{/if}}
 
     {{#unless modifiers.edge.used}}
     <div>

@@ -186,7 +186,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 50, category: ROLL_PARAMETER_CATEGORY.glitch,
       labelkey: ANARCHY.common.roll.modifiers.glitch,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
+      hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/glitch.hbs`,
     },
     factory: context => {
       const wounds = context.actor.getWounds();
@@ -242,23 +242,34 @@ const DEFAULT_ROLL_PARAMETERS = [
     options: {
       flags: { optional: true, isAnarchy: true, forceDisplay: true, },
       order: 70, category: ROLL_PARAMETER_CATEGORY.risk,
+      value: 0,
       labelkey: ANARCHY.common.roll.modifiers.anarchyRisk,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
-      hbsTemplateChat: undefined, //``
+      hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/anarchy-risk.hbs`,
     },
-    condition: context => context.actor.getAnarchyValue() > 0
+    condition: context => context.actor.getAnarchyValue() > 0,
+    onChecked: (p, checked) => {
+      p.used = checked;
+      p.value = checked ? 1 : 0;
+    },
   },
   // edge
   {
     code: 'edge',
     options: {
       flags: { optional: true, forceDisplay: true, },
+      value: 0,
       order: 70, category: ROLL_PARAMETER_CATEGORY.edge,
       labelkey: ANARCHY.common.roll.modifiers.edge,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
       hbsTemplateChat: undefined, //``
     },
-    condition: context => context.actor.getRemainingEdge()
+    condition: context => context.actor.getRemainingEdge(),
+    onChecked: (p, checked) => {
+      p.used = checked;
+      p.value = checked ? 1 : 0;
+    },
+
   },
   // reduce opponent pool
   {
