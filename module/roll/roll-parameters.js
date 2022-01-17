@@ -152,12 +152,55 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateChat: undefined, //``
     }
   },
+  // Drain
+  {
+    code: 'drain',
+    options: {
+      flags: { editable: true, forceDisplay: true, },
+      order: 40, category: ROLL_PARAMETER_CATEGORY.drain,
+      value: 0,
+      labelkey: ANARCHY.common.roll.modifiers.drain,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
+    },
+    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasDrain
+  },
+  // convergence
+  {
+    code: 'convergence',
+    options: {
+      flags: { hideParameter: true },
+      order: 40, category: ROLL_PARAMETER_CATEGORY.convergence,
+      value: 1,
+      labelkey: ANARCHY.common.roll.modifiers.convergence,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
+    },
+    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasConvergence
+  },
+  // glitch
+  {
+    code: 'glitch',
+    options: {
+      flags: { editable: true, forceDisplay: true, },
+      order: 50, category: ROLL_PARAMETER_CATEGORY.glitch,
+      labelkey: ANARCHY.common.roll.modifiers.glitch,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
+    },
+    factory: context => {
+      const wounds = context.actor.getWounds();
+      return {
+        value: (wounds == 0 ? 0 : 1) + (context.glitch ?? 0),
+      }
+    }
+  },
   // rerolls
   {
     code: 'reroll',
     options: {
       flags: { editable: true, },
-      order: 40, category: ROLL_PARAMETER_CATEGORY.reroll,
+      order: 30, category: ROLL_PARAMETER_CATEGORY.reroll,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.reroll,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
@@ -169,7 +212,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     code: 'rerollForced',
     options: {
       flags: { editable: true, },
-      order: 40, category: ROLL_PARAMETER_CATEGORY.rerollForced,
+      order: 31, category: ROLL_PARAMETER_CATEGORY.rerollForced,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.rerollForced,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
@@ -181,7 +224,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     code: 'anarchyDisposition',
     options: {
       flags: { optional: true, isAnarchy: true, forceDisplay: true, },
-      order: 50, category: ROLL_PARAMETER_CATEGORY.pool,
+      order: 70, category: ROLL_PARAMETER_CATEGORY.pool,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.anarchyDisposition,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
@@ -198,7 +241,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     code: 'anarchyRisk',
     options: {
       flags: { optional: true, isAnarchy: true, forceDisplay: true, },
-      order: 50, category: ROLL_PARAMETER_CATEGORY.risk,
+      order: 70, category: ROLL_PARAMETER_CATEGORY.risk,
       labelkey: ANARCHY.common.roll.modifiers.anarchyRisk,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
       hbsTemplateChat: undefined, //``
@@ -210,55 +253,12 @@ const DEFAULT_ROLL_PARAMETERS = [
     code: 'edge',
     options: {
       flags: { optional: true, forceDisplay: true, },
-      order: 50, category: ROLL_PARAMETER_CATEGORY.edge,
+      order: 70, category: ROLL_PARAMETER_CATEGORY.edge,
       labelkey: ANARCHY.common.roll.modifiers.edge,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
       hbsTemplateChat: undefined, //``
     },
     condition: context => context.actor.getRemainingEdge()
-  },
-  // glitch
-  {
-    code: 'glitch',
-    options: {
-      flags: { editable: true, forceDisplay: true, },
-      order: 30, category: ROLL_PARAMETER_CATEGORY.glitch,
-      labelkey: ANARCHY.common.roll.modifiers.glitch,
-      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
-    },
-    factory: context => {
-      const wounds = context.actor.getWounds();
-      return {
-        value: (wounds == 0 ? 0 : 1) + (context.glitch ?? 0),
-      }
-    }
-  },
-  // Drain
-  {
-    code: 'drain',
-    options: {
-      flags: { editable: true, forceDisplay: true, },
-      order: 30, category: ROLL_PARAMETER_CATEGORY.drain,
-      value: 0,
-      labelkey: ANARCHY.common.roll.modifiers.drain,
-      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
-    },
-    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasDrain
-  },
-  // convergence
-  {
-    code: 'convergence',
-    options: {
-      flags: { hideParameter: true },
-      order: 30, category: ROLL_PARAMETER_CATEGORY.convergence,
-      value: 1,
-      labelkey: ANARCHY.common.roll.modifiers.convergence,
-      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
-    },
-    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasConvergence
   },
   // reduce opponent pool
   {

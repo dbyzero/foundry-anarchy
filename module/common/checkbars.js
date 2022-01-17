@@ -16,7 +16,7 @@ export const CHECKBARS = {
     iconChecked: Icons.fontAwesome('fas fa-skull-crossbones'),
     iconUnchecked: Icons.fontAwesome('fas fa-shield-alt'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
-    resource: MONITORS.armor
+    resource: MONITORS.armor,
   },
   stun: {
     path: 'data.monitors.stun.value',
@@ -163,15 +163,35 @@ export class Checkbars {
     const checkbar = CHECKBARS[monitor];
     if (checkbar && checkbar.path) {
       const max = checkbar.max(target);
-      if (value > max && (monitor == TEMPLATE.monitors.physical || monitor == TEMPLATE.monitors.stun)) {
-        ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, { monitor: monitor, overflow: value - max }));
-        value = max;
-      }
-      else {
-        ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
-      }
+      await Checkbars._manageOverflow(target, monitor, value, max);
+      value = Math.min(value, max);
+
+      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
       await target.update({ [checkbar.path]: value });
     }
+  }
+
+  static async addCounter(target, monitor, value, sourceActorId = undefined) {
+    const current = Checkbars.getCounterValue(target, monitor, sourceActorId) ?? 0;
+    await Checkbars.setCounter(target, monitor, current + value, sourceActorId);
+  }
+
+  static async _manageOverflow(target, monitor, value, max) {
+    if (value > max) {
+      Checkbars._notifyOverflow(target, monitor, value, max);
+      switch (monitor) {
+        case TEMPLATE.monitors.stun:
+          return await Checkbars._manageStunOverflow(target, value, max);
+      }
+    }
+  }
+
+  static _notifyOverflow(target, monitor, value, max) {
+    ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, { monitor: monitor, overflow: value - max }));
+  }
+
+  static async _manageStunOverflow(target, value, max) {
+    await Checkbars.addCounter(target, TEMPLATE.monitors.physical, value - max);
   }
 
   static getCheckbarValue(target, monitor) {
