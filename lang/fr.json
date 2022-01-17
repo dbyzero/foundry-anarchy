@@ -23,7 +23,9 @@
       "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchy de {actor}"
     },
     "chat": {
-      "blindMessageToGM": "Message aveugle de {user}:<br>{message}"
+      "blindMessageToGM": "Message aveugle de {user}:<br>{message}",
+      "sufferedDrain": "{actor} subit un drain de {drain}",
+      "noDrain": "{actor} n'a pas subi de drain"
     },
     "common": {
       "newEntry": "Valeur...",
@@ -59,7 +61,8 @@
           "reroll": "Relance d'échecs",
           "removed": "Succès supprimés par l'adversaire",
           "rerollRemoved": "Relance des succès supprimés",
-          "glitch": "Dés de complication",
+          "glitch": "Complications",
+          "drain": "Drain",
           "convergence": "Convergence",
           "anarchyRisk": "Anarchy - Dés de prise de risques"
         },
@@ -124,6 +127,7 @@
       },
       "monitors": {
         "conditionMonitors": "Moniteurs de condition",
+        "overflow": "Dépassement de {overflow} du moniteur {monitor}",
         "physical": "Physique",
         "stun": "Etourdissant",
         "matrix": "Matriciel",

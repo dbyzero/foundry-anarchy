@@ -3,6 +3,7 @@ import { ANARCHY } from "../config.js";
 import { AnarchyUsers } from "../users.js";
 import { Icons } from "../icons.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
+import { TEMPLATE } from "../constants.js";
 
 const MONITORS = ANARCHY.actor.monitors;
 const COUNTERS = ANARCHY.actor.counters;
@@ -10,6 +11,7 @@ const COUNTERS = ANARCHY.actor.counters;
 export const CHECKBARS = {
   armor: {
     path: 'data.monitors.armor.value',
+    value: it => it.data.data.monitors.armor.value,
     max: it => it.data.data.monitors.armor.max,
     iconChecked: Icons.fontAwesome('fas fa-skull-crossbones'),
     iconUnchecked: Icons.fontAwesome('fas fa-shield-alt'),
@@ -18,6 +20,7 @@ export const CHECKBARS = {
   },
   stun: {
     path: 'data.monitors.stun.value',
+    value: it => it.data.data.monitors.stun.value,
     max: it => it.data.data.monitors.stun.max,
     iconChecked: Icons.fontAwesome('fas fa-grimace'),
     iconUnchecked: Icons.fontAwesome('far fa-smile'),
@@ -27,6 +30,7 @@ export const CHECKBARS = {
   },
   physical: {
     path: 'data.monitors.physical.value',
+    value: it => it.data.data.monitors.physical.value,
     max: it => it.data.data.monitors.physical.max,
     iconChecked: Icons.fontAwesome('fas fa-heartbeat'),
     iconUnchecked: Icons.fontAwesome('far fa-heart'),
@@ -36,6 +40,7 @@ export const CHECKBARS = {
   },
   structure: {
     path: 'data.monitors.structure.value',
+    value: it => it.data.data.monitors.structure.value,
     max: it => it.data.data.monitors.structure.max,
     iconChecked: Icons.fontAwesome('fas fa-car-crash'),
     iconUnchecked: Icons.fontAwesome('fas fa-car-alt'),
@@ -44,6 +49,7 @@ export const CHECKBARS = {
   },
   matrix: {
     path: 'data.monitors.matrix.value',
+    value: it => it.data.data.monitors.matrix.value,
     max: it => it.data.data.monitors.matrix.max,
     iconChecked: Icons.fontAwesome('fas fa-laptop-medical'),
     iconUnchecked: Icons.fontAwesome('fas fa-laptop'),
@@ -52,6 +58,7 @@ export const CHECKBARS = {
   },
   marks: {
     path: undefined,
+    value: it => 0,
     max: it => 9,
     iconChecked: Icons.fontAwesome('fas fa-bookmark'),
     iconUnchecked: Icons.fontAwesome('far fa-bookmark'),
@@ -60,6 +67,7 @@ export const CHECKBARS = {
   },
   anarchy: {
     path: 'data.counters.anarchy.value',
+    value: it => it.data.data.counters.anarchy.value,
     max: it => it.data.data.counters.anarchy.max,
     iconChecked: Icons.iconSrc('style/anarchy-point.webp', 'checkbar-img'),
     iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
@@ -67,13 +75,15 @@ export const CHECKBARS = {
   },
   danger: {
     path: 'data.counters.anarchy.value',
+    value: it => it.data.data.counters.anarchy.value,
     max: it => it.data.data.counters.anarchy.max,
     iconChecked: Icons.iconSrc('style/danger-point.webp', 'checkbar-img'),
     iconUnchecked: Icons.iconSrc('style/danger-point-off.webp', 'checkbar-img'),
     resource: COUNTERS.anarchy
   },
   sceneAnarchy: {
-    path: 'data.counters.anarchy.value',
+    path: 'data.counters.sceneAnarchy.value',
+    value: it => it.data.data.counters.sceneAnarchy.value,
     max: it => (it.data.data.counters.sceneAnarchy.value + 1),
     iconChecked: Icons.iconSrc('style/anarchy-point-scene.webp', 'checkbar-img'),
     iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
@@ -81,6 +91,7 @@ export const CHECKBARS = {
   },
   edge: {
     path: 'data.counters.edge.value',
+    max: it => it.data.data.counters.edge.value,
     max: it => it.data.data.attributes.edge.value,
     iconChecked: Icons.fontAwesome('fas fa-star'),
     iconUnchecked: Icons.fontAwesome('far fa-star'),
@@ -128,20 +139,43 @@ export class Checkbars {
 
   static async setCounter(target, monitor, value, sourceActorId = undefined) {
     switch (monitor) {
-      case 'marks':
+      case TEMPLATE.monitors.marks:
         return await Checkbars.setActorMarks(target, value, sourceActorId);
-      case 'anarchy':
+      case TEMPLATE.monitors.anarchy:
+      case TEMPLATE.monitors.sceneAnarchy:
         return await Checkbars.setAnarchy(target, monitor, value);
     }
     return await Checkbars.setCheckbar(target, monitor, value);
   }
 
+  static getCounterValue(target, monitor, sourceActorId) {
+    switch (monitor) {
+      case TEMPLATE.monitors.marks:
+        return Checkbars.getActorMarks(target, sourceActorId);
+      case TEMPLATE.monitors.anarchy:
+      case TEMPLATE.monitors.sceneAnarchy:
+        return Checkbars.getAnarchy(target, monitor);
+    }
+    return Checkbars.getCheckbarValue(target, monitor);
+  }
+
   static async setCheckbar(target, monitor, value) {
     const checkbar = CHECKBARS[monitor];
     if (checkbar && checkbar.path) {
-      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, checkbar.max(target));
+      const max = checkbar.max(target);
+      if (value > max && (monitor == TEMPLATE.monitors.physical || monitor == TEMPLATE.monitors.stun)) {
+        ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, { monitor: monitor, overflow: value - max }));
+        value = max;
+      }
+      else {
+        ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
+      }
       await target.update({ [checkbar.path]: value });
     }
+  }
+
+  static getCheckbarValue(target, monitor) {
+    return CHECKBARS[monitor]?.value(target);
   }
 
   static async setAnarchy(target, monitor, newValue) {
@@ -163,6 +197,22 @@ export class Checkbars {
     if (!game.user.isGM) {
       Checkbars.notifyAnarchyChange(target, monitor, current, newValue);
     }
+  }
+
+  static getAnarchy(target, monitor) {
+    if (!game.user.isGM && (!target.hasOwnAnarchy() || target.hasGMAnarchy())) {
+      return 0; // undisclosed
+    }
+    if (monitor == COUNTERS.anarchy) {
+      if (!target.hasOwnAnarchy()) {
+        return 0;
+      }
+
+      if (target.hasGMAnarchy()) {
+        return 0;
+      }
+    }
+    return target.data.data.counters[monitor].value;
   }
 
   static notifyAnarchyChange(target, monitor, current, newValue) {

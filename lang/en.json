@@ -23,7 +23,9 @@
       "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}"
     },
     "chat": {
-      "blindMessageToGM": "Blind message from {user}:<br>{message}"
+      "blindMessageToGM": "Blind message from {user}:<br>{message}",
+      "sufferedDrain": "{actor} suffered a drain of {drain}",
+      "noDrain": "{actor} did not suffer any drain"
     },
     "common": {
       "newEntry": "New entry...",
@@ -60,6 +62,7 @@
           "removed": "Success removed by opponent",
           "rerollRemoved": "Reroll removed success",
           "glitch": "Glitch dice",
+          "drain": "Drain",
           "convergence": "Convergence",
           "anarchyRisk": "Anarchy risk dice"
         },
@@ -124,6 +127,7 @@
       },
       "monitors": {
         "conditionMonitors": "Condition monitors",
+        "overflow": "Condition monitor {monitor} overflow of {overflow}",
         "physical": "Physical",
         "stun": "Stun",
         "matrix": "Matrix",
