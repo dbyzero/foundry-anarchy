@@ -31,7 +31,7 @@ export class RollDialog extends Dialog {
     }
   }
 
-  static async attributeRoll(actor, attribute, attribute2 = undefined, attributeAction = undefined) {
+  static async rollAttribute(actor, attribute, attribute2 = undefined, attributeAction = undefined) {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: 'attribute',
       attributeAction: attributeAction,
@@ -41,7 +41,7 @@ export class RollDialog extends Dialog {
     await RollDialog.create(rollData);
   }
 
-  static async skillRoll(actor, skill, specialization) {
+  static async rollSkill(actor, skill, specialization) {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: 'skill',
       skill: skill,
@@ -51,7 +51,7 @@ export class RollDialog extends Dialog {
     await RollDialog.create(rollData);
   }
 
-  static async weaponRoll(actor, skill, weapon) {
+  static async rollWeapon(actor, skill, weapon) {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: 'weapon',
       weapon: weapon,

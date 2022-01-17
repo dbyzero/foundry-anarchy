@@ -62,17 +62,17 @@ export class AnarchyBaseActor extends Actor {
     return 0;
   }
 
-  async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
-    await RollDialog.attributeRoll(this, attribute, attribute2, attributeAction);
+  async rollAttribute(attribute, attribute2 = undefined, attributeAction = undefined) {
+    await RollDialog.rollAttribute(this, attribute, attribute2, attributeAction);
   }
 
-  async skillRoll(skill, specialization) {
-    await RollDialog.skillRoll(this, skill, specialization);
+  async rollSkill(skill, specialization) {
+    await RollDialog.rollSkill(this, skill, specialization);
   }
 
-  async weaponRoll(weapon) {
+  async rollWeapon(weapon) {
     const skill = this.items.find(it => weapon.isWeaponSkill(it));
-    await RollDialog.weaponRoll(this, skill, weapon);
+    await RollDialog.rollWeapon(this, skill, weapon);
   }
 
   async rollDrain(drain) {

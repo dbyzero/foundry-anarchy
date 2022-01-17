@@ -89,28 +89,28 @@ export class AnarchyBaseActorSheet extends ActorSheet {
 
     // rolls
     html.find('.click-skill-roll').click(async event => {
-      this.actor.skillRoll(
+      this.actor.rollSkill(
         this.getEventItem(event),
         this.getEventSkillSpecialization(event));
     });
 
     html.find('.click-roll-attribute').click(async event => {
       const handler = this.getEventItem(event) ?? this.actor;
-      handler.attributeRoll(
+      handler.rollAttribute(
         $(event.currentTarget).closest('.anarchy-attribute').attr('data-attribute')
       );
     });
 
     html.find('.click-roll-attribute-action').click(async event => {
       //TODO: add action buttons to cberdeck? //const handler = this.getEventItem(event) ?? this.actor;
-      this.actor.attributeRoll(
+      this.actor.rollAttribute(
         $(event.currentTarget).attr('data-attribute'),
         $(event.currentTarget).attr('data-attribute2'),
         $(event.currentTarget).attr('data-action-code'));
     });
 
     html.find('.click-weapon-roll').click(async event => {
-      this.actor.weaponRoll(this.getEventItem(event));
+      this.actor.rollWeapon(this.getEventItem(event));
     });
   }
 
