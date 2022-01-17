@@ -3,6 +3,7 @@ import { BASE_MONITOR, TEMPLATE } from "../constants.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
+import { ChatManager } from "../chat/chat-manager.js";
 
 const essenceRange = [
   { from: 5, to: 6, adjust: 0 },

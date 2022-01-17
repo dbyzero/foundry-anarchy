@@ -16,7 +16,7 @@ export const CHECKBARS = {
     iconChecked: Icons.fontAwesome('fas fa-skull-crossbones'),
     iconUnchecked: Icons.fontAwesome('fas fa-shield-alt'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
-    resource: MONITORS.armor
+    resource: MONITORS.armor,
   },
   stun: {
     path: 'data.monitors.stun.value',
@@ -189,9 +189,31 @@ export class Checkbars {
       }
       else {
         ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
+      await Checkbars._manageOverflow(target, monitor, value, max);
+      value = Math.min(value, max);
+
+      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
+      await target.update({ [checkbar.path]: value });
+    }
+  }
+
+  static async _manageOverflow(target, monitor, value, max) {
+    if (value > max) {
+      Checkbars._notifyOverflow(target, monitor, value, max);
+      switch (monitor) {
+        case TEMPLATE.monitors.stun:
+          return await Checkbars._manageStunOverflow(target, value, max);
       }
       await target.update({ [checkbar.path]: value });
     }
+  }
+
+  static _notifyOverflow(target, monitor, value, max) {
+    ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, { monitor: monitor, overflow: value - max }));
+  }
+
+  static async _manageStunOverflow(target, value, max) {
+    await Checkbars.addCounter(target, TEMPLATE.monitors.physical, value - max);
   }
 
   static getCheckbarValue(target, monitor) {
