@@ -229,7 +229,7 @@
   left: -1px;
 }
 
-.style-darkglass .tooltip .tooltip-roll-modifiers {
+.style-darkglass .tooltip .tooltip-roll-parameters {
   background: var(--darkglass-background-tooltip);
 }
 

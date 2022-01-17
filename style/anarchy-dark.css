@@ -191,7 +191,7 @@
   left: -1px;
 }
 
-.style-dark .tooltip .tooltip-roll-modifiers {
+.style-dark .tooltip .tooltip-roll-parameters {
   background: var(--dark-background-tooltip);
 }
 

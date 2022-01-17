@@ -36,12 +36,15 @@ export class AnarchyRoll {
       glitch: undefined,
     }
     if (this.param.edge > 0) {
-      this.param.target = 5;
+      this.param.target = 4;
     }
-    this.outcome = 'nothing'
+    this.riskProwess = 0;
+    this.riskGlitch = 0;
+    this.riskOutcome = 'nothing'
     this.glitch = 0;
+    this.glitchOutcome = 'nothing'
+    this.totalGlitch = 0;
     this.drain = 0;
-    this.prowess = 0;
     this.total = 0;
   }
 
@@ -52,7 +55,6 @@ export class AnarchyRoll {
     await this.rollRerollForced();
     await this.rollGlitchDice();
     await this.rollAnarchyRisk();
-    this.determineOutcome();
   }
 
   async rollPool() {
@@ -84,10 +86,15 @@ export class AnarchyRoll {
 
   async rollGlitchDice() {
     if (this.param.glitch > 0) {
-      this.subrolls.glitch = new Roll(`${this.param.glitch}dgcs=0[${ROLL_THEME['glitch']}]`);
+      this.subrolls.glitch = new Roll(`${this.param.glitch}dgcf=1[${ROLL_THEME['glitch']}]`);
       await this.subrolls.glitch.evaluate({ async: true })
       this.subrolls.glitch.dice[0].options.appearance = { colorset: GLITCH_COLORSET };
-      this.glitch += this.subrolls.glitch.terms[0].results.filter(it => it.result == 1).length;
+      this.glitch = this.subrolls.glitch.terms[0].results.filter(it => it.result == 1).length;
+      this.glitchOutcome = this.glitch > 0
+        ? 'glitch'
+        : 'nothing';
+      this.totalGlitch += this.glitch;
+
     }
   }
 
@@ -96,22 +103,18 @@ export class AnarchyRoll {
       this.subrolls.risk = new Roll(`${this.param.risk}drcs>=5[${ROLL_THEME['anarchyRisk']}]`);
       await this.subrolls.risk.evaluate({ async: true })
       this.subrolls.risk.dice[0].options.appearance = { colorset: RISK_COLORSET };
-      this.glitch += this.subrolls.risk.terms[0].results.filter(it => it.result == 1).length;
-      this.prowess += this.subrolls.risk.terms[0].results.filter(it => it.result >= 5).length;
+      this.riskGlitch = this.subrolls.risk.terms[0].results.filter(it => it.result == 1).length;
+      this.riskProwess += this.subrolls.risk.terms[0].results.filter(it => it.result >= 5).length;
       if (this.subrolls.risk.total > 0) {
         this.total++;
       }
-    }
-  }
-
-  determineOutcome() {
-    this.outcome = (this.glitch > this.prowess
-      ? 'glitch'
-      : this.glitch < this.prowess
+      this.riskOutcome = this.riskProwess > 0
         ? 'prowess'
-        : this.glitch > 0
-          ? 'nothing' // TODO: replace with an even glitch/exploit?
-          : 'nothing');
+        : this.riskGlitch > 0
+          ? 'glitch'
+          : 'nothing';
+      this.totalGlitch += this.riskGlitch;
+    }
   }
 
   async toMessage(messageData, options) {
