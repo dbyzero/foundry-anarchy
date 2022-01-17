@@ -57,7 +57,7 @@ export class AnarchyBaseItem extends Item {
 
   canReceiveMarks() { return this.data.data.monitors?.matrix?.canMark; }
 
-  async attributeRoll(attribute, attribute2 = undefined, attributeAction = undefined) {
+  async rollAttribute(attribute, attribute2 = undefined, attributeAction = undefined) {
     if (this.parent) {
       await RollDialog.itemAttributeRoll(this, attribute);
     }
