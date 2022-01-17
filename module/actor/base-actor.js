@@ -74,6 +74,13 @@ export class AnarchyBaseActor extends Actor {
     await RollDialog.weaponRoll(this, skill, weapon);
   }
 
+  async rollConvergence(convergence) {
+    if (!convergence) {
+      return;
+    }
+    game.system.anarchy.gmConvergence.rollConvergence(this.id, convergence)
+  }
+
   async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
     await Checkbars.switchMonitorCheck(this, monitor, index, checked, sourceActorId);
   }

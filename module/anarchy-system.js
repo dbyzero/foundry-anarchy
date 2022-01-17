@@ -41,6 +41,7 @@ import { ShadowampItem } from './item/shadowamp-item.js';
 import { Checkbars } from './common/checkbars.js';
 import { RollParameters } from './roll/roll-parameters.js';
 import { RollDialog } from './roll/roll-dialog.js';
+import { GMConvergence } from './app/gm-convergence.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -78,7 +79,8 @@ export class AnarchySystem {
     this.styles = new Styles();
     this.handlebarsManager = new HandlebarsManager();
     this.gmAnarchy = new GMAnarchy();
-    this.gmManager = new GMManager();
+    this.gmConvergence = new GMConvergence();
+    this.gmManager = new GMManager(this.gmAnarchy, this.gmConvergence);
     this.skills = new Skills();
     this.rollParameters = new RollParameters();
 
