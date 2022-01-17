@@ -13,6 +13,7 @@ export class AnarchyUsers {
     })
   }
 
+
   static blindMessageToGM(chatMessageData) {
     if (!RemoteCall.call(BLIND_MESSAGE_TO_GM, chatMessageData)) {
       ChatMessage.create({
@@ -27,12 +28,16 @@ export class AnarchyUsers {
     }
   }
 
-  static getUsers(filter = () => true) {
+  static getUsers(filter = user => true) {
     return (game.version ? game.users : game.users.entities).filter(filter);
   }
 
+  static getGMs() {
+    return AnarchyUsers.getUsers(u => u.isGM);
+  }
+
   static oneGM() {
-    return AnarchyUsers.getUsers().find(u => u.isGM);
+    return AnarchyUsers.getUsers(u => u.isGM).at(0);
   }
 
   static firstConnectedGM() {

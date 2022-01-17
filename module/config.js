@@ -135,6 +135,7 @@ export const ANARCHY = {
             structure: 'ANARCHY.actor.monitors.structure',
             resistance: 'ANARCHY.actor.monitors.resistance',
             marks: 'ANARCHY.actor.monitors.marks',
+            convergence: 'ANARCHY.actor.monitors.convergence',
         },
         vehicle: {
             handling: 'ANARCHY.actor.vehicle.handling',

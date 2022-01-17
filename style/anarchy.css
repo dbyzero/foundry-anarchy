@@ -30,6 +30,7 @@
   --background-editor: var(--gradient-silver), hsla(0, 10%, 80%, 0.8);
   --color-button: hsla(0, 10%, 10%, 1);
   --color-editor-font: hsla(0, 10%, 10%, 1);
+  --color-chat: hsla(0, 10%, 10%, 1);
 }
 
 #logo {
@@ -106,8 +107,17 @@ img.anarchy-img.item-img {
   margin: 2px;
   padding: 2px;
 }
+
+#gm-manager div.gm-manager-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: max-content;
+  align-items: flex-start;
+}
 #gm-manager div {
-  padding: 2px;
+  padding: 1px;
   vertical-align: top;
 }
 #gm-manager {
@@ -127,12 +137,6 @@ img.anarchy-img.item-img {
 	margin: 2px;
 	padding: 2px;
 }
-
-#gm-manager div.anarchy-monitor-anarchy {
-  align-items: flex-start;
-  max-width: fit-content;
-}
-
 
 .sheet header.sheet-header h1,
 .sheet header.sheet-header .passport-header{

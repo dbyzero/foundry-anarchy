@@ -65,6 +65,15 @@ export const CHECKBARS = {
     iconHit: Icons.fontAwesome('fas fa-fingerprint'),
     resource: MONITORS.marks
   },
+  convergence: {
+    path: undefined,
+    value: it => 0,
+    max: it => 9,
+    iconChecked: Icons.fontAwesome('far fa-eye'),
+    iconUnchecked: Icons.fontAwesome('fas fa-eye-slash'),
+    iconHit: Icons.fontAwesome('fas fa-eye'),
+    resource: MONITORS.convergence
+  },
   anarchy: {
     path: 'data.counters.anarchy.value',
     value: it => it.data.data.counters.anarchy.value,
@@ -133,14 +142,23 @@ export class Checkbars {
   static newValue(index, checked) {
     return index + (checked ? 0 : 1);
   }
+
   static async switchMonitorCheck(target, monitor, index, checked, sourceActorId = undefined) {
     await Checkbars.setCounter(target, monitor, Checkbars.newValue(index, checked), sourceActorId)
+  }
+
+
+  static async addCounter(target, monitor, value, sourceActorId = undefined) {
+    const current = Checkbars.getCounterValue(target, monitor, sourceActorId) ?? 0;
+    await Checkbars.setCounter(target, monitor, current + value, sourceActorId);
   }
 
   static async setCounter(target, monitor, value, sourceActorId = undefined) {
     switch (monitor) {
       case TEMPLATE.monitors.marks:
         return await Checkbars.setActorMarks(target, value, sourceActorId);
+      case TEMPLATE.monitors.convergence:
+        return await Checkbars.setActorConvergence(target, value);
       case TEMPLATE.monitors.anarchy:
       case TEMPLATE.monitors.sceneAnarchy:
         return await Checkbars.setAnarchy(target, monitor, value);
@@ -152,6 +170,8 @@ export class Checkbars {
     switch (monitor) {
       case TEMPLATE.monitors.marks:
         return Checkbars.getActorMarks(target, sourceActorId);
+      case TEMPLATE.monitors.convergence:
+        return Checkbars.getActorConvergence(target);
       case TEMPLATE.monitors.anarchy:
       case TEMPLATE.monitors.sceneAnarchy:
         return Checkbars.getAnarchy(target, monitor);
@@ -169,11 +189,6 @@ export class Checkbars {
       ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
       await target.update({ [checkbar.path]: value });
     }
-  }
-
-  static async addCounter(target, monitor, value, sourceActorId = undefined) {
-    const current = Checkbars.getCounterValue(target, monitor, sourceActorId) ?? 0;
-    await Checkbars.setCounter(target, monitor, current + value, sourceActorId);
   }
 
   static async _manageOverflow(target, monitor, value, max) {
@@ -274,4 +289,13 @@ export class Checkbars {
   static _findActorMarks(marks, sourceActorId) {
     return marks.find(source => source.actorId == sourceActorId) ?? { actorId: sourceActorId };
   }
+
+  static getActorConvergence(target) {
+    game.system.anarchy.gmConvergence.getConvergence(target);
+  }
+
+  static async setActorConvergence(target, value) {
+    await game.system.anarchy.gmConvergence.setConvergence(target, value);
+  }
+
 }

@@ -1,6 +1,15 @@
-{{#each convergences as |convergence|}}
-<div class="actor-convergence" data-actor-id="{{convergence.actorId}}"></div>
-<label>{{convergence.actor.name}}</label>
-<label>{{convergence.convergence}}</label>
-<a class="click-convergence-element"></a>
+<div class="gm-convergence-content">
+{{#each convergences as |c|}}
+{{log 'convergence' c 'actor' c.actor.id c.actor.name 'convergence' c.convergence }}
+<div class="actor-convergence" data-actor-id="{{c.actor.id}}">
+  {{> 'systems/anarchy/templates/common/actor-reference.hbs' c.actor}}
+  {{> "systems/anarchy/templates/common/checkbar.hbs"
+    code='convergence'
+    value=c.convergence
+    max=(sum c.convergence 1)
+    labelkey='ANARCHY.actor.monitors.convergence'
+    rowlength=4
+  }}
+</div>
 {{/each}}
+</div>

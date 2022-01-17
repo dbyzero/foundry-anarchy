@@ -60,6 +60,7 @@ export const TEMPLATE = {
     structure: 'structure',
     matrix: 'matrix',
     marks: 'marks',
+    convergence: 'convergence',
     anarchy: 'anarchy',
     danger: 'danger',
     sceneAnarchy: 'sceneAnarchy',

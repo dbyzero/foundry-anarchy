@@ -158,7 +158,7 @@ export class CharacterActor extends AnarchyBaseActor {
 
   async sufferDrain(drain) {
     if (drain != 0) {
-      this.addCounter(TEMPLATE.monitors.stun, drain);
+      await this.addCounter(TEMPLATE.monitors.stun, drain);
     }
   }
 
@@ -166,8 +166,6 @@ export class CharacterActor extends AnarchyBaseActor {
     if (!convergence) {
       return;
     }
-    ui.notifications.warn('Actor.rollConvergence: To be tested!');
-
     game.system.anarchy.gmConvergence.rollConvergence(this.id, convergence)
   }
 

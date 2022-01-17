@@ -1,5 +1,8 @@
+import { Checkbars } from "../common/checkbars.js";
+import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME, TEMPLATES_PATH } from "../constants.js";
 import { RemoteCall } from "../remotecall.js";
+import { AnarchyUsers } from "../users.js";
 
 const CONVERGENCES = "convergences";
 const ROLL_CONVERGENCE = 'GMConvergence.rollConvergence';
@@ -36,23 +39,46 @@ export class GMConvergence {
 
   async rollConvergence(actorId, convergence) {
     if (!RemoteCall.call(ROLL_CONVERGENCE, { actorId: actorId, convergence: convergence })) {
-      const actor = game.actors.get(actorId);
-      const rollConvergence = new Roll(`${convergence}dgcf=1[${ROLL_THEME['drain']}]`);
-      await rollConvergence.evaluate({ async: true });
-      if (rollConvergence.result != 0) {
-        this.addConvergence(actorId, rollConvergence);
-      }
+      await this._gmRollConvergence(convergence, actorId);
     }
   }
 
-  async addConvergence(actorId, rollConvergence) {
-    let c = this.convergences.find(it => it.actorId == actorId);
+  async _gmRollConvergence(convergence, actorId) {
+    const actor = game.actors.get(actorId);
+    ui.notifications.warn('Actor.rollConvergence: To be tested!');
+
+    const rollConvergence = new Roll(`${convergence}dgcf=1[${game.i18n.localize(ANARCHY.common.roll.rollTheme.convergence)}]`);
+    await rollConvergence.evaluate({ async: true });
+    this.addConvergence(actor, rollConvergence.total);
+    rollConvergence.toMessage({
+      flavor: `Convergence for ${actor.name}: ${rollConvergence.total}`,
+      whisper: AnarchyUsers.getGMs()
+    });
+  }
+
+  async addConvergence(actor, added) {
+    if (!game.user.isGM || !added) {
+      return;
+    }
+    await this.setActorConvergence(actor, this.getConvergence(actor) + added);
+  }
+
+
+  async getConvergence(actor) {
+    if (!game.user.isGM) {
+      return 0; // undisclosed
+    }
+    return this.convergences.find(it => it.actorId == actor.id)?.convergence ?? 0;
+  }
+
+  async setActorConvergence(actor, newConvergence) {
+    let c = this.convergences.find(it => it.actorId == actor.id);
     if (!c) {
-      c = { actorId: actorId, convergence: 0 };
+      c = { actorId: actorId };
       this.convergences.push(c);
     }
-    c.convergence += rollConvergence.result;
-    this.convergences = this.convergences.filter(it => it.convergence <= 0);
+    c.convergence = newConvergence;
+    this.convergences = this.convergences.filter(it => it.convergence > 0);
     game.settings.set(SYSTEM_NAME, CONVERGENCES, this.convergences);
     await this._rebuild();
   }
@@ -63,22 +89,32 @@ export class GMConvergence {
   }
 
   async _rebuild() {
-    this.toolbar.find('.gm-convergence-bar').replaceWith(await this._renderBar());
-    this.toolbar.find('a.click-convergence-element').click(async (event) => await this._onClickConvergence(event));
+    this.toolbar.find('.gm-convergence-content').replaceWith(await this._renderBar());
+    this.toolbar.find('a.click-checkbar-element').click(async (event) => await this._onClickConvergence(event));
   }
 
 
   async _onClickConvergence(event) {
-    // const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
-    // const index = Number.parseInt($(event.currentTarget).attr('data-index'));
-    // const isChecked = $(event.currentTarget).attr('data-checked') == 'true';
-    // const newAnarchy = index + (isChecked ? 0 : 1);
+    const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
+    const actorId = $(event.currentTarget).closest('.actor-convergence').attr('data-actor-id');
+    const index = Number.parseInt($(event.currentTarget).attr('data-index'));
+    const isChecked = $(event.currentTarget).attr('data-checked') == 'true';
+    const newConvergence = Checkbars.newValue(index, isChecked);
+    const actor = game.actors.get(actorId);
+    await this.setActorConvergence(actor, newConvergence);
   }
 
   async _renderBar() {
-    return await renderTemplate(HBS_TEMPLATE_CONVERGENCE_ACTORS, {
-      convergence: this.convergences.map(it => mergeObject({ actor: game.actors.get(it.actorId) }, it))
-    });
+    const actorsConvergence = {
+      convergences: this.convergences.map(it => {
+        return {
+          actor: game.actors.get(it.actorId),
+          convergence: it.convergence
+        };
+      })
+    };
+    const html = await renderTemplate(HBS_TEMPLATE_CONVERGENCE_ACTORS, actorsConvergence);
+    return html;
   }
 
 }
