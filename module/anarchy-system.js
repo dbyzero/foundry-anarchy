@@ -55,9 +55,8 @@ export class AnarchySystem {
   }
 
   async onInit() {
-    game.system.anarchy = this;
-
     console.log(LOG_HEAD + 'AnarchySystem.onInit');
+    game.system.anarchy = this;
     this.actorClasses = {
       character: CharacterActor,
       vehicle: VehicleActor,
@@ -74,7 +73,7 @@ export class AnarchySystem {
       weapon: WeaponItem
     };
 
-    this.remoteCall = new RemoteCall();
+    this.remoteCall = new RemoteCall(); // initialize remote calls registry first: used by other singleton managers
     this.hooks = new HooksManager();
     this.styles = new Styles();
     this.handlebarsManager = new HandlebarsManager();
@@ -100,7 +99,6 @@ export class AnarchySystem {
     this.loadActorSheets();
     this.loadItemSheets();
 
-    // initialize remote calls registry first
     RollDialog.init();
     AnarchyUsers.init();
     AnarchyDice.init();
@@ -117,7 +115,6 @@ export class AnarchySystem {
       new Migrations().migrate();
     }
   }
-
 
   loadActorSheets() {
     Actors.unregisterSheet('core', ActorSheet);
