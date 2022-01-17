@@ -336,13 +336,10 @@ export class RollParameters {
 
   compute(parameters) {
     const actual = parameters.filter(it => it.used);
-    // TODO: 
-    return Object.values(Misc.classify(actual, it => it.category)).map(list => {
-      return {
-        category: list[0].category,
-        value: Misc.sumValues(list, it => it.value ?? (it.optional ? 1 : 0))
-      };
-    });
+    const byCategory = Misc.classify(actual, it => it.category);
+    const sums = {}
+    Object.values(byCategory).forEach(list => sums[list[0].category] = Misc.sumValues(list, it => it.value ?? (it.optional ? 1 : 0)));
+    return sums;
   }
 
   _computeParameter(param, context) {

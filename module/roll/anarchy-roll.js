@@ -1,7 +1,7 @@
 import { ANARCHY } from "../config.js";
 import { GLITCH_COLORSET, RISK_COLORSET } from "./dice.js";
 
-const ROLL_THEME = {}
+export const ROLL_THEME = {}
 
 export class AnarchyRoll {
   static init() {
@@ -18,7 +18,15 @@ export class AnarchyRoll {
    * @param {*} param : { pool: 1, reroll: 0, risk: 0, rerollForced: 0, target: 5 }
    */
   constructor(param) {
-    this.param = mergeObject(param, { pool: 1, reroll: 0, risk: 0, glitch: 0, rerollForced: 0, target: 5 }, { overwrite: false });
+    this.param = mergeObject(param, {
+      target: 5,
+      pool: 1,
+      reroll: 0,
+      rerollForced: 0,
+      glitch: 0,
+      risk: 0,
+      edge: 0,
+    }, { overwrite: false });
     this.subrolls = {
       roll: undefined,
       reroll: undefined,
@@ -27,8 +35,12 @@ export class AnarchyRoll {
       risk: undefined,
       glitch: undefined,
     }
+    if (this.param.edge > 0) {
+      this.param.target = 5;
+    }
     this.outcome = 'nothing'
     this.glitch = 0;
+    this.drain = 0;
     this.prowess = 0;
     this.total = 0;
   }

@@ -1,8 +1,12 @@
 import { AttributeActions } from "../attribute-actions.js";
+import { ChatManager } from "../chat/chat-manager.js";
 import { Checkbars } from "../common/checkbars.js";
+import { ANARCHY } from "../config.js";
+import { TEMPLATE } from "../constants.js";
 import { RollDialog } from "../roll/roll-dialog.js";
 
 export class AnarchyBaseActor extends Actor {
+
 
   constructor(data, context = {}) {
     if (!context.anarchy?.ready) {
@@ -74,6 +78,21 @@ export class AnarchyBaseActor extends Actor {
     await RollDialog.weaponRoll(this, skill, weapon);
   }
 
+
+  async rollDrain(drain) {
+    if (drain) {
+      const rollDrain = new Roll(`${drain}dgcf=1[${game.i18n.localize(ANARCHY.common.roll.rollTheme.drain)}]`);
+      await rollDrain.evaluate({ async: true });
+      await this.sufferDrain(rollDrain.total);
+      ChatManager.displayDrainInChat(this, rollDrain);// TODO: add info about actor current state
+    }
+  }
+  async sufferDrain(drain) {
+    if (drain != 0) {
+      this.addCounter(TEMPLATE.monitors.stun, drain);
+    }
+  }
+
   async rollConvergence(convergence) {
     if (!convergence) {
       return;
@@ -83,6 +102,11 @@ export class AnarchyBaseActor extends Actor {
 
   async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
     await Checkbars.switchMonitorCheck(this, monitor, index, checked, sourceActorId);
+  }
+
+  async addCounter(monitor, value, sourceActorId = undefined) {
+    const current = Checkbars.getCounterValue(this, monitor, sourceActorId) ?? 0;
+    await Checkbars.setCounter(this, monitor, current + value, sourceActorId);
   }
 
   async setCounter(monitor, value, sourceActorId = undefined) {

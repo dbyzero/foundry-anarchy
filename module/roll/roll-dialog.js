@@ -3,6 +3,7 @@ import { TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { Misc } from "../misc.js";
 import { ROLL_PARAMETER_CATEGORY } from "./roll-parameters.js";
+import { RollManager } from "./roll-manager.js";
 
 /**
  * Extend the base Dialog entity to select roll parameters
@@ -91,11 +92,7 @@ export class RollDialog extends Dialog {
       default: 'roll',
       buttons: {
         'roll': {
-          label: game.i18n.localize(ANARCHY.common.roll.button), callback: async () => {
-            const rolls = game.system.anarchy.rollParameters.compute(rollData.parameters);
-            console.log('RollDialog outcome', rollData, rolls);
-            //await RollManager.roll(rollData, rolls)
-          }
+          label: game.i18n.localize(ANARCHY.common.roll.button), callback: async () => await RollManager.roll(rollData)
         }
       },
     };
@@ -110,6 +107,7 @@ export class RollDialog extends Dialog {
 
     this.rollData = rollData;
   }
+
   activateListeners(html) {
     super.activateListeners(html);
     this.bringToTop();
@@ -119,7 +117,7 @@ export class RollDialog extends Dialog {
       const item = this._getEventItem(event, this.rollData.actor);
       const selected = event.currentTarget.value;
       const value = this.rollData.actor.getAttributeValue(selected, item);
-
+      this.rollData[parameter.code] = selected;
       this._setParameterSelectedOption(html, parameter, selected, value);
     });
 

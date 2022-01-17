@@ -22,7 +22,9 @@ export const ANARCHY = {
         gmConvergence: 'ANARCHY.gmManager.gmConvergence',
     },
     chat: {
-        blindMessageToGM: 'ANARCHY.chat.blindMessageToGM'
+        blindMessageToGM: 'ANARCHY.chat.blindMessageToGM',
+        sufferedDrain: 'ANARCHY.chat.sufferedDrain',
+        noDrain: 'ANARCHY.chat.noDrain',
     },
     common: {
         newEntry: 'ANARCHY.common.newEntry',
@@ -59,6 +61,7 @@ export const ANARCHY = {
                 removed: 'ANARCHY.common.roll.rollTheme.removed',
                 rerollRemoved: 'ANARCHY.common.roll.rollTheme.rerollRemoved',
                 glitch: 'ANARCHY.common.roll.rollTheme.glitch',
+                drain: 'ANARCHY.common.roll.rollTheme.drain',
                 convergence: 'ANARCHY.common.roll.rollTheme.convergence',
                 anarchyRisk: 'ANARCHY.common.roll.rollTheme.anarchyRisk',
             },
@@ -123,6 +126,7 @@ export const ANARCHY = {
         },
         monitors: {
             conditionMonitors: 'ANARCHY.actor.monitors.conditionMonitors',
+            overflow: 'ANARCHY.actor.monitors.overflow',
             physical: 'ANARCHY.actor.monitors.physical',
             stun: 'ANARCHY.actor.monitors.stun',
             matrix: 'ANARCHY.actor.monitors.matrix',

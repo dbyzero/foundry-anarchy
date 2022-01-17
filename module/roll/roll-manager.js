@@ -1,27 +1,25 @@
 import { ChatManager } from "../chat/chat-manager.js";
 import { Modifiers } from "../modifiers.js";
 import { AnarchyRoll } from "./anarchy-roll.js";
+import { ROLL_PARAMETER_CATEGORY } from "./roll-parameters.js";
+
 
 export class RollManager {
 
-  static init() {
-
-  }
-
-  constructor() {
-
-  }
-
-
   static async roll(rollData) {
-    rollData.param = Modifiers.computeRollParameters(rollData);
-    await rollData.actor.spendEdge(rollData.param.edge);
+    rollData.param = game.system.anarchy.rollParameters.compute(rollData.parameters);
+
+    rollData.param.edge = rollData.parameters.find(it => it.category == ROLL_PARAMETER_CATEGORY.edge && it.used) ? 1 : 0;
+    rollData.param.anarchy = rollData.parameters.filter(it => it.flags.isAnarchy && it.used).length;
+
     await rollData.actor.spendAnarchy(rollData.param.anarchy);
-    rollData.canEdgeRoll = rollData.param.edge == 0;
-    RollManager._roll(rollData)
+    await rollData.actor.spendEdge(rollData.param.edge);
+    rollData.canEdgeRoll = !rollData.param.edge;
+    RollManager._roll(rollData);
   }
 
   static async edgeReroll(rollData) {
+    ui.notifications.warn('RollManager.edgeReroll: To be tested!');
     rollData.canEdgeRoll = false;
     await rollData.actor.spendEdge(1);
     RollManager._roll(rollData)
@@ -30,10 +28,10 @@ export class RollManager {
   static async _roll(rollData) {
     rollData.roll = new AnarchyRoll(rollData.param);
     await rollData.roll.evaluate();
-    ChatManager.displayRollInChat(rollData, rollData.canEdgeRoll)
+    await ChatManager.displayRollInChat(rollData, rollData.canEdgeRoll)
+    await rollData.actor.rollDrain(rollData.param.drain);
+    await rollData.actor.rollConvergence(rollData.param.convergence);
   }
-
-
 
   static rollDataToJSON(rollData) {
     const chatRollData = {
@@ -41,11 +39,11 @@ export class RollManager {
       actor: RollManager._reduceToId(rollData.actor),
       skill: RollManager._reduceToId(rollData.skill),
       weapon: RollManager._reduceToId(rollData.weapon),
-      attribute: rollData.attribute,
+      attribute1: rollData.attribute1,
       attribute2: rollData.attribute2,
       attributeAction: rollData.attributeAction,
       specialization: rollData.specialization,
-      modifiers: RollManager._reduceModifiers(rollData.modifiers),
+      parameters: RollManager._reduceParameters(rollData.parameters),
       param: rollData.param
     }
     return JSON.stringify(chatRollData);
@@ -56,6 +54,7 @@ export class RollManager {
     rollData.actor = RollManager._reloadActorFromId(rollData.actor);
     rollData.skill = RollManager._reloadItemFromId(rollData.actor, rollData.skill);
     rollData.weapon = RollManager._reloadItemFromId(rollData.actor, rollData.weapon);
+    rollData.parameters = RollManager._reloadParameters(rollData, rollData.parameters);
     return rollData;
   }
 
@@ -71,27 +70,24 @@ export class RollManager {
     return actor && item?.id ? actor.items.get(item.id) : undefined;
   }
 
-  static _reduceModifiers(modifiers) {
-    const reduced = {}
-    Object.entries(modifiers)
-      .forEach(kv => {
-        if (kv[1]?.used) {
-          reduced[kv[0]] = RollManager._reducedModifier(kv[1]);
+  static _reduceParameters(parameters) {
+    return parameters.filter(it => it.used)
+      .map(it => {
+        return {
+          code: it.code,
+          value: it.value,
         }
       });
-    return reduced;
   }
 
-  static _reducedModifier(modifier) {
-    return {
-      type: modifier.type,
-      label: modifier.label,
-      labelkey: modifier.labelkey,
-      category: modifier.category,
-      isAnarchy: modifier.isAnarchy,
-      value: modifier.value,
-      used: modifier.used,
-      selectedLabel: modifier.selectedLabel
-    };
+  static _reloadParameters(rollData, parameters) {
+    if (!parameters) {
+      return parameters;
+    }
+    const built = game.system.anarchy.rollParameters.build(rollData);
+    return parameters.map(p => {
+      const initial = built.find(it => it.code == p.code) ?? {};
+      return mergeObject(p, initial, { overwrite: false });
+    });
   }
 }

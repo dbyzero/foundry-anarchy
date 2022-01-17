@@ -1,4 +1,5 @@
 import { ANARCHY } from "../config.js";
+import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { RemoteCall } from "../remotecall.js";
@@ -6,17 +7,18 @@ import { RollManager } from "../roll/roll-manager.js";
 
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
 const HBS_CHAT_TEMPLATES = [
-  'systems/anarchy/templates/chat/roll-modifier.hbs',
-  'systems/anarchy/templates/chat/risk-outcome.hbs',
-  'systems/anarchy/templates/chat/edge-reroll-button.hbs',
-  'systems/anarchy/templates/chat/parts/actor-image.hbs',
-  'systems/anarchy/templates/chat/parts/title-mode-attribute.hbs',
-  'systems/anarchy/templates/chat/parts/title-mode-skill.hbs',
-  'systems/anarchy/templates/chat/parts/title-mode-weapon.hbs',
-  'systems/anarchy/templates/chat/parts/pool-mode-attribute.hbs',
-  'systems/anarchy/templates/chat/parts/pool-mode-skill.hbs',
-  'systems/anarchy/templates/chat/parts/pool-mode-weapon.hbs',
-  'systems/anarchy/templates/chat/parts/result-mode-weapon.hbs',
+  `${TEMPLATES_PATH}/chat/roll-modifier.hbs`,
+  `${TEMPLATES_PATH}/chat/risk-outcome.hbs`,
+  `${TEMPLATES_PATH}/chat/edge-reroll-button.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/actor-image.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/title-mode-attribute.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/title-mode-skill.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/title-mode-weapon.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/pool-mode-attribute.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/pool-mode-skill.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/pool-mode-weapon.hbs`,
+  `${TEMPLATES_PATH}/chat/parts/result-mode-weapon.hbs`,
+  `${TEMPLATES_PATH}/chat/actor-drain.hbs`,
 ];
 
 export class ChatManager {
@@ -44,7 +46,7 @@ export class ChatManager {
     rollData.options.classes = rollData.options.classes ?? [];
     rollData.options.classes.push(game.system.anarchy.styles.selectCssClass());
 
-    const flavor = await renderTemplate('systems/anarchy/templates/chat/anarchy-roll.hbs', rollData);
+    const flavor = await renderTemplate(`${TEMPLATES_PATH}/chat/anarchy-roll.hbs`, rollData);
     await rollData.roll.toMessage({ flavor: flavor });
   }
 
@@ -63,5 +65,18 @@ export class ChatManager {
     if (!RemoteCall.call(REMOVE_CHAT_MESSAGE, messageId)) {
       game.messages.get(messageId)?.delete();
     }
+  }
+
+  static async displayDrainInChat(actor, rollDrain) {
+
+    const flavor = await renderTemplate(`${TEMPLATES_PATH}/chat/actor-drain.hbs`, {
+      ANARCHY: ANARCHY,
+      actor: actor,
+      drain: rollDrain.total,
+      options: {
+        classes: game.system.anarchy.styles.selectCssClass()
+      }
+    });
+    await rollDrain.toMessage({ flavor: flavor });
   }
 }
