@@ -11,6 +11,7 @@ export const ROLL_PARAMETER_CATEGORY = {
   rerollForced: 'rerollForced',
   glitch: 'glitch',
   drain: 'drain',
+  convergence: 'convergence',
   edge: 'edge',
   risk: 'risk',
   opponent: 'opponent'

@@ -19,6 +19,7 @@ export const ANARCHY = {
         title: 'ANARCHY.gmManager.title',
         playerChangedAnarchy: 'ANARCHY.gmManager.playerChangedAnarchy',
         gmReceivedAnarchy: 'ANARCHY.gmManager.gmReceivedAnarchy',
+        gmConvergence: 'ANARCHY.gmManager.gmConvergence',
     },
     chat: {
         blindMessageToGM: 'ANARCHY.chat.blindMessageToGM'
@@ -58,6 +59,7 @@ export const ANARCHY = {
                 removed: 'ANARCHY.common.roll.rollTheme.removed',
                 rerollRemoved: 'ANARCHY.common.roll.rollTheme.rerollRemoved',
                 glitch: 'ANARCHY.common.roll.rollTheme.glitch',
+                convergence: 'ANARCHY.common.roll.rollTheme.convergence',
                 anarchyRisk: 'ANARCHY.common.roll.rollTheme.anarchyRisk',
             },
             totalSuccess: 'ANARCHY.common.roll.totalSuccess',

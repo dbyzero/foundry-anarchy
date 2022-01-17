@@ -11,9 +11,10 @@ const GM_MANAGER_TEMPLATE = 'systems/anarchy/templates/app/gm-manager.hbs';
 
 export class GMManager extends Application {
 
-  constructor() {
+  constructor(gmAnarchy, gmConvergence) {
     super();
-    this.gmAnarchy = game.system.anarchy.gmAnarchy;
+    this.gmAnarchy = gmAnarchy;
+    this.gmConvergence = gmConvergence;
     this.gmDifficulty = new GMDifficulty();
     this.handleDrag = new HandleDragApplication(
       doc => doc.getElementById("gm-manager"),
@@ -30,7 +31,7 @@ export class GMManager extends Application {
 
   onReady() {
     if (game.user.isGM) {
-      game.system.anarchy.gmManager.render(true);
+      this.render(true);
     }
   }
 
@@ -51,10 +52,12 @@ export class GMManager extends Application {
       await super.render(force, options);
     }
   }
+
   getData() {
     this.handleDrag.setPosition();
     return {
       anarchy: this.gmAnarchy.getAnarchy(),
+      convergences: this.gmConvergence.getConvergences(),
       difficultyPools: this.gmDifficulty.getDifficultyData(),
       ANARCHY: ANARCHY,
       options: {
@@ -68,8 +71,9 @@ export class GMManager extends Application {
 
     html.find('.app-title-bar').mousedown(event => this.handleDrag.onMouseDown(event));
 
-    this.gmAnarchy.activateListeners(html)
-    this.gmDifficulty.activateListeners(html)
+    this.gmAnarchy.activateListeners(html);
+    this.gmConvergence.activateListeners(html);
+    this.gmDifficulty.activateListeners(html);
 
   }
 }

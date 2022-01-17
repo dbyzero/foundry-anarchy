@@ -18,6 +18,7 @@
     },
     "gmManager": {
       "title": "GM manager",
+      "gmConvergence": "GOD convergence",
       "playerChangedAnarchy": "Player {user} changed {actor}'s {monitor} from {from} to {to}",
       "gmReceivedAnarchy": "Gamemaster receives {anarchy} anarchy from {actor}"
     },
@@ -59,6 +60,7 @@
           "removed": "Success removed by opponent",
           "rerollRemoved": "Reroll removed success",
           "glitch": "Glitch dice",
+          "convergence": "Convergence",
           "anarchyRisk": "Anarchy risk dice"
         },
         "totalSuccess": "Total successes",
