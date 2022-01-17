@@ -47,6 +47,7 @@ export const ANARCHY = {
                 anarchyRisk: 'ANARCHY.common.roll.modifiers.anarchyRisk',
                 glitch: 'ANARCHY.common.roll.modifiers.glitch',
                 drain: 'ANARCHY.common.roll.modifiers.drain',
+                convergence: 'ANARCHY.common.roll.modifiers.convergence',
                 wounds: 'ANARCHY.common.roll.modifiers.wounds',
                 range: 'ANARCHY.common.roll.modifiers.range',
                 other: 'ANARCHY.common.roll.modifiers.other',

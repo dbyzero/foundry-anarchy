@@ -6,9 +6,11 @@
     </div>
     <div class="roll-parameters">
       {{#each parameters as |parameter|}}
-      <div class="parameter" data-parameter-code="{{parameter.code}}" {{#if item}}data-item-id="{{item.id}}"{{/if}}>
-        {{> (either parameter.hbsTemplateRoll 'systems/anarchy/templates/roll/parts/generic.hbs') parameter}}
-      </div>
+        {{#unless parameter.hideParameter}}
+        <div class="parameter" data-parameter-code="{{parameter.code}}" {{#if item}}data-item-id="{{item.id}}"{{/if}}>
+          {{> (either parameter.hbsTemplateRoll 'systems/anarchy/templates/roll/parts/generic.hbs') parameter}}
+        </div>
+        {{/unless}}
       {{/each}}
     </div>
   </div>
