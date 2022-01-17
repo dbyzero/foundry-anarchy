@@ -247,6 +247,19 @@ const DEFAULT_ROLL_PARAMETERS = [
     },
     condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasDrain
   },
+  // convergence
+  {
+    code: 'convergence',
+    options: {
+      flags: { hideParameter: true },
+      order: 30, category: ROLL_PARAMETER_CATEGORY.convergence,
+      value: 1,
+      labelkey: ANARCHY.common.roll.modifiers.convergence,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: undefined, //``
+    },
+    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasConvergence
+  },
   // reduce opponent pool
   {
     code: 'opponentReduce',

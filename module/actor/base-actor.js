@@ -97,6 +97,8 @@ export class AnarchyBaseActor extends Actor {
     if (!convergence) {
       return;
     }
+    ui.notifications.warn('Actor.rollConvergence: To be tested!');
+
     game.system.anarchy.gmConvergence.rollConvergence(this.id, convergence)
   }
 
