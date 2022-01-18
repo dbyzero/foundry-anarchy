@@ -52,9 +52,11 @@ export class GMConvergence {
     await rollConvergence.evaluate({ async: true });
     this.addConvergence(actor, rollConvergence.total);
     rollConvergence.toMessage({
-      flavor: `Convergence for ${actor.name}: ${rollConvergence.total}`,
-      whisper: AnarchyUsers.getGMs()
-    });
+      user: game.user,
+      whisper: ChatMessage.getWhisperRecipients('GM'),
+      blind: true,
+      flavor: `Convergence for ${actor.name}: ${rollConvergence.total}`
+    }, { rollMode: 'blindroll' });
   }
 
   async addConvergence(actor, added) {
@@ -64,7 +66,7 @@ export class GMConvergence {
     await this.setActorConvergence(actor, this.getConvergence(actor) + added);
   }
 
-  async getConvergence(actor) {
+  getConvergence(actor) {
     if (!game.user.isGM) {
       return 0; // undisclosed
     }
@@ -74,7 +76,7 @@ export class GMConvergence {
   async setActorConvergence(actor, newConvergence) {
     let c = this.convergences.find(it => it.actorId == actor.id);
     if (!c) {
-      c = { actorId: actorId };
+      c = { actorId: actor.id };
       this.convergences.push(c);
     }
     c.convergence = newConvergence;
@@ -89,7 +91,7 @@ export class GMConvergence {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (setting.key == GM_CONVERGENCE_CONVERGENCES) {
+    if (game.user.isGM && setting.key == GM_CONVERGENCE_CONVERGENCES) {
       await this._rebuild();
     }
   }

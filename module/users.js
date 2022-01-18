@@ -32,10 +32,6 @@ export class AnarchyUsers {
     return (game.version ? game.users : game.users.entities).filter(filter);
   }
 
-  static getGMs() {
-    return AnarchyUsers.getUsers(u => u.isGM);
-  }
-
   static oneGM() {
     return AnarchyUsers.getUsers(u => u.isGM).at(0);
   }

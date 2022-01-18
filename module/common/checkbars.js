@@ -183,12 +183,6 @@ export class Checkbars {
     const checkbar = CHECKBARS[monitor];
     if (checkbar && checkbar.path) {
       const max = checkbar.max(target);
-      if (value > max && (monitor == TEMPLATE.monitors.physical || monitor == TEMPLATE.monitors.stun)) {
-        ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, { monitor: monitor, overflow: value - max }));
-        value = max;
-      }
-      else {
-        ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
       await Checkbars._manageOverflow(target, monitor, value, max);
       value = Math.min(value, max);
 

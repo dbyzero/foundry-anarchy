@@ -19,7 +19,6 @@ export class RollManager {
   }
 
   static async edgeReroll(rollData) {
-    ui.notifications.warn('RollManager.edgeReroll: To be tested!');
     rollData.canEdgeRoll = false;
     await rollData.actor.spendEdge(1);
     RollManager._roll(rollData)
