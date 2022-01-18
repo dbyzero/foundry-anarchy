@@ -169,7 +169,7 @@ const DEFAULT_ROLL_PARAMETERS = [
   {
     code: 'convergence',
     options: {
-      flags: { hideParameter: true },
+      flags: { optional: true, used: true, hideParameter: true },
       order: 40, category: ROLL_PARAMETER_CATEGORY.convergence,
       value: 1,
       labelkey: ANARCHY.common.roll.modifiers.convergence,
