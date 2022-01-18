@@ -21,6 +21,8 @@ export class RollManager {
   static async edgeReroll(rollData) {
     rollData.canEdgeRoll = false;
     await rollData.actor.spendEdge(1);
+    rollData.param[ROLL_PARAMETER_CATEGORY.convergence] = undefined;
+    rollData.param[ROLL_PARAMETER_CATEGORY.drain] = undefined;
     RollManager._roll(rollData)
   }
 
@@ -38,6 +40,7 @@ export class RollManager {
       actor: RollManager._reduceToId(rollData.actor),
       skill: RollManager._reduceToId(rollData.skill),
       weapon: RollManager._reduceToId(rollData.weapon),
+      item: RollManager._reduceToId(rollData.item),
       attribute1: rollData.attribute1,
       attribute2: rollData.attribute2,
       attributeAction: rollData.attributeAction,
@@ -52,7 +55,9 @@ export class RollManager {
     const rollData = JSON.parse(jsonRollData);
     rollData.actor = RollManager._reloadActorFromId(rollData.actor);
     rollData.skill = RollManager._reloadItemFromId(rollData.actor, rollData.skill);
+    rollData.item = RollManager._reloadItemFromId(rollData.actor, rollData.item);
     rollData.weapon = RollManager._reloadItemFromId(rollData.actor, rollData.weapon);
+    rollData.attributes = rollData.actor.getActorItemAttributes(rollData.item);
     rollData.parameters = RollManager._reloadParameters(rollData, rollData.parameters);
     return rollData;
   }

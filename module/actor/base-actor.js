@@ -50,7 +50,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getActorItemAttributes(item) {
-    return this.getAttributes().concat(item.getAttributes());
+    return this.getAttributes().concat(item?.getAttributes() ?? []);
   }
 
   getAttributeValue(attribute, item = undefined) {
