@@ -128,12 +128,8 @@ export class CharacterActor extends AnarchyBaseActor {
     }
   }
 
-  async spendEdge(count) {
-    if (count) {
-      let current = this.data.data.counters.edge.value;
-      ErrorManager.checkSufficient(ANARCHY.actor.counters.edge, count, current);
-      await this.update({ 'data.counters.edge.value': (current - count) });
-    }
+  canUseEdge() {
+    return true;
   }
 
   getSkillValue(skillId, specialization = undefined) {

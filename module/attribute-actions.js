@@ -43,8 +43,10 @@ const ATTRIBUTE_ACTIONS = [
   action(ACTION.vehicleDefense, ATTR.agility, ATTR.logic, Icons.fontAwesome('fas fa-tachometer-alt'), [ACTOR.character]),
   action(ACTION.vehicleDefense, ATTR.autopilot, undefined, Icons.fontAwesome('fas fa-tachometer-alt'), [ACTOR.vehicle]),
   action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => actor.hasCyberdeck()),
+  action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.IC]),
   action(ACTION.matrixDefense, ATTR.firewall, ATTR.system, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.device, ACTOR.vehicle]),
-  action(ACTION.matrixPerception, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-video'), [ACTOR.character]),
+  action(ACTION.matrixDefense, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.sprite]),
+  action(ACTION.matrixPerception, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-video'), [ACTOR.character, ACTOR.sprite, ACTOR.IC]),
   action(ACTION.matrixPerception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-video'), [ACTOR.device]),
 ]
 

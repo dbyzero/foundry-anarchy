@@ -43,6 +43,10 @@ import { RollParameters } from './roll/roll-parameters.js';
 import { RollDialog } from './roll/roll-dialog.js';
 import { GMConvergence } from './app/gm-convergence.js';
 import { AnarchyCombat } from './anarchy-combat.js';
+import { ICActorSheet } from './actor/ic-actor-sheet.js';
+import { SpriteActorSheet } from './actor/sprite-actor-sheet.js';
+import { SpriteActor } from './actor/sprite-actor.js';
+import { ICActor } from './actor/ic-actor.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -61,7 +65,9 @@ export class AnarchySystem {
     this.actorClasses = {
       character: CharacterActor,
       vehicle: VehicleActor,
-      device: DeviceActor
+      device: DeviceActor,
+      sprite: SpriteActor,
+      ic: ICActor
     };
     this.itemClasses = {
       contact: ContactItem,
@@ -138,6 +144,16 @@ export class AnarchySystem {
       label: game.i18n.localize(ANARCHY.actor.deviceSheet),
       makeDefault: true,
       types: ['device']
+    });
+    Actors.registerSheet(SYSTEM_NAME, SpriteActorSheet, {
+      label: game.i18n.localize(ANARCHY.actor.spriteSheet),
+      makeDefault: true,
+      types: ['sprite']
+    });
+    Actors.registerSheet(SYSTEM_NAME, ICActorSheet, {
+      label: game.i18n.localize(ANARCHY.actor.icSheet),
+      makeDefault: true,
+      types: ['ic']
     });
   }
 

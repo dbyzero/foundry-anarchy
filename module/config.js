@@ -92,6 +92,7 @@ export const ANARCHY = {
             insufficient: 'ANARCHY.common.errors.insufficient',
             outOfRange: 'ANARCHY.common.errors.outOfRange',
             onlyGM: 'ANARCHY.common.errors.onlyGM',
+            noEdgeForActor: 'ANARCHY.common.errors.noEdgeForActor',
             expectedType: 'ANARCHY.common.errors.expectedType',
         },
         sourceReference: 'ANARCHY.common.sourceReference',
@@ -103,6 +104,8 @@ export const ANARCHY = {
         characterSheet: 'ANARCHY.actor.characterSheet',
         vehicleSheet: 'ANARCHY.actor.vehicleSheet',
         deviceSheet: 'ANARCHY.actor.deviceSheet',
+        spriteSheet: 'ANARCHY.actor.spriteSheet',
+        icSheet: 'ANARCHY.actor.icSheet',
         npcSheet: 'ANARCHY.actor.npcSheet',
         actorName: 'ANARCHY.actor.actorName',
         genre: 'ANARCHY.actor.genre',
@@ -152,16 +155,11 @@ export const ANARCHY = {
         }
     },
     actorType: {
-        singular: {
-            character: 'ANARCHY.actorType.singular.character',
-            vehicle: 'ANARCHY.actorType.singular.vehicle',
-            device: 'ANARCHY.actorType.singular.device',
-        },
-        plural: {
-            character: 'ANARCHY.actorType.singular.character',
-            vehicle: 'ANARCHY.actorType.singular.vehicle',
-            device: 'ANARCHY.actorType.singular.device',
-        }
+        character: 'ANARCHY.actorType.character',
+        vehicle: 'ANARCHY.actorType.vehicle',
+        device: 'ANARCHY.actorType.device',
+        sprite: 'ANARCHY.actorType.sprite',
+        ic: 'ANARCHY.actorType.ic',
     },
     item: {
         sheet: 'ANARCHY.item.sheet',

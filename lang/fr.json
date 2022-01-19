@@ -93,6 +93,7 @@
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
         "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]",
         "onlyGM": "Seul un MJ est autorisé",
+        "noEdgeForActor": "{actorName} et un {actorType}, il ne peut pas utiliser la Chance",
         "expectedType": "Objet de type incorrect, attendu: {expectedType}, type de l'objet: {type}"
       },
       "sourceReference": "Référence source",
@@ -104,6 +105,8 @@
       "characterSheet": "Fiche de personnage",
       "vehicleSheet": "Fiche de véhicule",
       "deviceSheet": "Fiche d'objet virtuel",
+      "spriteSheet": "Fiche de sprite",
+      "icSheet": "Fiche de Contremesure d'intrusion (IC)",
       "npcSheet": "Fiche PNJ",
       "actorName": "Nom",
       "genre": "Genre",
@@ -153,16 +156,11 @@
       }
     },
     "actorType": {
-      "singular": {
-        "character": "Personnage",
-        "vehicle": "Véhicule",
-        "device": "Objet électronique"
-      },
-      "plural": {
-        "character": "Personnages",
-        "vehicle": "Véhicules",
-        "device": "Objets électroniques"
-      }
+      "character": "Personnage",
+      "vehicle": "Véhicule",
+      "device": "Objet électronique",
+      "sprite": "Sprite",
+      "ic": "IC"
     },
     "item": {
       "sheet": "Fiche de ",

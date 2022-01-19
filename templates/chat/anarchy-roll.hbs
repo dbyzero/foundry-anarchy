@@ -43,10 +43,12 @@
       </div>
     {{/if}}
 
+    {{#if options.canUseEdge}}
     {{#unless modifiers.edge.used}}
     <div>
       {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
     </div>
     {{/unless}}
+    {{/if}}
   </div>
 </div>

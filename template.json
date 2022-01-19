@@ -3,7 +3,9 @@
     "types": [
       "character",
       "vehicle",
-      "device"
+      "device",
+      "sprite",
+      "ic"
     ],
     "templates": {
       "description": {
@@ -175,6 +177,22 @@
         "matrix-monitor",
         "attribute-firewall",
         "attribute-system"
+      ]
+    },
+    "sprite": {
+      "templates": [
+        "description",
+        "matrix-monitor",
+        "attribute-logic",
+        "attribute-edge"
+      ]
+    },
+    "ic": {
+      "templates": [
+        "description",
+        "matrix-monitor",
+        "attribute-firewall",
+        "attribute-logic"
       ]
     }
   },

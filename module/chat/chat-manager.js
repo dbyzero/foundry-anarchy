@@ -47,6 +47,7 @@ export class ChatManager {
     rollData.options = rollData.options ?? {};
     rollData.options.classes = rollData.options.classes ?? [];
     rollData.options.classes.push(game.system.anarchy.styles.selectCssClass());
+    rollData.options.canUseEdge = rollData.actor.canUseEdge();
 
     const flavor = await renderTemplate(HBS_TEMPLATE_CHAT_ANARCHY_ROLL, rollData);
     await rollData.roll.toMessage({ flavor: flavor });

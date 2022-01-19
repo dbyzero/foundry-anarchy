@@ -26,6 +26,8 @@ export const TEMPLATE = {
     character: 'character',
     vehicle: 'vehicle',
     device: 'device',
+    sprite: 'sprite',
+    ic: 'ic',
   },
   itemType: {
     metatype: 'metatype',

@@ -1,6 +1,9 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { Checkbars } from "../common/checkbars.js";
+import { ANARCHY } from "../config.js";
+import { TEMPLATE } from "../constants.js";
 import { Enums } from "../enums.js";
+import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { RollDialog } from "../roll/roll-dialog.js";
 
@@ -23,7 +26,6 @@ export class AnarchyBaseActor extends Actor {
   static get initiative() {
     return "2d6";
   }
-
 
   static get defaultIcon() {
     return undefined;
@@ -155,10 +157,25 @@ export class AnarchyBaseActor extends Actor {
     }
   }
 
+  canUseEdge() {
+    return this.getAttributes().includes(TEMPLATE.attributes.edge);
+  }
+
   async spendEdge(count) {
-    if (count > 0) {
-      throw 'No edge for selected actor';
+    if (count == 0) {
+      return;
     }
+    if (!this.canUseEdge()) {
+      const message = game.i18n.localize(ANARCHY.common.errors.noEdgeForActor, {
+        actorName: this.name,
+        actorType: game.i18n.localize(ANARCHY.actorType[this.type])
+      });
+      ui.notifications.warn(message)
+      throw ANARCHY.common.errors.noEdgeForActor + message;
+    }
+    let current = this.data.data.counters.edge.value;
+    ErrorManager.checkSufficient(ANARCHY.actor.counters.edge, count, current);
+    await this.update({ 'data.counters.edge.value': (current - count) });
   }
 
   getSkillValue(skillId, specialization = undefined) {

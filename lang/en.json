@@ -93,6 +93,7 @@
         "insufficient": "Not enough {resource}: required {required}, available {available}",
         "outOfRange": "Cannot set {resource} to {value}, out of range [{min} , {max}]",
         "onlyGM": "Only allowed for GM",
+        "noEdgeForActor": "{actorName} is a {actorType}, so it cannot use Edge",
         "expectedType": "Item is of type {type} instead of expected type {expectedType}"
       },
       "sourceReference": "Source reference",
@@ -104,6 +105,8 @@
       "characterSheet": "Character sheet",
       "vehicleSheet": "Vehicle sheet",
       "deviceSheet": "Device sheet",
+      "spriteSheet": "Sprite sheet",
+      "icSheet": "IC sheet",
       "npcSheet": "NPC sheet",
       "actorName": "Name",
       "genre": "Genre",
@@ -153,16 +156,11 @@
       }
     },
     "actorType": {
-      "singular": {
-        "character": "Character",
-        "vehicle": "Vehicle",
-        "device": "Device"
-      },
-      "plural": {
-        "character": "Characters",
-        "vehicle": "Vehicles",
-        "device": "Devices"
-      }
+      "character": "Character",
+      "vehicle": "Vehicle",
+      "device": "Device",
+      "sprite": "Sprite",
+      "ic": "IC"
     },
     "item": {
       "sheet": "Sheet for ",

@@ -53,10 +53,8 @@ export class ConfirmationDialog {
     let dialog = new Dialog({
       title: game.i18n.localize(ANARCHY.common.confirmation.attach),
       content: game.i18n.format(ANARCHY.common.confirmation.attachOrCopy, {
-        ownerName: owner.name,
-        ownerType: game.i18n.localize(ANARCHY.actorType.singular[owner.type]),
-        ownedName: owned.name,
-        ownedType: game.i18n.localize(ANARCHY.actorType.singular[owned.type])
+        ownerName: owner.name, ownerType: game.i18n.localize(ANARCHY.actorType[owner.type]),
+        ownedName: owned.name, ownedType: game.i18n.localize(ANARCHY.actorType[owned.type])
       }),
       buttons: {
         attach: {

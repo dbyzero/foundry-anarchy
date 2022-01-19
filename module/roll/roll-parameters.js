@@ -264,7 +264,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
       hbsTemplateChat: undefined, //``
     },
-    condition: context => context.actor.getRemainingEdge(),
+    condition: context => context.actor.canUseEdge() && context.actor.getRemainingEdge(),
     onChecked: (p, checked) => {
       p.used = checked;
       p.value = checked ? 1 : 0;
