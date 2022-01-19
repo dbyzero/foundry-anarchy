@@ -18,7 +18,7 @@
     },
     "gmManager": {
       "title": "Gestion du MJ",
-      "gmConvergence": "Convergence DIEU",
+      "gmConvergence": "Surveillance DIEU",
       "playerChangedAnarchy": "Le joueur {user} a passé {monitor} de {actor} de {from} à {to}",
       "gmReceivedAnarchy": "Le MJ reçoit {anarchy} points d'Anarchy de {actor}"
     },
@@ -136,7 +136,7 @@
         "structure": "Blindage",
         "resistance": "Résistance",
         "marks": "Marks",
-        "convergence": "Convergence"
+        "convergence": "Surveillance"
       },
       "vehicle": {
         "handling": "Mobilité",
