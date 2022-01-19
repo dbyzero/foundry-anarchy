@@ -1,15 +1,18 @@
 <div class="gm-convergence-content">
 {{#each convergences as |c|}}
-{{log 'convergence' c 'actor' c.actor.id c.actor.name 'convergence' c.convergence }}
-<div class="actor-convergence" data-actor-id="{{c.actor.id}}">
-  {{> 'systems/anarchy/templates/common/actor-reference.hbs' c.actor}}
-  {{> "systems/anarchy/templates/common/checkbar.hbs"
+  <div class="actor-convergence" data-actor-id="{{c.actor.id}}">
+    <div>
+    {{> 'systems/anarchy/templates/common/actor-reference.hbs' c.actor}}
+    </div>
+    <div>
+    {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='convergence'
     value=c.convergence
     max=(min (sum c.convergence 1) 5)
     labelkey='ANARCHY.actor.monitors.convergence'
-    rowlength=4
-  }}
-</div>
+    rowlength=5
+    }}
+    </div>
+  </div>
 {{/each}}
 </div>

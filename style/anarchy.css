@@ -137,6 +137,14 @@ img.anarchy-img.item-img {
 	margin: 2px;
 	padding: 2px;
 }
+#gm-manager .actor-convergence{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+#gm-manager .actor-convergence .checkbar-root{
+  flex-wrap: nowrap;
+}
 
 .sheet header.sheet-header h1,
 .sheet header.sheet-header .passport-header{
