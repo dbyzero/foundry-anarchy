@@ -6,7 +6,7 @@
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='convergence'
     value=c.convergence
-    max=(sum c.convergence 1)
+    max=(max (sum c.convergence 1) 5)
     labelkey='ANARCHY.actor.monitors.convergence'
     rowlength=4
   }}

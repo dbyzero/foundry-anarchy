@@ -59,7 +59,7 @@ export const CHECKBARS = {
   marks: {
     path: undefined,
     value: it => 0,
-    max: it => 9,
+    max: it => 5,
     iconChecked: Icons.fontAwesome('fas fa-bookmark'),
     iconUnchecked: Icons.fontAwesome('far fa-bookmark'),
     iconHit: Icons.fontAwesome('fas fa-fingerprint'),
@@ -68,7 +68,7 @@ export const CHECKBARS = {
   convergence: {
     path: undefined,
     value: it => 0,
-    max: it => 9,
+    max: it => 5,
     iconChecked: Icons.fontAwesome('far fa-eye'),
     iconUnchecked: Icons.fontAwesome('fas fa-eye-slash'),
     iconHit: Icons.fontAwesome('fas fa-eye'),

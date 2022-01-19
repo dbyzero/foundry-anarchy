@@ -6,7 +6,7 @@
     {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='marks'
     value=marks
-    max=(sum marks 1)
+    max=(min (sum marks 1) 5)
     sourceActorId=actorId
   }}
   </div>

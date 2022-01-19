@@ -126,6 +126,8 @@ export class HandlebarsManager {
     Handlebars.registerHelper('divup', Misc.divup);
     Handlebars.registerHelper('sum', (v1, v2) => v1 + v2);
     Handlebars.registerHelper('diff', (v1, v2) => v1 - v2);
+    Handlebars.registerHelper('min', (v1, v2) => Math.min(v1, v2));
+    Handlebars.registerHelper('max', (v1, v2) => Math.max(v1, v2));
     Handlebars.registerHelper('either', (a, b) => a ? a : b);
     Handlebars.registerHelper('isInteger', a => a !== undefined && Number.isInteger(a));
     Handlebars.registerHelper('actorAttribute', (attribute, actor, item = undefined) => actor.getAttributeValue(attribute, item));
