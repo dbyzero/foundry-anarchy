@@ -104,7 +104,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     html.find('.click-roll-attribute-action').click(async event => {
       //TODO: add action buttons to cberdeck? //const handler = this.getEventItem(event) ?? this.actor;
       this.actor.rollAttribute(
-        $(event.currentTarget).attr('data-attribute'),
+        $(event.currentTarget).attr('data-attribute1'),
         $(event.currentTarget).attr('data-attribute2'),
         $(event.currentTarget).attr('data-action-code'));
     });

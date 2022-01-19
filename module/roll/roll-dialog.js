@@ -27,7 +27,7 @@ export class RollDialog extends Dialog {
   static prepareActorRoll(actor, item = undefined) {
     return {
       actor: actor,
-      attributes: actor.getAttributes(item)
+      attributes: actor.getUsableAttributes(item)
     }
   }
 
@@ -67,7 +67,7 @@ export class RollDialog extends Dialog {
       mode: 'attribute',
       item: item,
       attribute1: attribute,
-      attributes: item.actor.getActorItemAttributes(item)
+      attributes: item.actor.getUsableAttributes(item)
     });
     await RollDialog.create(rollData);
   }

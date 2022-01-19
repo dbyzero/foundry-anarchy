@@ -3,18 +3,21 @@ import { TEMPLATE } from "./constants.js";
 import { Icons } from "./icons.js";
 
 const ATTR = TEMPLATE.attributes;
+const ACTOR = TEMPLATE.actorTypes;
 
-function action(code, attr1, attr2, icon) {
+function action(code, attr1, attr2, icon, actorTypes, condition = actor => true) {
   return {
     code: code,
     labelkey: ANARCHY.attributeActions[code],
-    attribute: attr1,
+    attribute1: attr1,
     attribute2: attr2,
-    icon: icon
+    icon: icon,
+    actorTypes: actorTypes,
+    condition: condition
   }
 }
 
-export const ACTION_CODE = {
+export const ACTION = {
   defense: "defense",
   resistTorture: "resistTorture",
   judgeIntentions: "judgeIntentions",
@@ -29,19 +32,20 @@ export const ACTION_CODE = {
 }
 
 const ATTRIBUTE_ACTIONS = [
-  action(ACTION_CODE.defense, ATTR.agility, ATTR.logic, Icons.fontAwesome('fas fa-shield-alt')),
-  action(ACTION_CODE.resistTorture, ATTR.strength, ATTR.willpower, Icons.fontAwesome('fas fa-angry')),
-  action(ACTION_CODE.perception, ATTR.logic, ATTR.willpower, Icons.fontAwesome('fas fa-eye')),
-  action(ACTION_CODE.composure, ATTR.charisma, ATTR.willpower, Icons.fontAwesome('fas fa-meh')),
-  action(ACTION_CODE.judgeIntentions, ATTR.charisma, ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks')),
-  action(ACTION_CODE.memory, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-brain')),
-  action(ACTION_CODE.catch, ATTR.agility, ATTR.agility, Icons.fontAwesome('fas fa-baseball-ball')),
-  action(ACTION_CODE.lift, ATTR.strength, ATTR.strength, Icons.fontAwesome('fas fa-dumbbell')),
-  action(ACTION_CODE.vehicleDefense, ATTR.agility, ATTR.logic, Icons.fontAwesome('fas fa-tachometer-alt')),
-  action(ACTION_CODE.vehicleDefense, ATTR.autopilot, undefined, Icons.fontAwesome('fas fa-tachometer-alt')),
-  action(ACTION_CODE.matrixDefense, ATTR.logic, ATTR.firewall, Icons.fontAwesome('fas fa-shield-virus')),
-  action(ACTION_CODE.matrixDefense, ATTR.system, ATTR.firewall, Icons.fontAwesome('fas fa-shield-virus')),
-  action(ACTION_CODE.matrixPerception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-video')),
+  action(ACTION.defense, ATTR.agility, ATTR.logic, Icons.fontAwesome('fas fa-shield-alt'), [ACTOR.character]),
+  action(ACTION.resistTorture, ATTR.strength, ATTR.willpower, Icons.fontAwesome('fas fa-angry'), [ACTOR.character]),
+  action(ACTION.perception, ATTR.logic, ATTR.willpower, Icons.fontAwesome('fas fa-eye'), [ACTOR.character]),
+  action(ACTION.composure, ATTR.charisma, ATTR.willpower, Icons.fontAwesome('fas fa-meh'), [ACTOR.character]),
+  action(ACTION.judgeIntentions, ATTR.charisma, ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks'), [ACTOR.character]),
+  action(ACTION.memory, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-brain'), [ACTOR.character]),
+  action(ACTION.catch, ATTR.agility, ATTR.agility, Icons.fontAwesome('fas fa-baseball-ball'), [ACTOR.character]),
+  action(ACTION.lift, ATTR.strength, ATTR.strength, Icons.fontAwesome('fas fa-dumbbell'), [ACTOR.character]),
+  action(ACTION.vehicleDefense, ATTR.agility, ATTR.logic, Icons.fontAwesome('fas fa-tachometer-alt'), [ACTOR.character]),
+  action(ACTION.vehicleDefense, ATTR.autopilot, undefined, Icons.fontAwesome('fas fa-tachometer-alt'), [ACTOR.vehicle]),
+  action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => actor.hasCyberdeck()),
+  action(ACTION.matrixDefense, ATTR.firewall, ATTR.system, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.device, ACTOR.vehicle]),
+  action(ACTION.matrixPerception, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-video'), [ACTOR.character]),
+  action(ACTION.matrixPerception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-video'), [ACTOR.device]),
 ]
 
 export class AttributeActions {
@@ -52,13 +56,8 @@ export class AttributeActions {
       : ATTRIBUTE_ACTIONS;
   }
 
-
-  static getActions(codes) {
-    return AttributeActions.all(it => codes.includes(it.code));
+  static getActorActions(actor) {
+    return ATTRIBUTE_ACTIONS.filter(it => it.actorTypes.includes(actor.type) && it.condition(actor));
   }
 
-  static get(code) {
-    return AttributeActions.all().find(it => it.code == code);
-
-  }
 }

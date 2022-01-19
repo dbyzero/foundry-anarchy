@@ -31,13 +31,12 @@ export class AnarchyBaseItem extends Item {
     return undefined;
   }
 
-  getAttributeActions() {
-    const attributes = Misc.distinct((this.parent?.getAttributes() ?? []).concat(this.getAttributes()).concat([[undefined]]));
-    return AttributeActions.all(it => attributes.includes(it.attribute) && attributes.includes(it.attribute2));
-  }
-
   getAttributes() {
     return [];
+  }
+
+  getUsableAttributes() {
+    return this.isActive() ? this.getAttributes() : []
   }
 
   getAttributeValue(attribute) {
@@ -53,7 +52,7 @@ export class AnarchyBaseItem extends Item {
   isMetatype() { return this.type == TEMPLATE.itemType.metatype; }
   isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }
 
-  isActive() { return this.data.data.equiped && this.data.data.active; }
+  isActive() { return this.data.data.equiped && !this.data.data.inactive; }
 
   canReceiveMarks() { return this.data.data.monitors?.matrix?.canMark; }
 

@@ -1,5 +1,7 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { Checkbars } from "../common/checkbars.js";
+import { Enums } from "../enums.js";
+import { Misc } from "../misc.js";
 import { RollDialog } from "../roll/roll-dialog.js";
 
 export class AnarchyBaseActor extends Actor {
@@ -41,16 +43,20 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getAttributeActions() {
-    const attributes = [undefined].concat(this.getAttributes());
-    return AttributeActions.all(it => attributes.includes(it.attribute) && attributes.includes(it.attribute2));
+    return AttributeActions.getActorActions(this);
   }
 
   getAttributes() {
     return [undefined];
   }
 
-  getActorItemAttributes(item) {
-    return this.getAttributes().concat(item?.getAttributes() ?? []);
+  getUsableAttributes(item = undefined) {
+    const itemsAttributes = (item ? [item] : this.items)
+      .map(it => it.getUsableAttributes())
+      .reduce((a, b) => a.concat(b), [])
+    const usableAttributes = Misc.distinct(this.getAttributes().concat(itemsAttributes));
+    usableAttributes.sort(Misc.ascendingBySortedArray(Enums.sortedAttributeKeys));
+    return usableAttributes;
   }
 
   getAttributeValue(attribute, item = undefined) {
@@ -59,7 +65,8 @@ export class AnarchyBaseActor extends Actor {
         return this.data.data.attributes[attribute].value;
       }
       if (!item) {
-        item = this.items.find(item => item.isActive() && item.getAttributes().includes(attribute));
+        const candidateItems = this.items.filter(item => item.isActive() && item.getAttributes().includes(attribute));
+        return Math.max(candidateItems.map(it => it.getAttributeValue(attribute) ?? 0));
       }
       return item?.getAttributeValue(attribute) ?? 0;
     }
@@ -98,6 +105,10 @@ export class AnarchyBaseActor extends Actor {
   }
 
   canSetMarks() {
+    return false;
+  }
+
+  hasCyberdeck() {
     return false;
   }
 

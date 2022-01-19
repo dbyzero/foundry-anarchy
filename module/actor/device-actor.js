@@ -24,8 +24,8 @@ export class DeviceActor extends AnarchyBaseActor {
 
   getAttributes() {
     return [
-      TEMPLATE.attributes.system,
       TEMPLATE.attributes.firewall,
+      TEMPLATE.attributes.system,
     ];
   }
 

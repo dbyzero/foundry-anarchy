@@ -57,7 +57,7 @@ export class RollManager {
     rollData.skill = RollManager._reloadItemFromId(rollData.actor, rollData.skill);
     rollData.item = RollManager._reloadItemFromId(rollData.actor, rollData.item);
     rollData.weapon = RollManager._reloadItemFromId(rollData.actor, rollData.weapon);
-    rollData.attributes = rollData.actor.getActorItemAttributes(rollData.item);
+    rollData.attributes = rollData.actor.getUsableAttributes(rollData.item);
     rollData.parameters = RollManager._reloadParameters(rollData, rollData.parameters);
     return rollData;
   }

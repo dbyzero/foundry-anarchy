@@ -48,8 +48,8 @@ export class CharacterActor extends AnarchyBaseActor {
 
   getAttributes() {
     return [
-      TEMPLATE.attributes.agility,
       TEMPLATE.attributes.strength,
+      TEMPLATE.attributes.agility,
       TEMPLATE.attributes.willpower,
       TEMPLATE.attributes.logic,
       TEMPLATE.attributes.charisma,
@@ -148,7 +148,11 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   canSetMarks() {
-    return this.data.data.capacity == TEMPLATE.capacities.emerged || this.items.find(it => it.isCyberdeck());
+    return this.data.data.capacity == TEMPLATE.capacities.emerged || this.hasCyberdeck();
+  }
+
+  hasCyberdeck() {
+    return this.items.find(it => it.isCyberdeck());
   }
 
   async rollDrain(drain) {

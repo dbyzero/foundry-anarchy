@@ -264,17 +264,17 @@ export const ANARCHY = {
         special: 'ANARCHY.shadowampCategory.special'
     },
     attributes: {
+        noAttribute: 'ANARCHY.attributes.noAttributes',
         strength: 'ANARCHY.attributes.strength',
         agility: 'ANARCHY.attributes.agility',
         willpower: 'ANARCHY.attributes.willpower',
         logic: 'ANARCHY.attributes.logic',
         charisma: 'ANARCHY.attributes.charisma',
         edge: 'ANARCHY.attributes.edge',
-        knowledge: 'ANARCHY.attributes.knowledge',
-        noAttribute: 'ANARCHY.attributes.noAttributes',
         autopilot: 'ANARCHY.attributes.autopilot',
         firewall: 'ANARCHY.attributes.firewall',
         system: 'ANARCHY.attributes.system',
+        knowledge: 'ANARCHY.attributes.knowledge',
     },
     attributeActions: {
         defense: 'ANARCHY.attributeActions.defense',
