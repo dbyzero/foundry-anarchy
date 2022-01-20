@@ -8,7 +8,9 @@
     </div>
     {{> "systems/anarchy/templates/actor/parts/item-attribute.hbs" attribute=data.attributes.firewall key='firewall'}}
     {{> 'systems/anarchy/templates/actor/parts/matrix-cyberdeck.hbs'}}
-    <label>{{{data.description}}}</label>
+    <label>
+      {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
+    </label>
   </div>
   <div class="item-controls">
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}

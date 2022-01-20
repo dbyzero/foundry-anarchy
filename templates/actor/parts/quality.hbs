@@ -2,7 +2,9 @@
   <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
   <div class="item-content">
     <label>{{name}}</label>
-    <label class="item-description">{{{data.description}}}</label>
+    <label class="item-description">
+      {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
+    </label>
   </div>
   <div class="item-controls">
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}

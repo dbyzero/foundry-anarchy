@@ -4,8 +4,7 @@
     <label>{{name}}</label>
     <label>({{localize 'ANARCHY.item.shadowamp.levelShort'}} {{data.level}})</label>
     {{#if data.essence}}<label>{{localize 'ANARCHY.item.shadowamp.essenceShort'}} {{data.essence}}</label>{{/if}}
-    <br>
-    <label>{{{data.description}}}</label>
+    {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
   </div>
   <div class="item-controls">
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}

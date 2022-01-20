@@ -1,8 +1,8 @@
 <div class="define-item-type item anarchy-quality {{#if data.positive}}positive{{else}}negative{{/if}} {{#if data.inactive}}item-inactive{{/if}}" data-item-id="{{_id}}" data-item-type="quality" draggable="true">
   <div class="item-content">
     {{name}}
-    <br>
-    {{{data.description}}}
+    {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
+  </div>
   <div class="item-controls">
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
   </div>

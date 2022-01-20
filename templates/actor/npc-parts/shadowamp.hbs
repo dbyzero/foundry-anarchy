@@ -2,8 +2,7 @@
   <div class="item-content">
     {{name}}
     ({{localize 'ANARCHY.item.shadowamp.levelShort'}} {{data.level}})
-    <br>
-    {{{data.description}}}
+    {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
   </div>
   <div class="item-controls">
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}

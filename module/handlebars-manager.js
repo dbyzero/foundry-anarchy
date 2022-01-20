@@ -19,6 +19,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/monitors/stun.hbs',
   // character
   'systems/anarchy/templates/actor/character/capacity.hbs',
+  'systems/anarchy/templates/actor/character/description.hbs',
   'systems/anarchy/templates/actor/character/essence.hbs',
   'systems/anarchy/templates/actor/character/genre.hbs',
   'systems/anarchy/templates/actor/character/karma.hbs',

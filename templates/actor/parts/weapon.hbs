@@ -7,10 +7,7 @@
   </div>
   <div class="weapon-column weapon-txt">
     <a class="click-weapon-roll">{{name}}</a>
-    {{#if data.description}}
-      <br>
-      {{{data.description}}}
-    {{/if}}
+    {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
   </div>
   <div class="weapon-column weapon-dmg">
     {{> 'systems/anarchy/templates/common/damage-code.hbs'
