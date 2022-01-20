@@ -193,6 +193,7 @@
 }
 
 
+.style-darkglass .anarchy-shortcut-button img ,
 .style-darkglass :is(div,li).item img {
   background: var(--darkglass-background-item-img);
 }
@@ -233,9 +234,11 @@
   background: var(--darkglass-background-tooltip);
 }
 
+.style-darkglass a.favorite-control i{
+  color: var(--darkglass-color-highlight);
+}
 .style-darkglass a.item-control i,
 .style-darkglass a.item-control img {
-  font-size: small;
   color: var(--darkglass-color-controls);
 }
 

@@ -33,6 +33,9 @@ export const ANARCHY = {
         add: 'ANARCHY.common.add',
         edit: 'ANARCHY.common.edit',
         del: 'ANARCHY.common.del',
+        favorite: 'ANARCHY.common.favorite',
+        addFavorite: 'ANARCHY.common.addFavorite',
+        delFavorite: 'ANARCHY.common.delFavorite',
         attach: 'ANARCHY.common.attach',
         attachCopy: 'ANARCHY.common.attachCopy',
         roll: {

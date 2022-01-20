@@ -1,3 +1,4 @@
+import { AnarchyBaseActor } from "./actor/base-actor.js";
 import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
@@ -76,6 +77,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/label.hbs',
   'systems/anarchy/templates/common/damage-code.hbs',
   'systems/anarchy/templates/common/enum-value-label.hbs',
+  'systems/anarchy/templates/common/favorite.hbs',
   'systems/anarchy/templates/common/item-control-add.hbs',
   'systems/anarchy/templates/common/item-controls.hbs',
   'systems/anarchy/templates/common/actor-reference.hbs',
@@ -136,6 +138,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('iconSrc', Icons.iconSrc);
     Handlebars.registerHelper('iconD6', Icons.iconD6);
     Handlebars.registerHelper('getActor', id => game.actors.get(id));
+    Handlebars.registerHelper('actorHasFavorite', (actorId, options) => HandlebarsManager.checkHasFavorite(actorId, options));
   }
 
   static hbsForLoop(start, end, options) {
@@ -145,4 +148,10 @@ export class HandlebarsManager {
     }
     return accum;
   }
+
+  static checkHasFavorite(actorId, options) {
+    const actor = game.actors.get(actorId);
+    return actor?.hasFavorite(options.hash.type, options.hash.id);
+  }
+
 }

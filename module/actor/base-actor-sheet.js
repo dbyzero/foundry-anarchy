@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { TEMPLATES_PATH } from "../constants.js";
+import { TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { ConfirmationDialog } from "../confirmation.js";
 import { Misc } from "../misc.js";
 import { Enums } from "../enums.js";
@@ -55,6 +55,16 @@ export class AnarchyBaseActorSheet extends ActorSheet {
       ConfirmationDialog.confirmDeleteItem(item, async () => {
         await this.actor.deleteEmbeddedDocuments('Item', [item.id]);
         this.render(true);
+      });
+    });
+
+    html.find('.click-favorite').click(async event => {
+      this.onClickFavorite({
+        skillId: $(event.currentTarget).attr('data-skill-id'),
+        specialization: $(event.currentTarget).attr('data-specialization'),
+        weaponId: $(event.currentTarget).attr('data-weapon-id'),
+        attributeAction: $(event.currentTarget).attr('data-attributeAction'),
+        isFavorite: $(event.currentTarget).attr('data-isFavorite')
       });
     });
 
@@ -152,6 +162,22 @@ export class AnarchyBaseActorSheet extends ActorSheet {
   async createNewItem(itemType) {
     const name = game.i18n.format(ANARCHY.common.newName, { type: game.i18n.localize(ANARCHY.itemType.singular[itemType]) });
     await this.actor.createEmbeddedDocuments('Item', [{ name: name, type: itemType }], { renderSheet: true });
+  }
+
+  async onClickFavorite(options) {
+    const newState = options.isFavorite != "true";
+    if (options.skillId) {
+      await this.actor.switchFavorite(newState, TEMPLATE.itemType.skill, options.skillId, options.specialization);
+    }
+    else if (options.weaponId) {
+      await this.actor.switchFavorite(newState, TEMPLATE.itemType.weapon, options.weaponId);
+    }
+    else if (options.attributeAction) {
+      await this.actor.switchFavorite(newState, 'attributeAction', options.attributeAction);
+    }
+    else {
+      console.warn('Favorite not supported', options);
+    }
   }
 
   detachFromOwner(owner, owned) {

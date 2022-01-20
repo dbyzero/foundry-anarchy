@@ -34,6 +34,9 @@
       "add": "Add",
       "edit": "Edit",
       "del": "Remove",
+      "favorite": "Favorites",
+      "addFavorite": "Add to favorites",
+      "delFavorite": "Remove from favorites",
       "attach": "Change owner",
       "attachCopy": "Give a copy",
       "roll": {

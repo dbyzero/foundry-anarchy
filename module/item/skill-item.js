@@ -15,5 +15,13 @@ export class SkillItem extends AnarchyBaseItem {
     return this.data.data.attribute != 'knowledge';
   }
 
+  prepareShortcut() {
+    return {
+      img: this.img,
+      label: this.data.data.specialization ? `${this.name}: ${this.data.data.specialization}` : this.name,
+      callback: actor => actor.rollSkill(this, this.data.data.specialization),
+    };
+  }
+
 
 }

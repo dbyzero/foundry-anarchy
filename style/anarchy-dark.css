@@ -29,6 +29,7 @@
   
   --dark-color-dice-prowess: hsla(47, 60%, 40%, 1);
   --dark-color-dice-glitch: hsla(300, 80%, 20%, 1);
+  --dark-color-favorite: hsla(47, 60%, 70%, 1);
   --dark-color-controls: var(--dark-background-item-img);
   --dark-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
   --dark-shadow-section: inset 0px 12px 12px -8px var(--dark-color-border);
@@ -153,6 +154,7 @@
 }
 
 
+.style-dark .anarchy-shortcut-button img,
 .style-dark :is(div,li).item img {
   background: var(--dark-background-item-img);
 }
@@ -195,9 +197,12 @@
   background: var(--dark-background-tooltip);
 }
 
+.style-dark a.favorite-control i{
+  color: var(--dark-color-favorite);
+}
+
 .style-dark a.item-control i,
 .style-dark a.item-control img {
-  font-size: small;
   color: var(--dark-color-controls);
 }
 

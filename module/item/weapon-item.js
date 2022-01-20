@@ -78,4 +78,12 @@ export class WeaponItem extends AnarchyBaseItem {
     return { value: this.data.data.range[range], labelkey: Enums.getFromList(Enums.getEnums().ranges, range) };
   }
 
+  prepareShortcut() {
+    return {
+      img: this.img,
+      label: this.name,
+      callback: actor => actor.rollWeapon(this)
+    };
+  }
+
 }

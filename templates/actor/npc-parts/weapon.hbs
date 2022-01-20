@@ -13,7 +13,12 @@
     {{> 'systems/anarchy/templates/actor/parts/weapon-range.hbs'}}
     </a>
   </div>
-  <div class="weapon-column weapon-controls">
+  <div class="item-controls weapon-column weapon-controls">
+    {{> 'systems/anarchy/templates/common/favorite.hbs'
+      isFavorite=(actorHasFavorite @root.actor.id id=_id type=type)
+      weapon=this
+    }}
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
   </div>
+
 </li>

@@ -62,4 +62,16 @@ export class AttributeActions {
     return ATTRIBUTE_ACTIONS.filter(it => it.actorTypes.includes(actor.type) && it.condition(actor));
   }
 
+  static prepareShortcut(actionCode) {
+    const action = AttributeActions.getActorActions(actor).find(a => a.code == actionCode);
+    if (action) {
+      return {
+        icon: action.icon,
+        label: game.i18n.localize(action.labelkey),
+        callback: actor => actor.rollAttribute(action.attribute1, action.attribute2, actionCode),
+      };
+    }
+    return undefined;
+
+  }
 }

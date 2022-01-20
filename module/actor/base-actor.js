@@ -38,6 +38,7 @@ export class AnarchyBaseActor extends Actor {
 
   prepareData() {
     super.prepareData();
+    this.cleanupFavorites();
   }
 
   prepareDerivedData() {
@@ -224,6 +225,61 @@ export class AnarchyBaseActor extends Actor {
 
   getOwnedActors() {
     return game.actors.filter(it => it.data.data.ownerId == this.id);
+  }
+
+
+  hasFavorite(type, id) {
+    const search = AnarchyBaseActor._prepareFavorite(type, id);
+    return this.data.data.favorites.find(it => AnarchyBaseActor._isSameFavorite(search, it)) ? true : false;
+  }
+
+  static _prepareFavorite(type, id) {
+    return { type: type, id: id };
+  }
+
+  static _isSameFavorite(f1, f2) {
+    return f1.id == f2.id && f1.type == f2.type;
+  }
+
+  async switchFavorite(setFavorite, type, id) {
+    const favorite = AnarchyBaseActor._prepareFavorite(type, id);
+    const newFavorites = this.data.data.favorites.filter(it => !AnarchyBaseActor._isSameFavorite(favorite, it));
+    if (setFavorite) {
+      newFavorites.push(favorite);
+    }
+    this.update({ 'data.favorites': newFavorites })
+  }
+
+  async cleanupFavorites() {
+    const newFavorites = this.computeShortcuts().filter(f => !f.callback);
+    if (newFavorites.length < this.data.data.favorites) {
+      this.update({ 'data.favorites': newFavorites })
+    }
+  }
+
+  getShortcuts() {
+    return this.computeShortcuts().filter(s => s.label && s.callback);
+  }
+
+  computeShortcuts() {
+    return this.data.data.favorites.map(f => this.getShortcut(f.type, f.id));
+  }
+
+  getShortcut(type, id) {
+    const favorite = AnarchyBaseActor._prepareFavorite(type, id);
+    if (type == 'attributeAction') {
+      const shortcut = AttributeActions.prepareShortcut(id);
+      if (shortcut) {
+        return mergeObject(shortcut, favorite);
+      }
+    }
+    else if (Object.values(TEMPLATE.itemType).includes(type)) {
+      const shortcut = this.items.get(id)?.prepareShortcut();
+      if (shortcut) {
+        return mergeObject(shortcut, favorite);
+      }
+    }
+    return favorite;
   }
 
 }

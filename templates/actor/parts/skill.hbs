@@ -11,9 +11,9 @@
     <div class="flexcol">
       <span class="flexrow">
         <a class="click-skill-roll">
-          <label>
+        <label>
             {{name}}: {{data.value}} + {{localizeAttribute data.attribute}}
-          </label>
+        </label>
         </a>
       </span>
       {{#if data.specialization}}
@@ -28,5 +28,11 @@
       {{/if}}
     </div>
   {{/if}}
-  {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
+  <div class="item-controls">
+    {{> 'systems/anarchy/templates/common/favorite.hbs'
+      isFavorite=(actorHasFavorite @root.actor.id id=_id type=type)
+      skill=this
+    }}
+    {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
+  </div>
 </div>

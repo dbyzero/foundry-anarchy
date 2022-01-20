@@ -134,6 +134,7 @@
   background: var(--anarchy-tint-weapon-hover);
 }
 
+.style-anarchy-shadowrun .anarchy-shortcut-button img ,
 .style-anarchy-shadowrun :is(div,li).item img {
   background: var(--anarchy-background-item-img);
 }
@@ -185,9 +186,11 @@
   border-color: var(--anarchy-color-border);
 }
 
+.style-anarchy-shadowrun a.favorite-control i{
+  color: var(--anarchy-color-text-hyperlink);
+}
 .style-anarchy-shadowrun a.item-control i,
 .style-anarchy-shadowrun a.item-control img {
-  font-size: small;
   color: var(--anarchy-color-controls);
 }
 

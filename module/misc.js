@@ -91,4 +91,12 @@ export class Misc {
     }
   }
 
+  static showControlWhen(control, condition) {
+    if (condition) {
+      control.show();
+    }
+    else {
+      control.hide();
+    }
+  }
 }

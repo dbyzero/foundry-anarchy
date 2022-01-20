@@ -78,5 +78,8 @@ export class AnarchyBaseItem extends Item {
     await Checkbars.addActorMark(this, sourceActorId);
   }
 
+  buildShortcut(actor) {
+    return { label: undefined, callback: undefined, img: undefined };
+  }
 }
 

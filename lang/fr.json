@@ -34,7 +34,9 @@
       "add": "Ajouter",
       "edit": "Modifier",
       "del": "Supprimer",
-      "attach": "Changer le propriétaire",
+      "favorite": "Favoris",
+      "addFavorite": "Ajouter aux favoris",
+      "delFavorite": "Enlever des favoris",
       "attachCopy": "Donner une copie",
       "roll": {
         "button": "Lancer",

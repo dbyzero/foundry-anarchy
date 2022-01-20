@@ -47,6 +47,7 @@ import { ICActorSheet } from './actor/ic-actor-sheet.js';
 import { SpriteActorSheet } from './actor/sprite-actor-sheet.js';
 import { SpriteActor } from './actor/sprite-actor.js';
 import { ICActor } from './actor/ic-actor.js';
+import { HUDShortcuts } from './token/hud-shortcuts.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -88,6 +89,7 @@ export class AnarchySystem {
     this.gmManager = new GMManager(this.gmAnarchy, this.gmConvergence);
     this.skills = new Skills();
     this.rollParameters = new RollParameters();
+    this.hudShortcuts = new HUDShortcuts();
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit | loading system');
     CONFIG.Combat.documentClass = AnarchyCombat;

@@ -51,12 +51,11 @@ h1, h2, h3 { font-weight: bold; }
 h4 { font-weight: 500; }
 h3, h4 { padding: 0.25rem; }
 
+a.favorite-control i,
 a.item-control i,
 a.item-control img {
   font-size: small;
 }
-
-
 img.anarchy-img {
   -webkit-box-flex: 0;
   border: 0;
@@ -478,7 +477,7 @@ div.define-item-type.item .item-content {
   align-items: flex-start;
 }
 div.define-item-type.item div.item-controls {
-  max-width: 16px;
+  max-width: 48px;
   flex: content;
   flex-grow: 0;
   vertical-align: top;
@@ -545,9 +544,9 @@ div.define-item-type.item div.item-controls {
 .weapon-list .weapon-column.weapon-img { width: 32px; }
 .weapon-list .weapon-column.weapon-dmg { width: 4.5rem; }
 .weapon-list .weapon-column.weapon-stat { width: 3.5rem; }
-.weapon-list .weapon-column.weapon-controls { width: 2rem; }
+.weapon-list .weapon-column.weapon-controls { width: 4rem; }
 .weapon-list .weapon-column.weapon-txt {
-  width: calc(100% - 18rem - 32px);
+  width: calc(100% - 20rem - 32px);
 }
 .weapon-list .weapon-column.weapon-summary {
   width: calc(100% - 2rem);
@@ -860,4 +859,34 @@ div.dice-result div.dice-formula {
   width: calc(33% - 1rem);
   display: flex;
   flex-direction: row;
+}
+
+
+.anarchy-shortcuts .anarchy-shortcuts-list {
+	display: flex; 
+	flex: 0 !important;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 160px;
+  left: 64px;
+}
+
+.anarchy-shortcuts .anarchy-shortcut-button {
+  background-color: var(--color-button);
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  line-height: 32px;
+}
+
+.anarchy-shortcuts .anarchy-shortcut-button label {
+  line-break: unset;
+
+}
+.anarchy-shortcuts .anarchy-shortcut-button img {
+  -ms-flex: 0 0 32px;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
 }
