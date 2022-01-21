@@ -31,6 +31,14 @@ export class AnarchyBaseActor extends Actor {
     return undefined;
   }
 
+  getAllowedUserIds(permission = 3) {
+    return Object.entries(this.data.permission)
+      .filter(kv => kv[0] != 'default' && kv[1] >= permission)
+      .map(kv => kv[0]);
+  }
+
+
+
   isCharacter() { return this.type == 'character'; }
 
   hasOwnAnarchy() { return false; }
@@ -76,8 +84,13 @@ export class AnarchyBaseActor extends Actor {
     return 0;
   }
 
-  async rollAttribute(attribute, attribute2 = undefined, attributeAction = undefined) {
-    await RollDialog.rollAttribute(this, attribute, attribute2, attributeAction);
+  async rollAttribute(attribute) {
+    await RollDialog.rollAttribute(this, attribute);
+  }
+
+  async rollAttributeAction(code) {
+    const action = AttributeActions.getActorAction(this, code);
+    await RollDialog.rollAttributeAction(this, action);
   }
 
   async rollSkill(skill, specialization) {
@@ -85,8 +98,19 @@ export class AnarchyBaseActor extends Actor {
   }
 
   async rollWeapon(weapon) {
+    ErrorManager.checkWeaponDefense(weapon, this);
+    const targeting = {
+      attackerTokenId: game.scenes.current.tokens.find(it => it.actor.id == this.id)?.id,
+      targetedTokenIds: weapon.validateTargets(this)?.map(it => it.id)
+    }
     const skill = this.items.find(it => weapon.isWeaponSkill(it));
-    await RollDialog.rollWeapon(this, skill, weapon);
+    await RollDialog.rollWeapon(this, skill, weapon, targeting);
+  }
+
+  async rollDefense(attackData) {
+    const defense = attackData.attack.defense;
+    const action = AttributeActions.getActorDefense(this, defense);
+    await RollDialog.rollDefense(this, action, attackData);
   }
 
   async rollDrain(drain) {
@@ -268,7 +292,7 @@ export class AnarchyBaseActor extends Actor {
   getShortcut(type, id) {
     const favorite = AnarchyBaseActor._prepareFavorite(type, id);
     if (type == 'attributeAction') {
-      const shortcut = AttributeActions.prepareShortcut(id);
+      const shortcut = AttributeActions.prepareShortcut(this, id);
       if (shortcut) {
         return mergeObject(shortcut, favorite);
       }

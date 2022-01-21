@@ -77,6 +77,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/checkbar.hbs',
   'systems/anarchy/templates/common/label.hbs',
   'systems/anarchy/templates/common/damage-code.hbs',
+  'systems/anarchy/templates/common/damage-armor.hbs',
   'systems/anarchy/templates/common/enum-value-label.hbs',
   'systems/anarchy/templates/common/favorite.hbs',
   'systems/anarchy/templates/common/item-control-add.hbs',
@@ -84,9 +85,6 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/actor-reference.hbs',
   // dialogs
   'systems/anarchy/templates/dialog/roll-modifier.hbs',
-  'systems/anarchy/templates/dialog/parts/title-mode-attribute.hbs',
-  'systems/anarchy/templates/dialog/parts/title-mode-skill.hbs',
-  'systems/anarchy/templates/dialog/parts/title-mode-weapon.hbs',
   // apps
   'systems/anarchy/templates/app/gm-anarchy.hbs',
   'systems/anarchy/templates/app/gm-difficulty.hbs',
@@ -96,20 +94,15 @@ const HBS_PARTIAL_TEMPLATES = [
 export class HandlebarsManager {
 
   constructor() {
-    HooksManager.register(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS);
     HooksManager.register(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS);
-    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, list => HBS_PARTIAL_TEMPLATES.forEach(tpl => list.push(tpl)));
     Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => this.registerBasicHelpers());
     Hooks.once('ready', () => this.onReady());
   }
 
   async onReady() {
-    let partials = [];
     Hooks.callAll(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS);
     Hooks.off(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => { });
-    Hooks.callAll(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, partials);
-    Hooks.off(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, () => { });
-    await loadTemplates(Misc.distinct(partials));
+    await loadTemplates(Misc.distinct(HBS_PARTIAL_TEMPLATES));
   }
 
   registerBasicHelpers() {

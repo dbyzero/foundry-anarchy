@@ -19,7 +19,7 @@ export class SkillItem extends AnarchyBaseItem {
     return {
       img: this.img,
       label: this.data.data.specialization ? `${this.name}: ${this.data.data.specialization}` : this.name,
-      callback: actor => actor.rollSkill(this, this.data.data.specialization),
+      callback: token => token.actor.rollSkill(this, this.data.data.specialization),
     };
   }
 

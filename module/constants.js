@@ -6,6 +6,7 @@
 export const SYSTEM_NAME = 'anarchy';
 export const SYSTEM_DESCRIPTION = "Anarchy";
 export const SYSTEM_SOCKET = `system.${SYSTEM_NAME}`;
+export const SYSTEM_SCOPE = SYSTEM_NAME;
 export const SYSTEM_PATH = `systems/${SYSTEM_NAME}`;
 export const TEMPLATES_PATH = `systems/${SYSTEM_NAME}/templates`;
 export const ICONS_PATH = `${SYSTEM_PATH}/icons`;
@@ -67,5 +68,42 @@ export const TEMPLATE = {
     danger: 'danger',
     sceneAnarchy: 'sceneAnarchy',
     edge: 'edge',
+  },
+  area: {
+    none: 'none',
+    shotgun: 'shotgun',
+    circle: 'circle',
+    cone: 'cone',
+    rect: 'rect',
+    ray: 'ray'
+  }
+}
+
+export const ANARCHY_SYSTEM = {
+  rollType: {
+    attributeAction: 'attributeAction',
+    defense: 'defense',
+    attribute: 'attribute',
+    skill: 'skill',
+    weapon: 'weapon',
+  },
+  actions: {
+    defense: "defense",
+    resistTorture: "resistTorture",
+    judgeIntentions: "judgeIntentions",
+    perception: "perception",
+    composure: "composure",
+    memory: "memory",
+    catch: "catch",
+    lift: "lift",
+    matrixDefense: "matrixDefense",
+    matrixPerception: "matrixPerception"
+  },
+  defenses: {
+    physicalDefense: "physicalDefense",
+    mentalDefense: "mentalDefense",
+    socialDefense: "socialDefense",
+    matrixDefense: "matrixDefense",
+    astralDefense: "astralDefense"
   }
 }

@@ -73,13 +73,12 @@ img.anarchy-img {
   height: 16px;
 }
 
-:is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img) {
+:is(.anarchy-dialog, .chat-message) :is(img.actor-img, img.skill-img ,img.weapon-img, img.anarchy-img.actor-img) {
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   width: 48px;
   height: 48px;
 }
-
 
 img.anarchy-img.actor-img {
   -ms-flex: 0 0 64px;
@@ -822,11 +821,19 @@ div.dice-result div.dice-formula {
   padding: 2px;
 }
 
-.roll-dialog div.roll-images{
+div.column-images{
   display: flex;
   flex-direction: column;
   margin: 0px;
   padding: 2px;
+  flex: none;
+  /* flex-grow: 0; */
+}
+
+div.column-details{
+  display: flex;
+  flex-direction: column;
+  flex: none;
 }
 
 .roll-dialog div.roll-parameters div.parameter {

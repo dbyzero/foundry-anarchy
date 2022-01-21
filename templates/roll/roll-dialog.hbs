@@ -1,7 +1,7 @@
 <form class="anarchy-dialog roll-dialog">
   <div class="flexrow">
-    <div class="roll-images flex-shrink">
-      <img class="anarchy-img actor-img flex-shrink" src="{{actor.img}}" alt="{{actor.name}}" title="{{actor.name}}"/>
+    <div class="column-images">
+      <img class="anarchy-img actor-img" src="{{actor.img}}" alt="{{actor.name}}" title="{{actor.name}}"/>
       {{> (concat 'systems/anarchy/templates/roll/parts/image-' mode '.hbs')}}
     </div>
     <div class="roll-parameters">

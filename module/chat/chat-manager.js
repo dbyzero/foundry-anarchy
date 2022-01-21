@@ -1,85 +1,118 @@
 import { ANARCHY } from "../config.js";
-import { TEMPLATES_PATH } from "../constants.js";
-import { Enums } from "../enums.js";
-import { ANARCHY_HOOKS } from "../hooks-manager.js";
+import { SYSTEM_SCOPE } from "../constants.js";
 import { RemoteCall } from "../remotecall.js";
-import { RollManager } from "../roll/roll-manager.js";
 
+
+export const PARENT_MESSAGE_ID = 'parent-message-id';
+export const MESSAGE_DATA = 'message-data';
+export const MESSAGE_CAN_USE_EDGE = 'can-use-edge';
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
-const HBS_TEMPLATE_CHAT_ANARCHY_ROLL = `${TEMPLATES_PATH}/chat/anarchy-roll.hbs`;
-const HBS_CHAT_TEMPLATES = [
-  `${TEMPLATES_PATH}/chat/roll-modifier.hbs`,
-  `${TEMPLATES_PATH}/chat/risk-outcome.hbs`,
-  `${TEMPLATES_PATH}/chat/edge-reroll-button.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/actor-image.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/generic-parameter.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/title-mode-attribute.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/title-mode-skill.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/title-mode-weapon.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/pool-mode-attribute.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/pool-mode-skill.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/pool-mode-weapon.hbs`,
-  `${TEMPLATES_PATH}/chat/parts/result-mode-weapon.hbs`,
-  `${TEMPLATES_PATH}/chat/actor-drain.hbs`,
-];
+const CHAT_MANAGER_REMOVE_FAMILY = 'ChatManager.removeChatMessageFamily';
 
 export class ChatManager {
 
   static async init() {
     Hooks.on("renderChatMessage", async (app, html, msg) => await ChatManager.onRenderChatMessage(app, html, msg));
 
+    RemoteCall.register(CHAT_MANAGER_REMOVE_FAMILY, {
+      callback: data => this.removeFamily(data),
+      condition: user => user.isGM
+    });
+
     RemoteCall.register(REMOVE_CHAT_MESSAGE, {
       callback: data => ChatManager.removeChatMessage(data),
       condition: user => user.isGM
     });
-
-    Hooks.on(ANARCHY_HOOKS.GET_HANDLEPAR_PARTIALS, list => HBS_CHAT_TEMPLATES.forEach(it => list.push(it)));
-  }
-
-
-  static async displayRollInChat(rollData, addJson = false) {
-    if (addJson) {
-      rollData.json = RollManager.rollDataToJSON(rollData);
-    }
-
-    rollData.ANARCHY = ANARCHY;
-    rollData.ENUMS = Enums.getEnums();
-    rollData.options = rollData.options ?? {};
-    rollData.options.classes = rollData.options.classes ?? [];
-    rollData.options.classes.push(game.system.anarchy.styles.selectCssClass());
-    rollData.options.canUseEdge = rollData.actor.canUseEdge();
-
-    const flavor = await renderTemplate(HBS_TEMPLATE_CHAT_ANARCHY_ROLL, rollData);
-    await rollData.roll.toMessage({ flavor: flavor });
   }
 
   static async onRenderChatMessage(app, html, msg) {
-    html.find(".click-edge-reroll").click(async event => {
-      const messageId = $(event.currentTarget).closest('.chat-message').attr('data-message-id');
-      const json = $(event.currentTarget).attr('data-json');
-      const rollData = RollManager.rollDataFromJSON(json);
-      // TODO: indicate edge was used for reroll
-      await RollManager.edgeReroll(rollData);
-      ChatManager.removeChatMessage(messageId);
+
+    html.find('.anarchy-button.click-edge-reroll').click(async event => {
+      const chatMessage = ChatManager.getChatMessage(event);
+      await ChatManager.edgeReroll(chatMessage);
     });
+
+    html.find('.anarchy-button.click-defend-attack').click(async event => {
+      const chatMessage = ChatManager.getChatMessage(event);
+      await ChatManager.defendAttack(chatMessage);
+    });
+
+    html.find('.anarchy-button.click-apply-attack-damage').click(async event => {
+      const chatMessage = ChatManager.getChatMessage(event);
+      await ChatManager.applyAttack(chatMessage);
+    });
+
+    // Support for other buttons here?
   }
 
-  static removeChatMessage(messageId) {
-    if (!RemoteCall.call(REMOVE_CHAT_MESSAGE, messageId)) {
-      game.messages.get(messageId)?.delete();
+  static async edgeReroll(chatMessage) {
+    if (ChatManager.getMessageCanUseEdge(chatMessage)) {
+
+      const rollData = ChatManager.getMessageData(chatMessage);
+      await game.system.anarchy.rollManager.edgeReroll(rollData);
+      ChatManager.removeFamily(chatMessage.id);
+    }
+    else {
+      ui.notifications.info(game.i18n.localize(ANARCHY.common.errors.cannotUseEdgeAnymore));
     }
   }
 
-  static async displayDrainInChat(actor, rollDrain) {
-
-    const flavor = await renderTemplate(`${TEMPLATES_PATH}/chat/actor-drain.hbs`, {
-      ANARCHY: ANARCHY,
-      actor: actor,
-      drain: rollDrain.total,
-      options: {
-        classes: game.system.anarchy.styles.selectCssClass()
-      }
-    });
-    await rollDrain.toMessage({ flavor: flavor });
+  static defendAttack(chatMessage) {
+    return game.system.anarchy.combatManager.onClickDefendAttack(ChatManager.getMessageData(chatMessage));
   }
+
+  static applyAttack(chatMessage) {
+    return game.system.anarchy.combatManager.onClickApplyAttackDamage(ChatManager.getMessageData(chatMessage));
+  }
+
+  static getChatMessage(event) {
+    const chatMessageId = $(event.currentTarget).closest('.chat-message').attr('data-message-id');
+    return game.messages.get(chatMessageId);
+  }
+
+  static async setParentMessageId(chatMessage, family) {
+    await chatMessage.setFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID, family);
+  }
+
+  static getParentMessageId(chatMessage) {
+    return chatMessage.getFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID);
+  }
+  static getParentMessage(chatMessage) {
+    const chatMessageId = ChatManager.getParentMessageId(chatMessage);
+    return chatMessageId ? game.messages.get(chatMessageId) : undefined;
+  }
+
+  static removeFamily(chatMessageId) {
+    if (!RemoteCall.call(CHAT_MANAGER_REMOVE_FAMILY, chatMessageId)) {
+      game.messages.filter(m => m.getFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID) == chatMessageId)
+        .forEach(m => m.delete());
+      game.messages.get(chatMessageId)?.delete()
+    }
+  }
+
+  static async setMessageData(chatMessage, data) {
+    if (data) {
+      await chatMessage.setFlag(SYSTEM_SCOPE, MESSAGE_DATA, JSON.stringify(data));
+    }
+  }
+
+  static getMessageData(chatMessage) {
+    const json = chatMessage.getFlag(SYSTEM_SCOPE, MESSAGE_DATA);
+    return json ? JSON.parse(json) : undefined;
+  }
+
+  static removeChatMessage(chatMessageId) {
+    if (!RemoteCall.call(REMOVE_CHAT_MESSAGE, chatMessageId)) {
+      game.messages.get(chatMessageId)?.delete();
+    }
+  }
+
+  static async setMessageCanUseEdge(chatMessage, canUseEdge) {
+    await chatMessage.setFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE, canUseEdge);
+  }
+
+  static getMessageCanUseEdge(chatMessage) {
+    return chatMessage.getFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE);
+  }
+
 }

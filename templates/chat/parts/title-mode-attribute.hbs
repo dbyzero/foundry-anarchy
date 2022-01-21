@@ -1,8 +1,0 @@
-{{actor.name}}{{#if item}} - {{item.name}}{{/if}} -
-{{#if attributeAction}}
-  {{localize (concat 'ANARCHY.attributeActions.' attributeAction)}}
-{{else}}
-  {{localizeAttribute attribute1}}
-  {{~#if attribute2}}+{{localizeAttribute attribute2}}{{/if~}}
-{{/if}}
-: {{roll.pool}}

@@ -33,6 +33,7 @@ export class Enums {
     Enums.hbsAreas = Enums.mapObjetToKeyValue(ANARCHY.area);
     Enums.hbsRanges = Enums.mapObjetToKeyValue(ANARCHY.range);
     Enums.hbsVehicleCategories = Enums.mapObjetToKeyValue(ANARCHY.vehicleCategory);
+
     Enums.sortedAttributeKeys = Object.keys(ANARCHY.attributes);
 
     Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => Enums.registerHandleBarHelpers());

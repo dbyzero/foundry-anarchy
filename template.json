@@ -263,6 +263,7 @@
       "damageAttribute": "",
       "noArmor": false,
       "monitor": "stun",
+      "defense": "",
       "area": "",
       "range": {
         "max": "short",

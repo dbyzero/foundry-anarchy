@@ -87,16 +87,37 @@ class _0_3_14_MigrateSkillDrainConvergence extends Migration {
     await this.applyItemsUpdates(computeUpdates);
   }
 }
+class _0_4_0_SelectWeaponDefense extends Migration {
+  get version() { return '0.4.0' }
+  get code() { return 'migrate-select-weapon-defense'; }
+
+  async migrate() {
+    const isWeapon = it => it.type == 'weapon';
+    const findWeaponSkillWithDefense = weapon => ANARCHY_SKILLS.find(it => it.defense && it.code == weapon.data.data.skill);
+    const setDefense = weapon => {
+      return {
+        _id: weapon.id,
+        'data.defense': findWeaponSkillWithDefense(weapon)?.defense
+      }
+    };
+
+    await this.applyItemsUpdates(items =>
+      items.filter(isWeapon)
+        .filter(findWeaponSkillWithDefense)
+        .map(setDefense));
+  }
+
+}
 
 export class Migrations {
   constructor() {
     HooksManager.register(ANARCHY_HOOKS.DECLARE_MIGRATIONS);
 
-    this.migrations = [
+    Hooks.once(ANARCHY_HOOKS.DECLARE_MIGRATIONS, addMigrations => addMigrations(
       new _0_3_1_MigrationMoveWordsInObjects(),
       new _0_3_8_MigrateWeaponDamage(),
-      new _0_3_14_MigrateSkillDrainConvergence()
-    ];
+      new _0_3_14_MigrateSkillDrainConvergence(),
+      new _0_4_0_SelectWeaponDefense()));
 
     game.settings.register(SYSTEM_NAME, "systemMigrationVersion", {
       name: "System Migration Version",
@@ -110,14 +131,16 @@ export class Migrations {
   migrate() {
     const currentVersion = game.settings.get(SYSTEM_NAME, "systemMigrationVersion");
     if (isNewerVersion(game.system.data.version, currentVersion)) {
-      Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, this.migrations);
+      let migrations = [];
+      Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, (...addedMigrations) =>
+        migrations = migrations.concat(addedMigrations.filter(m => isNewerVersion(m.version, currentVersion)))
+      );
       Hooks.off(ANARCHY_HOOKS.DECLARE_MIGRATIONS, () => { });
 
-      this.migrations = this.migrations.filter(m => isNewerVersion(m.version, currentVersion));
-      if (this.migrations.length > 0) {
+      if (migrations.length > 0) {
 
-        this.migrations.sort((a, b) => isNewerVersion(a.version, b.version) ? 1 : isNewerVersion(b.version, a.version) ? -1 : 0);
-        this.migrations.forEach(async m => {
+        migrations.sort((a, b) => isNewerVersion(a.version, b.version) ? 1 : isNewerVersion(b.version, a.version) ? -1 : 0);
+        migrations.forEach(async m => {
           ui.notifications.info(`Executing migration ${m.code}: version ${currentVersion} is lower than ${m.version}`);
           await m.migrate();
         });

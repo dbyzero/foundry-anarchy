@@ -25,7 +25,11 @@
     "chat": {
       "blindMessageToGM": "Blind message from {user}:<br>{message}",
       "sufferedDrain": "{actor} suffered a drain of {drain}",
-      "noDrain": "{actor} did not suffer any drain"
+      "noDrain": "{actor} did not suffer any drain",
+      "defendAttack": "Defense against {success} success",
+      "partiallyDefended": "Attack exceeds defense of {success} success",
+      "fullyDefended": "The attack is fully defended",
+      "applyDamage": "Apply {damage}"
     },
     "common": {
       "newEntry": "New entry...",
@@ -53,12 +57,14 @@
           "convergence": "GOD Convergence",
           "drain": "Drain",
           "wounds": "Wounds modifiers",
-          "range": "Range",
+          "weaponRange": "Range",
+          "weaponArea": "Multiple targets",
           "other": "Other modifiers",
+          "reduced": "Pool reduced",
           "reroll": "Rerolls",
           "rerollForced": "Rerolls successes",
-          "opponentRerollForced": "Opponent must reroll",
-          "opponentReduce": "Opponent pool reduction"
+          "opponentRerollForced": "Force opponent rerolls",
+          "opponentReduce": "Reduce opponent pool"
         },
         "rollTheme": {
           "dicePool": "Dice pool",
@@ -97,7 +103,12 @@
         "outOfRange": "Cannot set {resource} to {value}, out of range [{min} , {max}]",
         "onlyGM": "Only allowed for GM",
         "noEdgeForActor": "{actorName} is a {actorType}, so it cannot use Edge",
-        "expectedType": "Item is of type {type} instead of expected type {expectedType}"
+        "expectedType": "Item is of type {type} instead of expected type {expectedType}",
+        "noTargetSelected": "No target is selected, consider selecting a target before using this {weapon}",
+        "maxTargetsExceedeed": "{weapon} has a {area} area of effect, with a maximum of {max} targets. You are currently targetting {count} targets",
+        "noDefenseOnWeapon": "No defense configured for {actor} weapon: {weapon}.<br>Configure defense against this weapon to be able to attack with it.",
+        "noTokenActor": "Token is not attached to an Actor!",
+        "cannotUseEdgeAnymore": "Too late to use edge. A defender already rolled his defense!"
       },
       "sourceReference": "Source reference",
       "sourceReferenceHelp": "rulebook, page, ...",
@@ -196,6 +207,7 @@
         "skill": "Skill",
         "damage": "Damages",
         "strength": "+ strength",
+        "defense": "Defense",
         "area": "Area of effect",
         "withArmor": "Armor protects",
         "noArmor": "Ignore armor",
@@ -278,7 +290,7 @@
       "firewall": "Firewall",
       "system": "System"
     },
-    "attributeActions": {
+    "attributeAction": {
       "defense": "Defense",
       "judgeIntentions": "Judge intentions",
       "perception": "Perception / Mental resistance",
@@ -288,8 +300,14 @@
       "catch": "Catch object",
       "lift": "Lift/carry",
       "matrixDefense": "Matrix defense",
-      "matrixPerception": "Matrix perception",
-      "vehicleDefense": "Vehicle defense"
+      "matrixPerception": "Matrix perception"
+    },
+    "defense": {
+      "physicalDefense": "Physical defense",
+      "mentalDefense": "Mental defense",
+      "socialDefense": "Social defense",
+      "matrixDefense": "Matrix defense",
+      "astralDefense": "Astral defense"
     },
     "skill": {
       "athletics": "Athletics",
@@ -321,7 +339,7 @@
       "etiquette": "Etiquette"
     },
     "area": {
-      "none": "-",
+      "none": "None",
       "shotgun": "Shotgun"
     },
     "range": {

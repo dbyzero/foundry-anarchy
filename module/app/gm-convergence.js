@@ -56,7 +56,7 @@ export class GMConvergence {
       whisper: ChatMessage.getWhisperRecipients('GM'),
       blind: true,
       flavor: `Convergence for ${actor.name}: ${rollConvergence.total}`
-    }, { rollMode: 'blindroll' });
+    }, { rollType: 'blindroll' });
   }
 
   async addConvergence(actor, added) {

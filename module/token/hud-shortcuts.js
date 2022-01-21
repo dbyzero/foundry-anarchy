@@ -1,3 +1,4 @@
+import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Misc } from "../misc.js";
 
@@ -23,17 +24,16 @@ export class HUDShortcuts {
 
   async addExtensionHud(app, html, tokenId) {
     app.hasExtension = true;
-    const token = canvas.tokens.get(tokenId);
-    const actor = token.actor;
 
-    const hud = await this._renderShortcuts(actor);
+    const hud = await this._renderShortcuts(tokenId);
     html.find('.control-icon[data-action=combat]').after(hud);
   }
 
-  async _renderShortcuts(actor) {
+  async _renderShortcuts(tokenId) {
+    const token = canvas.tokens.get(tokenId);
     const hbsHudData = {
-      actor: actor,
-      shortcuts: actor.getShortcuts(),
+      tokenId: tokenId,
+      shortcuts: token.actor.getShortcuts(),
       options: {
         classes: [game.system.anarchy.styles.selectCssClass()]
       },
@@ -49,18 +49,24 @@ export class HUDShortcuts {
     });
 
     list.find('.anarchy-shortcut-button').click(event => {
-      const actorId = $(event.currentTarget).closest('.anarchy-shortcuts-list').attr('data-actor-id');
+      const tokenId = $(event.currentTarget).closest('.anarchy-shortcuts-list').attr('data-token-id');
       const shortcutType = $(event.currentTarget).attr('data-shortcut-type');
       const shortcutId = $(event.currentTarget).attr('data-shortcut-id');
-      this.onClickShortcutButton(actorId, shortcutType, shortcutId);
+      this.onClickShortcutButton(tokenId, shortcutType, shortcutId);
     });
     return hud;
   }
 
-  onClickShortcutButton(actorId, shortcutType, shortcutId) {
-    const actor = game.actors.get(actorId);
-    const shortcut = actor?.getShortcut(shortcutType, shortcutId);
-    shortcut?.callback(actor);
+  onClickShortcutButton(tokenId, shortcutType, shortcutId) {
+    const token = canvas.tokens.get(tokenId);
+    const actor = token?.actor;
+    if (actor) {
+      const shortcut = actor?.getShortcut(shortcutType, shortcutId);
+      shortcut?.callback(token);
+    }
+    else {
+      ui.notifications.warn(game.i18.localize(ANARCHY.common.errors.noTokenActor));
+    }
   }
 
   _toggleHudActive(hud, list) {

@@ -46,4 +46,9 @@ export class AnarchyUsers {
   static isUniqueConnectedGM(user) {
     return user.id == AnarchyUsers.firstConnectedGM()?.id;
   }
+  static getTargets(user) {
+    const targets = [];
+    user.targets.forEach(element => targets.push(element));
+    return targets;
+  }
 }

@@ -31,7 +31,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
         owner: this.document.isOwner,
         cssClass: this.isEditable ? "editable" : "locked",
       },
-      ENUMS: mergeObject({ attributeActions: this.actor.getAttributeActions() }, Enums.getEnums()),
+      ENUMS: mergeObject({ attributeAction: this.actor.getAttributeActions() }, Enums.getEnums()),
       ANARCHY: ANARCHY
     });
     Misc.classifyInto(hbsData.items, hbsData.data.items);
@@ -112,11 +112,7 @@ export class AnarchyBaseActorSheet extends ActorSheet {
     });
 
     html.find('.click-roll-attribute-action').click(async event => {
-      //TODO: add action buttons to cberdeck? //const handler = this.getEventItem(event) ?? this.actor;
-      this.actor.rollAttribute(
-        $(event.currentTarget).attr('data-attribute1'),
-        $(event.currentTarget).attr('data-attribute2'),
-        $(event.currentTarget).attr('data-action-code'));
+      this.actor.rollAttributeAction(this.getEventActionCode(event));
     });
 
     html.find('.click-weapon-roll').click(async event => {

@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { LOG_HEAD, TEMPLATES_PATH } from "../constants.js";
+import { ANARCHY_SYSTEM, LOG_HEAD, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { Misc } from "../misc.js";
@@ -14,7 +14,8 @@ export const ROLL_PARAMETER_CATEGORY = {
   convergence: 'convergence',
   edge: 'edge',
   risk: 'risk',
-  opponent: 'opponent'
+  opponentReduce: 'opponentReduce',
+  opponentRerollForced: 'opponentRerollForced'
 }
 
 const DEFAULT_ROLL_PARAMETERS = [
@@ -25,9 +26,8 @@ const DEFAULT_ROLL_PARAMETERS = [
       flags: {},
       order: 1, category: ROLL_PARAMETER_CATEGORY.pool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-attribute.hbs`,
-      hbsTemplateChat: undefined, //``,
     },
-    condition: context => ['skill', 'attribute', 'weapon'].includes(context.mode),
+    condition: context => Object.values(ANARCHY_SYSTEM.rollType).includes(context.mode),
     factory: context => {
       const attribute = context.attribute1 ?? context.skill?.data.data.attribute ?? '';
       return {
@@ -46,12 +46,11 @@ const DEFAULT_ROLL_PARAMETERS = [
     options: {
       order: 1, category: ROLL_PARAMETER_CATEGORY.pool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-attribute.hbs`,
-      hbsTemplateChat: undefined, //``,
     },
-    condition: context => context.mode == 'attribute',
+    condition: context => [ANARCHY_SYSTEM.rollType.attribute, ANARCHY_SYSTEM.rollType.attributeAction, ANARCHY_SYSTEM.rollType.defense].includes(context.mode),
     factory: context => {
       return {
-        flags: { editable: !context.attributeAction },
+        flags: { editable: ANARCHY_SYSTEM.rollType.attribute == context.mode },
         labelkey: ANARCHY.attributes[context.attribute2],
         value: context.actor.getAttributeValue(context.attribute2, context.activeItem),
         selected: context.attribute2,
@@ -67,7 +66,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       flags: {},
       order: 3, category: ROLL_PARAMETER_CATEGORY.pool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => ['skill', 'weapon'].includes(context.mode),
     factory: context => {
@@ -85,7 +83,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 4, category: ROLL_PARAMETER_CATEGORY.pool,
       value: 2,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => (context.mode == 'skill' && context.specialization)
       || (context.mode == 'weapon' && context.skill?.data.data.specialization),
@@ -104,7 +101,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 10, category: ROLL_PARAMETER_CATEGORY.pool,
       labelkey: ANARCHY.common.roll.modifiers.wounds,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => context.actor.getWounds(),
     onChecked: (p, checked) => {
@@ -120,26 +116,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       }
     }
   },
-  // weapon range
-  {
-    code: 'range',
-    options: {
-      flags: { editable: true, },
-      order: 20, category: ROLL_PARAMETER_CATEGORY.pool,
-      labelkey: ANARCHY.common.roll.modifiers.range,
-      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-option.hbs`,
-      hbsTemplateChat: undefined, //``
-    },
-    condition: context => context.weapon,
-    factory: context => {
-      const ranges = context.weapon.getRanges();
-      return {
-        value: ranges[0].value,
-        choices: ranges,
-        selected: game.i18n.localize(ranges[0].labelkey)
-      }
-    }
-  },
   // other modifiers
   {
     code: 'other',
@@ -149,7 +125,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.other,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
     }
   },
   // Drain
@@ -161,7 +136,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.drain,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasDrain
   },
@@ -174,7 +148,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 1,
       labelkey: ANARCHY.common.roll.modifiers.convergence,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasConvergence
   },
@@ -204,19 +177,40 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.reroll,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
+    }
+  },
+  // reduction from opponent
+  {
+    code: 'reduced',
+    options: {
+      flags: {},
+      order: 29, category: ROLL_PARAMETER_CATEGORY.pool,
+      labelkey: ANARCHY.common.roll.modifiers.reduced,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+    },
+    condition: context => (context.attackRoll?.param.opponentReduce ?? 0) != 0,
+    factory: context => {
+      const reduced = context.attackRoll?.param.opponentReduce ?? 0;
+      return {
+        flags: { used: true },
+        value: - reduced,
+      }
     }
   },
   // forced success rerolls
   {
     code: 'rerollForced',
     options: {
-      flags: { editable: true, },
       order: 31, category: ROLL_PARAMETER_CATEGORY.rerollForced,
-      value: 0,
       labelkey: ANARCHY.common.roll.modifiers.rerollForced,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
+    },
+    factory: context => {
+      const rerollForced = context.attackRoll?.param.opponentRerollForced ?? 0;
+      return {
+        flags: { used: true, editable: rerollForced == 0 },
+        value: rerollForced,
+      }
     }
   },
   // anarchy dispositions
@@ -228,7 +222,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.anarchyDisposition,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => context.actor.getAnarchyValue() > 0,
     onChecked: (p, checked) => {
@@ -262,9 +255,8 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 70, category: ROLL_PARAMETER_CATEGORY.edge,
       labelkey: ANARCHY.common.roll.modifiers.edge,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
-      hbsTemplateChat: undefined, //``
     },
-    condition: context => context.actor.canUseEdge() && context.actor.getRemainingEdge(),
+    condition: context => context.options.canUseEdge && context.actor.getRemainingEdge(),
     onChecked: (p, checked) => {
       p.used = checked;
       p.value = checked ? 1 : 0;
@@ -276,11 +268,10 @@ const DEFAULT_ROLL_PARAMETERS = [
     code: 'opponentReduce',
     options: {
       flags: { editable: true, forceDisplay: true, },
-      order: 100, category: ROLL_PARAMETER_CATEGORY.opponent,
+      order: 100, category: ROLL_PARAMETER_CATEGORY.opponentReduce,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.opponentReduce,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => !context.attributeAction
   },
@@ -289,11 +280,10 @@ const DEFAULT_ROLL_PARAMETERS = [
     code: 'opponentRerollForced',
     options: {
       flags: { editable: true, forceDisplay: true, },
-      order: 100, category: ROLL_PARAMETER_CATEGORY.opponent,
+      order: 100, category: ROLL_PARAMETER_CATEGORY.opponentRerollForced,
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.opponentRerollForced,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      hbsTemplateChat: undefined, //``
     },
     condition: context => !context.attributeAction
   },

@@ -9,7 +9,7 @@
   <section class="sheet-body">
     <div class="form-group">
       <label for="data.skill">{{localize 'ANARCHY.item.weapon.skill'}} </label>
-      <select name="data.skill" data-dtype="String">
+      <select class="select-weapon-skill" name="data.skill" data-dtype="String">
           {{#select data.data.skill}}
           {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.skills}}
           {{/select}}
@@ -62,8 +62,19 @@
       </select>
     </div>
     <div class="form-group">
+        <label for="data.defense" >{{localize 'ANARCHY.item.weapon.defense'}} </label>
+        <select name="data.defense">
+          {{log 'defense' data.data.defense ENUMS.defenses}}
+          {{selectOptions ENUMS.defenses 
+            selected=data.data.defense nameAttr="code" labelAttr="labelkey" localize=true blank=''}}
+          {{!-- {{#select data.data.defense}}
+          {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.defenses}}
+          {{/select}} --}}
+        </select>
+    </div>
+    <div class="form-group">
         <label for="data.range.max" >{{localize 'ANARCHY.item.weapon.range.max'}} </label>
-        <select name="data.range.max" data-dtype="String">
+        <select name="data.range.max">
           {{#select data.data.range.max}}
           {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.ranges}}
           {{/select}}

@@ -77,7 +77,7 @@ export class AnarchyDice {
 
     AnarchyDice.dice3d = dice3d;
     game.settings.set("dice-so-nice", "enabledSimultaneousRollForMessage", false);
-    dice3d.addSystem({ id: SYSTEM_NAME, name: SYSTEM_DESCRIPTION }, "preferred");
+    dice3d.addSystem({ id: SYSTEM_NAME, name: SYSTEM_DESCRIPTION });
     /*
      * See guides:
      * https://gitlab.com/riccisi/foundryvtt-dice-so-nice/-/wikis/API/Hooks

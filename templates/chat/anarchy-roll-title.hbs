@@ -1,16 +1,18 @@
-{{actor.name}}
 {{#if (eq mode 'attribute')}}
-  {{#if item}} - {{item.name}}{{/if}}:
+  {{actor.name}}{{#if item}} - {{item.name}}{{/if}} -
   {{localizeAttribute attribute1}}
+  {{~#if attribute2}}+{{localizeAttribute attribute2}}{{/if~}}
 {{/if}}
 {{#if (eq mode 'attributeAction')}}
-  {{#if item}} - {{item.name}}{{/if}}:
   {{localize (concat 'ANARCHY.attributeAction.' attributeAction)}}
 {{/if}}
 {{#if (eq mode 'defense')}}
-  {{log 'title mode defense' this}}
-  {{#if item}} - {{item.name}}{{/if}}:
   {{localize (concat 'ANARCHY.defense.' defenseAction)}}
 {{/if}}
-{{#if (eq mode 'skill')}} - {{skill.name}}{{/if}}
-{{#if (eq mode 'weapon')}} - {{weapon.name}}{{/if}}
+{{#if (eq mode 'skill')}}
+  {{actor.name}} - {{skill.name}}
+{{/if}}
+{{#if (eq mode 'weapon')}}
+  {{actor.name}} - {{weapon.name}}
+{{/if}}
+: {{roll.pool}}

@@ -48,6 +48,8 @@ import { SpriteActorSheet } from './actor/sprite-actor-sheet.js';
 import { SpriteActor } from './actor/sprite-actor.js';
 import { ICActor } from './actor/ic-actor.js';
 import { HUDShortcuts } from './token/hud-shortcuts.js';
+import { CombatManager } from './combat/combat-manager.js';
+import { RollManager } from './roll/roll-manager.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -89,7 +91,9 @@ export class AnarchySystem {
     this.gmManager = new GMManager(this.gmAnarchy, this.gmConvergence);
     this.skills = new Skills();
     this.rollParameters = new RollParameters();
+    this.rollManager = new RollManager();
     this.hudShortcuts = new HUDShortcuts();
+    this.combatManager = new CombatManager();
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit | loading system');
     CONFIG.Combat.documentClass = AnarchyCombat;
@@ -108,6 +112,7 @@ export class AnarchySystem {
     this.loadActorSheets();
     this.loadItemSheets();
 
+    WeaponItem.init();
     RollDialog.init();
     AnarchyUsers.init();
     AnarchyDice.init();

@@ -1,9 +1,10 @@
 import { ANARCHY } from "../config.js";
-import { BASE_MONITOR, TEMPLATE } from "../constants.js";
+import { BASE_MONITOR, TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
-import { ChatManager } from "../chat/chat-manager.js";
+
+const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
 
 const essenceRange = [
   { from: 5, to: 6, adjust: 0 },
@@ -156,7 +157,16 @@ export class CharacterActor extends AnarchyBaseActor {
       const rollDrain = new Roll(`${drain}dgcf=1[${game.i18n.localize(ANARCHY.common.roll.rollTheme.drain)}]`);
       await rollDrain.evaluate({ async: true });
       await this.sufferDrain(rollDrain.total);
-      ChatManager.displayDrainInChat(this, rollDrain);// TODO: add info about actor current state
+
+      const flavor = await renderTemplate(HBS_TEMPLATE_ACTOR_DRAIN, {
+        ANARCHY: ANARCHY,
+        actor: this,
+        drain: rollDrain.total,
+        options: {
+          classes: game.system.anarchy.styles.selectCssClass()
+        }
+      });
+      await rollDrain.toMessage({ flavor: flavor });
     }
   }
 

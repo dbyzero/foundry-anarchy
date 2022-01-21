@@ -25,7 +25,11 @@
     "chat": {
       "blindMessageToGM": "Message aveugle de {user}:<br>{message}",
       "sufferedDrain": "{actor} subit un drain de {drain}",
-      "noDrain": "{actor} n'a pas subi de drain"
+      "noDrain": "{actor} n'a pas subi de drain",
+      "defendAttack": "Défense contre {success} succès",
+      "partiallyDefended": "L'attaque surpasse la défense de {success} succès",
+      "fullyDefended": "L'attaque est totalement évitée",
+      "applyDamage": "Appliquer {damage}"
     },
     "common": {
       "newEntry": "Valeur...",
@@ -52,12 +56,14 @@
           "drain": "Drain",
           "convergence": "Convergence DIEU",
           "wounds": "Blessures",
-          "range": "Portée",
+          "weaponRange": "Portée",
+          "weaponArea": "Cibles multiples",
           "other": "Autres modificateurs",
+          "reduced": "Malus de dés",
           "reroll": "Relances",
-          "rerollForced": "Relances de succès",
-          "opponentRerollForced": "Relance de succès adverses",
-          "opponentReduce": "Malus de dés adverse"
+          "rerollForced": "Relances forcées",
+          "opponentRerollForced": "Relances pour l'adversaire",
+          "opponentReduce": "Malus pour l'adversaire"
         },
         "rollTheme": {
           "dicePool": "Réserve de dés",
@@ -96,7 +102,12 @@
         "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]",
         "onlyGM": "Seul un MJ est autorisé",
         "noEdgeForActor": "{actorName} et un {actorType}, il ne peut pas utiliser la Chance",
-        "expectedType": "Objet de type incorrect, attendu: {expectedType}, type de l'objet: {type}"
+        "expectedType": "Objet de type incorrect, attendu: {expectedType}, type de l'objet: {type}",
+        "noTargetSelected": "Aucune cible sélectionnée. Vous devriez choisir une (des?) cible avant d'utiliser votre {weapon}",
+        "maxTargetsExceedeed": "{weapon} a une zone zone d'effet {area}, avec au maximum {max} cibles, vous en avez {count}",
+        "noDefenseOnWeapon": "L'arme {weapon} de {actor} n'a pas de défense configurée. Configurez la défense contre cette arme pour pouvoir attaquer avec.",
+        "noTokenActor": "Le token n'est pas lié à un Personnage!",
+        "cannotUseEdgeAnymore": "Trop tard pour utiliser la Chance. Un adversaire s'est déjà défendu!"
       },
       "sourceReference": "Référence source",
       "sourceReferenceHelp": "livre, page, ...",
@@ -195,6 +206,7 @@
         "skill": "Compétence",
         "damage": "Dommages",
         "strength": "+ force",
+        "defense": "Défense",
         "area": "Zone d'effet",
         "withArmor": "L'armure protège",
         "noArmor": "Ignore l'armure",
@@ -277,7 +289,7 @@
       "firewall": "Firewall",
       "system": "Système"
     },
-    "attributeActions": {
+    "attributeAction": {
       "defense": "Défense",
       "judgeIntentions": "Jauger les intentions",
       "perception": "Perception",
@@ -287,8 +299,14 @@
       "catch": "Attraper au vol",
       "lift": "Soulever",
       "matrixDefense": "Défense matricielle",
-      "matrixPerception": "Perception matricielle",
-      "vehicleDefense": "Défense de véhicule"
+      "matrixPerception": "Perception matricielle"
+    },
+    "defense": {
+      "physicalDefense": "Défense physique",
+      "mentalDefense": "Défense mentale",
+      "socialDefense": "Défense sociale",
+      "matrixDefense": "Défense matricielle",
+      "astralDefense": "Défense astrale"
     },
     "skill": {
       "athletics": "Athlétisme",
@@ -320,7 +338,7 @@
       "etiquette": "Etiquette"
     },
     "area": {
-      "none": "-",
+      "none": "Aucune",
       "shotgun": "Shotgun"
     },
     "range": {

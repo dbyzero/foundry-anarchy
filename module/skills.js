@@ -1,5 +1,5 @@
 import { ANARCHY } from "./config.js";
-import { ICONS_SKILLS_PATH, SYSTEM_NAME, SYSTEM_PATH, TEMPLATE } from "./constants.js";
+import { ANARCHY_SYSTEM, ICONS_SKILLS_PATH, SYSTEM_NAME, SYSTEM_PATH, TEMPLATE } from "./constants.js";
 import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 import { Misc } from "./misc.js";
 
@@ -7,25 +7,26 @@ const SELECTED_SKILL_LIST = "selected-skill-list";
 const SELECTED_SKILL_LIST_KEY = `${SYSTEM_NAME}.${SELECTED_SKILL_LIST}`;
 
 const ATTR = TEMPLATE.attributes;
+const DEFENSE = ANARCHY_SYSTEM.defenses;
 
 export const ANARCHY_SKILLS = [
   { code: 'athletics', attribute: ATTR.strength, icon: `${ICONS_SKILLS_PATH}/athletics.svg` },
   { code: 'acrobatics', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/escape-artist.svg`, lang: 'fr' },
-  { code: 'closeCombat', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/close-combat.svg` },
-  { code: 'projectileWeapons', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/projectile-weapons.svg` },
-  { code: 'firearms', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/firearms.svg` },
-  { code: 'heavyWeapons', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/heavy-weapons.svg` },
-  { code: 'vehicleWeapons', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/vehicle-weapons.svg` },
+  { code: 'closeCombat', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/close-combat.svg`, defense: DEFENSE.physicalDefense },
+  { code: 'projectileWeapons', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/projectile-weapons.svg`, defense: DEFENSE.physicalDefense },
+  { code: 'firearms', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/firearms.svg`, defense: DEFENSE.physicalDefense },
+  { code: 'heavyWeapons', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/heavy-weapons.svg`, defense: DEFENSE.physicalDefense },
+  { code: 'vehicleWeapons', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/vehicle-weapons.svg`, defense: DEFENSE.physicalDefense },
   { code: 'stealth', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/stealth.svg` },
   { code: 'pilotingGround', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/piloting-ground.svg` },
   { code: 'pilotingOther', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/piloting-other.svg` },
   { code: 'escapeArtist', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/escape-artist.svg`, lang: 'en' },
   { code: 'conjuring', attribute: ATTR.willpower, hasDrain: true, icon: `${ICONS_SKILLS_PATH}/conjuring.svg` },
   { code: 'sorcery', attribute: ATTR.willpower, hasDrain: true, icon: `${ICONS_SKILLS_PATH}/sorcery.svg` },
-  { code: 'astralCombat', attribute: ATTR.willpower, icon: `${ICONS_SKILLS_PATH}/astral-combat.svg` },
+  { code: 'astralCombat', attribute: ATTR.willpower, icon: `${ICONS_SKILLS_PATH}/astral-combat.svg`, defense: DEFENSE.astralDefense },
   { code: 'survival', attribute: ATTR.willpower, icon: `${ICONS_SKILLS_PATH}/survival.svg` },
   { code: 'biotech', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/biotech.svg` },
-  { code: 'hacking', attribute: ATTR.logic, hasConvergence: true, icon: `${ICONS_SKILLS_PATH}/hacking.svg` },
+  { code: 'hacking', attribute: ATTR.logic, hasConvergence: true, icon: `${ICONS_SKILLS_PATH}/hacking.svg`, defense: DEFENSE.matrixDefense },
   { code: 'electronics', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/electronics.svg` },
   { code: 'engineering', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/engineering.svg` },
   { code: 'tasking', attribute: ATTR.logic, hasDrain: true, icon: `${ICONS_SKILLS_PATH}/tasking.svg` },

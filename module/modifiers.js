@@ -153,7 +153,7 @@ export class Modifiers {
     const ranges = weapon.getRanges();
     return {
       type: 'range',
-      label: game.i18n.localize(ANARCHY.common.roll.modifiers.range),
+      label: game.i18n.localize(ANARCHY.common.roll.modifiers.weaponRange),
       options: ranges,
       category: 'pool',
       value: ranges[0].value,

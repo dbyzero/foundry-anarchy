@@ -5,7 +5,7 @@
   <div>
     {{!-- Dice pool explanation --}}
     <h3 class="chat-roll-title tooltip tooltip-dotted">
-      {{> (concat 'systems/anarchy/templates/chat/parts/title-mode-' mode '.hbs')}}
+      {{> 'systems/anarchy/templates/chat/anarchy-roll-title.hbs'}}
       <div class="tooltiptext tooltip-roll-parameters">
         {{#each parameters as |parameter|}}
           {{#unless parameter.flags.hideParameter}}
@@ -44,10 +44,8 @@
     {{/if}}
 
     {{#if options.canUseEdge}}
-    {{#unless modifiers.edge.used}}
-    <div>
-      {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
-    </div>
+    {{#unless parameters.edge.used}}
+    {{> 'systems/anarchy/templates/chat/edge-reroll-button.hbs'}}
     {{/unless}}
     {{/if}}
   </div>
