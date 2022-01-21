@@ -6,7 +6,7 @@ import { ROLL_PARAMETER_CATEGORY } from "./roll-parameters.js";
 import { RollManager } from "./roll-manager.js";
 
 /**
- * Extend the base Dialog entity to select roll parameters
+ * Extend the base Dialog to select roll parameters
  * @extends {Dialog}
  */
 export class RollDialog extends Dialog {

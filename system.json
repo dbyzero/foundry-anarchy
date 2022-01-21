@@ -47,7 +47,7 @@
       "system": "anarchy",
       "module": "anarchy",
       "path": "./packs/items.db",
-      "entity": "Item",
+      "type": "Item",
       "tags": [
         "item"
       ]
@@ -58,7 +58,7 @@
       "system": "anarchy",
       "module": "anarchy",
       "path": "./packs/macros.db",
-      "entity": "Macro",
+      "type": "Macro",
       "tags": [
         "macro"
       ]
@@ -69,7 +69,7 @@
       "system": "anarchy",
       "module": "anarchy",
       "path": "./packs/gm-info.db",
-      "entity": "JournalEntry",
+      "type": "JournalEntry",
       "tags": [
         "journal"
       ]
