@@ -308,7 +308,7 @@ export class Checkbars {
   }
 
   static _findActorMarks(marks, sourceActorId) {
-    return marks.find(source => source.actorId == sourceActorId) ?? { actorId: sourceActorId, marks: 0 };
+    return marks.find(source => source.actorId == sourceActorId) ?? { actorId: sourceActorId };
   }
 
   static getActorConvergence(target) {
