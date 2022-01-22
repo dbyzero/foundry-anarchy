@@ -75,21 +75,21 @@
       "attribute-firewall": {
         "attributes": {
           "firewall": {
-            "value": 6
+            "value": 4
           }
         }
       },
       "attribute-system": {
         "attributes": {
           "system": {
-            "value": 6
+            "value": 4
           }
         }
       },
       "attribute-autopilot": {
         "attributes": {
           "autopilot": {
-            "value": 6
+            "value": 4
           }
         }
       }
