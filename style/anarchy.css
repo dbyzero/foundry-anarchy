@@ -833,7 +833,7 @@ div.column-images{
 div.column-details{
   display: flex;
   flex-direction: column;
-  flex: none;
+  flex-wrap: nowrap;
 }
 
 .roll-dialog div.roll-parameters div.parameter {

@@ -7,14 +7,15 @@
       {{defender.name}}: {{localize (concat 'ANARCHY.defense.' attack.defense)}}
     </div>
     {{#if defenseRoll}}
-      <div>
+      <p>
         <hr>
+
         {{#if attack.success}}
           {{localize ANARCHY.chat.partiallyDefended success=attack.success}}
         {{else}}
           {{localize ANARCHY.chat.fullyDefended}}
         {{/if}}
-      </div>
+      </p>
     {{else}}
       <div class="anarchy-button defend-attack click-defend-attack">
         <a>
