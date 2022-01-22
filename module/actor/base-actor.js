@@ -100,7 +100,7 @@ export class AnarchyBaseActor extends Actor {
   async rollWeapon(weapon) {
     ErrorManager.checkWeaponDefense(weapon, this);
     const targeting = {
-      attackerTokenId: game.scenes.current.tokens.find(it => it.actor.id == this.id)?.id,
+      attackerTokenId: game.scenes.current.tokens.find(it => it.actor?.id == this.id)?.id,
       targetedTokenIds: weapon.validateTargets(this)?.map(it => it.id)
     }
     const skill = this.items.find(it => weapon.isWeaponSkill(it));
