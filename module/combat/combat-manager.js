@@ -74,17 +74,6 @@ export class CombatManager {
       attackData.defenseRoll?.chatMessageId ?? attackData.attackRoll.chatMessageId);
   }
 
-  async onClickDefendAttack(attackData) {
-    const attacker = this.getTokenActor(attackData.attackerTokenId);
-    const defender = this.getTokenActor(attackData.defenderTokenId);
-    await defender.rollDefense(attackData);
-  }
-
-  async onClickApplyAttackDamage(messageData) {
-    console.log('onClickApplyAttackDamage');
-    ui.notifications.warn('Work In Progress!')
-  }
-
   async onDefense(rollData) {
     const defenseChoiceChatMessage = game.messages.get(rollData.choiceChatMessageId);
     if (defenseChoiceChatMessage) {
@@ -96,6 +85,24 @@ export class CombatManager {
 
     const attackRoll = RollManager.inflateAnarchyRoll(rollData.attackRoll);
     await this.displayDefenseChoice(rollData.tokenId, attackRoll, rollData);
+  }
+
+
+  async onClickDefendAttack(attackData) {
+    const defender = this.getTokenActor(attackData.defenderTokenId);
+    await defender.rollDefense(attackData);
+  }
+
+  async onClickApplyAttackDamage(attackData) {
+    const attacker = this.getTokenActor(attackData.attackerTokenId);
+    const defender = this.getTokenActor(attackData.defenderTokenId);
+    await defender.applyDamage(
+      attackData.attack.damage.monitor,
+      attackData.attack.damage.value,
+      attackData.attack.success,
+      !attackData.attack.damage.noArmor,
+      attacker);
+    ChatManager.removeChatMessage(attackData.choiceChatMessageId);
   }
 
   getTokenActor(tokenId) {

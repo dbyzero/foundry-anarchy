@@ -91,7 +91,8 @@ export class WeaponItem extends AnarchyBaseItem {
         damageAttributeValue
       ),
       monitor: this.data.data.monitor,
-      armorMode: WeaponItem.armorMode(this.data.data.monitor, this.data.data.noArmor),
+      noArmor: this.data.data.noArmor,
+      armorMode: WeaponItem.armorMode(this.data.data.monitor, this.data.data.noArmor)
     }
   }
 

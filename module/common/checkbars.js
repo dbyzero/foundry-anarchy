@@ -22,6 +22,7 @@ export const CHECKBARS = {
     path: 'data.monitors.stun.value',
     value: it => it.data.data.monitors.stun.value,
     max: it => it.data.data.monitors.stun.max,
+    resistance: it => it.data.data.monitors.stun.resistance,
     iconChecked: Icons.fontAwesome('fas fa-grimace'),
     iconUnchecked: Icons.fontAwesome('far fa-smile'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
@@ -32,6 +33,7 @@ export const CHECKBARS = {
     path: 'data.monitors.physical.value',
     value: it => it.data.data.monitors.physical.value,
     max: it => it.data.data.monitors.physical.max,
+    resistance: it => it.data.data.monitors.physical.resistance,
     iconChecked: Icons.fontAwesome('fas fa-heartbeat'),
     iconUnchecked: Icons.fontAwesome('far fa-heart'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
@@ -42,6 +44,7 @@ export const CHECKBARS = {
     path: 'data.monitors.structure.value',
     value: it => it.data.data.monitors.structure.value,
     max: it => it.data.data.monitors.structure.max,
+    resistance: it => it.data.data.monitors.structure.resistance,
     iconChecked: Icons.fontAwesome('fas fa-car-crash'),
     iconUnchecked: Icons.fontAwesome('fas fa-car-alt'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
@@ -51,6 +54,7 @@ export const CHECKBARS = {
     path: 'data.monitors.matrix.value',
     value: it => it.data.data.monitors.matrix.value,
     max: it => it.data.data.monitors.matrix.max,
+    resistance: it => it.data.data.monitors.matrix.resistance,
     iconChecked: Icons.fontAwesome('fas fa-laptop-medical'),
     iconUnchecked: Icons.fontAwesome('fas fa-laptop'),
     iconHit: Icons.fontAwesome('fas fa-laptop-code'),
@@ -100,7 +104,7 @@ export const CHECKBARS = {
   },
   edge: {
     path: 'data.counters.edge.value',
-    max: it => it.data.data.counters.edge.value,
+    value: it => it.data.data.counters.edge.value,
     max: it => it.data.data.attributes.edge.value,
     iconChecked: Icons.fontAwesome('fas fa-star'),
     iconUnchecked: Icons.fontAwesome('far fa-star'),
@@ -139,6 +143,19 @@ export class Checkbars {
     return CHECKBARS[monitor]?.useArmor;
   }
 
+  static max(target, monitor) {
+    return CHECKBARS[monitor]?.max(target) ?? 0;
+  }
+
+
+  static resistance(target, monitor) {
+    const resistance = CHECKBARS[monitor]?.resistance;
+    if (resistance) {
+      return resistance(target);
+    }
+    return 0;
+  }
+
   static newValue(index, checked) {
     return index + (checked ? 0 : 1);
   }
@@ -149,8 +166,10 @@ export class Checkbars {
 
 
   static async addCounter(target, monitor, value, sourceActorId = undefined) {
-    const current = Checkbars.getCounterValue(target, monitor, sourceActorId) ?? 0;
-    await Checkbars.setCounter(target, monitor, current + value, sourceActorId);
+    if (value != 0) {
+      const current = Checkbars.getCounterValue(target, monitor, sourceActorId) ?? 0;
+      await Checkbars.setCounter(target, monitor, current + value, sourceActorId);
+    }
   }
 
   static async setCounter(target, monitor, value, sourceActorId = undefined) {
@@ -180,12 +199,14 @@ export class Checkbars {
   }
 
   static async setCheckbar(target, monitor, value) {
+    if (value == Checkbars.getCounterValue(target, monitor)) {
+      return;
+    }
     const checkbar = CHECKBARS[monitor];
     if (checkbar && checkbar.path) {
       const max = checkbar.max(target);
       await Checkbars._manageOverflow(target, monitor, value, max);
       value = Math.min(value, max);
-
       ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
       await target.update({ [checkbar.path]: value });
     }
@@ -198,7 +219,6 @@ export class Checkbars {
         case TEMPLATE.monitors.stun:
           return await Checkbars._manageStunOverflow(target, value, max);
       }
-      await target.update({ [checkbar.path]: value });
     }
   }
 
@@ -266,7 +286,7 @@ export class Checkbars {
   }
 
   static getActorMarks(target, sourceActorId) {
-    return Checkbars._findActorMarks(target.data.data.monitors.matrix.marks, sourceActorId);
+    return Checkbars._findActorMarks(target.data.data.monitors.matrix.marks, sourceActorId)?.marks ?? 0;
   }
 
   static async addActorMark(target, sourceActorId) {
@@ -288,7 +308,7 @@ export class Checkbars {
   }
 
   static _findActorMarks(marks, sourceActorId) {
-    return marks.find(source => source.actorId == sourceActorId) ?? { actorId: sourceActorId };
+    return marks.find(source => source.actorId == sourceActorId) ?? { actorId: sourceActorId, marks: 0 };
   }
 
   static getActorConvergence(target) {
