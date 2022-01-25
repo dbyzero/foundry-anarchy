@@ -5,7 +5,8 @@ import { Misc } from "../misc.js";
 import { Enums } from "../enums.js";
 import { SelectActor } from "../dialog/select-actor.js";
 
-export class AnarchyBaseActorSheet extends ActorSheet {
+export class AnarchyActorSheet extends ActorSheet {
+
 
   get template() {
     return `${TEMPLATES_PATH}/actor/${this.actor.data.type}.hbs`;
@@ -34,6 +35,9 @@ export class AnarchyBaseActorSheet extends ActorSheet {
       ENUMS: mergeObject({ attributeAction: this.actor.getAttributeActions() }, Enums.getEnums()),
       ANARCHY: ANARCHY
     });
+    hbsData.options.classes.push(`actor-${this.actor.data.type}`);
+    hbsData.options.classes = Misc.distinct(hbsData.options.classes);
+
     Misc.classifyInto(hbsData.items, hbsData.data.items);
     return hbsData;
   }

@@ -1,9 +1,9 @@
 import { ANARCHY } from "../config.js";
-import { AnarchyBaseActorSheet } from "./base-actor-sheet.js";
+import { AnarchyActorSheet } from "./anarchy-actor-sheet.js";
 import { CharacterEssence } from "./character-actor.js";
 import { TEMPLATES_PATH } from "../constants.js";
 
-export class CharacterActorSheet extends AnarchyBaseActorSheet {
+export class CharacterBaseSheet extends AnarchyActorSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/character.hbs`;
@@ -13,7 +13,8 @@ export class CharacterActorSheet extends AnarchyBaseActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       width: 720,
-      height: 700
+      height: 700,
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }],
     });
   }
 

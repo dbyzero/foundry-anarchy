@@ -18,10 +18,10 @@ import { AnarchyBaseActor } from './actor/base-actor.js';
 import { CharacterActor } from './actor/character-actor.js';
 import { DeviceActor } from './actor/device-actor.js';
 import { VehicleActor } from './actor/vehicle-actor.js';
-import { CharacterActorSheet } from './actor/character-actor-sheet.js';
-import { DeviceActorSheet } from './actor/device-actor-sheet.js';
-import { VehicleActorSheet } from './actor/vehicle-actor-sheet.js';
-import { NPCCharacterActorSheet } from './actor/npc-character-actor-sheet.js';
+import { CharacterActorSheet } from './actor/character-sheet.js';
+import { DeviceSheet } from './actor/device-sheet.js';
+import { VehicleSheet } from './actor/vehicle-sheet.js';
+import { CharacterNPCSheet } from './actor/character-npc-sheet.js';
 import { SkillItem } from './item/skill-item.js';
 import { MetatypeItem } from './item/metatype-item.js';
 import { CyberdeckItem } from './item/cyberdeck-item.js';
@@ -43,13 +43,14 @@ import { RollParameters } from './roll/roll-parameters.js';
 import { RollDialog } from './roll/roll-dialog.js';
 import { GMConvergence } from './app/gm-convergence.js';
 import { AnarchyCombat } from './anarchy-combat.js';
-import { ICActorSheet } from './actor/ic-actor-sheet.js';
-import { SpriteActorSheet } from './actor/sprite-actor-sheet.js';
+import { ICSheet } from './actor/ic-sheet.js';
+import { SpriteActorSheet } from './actor/sprite-sheet.js';
 import { SpriteActor } from './actor/sprite-actor.js';
 import { ICActor } from './actor/ic-actor.js';
 import { HUDShortcuts } from './token/hud-shortcuts.js';
 import { CombatManager } from './combat/combat-manager.js';
 import { RollManager } from './roll/roll-manager.js';
+import { CharacterTabbedSheet } from './actor/character-tabbed-sheet.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -65,6 +66,8 @@ export class AnarchySystem {
   async onInit() {
     console.log(LOG_HEAD + 'AnarchySystem.onInit');
     game.system.anarchy = this;
+    this.remoteCall = new RemoteCall(); // initialize remote calls registry first: used by other singleton managers
+
     this.actorClasses = {
       character: CharacterActor,
       vehicle: VehicleActor,
@@ -82,7 +85,7 @@ export class AnarchySystem {
       skill: SkillItem,
       weapon: WeaponItem
     };
-    this.remoteCall = new RemoteCall(); // initialize remote calls registry first: used by other singleton managers
+
     this.hooks = new HooksManager();
     this.styles = new Styles();
     this.handlebarsManager = new HandlebarsManager();
@@ -96,18 +99,14 @@ export class AnarchySystem {
     this.combatManager = new CombatManager();
 
     console.log(LOG_HEAD + 'AnarchySystem.onInit | loading system');
+    CONFIG.ANARCHY = ANARCHY;
     CONFIG.Combat.documentClass = AnarchyCombat;
+    CONFIG.Combat.initiative = { formula: "2d6" }
     CONFIG.Actor.documentClass = AnarchyBaseActor;
     CONFIG.Item.documentClass = AnarchyBaseItem;
-    CONFIG.Combat.initiative = { formula: "2d6" }
-
-    console.log(LOG_HEAD + game.i18n.localize(ANARCHY.actor.characterSheet));
-    console.log(LOG_HEAD + game.i18n.localize(ANARCHY.item.sheet));
 
     Enums.init();
     Checkbars.init();
-
-    CONFIG.ANARCHY = ANARCHY;
 
     this.loadActorSheets();
     this.loadItemSheets();
@@ -137,17 +136,22 @@ export class AnarchySystem {
       makeDefault: true,
       types: ['character']
     });
-    Actors.registerSheet(SYSTEM_NAME, NPCCharacterActorSheet, {
-      label: game.i18n.localize(ANARCHY.actor.npcSheet),
+    Actors.registerSheet(SYSTEM_NAME, CharacterNPCSheet, {
+      label: game.i18n.localize(ANARCHY.actor.characterNPCSheet),
       makeDefault: false,
       types: ['character']
     });
-    Actors.registerSheet(SYSTEM_NAME, VehicleActorSheet, {
+    Actors.registerSheet(SYSTEM_NAME, CharacterTabbedSheet, {
+      label: game.i18n.localize(ANARCHY.actor.characterTabbedSheet),
+      makeDefault: false,
+      types: ['character']
+    });
+    Actors.registerSheet(SYSTEM_NAME, VehicleSheet, {
       label: game.i18n.localize(ANARCHY.actor.vehicleSheet),
       makeDefault: true,
       types: ['vehicle']
     });
-    Actors.registerSheet(SYSTEM_NAME, DeviceActorSheet, {
+    Actors.registerSheet(SYSTEM_NAME, DeviceSheet, {
       label: game.i18n.localize(ANARCHY.actor.deviceSheet),
       makeDefault: true,
       types: ['device']
@@ -157,7 +161,7 @@ export class AnarchySystem {
       makeDefault: true,
       types: ['sprite']
     });
-    Actors.registerSheet(SYSTEM_NAME, ICActorSheet, {
+    Actors.registerSheet(SYSTEM_NAME, ICSheet, {
       label: game.i18n.localize(ANARCHY.actor.icSheet),
       makeDefault: true,
       types: ['ic']

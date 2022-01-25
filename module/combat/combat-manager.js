@@ -75,6 +75,13 @@ export class CombatManager {
   }
 
   async onDefense(rollData) {
+    this._preventObsoleteChoices(rollData);
+
+    const attackRoll = RollManager.inflateAnarchyRoll(rollData.attackRoll);
+    await this.displayDefenseChoice(rollData.tokenId, attackRoll, rollData);
+  }
+
+  _preventObsoleteChoices(rollData) {
     const defenseChoiceChatMessage = game.messages.get(rollData.choiceChatMessageId);
     if (defenseChoiceChatMessage) {
       // prevent edge on attack, remove the previous defense message
@@ -82,11 +89,7 @@ export class CombatManager {
       ChatManager.setMessageCanUseEdge(attackChatMessage, false);
       ChatManager.removeChatMessage(rollData.choiceChatMessageId);
     }
-
-    const attackRoll = RollManager.inflateAnarchyRoll(rollData.attackRoll);
-    await this.displayDefenseChoice(rollData.tokenId, attackRoll, rollData);
   }
-
 
   async onClickDefendAttack(attackData) {
     const defender = this.getTokenActor(attackData.defenderTokenId);
@@ -102,7 +105,7 @@ export class CombatManager {
       attackData.attack.success,
       !attackData.attack.damage.noArmor,
       attacker);
-    ChatManager.removeChatMessage(attackData.choiceChatMessageId);
+    this._preventObsoleteChoices(attackData);
   }
 
   getTokenActor(tokenId) {

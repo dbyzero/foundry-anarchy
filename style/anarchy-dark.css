@@ -26,6 +26,7 @@
   --dark-color-attribute: var(--dark-color-button);
   --dark-color-button-border: hsla(0, 70%, 30%, 0.5);
   --dark-color-border-light: hsla(0, 0%, 100%, 0.3);
+  --dark-color-border-medium: hsla(0, 0%, 60%, 0.3);
   
   --dark-color-dice-prowess: hsla(47, 60%, 40%, 1);
   --dark-color-dice-glitch: hsla(300, 80%, 20%, 1);
@@ -88,6 +89,22 @@
   background-color: var(--dark-background-item-img);
 }
 
+.character-sheet .style-dark nav.sheet-tabs .sheet-tab:not(.active){
+  color: var(--dark-color-controls);
+}
+
+.character-sheet .style-dark nav.sheet-tabs .sheet-tab.active {
+  background-color: var(--dark-shadow-section);
+  border-bottom: none !important;
+  color: var(--dark-color-font);
+}
+
+.character-sheet .style-dark nav.sheet-tabs .sheet-tab {
+  border-top: 1px solid var(--dark-color-border);
+  border-left: 1px solid var(--dark-color-border);
+  border-right: 1px solid var(--dark-color-border);
+  box-shadow: var(--dark-shadow-section);  
+}
 
 .style-dark .section-group {
   border-top: 1px solid var(--dark-color-border);
@@ -134,10 +151,9 @@
 
 .style-dark .items-group div.item {
   background: var(--dark-background-item);
-  border:1px solid var(--dark-color-border-light);
+  border: 1px solid var(--dark-color-border-medium);
   box-shadow: var(--dark-shadow-items-group);
 }
-
 
 /* Weapons lists */
 .style-dark .weapon-list .weapon-header{

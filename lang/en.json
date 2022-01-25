@@ -117,14 +117,20 @@
     },
     "actor": {
       "characterSheet": "Character sheet",
+      "characterTabbedSheet": "Character sheet (tabs)",
       "vehicleSheet": "Vehicle sheet",
       "deviceSheet": "Device sheet",
       "spriteSheet": "Sprite sheet",
       "icSheet": "IC sheet",
-      "npcSheet": "NPC sheet",
+      "characterNPCSheet": "NPC sheet",
       "actorName": "Name",
       "genre": "Genre",
       "noMetatype": "Pas de metatype, ajoutez le!",
+      "tabs": {
+        "main": "Character",
+        "equipment": "Equipment",
+        "biography": "Biography"
+      },
       "words": {
         "keywords": "Keywords",
         "cues": "Cues",

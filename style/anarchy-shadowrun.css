@@ -89,6 +89,22 @@
   box-shadow: 2px 2px 4px var(--anarchy-color-border);
 }
 
+.style-anarchy-shadowrun nav.sheet-tabs .sheet-tab:not(.active){
+  color: var(--anarchy-color-controls);
+}
+
+.style-anarchy-shadowrun nav.sheet-tabs .sheet-tab.active {
+  background-color: var(--anarchy-shadow-section);
+  border-bottom: none !important;
+}
+
+.style-anarchy-shadowrun nav.sheet-tabs .sheet-tab {
+  border-top: 1px solid var(--anarchy-color-border-light);
+  border-left: 1px solid var(--anarchy-color-border-light);
+  border-right: 1px solid var(--anarchy-color-border-light);
+  box-shadow: var(--anarchy-shadow-section);  
+}
+
 .style-anarchy-shadowrun .section-group {
   border-top: 1px solid var(--anarchy-color-border);
   box-shadow: var(--anarchy-shadow-section);  
@@ -161,7 +177,7 @@
 .style-anarchy-shadowrun .anarchy-button {
   background: var(--anarchy-background-button);
   color: var(--anarchy-color-font);
-  border: 3px outset var(--anarchy-color-button-border);
+  border: 2px outset var(--anarchy-color-button-border);
   box-shadow: var(--anarchy-shadow-anarchy-button);
 }
 

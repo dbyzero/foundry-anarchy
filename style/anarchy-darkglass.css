@@ -128,6 +128,23 @@
 }
 
 
+.style-darkglass nav.sheet-tabs .sheet-tab:not(.active){
+  color: var(--darkglass-color-header);
+}
+
+.style-darkglass nav.sheet-tabs .sheet-tab.active {
+  background-color: var(--darkglass-shadow-section);
+  border-bottom: none !important;
+}
+
+
+.style-darkglass nav.sheet-tabs .sheet-tab {
+  border-top: 1px solid var(--darkglass-color-border);
+  border-left: 1px solid var(--darkglass-color-border);
+  border-right: 1px solid var(--darkglass-color-border);
+  box-shadow: var(--darkglass-shadow-section);  
+}
+
 .style-darkglass .section-group {
   border-top: 1px solid var(--darkglass-color-border);
   box-shadow: var(--darkglass-shadow-section);  

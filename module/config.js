@@ -116,14 +116,20 @@ export const ANARCHY = {
     },
     actor: {
         characterSheet: 'ANARCHY.actor.characterSheet',
+        characterTabbedSheet: 'ANARCHY.actor.characterTabbedSheet',
         vehicleSheet: 'ANARCHY.actor.vehicleSheet',
         deviceSheet: 'ANARCHY.actor.deviceSheet',
         spriteSheet: 'ANARCHY.actor.spriteSheet',
         icSheet: 'ANARCHY.actor.icSheet',
-        npcSheet: 'ANARCHY.actor.npcSheet',
+        characterNPCSheet: 'ANARCHY.actor.characterNPCSheet',
         actorName: 'ANARCHY.actor.actorName',
         genre: 'ANARCHY.actor.genre',
         noMetatype: 'ANARCHY.actor.noMetatype',
+        tabs: {
+            main: 'ANARCHY.actor.tabs.main',
+            equipment: 'ANARCHY.actor.tabs.equipment',
+            biography: 'ANARCHY.actor.tabs.biography',
+        },
         words: {
             keywords: 'ANARCHY.actor.words.keywords',
             cues: 'ANARCHY.actor.words.cues',

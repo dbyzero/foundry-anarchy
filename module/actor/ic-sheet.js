@@ -1,6 +1,6 @@
-import { AnarchyBaseActorSheet } from "./base-actor-sheet.js";
+import { AnarchyActorSheet } from "./anarchy-actor-sheet.js";
 
-export class DeviceActorSheet extends AnarchyBaseActorSheet {
+export class ICSheet extends AnarchyActorSheet {
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {

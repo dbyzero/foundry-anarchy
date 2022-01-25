@@ -1,7 +1,7 @@
 import { TEMPLATES_PATH } from "../constants.js";
-import { CharacterActorSheet } from "./character-actor-sheet.js";
+import { CharacterBaseSheet } from "./character-base-sheet.js";
 
-export class NPCCharacterActorSheet extends CharacterActorSheet {
+export class CharacterNPCSheet extends CharacterBaseSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/npc-sheet.hbs`;

@@ -194,6 +194,16 @@ img.anarchy-img.item-img {
   width: calc(100% - 128px);
   min-height: 128px;
 }
+
+.window-app.sheet.actor-character.tabbed-sheet{
+  min-width: 680px;
+} 
+
+.tabbed-sheet .passport-column {
+  width: calc(65% - 128px);
+  min-width: 340px;
+}
+
 .npc-sheet .passport-column ,
 .vehicle-sheet .passport-column {
   width: calc(100% - 92px);
@@ -300,7 +310,9 @@ img.actor-reference-img {
   justify-content: flex-start;
   margin: 2px;
   min-width: 4rem;
-  max-width: 9rem;
+}
+.anarchy-bar .anarchy-monitor {
+  max-width: max-content;
 }
 
 .anarchy-monitor :is(label, h3) {
@@ -312,14 +324,10 @@ img.actor-reference-img {
   height: max-content;
 }
 
-.anarchy-monitor-anarchy {
-  min-width: 13rem !important;
-}
-
 img.checkbar-img {
   flex: none;
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
   margin: 0px;
   display: inline-block;
   background-position: center;
@@ -334,6 +342,34 @@ img.checkbar-img:active {
   top: 1px;
 }
 
+.character-sheet nav.sheet-tabs {
+  flex-flow: nowrap;
+  font-size: 0.65rem;
+  font-weight: bold;
+  justify-content: flex-start;
+  text-align: center;
+  text-transform: uppercase;
+  border: 0 none;
+  margin-bottom: 0px;
+  margin: 0px 8px 0px 8px;
+}
+.character-sheet nav.sheet-tabs .sheet-tab {
+  position: relative;
+  margin: 0px 4px 0px 4px;
+  padding: 0px 4px 0px 4px;
+}
+
+.character-sheet nav.sheet-tabs .sheet-tab:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+}
+
+.sheet .sheet-body {
+  margin-top: 0px;
+}
 
 :is(.section-group,.section-attributes) {
   display: flex;
@@ -383,10 +419,9 @@ img.checkbar-img:active {
 .section-group.anarchy-words-section {
   display: flex;
   flex-direction: row;
-  border-radius: 6px;
   align-items: center;
   min-width: auto;
-  margin: 2px;
+  margin:  0px 0px 2px 0px;
   padding: 2px;
 }
 
@@ -512,6 +547,9 @@ div.define-item-type.item div.item-controls {
 }
 
 /* Weapons lists */
+ul.weapon-list{
+  padding:0px;
+}
 .weapon-list :is(.weapon-header,.item) {
   display: flex;
   flex-direction: row;
@@ -580,6 +618,18 @@ div.anarchy-button {
 }
 
 
+
+div.anarchy-block {
+  flex: content;
+  flex-grow: 0;
+  margin: 2px;
+  padding: 2px;
+}
+div.anarchy-block.anarchy-bar{
+  justify-content: flex-start;
+  
+  flex-grow: unset;
+}
 
 div.anarchy-block {
   flex: content;

@@ -74,7 +74,7 @@ skills/knowledge.svg:                 book-cover.svg
 skills/negotiation.svg:               convince.svg
 skills/piloting-ground.svg:           steering-wheel.svg
 skills/piloting-ground2.svg:          city-car.svg
-skills/pîloting-other.svg:            joystick.svg
+skills/piloting-other.svg:            joystick.svg
 skills/piloting-other2.svg:           gear-stick.svg
 skills/projectile-weapons.svg:        high-shot.svg
 skills/projectile-weapons2.svg:       flying-shuriken.svg
