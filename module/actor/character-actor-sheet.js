@@ -47,7 +47,7 @@ export class CharacterActorSheet extends AnarchyBaseActorSheet {
         this.getEventWordId(event));
     });
 
-    html.find('.change-word-value').on('input', async event => {
+    html.find('.change-word-value').change(async event => {
       const newWordValue = event.currentTarget.value;
       await this.actor.updateWord(
         this.getEventWordType(event),
