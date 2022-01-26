@@ -20,7 +20,7 @@ export class GMConvergence {
       default: [],
       type: Array
     });
-    this.convergences = game.settings.get(SYSTEM_NAME, CONVERGENCES);
+    this.convergences = [];
     Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
     Hooks.once('ready', () => this.onReady());
   }
@@ -30,6 +30,8 @@ export class GMConvergence {
       HBS_TEMPLATE_CONVERGENCE,
       HBS_TEMPLATE_CONVERGENCE_ACTORS
     ]);
+    this.convergences = game.settings.get(SYSTEM_NAME, CONVERGENCES)
+      .filter(it => game.actors.get(it.actorId));
     await RemoteCall.register(ROLL_CONVERGENCE, {
       callback: data => this.rollConvergence(data.actorId, data.convergence),
       condition: user => user.isGM
