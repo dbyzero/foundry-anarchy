@@ -161,11 +161,11 @@ img.anarchy-img.item-img {
   border-radius: 6px;
   margin-right: 2px;
 }
-.character-sheet .passport-img {
+.actor-character .passport-img {
   min-width: 128px; min-height: 128px;
   height: 128px; width: 128px;
 }
-.character-sheet .passport-img img{
+.actor-character .passport-img img{
   min-width: 128px; min-height: 128px;
   height: 128px; width: 128px;
 }
@@ -184,13 +184,13 @@ img.anarchy-img.item-img {
   height: 64px; width: 64px;
 }
 
-.character-sheet .passport-column {
+.actor-character .passport-column {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
 }
-.character-sheet .passport-column {
+.actor-character .passport-column {
   width: calc(100% - 128px);
   min-height: 128px;
 }
@@ -342,7 +342,7 @@ img.checkbar-img:active {
   top: 1px;
 }
 
-.character-sheet nav.sheet-tabs {
+:is(.actor-character,.item-sheet) nav.sheet-tabs {
   flex-flow: nowrap;
   font-size: 0.65rem;
   font-weight: bold;
@@ -350,16 +350,17 @@ img.checkbar-img:active {
   text-align: center;
   text-transform: uppercase;
   border: 0 none;
-  margin-bottom: 0px;
+  padding-bottom: 0px;
   margin: 0px 8px 0px 8px;
 }
-.character-sheet nav.sheet-tabs .sheet-tab {
+:is(.actor-character,.item-sheet) nav.sheet-tabs .sheet-tab {
   position: relative;
-  margin: 0px 4px 0px 4px;
-  padding: 0px 4px 0px 4px;
+  min-height: 16px;
+  margin: 0px 2px 0px 2px;
+  padding: 2px 4px 2px 4px;
 }
 
-.character-sheet nav.sheet-tabs .sheet-tab:after {
+:is(.actor-character,.item-sheet) nav.sheet-tabs .sheet-tab:after {
   content: "";
   position: absolute;
   top: 0;
@@ -546,6 +547,35 @@ div.define-item-type.item div.item-controls {
   max-width: max-content;
 }
 
+/* Modifiers lists */
+.modifier-list{
+  padding: 0px;
+  border: none;
+  font-size: x-small;
+}
+.modifier-list :is(.modifier-header,.modifier-row) {
+  justify-content: left;
+  vertical-align: top;
+  width: 100%;
+  text-align: left;
+  align-items: flex-start;
+  width: fit-content;
+
+}
+
+.modifier-list .modifier-header > th {
+  margin: 0px 0px;
+  text-align: left;
+}
+
+.modifier-list .modifier-row .modifier-column :is(input, select),
+.modifier-list .modifier-row .modifier-column {
+  font-size: x-small;
+  margin: 0px 0px;
+  padding: 0px 0px;
+}
+
+
 /* Weapons lists */
 ul.weapon-list{
   padding:0px;
@@ -571,7 +601,6 @@ ul.weapon-list{
   justify-content: flex-start;
   text-align: left;
 }
-
 .weapon-list .item .weapon-column {
   width: 100%;
   margin: 0px 2px;
@@ -589,7 +618,6 @@ ul.weapon-list{
   width: calc(100% - 2rem);
 }
 
-:is(div,li).item,
 div.anarchy-button {
   display: flex;
   flex-direction: row;

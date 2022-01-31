@@ -41,6 +41,7 @@
       "favorite": "Favoris",
       "addFavorite": "Ajouter aux favoris",
       "delFavorite": "Enlever des favoris",
+      "attach": "Changer le propriétaire",
       "attachCopy": "Donner une copie",
       "roll": {
         "button": "Lancer",
@@ -62,8 +63,8 @@
           "reduced": "Malus de dés",
           "reroll": "Relances",
           "rerollForced": "Relances forcées",
-          "opponentRerollForced": "Relances pour l'adversaire",
-          "opponentReduce": "Malus pour l'adversaire"
+          "opponentReroll": "Relances pour l'adversaire",
+          "opponentPool": "Malus pour l'adversaire"
         },
         "rollTheme": {
           "dicePool": "Réserve de dés",
@@ -183,6 +184,10 @@
     },
     "item": {
       "sheet": "Fiche de ",
+      "tabs": {
+        "main": "Détails",
+        "modifiers": "Modificateurs"
+      },
       "common": {
         "inactive": "Inactif pour l'acteur"
       },
@@ -364,6 +369,58 @@
       "truck": "Camion",
       "aircraft": "Aeronef",
       "boat": "Bateau"
+    },
+    "modifier": {
+      "column": {
+        "group": "Groupe",
+        "effect": "Effet",
+        "value": "Valeur",
+        "category": "Catégorie",
+        "subCategory": "Appliqué à",
+        "condition": "Condition"
+      },
+      "group": {
+        "roll": "Jet de dé",
+        "monitor": "Moniteur",
+        "other": "Autre"
+      },
+      "roll": {
+        "effect": {
+          "pool": "Bonus",
+          "reroll": "Relances",
+          "opponentPool": "Malus adversaire",
+          "opponentReroll": "Relances adversaire"
+        },
+        "category": {
+          "attribute": "Attribut",
+          "skill": "Compétence",
+          "attributeAction": "Action Attributs",
+          "defense": "Défense"
+        }
+      },
+      "monitor": {
+        "effect": {
+          "armor": "Armure",
+          "structure": "Blindage",
+          "stun": "Etourdissant",
+          "physical": "Physique",
+          "matrix": "Matriciel"
+        },
+        "category": {
+          "max": "Modification du maximum",
+          "resistance": "Résistance"
+        }
+      },
+      "other": {
+        "effect": {
+          "sceneAnarchy": "Anarchy de scène",
+          "locationAnarchy": "Anarchy de lieu"
+        },
+        "category": {}
+      },
+      "condition": {
+        "always": "Toujours"
+      }
     }
   }
 }

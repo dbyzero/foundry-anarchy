@@ -208,9 +208,14 @@
       "weapon"
     ],
     "templates": {
+      "modifiers": {
+        "modifiers": []
+      },
+      "inactive": {
+        "inactive": false
+      },
       "references": {
         "equiped": true,
-        "inactive": false,
         "sourceReference": "",
         "description": "",
         "gmnotes": ""
@@ -218,7 +223,8 @@
     },
     "metatype": {
       "templates": [
-        "references"
+        "references",
+        "modifiers"
       ]
     },
     "skill": {
@@ -236,6 +242,7 @@
     },
     "quality": {
       "templates": [
+        "modifiers",
         "inactive",
         "references"
       ],
@@ -243,6 +250,7 @@
     },
     "shadowamp": {
       "templates": [
+        "modifiers",
         "inactive",
         "references"
       ],
@@ -253,6 +261,7 @@
     },
     "weapon": {
       "templates": [
+        "modifiers",
         "inactive",
         "references"
       ],
@@ -274,6 +283,7 @@
     },
     "cyberdeck": {
       "templates": [
+        "modifiers",
         "inactive",
         "references"
       ],

@@ -70,6 +70,8 @@ const HBS_PARTIAL_TEMPLATES = [
   // item
   'systems/anarchy/templates/item/parts/inactive.hbs',
   'systems/anarchy/templates/item/parts/itemname.hbs',
+  'systems/anarchy/templates/item/parts/modifier.hbs',
+  'systems/anarchy/templates/item/parts/modifiers.hbs',
   'systems/anarchy/templates/item/parts/references.hbs',
   // common&technical partials
   'systems/anarchy/templates/monitors/anarchy-bar.hbs',

@@ -89,17 +89,17 @@
   background-color: var(--dark-background-item-img);
 }
 
-.character-sheet .style-dark nav.sheet-tabs .sheet-tab:not(.active){
+:is(.actor-character,.item-sheet) .style-dark nav.sheet-tabs .sheet-tab:not(.active){
   color: var(--dark-color-controls);
 }
 
-.character-sheet .style-dark nav.sheet-tabs .sheet-tab.active {
+:is(.actor-character,.item-sheet) .style-dark nav.sheet-tabs .sheet-tab.active {
   background-color: var(--dark-shadow-section);
   border-bottom: none !important;
   color: var(--dark-color-font);
 }
 
-.character-sheet .style-dark nav.sheet-tabs .sheet-tab {
+:is(.actor-character,.item-sheet) .style-dark nav.sheet-tabs .sheet-tab {
   border-top: 1px solid var(--dark-color-border);
   border-left: 1px solid var(--dark-color-border);
   border-right: 1px solid var(--dark-color-border);

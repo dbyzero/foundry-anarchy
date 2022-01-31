@@ -80,15 +80,16 @@ export class Skills {
   }
 
   getSkillLabels() {
-    const selected = this.getSelectedSkillSet();
-    return selected.skills.map(skill => { return { value: skill.code, label: game.i18n.localize(skill.labelkey) }; });
+    const selected = this._getSelectedSkillSet();
+    return selected.skills.map(skill => { return { value: skill.code, label: game.i18n.localize(skill.labelkey), labelkey: skill.labelkey }; });
   }
-  getSelectedSkillSet() {
+
+  _getSelectedSkillSet() {
     return this.skillSets[this.selectedSkills];
   }
 
   get(code) {
-    return this.getSelectedSkillSet().skills.find(it => it.code == code);
+    return this._getSelectedSkillSet().skills.find(it => it.code == code);
   }
 
   _prepareSkillSet(id, name, skills, details) {

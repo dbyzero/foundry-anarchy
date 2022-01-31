@@ -2,6 +2,7 @@ import { CharacterActor } from "./actor/character-actor.js";
 import { LOG_HEAD, SYSTEM_NAME, TEMPLATE } from "./constants.js";
 import { ANARCHY_SKILLS } from "./skills.js";
 import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
+import { Misc } from "./misc.js";
 
 export const DECLARE_MIGRATIONS = 'anarchy-declareMigration';
 
@@ -44,7 +45,7 @@ class _0_3_1_MigrationMoveWordsInObjects extends Migration {
   }
 
   _createWordObject(current) {
-    return CharacterActor.reindexWordIds((current ?? []).map(k => { return { word: k, audio: '' }; }));
+    return Misc.reindexIds((current ?? []).map(k => { return { word: k, audio: '' }; }));
   }
 }
 

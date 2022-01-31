@@ -62,8 +62,8 @@ export const ANARCHY = {
                 reduced: 'ANARCHY.common.roll.modifiers.reduced',
                 reroll: 'ANARCHY.common.roll.modifiers.reroll',
                 rerollForced: 'ANARCHY.common.roll.modifiers.rerollForced',
-                opponentRerollForced: 'ANARCHY.common.roll.modifiers.opponentRerollForced',
-                opponentReduce: 'ANARCHY.common.roll.modifiers.opponentReduce'
+                opponentReroll: 'ANARCHY.common.roll.modifiers.opponentReroll',
+                opponentPool: 'ANARCHY.common.roll.modifiers.opponentPool'
             },
             rollTheme: {
                 dicePool: 'ANARCHY.common.roll.rollTheme.dicePool',
@@ -183,6 +183,10 @@ export const ANARCHY = {
     },
     item: {
         sheet: 'ANARCHY.item.sheet',
+        tabs: {
+            main: 'ANARCHY.item.tabs.main',
+            modifiers: 'ANARCHY.item.tabs.modifiers',
+        },
         common: {
             inactive: 'ANARCHY.item.common.inactive',
         },
@@ -368,6 +372,60 @@ export const ANARCHY = {
         truck: 'ANARCHY.vehicleCategory.truck',
         aircraft: 'ANARCHY.vehicleCategory.aircraft',
         boat: 'ANARCHY.vehicleCategory.boat',
+    },
+    modifier: {
+        column: {
+            group: 'ANARCHY.modifier.column.group',
+            effect: 'ANARCHY.modifier.column.effect',
+            value: 'ANARCHY.modifier.column.value',
+            category: 'ANARCHY.modifier.column.category',
+            subCategory: 'ANARCHY.modifier.column.subCategory',
+            target: 'ANARCHY.modifier.column.target',
+            condition: 'ANARCHY.modifier.column.condition',
+        },
+        group: {
+            roll: 'ANARCHY.modifier.group.roll',
+            monitor: 'ANARCHY.modifier.group.monitor',
+            other: 'ANARCHY.modifier.group.other',
+        },
+        roll: {
+            effect: {
+                pool: 'ANARCHY.modifier.roll.effect.pool',
+                reroll: 'ANARCHY.modifier.roll.effect.reroll',
+                opponentPool: 'ANARCHY.modifier.roll.effect.opponentPool',
+                opponentReroll: 'ANARCHY.modifier.roll.effect.opponentReroll',
+            },
+            category: {
+                attribute: 'ANARCHY.modifier.roll.category.attribute',
+                skill: 'ANARCHY.modifier.roll.category.skill',
+                attributeAction: 'ANARCHY.modifier.roll.category.attributeAction',
+                defense: 'ANARCHY.modifier.roll.category.defense',
+            },
+        },
+        monitor: {
+            effect: {
+                armor: 'ANARCHY.modifier.monitor.effect.armor',
+                structure: 'ANARCHY.modifier.monitor.effect.structure',
+                stun: 'ANARCHY.modifier.monitor.effect.stun',
+                physical: 'ANARCHY.modifier.monitor.effect.physical',
+                matrix: 'ANARCHY.modifier.monitor.effect.matrix',
+            },
+            category: {
+                max: 'ANARCHY.modifier.monitor.category.max',
+                resistance: 'ANARCHY.modifier.monitor.category.resistance',
+            }
+        },
+        other: {
+            effect: {
+                sceneAnarchy: 'ANARCHY.modifier.other.effect.sceneAnarchy',
+                locationAnarchy: 'ANARCHY.modifier.other.effect.locationAnarchy',
+            },
+            category: {
+            }
+        },
+        condition: {
+            always: "ANARCHY.modifier.condition.always"
+        }
     }
 };
 

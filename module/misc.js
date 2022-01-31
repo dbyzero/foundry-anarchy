@@ -33,6 +33,11 @@ export class Misc {
 
   }
 
+  static reindexIds(list) {
+    let index = 1;
+    list.forEach(it => it.id = (index++));
+    return list;
+  }
 
   static distinct(array) {
     return [...new Set(array)];

@@ -51,6 +51,7 @@ import { HUDShortcuts } from './token/hud-shortcuts.js';
 import { CombatManager } from './combat/combat-manager.js';
 import { RollManager } from './roll/roll-manager.js';
 import { CharacterTabbedSheet } from './actor/character-tabbed-sheet.js';
+import { Modifiers } from './modifiers/modifiers.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -93,6 +94,7 @@ export class AnarchySystem {
     this.gmConvergence = new GMConvergence();
     this.gmManager = new GMManager(this.gmAnarchy, this.gmConvergence);
     this.skills = new Skills();
+    this.modifiers = new Modifiers();
     this.rollParameters = new RollParameters();
     this.rollManager = new RollManager();
     this.hudShortcuts = new HUDShortcuts();

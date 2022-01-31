@@ -6,36 +6,55 @@
       type="shadowamp"
     }}
   </header>
-  <section class="sheet-body">
-    <div class="form-group">
-      <label for="data.category">{{localize 'ANARCHY.item.shadowamp.category'}} </label>
-      <select name="data.category" data-dtype="String">
-          {{#select data.data.category}}
-          {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.shadowampCategories}}
-          {{/select}}
-      </select>
+  
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <div class="sheet-tab" data-tab="main">
+      <a>{{localize ANARCHY.item.tabs.main}}</a>
     </div>
-    <div class="form-group">
-      <label for="data.capacity">{{localize 'ANARCHY.item.shadowamp.capacity'}} </label>
-      <select name="data.capacity" data-dtype="String">
-          {{#select data.data.capacity}}
-          {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.capacities}}
-          {{/select}}
-      </select>
+    <div class="sheet-tab" data-tab="modifiers">
+      <a>{{localize ANARCHY.item.tabs.modifiers}}</a>
     </div>
-    <div class="form-group">
-      <label for="data.level">{{localize 'ANARCHY.item.shadowamp.level'}} </label>
-      <input name="data.level" type="number" data-dtype="Number" size=2
-        value="{{data.data.level}}"/>
-    </div>
-    <div class="form-group">
-      <label for="data.essence">{{localize 'ANARCHY.item.shadowamp.essence'}} </label>
-      <input name="data.essence" type="number" data-dtype="Number" size=3
-        value="{{data.data.essence}}"/>
-    </div>
+    <div class="sheet-tab-fill"></div>
+  </nav>
 
-    {{> 'systems/anarchy/templates/item/parts/inactive.hbs'}}
-    {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
+  <section class="sheet-body">
+    <div class="tab section-group" data-group="primary" data-tab="main">
+      <div class="form-group">
+        <label for="data.category">{{localize 'ANARCHY.item.shadowamp.category'}} </label>
+        <select name="data.category" data-dtype="String">
+            {{#select data.data.category}}
+            {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.shadowampCategories}}
+            {{/select}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="data.capacity">{{localize 'ANARCHY.item.shadowamp.capacity'}} </label>
+        <select name="data.capacity" data-dtype="String">
+            {{#select data.data.capacity}}
+            {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.capacities}}
+            {{/select}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="data.level">{{localize 'ANARCHY.item.shadowamp.level'}} </label>
+        <input name="data.level" type="number" data-dtype="Number" size=2
+          value="{{data.data.level}}"/>
+      </div>
+      <div class="form-group">
+        <label for="data.essence">{{localize 'ANARCHY.item.shadowamp.essence'}} </label>
+        <input name="data.essence" type="number" data-dtype="Number" size=3
+          value="{{data.data.essence}}"/>
+      </div>
+
+      {{> 'systems/anarchy/templates/item/parts/inactive.hbs'}}
+      {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
+    </div>
+    <div class="tab  section-group" data-group="primary" data-tab="modifiers">
+      <div class="form-group">
+        {{> 'systems/anarchy/templates/item/parts/modifiers.hbs'}}
+      </div>
+
+    </div>
   </section>
 
 </form>

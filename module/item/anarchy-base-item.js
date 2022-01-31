@@ -78,8 +78,74 @@ export class AnarchyBaseItem extends Item {
     await Checkbars.addActorMark(this, sourceActorId);
   }
 
-  buildShortcut(actor) {
-    return { label: undefined, callback: undefined, img: undefined };
+  async createModifier(modifier = {}) {
+    modifier = mergeObject(modifier, {
+      group: 'roll',
+      effect: 'pool',
+      category: 'skill',
+      subCategory: '',
+      value: 0,
+      condition: ''
+    });
+    this._mutateModifiers(values => values.concat([modifier]));
+  }
+
+  async deleteModifier(modifierId) {
+    await this._mutateModifiers(modifiers => modifiers.filter(it => it.id != modifierId));
+  }
+
+  async changeModifierSelection(modifierId, select, value) {
+    let impact = this._computeModifierImpact(select, value);
+
+    this._applyModifierUpdate(modifierId, impact);
+  }
+
+  _computeModifierImpact(select, value) {
+    switch (select) {
+      case 'group': return m => {
+        if (m.group != value) {
+          m.group = value;
+          m.effect = '';
+          m.category = '';
+          m.subCategory = '';
+        }
+      };
+      case 'effect': return m => m.effect = value;
+      case 'category': return m => {
+        if (m.category != value) {
+          m.category = value;
+          m.subCategory = '';
+        }
+      };
+      case 'subCategory': return m => m.subCategory = value;
+    }
+    return m => { };
+  }
+
+  async changeModifierValue(modifierId, value) {
+    this._applyModifierUpdate(modifierId, m => m.value = value);
+  }
+  async changeModifierCondition(modifierId, value) {
+    this._applyModifierUpdate(modifierId, m => m.condition = value);
+  }
+
+  async _applyModifierUpdate(id, updateFunction = m => { }) {
+    await this._mutateModifiers(values => values.map(it => {
+      if (it.id == id) {
+        updateFunction(it);
+      }
+      return it;
+    }));
+  }
+
+  async _mutateModifiers(mutation = values => values) {
+    const modifiers = mutation(this.data.data.modifiers);
+    Misc.reindexIds(modifiers);
+    await this.update({ 'data.modifiers': modifiers });
+  }
+
+  prepateShortcut() {
+    return undefined;
   }
 }
 

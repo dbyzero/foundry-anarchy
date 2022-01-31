@@ -64,7 +64,6 @@
     <div class="form-group">
         <label for="data.defense" >{{localize 'ANARCHY.item.weapon.defense'}} </label>
         <select name="data.defense">
-          {{log 'defense' data.data.defense ENUMS.defenses}}
           {{selectOptions ENUMS.defenses 
             selected=data.data.defense nameAttr="code" labelAttr="labelkey" localize=true blank=''}}
           {{!-- {{#select data.data.defense}}

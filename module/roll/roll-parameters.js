@@ -14,8 +14,8 @@ export const ROLL_PARAMETER_CATEGORY = {
   convergence: 'convergence',
   edge: 'edge',
   risk: 'risk',
-  opponentReduce: 'opponentReduce',
-  opponentRerollForced: 'opponentRerollForced'
+  opponentPool: 'opponentPool',
+  opponentReroll: 'opponentReroll'
 }
 
 const DEFAULT_ROLL_PARAMETERS = [
@@ -188,9 +188,9 @@ const DEFAULT_ROLL_PARAMETERS = [
       labelkey: ANARCHY.common.roll.modifiers.reduced,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
-    condition: context => (context.attackRoll?.param.opponentReduce ?? 0) != 0,
+    condition: context => (context.attackRoll?.param.opponentPool ?? 0) != 0,
     factory: context => {
-      const reduced = context.attackRoll?.param.opponentReduce ?? 0;
+      const reduced = context.attackRoll?.param.opponentPool ?? 0;
       return {
         flags: { used: true },
         value: - reduced,
@@ -206,7 +206,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
     factory: context => {
-      const rerollForced = context.attackRoll?.param.opponentRerollForced ?? 0;
+      const rerollForced = context.attackRoll?.param.opponentReroll ?? 0;
       return {
         flags: { used: true, editable: rerollForced == 0 },
         value: rerollForced,
@@ -265,24 +265,24 @@ const DEFAULT_ROLL_PARAMETERS = [
   },
   // reduce opponent pool
   {
-    code: 'opponentReduce',
+    code: 'opponentPool',
     options: {
       flags: { editable: true, forceDisplay: true, },
-      order: 100, category: ROLL_PARAMETER_CATEGORY.opponentReduce,
+      order: 100, category: ROLL_PARAMETER_CATEGORY.opponentPool,
       value: 0,
-      labelkey: ANARCHY.common.roll.modifiers.opponentReduce,
+      labelkey: ANARCHY.common.roll.modifiers.opponentPool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
     condition: context => !context.attributeAction
   },
   // force opponent rerolls
   {
-    code: 'opponentRerollForced',
+    code: 'opponentReroll',
     options: {
       flags: { editable: true, forceDisplay: true, },
-      order: 100, category: ROLL_PARAMETER_CATEGORY.opponentRerollForced,
+      order: 100, category: ROLL_PARAMETER_CATEGORY.opponentReroll,
       value: 0,
-      labelkey: ANARCHY.common.roll.modifiers.opponentRerollForced,
+      labelkey: ANARCHY.common.roll.modifiers.opponentReroll,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
     condition: context => !context.attributeAction

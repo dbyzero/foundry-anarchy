@@ -57,7 +57,7 @@ export class Enums {
     };
   }
 
-  static getAttributes(filterAttributes) {
+  static getAttributes(filterAttributes = it => true) {
     return Enums.hbsAttributes.filter(it => filterAttributes(it.value));
   }
 

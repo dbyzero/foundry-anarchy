@@ -63,8 +63,8 @@
           "reduced": "Pool reduced",
           "reroll": "Rerolls",
           "rerollForced": "Rerolls successes",
-          "opponentRerollForced": "Force opponent rerolls",
-          "opponentReduce": "Reduce opponent pool"
+          "opponentReroll": "Force opponent rerolls",
+          "opponentPool": "Reduce opponent pool"
         },
         "rollTheme": {
           "dicePool": "Dice pool",
@@ -184,6 +184,10 @@
     },
     "item": {
       "sheet": "Sheet for ",
+      "tabs": {
+        "main": "Details",
+        "modifiers": "Modifiers"
+      },
       "common": {
         "inactive": "Inactive for actor"
       },
@@ -365,6 +369,58 @@
       "truck": "Truck",
       "aircraft": "Aircraft",
       "boat": "Boat"
+    },
+    "modifier": {
+      "column": {
+        "group": "Group",
+        "effect": "Effect",
+        "value": "Value",
+        "category": "",
+        "subCategory": "",
+        "condition": "When"
+      },
+      "group": {
+        "roll": "Roll",
+        "monitor": "Monitor",
+        "other": "Other"
+      },
+      "roll": {
+        "effect": {
+          "pool": "Pool bonus",
+          "reroll": "Rerolls",
+          "opponentPool": "Opponent pool malus",
+          "opponentReroll": "Opponent rerolls"
+        },
+        "category": {
+          "attribute": "Attribute",
+          "skill": "Skill",
+          "attributeAction": "Attribute action",
+          "defense": "Defense"
+        }
+      },
+      "monitor": {
+        "effect": {
+          "armor": "Armor",
+          "structure": "Structure",
+          "stun": "Stun",
+          "physical": "Physical",
+          "matrix": "Matrix"
+        },
+        "category": {
+          "max": "Increased max",
+          "resistance": "Resistance"
+        }
+      },
+      "other": {
+        "effect": {
+          "sceneAnarchy": "Scene Anarchy",
+          "locationAnarchy": "Location anarchy"
+        },
+        "category": {}
+      },
+      "condition": {
+        "always": "Always"
+      }
     }
   }
 }

@@ -29,12 +29,6 @@ export class CharacterActor extends AnarchyBaseActor {
     return "2d6 + max(@attributes.agility.value, @attributes.logic.value)";
   }
 
-  static reindexWordIds(list) {
-    let index = 1;
-    list.forEach(it => it.id = (index++));
-    return list;
-  }
-
   hasOwnAnarchy() { return this.hasPlayerOwner; }
 
   prepareData() {
@@ -83,12 +77,17 @@ export class CharacterActor extends AnarchyBaseActor {
     // TODO: dialog to edit the word audio
   }
 
-  async updateWord(wordType, wordId, updated) {
-    this._appyWordUpdate(wordType, wordId, it => mergeObject(it, { word: updated }, { overwrite: true }));
+  async updateWord(wordType, id, updated) {
+    this._applyWordUpdate(wordType, id, it => mergeObject(it, { word: updated }, { overwrite: true }));
   }
 
-  async _appyWordUpdate(wordType, wordId, updateFunction) {
-    this._mutateWords(wordType, values => values.map(it => it.id == wordId ? updateFunction(it) : it));
+  async _applyWordUpdate(wordType, id, updateFunction) {
+    this._mutateWords(wordType, values => values.map(it => {
+      if (it.id == id) {
+        updateFunction(it)
+      }
+      return it;
+    }));
   }
 
   async deleteWord(wordType, deletedId) {
@@ -100,7 +99,7 @@ export class CharacterActor extends AnarchyBaseActor {
       return;
     }
     let newValues = mutate(this.data.data[wordType]);
-    CharacterActor.reindexWordIds(newValues);
+    Misc.reindexIds(newValues);
     await this.update({ [`data.${wordType}`]: newValues });
   }
 
