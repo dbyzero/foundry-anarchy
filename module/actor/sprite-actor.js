@@ -18,8 +18,8 @@ export class SpriteActor extends AnarchyBaseActor {
   }
 
   prepareDerivedData() {
-    super.prepareDerivedData();
     this.data.data.monitors.matrix.max = BASE_MONITOR - 1 + Misc.divup(this.data.data.attributes.logic.value, 2);
+    super.prepareDerivedData();
   }
 
   getAttributes() {

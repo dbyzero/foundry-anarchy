@@ -36,9 +36,9 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   prepareDerivedData() {
-    super.prepareDerivedData();
     this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
+    super.prepareDerivedData();
   }
 
   getAttributes() {

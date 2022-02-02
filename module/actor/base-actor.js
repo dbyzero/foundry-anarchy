@@ -5,6 +5,7 @@ import { TEMPLATE } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
+import { Modifiers } from "../modifiers/modifiers.js";
 import { RollDialog } from "../roll/roll-dialog.js";
 
 export class AnarchyBaseActor extends Actor {
@@ -37,8 +38,6 @@ export class AnarchyBaseActor extends Actor {
       .map(kv => kv[0]);
   }
 
-
-
   isCharacter() { return this.type == 'character'; }
 
   hasOwnAnarchy() { return false; }
@@ -51,6 +50,11 @@ export class AnarchyBaseActor extends Actor {
 
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    Object.entries(this.data.data.monitors).forEach(kv => {
+      kv[1].maxBonus = Modifiers.computeMonitorModifiers(this.items, kv[0], 'max');
+      kv[1].resistanceBonus = Modifiers.computeMonitorModifiers(this.items, kv[0], 'resistance');
+    });
   }
 
   getAttributeActions() {

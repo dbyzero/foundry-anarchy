@@ -8,7 +8,7 @@
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='armor'
     value=data.data.monitors.armor.value
-    max=data.data.monitors.armor.max
+    max=(sum data.data.monitors.armor.max data.data.monitors.armor.maxBonus)
     rowlength=6
   }}
 </div>

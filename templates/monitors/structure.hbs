@@ -18,5 +18,8 @@
       name="data.monitors.structure.resistance"
       value="{{data.data.monitors.structure.resistance}}" 
     />
+    {{#if data.data.monitors.structure.resistanceBonus}}
+    {{numberFormat data.data.monitors.structure.resistanceBonus sign=true}}
+    {{/if}}
   </label>
 </div>

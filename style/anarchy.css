@@ -285,13 +285,13 @@ img.actor-reference-img {
   height: fit-content;
   padding: 1px;
 }
-.resitance-label :is(input, label, select).info-value {
+.anarchy-monitor .resitance-label input.info-value {
   font-size: x-small;
   align-self: baseline;
   text-align: start;
   border: none;
+  max-width: 16px ;
   height: fit-content;
-  width: 100%;
   padding: 1px;
 }
 

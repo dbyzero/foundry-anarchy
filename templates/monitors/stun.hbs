@@ -5,15 +5,12 @@
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='stun'
     value=data.data.monitors.stun.value
-    max=data.data.monitors.stun.max
+    max=(sum data.data.monitors.stun.max data.data.monitors.stun.maxBonus)
     rowlength=3
     adjust=true
   }}
   <label class="resitance-label">
-    {{localize ANARCHY.actor.monitors.resistance}}
-    <input class="info-value" type="number" data-dtype="Number" maxlength="2"
-      name="data.monitors.stun.resistance"
-      value="{{data.data.monitors.stun.resistance}}" 
-    >
+    {{localize ANARCHY.actor.monitors.resistance}}:
+    {{data.data.monitors.stun.resistanceBonus}}
   </label>
 </div>

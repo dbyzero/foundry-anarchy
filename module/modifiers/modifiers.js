@@ -104,6 +104,15 @@ export class Modifiers {
     };
   }
 
+  static computeMonitorModifiers(items, monitor, category) {
+    const filter = m => m.group == 'monitor' && m.effect == monitor && m.category == category;
+    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+      .reduce((a, b) => a.concat(b), []);
+
+    const sumValues = Misc.sumValues(itemModifiers, m => m.modifier.value ?? 0);
+    return sumValues;
+  }
+
   static itemModifiers(item, filter) {
     return Modifiers._listItemModifiers(item, filter).map(m => Modifiers._itemModifier(item, m));
   }

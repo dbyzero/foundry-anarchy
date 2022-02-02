@@ -5,15 +5,12 @@
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='physical'
     value=data.data.monitors.physical.value
-    max=data.data.monitors.physical.max
+    max=(sum data.data.monitors.physical.max data.data.monitors.physical.maxBonus)
     rowlength=3
     adjust=true
   }}
   <label class="resitance-label">
-    {{localize ANARCHY.actor.monitors.resistance}}
-    <input class="info-value" type="number" data-dtype="Number" maxlength="2"
-      name="data.monitors.physical.resistance"
-      value="{{data.data.monitors.physical.resistance}}" 
-    />
+    {{localize ANARCHY.actor.monitors.resistance}}:
+    {{data.data.monitors.physical.resistanceBonus}}
   </label>
 </div>

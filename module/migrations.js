@@ -88,6 +88,7 @@ class _0_3_14_MigrateSkillDrainConvergence extends Migration {
     await this.applyItemsUpdates(computeUpdates);
   }
 }
+
 class _0_4_0_SelectWeaponDefense extends Migration {
   get version() { return '0.4.0' }
   get code() { return 'migrate-select-weapon-defense'; }
@@ -107,7 +108,26 @@ class _0_4_0_SelectWeaponDefense extends Migration {
         .filter(findWeaponSkillWithDefense)
         .map(setDefense));
   }
+}
 
+class _0_5_0_MigrationBaseResistanceIsZero extends Migration {
+  get version() { return '0.5.0' }
+  get code() { return 'base-resistance-is-zero'; }
+
+  async migrate() {
+    game.actors.forEach(async actor => await actor.update(this._resistanceUpdates(actor)));
+  }
+
+  _resistanceUpdates(actor) {
+    const updates = {};
+    Object.entries(actor.data.data.monitors).forEach(
+      kv => {
+        if (kv[1].resistance) {
+          updates[`data.monitors.${kv[0]}.resistance`] = 0;
+        }
+      });
+    return updates;
+  }
 }
 
 export class Migrations {
@@ -118,7 +138,8 @@ export class Migrations {
       new _0_3_1_MigrationMoveWordsInObjects(),
       new _0_3_8_MigrateWeaponDamage(),
       new _0_3_14_MigrateSkillDrainConvergence(),
-      new _0_4_0_SelectWeaponDefense()));
+      new _0_4_0_SelectWeaponDefense(),
+      new _0_5_0_MigrationBaseResistanceIsZero()));
 
     game.settings.register(SYSTEM_NAME, "systemMigrationVersion", {
       name: "System Migration Version",
