@@ -1,7 +1,9 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { ANARCHY } from "../config.js";
+import { SYSTEM_NAME } from "../constants.js";
 import { Enums } from "../enums.js";
 import { HandlebarsManager } from "../handlebars-manager.js";
+import { Misc } from "../misc.js";
 import { Skills } from "../skills.js";
 
 export class Modifiers {
@@ -24,6 +26,7 @@ export class Modifiers {
   }
 
   async onReady() {
+
     Handlebars.registerHelper('modifierHasSubCategory', (group, effect, category) => this.hasSubCategory(group, effect, category));
     Handlebars.registerHelper('modifierSelectOption', (value, options) => this.getSelectOptions(value, options));
   }
@@ -69,4 +72,53 @@ export class Modifiers {
   getEnums() {
     return { modifiers: this.modifiers };
   }
+
+  static buildRollModifiersFilter(context, effect) {
+    return m => {
+      if (m.group == 'roll' && m.effect == effect) {
+        switch (m.category) {
+          case 'attribute': return [context.attribute1, context.attribute2].includes(m.subCategory);
+          case 'skill': return m.subCategory == context.skill?.data.data.code;
+          case 'defense': return m.subCategory == context.attributeAction;
+          case 'attributeAction': return m.subCategory == context.attributeAction;
+        }
+      }
+      return false;
+    }
+  }
+
+  static computeRollModifiers(items, context, effect) {
+    const group = 'roll';
+    const contextFilter = Modifiers.buildRollModifiersFilter(context, effect);
+    const filter = m => m.group == group && m.effect == effect && contextFilter(m);
+    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+      .reduce((a, b) => a.concat(b), []);
+
+    // sum values, max bonus is 3
+    const sumValues = Math.min(3, Misc.sumValues(itemModifiers, im => im.modifier.value ?? 0));
+    // allow one item with modfier above 3 (for deltaware option in French rulebook)
+    const maxValue = Math.max(...itemModifiers.map(im => im.modifier.value));
+    return {
+      value: Math.max(maxValue, sumValues),
+      sources: itemModifiers
+    };
+  }
+
+  static itemModifiers(item, filter) {
+    return Modifiers._listItemModifiers(item, filter).map(m => Modifiers._itemModifier(item, m));
+  }
+
+  static _listItemModifiers(item, filter = m => true) {
+    return (item.data.data.modifiers ?? []).filter(filter);
+  }
+
+
+  static _itemModifier(item, modifier) {
+    return {
+      item: item,
+      modifier: modifier
+    };
+  }
+
+
 }

@@ -50,6 +50,7 @@ export const ANARCHY = {
             modifiers: {
                 edge: 'ANARCHY.common.roll.modifiers.edge',
                 specialization: 'ANARCHY.common.roll.modifiers.specialization',
+                poolModifiers: 'ANARCHY.common.roll.modifiers.poolModifiers',
                 anarchyDisposition: 'ANARCHY.common.roll.modifiers.anarchyDisposition',
                 anarchyRisk: 'ANARCHY.common.roll.modifiers.anarchyRisk',
                 glitch: 'ANARCHY.common.roll.modifiers.glitch',
@@ -75,6 +76,7 @@ export const ANARCHY = {
                 convergence: 'ANARCHY.common.roll.rollTheme.convergence',
                 anarchyRisk: 'ANARCHY.common.roll.rollTheme.anarchyRisk',
             },
+            opponentRoll: 'ANARCHY.common.roll.opponentRoll',
             totalSuccess: 'ANARCHY.common.roll.totalSuccess',
             success: 'ANARCHY.common.roll.success',
             risk: {
@@ -424,7 +426,7 @@ export const ANARCHY = {
             }
         },
         condition: {
-            always: "ANARCHY.modifier.condition.always"
+            always: 'ANARCHY.modifier.condition.always'
         }
     }
 };

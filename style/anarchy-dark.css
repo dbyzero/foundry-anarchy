@@ -1,6 +1,6 @@
 /* specifics for style-dark */
 :root {
-  --dark-background: hsla(0, 60%, 1%, 1);
+  --dark-background: hsla(350, 30%, 10%, 0.9);
   --dark-background-attributes: hsla(47, 100%, 55%, 0.75);
   --dark-background-secondary-attributes: hsla(47, 85%, 45%, 0.75);
   --dark-background-item: hsla(15, 60%, 15%, 0.5);
@@ -106,7 +106,8 @@
   box-shadow: var(--dark-shadow-section);  
 }
 
-.style-dark .section-group {
+
+.style-dark :is(.section-group, .roll-dialog div.roll-parameters div.parameter-category) {
   border-top: 1px solid var(--dark-color-border);
   box-shadow: var(--dark-shadow-section);  
 }
@@ -169,8 +170,7 @@
   background: var(--dark-tint-weapon-hover);
 }
 
-
-.style-dark .anarchy-shortcut-button img,
+.style-dark div.anarchy-shortcut-button img,
 .style-dark :is(div,li).item img {
   background: var(--dark-background-item-img);
 }
@@ -232,3 +232,8 @@
   color: var(--dark-color-unchecked);
 }
 
+.style-dark .roll-dialog div.roll-parameters div.parameter :is(select, input){
+  height: calc(100% - 2px);
+  background: var(--dark-background-item);
+  border-style: none;
+}

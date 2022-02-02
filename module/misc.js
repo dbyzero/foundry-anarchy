@@ -47,7 +47,7 @@ export class Misc {
     return (a, b) => a + b;
   }
 
-  static sumValues(list, value) {
+  static sumValues(list, value = t => t) {
     return list.map(value).reduce(Misc.sum(), 0);
   }
 

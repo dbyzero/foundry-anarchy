@@ -145,7 +145,7 @@
   box-shadow: var(--darkglass-shadow-section);  
 }
 
-.style-darkglass .section-group {
+.style-darkglass :is(.section-group, .roll-dialog div.roll-parameters div.parameter-category) {
   border-top: 1px solid var(--darkglass-color-border);
   box-shadow: var(--darkglass-shadow-section);  
 }
@@ -211,8 +211,7 @@
   background: var(--darkglass-tint-weapon-hover);
 }
 
-
-.style-darkglass .anarchy-shortcut-button img ,
+.style-darkglass div.anarchy-shortcut-button img ,
 .style-darkglass :is(div,li).item img {
   background: var(--darkglass-background-item-img);
 }

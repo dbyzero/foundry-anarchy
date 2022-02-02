@@ -914,6 +914,13 @@ div.column-details{
   flex-wrap: nowrap;
 }
 
+.roll-dialog div.roll-parameters div.parameter-category {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.roll-dialog div.roll-parameters div.parameter-category > label {
+  height: 16px;
+}
 .roll-dialog div.roll-parameters div.parameter {
   display: flex;
   flex-direction: row;
@@ -958,7 +965,6 @@ div.column-details{
 }
 
 .anarchy-shortcuts .anarchy-shortcut-button {
-  background-color: var(--color-button);
   width: max-content;
   display: flex;
   flex-direction: row;
@@ -967,8 +973,10 @@ div.column-details{
 
 .anarchy-shortcuts .anarchy-shortcut-button label {
   line-break: unset;
-
+  color: var(--color-text-light-2);
+  padding: 1px 12px 1px 1px;
 }
+
 .anarchy-shortcuts .anarchy-shortcut-button img {
   -ms-flex: 0 0 32px;
   flex: 0 0 32px;

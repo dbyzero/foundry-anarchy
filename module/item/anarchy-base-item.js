@@ -123,8 +123,9 @@ export class AnarchyBaseItem extends Item {
   }
 
   async changeModifierValue(modifierId, value) {
-    this._applyModifierUpdate(modifierId, m => m.value = value);
+    this._applyModifierUpdate(modifierId, m => m.value = Number(value));
   }
+
   async changeModifierCondition(modifierId, value) {
     this._applyModifierUpdate(modifierId, m => m.condition = value);
   }

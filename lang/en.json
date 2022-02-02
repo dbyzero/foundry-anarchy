@@ -50,7 +50,8 @@
         "attribute2": "Second attribute",
         "modifiers": {
           "edge": "Use edge",
-          "specialization": "Use specialization",
+          "specialization": "Specialization",
+          "poolModifiers": "Shadowamps",
           "anarchyDisposition": "Anarchy - Dispositions",
           "anarchyRisk": "Anarchy - Take risks",
           "glitch": "Glitch dice",
@@ -76,6 +77,7 @@
           "convergence": "Convergence",
           "anarchyRisk": "Anarchy risk dice"
         },
+        "opponentRoll": "Opponent roll",
         "totalSuccess": "Total successes",
         "success": "Successes",
         "risk": {

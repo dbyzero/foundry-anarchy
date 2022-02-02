@@ -51,6 +51,7 @@
         "modifiers": {
           "edge": "Utiliser la chance",
           "specialization": "Spécialisation",
+          "poolModifiers": "Atouts",
           "anarchyDisposition": "Anarchy - Bien disposé",
           "anarchyRisk": "Anarchy - Prise de risque",
           "glitch": "Complications",
@@ -76,6 +77,7 @@
           "convergence": "Convergence",
           "anarchyRisk": "Anarchy - Dés de prise de risques"
         },
+        "opponentRoll": "Jet opposé",
         "totalSuccess": "Succès finaux",
         "success": "Succès",
         "risk": {

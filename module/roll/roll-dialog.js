@@ -16,6 +16,7 @@ export class RollDialog extends Dialog {
 
   static async onReady() {
     await loadTemplates([
+      'systems/anarchy/templates/roll/roll-parameters-category.hbs',
       'systems/anarchy/templates/roll/parts/generic.hbs',
       'systems/anarchy/templates/roll/parts/image-attribute.hbs',
       'systems/anarchy/templates/roll/parts/image-attributeAction.hbs',
@@ -108,12 +109,13 @@ export class RollDialog extends Dialog {
   }
 
   static async create(rollData) {
+    const rollParameters = game.system.anarchy.rollParameters.build(rollData).sort(Misc.ascending(p => p.order ?? 200));
     mergeObject(rollData, {
       ENUMS: Enums.getEnums(attributeName => rollData.attributes.includes(attributeName)),
       ANARCHY: ANARCHY,
-      parameters: game.system.anarchy.rollParameters.build(rollData)
-    })
-    rollData.parameters.sort(Misc.ascending(p => p.order ?? 200));
+      parameters: rollParameters
+    });
+
     const title = await renderTemplate(`${TEMPLATES_PATH}/roll/roll-dialog-title.hbs`, rollData);
     const html = await renderTemplate(`${TEMPLATES_PATH}/roll/roll-dialog.hbs`, rollData);
     new RollDialog(title, html, rollData).render(true);
@@ -135,7 +137,7 @@ export class RollDialog extends Dialog {
     const options = {
       classes: [game.system.anarchy.styles.selectCssClass(), "anarchy-dialog"],
       width: 400,
-      height: 90 + 24 * rollData.parameters.length,
+      height: 134 + 24 * rollData.parameters.length,
       'z-index': 99999,
     };
 

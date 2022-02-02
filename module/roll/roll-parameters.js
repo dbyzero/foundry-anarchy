@@ -3,6 +3,7 @@ import { ANARCHY_SYSTEM, LOG_HEAD, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { Misc } from "../misc.js";
+import { Modifiers } from "../modifiers/modifiers.js";
 
 export const ROLL_PARAMETER_CATEGORY = {
   title: 'title',
@@ -93,6 +94,17 @@ const DEFAULT_ROLL_PARAMETERS = [
       }
     }
   },
+  // modifiers bonus
+  {
+    code: 'poolModifiers',
+    options: {
+      flags: { editable: true, },
+      labelkey: ANARCHY.common.roll.modifiers.poolModifiers,
+      order: 5, category: ROLL_PARAMETER_CATEGORY.pool,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+    },
+    factory: context => RollParameters.computeRollModifiers('pool', context)
+  },
   // wounds
   {
     code: 'wounds',
@@ -174,10 +186,10 @@ const DEFAULT_ROLL_PARAMETERS = [
     options: {
       flags: { editable: true, },
       order: 30, category: ROLL_PARAMETER_CATEGORY.reroll,
-      value: 0,
       labelkey: ANARCHY.common.roll.modifiers.reroll,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-    }
+    },
+    factory: context => RollParameters.computeRollModifiers('reroll', context)
   },
   // reduction from opponent
   {
@@ -261,7 +273,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       p.used = checked;
       p.value = checked ? 1 : 0;
     },
-
   },
   // reduce opponent pool
   {
@@ -269,10 +280,10 @@ const DEFAULT_ROLL_PARAMETERS = [
     options: {
       flags: { editable: true, forceDisplay: true, },
       order: 100, category: ROLL_PARAMETER_CATEGORY.opponentPool,
-      value: 0,
       labelkey: ANARCHY.common.roll.modifiers.opponentPool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
+    factory: context => RollParameters.computeRollModifiers('opponentPool', context),
     condition: context => !context.attributeAction
   },
   // force opponent rerolls
@@ -285,6 +296,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       labelkey: ANARCHY.common.roll.modifiers.opponentReroll,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
+    factory: context => RollParameters.computeRollModifiers('opponentReroll', context),
     condition: context => !context.attributeAction
   },
 
@@ -314,6 +326,7 @@ export class RollParameters {
       .concat(this.parameters.map(p => p.options.hbsTemplateChat))
       .filter(it => it != undefined));
     await loadTemplates(Misc.distinct(templates));
+    await loadTemplates([`${TEMPLATES_PATH}/roll/parts/parameter-label.hbs`]);
   }
 
   _validate(parameter) {
@@ -368,6 +381,10 @@ export class RollParameters {
     }
     computed.used = computed.used || computed.value;
     return computed;
+  }
+
+  static computeRollModifiers(effect, context) {
+    return Modifiers.computeRollModifiers(context.actor.items, context, effect);
   }
 
 }
