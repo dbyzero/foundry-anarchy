@@ -2,8 +2,8 @@
 :root {
   --transparent: hsla(0, 0%, 0%, 0.0);
   --background-inactive: repeating-linear-gradient(60deg,
-    hsla(0, 0%, 40%, 0.5) 0px 5px,
-    hsla(0, 0%, 80%, 0.5) 5px 10px);
+    hsla(0, 0%, 40%, 0.2) 0px 5px,
+    hsla(0, 0%, 80%, 0.2) 5px 10px);
   --gradient-gold: repeating-linear-gradient(120deg,
     hsla(40, 50%, 50%, 0.4),
     hsla(55, 92%, 86%, 0.4),
@@ -667,10 +667,9 @@ div.anarchy-block {
 }
 
 
-.item.item-inactive {
+.item.inactive {
   background: var(--background-inactive) !important;
 }
-
 
 /* Generic styles - to separate */
 .chat-message .anarchy-button{
