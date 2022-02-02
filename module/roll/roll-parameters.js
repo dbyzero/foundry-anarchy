@@ -82,15 +82,19 @@ const DEFAULT_ROLL_PARAMETERS = [
     options: {
       flags: { optional: true, },
       order: 4, category: ROLL_PARAMETER_CATEGORY.pool,
-      value: 2,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
     },
     condition: context => (context.mode == 'skill' && context.specialization)
       || (context.mode == 'weapon' && context.skill?.data.data.specialization),
+    onChecked: (p, checked) => {
+      p.used = checked;
+      p.value = checked ? 2 : 0;
+    },
     factory: context => {
       return {
         label: context.specialization ?? context.skill.data.data.specialization,
         used: context.specialization,
+        value: 2
       }
     }
   },
