@@ -105,15 +105,29 @@ export class Modifiers {
   }
 
   static computeMonitorModifiers(items, monitor, category) {
-    return Modifiers.computeSum('monitor', monitor, category, items);
+    return Modifiers.computeSum(items, 'monitor', monitor, category);
   }
 
-  static computeSum(group, monitor, category, items) {
-    const filter = m => m.group == group && m.effect == monitor && m.category == category;
+  static computeSum(items, group, monitor, category) {
+    const filter = Modifiers._createFilter(group, monitor, category);
     const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);
 
     return Misc.sumValues(itemModifiers, m => m.modifier.value);
+  }
+
+  static _createFilter(group, effect, category) {
+    return m => m.group == group
+      && m.effect == (effect == undefined ? m.effect : effect)
+      && m.category == (category == undefined ? m.category : category);
+  }
+
+  static countModifiers(items, group, effect = undefined, category = undefined) {
+    const filter = Modifiers._createFilter(group, effect, category);
+    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+      .reduce((a, b) => a.concat(b), []);
+
+    return itemModifiers.count;
   }
 
   static itemModifiers(item, filter) {

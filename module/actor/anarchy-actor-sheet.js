@@ -147,7 +147,7 @@ export class AnarchyActorSheet extends ActorSheet {
   }
 
   getEventMonitorCode(event) {
-    return $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
+    return $(event.currentTarget).closest('.click-checkbar-element').attr('data-monitor-code');
   }
 
   getEventIndex(event) {

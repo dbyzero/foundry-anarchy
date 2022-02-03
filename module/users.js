@@ -43,7 +43,7 @@ export class AnarchyUsers {
   /**
    * @returns true pour un seul utilisateur: le premier GM connecté par ordre d'id
    */
-  static isUniqueConnectedGM(user) {
+  static isUniqueConnectedGM(user = game.user) {
     return user.id == AnarchyUsers.firstConnectedGM()?.id;
   }
   static getTargets(user) {

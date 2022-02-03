@@ -29,7 +29,6 @@ export class GMAnarchy {
       condition: user => user.isGM
     });
     this.anarchy = game.settings.get(SYSTEM_NAME, GM_ANARCHY);
-    this.sceneAnarchy = game.settings.get(SYSTEM_NAME, GM_SCENE_ANARCHY);
   }
 
   getAnarchy() {
@@ -37,7 +36,7 @@ export class GMAnarchy {
       isGM: true,
       value: this.anarchy,
       max: this.anarchy + 1,
-      scene: this.sceneAnarchy
+      scene: 0
     }
   }
 
@@ -63,19 +62,13 @@ export class GMAnarchy {
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
       ErrorManager.checkSufficient(ANARCHY.actor.counters.danger, -count, this.anarchy);
-      await this.setAnarchy(TEMPLATE.monitors.anarchy, this.anarchy + count);
+      await this.setAnarchy(this.anarchy + count);
     }
   }
 
-  async setAnarchy(monitor, newAnarchy) {
-    if (monitor == TEMPLATE.monitors.sceneAnarchy) {
-      this.sceneAnarchy = newAnarchy;
-      game.settings.set(SYSTEM_NAME, GM_SCENE_ANARCHY, newAnarchy);
-    }
-    else {
-      this.anarchy = newAnarchy;
-      game.settings.set(SYSTEM_NAME, GM_ANARCHY, newAnarchy);
-    }
+  async setAnarchy(newAnarchy) {
+    this.anarchy = newAnarchy;
+    game.settings.set(SYSTEM_NAME, GM_ANARCHY, newAnarchy);
     await this._rebuild();
     this._syncGMAnarchySheets();
   }
@@ -91,20 +84,19 @@ export class GMAnarchy {
   }
 
   async _onClickAnarchyCheckbar(event) {
-    const monitor = $(event.currentTarget).closest('.checkbar-root').attr('data-monitor-code');
     const index = Number.parseInt($(event.currentTarget).attr('data-index'));
     const isChecked = $(event.currentTarget).attr('data-checked') == 'true';
     const newAnarchy = Checkbars.newValue(index, isChecked);
-    await this.setAnarchy(monitor, newAnarchy);
+    await this.setAnarchy(newAnarchy);
   }
 
   async _renderBar() {
-    return await renderTemplate("systems/anarchy/templates/monitors/anarchy-bar.hbs", {
+    return await renderTemplate("systems/anarchy/templates/monitors/anarchy.hbs", {
       code: 'danger',
       rowlength: 6,
       value: this.getAnarchy().value,
       max: this.getAnarchy().max,
-      scene: this.getAnarchy().scene,
+      scene: 0,
       labelkey: ANARCHY.actor.counters.danger
     });
   }

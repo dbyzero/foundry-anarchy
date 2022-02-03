@@ -182,8 +182,9 @@ export class Checkbars {
       case TEMPLATE.monitors.convergence:
         return await Checkbars.setActorConvergence(target, value);
       case TEMPLATE.monitors.anarchy:
+        return await Checkbars.setAnarchy(target, value);
       case TEMPLATE.monitors.sceneAnarchy:
-        return await Checkbars.setAnarchy(target, monitor, value);
+        return await Checkbars.setSceneAnarchy(target, value);
     }
     return await Checkbars.setCheckbar(target, monitor, value);
   }
@@ -195,7 +196,6 @@ export class Checkbars {
       case TEMPLATE.monitors.convergence:
         return Checkbars.getActorConvergence(target);
       case TEMPLATE.monitors.anarchy:
-      case TEMPLATE.monitors.sceneAnarchy:
         return Checkbars.getAnarchy(target, monitor);
     }
     return Checkbars.value(target, monitor);
@@ -233,22 +233,27 @@ export class Checkbars {
     await Checkbars.addCounter(target, TEMPLATE.monitors.physical, value - max);
   }
 
-  static async setAnarchy(target, monitor, newValue) {
+  static async setAnarchy(target, newValue) {
     if (!target.hasOwnAnarchy()) {
       return;
     }
 
     if (target.hasGMAnarchy()) {
-      await game.system.anarchy.gmAnarchy.setAnarchy(monitor, newValue);
+      await game.system.anarchy.gmAnarchy.setAnarchy(newValue);
       target.render();
       return;
     }
 
+    await Checkbars._setAnarchyMonitor(target, TEMPLATE.monitors.anarchy, newValue);
+  }
+
+  static async setSceneAnarchy(target, newValue) {
+    await Checkbars._setAnarchyMonitor(target, TEMPLATE.monitors.sceneAnarchy, newValue);
+  }
+
+  static async _setAnarchyMonitor(target, monitor, newValue) {
     const current = Checkbars.value(target, monitor);
     await Checkbars.setCheckbar(target, monitor, newValue);
-    if (newValue < current) {
-      await game.system.anarchy.gmAnarchy.actorGivesAnarchyToGM(target, current - newValue);
-    }
     if (!game.user.isGM) {
       Checkbars.notifyAnarchyChange(target, monitor, current, newValue);
     }

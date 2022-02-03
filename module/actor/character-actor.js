@@ -4,6 +4,7 @@ import { AnarchyBaseActor } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
+import { Checkbars } from "../common/checkbars.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
 
@@ -40,8 +41,7 @@ export class CharacterActor extends AnarchyBaseActor {
     this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
     super.prepareDerivedData();
-    this.data.data.ignoreWounds = Modifiers.computeSum('other', 'ignoreWounds', '', this.items);
-
+    this.data.data.ignoreWounds = Modifiers.computeSum(this.items, 'other', 'ignoreWounds');
   }
 
   getAttributes() {
@@ -111,22 +111,34 @@ export class CharacterActor extends AnarchyBaseActor {
       return {
         value: this.data.data.counters.anarchy.value,
         max: this.data.data.counters.anarchy.max,
-        scene: 0
+        scene: this.getAnarchyScene()
       };
     }
     return super.getAnarchy();
   }
 
+  getAnarchyScene() {
+    return this.data.data.counters.sceneAnarchy.value ?? 0;
+  }
+
   async spendAnarchy(count) {
-    if (count) {
-      if (this.hasPlayerOwner) {
-        let current = this.getAnarchyValue();
-        ErrorManager.checkSufficient(ANARCHY.actor.counters.anarchy, count, current);
-        await game.system.anarchy.gmAnarchy.actorGivesAnarchyToGM(this, count);
-        await this.update({ 'data.counters.anarchy.value': (current - count) });
+    if (count > 0) {
+      const sceneAnarchy = this.getAnarchyScene();
+      const currentAnarchy = this.getAnarchyValue();
+      ErrorManager.checkSufficient(ANARCHY.actor.counters.anarchy, count, currentAnarchy + sceneAnarchy);
+
+      const useSceneAnarchy = Math.min(sceneAnarchy, count);
+      const useAnarchy = count - useSceneAnarchy;
+
+      if (useSceneAnarchy > 0) {
+        Checkbars.addCounter(this, TEMPLATE.monitors.sceneAnarchy, -useSceneAnarchy);
       }
-      else {
-        super.spendAnarchy(count);
+      if (this.hasPlayerOwner) {
+        await game.system.anarchy.gmAnarchy.actorGivesAnarchyToGM(this, count);
+        Checkbars.addCounter(this, TEMPLATE.monitors.anarchy, -useAnarchy);
+      }
+      else if (useAnarchy > 0) {
+        super.spendAnarchy(useAnarchy);
       }
     }
   }

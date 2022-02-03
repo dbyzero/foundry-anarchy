@@ -33,7 +33,7 @@ export class RemoteCall {
     const remoteCall = this.remoteCalls[msg];
     if (!remoteCall ||
       remoteCall.condition(game.user) ||
-      (!remoteCall.multiple && AnarchyUsers.isUniqueConnectedGM(game.user))
+      (!remoteCall.multiple && AnarchyUsers.isUniqueConnectedGM())
     ) {
       return false;
     }
@@ -46,7 +46,7 @@ export class RemoteCall {
     if (remoteCall) {
       const userMatchCondition = remoteCall.condition(game.user);
       const isMultiple = remoteCall.multiple;
-      const isSelectedGM = AnarchyUsers.isUniqueConnectedGM(game.user);
+      const isSelectedGM = AnarchyUsers.isUniqueConnectedGM();
       if (userMatchCondition && (isMultiple || isSelectedGM)) {
         remoteCall.callback(sockMsg.data);
       }

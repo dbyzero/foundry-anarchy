@@ -1,17 +1,17 @@
-{{#if anarchy.max}}
-<div class="flexcol anarchy-monitor">
-  <label class="info-label">
-    {{localize (concat 'ANARCHY.actor.counters.anarchy')}}
-  </label>
-  {{#unless (or anarchy.isGM @root.options.isOwned)}}
-    {{> "systems/anarchy/templates/monitors/anarchy-bar.hbs"
-      code='anarchy'
-      labelkey='ANARCHY.actor.counters.anarchy'
-      rowlength=6
-      value=anarchy.value
-      max=anarchy.max
-      scene=anarchy.scene
+<div class="checkbar-root" data-monitor-code="anarchy" >
+  <div {{#if rowlength}}
+    style="grid-column: span {{rowlength}} / span {{rowlength}}; grid-template-columns: repeat({{rowlength}}, minmax(0, 1fr));"
+  {{/if}}>
+  {{#for 0 max}}
+    {{> 'systems/anarchy/templates/common/check-element.hbs'
+      code=../code
+      rowlength=../rowlength
+      labelkey=../labelkey
+      current=this
+      value=../value
+      max=../max
     }}
-  {{/unless}}
+  {{/for}}
+  </div>
 </div>
-{{/if}}
+

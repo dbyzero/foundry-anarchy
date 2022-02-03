@@ -184,20 +184,31 @@ export class AnarchyBaseActor extends Actor {
 
   }
 
-  getRemainingEdge() {
-    return this.data.data.counters?.edge?.value ?? 0
+  async onEnterCombat() {
+    const sceneAnarchy = Modifiers.computeSum(this.items, 'other', 'sceneAnarchy');
+    if (sceneAnarchy > 0) {
+      await Checkbars.setCounter(this, TEMPLATE.monitors.sceneAnarchy, sceneAnarchy);
+    }
+  }
+
+  async onLeaveCombat() {
+    await Checkbars.setCounter(this, TEMPLATE.monitors.sceneAnarchy, 0);
   }
 
   getAnarchy() {
-    if (this.hasGMAnarchy()) {
-      return game.system.anarchy.gmAnarchy.getAnarchy();
-    }
-    return {
-      isGM: false,
-      value: 0,
-      max: 0,
-      scene: 0
-    }
+    const anarchy = this.hasGMAnarchy()
+      ? game.system.anarchy.gmAnarchy.getAnarchy()
+      : {
+        isGM: false,
+        value: 0,
+        max: 0,
+      };
+    anarchy.scene = this.getAnarchyScene()
+    return anarchy;
+  }
+
+  getAnarchyScene() {
+    return 0;
   }
 
   getAnarchyValue() {
@@ -208,6 +219,10 @@ export class AnarchyBaseActor extends Actor {
     if (count && !this.hasPlayerOwner) {
       await game.system.anarchy.gmAnarchy.npcConsumesAnarchy(this, count);
     }
+  }
+
+  getRemainingEdge() {
+    return this.data.data.counters?.edge?.value ?? 0
   }
 
   canUseEdge() {

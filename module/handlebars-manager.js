@@ -9,7 +9,7 @@ import { Misc } from "./misc.js";
 
 const HBS_PARTIAL_TEMPLATES = [
   // -- monitors
-  'systems/anarchy/templates/monitors/anarchy.hbs',
+  'systems/anarchy/templates/monitors/anarchy-actor.hbs',
   'systems/anarchy/templates/monitors/armor.hbs',
   'systems/anarchy/templates/monitors/edge.hbs',
   'systems/anarchy/templates/actor/parts/matrix-cyberdeck.hbs',
@@ -74,7 +74,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/item/parts/modifiers.hbs',
   'systems/anarchy/templates/item/parts/references.hbs',
   // common&technical partials
-  'systems/anarchy/templates/monitors/anarchy-bar.hbs',
+  'systems/anarchy/templates/monitors/anarchy.hbs',
+  'systems/anarchy/templates/monitors/anarchy-scene.hbs',
   'systems/anarchy/templates/common/check-element.hbs',
   'systems/anarchy/templates/common/checkbar.hbs',
   'systems/anarchy/templates/common/label.hbs',

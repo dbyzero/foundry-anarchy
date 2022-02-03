@@ -40,7 +40,10 @@
     <div class="section-group monitors-row">
       <div class="anarchy-block flexcol">
         {{> "systems/anarchy/templates/monitors/armor.hbs"}}
-        {{> "systems/anarchy/templates/monitors/edge.hbs"}}
+        <div class="anarchy-block flexrow">
+          {{> "systems/anarchy/templates/monitors/edge.hbs"}}
+          {{> "systems/anarchy/templates/monitors/anarchy-actor.hbs"}}
+        </div>
       </div>
       <div class="anarchy-block flexrow">
         {{> "systems/anarchy/templates/monitors/physical.hbs"}}

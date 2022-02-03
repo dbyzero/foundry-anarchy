@@ -115,6 +115,7 @@ export class AnarchySystem {
 
     WeaponItem.init();
     RollDialog.init();
+    AnarchyCombat.init();
     AnarchyUsers.init();
     AnarchyDice.init();
     AnarchyRoll.init();
