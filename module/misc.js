@@ -48,7 +48,7 @@ export class Misc {
   }
 
   static sumValues(list, value = t => t) {
-    return list.map(value).reduce(Misc.sum(), 0);
+    return list.map(value).filter(v => v != undefined).reduce(Misc.sum(), 0);
   }
 
   static divint(value, divisor) {

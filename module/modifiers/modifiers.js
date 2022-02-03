@@ -95,7 +95,7 @@ export class Modifiers {
       .reduce((a, b) => a.concat(b), []);
 
     // sum values, max bonus is 3
-    const sumValues = Math.min(3, Misc.sumValues(itemModifiers, im => im.modifier.value ?? 0));
+    const sumValues = Math.min(3, Misc.sumValues(itemModifiers, im => im.modifier.value));
     // allow one item with modfier above 3 (for deltaware option in French rulebook)
     const maxValue = Math.max(...itemModifiers.map(im => im.modifier.value));
     return {
@@ -105,12 +105,15 @@ export class Modifiers {
   }
 
   static computeMonitorModifiers(items, monitor, category) {
-    const filter = m => m.group == 'monitor' && m.effect == monitor && m.category == category;
+    return Modifiers.computeSum('monitor', monitor, category, items);
+  }
+
+  static computeSum(group, monitor, category, items) {
+    const filter = m => m.group == group && m.effect == monitor && m.category == category;
     const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);
 
-    const sumValues = Misc.sumValues(itemModifiers, m => m.modifier.value ?? 0);
-    return sumValues;
+    return Misc.sumValues(itemModifiers, m => m.modifier.value);
   }
 
   static itemModifiers(item, filter) {

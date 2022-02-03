@@ -3,6 +3,7 @@ import { BASE_MONITOR, TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
+import { Modifiers } from "../modifiers/modifiers.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
 
@@ -39,6 +40,8 @@ export class CharacterActor extends AnarchyBaseActor {
     this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
     super.prepareDerivedData();
+    this.data.data.ignoreWounds = Modifiers.computeSum('other', 'ignoreWounds', '', this.items);
+
   }
 
   getAttributes() {
@@ -139,8 +142,10 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   getWounds() {
-    return Misc.divint(this.data.data.monitors.stun.value, 3)
+    const wounds = Misc.divint(this.data.data.monitors.stun.value, 3)
       + Misc.divint(this.data.data.monitors.physical.value, 3);
+
+    return Math.max(0, wounds - this.data.data.ignoreWounds);
   }
 
   canSetMarks() {
