@@ -6,8 +6,24 @@
       type="metatype"
     }}
   </header>
-  <section class="sheet-body">
-    {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
-  </section>
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <div class="sheet-tab" data-tab="main">
+      <a>{{localize ANARCHY.item.tabs.main}}</a>
+    </div>
+    <div class="sheet-tab" data-tab="modifiers">
+      <a>{{localize ANARCHY.item.tabs.modifiers}}</a>
+    </div>
+    <div class="sheet-tab-fill"></div>
+  </nav>
 
+  <section class="sheet-body">
+    <div class="tab section-group" data-group="primary" data-tab="main">
+      {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
+    </div>
+    <div class="tab section-group" data-group="primary" data-tab="modifiers">
+      <div class="form-group">
+        {{> 'systems/anarchy/templates/item/parts/modifiers.hbs'}}
+      </div>
+    </div>
+  </section>
 </form>

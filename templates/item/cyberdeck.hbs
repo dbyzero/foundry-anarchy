@@ -6,29 +6,46 @@
       type="cyberdeck"
     }}
   </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <div class="sheet-tab" data-tab="main">
+      <a>{{localize ANARCHY.item.tabs.main}}</a>
+    </div>
+    <div class="sheet-tab" data-tab="modifiers">
+      <a>{{localize ANARCHY.item.tabs.modifiers}}</a>
+    </div>
+    <div class="sheet-tab-fill"></div>
+  </nav>
+
   <section class="sheet-body">
-    <div class="form-group">
-      <label for="data.attributes.firewall.value">{{localize 'ANARCHY.attributes.firewall'}} </label>
-      <input name="data.attributes.firewall.value" type="number" data-dtype="Number" size=2
-        value="{{data.data.attributes.firewall.value}}"/>
-    </div>
-    <div class="form-group">
-      <label for="data.programs">{{localize 'ANARCHY.item.cyberdeck.programs'}} </label>
-      <input name="data.programs" type="number" data-dtype="Number" size=2
-        value="{{data.data.programs}}"/>
-    </div>
-    <div class="form-group" title="{{localize 'ANARCHY.item.cyberdeck.processingHelp'}}">
-      <label for="data.processing">{{localize 'ANARCHY.item.cyberdeck.processing'}} </label>
-      <input name="data.processing" type="number" data-dtype="Number" size=2
-        value="{{data.data.processing}}"/>
-    </div>
-    <div class="form-group">
-      <label>{{localize 'ANARCHY.actor.monitors.conditionMonitors'}}</label>
-      {{> "systems/anarchy/templates/monitors/matrix.hbs"}}
-    </div>
+    <div class="tab section-group" data-group="primary" data-tab="main">
+      <div class="form-group">
+        <label for="data.attributes.firewall.value">{{localize 'ANARCHY.attributes.firewall'}} </label>
+        <input name="data.attributes.firewall.value" type="number" data-dtype="Number" size=2
+          value="{{data.data.attributes.firewall.value}}"/>
+      </div>
+      <div class="form-group">
+        <label for="data.programs">{{localize 'ANARCHY.item.cyberdeck.programs'}} </label>
+        <input name="data.programs" type="number" data-dtype="Number" size=2
+          value="{{data.data.programs}}"/>
+      </div>
+      <div class="form-group" title="{{localize 'ANARCHY.item.cyberdeck.processingHelp'}}">
+        <label for="data.processing">{{localize 'ANARCHY.item.cyberdeck.processing'}} </label>
+        <input name="data.processing" type="number" data-dtype="Number" size=2
+          value="{{data.data.processing}}"/>
+      </div>
+      <div class="form-group">
+        <label>{{localize 'ANARCHY.actor.monitors.conditionMonitors'}}</label>
+        {{> "systems/anarchy/templates/monitors/matrix.hbs"}}
+      </div>
 
-    {{> 'systems/anarchy/templates/item/parts/inactive.hbs'}}
-    {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
+      {{> 'systems/anarchy/templates/item/parts/inactive.hbs'}}
+      {{> 'systems/anarchy/templates/item/parts/references.hbs'}}
+    </div>
+    <div class="tab section-group" data-group="primary" data-tab="modifiers">
+      <div class="form-group">
+        {{> 'systems/anarchy/templates/item/parts/modifiers.hbs'}}
+      </div>
+    </div>
   </section>
-
 </form>
