@@ -111,6 +111,30 @@ export const CHECKBARS = {
     iconUnchecked: Icons.fontAwesome('far fa-star'),
     resource: COUNTERS.edge
   },
+  credibility: {
+    path: 'data.counters.social.credibility.value',
+    monitor: it => {
+      return {
+        value: it.data.data.counters.social.credibility.value,
+        max: it.data.data.counters.social.credibility.max
+      };
+    },
+    iconChecked: Icons.fontAwesome('fas fa-handshake'),
+    iconUnchecked: Icons.fontAwesome('far fa-handshake'),
+    resource: COUNTERS.social.credibility
+  },
+  rumor: {
+    path: 'data.counters.social.rumor.value',
+    monitor: it => {
+      return {
+        value: it.data.data.counters.social.rumor.value,
+        max: it.data.data.counters.social.rumor.max
+      };
+    },
+    iconChecked: Icons.fontAwesome('fas fa-grimace'),
+    iconUnchecked: Icons.fontAwesome('far fa-grimace'),
+    resource: COUNTERS.social.rumor
+  },
 }
 
 export class Checkbars {

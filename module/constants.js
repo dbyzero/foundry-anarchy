@@ -67,7 +67,14 @@ export const TEMPLATE = {
     anarchy: 'anarchy',
     danger: 'danger',
     sceneAnarchy: 'sceneAnarchy',
+  },
+  counters: {
     edge: 'edge',
+    social: {
+      celebrity: 'celebrity',
+      credibility: 'credibility',
+      rumor: 'rumor'
+    }
   },
   area: {
     none: 'none',

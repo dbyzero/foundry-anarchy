@@ -52,6 +52,10 @@
           "edge": "Use edge",
           "specialization": "Specialization",
           "poolModifiers": "Shadowamps",
+          "social": {
+            "credibility": "Credibility",
+            "rumor": "Rumor"
+          },
           "anarchyDisposition": "Anarchy - Dispositions",
           "anarchyRisk": "Anarchy - Take risks",
           "glitch": "Glitch dice",
@@ -128,6 +132,7 @@
       "actorName": "Name",
       "genre": "Genre",
       "noMetatype": "Pas de metatype, ajoutez le!",
+      "celebrity": "Celebrity",
       "tabs": {
         "main": "Character",
         "equipment": "Equipment",
@@ -149,7 +154,11 @@
         "edge": "Edge",
         "anarchy": "Anarchy",
         "sceneAnarchy": "Scene Anarchy",
-        "danger": "Danger"
+        "danger": "Danger",
+        "social": {
+          "credibility": "Credibility",
+          "rumor": "Rumor"
+        }
       },
       "monitors": {
         "conditionMonitors": "Condition monitors",
@@ -201,6 +210,7 @@
         "value": "Level",
         "specialization": "Specialisation",
         "specializationHelp": "Type the name to choose a specialization",
+        "isSocial": "Social skill",
         "hasDrain": "Drain",
         "hasConvergence": "Convergence"
       },
@@ -418,7 +428,8 @@
           "ignoreWounds": "Ignore wounds",
           "sceneAnarchy": "Scene Anarchy",
           "locationAnarchy": "Location anarchy",
-          "essenceAdjustment": "Essence adjustment"
+          "essenceAdjustment": "Essence adjustment",
+          "celebrity": "Adjust celebrity"
         },
         "category": {}
       },

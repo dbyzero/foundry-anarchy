@@ -52,8 +52,8 @@ export class AnarchyBaseActor extends Actor {
     super.prepareDerivedData();
 
     Object.entries(this.data.data.monitors).forEach(kv => {
-      kv[1].maxBonus = Modifiers.computeMonitorModifiers(this.items, kv[0], 'max');
-      kv[1].resistanceBonus = Modifiers.computeMonitorModifiers(this.items, kv[0], 'resistance');
+      kv[1].maxBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'max');
+      kv[1].resistanceBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'resistance');
     });
   }
 
@@ -185,7 +185,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   async onEnterCombat() {
-    const sceneAnarchy = Modifiers.computeSum(this.items, 'other', 'sceneAnarchy');
+    const sceneAnarchy = Modifiers.sumModifiers(this.items, 'other', 'sceneAnarchy');
     if (sceneAnarchy > 0) {
       await Checkbars.setCounter(this, TEMPLATE.monitors.sceneAnarchy, sceneAnarchy);
     }
@@ -194,6 +194,10 @@ export class AnarchyBaseActor extends Actor {
   async onLeaveCombat() {
     await Checkbars.setCounter(this, TEMPLATE.monitors.sceneAnarchy, 0);
   }
+
+  getCelebrityValue() { return 0; }
+  getCredibilityValue() { return 0; }
+  getRumorValue() { return 0; }
 
   getAnarchy() {
     const anarchy = this.hasGMAnarchy()
@@ -213,6 +217,13 @@ export class AnarchyBaseActor extends Actor {
 
   getAnarchyValue() {
     return this.getAnarchy().value ?? 0;
+  }
+
+  async spendCredibility(count) {
+    await Checkbars.addCounter(this, TEMPLATE.counters.social.credibility, - count);
+  }
+  async spendRumor(count) {
+    await Checkbars.addCounter(this, TEMPLATE.counters.social.rumor, - count);
   }
 
   async spendAnarchy(count) {
@@ -241,9 +252,7 @@ export class AnarchyBaseActor extends Actor {
       ui.notifications.warn(message)
       throw ANARCHY.common.errors.noEdgeForActor + message;
     }
-    let current = this.data.data.counters.edge.value;
-    ErrorManager.checkSufficient(ANARCHY.actor.counters.edge, count, current);
-    await this.update({ 'data.counters.edge.value': (current - count) });
+    await Checkbars.addCounter(this, TEMPLATE.counters.edge, - count);
   }
 
   getSkillValue(skillId, specialization = undefined) {

@@ -130,6 +130,18 @@ class _0_5_0_MigrationBaseResistanceIsZero extends Migration {
   }
 }
 
+class _0_6_0_MigrateSkillSocial extends Migration {
+  get version() { return '0.6.0' }
+  get code() { return 'migrate-skill-social'; }
+
+  async migrate() {
+    const socialSkills = ANARCHY_SKILLS.filter(it => it.isSocial).map(it => it.code);
+    const isSocial = it => it.type == 'skill' && socialSkills.includes(it.data.data.code);
+    const setSocial = it => { return { _id: it.id, 'data.isSocial': true } };
+    await this.applyItemsUpdates(items => items.filter(isSocial).map(setSocial));
+  }
+}
+
 export class Migrations {
   constructor() {
     HooksManager.register(ANARCHY_HOOKS.DECLARE_MIGRATIONS);
@@ -139,7 +151,9 @@ export class Migrations {
       new _0_3_8_MigrateWeaponDamage(),
       new _0_3_14_MigrateSkillDrainConvergence(),
       new _0_4_0_SelectWeaponDefense(),
-      new _0_5_0_MigrationBaseResistanceIsZero()));
+      new _0_5_0_MigrationBaseResistanceIsZero(),
+      new _0_6_0_MigrateSkillSocial(),
+    ));
 
     game.settings.register(SYSTEM_NAME, "systemMigrationVersion", {
       name: "System Migration Version",

@@ -101,11 +101,23 @@ export class Modifiers {
     };
   }
 
-  static computeMonitorModifiers(items, monitor, category) {
-    return Modifiers.computeSum(items, 'monitor', monitor, category);
+  static computeModifiers(items, group, effect = undefined, category = undefined) {
+    const filter = Modifiers._createFilter(group, effect, category);
+    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+      .reduce((a, b) => a.concat(b), []);
+    const value = Misc.sumValues(itemModifiers, m => m.modifier.value);
+    return {
+      value: value,
+      sources: itemModifiers
+    }
   }
 
-  static computeSum(items, group, monitor, category) {
+
+  static sumMonitorModifiers(items, monitor, category) {
+    return Modifiers.sumModifiers(items, 'monitor', monitor, category);
+  }
+
+  static sumModifiers(items, group, monitor, category) {
     const filter = Modifiers._createFilter(group, monitor, category);
     const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);

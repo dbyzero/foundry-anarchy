@@ -61,6 +61,8 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
         this.getEventWordType(event),
         this.getEventWordId(event));
     });
+
+    html.find(".click-celebrity-roll").click(async event => this.actor.rollCelebrity());
   }
 
   createNewWord(wordType) {

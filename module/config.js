@@ -51,6 +51,10 @@ export const ANARCHY = {
                 edge: 'ANARCHY.common.roll.modifiers.edge',
                 specialization: 'ANARCHY.common.roll.modifiers.specialization',
                 poolModifiers: 'ANARCHY.common.roll.modifiers.poolModifiers',
+                social: {
+                    credibility: 'ANARCHY.common.roll.modifiers.social.credibility',
+                    rumor: 'ANARCHY.common.roll.modifiers.social.rumor',
+                },
                 anarchyDisposition: 'ANARCHY.common.roll.modifiers.anarchyDisposition',
                 anarchyRisk: 'ANARCHY.common.roll.modifiers.anarchyRisk',
                 glitch: 'ANARCHY.common.roll.modifiers.glitch',
@@ -127,6 +131,7 @@ export const ANARCHY = {
         actorName: 'ANARCHY.actor.actorName',
         genre: 'ANARCHY.actor.genre',
         noMetatype: 'ANARCHY.actor.noMetatype',
+        celebrity: 'ANARCHY.actor.celebrity',
         tabs: {
             main: 'ANARCHY.actor.tabs.main',
             equipment: 'ANARCHY.actor.tabs.equipment',
@@ -149,6 +154,10 @@ export const ANARCHY = {
             anarchy: 'ANARCHY.actor.counters.anarchy',
             sceneAnarchy: 'ANARCHY.actor.counters.sceneAnarchy',
             danger: 'ANARCHY.actor.counters.danger',
+            social: {
+                credibility: 'ANARCHY.actor.counters.social.credibility',
+                rumor: 'ANARCHY.actor.counters.social.rumor',
+            }
         },
         monitors: {
             conditionMonitors: 'ANARCHY.actor.monitors.conditionMonitors',
@@ -199,6 +208,7 @@ export const ANARCHY = {
             attribute: 'ANARCHY.item.skill.attribute',
             value: 'ANARCHY.item.skill.value',
             specialization: 'ANARCHY.item.skill.specialization',
+            hasDrain: 'ANARCHY.item.skill.isSocial',
             hasDrain: 'ANARCHY.item.skill.hasDrain',
             hasConvergence: 'ANARCHY.item.skill.hasConvergence',
             specializationHelp: 'ANARCHY.item.skill.specializationHelp'
@@ -422,7 +432,8 @@ export const ANARCHY = {
                 ignoreWounds: 'ANARCHY.modifier.other.effect.ignoreWounds',
                 sceneAnarchy: 'ANARCHY.modifier.other.effect.sceneAnarchy',
                 locationAnarchy: 'ANARCHY.modifier.other.effect.locationAnarchy',
-                essenceAdjustment: 'ANARCHY.modifier.other.effect.essenceAdjustment'
+                essenceAdjustment: 'ANARCHY.modifier.other.effect.essenceAdjustment',
+                celebrity: 'ANARCHY.modifier.other.effect.celebrity',
             },
             category: {
             }

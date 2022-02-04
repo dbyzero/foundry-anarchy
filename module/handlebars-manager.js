@@ -15,6 +15,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/matrix-cyberdeck.hbs',
   'systems/anarchy/templates/monitors/matrix.hbs',
   'systems/anarchy/templates/monitors/physical.hbs',
+  'systems/anarchy/templates/monitors/social-credibility.hbs',
+  'systems/anarchy/templates/monitors/social-rumor.hbs',
   'systems/anarchy/templates/monitors/structure.hbs',
   'systems/anarchy/templates/monitors/stun.hbs',
   // character
@@ -24,6 +26,7 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/character/genre.hbs',
   'systems/anarchy/templates/actor/character/karma.hbs',
   'systems/anarchy/templates/actor/character/metatype.hbs',
+  'systems/anarchy/templates/actor/character/social-celebrity.hbs',
   // character parts
   'systems/anarchy/templates/actor/parts/words.hbs',
   'systems/anarchy/templates/actor/parts/contact.hbs',

@@ -222,7 +222,11 @@
   color: var(--dark-color-controls);
 }
 
-.style-dark div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+.style-dark :is(
+  div.checkbar-root[data-monitor-code='edge'],
+  div.checkbar-root[data-monitor-code='credibility'],
+  div.checkbar-root[data-monitor-code='rumor']
+) a.click-checkbar-element[data-checked=true] i {
   color: var(--dark-color-resource-checked);
 }
 .style-dark a.click-checkbar-element[data-checked=true] i {

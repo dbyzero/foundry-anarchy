@@ -14,10 +14,10 @@
     "allowBugReporter": true
   },
   "license": "LICENSE.txt",
-  "version": "0.5.1",
+  "version": "0.5.99",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
-  "templateVersion": 4,
+  "templateVersion": 5,
   "scripts": [],
   "esmodules": [
     "module/start.js"

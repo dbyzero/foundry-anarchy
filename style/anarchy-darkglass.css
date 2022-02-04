@@ -275,7 +275,11 @@
   color: var(--darkglass-color-controls);
 }
 
-.style-darkglass div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+.style-darkglass :is(
+  div.checkbar-root[data-monitor-code='edge'],
+  div.checkbar-root[data-monitor-code='credibility'],
+  div.checkbar-root[data-monitor-code='rumor']
+) a.click-checkbar-element[data-checked=true] i {
   color: var(--darkglass-color-resource-checked);
 }
 .style-darkglass a.click-checkbar-element[data-checked=true] i {

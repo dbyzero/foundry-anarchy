@@ -32,9 +32,14 @@ export class RollManager {
     rollData.param.edge = rollData.parameters.find(it => it.category == ROLL_PARAMETER_CATEGORY.edge && it.used) ? 1 : 0;
     rollData.param.anarchy = rollData.parameters.filter(it => it.flags.isAnarchy && it.used).length;
     rollData.options.canUseEdge = rollData.options.canUseEdge && !rollData.param.edge;
-
+    rollData.param.social = {
+      credibility: rollData.parameters.find(it => it.code == 'credibility' && it.used)?.value ?? 0,
+      rumor: rollData.parameters.find(it => it.code == 'rumor' && it.used)?.value ?? 0,
+    }
     await rollData.actor.spendAnarchy(rollData.param.anarchy);
     await rollData.actor.spendEdge(rollData.param.edge);
+    await rollData.actor.spendCredibility(rollData.param.social.credibility);
+    await rollData.actor.spendRumor(rollData.param.social.rumor);
     await this._roll(rollData);
   }
 

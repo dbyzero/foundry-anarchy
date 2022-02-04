@@ -32,10 +32,10 @@ export const ANARCHY_SKILLS = [
   { code: 'tasking', attribute: ATTR.logic, hasDrain: true, icon: `${ICONS_SKILLS_PATH}/tasking.svg` },
   { code: 'tracking', attribute: ATTR.logic, icon: `${ICONS_SKILLS_PATH}/tracking.svg` },
   { code: 'animals', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/animals.svg`, lang: 'fr' },
-  { code: 'con', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/con-art.svg` },
-  { code: 'etiquette', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/etiquette.svg`, lang: 'fr' },
-  { code: 'intimidation', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/intimidation.svg` },
-  { code: 'negotiation', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/negotiation.svg` },
+  { code: 'con', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/con-art.svg` },
+  { code: 'etiquette', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/etiquette.svg`, lang: 'fr' },
+  { code: 'intimidation', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/intimidation.svg` },
+  { code: 'negotiation', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/negotiation.svg` },
   { code: 'disguise', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/disguise.svg`, lang: 'en' },
 ]
 

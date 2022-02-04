@@ -5,6 +5,7 @@ import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { Checkbars } from "../common/checkbars.js";
+import { RollCelebrity } from "../dialog/roll-celebrity.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
 
@@ -41,7 +42,7 @@ export class CharacterActor extends AnarchyBaseActor {
     this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
     super.prepareDerivedData();
-    this.data.data.ignoreWounds = Modifiers.computeSum(this.items, 'other', 'ignoreWounds');
+    this.data.data.ignoreWounds = Modifiers.sumModifiers(this.items, 'other', 'ignoreWounds');
     this.data.data.counters.essence.value = this._computeEssence();
   }
 
@@ -50,7 +51,7 @@ export class CharacterActor extends AnarchyBaseActor {
     const spentEssence = Misc.sumValues(this.items.filter(it => it.type == 'shadowamp')
       .map(it => it.data.data.essence));
     // adjustments: from quality (that gives a "free" essence point), or essence losses due to vampire
-    const essenceAdjustment = Modifiers.computeSum(this.items, 'other', 'essenceAdjustment');
+    const essenceAdjustment = Modifiers.sumModifiers(this.items, 'other', 'essenceAdjustment');
     return Math.min(6, 6 + essenceAdjustment - spentEssence);
   }
 
@@ -114,6 +115,16 @@ export class CharacterActor extends AnarchyBaseActor {
     let newValues = mutate(this.data.data[wordType]);
     Misc.reindexIds(newValues);
     await this.update({ [`data.${wordType}`]: newValues });
+  }
+
+  getCelebrityValue() {
+    return this.data.data.counters.social.celebrity.value;
+  }
+  getCredibilityValue() {
+    return this.data.data.counters.social.credibility.value;
+  }
+  getRumorValue() {
+    return this.data.data.counters.social.rumor.value;
   }
 
   getAnarchy() {
@@ -209,4 +220,7 @@ export class CharacterActor extends AnarchyBaseActor {
     game.system.anarchy.gmConvergence.rollConvergence(this.id, convergence)
   }
 
+  async rollCelebrity() {
+    await RollCelebrity.create(this);
+  }
 }

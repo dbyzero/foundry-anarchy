@@ -98,6 +98,24 @@ const DEFAULT_ROLL_PARAMETERS = [
       }
     }
   },
+  // credibility usage
+  {
+    code: 'credibility',
+    options: {
+      flags: { editable: true },
+      order: 5, category: ROLL_PARAMETER_CATEGORY.pool,
+      value: 0,
+      labelkey: ANARCHY.common.roll.modifiers.social.credibility,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+    },
+    condition: context => context.skill?.data.data.isSocial && context.actor.getCredibilityValue() > 0,
+    factory: context => {
+      return {
+        min: 0,
+        max: Math.min(context.actor.getCredibilityValue(), 3),
+      }
+    }
+  },
   // modifiers bonus
   {
     code: 'poolModifiers',
@@ -106,6 +124,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       labelkey: ANARCHY.common.roll.modifiers.poolModifiers,
       order: 5, category: ROLL_PARAMETER_CATEGORY.pool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: -4, max: 4
     },
     factory: context => RollParameters.computeRollModifiers('pool', context)
   },
@@ -127,6 +146,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       const wounds = context.actor.getWounds();
       return {
         wounds: wounds,
+        min: -wounds, max: 0,
         value: - wounds,
         used: true,
       }
@@ -152,6 +172,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.drain,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: 0, max: 10
     },
     condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasDrain
   },
@@ -164,6 +185,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 1,
       labelkey: ANARCHY.common.roll.modifiers.convergence,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: 0, max: 10
     },
     condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasConvergence
   },
@@ -176,6 +198,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       labelkey: ANARCHY.common.roll.modifiers.glitch,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/glitch.hbs`,
+      min: 0, max: 10
     },
     factory: context => {
       const wounds = context.actor.getWounds();
@@ -183,6 +206,20 @@ const DEFAULT_ROLL_PARAMETERS = [
         value: (wounds == 0 ? 0 : 1) + (context.glitch ?? 0),
       }
     }
+  },
+  // social rumor
+  {
+    code: 'rumor',
+    options: {
+      flags: { editable: true },
+      order: 50, category: ROLL_PARAMETER_CATEGORY.glitch,
+      value: 0,
+      labelkey: ANARCHY.common.roll.modifiers.social.rumor,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/glitch.hbs`,
+      min: 0, max: 1,
+    },
+    condition: context => context.skill?.data.data.isSocial && context.actor.getRumorValue() > 0
   },
   // rerolls
   {
@@ -192,6 +229,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 30, category: ROLL_PARAMETER_CATEGORY.reroll,
       labelkey: ANARCHY.common.roll.modifiers.reroll,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: 0, max: 4
     },
     factory: context => RollParameters.computeRollModifiers('reroll', context)
   },
@@ -203,6 +241,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 29, category: ROLL_PARAMETER_CATEGORY.pool,
       labelkey: ANARCHY.common.roll.modifiers.reduced,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      max: 0, max: 4
     },
     condition: context => (context.attackRoll?.param.opponentPool ?? 0) != 0,
     factory: context => {
@@ -220,6 +259,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 31, category: ROLL_PARAMETER_CATEGORY.rerollForced,
       labelkey: ANARCHY.common.roll.modifiers.rerollForced,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: 0, max: 4
     },
     factory: context => {
       const rerollForced = context.attackRoll?.param.opponentReroll ?? 0;
@@ -286,6 +326,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 100, category: ROLL_PARAMETER_CATEGORY.opponentPool,
       labelkey: ANARCHY.common.roll.modifiers.opponentPool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: 0, max: 4
     },
     factory: context => RollParameters.computeRollModifiers('opponentPool', context),
     condition: context => !context.attributeAction
@@ -299,6 +340,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       value: 0,
       labelkey: ANARCHY.common.roll.modifiers.opponentReroll,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: 0, max: 4
     },
     factory: context => RollParameters.computeRollModifiers('opponentReroll', context),
     condition: context => !context.attributeAction

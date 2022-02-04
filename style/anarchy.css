@@ -733,8 +733,11 @@ div.risk-glitch.risk-glitch-prowess {
   background: var(--border-medium);
 }
 
-
-div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+:is(
+  div.checkbar-root[data-monitor-code='edge'],
+  div.checkbar-root[data-monitor-code='credibility'],
+  div.checkbar-root[data-monitor-code='rumor']
+) a.click-checkbar-element[data-checked=true] i {
   color: orange;
 }
 a.click-checkbar-element[data-checked=true] i {

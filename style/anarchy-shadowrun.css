@@ -210,7 +210,11 @@
   color: var(--anarchy-color-controls);
 }
 
-.style-anarchy-shadowrun div.checkbar-root[data-monitor-code='edge'] a.click-checkbar-element[data-checked=true] i {
+.style-anarchy-shadowrun :is(
+  div.checkbar-root[data-monitor-code='edge'],
+  div.checkbar-root[data-monitor-code='credibility'],
+  div.checkbar-root[data-monitor-code='rumor']
+) a.click-checkbar-element[data-checked=true] i {
   color: var(--anarchy-color-resource-checked);
 }
 .style-anarchy-shadowrun a.click-checkbar-element[data-checked=true] i {
