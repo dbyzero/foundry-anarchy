@@ -153,7 +153,7 @@ export const ANARCHY = {
             edge: 'ANARCHY.actor.counters.edge',
             anarchy: 'ANARCHY.actor.counters.anarchy',
             sceneAnarchy: 'ANARCHY.actor.counters.sceneAnarchy',
-            danger: 'ANARCHY.actor.counters.danger',
+            plot: 'ANARCHY.actor.counters.plot',
             social: {
                 credibility: 'ANARCHY.actor.counters.social.credibility',
                 rumor: 'ANARCHY.actor.counters.social.rumor',

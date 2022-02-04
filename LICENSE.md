@@ -1,23 +1,9 @@
-# Copyright (c) CC BY-NC-SA 4.0 2020 - 2021 This System is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
-
-By exercising the Licensed Rights (link below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License ("Public License"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.
-
-https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-
-# Copyright (c) 2018 - 2021 Fantasy Flight Games. Legend of the Five Rings est TM de Fantasy Flight Games.
+# Copyright (c) CC BY-SA 4.0 2020 - 2021 This System is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
 All images, texts and contents are the property of their creator / legal owner.
 
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-# Copyright (c) 2020 - 2021 Foundry Network
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.

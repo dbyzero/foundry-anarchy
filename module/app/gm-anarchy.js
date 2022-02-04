@@ -61,7 +61,7 @@ export class GMAnarchy {
 
   async addAnarchy(count) {
     if (!RemoteCall.call(GM_ADD_ANARCHY, count)) {
-      ErrorManager.checkSufficient(ANARCHY.actor.counters.danger, -count, this.anarchy);
+      ErrorManager.checkSufficient(ANARCHY.actor.counters.plot, -count, this.anarchy);
       await this.setAnarchy(this.anarchy + count);
     }
   }
@@ -92,12 +92,12 @@ export class GMAnarchy {
 
   async _renderBar() {
     return await renderTemplate("systems/anarchy/templates/monitors/anarchy.hbs", {
-      code: 'danger',
+      code: 'plot',
       rowlength: 6,
       value: this.getAnarchy().value,
       max: this.getAnarchy().max,
       scene: 0,
-      labelkey: ANARCHY.actor.counters.danger
+      labelkey: ANARCHY.actor.counters.plot
     });
   }
 

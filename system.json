@@ -42,17 +42,6 @@
   ],
   "packs": [
     {
-      "name": "items",
-      "label": "Items",
-      "system": "anarchy",
-      "module": "anarchy",
-      "path": "./packs/items.db",
-      "type": "Item",
-      "tags": [
-        "item"
-      ]
-    },
-    {
       "name": "macros",
       "label": "Macros",
       "system": "anarchy",

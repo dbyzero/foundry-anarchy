@@ -79,7 +79,7 @@ export const CHECKBARS = {
     iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
     resource: COUNTERS.anarchy
   },
-  danger: {
+  plot: {
     path: 'data.counters.anarchy.value',
     monitor: it => {
       const value = it.data.data.counters.anarchy.value;

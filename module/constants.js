@@ -65,7 +65,7 @@ export const TEMPLATE = {
     marks: 'marks',
     convergence: 'convergence',
     anarchy: 'anarchy',
-    danger: 'danger',
+    plot: 'plot',
     sceneAnarchy: 'sceneAnarchy',
   },
   counters: {
