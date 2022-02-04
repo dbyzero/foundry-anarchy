@@ -417,7 +417,8 @@
         "effect": {
           "ignoreWounds": "Ignore des blessures",
           "sceneAnarchy": "Anarchy de scène",
-          "locationAnarchy": "Anarchy de lieu"
+          "locationAnarchy": "Anarchy de lieu",
+          "essenceAdjustment": "Ajustement d'essence"
         },
         "category": {}
       },

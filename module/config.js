@@ -422,6 +422,7 @@ export const ANARCHY = {
                 ignoreWounds: 'ANARCHY.modifier.other.effect.ignoreWounds',
                 sceneAnarchy: 'ANARCHY.modifier.other.effect.sceneAnarchy',
                 locationAnarchy: 'ANARCHY.modifier.other.effect.locationAnarchy',
+                essenceAdjustment: 'ANARCHY.modifier.other.effect.essenceAdjustment'
             },
             category: {
             }

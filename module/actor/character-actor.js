@@ -42,6 +42,16 @@ export class CharacterActor extends AnarchyBaseActor {
     this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
     super.prepareDerivedData();
     this.data.data.ignoreWounds = Modifiers.computeSum(this.items, 'other', 'ignoreWounds');
+    this.data.data.counters.essence.value = this._computeEssence();
+  }
+
+  _computeEssence() {
+    // spent essence: from cyberware/bioware
+    const spentEssence = Misc.sumValues(this.items.filter(it => it.type == 'shadowamp')
+      .map(it => it.data.data.essence));
+    // adjustments: from quality (that gives a "free" essence point), or essence losses due to vampire
+    const essenceAdjustment = Modifiers.computeSum(this.items, 'other', 'essenceAdjustment');
+    return Math.min(6, 6 + essenceAdjustment - spentEssence);
   }
 
   getAttributes() {

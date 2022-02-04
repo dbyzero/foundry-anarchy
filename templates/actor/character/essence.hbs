@@ -1,10 +1,5 @@
-<label class="info-label" for="data.counters.essence.value">
-  {{localize 'ANARCHY.actor.counters.essence'}}
-  </label>
-<input class="info-value anarchy-essence" type="number" maxlength="4" size=4
-  data-dtype="Number" min="0" max="6"
-  name="data.counters.essence.value" value="{{numberFormat data.data.counters.essence.value decimals=2 sign=false}}" 
-/>
 <label class="info-label">
+  {{localize 'ANARCHY.actor.counters.essence'}}
+  {{numberFormat data.data.counters.essence.value decimals=2 sign=false}}
   {{localize ANARCHY.actor.essence.adjustShort}} {{essence.adjust}}
 </label>

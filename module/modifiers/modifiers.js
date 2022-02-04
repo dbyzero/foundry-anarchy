@@ -1,10 +1,7 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { ANARCHY } from "../config.js";
-import { SYSTEM_NAME } from "../constants.js";
 import { Enums } from "../enums.js";
-import { HandlebarsManager } from "../handlebars-manager.js";
 import { Misc } from "../misc.js";
-import { Skills } from "../skills.js";
 
 export class Modifiers {
   constructor() {
@@ -138,13 +135,11 @@ export class Modifiers {
     return (item.data.data.modifiers ?? []).filter(filter);
   }
 
-
   static _itemModifier(item, modifier) {
     return {
       item: item,
       modifier: modifier
     };
   }
-
 
 }
