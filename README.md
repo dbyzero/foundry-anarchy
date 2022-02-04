@@ -14,7 +14,7 @@ All characters and opponents are managed almost equal. You may chose different s
 
 Player-owned characters have Anarchy, while NPCs are using the gamemaster's anarchy (even if not displayed on their sheets).
 
-The system supports all you need to play, different type of actors (character, vehicle, decice, sprite, and IC), and of items (metatype, skill, qualities, shadow amps, weapons, gear and contacts).
+The system supports all you need to play, different type of actors (character, vehicle, device, sprite, and IC), and of items (metatype, skill, qualities, shadow amps, weapons, gear and contacts).
 
 Weapons can be used for regular weapons, for spells, and for matrix attacks (to crash or put marks on target).
 
@@ -38,13 +38,13 @@ When a player character spends anarchy, the GM plot points are increased accordi
 
 
 ## Compendiums
-No compendiums are provided to not infrige CGL or BBE copyrights, they might develop paying compendiums later.
+No compendiums are provided to not infringe CGL or BBE copyrights, they might develop paying compendiums later.
 
 # Legal mentions
 
 ## License
 
-The system is developped under [Creative Commons BY-SA]("http://creativecommons.org/licenses/by/4.0/), more details in [LICENSE.md](LICENSE.md).
+The system is developed under [Creative Commons BY-SA]("http://creativecommons.org/licenses/by/4.0/), more details in [LICENSE.md](LICENSE.md).
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
@@ -63,7 +63,7 @@ www.black-book-editions.fr
 
 ## Credits & attributions
 
-Icons are derived from original icons are provided under [Creative Commons 3.0 BY license](http://creativecommons.org/licenses/by/3.0/), on [game-icons.net](game-icons.net):
+Icons are derived from original icons provided under [Creative Commons 3.0 BY license](http://creativecommons.org/licenses/by/3.0/), on [game-icons.net](game-icons.net):
 - by Lorc
 - by Delapouite
 - by Skoll
