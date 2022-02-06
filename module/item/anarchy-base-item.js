@@ -1,5 +1,4 @@
 import { Checkbars } from "../common/checkbars.js";
-import { AttributeActions } from "../attribute-actions.js";
 import { Misc } from "../misc.js";
 import { TEMPLATE } from "../constants.js";
 import { RollDialog } from "../roll/roll-dialog.js";

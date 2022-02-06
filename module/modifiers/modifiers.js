@@ -88,7 +88,7 @@ export class Modifiers {
     const group = 'roll';
     const contextFilter = Modifiers.buildRollModifiersFilter(context, effect);
     const filter = m => m.group == group && m.effect == effect && contextFilter(m);
-    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+    const itemModifiers = Modifiers._activeItems(items).map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);
 
     // sum values, max bonus is 3
@@ -103,7 +103,7 @@ export class Modifiers {
 
   static computeModifiers(items, group, effect = undefined, category = undefined) {
     const filter = Modifiers._createFilter(group, effect, category);
-    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+    const itemModifiers = Modifiers._activeItems(items).map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);
     const value = Misc.sumValues(itemModifiers, m => m.modifier.value);
     return {
@@ -112,14 +112,13 @@ export class Modifiers {
     }
   }
 
-
   static sumMonitorModifiers(items, monitor, category) {
-    return Modifiers.sumModifiers(items, 'monitor', monitor, category);
+    return Modifiers.sumModifiers(Modifiers._activeItems(items), 'monitor', monitor, category);
   }
 
   static sumModifiers(items, group, monitor, category) {
     const filter = Modifiers._createFilter(group, monitor, category);
-    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+    const itemModifiers = Modifiers._activeItems(items).map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);
 
     return Misc.sumValues(itemModifiers, m => m.modifier.value);
@@ -133,7 +132,7 @@ export class Modifiers {
 
   static countModifiers(items, group, effect = undefined, category = undefined) {
     const filter = Modifiers._createFilter(group, effect, category);
-    const itemModifiers = items.map(item => Modifiers.itemModifiers(item, filter))
+    const itemModifiers = Modifiers._activeItems(items).map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);
 
     return itemModifiers.count;
@@ -152,6 +151,10 @@ export class Modifiers {
       item: item,
       modifier: modifier
     };
+  }
+
+  static _activeItems(items) {
+    return items.filter(it => it.isActive());
   }
 
 }
