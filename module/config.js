@@ -362,10 +362,10 @@ export const ANARCHY = {
     area: {
         none: 'ANARCHY.area.none',
         shotgun: 'ANARCHY.area.shotgun',
-        circle: 'CONTROLS.MeasureCircle',
-        cone: 'CONTROLS.MeasureCone',
-        rect: 'CONTROLS.MeasureRect',
-        ray: 'CONTROLS.MeasureRay'
+        circle: 'ANARCHY.area.circle',
+        cone: 'ANARCHY.area.cone',
+        rect: 'ANARCHY.area.rect',
+        ray: 'ANARCHY.area.ray'
     },
     range: {
         short: 'ANARCHY.range.short',

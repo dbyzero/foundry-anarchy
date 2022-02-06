@@ -362,7 +362,11 @@
     },
     "area": {
       "none": "None",
-      "shotgun": "Shotgun"
+      "shotgun": "Shotgun",
+      "circle": "Circle",
+      "cone": "Cone",
+      "rect": "Rectangle",
+      "ray": "Ray"
     },
     "range": {
       "short": "Short",
