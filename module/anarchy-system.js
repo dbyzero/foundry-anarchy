@@ -52,6 +52,7 @@ import { CombatManager } from './combat/combat-manager.js';
 import { RollManager } from './roll/roll-manager.js';
 import { CharacterTabbedSheet } from './actor/character-tabbed-sheet.js';
 import { Modifiers } from './modifiers/modifiers.js';
+import { ActorDamageManager } from './actor/actor-damage.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -120,6 +121,7 @@ export class AnarchySystem {
     AnarchyDice.init();
     AnarchyRoll.init();
     AnarchyBaseItem.init();
+    ActorDamageManager.init();
     ChatManager.init();
     console.log(LOG_HEAD + 'AnarchySystem.onInit | done');
     Hooks.once('ready', () => this.onReady());

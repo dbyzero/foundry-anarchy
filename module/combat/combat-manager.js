@@ -99,7 +99,7 @@ export class CombatManager {
   async onClickApplyAttackDamage(attackData) {
     const attacker = this.getTokenActor(attackData.attackerTokenId);
     const defender = this.getTokenActor(attackData.defenderTokenId);
-    await defender.applyDamage(
+    await defender.sufferDamage(
       attackData.attack.damage.monitor,
       attackData.attack.damage.value,
       attackData.attack.success,

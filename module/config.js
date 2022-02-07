@@ -13,6 +13,15 @@ export const ANARCHY = {
             hint: 'ANARCHY.settings.gmDifficulty.hint',
             default: 'ANARCHY.settings.gmDifficulty.default',
             chatMessage: 'ANARCHY.settings.gmDifficulty.chatMessage',
+        },
+        damageMode: {
+            name: 'ANARCHY.settings.damageMode.name',
+            hint: 'ANARCHY.settings.damageMode.hint',
+            values: {
+                resistanceArmorMonitor: 'ANARCHY.settings.damageMode.values.resistanceArmorMonitor',
+                armorResistanceMonitor: 'ANARCHY.settings.damageMode.values.armorResistanceMonitor',
+                armorGivesResistance: 'ANARCHY.settings.damageMode.values.armorGivesResistance',
+            },
         }
     },
     gmManager: {

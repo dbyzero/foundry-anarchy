@@ -28,6 +28,11 @@ export const ANARCHY_HOOKS = {
   PROVIDE_SKILL_SET: 'anarchy-provideSkillSet',
 
   /**
+   * Hook allowing to provide alternate way to apply damages for Anarchy hack modules
+   */
+  PROVIDE_DAMAGE_MODE: 'anarchy-provideDamageMode',
+
+  /**
    * Hook called to provide additional Handlebars partial templates
    * TODO:
    *  - refactor hook to provide a registration method instead of the list of partials?

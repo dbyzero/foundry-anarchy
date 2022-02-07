@@ -1,12 +1,15 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { Checkbars } from "../common/checkbars.js";
 import { ANARCHY } from "../config.js";
-import { TEMPLATE } from "../constants.js";
+import { SYSTEM_NAME, TEMPLATE } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
+import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { RollDialog } from "../roll/roll-dialog.js";
+import { ActorDamageManager } from "./actor-damage.js";
+
 
 export class AnarchyBaseActor extends Actor {
 
@@ -123,28 +126,8 @@ export class AnarchyBaseActor extends Actor {
   async rollConvergence(convergence) {
   }
 
-  async applyDamage(monitor, value, success, useArmor, actor) {
-    if (monitor == TEMPLATE.monitors.marks) {
-      await Checkbars.addCounter(this, TEMPLATE.monitors.marks, 1, actor.id);
-    }
-    else {
-      value += success - Checkbars.resistance(this, monitor);
-      if (Checkbars.useArmor(monitor) && useArmor) {
-        value -= await this.applyArmorDamage(value);
-      }
-      if (value > 0) {
-        await Checkbars.addCounter(this, monitor, value);
-      }
-    }
-    return value;
-  }
-
-  async applyArmorDamage(value) {
-    const armorMax = Checkbars.max(this, TEMPLATE.monitors.armor);
-    const armor = Checkbars.getCounterValue(this, TEMPLATE.monitors.armor);
-    const armorDmg = Math.min(armorMax - armor, value);
-    await Checkbars.addCounter(this, TEMPLATE.monitors.armor, armorDmg);
-    return armorDmg;
+  async sufferDamage(monitor, value, success, useArmor, actor) {
+    return await ActorDamageManager.sufferDamage(this, monitor, value, success, useArmor, actor);
   }
 
   async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {

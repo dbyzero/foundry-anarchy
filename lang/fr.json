@@ -14,6 +14,15 @@
         "hint": "Les valeurs des réserves de dés pour différentes difficultés, représentées comme 'Triviale:4,Facile:6' ...",
         "default": "Triviale:4,Facile:6,Moyenne:8,Difficile:10,Très difficile:12",
         "chatMessage": "La difficulté {difficulty} ({pool}d6) est de {success}"
+      },
+      "damageMode": {
+        "name": "Application des dommages",
+        "hint": "Détermine l'ordre dans lequel les résistances et armure s'appliquent",
+        "values": {
+          "resistanceArmorMonitor": "Résistance, puis armure (et sa résistance), puis moniteur",
+          "armorResistanceMonitor": "Armure (et sa résistance), puis résistance, puis moniteur",
+          "armorGivesResistance": "Résistance du tiers de l'armure restante, elle perd 1 par coup"
+        }
       }
     },
     "gmManager": {

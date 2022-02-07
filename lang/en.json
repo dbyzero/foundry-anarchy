@@ -14,6 +14,15 @@
         "hint": "The default difficulty pools, represented as 'Trivial:4,Easy:6' ...",
         "default": "Trivial:4,Easy:6,Average:8,Hard:10,Very hard:12",
         "chatMessage": "The difficulty {difficulty} ({pool}d6) is {success}"
+      },
+      "damageMode": {
+        "name": "Damage application",
+        "hint": "Determine the order to apply resistances and armor",
+        "values": {
+          "resistanceArmorMonitor": "Resistance, then armor (and its resistance), then monitor",
+          "armorResistanceMonitor": "Armor (and its resistance), then resistance, then monitor",
+          "armorGivesResistance": "Resistance is 1/3 of remaining armor, it is damaged of 1 per hit"
+        }
       }
     },
     "gmManager": {
