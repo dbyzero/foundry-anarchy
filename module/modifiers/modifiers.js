@@ -76,7 +76,7 @@ export class Modifiers {
         switch (m.category) {
           case 'attribute': return [context.attribute1, context.attribute2].includes(m.subCategory);
           case 'skill': return m.subCategory == context.skill?.data.data.code;
-          case 'defense': return m.subCategory == context.attributeAction;
+          case 'defense': return m.subCategory == context.defenseAction;
           case 'attributeAction': return m.subCategory == context.attributeAction;
         }
       }
