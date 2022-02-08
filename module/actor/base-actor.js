@@ -28,7 +28,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   static get initiative() {
-    return "2d6";
+    return "2d6 + @modifiers.initiative";
   }
 
   static get defaultIcon() {
@@ -53,7 +53,9 @@ export class AnarchyBaseActor extends Actor {
 
   prepareDerivedData() {
     super.prepareDerivedData();
-
+    this.data.data.modifiers = {
+      initiative: Modifiers.sumModifiers(this.items, 'other', 'initiative')
+    };
     Object.entries(this.data.data.monitors).forEach(kv => {
       kv[1].maxBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'max');
       kv[1].resistanceBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'resistance');

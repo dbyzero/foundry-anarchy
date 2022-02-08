@@ -10,7 +10,7 @@ export class SpriteActor extends AnarchyBaseActor {
   }
 
   static get initiative() {
-    return "2d6 + @attributes.logic.value";
+    return AnarchyBaseActor.initiative + " + @attributes.logic.value";
   }
 
   prepareData() {

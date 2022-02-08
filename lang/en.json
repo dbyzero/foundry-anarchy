@@ -442,6 +442,7 @@
           "sceneAnarchy": "Scene Anarchy",
           "locationAnarchy": "Location anarchy",
           "essenceAdjustment": "Essence adjustment",
+          "initiative": "Initiative bonus",
           "celebrity": "Adjust celebrity"
         },
         "category": {}

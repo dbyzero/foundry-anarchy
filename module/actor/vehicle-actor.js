@@ -9,7 +9,7 @@ export class VehicleActor extends AnarchyBaseActor {
   }
 
   static get initiative() {
-    return "2d6 + max(@attributes.system.value, @attributes.autopilot.value)";
+    return AnarchyBaseActor.initiative + " + max(@attributes.system.value, @attributes.autopilot.value)";
   }
 
   prepareData() {

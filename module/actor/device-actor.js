@@ -10,7 +10,7 @@ export class DeviceActor extends AnarchyBaseActor {
   }
 
   static get initiative() {
-    return "2d6 + @attributes.system.value";
+    return AnarchyBaseActor.initiative + " + @attributes.system.value";
   }
 
   prepareData() {

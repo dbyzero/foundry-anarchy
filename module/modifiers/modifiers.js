@@ -116,8 +116,8 @@ export class Modifiers {
     return Modifiers.sumModifiers(Modifiers._activeItems(items), 'monitor', monitor, category);
   }
 
-  static sumModifiers(items, group, monitor, category) {
-    const filter = Modifiers._createFilter(group, monitor, category);
+  static sumModifiers(items, group, effect, category) {
+    const filter = Modifiers._createFilter(group, effect, category);
     const itemModifiers = Modifiers._activeItems(items).map(item => Modifiers.itemModifiers(item, filter))
       .reduce((a, b) => a.concat(b), []);
 

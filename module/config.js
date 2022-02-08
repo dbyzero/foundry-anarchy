@@ -442,6 +442,7 @@ export const ANARCHY = {
                 sceneAnarchy: 'ANARCHY.modifier.other.effect.sceneAnarchy',
                 locationAnarchy: 'ANARCHY.modifier.other.effect.locationAnarchy',
                 essenceAdjustment: 'ANARCHY.modifier.other.effect.essenceAdjustment',
+                initiative: 'ANARCHY.modifier.other.effect.initiative',
                 celebrity: 'ANARCHY.modifier.other.effect.celebrity',
             },
             category: {

@@ -29,7 +29,7 @@ export class CharacterEssence {
 export class CharacterActor extends AnarchyBaseActor {
 
   static get initiative() {
-    return "2d6 + max(@attributes.agility.value, @attributes.logic.value)";
+    return AnarchyBaseActor.initiative + " + max(@attributes.agility.value, @attributes.logic.value)";
   }
 
   hasOwnAnarchy() { return this.hasPlayerOwner; }
