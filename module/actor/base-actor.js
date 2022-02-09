@@ -128,10 +128,6 @@ export class AnarchyBaseActor extends Actor {
   async rollConvergence(convergence) {
   }
 
-  async sufferDamage(monitor, value, success, useArmor, actor) {
-    return await ActorDamageManager.sufferDamage(this, monitor, value, success, useArmor, actor);
-  }
-
   async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
     await Checkbars.switchMonitorCheck(this, monitor, index, checked, sourceActorId);
   }

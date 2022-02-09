@@ -1,3 +1,4 @@
+import { ActorDamageManager } from "../actor/actor-damage.js";
 import { MESSAGE_DATA, PARENT_MESSAGE_ID, ChatManager } from "../chat/chat-manager.js";
 import { ANARCHY } from "../config.js";
 import { ANARCHY_SYSTEM, SYSTEM_SCOPE, TEMPLATES_PATH } from "../constants.js";
@@ -99,11 +100,11 @@ export class CombatManager {
   async onClickApplyAttackDamage(attackData) {
     const attacker = this.getTokenActor(attackData.attackerTokenId);
     const defender = this.getTokenActor(attackData.defenderTokenId);
-    await defender.sufferDamage(
+    await ActorDamageManager.sufferDamage(defender,
       attackData.attack.damage.monitor,
       attackData.attack.damage.value,
       attackData.attack.success,
-      !attackData.attack.damage.noArmor,
+      attackData.attack.damage.noArmor,
       attacker);
     this._preventObsoleteChoices(attackData);
   }
