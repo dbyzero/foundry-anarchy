@@ -1,4 +1,21 @@
 {
+  "ACTOR": {
+    "TypeCharacter": "Character/Creature",
+    "TypeVehicle": "Vehicle/drone",
+    "TypeDevice": "Matrix device",
+    "TypeSprite": "Sprite",
+    "TypeIc": "IC"
+  },
+  "ITEM": {
+    "TypeContact": "Contact",
+    "TypeCyberdeck": "Cyberdeck",
+    "TypeGear": "Equipement",
+    "TypeMetatype": "Métatype",
+    "TypeQuality": "Trait",
+    "TypeShadowamp": "Atout",
+    "TypeSkill": "Compétence",
+    "TypeWeapon": "Arme"
+  },
   "ANARCHY": {
     "settings": {
       "defaultCssClass": {

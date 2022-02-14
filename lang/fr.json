@@ -1,4 +1,21 @@
 {
+  "ACTOR": {
+    "TypeCharacter": "Personnage/Créature",
+    "TypeVehicle": "Véhicule/drone",
+    "TypeDevice": "Objet matriciel",
+    "TypeSprite": "Sprite",
+    "TypeIc": "Glace"
+  },
+  "ITEM": {
+    "TypeContact": "Contact",
+    "TypeCyberdeck": "Cyberdeck",
+    "TypeGear": "Equipement",
+    "TypeMetatype": "Métatype",
+    "TypeQuality": "Trait",
+    "TypeShadowamp": "Atout",
+    "TypeSkill": "Compétence",
+    "TypeWeapon": "Arme"
+  },
   "ANARCHY": {
     "settings": {
       "defaultCssClass": {
