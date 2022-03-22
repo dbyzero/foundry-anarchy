@@ -406,6 +406,7 @@ export const ANARCHY = {
         },
         group: {
             roll: 'ANARCHY.modifier.group.roll',
+            attribute: 'ANARCHY.modifier.group.attribute',
             monitor: 'ANARCHY.modifier.group.monitor',
             other: 'ANARCHY.modifier.group.other',
         },

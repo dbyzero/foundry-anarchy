@@ -94,6 +94,8 @@ export class AnarchySystem {
     this.gmAnarchy = new GMAnarchy();
     this.gmConvergence = new GMConvergence();
     this.gmManager = new GMManager(this.gmAnarchy, this.gmConvergence);
+    Enums.init();
+
     this.skills = new Skills();
     this.modifiers = new Modifiers();
     this.rollParameters = new RollParameters();
@@ -108,7 +110,6 @@ export class AnarchySystem {
     CONFIG.Actor.documentClass = AnarchyBaseActor;
     CONFIG.Item.documentClass = AnarchyBaseItem;
 
-    Enums.init();
     Checkbars.init();
 
     this.loadActorSheets();

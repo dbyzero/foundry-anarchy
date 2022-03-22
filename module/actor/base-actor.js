@@ -60,6 +60,9 @@ export class AnarchyBaseActor extends Actor {
       kv[1].maxBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'max');
       kv[1].resistanceBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'resistance');
     });
+    Object.entries(this.data.data.attributes).forEach(kv => {
+      kv[1].total = this.getAttributeValue(kv[0]);
+    });
   }
 
   getAttributeActions() {
@@ -80,17 +83,21 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getAttributeValue(attribute, item = undefined) {
+    let value = 0;
     if (attribute) {
       if (this.getAttributes().includes(attribute)) {
-        return this.data.data.attributes[attribute].value;
+        value = this.data.data.attributes[attribute].value;
       }
-      if (!item) {
+      else if (!item) {
         const candidateItems = this.items.filter(item => item.isActive() && item.getAttributes().includes(attribute));
-        return Math.max(candidateItems.map(it => it.getAttributeValue(attribute) ?? 0));
+        value = Math.max(candidateItems.map(it => it.getAttributeValue(attribute) ?? 0));
       }
-      return item?.getAttributeValue(attribute) ?? 0;
+      else {
+        value = item?.getAttributeValue(attribute) ?? 0;
+      }
+      value += Modifiers.sumModifiers(this.items, 'attribute', attribute);
     }
-    return 0;
+    return value;
   }
 
   async rollAttribute(attribute) {

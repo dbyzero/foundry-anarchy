@@ -423,6 +423,7 @@
       },
       "group": {
         "roll": "Roll",
+        "attribute": "Attribute",
         "monitor": "Monitor",
         "other": "Other"
       },

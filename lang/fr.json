@@ -423,6 +423,7 @@
       },
       "group": {
         "roll": "Jet de dé",
+        "attribute": "Attribut",
         "monitor": "Moniteur",
         "other": "Autre"
       },

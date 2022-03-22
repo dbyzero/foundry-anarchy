@@ -8,6 +8,7 @@ export class Modifiers {
     this.modifiers = {
       groups: Enums.mapObjetToKeyValue(ANARCHY.modifier.group, 'key', 'label'),
       roll: Modifiers._buildGroupOptions('roll'),
+      attribute: Modifiers._buildGroupOptions('attribute'),
       monitor: Modifiers._buildGroupOptions('monitor'),
       other: Modifiers._buildGroupOptions('other'),
     }
@@ -15,6 +16,14 @@ export class Modifiers {
   }
 
   static _buildGroupOptions(group) {
+    switch (group) {
+      case 'attribute':
+        return {
+          label: ANARCHY.modifier.group[group],
+          effects: Enums.hbsAttributes.map(it => { return { key: it['value'], label: it['labelkey'] } }),
+          categories: [],
+        }
+    }
     return {
       label: ANARCHY.modifier.group[group],
       effects: Enums.mapObjetToKeyValue(ANARCHY.modifier[group].effect, 'key', 'label'),
@@ -23,14 +32,14 @@ export class Modifiers {
   }
 
   async onReady() {
-
     Handlebars.registerHelper('modifierHasSubCategory', (group, effect, category) => this.hasSubCategory(group, effect, category));
     Handlebars.registerHelper('modifierSelectOption', (value, options) => this.getSelectOptions(value, options));
   }
 
   hasSubCategory(group, effect, category) {
-    if (group == 'roll') {
-      return true;
+    switch (group) {
+      case 'roll':
+        return true;
     }
     return false;
   }
@@ -38,13 +47,12 @@ export class Modifiers {
   getSelectOptions(select, options) {
     switch (select) {
       case 'group': return this.modifiers.groups;
-      case 'effect': return this.modifiers[options.hash.group].effects;
-      case 'category': return this.modifiers[options.hash.group].categories;
+      case 'effect': return this.modifiers[options.hash.group]?.effects;
+      case 'category': return this.modifiers[options.hash.group]?.categories;
       case 'subCategory':
         switch (options.hash.group) {
           case 'roll': {
-            const subCategories = this.getSelectRollSubCategories(options.hash.category);
-            return subCategories;
+            return this.getSelectRollSubCategories(options.hash.category);
           }
         }
         return [];
