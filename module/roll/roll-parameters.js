@@ -47,8 +47,12 @@ const DEFAULT_ROLL_PARAMETERS = [
     options: {
       order: 1, category: ROLL_PARAMETER_CATEGORY.pool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-attribute.hbs`,
+      hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/pool-attribute2.hbs`,
     },
     condition: context => [ANARCHY_SYSTEM.rollType.attribute, ANARCHY_SYSTEM.rollType.attributeAction, ANARCHY_SYSTEM.rollType.defense].includes(context.mode),
+    onChecked: (p, selected) => {
+      p.used = selected ? true : false;
+    },
     factory: context => {
       return {
         flags: { editable: ANARCHY_SYSTEM.rollType.attribute == context.mode },

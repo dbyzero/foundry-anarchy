@@ -183,9 +183,9 @@ export class RollDialog extends Dialog {
   }
 
   _setParameterSelectedOption(html, parameter, selected, value) {
-    parameter.onValue(parameter, value);
     parameter.onChecked(parameter, selected);
-    parameter.selected = this._getSelectedOption(html, parameter);
+    parameter.onValue(parameter, value);
+    parameter.selected = selected;
     this._updateParameterValue(html, parameter, value);
   }
 
