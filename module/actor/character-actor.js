@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { BASE_MONITOR, TEMPLATE, TEMPLATES_PATH } from "../constants.js";
+import { TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
@@ -39,8 +39,8 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   prepareDerivedData() {
-    this.data.data.monitors.physical.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.strength.value, 2)
-    this.data.data.monitors.stun.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.willpower.value, 2)
+    this.data.data.monitors.physical.max = this._getMonitorMax(TEMPLATE.attributes.strength)
+    this.data.data.monitors.stun.max = this._getMonitorMax(TEMPLATE.attributes.willpower)
     super.prepareDerivedData();
     this.data.data.ignoreWounds = Modifiers.sumModifiers(this.items, 'other', 'ignoreWounds');
     this.data.data.counters.essence.value = this._computeEssence();

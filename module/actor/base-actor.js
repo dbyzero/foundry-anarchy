@@ -1,7 +1,7 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { Checkbars } from "../common/checkbars.js";
 import { ANARCHY } from "../config.js";
-import { SYSTEM_NAME, TEMPLATE } from "../constants.js";
+import { BASE_MONITOR, SYSTEM_NAME, TEMPLATE } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
@@ -51,8 +51,12 @@ export class AnarchyBaseActor extends Actor {
     this.cleanupFavorites();
   }
 
+  _getMonitorMax(attribute) {
+    const attributeValue = this.getAttributeValue(attribute);
+    return attributeValue == 0 ? 0 : (BASE_MONITOR + Misc.divup(attributeValue, 2));
+  }
+
   prepareDerivedData() {
-    super.prepareDerivedData();
     this.data.data.modifiers = {
       initiative: Modifiers.sumModifiers(this.items, 'other', 'initiative')
     };

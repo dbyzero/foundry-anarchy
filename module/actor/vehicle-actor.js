@@ -1,5 +1,4 @@
-import { BASE_MONITOR, ICONS_PATH, TEMPLATE } from "../constants.js";
-import { Misc } from "../misc.js";
+import { ICONS_PATH, TEMPLATE } from "../constants.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
 export class VehicleActor extends AnarchyBaseActor {
@@ -17,7 +16,7 @@ export class VehicleActor extends AnarchyBaseActor {
   }
 
   prepareDerivedData() {
-    this.data.data.monitors.matrix.max = BASE_MONITOR + Misc.divup(this.data.data.attributes.system.value, 2);
+    this.data.data.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.system);
     super.prepareDerivedData();
   }
 
