@@ -112,7 +112,7 @@
 .style-darkglass :is(a.item-control, .attribute-box):hover :is(i, label, a),
 .style-darkglass .item :is(a:hover, a.item-controls:hover i, a:hover label) {
   color: var(--darkglass-color-highlight);
-  text-shadow: 0 0 3px var(--darkglass-tint-hover);
+  text-shadow: 0 0 1px var(--darkglass-tint-hover);
 }
 
 .style-darkglass .window-content {
