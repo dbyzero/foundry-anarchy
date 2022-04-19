@@ -70,11 +70,16 @@
     {{> "systems/anarchy/templates/actor/npc-parts/shadowamps.hbs"}}
     </div>
     <div class="section-group items-group">
-    {{> "systems/anarchy/templates/actor/parts/cyberdecks.hbs"}}
+      {{> "systems/anarchy/templates/actor/parts/cyberdecks.hbs"}}
     </div>
     <div class="section-group items-group">
-    {{> "systems/anarchy/templates/actor/npc-parts/qualities.hbs"}}
+      {{> "systems/anarchy/templates/actor/npc-parts/qualities.hbs"}}
     </div>
+    {{#if ownedActors}}
+      <div class="section-group items-group">
+        {{> "systems/anarchy/templates/actor/parts/owned-actors.hbs"}}
+      </div>
+    {{/if}}
     <div class="anarchy-block">
     {{> 'systems/anarchy/templates/actor/parts/description.hbs'}}
     {{> 'systems/anarchy/templates/actor/parts/gmnotes.hbs'}}
