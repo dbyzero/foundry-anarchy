@@ -93,7 +93,7 @@ export const CHECKBARS = {
     path: 'data.counters.sceneAnarchy.value',
     monitor: it => {
       const value = it.data.data.counters.sceneAnarchy.value;
-      return { value: value, max: value + 1 };
+      return { value: value, max: 3 };
     },
     iconChecked: Icons.iconSrc('style/anarchy-point-scene.webp', 'checkbar-img'),
     iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
