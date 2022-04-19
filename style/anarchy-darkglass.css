@@ -1,52 +1,54 @@
 /** common definitions **/
 :root {
   --darkglass-gradient-dark: repeating-linear-gradient(80deg,
-    hsla(0, 0%, 0%, 0.4) 0% 5%,
-    hsla(0, 0%, 15%, 0.5) 7%,
-    hsla(0, 0%, 5%, 0.5) 9% 13%,
-    hsla(0, 0%, 20%, 0.8) 16%,
-    hsla(0, 0%, 0%, 0.4) 20% 25%,
-    hsla(0, 0%, 15%, 0.6) 38%,
-    hsla(0, 0%, 5%, 0.5) 42%, 
-    hsla(0, 0%, 0%, 0.4) 50%);
+      hsla(0, 0%, 0%, 0.4) 0% 5%,
+      hsla(0, 0%, 15%, 0.5) 7%,
+      hsla(0, 0%, 5%, 0.5) 9% 13%,
+      hsla(0, 0%, 20%, 0.8) 16%,
+      hsla(0, 0%, 0%, 0.4) 20% 25%,
+      hsla(0, 0%, 15%, 0.6) 38%,
+      hsla(0, 0%, 5%, 0.5) 42%,
+      hsla(0, 0%, 0%, 0.4) 50%);
   --darkglass-gradient-gold: repeating-linear-gradient(120deg,
-    hsla(40, 50%, 50%, 0.7),
-    hsla(55, 92%, 86%, 0.7),
-    hsla(41, 63%, 43%, 0.7), 
-    hsla(55, 89%, 85%, 0.7), 
-    hsla(38, 72%, 39%, 0.7));
+      hsla(40, 50%, 50%, 0.7),
+      hsla(55, 92%, 86%, 0.7),
+      hsla(41, 63%, 43%, 0.7),
+      hsla(55, 89%, 85%, 0.7),
+      hsla(38, 72%, 39%, 0.7));
   --darkglass-gradient-gold-dark: repeating-linear-gradient(100deg,
-    hsla(40, 50%, 50%, 0.5) 0% 25%,
-    hsla(55, 92%, 86%, 0.5) 35%,
-    hsla(41, 63%, 43%, 0.5) 45% 55%, 
-    hsla(55, 89%, 85%, 0.5) 65%, 
-    hsla(38, 72%, 39%, 0.5) 75% 100%);
+      hsla(40, 50%, 50%, 0.5) 0% 25%,
+      hsla(55, 92%, 86%, 0.5) 35%,
+      hsla(41, 63%, 43%, 0.5) 45% 55%,
+      hsla(55, 89%, 85%, 0.5) 65%,
+      hsla(38, 72%, 39%, 0.5) 75% 100%);
   --darkglass-gradient-silver: linear-gradient(110deg,
-    hsla(249, 26%, 29%, 0.7),
-    hsla(237, 13%, 73%, 0.7), 
-    hsla(195, 3%, 24%, 0.7), 
-    hsla(43, 7%, 79%, 0.7), 
-    hsla(348, 14%, 21%, 0.7));
-    
+      hsla(249, 26%, 29%, 0.7),
+      hsla(237, 13%, 73%, 0.7),
+      hsla(195, 3%, 24%, 0.7),
+      hsla(43, 7%, 79%, 0.7),
+      hsla(348, 14%, 21%, 0.7));
+
   --darkglass-controls: hsla(200, 20%, 40%, 0.7);
-  
+
   --darkglass-background: var(--darkglass-gradient-dark);
   --darkglass-background-attributes: var(--darkglass-gradient-gold);
-  --darkglass-background-secondary-attributes: var(--darkglass-gradient-gold /*-dark*/);
-  --darkglass-background-item-major:hsla(0, 0%, 5%, 1);
+  --darkglass-background-secondary-attributes: var(--darkglass-gradient-gold
+      /*-dark*/
+    );
+  --darkglass-background-item-major: hsla(0, 0%, 5%, 1);
   --darkglass-background-item: hsla(230, 30%, 15%, 1);
   --darkglass-background-item-img: var(--darkglass-controls);
   --darkglass-background-select: hsla(0, 0%, 10%, 1);
   --darkglass-background-positive: hsla(160, 50%, 20%, 0.5);
   --darkglass-background-negative: hsla(300, 50%, 20%, 0.5);
-  
+
   --darkglass-background-lighter: hsla(0, 0%, 100%, 0.2);
-  
+
   --darkglass-background-tooltip: hsla(207, 40%, 70%, 1);
   --darkglass-background-button: var(--darkglass-background-attributes);
-  --darkglass-background-chat-button:hsla(47, 100%, 50%, 0.7);
+  --darkglass-background-chat-button: hsla(47, 100%, 50%, 0.7);
   --darkglass-background-weapon: hsla(0, 0%, 80%, 0.3);
-  
+
   --darkglass-tint-weapon-odd: hsla(230, 15%, 25%, 0.3);
   --darkglass-tint-weapon-even: hsla(230, 15%, 50%, 0.3);
   --darkglass-tint-weapon-hover: hsla(230, 40%, 50%, 0.4);
@@ -63,7 +65,7 @@
   --darkglass-color-button-border: hsla(187, 70%, 50%, 0.5);
   --darkglass-color-border-light: hsla(0, 0%, 100%, 0.3);
 
-  --darkglass-color-controls: hsla(200,50%, 30%, 0.9);
+  --darkglass-color-controls: hsla(200, 50%, 30%, 0.9);
   --darkglass-shadow-section: inset 0px 12px 12px -8px var(--darkglass-color-border);
   --darkglass-shadow-anarchy-button: 3px -3px 6px -3px var(--darkglass-color-button-button);
   --darkglass-shadow-anarchy-input: 3px -3px 6px -3px var(--darkglass-color-button-button);
@@ -92,19 +94,21 @@
   position: absolute;
   z-index: -1;
 }
+
 #gm-manager.style-darkglass header {
   border-bottom: 1px solid var(--darkglass-color-border-light);
   color: var(--darkglass-color-font);
 }
+
 #gm-manager.style-darkglass label {
   color: var(--darkglass-color-font);
 }
 
 #gm-manager.style-darkglass a:hover,
 #gm-manager.style-darkglass a:hover label,
-.style-darkglass :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover ,
+.style-darkglass :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover,
 .style-darkglass :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
-.style-darkglass :is(a.item-control, .attribute-box):hover ,
+.style-darkglass :is(a.item-control, .attribute-box):hover,
 .style-darkglass :is(a.item-control, .attribute-box):hover :is(i, label, a),
 .style-darkglass .item :is(a:hover, a.item-controls:hover i, a:hover label) {
   color: var(--darkglass-color-highlight);
@@ -120,15 +124,16 @@
   background: var(--darkglass-tint-npc);
 }
 
-.style-darkglass .vehicle-sheet .passport-img img{
+.style-darkglass .vehicle-sheet .passport-img img {
   background-color: var(--darkglass-background-item-img);
 }
-.style-darkglass .device-sheet .passport-img img{
+
+.style-darkglass .device-sheet .passport-img img {
   background-color: var(--darkglass-background-item-img);
 }
 
 
-.style-darkglass nav.sheet-tabs .sheet-tab:not(.active){
+.style-darkglass nav.sheet-tabs .sheet-tab:not(.active) {
   color: var(--darkglass-color-header);
 }
 
@@ -142,13 +147,14 @@
   border-top: 1px solid var(--darkglass-color-border);
   border-left: 1px solid var(--darkglass-color-border);
   border-right: 1px solid var(--darkglass-color-border);
-  box-shadow: var(--darkglass-shadow-section);  
+  box-shadow: var(--darkglass-shadow-section);
 }
 
 .style-darkglass :is(.section-group, .roll-dialog div.roll-parameters div.parameter-category) {
   border-top: 1px solid var(--darkglass-color-border);
-  box-shadow: var(--darkglass-shadow-section);  
+  box-shadow: var(--darkglass-shadow-section);
 }
+
 .style-darkglass .section-group h3,
 .style-darkglass .section-group h2 {
   border-bottom: none;
@@ -158,16 +164,19 @@
 .style-darkglass .attribute-box {
   background: var(--darkglass-background-attributes);
 }
+
 .style-darkglass .attribute-box :is(input, select, label, button) {
   color: var(--darkglass-color-attribute);
 }
+
 .style-darkglass .attribute-box input {
   background: var(--darkglass-background-lighter);
 }
-  
+
 .style-darkglass .attribute-box.secondary-attribute :is(input, select, label, button) {
   color: var(--darkglass-color-secondary-attribute);
 }
+
 .style-darkglass .attribute-box.secondary-attribute {
   background: var(--darkglass-background-secondary-attributes);
 }
@@ -187,37 +196,43 @@
   background-color: var(--transparent);
 }
 
-.style-darkglass .items-group div.item:is(.anarchy-skill,.anarchy-cyberdeck,.anarchy-shadowamp,.anarchy-quality) {
+.style-darkglass .items-group div.item:is(.anarchy-skill, .anarchy-cyberdeck, .anarchy-shadowamp, .anarchy-quality) {
   background: var(--darkglass-background-item-major);
   border-style: none;
 }
-.style-darkglass .items-group div.item:is(.anarchy-gear,.anarchy-contact) {
+
+.style-darkglass .items-group div.item:is(.anarchy-gear, .anarchy-contact) {
   background: var(--darkglass-background-item);
   border-style: none;
 }
 
 
 /* Weapons lists */
-.style-darkglass .weapon-list .weapon-header{
+.style-darkglass .weapon-list .weapon-header {
   background: var(--darkglass-background-item);
 }
+
 .style-darkglass .weapon-list .item:nth-child(even) {
   background: var(--darkglass-tint-weapon-even);
 }
+
 .style-darkglass .weapon-list .item:nth-child(odd) {
   background: var(--darkglass-tint-weapon-odd);
 }
+
 .style-darkglass .weapon-list .item:hover {
   background: var(--darkglass-tint-weapon-hover);
 }
 
-.style-darkglass div.anarchy-shortcut-button img ,
-.style-darkglass :is(div,li).item img {
+.style-darkglass div.anarchy-shortcut-button img,
+.style-darkglass :is(div, li).item img {
   background: var(--darkglass-background-item-img);
 }
+
 .style-darkglass .items-group div.item.anarchy-quality.negative {
   background: var(--darkglass-background-negative);
 }
+
 .style-darkglass .items-group div.item.anarchy-quality.positive {
   background: var(--darkglass-background-positive);
 }
@@ -225,6 +240,7 @@
 .style-darkglass :is(input, select, label, button) {
   color: var(--darkglass-color-font);
 }
+
 .style-darkglass .window-content select option {
   background: var(--darkglass-background-select);
   color: var(--darkglass-color-font);
@@ -236,10 +252,12 @@
   border: 1px outset var(--darkglass-color-button-border);
   box-shadow: var(--darkglass-shadow-anarchy-button);
 }
+
 .style-darkglass a.anarchy-button,
 .style-darkglass .anarchy-button label {
   color: var(--darkglass-color-font);
 }
+
 .style-darkglass .anarchy-button:active {
   border: 1px inset var(--darkglass-color-button-border);
   position: relative;
@@ -252,10 +270,12 @@
   border: 1px outset var(--darkglass-color-button-border);
   box-shadow: var(--darkglass-shadow-button);
 }
+
 .chat-message .style-darkglass a.anarchy-button,
 .chat-message .style-darkglass .anarchy-button label {
   color: var(--darkglass-color-button);
 }
+
 .chat-message .style-darkglass .anarchy-button:active {
   border: 1px inset var(--darkglass-color-button-border);
   position: relative;
@@ -267,29 +287,30 @@
   background: var(--darkglass-background-tooltip);
 }
 
-.style-darkglass a.favorite-control i{
+.style-darkglass a.favorite-control i {
   color: var(--darkglass-color-highlight);
 }
+
 .style-darkglass a.item-control i,
 .style-darkglass a.item-control img {
   color: var(--darkglass-color-controls);
 }
 
-.style-darkglass :is(
-  div.checkbar-root[data-monitor-code='edge'],
+.style-darkglass :is(div.checkbar-root[data-monitor-code='edge'],
   div.checkbar-root[data-monitor-code='credibility'],
-  div.checkbar-root[data-monitor-code='rumor']
-) a.click-checkbar-element[data-checked=true] i {
+  div.checkbar-root[data-monitor-code='rumor']) a.click-checkbar-element[data-checked=true] i {
   color: var(--darkglass-color-resource-checked);
 }
+
 .style-darkglass a.click-checkbar-element[data-checked=true] i {
   color: var(--darkglass-color-monitor-checked);
 }
+
 .style-darkglass a.click-checkbar-element[data-checked=false] i {
   color: var(--darkglass-color-unchecked);
 }
 
-.style-darkglass .roll-dialog div.roll-parameters div.parameter :is(select, input){
+.style-darkglass .roll-dialog div.roll-parameters div.parameter :is(select, input) {
   height: calc(100% - 2px);
   border: 1px inset var(--darkglass-color-border);
   box-shadow: var(--darkglass-shadow-anarchy-input);
