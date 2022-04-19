@@ -100,6 +100,15 @@ export class AnarchyBaseActor extends Actor {
     return value;
   }
 
+  getDamageMonitor(damageType) {
+    switch (damageType) {
+      case TEMPLATE.monitors.matrix:
+      case TEMPLATE.monitors.marks:
+        return damageType;
+    }
+    return undefined;
+  }
+
   async rollAttribute(attribute) {
     await RollDialog.rollAttribute(this, attribute);
   }

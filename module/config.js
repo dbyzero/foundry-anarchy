@@ -1,3 +1,4 @@
+
 export const ANARCHY = {
     settings: {
         defaultCssClass: {
@@ -123,6 +124,7 @@ export const ANARCHY = {
             noDefenseOnWeapon: 'ANARCHY.common.errors.noDefenseOnWeapon',
             noTokenActor: 'ANARCHY.common.errors.noTokenActor',
             cannotUseEdgeAnymore: 'ANARCHY.common.errors.cannotUseEdgeAnymore',
+            actorCannotReceiveDamage: 'ANARCHY.common.errors.actorCannotReceiveDamage',
         },
         sourceReference: 'ANARCHY.common.sourceReference',
         sourceReferenceHelp: 'ANARCHY.common.sourceReferenceHelp',

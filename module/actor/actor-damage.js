@@ -1,6 +1,7 @@
 import { Checkbars } from "../common/checkbars.js";
 import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME, TEMPLATE } from "../constants.js";
+import { ErrorManager } from "../error-manager.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 
 const DAMAGE_MODE = 'damage-mode'
@@ -59,7 +60,9 @@ export class ActorDamageManager {
     ActorDamageManager.damageModeMethod = damageModeMethods[damageModeCode];
   }
 
-  static async sufferDamage(actor, monitor, damage, success, avoidArmor, sourceActor) {
+  static async sufferDamage(actor, damageType, damage, success, avoidArmor, sourceActor) {
+    const monitor = actor.getDamageMonitor(damageType);
+    ErrorManager.checkMonitorForDamage(damageType, monitor, actor);
     const sufferDamageMethod = ActorDamageManager.damageModeMethod ?? ActorDamageManager.sufferDamageResistanceArmorMonitor;
     return await sufferDamageMethod(actor, monitor, damage, success, avoidArmor, sourceActor);
   }
@@ -146,10 +149,14 @@ export class ActorDamageManager {
       return;
     }
     let total = damage + success;
-    if (Checkbars.useArmor(monitor) && avoidArmor && total > 0) {
-      const armorReduction = await ActorDamageManager._applyArmorResistance(actor, total);
-      total -= armorReduction;
+    if (Checkbars.useArmor(monitor) && !avoidArmor && total > 0) {
+      const armorResistance = ActorDamageManager._computeArmorResistance(actor);
+      if (armorResistance > 0) {
+        await Checkbars.addCounter(actor, 'armor', 1);
+        total -= armorResistance;
+      }
     }
+    total -= ActorDamageManager._computeStrengthResistance(actor);
     total -= Checkbars.resistance(actor, monitor);
     if (total > 0) {
       await Checkbars.addCounter(actor, monitor, total);
@@ -157,14 +164,16 @@ export class ActorDamageManager {
     return total;
   }
 
-  static async _applyArmorResistance(actor, value) {
+  static _computeArmorResistance(actor) {
     const armorMax = Checkbars.max(actor, 'armor');
-    const armorCurrent = Checkbars.getCounterValue(actor, 'armor');
-    const armor = Math.max(0, armorMax - armorCurrent);
-    const armorReduction = Math.max(0, Math.min(Math.ceil(armor / 3), value));
-    if (armorReduction > 0) {
-      await Checkbars.addCounter(actor, 'armor', 1);
-    }
-    return armorReduction;
+    const armorDamage = Checkbars.getCounterValue(actor, 'armor');
+    const armor = Math.max(0, armorMax - armorDamage);
+    return Math.max(0, Math.ceil(armor / 3));
   }
+
+  static _computeStrengthResistance(actor, value) {
+    const strength = actor.getAttributeValue(TEMPLATE.attributes.strength);
+    return Math.max(0, Math.floor(strength / 4));
+  }
+
 }

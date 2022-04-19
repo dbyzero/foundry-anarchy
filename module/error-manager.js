@@ -52,4 +52,14 @@ export class ErrorManager {
       throw error;
     }
   }
+  static checkMonitorForDamage(damageType, monitor, actor) {
+    if (!monitor) {
+      const error = game.i18n.format(ANARCHY.common.errors.actorCannotReceiveDamage, {
+        actor: actor.name,
+        damageType: game.i18n.format('ANARCHY.actor.monitors.' + damageType)
+      });
+      ui.notifications.error(error);
+      throw error;
+    }
+  }
 }

@@ -170,12 +170,12 @@ export class Checkbars {
 
   static max(target, monitor) {
     const it = CHECKBARS[monitor]?.monitor(target);
-    return (it.max ?? 0) + (it.maxBonus ?? 0);
+    return (it?.max ?? 0) + (it?.maxBonus ?? 0);
   }
 
   static value(target, monitor) {
     const it = CHECKBARS[monitor]?.monitor(target);
-    return (it.value ?? 0);
+    return (it?.value ?? 0);
   }
 
   static resistance(target, monitor) {
@@ -250,7 +250,10 @@ export class Checkbars {
   }
 
   static _notifyOverflow(target, monitor, value, max) {
-    ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, { monitor: monitor, overflow: value - max }));
+    ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, {
+      monitor: game.i18n.format('ANARCHY.actor.monitors.' + monitor),
+      overflow: value - max
+    }));
   }
 
   static async _manageStunOverflow(target, value, max) {

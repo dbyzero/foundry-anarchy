@@ -66,6 +66,16 @@ export class CharacterActor extends AnarchyBaseActor {
     ];
   }
 
+  getDamageMonitor(damageType) {
+    switch (damageType) {
+      case TEMPLATE.monitors.stun:
+      case TEMPLATE.monitors.physical:
+        return damageType;
+    }
+    return super.getDamageMonitor(damageType);
+  }
+
+
   async createWord(wordType, added) {
     this._mutateWords(wordType, values => values.concat([{ word: added, audio: '' }]));
   }

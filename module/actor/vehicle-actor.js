@@ -29,4 +29,15 @@ export class VehicleActor extends AnarchyBaseActor {
     ];
   }
 
+  getDamageMonitor(damageType) {
+    switch (damageType) {
+      case TEMPLATE.monitors.physical:
+        return TEMPLATE.monitors.structure;
+      case TEMPLATE.monitors.stun:
+        return undefined;
+    }
+    return super.getDamageMonitor(damageType);
+  }
+
+
 }
