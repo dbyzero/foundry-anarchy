@@ -10,7 +10,7 @@
       <p>
         <hr>
 
-        {{#if attack.success}}
+        {{#if attack.isHit}}
           {{localize ANARCHY.chat.partiallyDefended success=attack.success}}
         {{else}}
           {{localize ANARCHY.chat.fullyDefended}}
@@ -26,7 +26,7 @@
       </div>
     {{/if}}
 
-    {{#if attack.success}}
+    {{#if attack.isHit}}
     <div class="anarchy-button apply-attack-damage click-apply-attack-damage">
       <a>
         <label>

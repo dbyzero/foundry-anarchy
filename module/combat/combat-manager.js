@@ -1,12 +1,12 @@
 import { ActorDamageManager } from "../actor/actor-damage.js";
-import { MESSAGE_DATA, PARENT_MESSAGE_ID, ChatManager } from "../chat/chat-manager.js";
+import { ChatManager } from "../chat/chat-manager.js";
 import { ANARCHY } from "../config.js";
-import { ANARCHY_SYSTEM, SYSTEM_SCOPE, TEMPLATES_PATH } from "../constants.js";
+import { ANARCHY_SYSTEM, TEMPLATES_PATH } from "../constants.js";
 import { RollManager } from "../roll/roll-manager.js";
 
 
 const TEMPLATE_INFORM_DEFENDER = `${TEMPLATES_PATH}/combat/inform-defender.hbs`;
-const TEMPLATE_NOTIFY_DEFENSE = `${TEMPLATES_PATH}/combat/notify-defense.hbs`;
+
 
 export class CombatManager {
 
@@ -47,6 +47,7 @@ export class CombatManager {
       attackRoll: RollManager.deflateAnarchyRoll(attackRoll),
       defenseRoll: RollManager.deflateAnarchyRoll(defenseRoll),
       attack: {
+        isHit: attackRoll.roll.total > 0 && attackRoll.roll.total >= (defenseRoll?.roll.total ?? 0),
         defense: attackRoll.weapon.getDefense(),
         success: Math.max(0, attackRoll.roll.total - (defenseRoll?.roll.total ?? 0)),
         damage: attackRoll.weapon.getDamage(),
