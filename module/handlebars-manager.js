@@ -132,7 +132,8 @@ export class HandlebarsManager {
     Handlebars.registerHelper('actorAttribute', (attribute, actor, item = undefined) => actor.getAttributeValue(attribute, item));
     Handlebars.registerHelper('localizeAttribute', Enums.localizeAttribute);
     Handlebars.registerHelper('iconFA', Icons.fontAwesome);
-    Handlebars.registerHelper('iconSrc', Icons.iconSrc);
+    Handlebars.registerHelper('iconSrc', Icons.iconSystemPath);
+    Handlebars.registerHelper('iconPath', Icons.iconPath);
     Handlebars.registerHelper('iconD6', Icons.iconD6);
     Handlebars.registerHelper('getActor', id => game.actors.get(id));
     Handlebars.registerHelper('actorHasFavorite', (actorId, options) => HandlebarsManager.checkHasFavorite(actorId, options));

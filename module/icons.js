@@ -1,4 +1,4 @@
-import { SYSTEM_PATH } from "./constants.js";
+import { STYLE_PATH } from './constants.js';
 
 const faClassD6 = [
   'fas fa-dice',
@@ -9,13 +9,19 @@ const faClassD6 = [
   'fas fa-dice-five',
   'fas fa-dice-six',
 ]
+
 export class Icons {
 
   static fontAwesome(faClass) {
     return `<i class="${faClass}"></i>`;
   }
-  static iconSrc(src, cssClasses) {
-    return `<img class="${cssClasses}" src="${SYSTEM_PATH}/${src}" />`;
+
+  static iconSystemPath(src, cssClasses) {
+    return Icons.iconPath(`${STYLE_PATH}/${src}`, cssClasses);
+  }
+
+  static iconPath(src, cssClasses) {
+    return `<img class="${cssClasses}" src="${src}" />`;
   }
 
   static iconD6(dice) {
@@ -24,4 +30,5 @@ export class Icons {
     }
     return Icons.fontAwesome(faClassD6[dice]);
   }
+
 }

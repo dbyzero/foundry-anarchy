@@ -52,6 +52,7 @@ export class ErrorManager {
       throw error;
     }
   }
+
   static checkMonitorForDamage(damageType, monitor, actor) {
     if (!monitor) {
       const error = game.i18n.format(ANARCHY.common.errors.actorCannotReceiveDamage, {

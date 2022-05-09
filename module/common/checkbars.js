@@ -75,8 +75,8 @@ export const CHECKBARS = {
         max: 6
       };
     },
-    iconChecked: Icons.iconSrc('style/anarchy-point.webp', 'checkbar-img'),
-    iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
+    iconChecked: Icons.iconSystemPath('anarchy-point.webp', 'checkbar-img'),
+    iconUnchecked: Icons.iconSystemPath('anarchy-point-off.webp', 'checkbar-img'),
     resource: COUNTERS.anarchy
   },
   plot: {
@@ -85,8 +85,8 @@ export const CHECKBARS = {
       const value = it.data.data.counters.anarchy.value;
       return { value: value, max: value + 1 };
     },
-    iconChecked: Icons.iconSrc('style/danger-point.webp', 'checkbar-img'),
-    iconUnchecked: Icons.iconSrc('style/danger-point-off.webp', 'checkbar-img'),
+    iconChecked: Icons.iconSystemPath('danger-point.webp', 'checkbar-img'),
+    iconUnchecked: Icons.iconSystemPath('danger-point-off.webp', 'checkbar-img'),
     resource: COUNTERS.anarchy
   },
   sceneAnarchy: {
@@ -95,8 +95,8 @@ export const CHECKBARS = {
       const value = it.data.data.counters.sceneAnarchy.value;
       return { value: value, max: 3 };
     },
-    iconChecked: Icons.iconSrc('style/anarchy-point-scene.webp', 'checkbar-img'),
-    iconUnchecked: Icons.iconSrc('style/anarchy-point-off.webp', 'checkbar-img'),
+    iconChecked: Icons.iconSystemPath('anarchy-point-scene.webp', 'checkbar-img'),
+    iconUnchecked: Icons.iconSystemPath('anarchy-point-off.webp', 'checkbar-img'),
     resource: COUNTERS.sceneAnarchy
   },
   edge: {
