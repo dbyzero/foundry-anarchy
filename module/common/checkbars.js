@@ -140,10 +140,6 @@ export const CHECKBARS = {
 export class Checkbars {
 
   static init() {
-    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => Checkbars.registerHandleBarHelpers());
-  }
-
-  static registerHandleBarHelpers() {
     Handlebars.registerHelper('iconCheckbar', Checkbars.iconCheckbar);
     Handlebars.registerHelper('iconCheckbarHit', Checkbars.iconHit);
   }

@@ -44,10 +44,12 @@ export class Skills {
   constructor() {
     this.skillSets = {};
     HooksManager.register(ANARCHY_HOOKS.PROVIDE_SKILL_SET);
-    Hooks.on(ANARCHY_HOOKS.PROVIDE_SKILL_SET, provide => {
-      provide('shadowrun-anarchy-en', 'Shadowrun Anarchy EN', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'en'), { lang: 'en' });
-      provide('shadowrun-anarchy-fr', 'Shadowrun Anarchy FR', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'fr'), { lang: 'fr' });
-    });
+    Hooks.on(ANARCHY_HOOKS.PROVIDE_SKILL_SET, provide =>
+      provide('shadowrun-anarchy-en', 'Shadowrun Anarchy EN', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'en'), { lang: 'en' })
+    );
+    Hooks.on(ANARCHY_HOOKS.PROVIDE_SKILL_SET, provide =>
+      provide('shadowrun-anarchy-fr', 'Shadowrun Anarchy FR', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'fr'), { lang: 'fr' })
+    );
     Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
     Hooks.once('ready', () => this.onReady());
   }

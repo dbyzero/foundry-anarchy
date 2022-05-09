@@ -36,7 +36,7 @@ export class Enums {
 
     Enums.sortedAttributeKeys = Object.keys(ANARCHY.attributes);
 
-    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => Enums.registerHandleBarHelpers());
+    Enums.registerHandleBarHelpers();
   }
 
   static registerHandleBarHelpers() {

@@ -100,14 +100,11 @@ const HBS_PARTIAL_TEMPLATES = [
 export class HandlebarsManager {
 
   constructor() {
-    HooksManager.register(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS);
-    Hooks.once(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => this.registerBasicHelpers());
     Hooks.once('ready', () => this.onReady());
   }
 
   async onReady() {
-    Hooks.callAll(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS);
-    Hooks.off(ANARCHY_HOOKS.GET_HANDLEPAR_HELPERS, () => { });
+    this.registerBasicHelpers();
     await loadTemplates(Misc.distinct(HBS_PARTIAL_TEMPLATES));
   }
 

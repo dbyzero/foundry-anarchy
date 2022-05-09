@@ -26,28 +26,10 @@ export const ANARCHY_HOOKS = {
    * Hook allowing to provide alternate skill sets for Anarchy hack modules
    */
   PROVIDE_SKILL_SET: 'anarchy-provideSkillSet',
-
   /**
    * Hook allowing to provide alternate way to apply damages for Anarchy hack modules
    */
-  PROVIDE_DAMAGE_MODE: 'anarchy-provideDamageMode',
-
-  /**
-   * Hook called to provide additional Handlebars partial templates
-   * TODO:
-   *  - refactor hook to provide a registration method instead of the list of partials?
-   *  - simply replace by loading the template where needed (in onReady hook)?
-   * @deprecated will be removed/refactored before v1.0.0
-   */
-  GET_HANDLEPAR_PARTIALS: 'anarchy-getHandlebarPartials',
-  /**
-   * Hook called to register Handlebars helpers
-   * TODO:
-   * - refactor hook to provide a registration method instead of the list of helpers?
-   * - simply replace by registering the helpers where needed (in onReady hook)?
-   * @deprecated will be removed/refactored before v1.0.0
-   */
-  GET_HANDLEPAR_HELPERS: 'anarchy-getHandlebarHelpers',
+  PROVIDE_DAMAGE_MODE: 'anarchy-provideDamageMode'
 }
 
 export class HooksManager {
