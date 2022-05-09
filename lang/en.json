@@ -9,12 +9,12 @@
   "ITEM": {
     "TypeContact": "Contact",
     "TypeCyberdeck": "Cyberdeck",
-    "TypeGear": "Equipement",
-    "TypeMetatype": "Métatype",
-    "TypeQuality": "Trait",
-    "TypeShadowamp": "Atout",
-    "TypeSkill": "Compétence",
-    "TypeWeapon": "Arme"
+    "TypeGear": "Gear",
+    "TypeMetatype": "Metatype",
+    "TypeQuality": "Quality",
+    "TypeShadowamp": "Shadowamp",
+    "TypeSkill": "Skill",
+    "TypeWeapon": "Weapon"
   },
   "ANARCHY": {
     "settings": {
