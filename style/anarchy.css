@@ -455,11 +455,18 @@ img.checkbar-img:active {
   flex-direction: row;
   padding: 1px;
 }
-.attribute-box .attribute-value {
+
+.attribute-box .attribute-label {
   align-items: center;
   text-align: center;
   font-size: large;
+}
+
+.attribute-box .attribute-value {
+  align-items: center;
+  text-align: center;
   border-style: none;
+  font-size: small;
   max-width: 2rem;
 }
 
