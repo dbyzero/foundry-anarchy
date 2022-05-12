@@ -81,7 +81,7 @@ export class WeaponItem extends AnarchyBaseItem {
       return undefined;
     }
     const damageAttributeValue = this.data.data.damageAttribute
-      ? (this.parent.data.data.attributes[this.data.data.damageAttribute]?.value ?? 0)
+      ? (this.parent.getAttributeValue(this.data.data.damageAttribute) ?? 0)
       : 0;
     return {
       value: WeaponItem.damageValue(
