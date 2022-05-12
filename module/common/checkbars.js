@@ -104,7 +104,7 @@ export const CHECKBARS = {
     monitor: it => {
       return {
         value: it.data.data.counters.edge.value,
-        max: it.data.data.attributes.edge.value
+        max: it.getAttributeValue(TEMPLATE.attributes.edge)
       };
     },
     iconChecked: Icons.fontAwesome('fas fa-star'),
