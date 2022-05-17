@@ -158,7 +158,7 @@
       "characterNPCSheet": "NPC sheet",
       "actorName": "Name",
       "genre": "Genre",
-      "noMetatype": "Pas de metatype, ajoutez le!",
+      "noMetatype": "No metatype, drag it!",
       "celebrity": "Celebrity",
       "tabs": {
         "main": "Character",

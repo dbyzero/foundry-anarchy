@@ -158,7 +158,7 @@
       "characterNPCSheet": "PNJ",
       "actorName": "Nom",
       "genre": "Genre",
-      "noMetatype": "No metatype, drag it!",
+      "noMetatype": "Pas de metatype, ajoutez le!",
       "celebrity": "Célébrité",
       "tabs": {
         "main": "Personnage",
