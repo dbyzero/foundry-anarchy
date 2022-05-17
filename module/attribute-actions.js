@@ -41,8 +41,8 @@ const ATTRIBUTE_ACTIONS = [
   action(ACTION.catch, ATTR.agility, ATTR.agility, Icons.fontAwesome('fas fa-baseball-ball'), [ACTOR.character]),
   action(ACTION.lift, ATTR.strength, ATTR.strength, Icons.fontAwesome('fas fa-dumbbell'), [ACTOR.character]),
 
-  action(ACTION.matrixDefense, ATTR.logic, undefined, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => !actor.hasCyberdeck()),
-  action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => actor.hasCyberdeck()),
+  action(ACTION.matrixDefense, ATTR.logic, undefined, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => !actor.getCyberdeck()),
+  action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => actor.getCyberdeck()),
   action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.ic]),
   action(ACTION.matrixDefense, ATTR.firewall, ATTR.system, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.device, ACTOR.vehicle]),
   action(ACTION.matrixDefense, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.sprite]),

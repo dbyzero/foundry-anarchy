@@ -1,15 +1,12 @@
 import { AttributeActions } from "../attribute-actions.js";
 import { Checkbars } from "../common/checkbars.js";
 import { ANARCHY } from "../config.js";
-import { BASE_MONITOR, SYSTEM_NAME, TEMPLATE } from "../constants.js";
+import { BASE_MONITOR, TEMPLATE } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
-import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { RollDialog } from "../roll/roll-dialog.js";
-import { ActorDamageManager } from "./actor-damage.js";
-
 
 export class AnarchyBaseActor extends Actor {
 
@@ -49,6 +46,19 @@ export class AnarchyBaseActor extends Actor {
   prepareData() {
     super.prepareData();
     this.cleanupFavorites();
+  }
+
+  getMatrixMonitor() {
+    if (this.canReceiveMarks()) {
+      return this.data.data.monitors.matrix;
+    }
+    return {
+      canMark: true,
+      marks: [],
+      value: 0,
+      max: 0,
+      resistance: 0
+    };
   }
 
   _getMonitorMax(attribute) {
@@ -95,6 +105,9 @@ export class AnarchyBaseActor extends Actor {
       else if (!item) {
         const candidateItems = this.items.filter(item => item.isActive() && item.getAttributes().includes(attribute));
         value = Math.max(candidateItems.map(it => it.getAttributeValue(attribute) ?? 0));
+      }
+      else if (this.isEmerged() && attribute == TEMPLATE.attributes.firewall) {
+        return this.getAttributeValue(TEMPLATE.attributes.logic);
       }
       else {
         value = item?.getAttributeValue(attribute) ?? 0;
@@ -164,12 +177,16 @@ export class AnarchyBaseActor extends Actor {
     return false;
   }
 
-  hasCyberdeck() {
-    return false;
+  getCyberdeck() {
+    return undefined;
   }
 
   canReceiveMarks() {
     return this.data.data.monitors?.matrix?.canMark;
+  }
+
+  isEmerged() {
+    return false;
   }
 
   async switchActorMarksCheck(index, checked, sourceActorId) {

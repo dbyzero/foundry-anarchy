@@ -18,6 +18,7 @@ export class SpriteActor extends AnarchyBaseActor {
 
   prepareDerivedData() {
     this.data.data.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.logic);
+    this.data.data.monitors.matrix.canMark = false;
     super.prepareDerivedData();
   }
 
@@ -26,6 +27,10 @@ export class SpriteActor extends AnarchyBaseActor {
       TEMPLATE.attributes.logic,
       TEMPLATE.attributes.edge,
     ];
+  }
+
+  isEmerged() {
+    return true;
   }
 
 }

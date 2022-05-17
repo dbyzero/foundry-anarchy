@@ -13,4 +13,7 @@ export class CyberdeckItem extends AnarchyBaseItem {
       TEMPLATE.attributes.firewall
     ];
   }
+  async setMatrixMonitorValue(value) {
+    await this.update({ 'data.monitors.matrix.value': value });
+  }
 }

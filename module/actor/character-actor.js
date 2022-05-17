@@ -66,6 +66,27 @@ export class CharacterActor extends AnarchyBaseActor {
     ];
   }
 
+  getMatrixMonitor() {
+    const cyberdeck = this.getCyberdeck();
+    if (cyberdeck) {
+      return cyberdeck.data.data.monitors.matrix;
+    }
+    if (this.isEmerged()) {
+      return this.data.data.monitors.stun;
+    }
+    return super.getMatrixMonitor();
+  }
+
+  async setMatrixMonitorValue(value) {
+    const cyberdeck = this.getCyberdeck();
+    if (cyberdeck) {
+      return await cyberdeck.setMatrixMonitorValue(value);
+    }
+    if (this.isEmerged()) {
+      return Checkbars.setCheckbar(this, TEMPLATE.monitors.stun, value);
+    }
+  }
+
   getDamageMonitor(damageType) {
     switch (damageType) {
       case TEMPLATE.monitors.stun:
@@ -186,11 +207,19 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   canSetMarks() {
-    return this.data.data.capacity == TEMPLATE.capacities.emerged || this.hasCyberdeck();
+    return this.isEmerged() || this.getCyberdeck();
   }
 
-  hasCyberdeck() {
-    return this.items.find(it => it.isCyberdeck());
+  canReceiveMarks() {
+    return false;
+  }
+
+  isEmerged() {
+    return this.data.data.capacity == TEMPLATE.capacities.emerged;
+  }
+
+  getCyberdeck() {
+    return this.items.find(it => it.isActive() && it.isCyberdeck())
   }
 
   async rollDrain(drain) {

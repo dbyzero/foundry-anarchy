@@ -2,7 +2,6 @@ import { ErrorManager } from "../error-manager.js";
 import { ANARCHY } from "../config.js";
 import { AnarchyUsers } from "../users.js";
 import { Icons } from "../icons.js";
-import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { TEMPLATE } from "../constants.js";
 
 const MONITORS = ANARCHY.actor.monitors;
@@ -45,7 +44,7 @@ export const CHECKBARS = {
   },
   matrix: {
     path: 'data.monitors.matrix.value',
-    monitor: it => it.data.data.monitors.matrix,
+    monitor: it => it.getMatrixMonitor(),
     iconChecked: Icons.fontAwesome('fas fa-laptop-medical'),
     iconUnchecked: Icons.fontAwesome('fas fa-laptop'),
     iconHit: Icons.fontAwesome('fas fa-laptop-code'),
@@ -199,6 +198,13 @@ export class Checkbars {
     switch (monitor) {
       case TEMPLATE.monitors.marks:
         return await Checkbars.setActorMarks(target, value, sourceActorId);
+      case TEMPLATE.monitors.matrix:
+        if (target.isCharacter()) {
+          return await target.setMatrixMonitorValue(value);
+        }
+        break;
+      case TEMPLATE.monitors.matrix:
+        return await Checkbars.setActorMatrix(target, value);
       case TEMPLATE.monitors.convergence:
         return await Checkbars.setActorConvergence(target, value);
       case TEMPLATE.monitors.anarchy:
@@ -226,8 +232,11 @@ export class Checkbars {
       return;
     }
     const checkbar = CHECKBARS[monitor];
-    if (checkbar && checkbar.path) {
+    if (checkbar.path) {
       const max = Checkbars.max(target, monitor);
+      if (max <= 0) {
+        return;
+      }
       await Checkbars._manageOverflow(target, monitor, value, max);
       value = Math.min(value, max);
       ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
