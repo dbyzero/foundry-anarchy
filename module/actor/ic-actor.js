@@ -21,6 +21,8 @@ export class ICActor extends AnarchyBaseActor {
     super.prepareDerivedData();
   }
 
+  hasMatrixMonitor() { return true; }
+
   getAttributes() {
     return [
       TEMPLATE.attributes.firewall,

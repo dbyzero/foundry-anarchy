@@ -20,6 +20,8 @@ export class VehicleActor extends AnarchyBaseActor {
     super.prepareDerivedData();
   }
 
+  hasMatrixMonitor() { return true; }
+
   getAttributes() {
     return [
       TEMPLATE.attributes.autopilot,

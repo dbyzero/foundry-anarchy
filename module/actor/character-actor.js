@@ -77,6 +77,8 @@ export class CharacterActor extends AnarchyBaseActor {
     return super.getMatrixMonitor();
   }
 
+  hasMatrixMonitor() { return true; }
+
   async setMatrixMonitorValue(value) {
     const cyberdeck = this.getCyberdeck();
     if (cyberdeck) {

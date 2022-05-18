@@ -16,4 +16,6 @@ export class CyberdeckItem extends AnarchyBaseItem {
   async setMatrixMonitorValue(value) {
     await this.update({ 'data.monitors.matrix.value': value });
   }
+
+  hasMatrixMonitor() { return true; }
 }

@@ -42,6 +42,7 @@ export class AnarchyBaseActor extends Actor {
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return !this.hasPlayerOwner; }
+  hasMatrixMonitor() { return false; }
 
   prepareData() {
     super.prepareData();
@@ -49,7 +50,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getMatrixMonitor() {
-    if (this.canReceiveMarks()) {
+    if (this.hasMatrixMonitor()) {
       return this.data.data.monitors.matrix;
     }
     return {
@@ -59,6 +60,10 @@ export class AnarchyBaseActor extends Actor {
       max: 0,
       resistance: 0
     };
+  }
+
+  async setMatrixMonitorValue(value) {
+    await this.update({ 'data.monitors.matrix.value': value });
   }
 
   _getMonitorMax(attribute) {

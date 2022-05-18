@@ -47,6 +47,7 @@ export class AnarchyBaseItem extends Item {
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return false; }
+  hasMatrixMonitor() { return false; }
 
   isMetatype() { return this.type == TEMPLATE.itemType.metatype; }
   isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }

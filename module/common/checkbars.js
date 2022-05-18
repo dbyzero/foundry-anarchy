@@ -199,7 +199,7 @@ export class Checkbars {
       case TEMPLATE.monitors.marks:
         return await Checkbars.setActorMarks(target, value, sourceActorId);
       case TEMPLATE.monitors.matrix:
-        if (target.isCharacter()) {
+        if (target.hasMatrixMonitor()) {
           return await target.setMatrixMonitorValue(value);
         }
         break;

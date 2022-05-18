@@ -22,6 +22,8 @@ export class SpriteActor extends AnarchyBaseActor {
     super.prepareDerivedData();
   }
 
+  hasMatrixMonitor() { return true; }
+
   getAttributes() {
     return [
       TEMPLATE.attributes.logic,
