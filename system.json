@@ -1,22 +1,27 @@
 {
-  "name": "anarchy",
+  "id": "anarchy",
+  "version": "10.0.0",
   "title": "Anarchy",
   "description": "Shadowrun Anarchy RPG, and hacks, for FoundryVTT",
-  "author": "VincentVK",
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10
+  },
   "authors": [
     {
-      "name": "VincentVK"
+      "name": "Vincent VK",
+      "email": "vincent.vandeme@gmail.com",
+      "discord": "VincentVk#9373"
     }
   ],
   "url": "https://gitlab.com/vincent.vandeme/anarchy",
   "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
+  "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/master/system.json",
+  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/10.0.0/anarchy-10.0.0.zip",
   "flags": {
     "allowBugReporter": true
   },
-  "license": "LICENSE.txt",
-  "version": "1.0.11",
-  "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "9",
+  "license": "LICENSE.md",
   "templateVersion": 5,
   "scripts": [],
   "esmodules": [
@@ -67,8 +72,6 @@
   "system": [],
   "dependencies": [],
   "socket": true,
-  "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/master/system.json",
-  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/master/anarchy-master.zip",
   "protected": false,
   "gridDistance": 1,
   "gridUnits": "m",

@@ -1,7 +1,7 @@
   <div class="form-group">
     <label for="sourceReference">{{localize 'ANARCHY.common.sourceReference'}} </label>
     <input class="item-field-value" type="text" data-dtype="String"
-        name="data.sourceReference" value="{{data.data.sourceReference}}" 
+        name="system.sourceReference" value="{{system.sourceReference}}" 
         placeholder="{{localize 'ANARCHY.common.sourceReferenceHelp'}}"
     />
   </div>
@@ -10,9 +10,9 @@
       <span><label>{{localize 'ANARCHY.common.description'}}</label></span>
       <div class="editor">
         {{editor
-          target="data.description"
+          system.description
+          target="system.description"
           owner=options.owner
-          content=data.data.description
           button=true
           editable=options.editable}}
       </div>
@@ -25,9 +25,9 @@
       <span><label>{{localize 'ANARCHY.common.gmnotes'}}</label></span>
       <div class="editor">
         {{editor
-          target="data.gmnotes"
+          system.gmnotes
+          target="system.gmnotes"
           owner=options.owner
-          content=data.data.gmnotes
           button=true
           editable=options.editable}}
       </div>

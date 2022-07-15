@@ -4,13 +4,13 @@
   </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='physical'
-    value=data.data.monitors.physical.value
-    max=(sum data.data.monitors.physical.max data.data.monitors.physical.maxBonus)
+    value=system.monitors.physical.value
+    max=(sum system.monitors.physical.max system.monitors.physical.maxBonus)
     rowlength=3
     adjust=true
   }}
   <label class="resitance-label">
     {{localize ANARCHY.actor.monitors.resistance}}:
-    {{data.data.monitors.physical.resistanceBonus}}
+    {{system.monitors.physical.resistanceBonus}}
   </label>
 </div>

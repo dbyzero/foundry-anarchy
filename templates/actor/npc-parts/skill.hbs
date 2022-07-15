@@ -1,5 +1,5 @@
-<div class="item anarchy-skill {{#if data.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
-  {{#if (eq data.attribute 'knowledge')}}
+<div class="item anarchy-skill {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
+  {{#if (eq system.attribute 'knowledge')}}
   <span title="{{localize 'ANARCHY.attributes.knowledge'}}">
     {{{iconFA 'fas fa-user-graduate'}}}
     <label>{{name}}</label>
@@ -11,10 +11,10 @@
           {{name}}: {{skillValue @root.actor _id}}
         </a>
       </span>
-      {{#if data.specialization}}
+      {{#if system.specialization}}
         <span class="flexrow">
-          <a class="click-skill-roll" data-item-specialization="{{data.specialization}}">(
-            <label>{{data.specialization}}</label>
+          <a class="click-skill-roll" data-item-specialization="{{system.specialization}}">(
+            <label>{{system.specialization}}</label>
             <label>{{specializationValue @root.actor _id}}</label>
           )</a>
         </span>

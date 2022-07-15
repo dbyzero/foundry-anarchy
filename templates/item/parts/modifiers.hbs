@@ -12,7 +12,7 @@
     <th class="modifier-column">{{localize 'ANARCHY.modifier.column.condition'}}</th>
   </tr>
 
-  {{#each data.data.modifiers as |modifier|}}
+  {{#each system.modifiers as |modifier|}}
   {{> "systems/anarchy/templates/item/parts/modifier.hbs" modifier}}
   {{/each}}
 </table>

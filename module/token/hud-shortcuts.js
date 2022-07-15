@@ -7,7 +7,7 @@ const TEMPLATE_HUD_SHORTCUTS = `${TEMPLATES_PATH}/token/hud-shortcuts.hbs`;
 export class HUDShortcuts {
 
   constructor() {
-    Hooks.on('renderTokenHUD', async (app, html, data) => await this.addExtensionHud(app, html, data._id));
+    Hooks.on('renderTokenHUD', async (tokenHUD, html, tokenHUDData) => await this.addExtensionHud(tokenHUD, html, tokenHUDData._id));
     Hooks.once('ready', () => this.onReady());
   }
 

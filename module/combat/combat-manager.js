@@ -10,20 +10,20 @@ const TEMPLATE_INFORM_DEFENDER = `${TEMPLATES_PATH}/combat/inform-defender.hbs`;
 
 export class CombatManager {
 
-  async manageCombat(rollData) {
+  async manageCombat(roll) {
 
-    switch (rollData.mode) {
+    switch (roll.mode) {
       case ANARCHY_SYSTEM.rollType.weapon:
-        if (!rollData.targeting || rollData.roll.total == 0) {
+        if (!roll.targeting || roll.roll.total == 0) {
           return;
         }
-        rollData.targeting.targetedTokenIds?.forEach(async defenderTokenId =>
-          await this.onAttack(defenderTokenId, rollData)
+        roll.targeting.targetedTokenIds?.forEach(async defenderTokenId =>
+          await this.onAttack(defenderTokenId, roll)
         );
         break;
       case ANARCHY_SYSTEM.rollType.defense:
         // notify attacker about the defense
-        await this.onDefense(rollData);
+        await this.onDefense(roll);
         break;
 
     }
@@ -41,7 +41,7 @@ export class CombatManager {
     const attackerTokenId = attackRoll.targeting?.attackerTokenId;
     const defender = this.getTokenActor(defenderTokenId)
 
-    const attackData = {
+    const attack = {
       attackerTokenId: attackerTokenId,
       defenderTokenId: defenderTokenId,
       attackRoll: RollManager.deflateAnarchyRoll(attackRoll),
@@ -58,56 +58,56 @@ export class CombatManager {
       {
         ANARCHY: ANARCHY,
         options: { classes: [game.system.anarchy.styles.selectCssClass()] },
-        attacker: this.getTokenActor(attackData.attackerTokenId),
+        attacker: this.getTokenActor(attack.attackerTokenId),
         defender: defender,
-        weapon: attackData.attackRoll.weapon
+        weapon: attack.attackRoll.weapon
       },
-      attackData));
+      attack));
     const notifyMessage = await ChatMessage.create({
       user: game.user.id,
       whisper: defender.getAllowedUserIds(),
       content: html
     });
-    attackData.choiceChatMessageId = notifyMessage.id;
-    await ChatManager.setMessageData(notifyMessage, attackData);
+    attack.choiceChatMessageId = notifyMessage.id;
+    await ChatManager.setMessageData(notifyMessage, attack);
     // parent message is the defense, or else the attack: the last roll made.
     // When defense is made, the attack can't be touched anymore
     await ChatManager.setParentMessageId(notifyMessage,
-      attackData.defenseRoll?.chatMessageId ?? attackData.attackRoll.chatMessageId);
+      attack.defenseRoll?.chatMessageId ?? attack.attackRoll.chatMessageId);
   }
 
-  async onDefense(rollData) {
-    this._preventObsoleteChoices(rollData);
+  async onDefense(roll) {
+    this._preventObsoleteChoices(roll);
 
-    const attackRoll = RollManager.inflateAnarchyRoll(rollData.attackRoll);
-    await this.displayDefenseChoice(rollData.tokenId, attackRoll, rollData);
+    const attackRoll = RollManager.inflateAnarchyRoll(roll.attackRoll);
+    await this.displayDefenseChoice(roll.tokenId, attackRoll, roll);
   }
 
-  _preventObsoleteChoices(rollData) {
-    const defenseChoiceChatMessage = game.messages.get(rollData.choiceChatMessageId);
+  _preventObsoleteChoices(roll) {
+    const defenseChoiceChatMessage = game.messages.get(roll.choiceChatMessageId);
     if (defenseChoiceChatMessage) {
       // prevent edge on attack, remove the previous defense message
       const attackChatMessage = ChatManager.getParentMessage(defenseChoiceChatMessage);
       ChatManager.setMessageCanUseEdge(attackChatMessage, false);
-      ChatManager.removeChatMessage(rollData.choiceChatMessageId);
+      ChatManager.removeChatMessage(roll.choiceChatMessageId);
     }
   }
 
-  async onClickDefendAttack(attackData) {
-    const defender = this.getTokenActor(attackData.defenderTokenId);
-    await defender.rollDefense(attackData);
+  async onClickDefendAttack(attack) {
+    const defender = this.getTokenActor(attack.defenderTokenId);
+    await defender.rollDefense(attack);
   }
 
-  async onClickApplyAttackDamage(attackData) {
-    const attacker = this.getTokenActor(attackData.attackerTokenId);
-    const defender = this.getTokenActor(attackData.defenderTokenId);
+  async onClickApplyAttackDamage(attack) {
+    const attacker = this.getTokenActor(attack.attackerTokenId);
+    const defender = this.getTokenActor(attack.defenderTokenId);
     await ActorDamageManager.sufferDamage(defender,
-      attackData.attack.damage.monitor,
-      attackData.attack.damage.value,
-      attackData.attack.success,
-      attackData.attack.damage.noArmor,
+      attack.attack.damage.monitor,
+      attack.attack.damage.value,
+      attack.attack.success,
+      attack.attack.damage.noArmor,
       attacker);
-    this._preventObsoleteChoices(attackData);
+    this._preventObsoleteChoices(attack);
   }
 
   getTokenActor(tokenId) {

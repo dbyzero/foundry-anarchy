@@ -1,8 +1,8 @@
- <div class="define-item-type item anarchy-shadowamp {{#if data.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="shadowamp" draggable="true">
+ <div class="define-item-type item anarchy-shadowamp {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="shadowamp" draggable="true">
   <div class="item-content">
     {{name}}
-    ({{localize 'ANARCHY.item.shadowamp.levelShort'}} {{data.level}})
-    {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
+    ({{localize 'ANARCHY.item.shadowamp.levelShort'}} {{system.level}})
+    {{>'systems/anarchy/templates/actor/character/description.hbs' description=system.description}}
   </div>
   <div class="item-controls">
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}

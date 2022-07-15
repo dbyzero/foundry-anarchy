@@ -33,7 +33,7 @@ export class GMConvergence {
     this.convergences = game.settings.get(SYSTEM_NAME, CONVERGENCES)
       .filter(it => game.actors.get(it.actorId));
     await RemoteCall.register(ROLL_CONVERGENCE, {
-      callback: data => this.rollConvergence(data.actorId, data.convergence),
+      callback: it => this.rollConvergence(it.actorId, it.convergence),
       condition: user => user.isGM
     });
   }

@@ -37,9 +37,9 @@ class _0_3_1_MigrationMoveWordsInObjects extends Migration {
   async migrate() {
     game.actors.forEach(async actor => {
       await actor.update({
-        ['data.keywords']: this._createWordObject(actor.data.data.keywords),
-        ['data.cues']: this._createWordObject(actor.data.data.cues),
-        ['data.dispositions']: this._createWordObject(actor.data.data.dispositions),
+        ['system.keywords']: this._createWordObject(actor.system.keywords),
+        ['system.cues']: this._createWordObject(actor.system.cues),
+        ['system.dispositions']: this._createWordObject(actor.system.dispositions),
       });
     });
   }
@@ -55,12 +55,12 @@ class _0_3_8_MigrateWeaponDamage extends Migration {
 
   async migrate() {
 
-    const isStrengthDamageItem = it => it.type == 'weapon' && it.data.data.strength;
+    const isStrengthDamageItem = it => it.type == 'weapon' && it.system.strength;
     const fixItemDamage = it => {
       return {
         _id: it.id,
-        'data.damageAttribute': TEMPLATE.attributes.strength,
-        'data.strength': undefined,
+        'system.damageAttribute': TEMPLATE.attributes.strength,
+        'system.strength': undefined,
       }
     };
 
@@ -75,12 +75,12 @@ class _0_3_14_MigrateSkillDrainConvergence extends Migration {
 
   async migrate() {
     const withDrain = ANARCHY_SKILLS.filter(it => it.hasDrain).map(it => it.code);
-    const hasDrain = it => it.type == 'skill' && withDrain.includes(it.data.data.code);
-    const setDrain = it => { return { _id: it.id, 'data.hasDrain': true } };
+    const hasDrain = it => it.type == 'skill' && withDrain.includes(it.system.code);
+    const setDrain = it => { return { _id: it.id, 'system.hasDrain': true } };
 
     const withConvergence = ANARCHY_SKILLS.filter(it => it.hasConvergence).map(it => it.code);
-    const hasConvergence = it => it.type == 'skill' && withConvergence.includes(it.data.data.code);
-    const setConvergence = it => { return { _id: it.id, 'data.hasConvergence': true } };
+    const hasConvergence = it => it.type == 'skill' && withConvergence.includes(it.system.code);
+    const setConvergence = it => { return { _id: it.id, 'system.hasConvergence': true } };
 
     const computeUpdates = items => items.filter(hasDrain).map(setDrain)
       .concat(items.filter(hasConvergence).map(setConvergence))
@@ -95,11 +95,11 @@ class _0_4_0_SelectWeaponDefense extends Migration {
 
   async migrate() {
     const isWeapon = it => it.type == 'weapon';
-    const findWeaponSkillWithDefense = weapon => ANARCHY_SKILLS.find(it => it.defense && it.code == weapon.data.data.skill);
+    const findWeaponSkillWithDefense = weapon => ANARCHY_SKILLS.find(it => it.defense && it.code == weapon.system.skill);
     const setDefense = weapon => {
       return {
         _id: weapon.id,
-        'data.defense': findWeaponSkillWithDefense(weapon)?.defense
+        'system.defense': findWeaponSkillWithDefense(weapon)?.defense
       }
     };
 
@@ -120,10 +120,10 @@ class _0_5_0_MigrationBaseResistanceIsZero extends Migration {
 
   _resistanceUpdates(actor) {
     const updates = {};
-    Object.entries(actor.data.data.monitors).forEach(
+    Object.entries(actor.system.monitors).forEach(
       kv => {
         if (kv[1].resistance) {
-          updates[`data.monitors.${kv[0]}.resistance`] = 0;
+          updates[`system.monitors.${kv[0]}.resistance`] = 0;
         }
       });
     return updates;
@@ -136,8 +136,8 @@ class _0_6_0_MigrateSkillSocial extends Migration {
 
   async migrate() {
     const socialSkills = ANARCHY_SKILLS.filter(it => it.isSocial).map(it => it.code);
-    const isSocial = it => it.type == 'skill' && socialSkills.includes(it.data.data.code);
-    const setSocial = it => { return { _id: it.id, 'data.isSocial': true } };
+    const isSocial = it => it.type == 'skill' && socialSkills.includes(it.system.code);
+    const setSocial = it => { return { _id: it.id, 'system.isSocial': true } };
     await this.applyItemsUpdates(items => items.filter(isSocial).map(setSocial));
   }
 }
@@ -166,7 +166,7 @@ export class Migrations {
 
   migrate() {
     const currentVersion = game.settings.get(SYSTEM_NAME, "systemMigrationVersion");
-    if (isNewerVersion(game.system.data.version, currentVersion)) {
+    if (isNewerVersion(game.system.version, currentVersion)) {
       let migrations = [];
       Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, (...addedMigrations) =>
         migrations = migrations.concat(addedMigrations.filter(m => isNewerVersion(m.version, currentVersion)))
@@ -180,13 +180,13 @@ export class Migrations {
           ui.notifications.info(`Executing migration ${m.code}: version ${currentVersion} is lower than ${m.version}`);
           await m.migrate();
         });
-        ui.notifications.info(`Migrations done, version will change to ${game.system.data.version}`);
+        ui.notifications.info(`Migrations done, version will change to ${game.system.version}`);
       }
       else {
-        console.log(LOG_HEAD + `No migration needeed, version will change to ${game.system.data.version}`)
+        console.log(LOG_HEAD + `No migration needeed, version will change to ${game.system.version}`)
       }
 
-      game.settings.set(SYSTEM_NAME, "systemMigrationVersion", game.system.data.version);
+      game.settings.set(SYSTEM_NAME, "systemMigrationVersion", game.system.version);
     }
     else {
       console.log(LOG_HEAD + `No system version changed`);

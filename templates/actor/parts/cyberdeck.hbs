@@ -1,15 +1,15 @@
- <div class="define-item-type item anarchy-cyberdeck {{#if data.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="cyberdeck">
+ <div class="define-item-type item anarchy-cyberdeck {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="cyberdeck">
   <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
   <div class="item-content">
     <div class="cyberdeck-details">
       <label>{{name}}</label>
-      <label>{{localize 'ANARCHY.item.cyberdeck.programs'}} {{data.programs}}</label>
-      <label>{{localize 'ANARCHY.item.cyberdeck.processing'}} {{data.processing}}</label>
+      <label>{{localize 'ANARCHY.item.cyberdeck.programs'}} {{system.programs}}</label>
+      <label>{{localize 'ANARCHY.item.cyberdeck.processing'}} {{system.processing}}</label>
     </div>
-    {{> "systems/anarchy/templates/actor/parts/item-attribute.hbs" attribute=data.attributes.firewall key='firewall'}}
+    {{> "systems/anarchy/templates/actor/parts/item-attribute.hbs" attribute=system.attributes.firewall key='firewall'}}
     {{> 'systems/anarchy/templates/actor/parts/matrix-cyberdeck.hbs'}}
     <label>
-      {{>'systems/anarchy/templates/actor/character/description.hbs' description=data.description}}
+      {{>'systems/anarchy/templates/actor/character/description.hbs' description=system.description}}
     </label>
   </div>
   <div class="item-controls">

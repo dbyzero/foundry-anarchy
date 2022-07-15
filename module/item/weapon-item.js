@@ -69,30 +69,30 @@ export class WeaponItem extends AnarchyBaseItem {
   }
 
   isWeaponSkill(item) {
-    return item.type == 'skill' && item.data.data.code === this.data.data.skill;
+    return item.type == 'skill' && item.system.code === this.system.skill;
   }
 
   getDefense() {
-    return this.data.data.defense;
+    return this.system.defense;
   }
 
   getDamage() {
     if (!this.parent) {
       return undefined;
     }
-    const damageAttributeValue = this.data.data.damageAttribute
-      ? (this.parent.getAttributeValue(this.data.data.damageAttribute) ?? 0)
+    const damageAttributeValue = this.system.damageAttribute
+      ? (this.parent.getAttributeValue(this.system.damageAttribute) ?? 0)
       : 0;
     return {
       value: WeaponItem.damageValue(
-        this.data.data.monitor,
-        this.data.data.damage,
-        this.data.data.damageAttribute,
+        this.system.monitor,
+        this.system.damage,
+        this.system.damageAttribute,
         damageAttributeValue
       ),
-      monitor: this.data.data.monitor,
-      noArmor: this.data.data.noArmor,
-      armorMode: WeaponItem.armorMode(this.data.data.monitor, this.data.data.noArmor)
+      monitor: this.system.monitor,
+      noArmor: this.system.noArmor,
+      armorMode: WeaponItem.armorMode(this.system.monitor, this.system.noArmor)
     }
   }
 
@@ -115,9 +115,9 @@ export class WeaponItem extends AnarchyBaseItem {
 
   getDamageCode() {
     return WeaponItem.damageCode(
-      this.data.data.monitor,
-      this.data.data.damage,
-      this.data.data.damageAttribute,
+      this.system.monitor,
+      this.system.damage,
+      this.system.damageAttribute,
     );
   }
 
@@ -144,17 +144,17 @@ export class WeaponItem extends AnarchyBaseItem {
     let ranges = [
       this._getRange('short'),
     ]
-    if (this.data.data.range.max != 'short') {
+    if (this.system.range.max != 'short') {
       ranges.push(this._getRange('medium'));
     }
-    if (this.data.data.range.max == 'long') {
+    if (this.system.range.max == 'long') {
       ranges.push(this._getRange('long'));
     }
     return ranges
   }
 
   _getRange(range) {
-    return { value: this.data.data.range[range], labelkey: Enums.getFromList(Enums.getEnums().ranges, range) };
+    return { value: this.system.range[range], labelkey: Enums.getFromList(Enums.getEnums().ranges, range) };
   }
 
   prepareShortcut() {
@@ -180,7 +180,7 @@ export class WeaponItem extends AnarchyBaseItem {
   }
 
   checkWeaponTargets(targets) {
-    const area = this.data.data.area;
+    const area = this.system.area;
     const areaTargets = AREA_TARGETS[area] ?? {};
     if (areaTargets.targets && targets.length > areaTargets.targets) {
       const error = game.i18n.format(ANARCHY.common.errors.maxTargetsExceedeed, {
@@ -204,9 +204,9 @@ export class WeaponItem extends AnarchyBaseItem {
   }
 
   getArea() {
-    if (this.data.data.area == '') {
+    if (this.system.area == '') {
       return TEMPLATE.area.none;
     }
-    return this.data.data.area ?? TEMPLATE.area.none;
+    return this.system.area ?? TEMPLATE.area.none;
   }
 }

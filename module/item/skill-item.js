@@ -8,18 +8,18 @@ export class SkillItem extends AnarchyBaseItem {
   }
 
   isKnowledgeSkill() {
-    return this.data.data.attribute == 'knowledge';
+    return this.system.attribute == 'knowledge';
   }
 
   isGeneralSkill() {
-    return this.data.data.attribute != 'knowledge';
+    return this.system.attribute != 'knowledge';
   }
 
   prepareShortcut() {
     return {
       img: this.img,
-      label: this.data.data.specialization ? `${this.name}: ${this.data.data.specialization}` : this.name,
-      callback: token => token.actor.rollSkill(this, this.data.data.specialization),
+      label: this.system.specialization ? `${this.name}: ${this.system.specialization}` : this.name,
+      callback: token => token.actor.rollSkill(this, this.system.specialization),
     };
   }
 

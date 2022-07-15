@@ -9,7 +9,7 @@ export class AnarchyActorSheet extends ActorSheet {
 
 
   get template() {
-    return `${TEMPLATES_PATH}/actor/${this.actor.data.type}.hbs`;
+    return `${TEMPLATES_PATH}/actor/${this.actor.type}.hbs`;
   }
 
   /** @override */
@@ -35,10 +35,11 @@ export class AnarchyActorSheet extends ActorSheet {
       ENUMS: mergeObject({ attributeAction: this.actor.getAttributeActions() }, Enums.getEnums()),
       ANARCHY: ANARCHY
     });
-    hbsData.options.classes.push(`actor-${this.actor.data.type}`);
+    hbsData.options.classes.push(`actor-${this.actor.type}`);
     hbsData.options.classes = Misc.distinct(hbsData.options.classes);
+    hbsData.system = this.actor.system;
 
-    Misc.classifyInto(hbsData.items, hbsData.data.items);
+    Misc.classifyInto(hbsData.items, this.actor.items);
     return hbsData;
   }
 
@@ -187,9 +188,9 @@ export class AnarchyActorSheet extends ActorSheet {
     });
   }
 
-  async _onDropActor(event, dragData) {
-    if (dragData.id != this.actor.id) {
-      const owned = game.actors.get(dragData.id);
+  async _onDropActor(event, drag) {
+    if (drag.id != this.actor.id) {
+      const owned = game.actors.get(drag.id);
       if (owned) {
         // check circular references: find a owner, without finding the owned id
         ConfirmationDialog.confirmAttachOrCopy(this.actor, owned,
@@ -197,7 +198,7 @@ export class AnarchyActorSheet extends ActorSheet {
           async () => await owned.attachToOwnerActor(this.actor, 'copy'));
       }
     }
-    super._onDropActor(event, dragData);
+    super._onDropActor(event, drag);
   }
 
   async onClickAddMark() {

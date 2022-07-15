@@ -17,7 +17,7 @@ export class ICActor extends AnarchyBaseActor {
   }
 
   prepareDerivedData() {
-    this.data.data.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.logic);
+    this.system.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.logic);
     super.prepareDerivedData();
   }
 

@@ -2,9 +2,9 @@
   <h2 class="section-group-header">{{localize 'ANARCHY.common.description'}}</h2>
   <div class="editor actor-editor">
     {{editor 
-      target="data.description"
+      system.description 
+      target="system.description"
       owner=options.owner
-      content=data.data.description 
       button=true
       editable=options.editable}}
   </div>

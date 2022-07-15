@@ -39,17 +39,17 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   prepareDerivedData() {
-    this.data.data.monitors.physical.max = this._getMonitorMax(TEMPLATE.attributes.strength)
-    this.data.data.monitors.stun.max = this._getMonitorMax(TEMPLATE.attributes.willpower)
+    this.system.monitors.physical.max = this._getMonitorMax(TEMPLATE.attributes.strength)
+    this.system.monitors.stun.max = this._getMonitorMax(TEMPLATE.attributes.willpower)
     super.prepareDerivedData();
-    this.data.data.ignoreWounds = Modifiers.sumModifiers(this.items, 'other', 'ignoreWounds');
-    this.data.data.counters.essence.value = this._computeEssence();
+    this.system.ignoreWounds = Modifiers.sumModifiers(this.items, 'other', 'ignoreWounds');
+    this.system.counters.essence.value = this._computeEssence();
   }
 
   _computeEssence() {
     // spent essence: from cyberware/bioware
     const spentEssence = Misc.sumValues(this.items.filter(it => it.type == 'shadowamp')
-      .map(it => it.data.data.essence));
+      .map(it => it.system.essence));
     // adjustments: from quality (that gives a "free" essence point), or essence losses due to vampire
     const essenceAdjustment = Modifiers.sumModifiers(this.items, 'other', 'essenceAdjustment');
     return Math.min(6, 6 + essenceAdjustment - spentEssence);
@@ -69,10 +69,10 @@ export class CharacterActor extends AnarchyBaseActor {
   getMatrixMonitor() {
     const cyberdeck = this.getCyberdeck();
     if (cyberdeck) {
-      return cyberdeck.data.data.monitors.matrix;
+      return cyberdeck.system.monitors.matrix;
     }
     if (this.isEmerged()) {
-      return this.data.data.monitors.stun;
+      return this.system.monitors.stun;
     }
     return super.getMatrixMonitor();
   }
@@ -117,7 +117,7 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   getWord(wordType, wordId) {
-    return wordType ? this.data.data[wordType].find(it => it.id == wordId) : undefined;
+    return wordType ? this.system[wordType].find(it => it.id == wordId) : undefined;
   }
 
   async editWord(wordType, wordId) {
@@ -145,26 +145,26 @@ export class CharacterActor extends AnarchyBaseActor {
     if (!wordType) {
       return;
     }
-    let newValues = mutate(this.data.data[wordType]);
+    let newValues = mutate(this.system[wordType]);
     Misc.reindexIds(newValues);
-    await this.update({ [`data.${wordType}`]: newValues });
+    await this.update({ [`system.${wordType}`]: newValues });
   }
 
   getCelebrityValue() {
-    return this.data.data.counters.social.celebrity.value;
+    return this.system.counters.social.celebrity.value;
   }
   getCredibilityValue() {
-    return this.data.data.counters.social.credibility.value;
+    return this.system.counters.social.credibility.value;
   }
   getRumorValue() {
-    return this.data.data.counters.social.rumor.value;
+    return this.system.counters.social.rumor.value;
   }
 
   getAnarchy() {
     if (this.hasOwnAnarchy()) {
       return {
-        value: this.data.data.counters.anarchy.value,
-        max: this.data.data.counters.anarchy.max,
+        value: this.system.counters.anarchy.value,
+        max: this.system.counters.anarchy.max,
         scene: this.getAnarchyScene()
       };
     }
@@ -172,7 +172,7 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   getAnarchyScene() {
-    return this.data.data.counters.sceneAnarchy.value ?? 0;
+    return this.system.counters.sceneAnarchy.value ?? 0;
   }
 
   async spendAnarchy(count) {
@@ -202,10 +202,10 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   getWounds() {
-    const wounds = Misc.divint(this.data.data.monitors.stun.value, 3)
-      + Misc.divint(this.data.data.monitors.physical.value, 3);
+    const wounds = Misc.divint(this.system.monitors.stun.value, 3)
+      + Misc.divint(this.system.monitors.physical.value, 3);
 
-    return Math.max(0, wounds - this.data.data.ignoreWounds);
+    return Math.max(0, wounds - this.system.ignoreWounds);
   }
 
   canSetMarks() {
@@ -217,7 +217,7 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   isEmerged() {
-    return this.data.data.capacity == TEMPLATE.capacities.emerged;
+    return this.system.capacity == TEMPLATE.capacities.emerged;
   }
 
   getCyberdeck() {

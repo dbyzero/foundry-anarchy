@@ -1,4 +1,4 @@
-{{#if data.data.monitors.matrix.canMark}}
+{{#if system.monitors.matrix.canMark}}
 <div class="flexcol anarchy-monitor actor-marks">
   <label class="monitor-label">
     {{localize 'ANARCHY.actor.monitors.marks'}}
@@ -8,7 +8,7 @@
     </a>
   </label>
   <div class="marks-group-list">
-    {{#each data.data.monitors.matrix.marks as |marks|}}
+    {{#each system.monitors.matrix.marks as |marks|}}
     {{> "systems/anarchy/templates/monitors/marks-actor.hbs" marks}}
     {{/each}}
   </div>

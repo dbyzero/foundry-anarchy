@@ -106,7 +106,7 @@ export class GMAnarchy {
       this._syncNPCSheetAnarchy(actor);
     }
     for (let token of game.canvas.tokens.documentCollection.values()) {
-      if (token.actor && !token.data.actorLink) {
+      if (token.actor && !token.actorLink) {
         this._syncNPCSheetAnarchy(token.actor);
       }
     }

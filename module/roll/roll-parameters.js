@@ -30,7 +30,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     },
     condition: context => Object.values(ANARCHY_SYSTEM.rollType).includes(context.mode),
     factory: context => {
-      const attribute = context.attribute1 ?? context.skill?.data.data.attribute ?? '';
+      const attribute = context.attribute1 ?? context.skill?.system.attribute ?? '';
       return {
         labelkey: ANARCHY.attributes[attribute],
         value: context.actor.getAttributeValue(attribute, context.activeItem),
@@ -76,7 +76,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     factory: context => {
       return {
         label: context.skill?.name,
-        value: context.skill?.data.data.value ?? 0,
+        value: context.skill?.system.value ?? 0,
       };
     }
   },
@@ -89,14 +89,14 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/check-option.hbs`,
     },
     condition: context => (context.mode == 'skill' && context.specialization)
-      || (context.mode == 'weapon' && context.skill?.data.data.specialization),
+      || (context.mode == 'weapon' && context.skill?.system.specialization),
     onChecked: (p, checked) => {
       p.used = checked;
       p.value = checked ? 2 : 0;
     },
     factory: context => {
       return {
-        label: context.specialization ?? context.skill.data.data.specialization,
+        label: context.specialization ?? context.skill.system.specialization,
         used: context.specialization,
         value: 2
       }
@@ -112,7 +112,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       labelkey: ANARCHY.common.roll.modifiers.social.credibility,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
-    condition: context => context.skill?.data.data.isSocial && context.actor.getCredibilityValue() > 0,
+    condition: context => context.skill?.system.isSocial && context.actor.getCredibilityValue() > 0,
     factory: context => {
       return {
         min: 0,
@@ -178,7 +178,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: 0, max: 10
     },
-    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasDrain
+    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.system.hasDrain
   },
   // convergence
   {
@@ -191,7 +191,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: 0, max: 10
     },
-    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.data.data.hasConvergence
+    condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.system.hasConvergence
   },
   // glitch
   {
@@ -223,7 +223,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/glitch.hbs`,
       min: 0, max: 1,
     },
-    condition: context => context.skill?.data.data.isSocial && context.actor.getRumorValue() > 0
+    condition: context => context.skill?.system.isSocial && context.actor.getRumorValue() > 0
   },
   // rerolls
   {

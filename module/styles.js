@@ -17,7 +17,6 @@ const DEFAULT_STYLES = [
 export class Styles {
   constructor() {
     this.availableStyles = {};
-    HooksManager.register(ANARCHY_HOOKS.LOAD_STYLES);
     HooksManager.register(ANARCHY_HOOKS.REGISTER_STYLES);
 
     Hooks.once(ANARCHY_HOOKS.REGISTER_STYLES, register => DEFAULT_STYLES.forEach(it => register(it.cssClass, it.name)));
@@ -26,8 +25,6 @@ export class Styles {
 
   async onReady() {
     Hooks.callAll(ANARCHY_HOOKS.REGISTER_STYLES, (style, name) => this.availableStyles[style] = name);
-    Hooks.callAll(ANARCHY_HOOKS.LOAD_STYLES, this.availableStyles);
-    Hooks.off(ANARCHY_HOOKS.LOAD_STYLES, () => { });
     console.log(LOG_HEAD + 'Loaded styles', this.availableStyles);
 
     game.settings.register(SYSTEM_NAME, DEFAULT_CSS_CLASS, {

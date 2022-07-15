@@ -30,7 +30,7 @@ export class RollCelebrity extends Dialog {
     new RollCelebrity(title, html, rollData).render(true);
   }
 
-  constructor(title, html, rollData) {
+  constructor(title, html, roll) {
     const config = {
       title: title,
       content: html,
@@ -51,26 +51,26 @@ export class RollCelebrity extends Dialog {
 
     super(config, options);
 
-    this.rollData = rollData;
+    this.roll = roll;
   }
 
   activateListeners(html) {
     super.activateListeners(html);
     this.bringToTop();
     html.find(".input-celebrity-other").on('input', event => {
-      this.rollData.other.value = Number.parseInt(event.currentTarget.value) ?? 0;
+      this.roll.other.value = Number.parseInt(event.currentTarget.value) ?? 0;
     });
   }
 
   async roll() {
     const parameters = [
-      this.rollData.celebrity,
-      this.rollData.modifiers,
-      this.rollData.other
+      this.roll.celebrity,
+      this.roll.modifiers,
+      this.roll.other
     ];
     const pool = Misc.sumValues(parameters, it => it.value);
     const hbsCelebrityRoll = {
-      actor: this.rollData.actor,
+      actor: this.roll.actor,
       parameters: parameters,
       pool: pool,
       options: {

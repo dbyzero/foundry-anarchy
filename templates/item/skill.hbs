@@ -14,36 +14,36 @@
     </div>
     {{#unless options.isKnowledge}}
     <div class="form-group">
-      <label for="data.value">{{localize 'ANARCHY.item.skill.value'}} </label>
-      <input class="type-numeric" type="number" name="data.value" value="{{data.data.value}}" data-dtype="Number"/>
+      <label for="system.value">{{localize 'ANARCHY.item.skill.value'}} </label>
+      <input class="type-numeric" type="number" name="system.value" value="{{system.value}}" data-dtype="Number"/>
     </div>
     <div class="form-group">
-      <label for="data.attribute">{{localize 'ANARCHY.item.skill.attribute'}} </label>
-      <select class="item-field-value" name="data.attribute" data-dtype="String">
-        {{#select data.data.attribute}}
+      <label for="system.attribute">{{localize 'ANARCHY.item.skill.attribute'}} </label>
+      <select class="item-field-value" name="system.attribute" data-dtype="String">
+        {{#select system.attribute}}
         {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.attributes}}
         {{/select}}
       </select>
     </div>
     <div class="form-group">
-      <label for="data.specialization">{{localize 'ANARCHY.item.skill.specialization'}} </label>
+      <label for="system.specialization">{{localize 'ANARCHY.item.skill.specialization'}} </label>
       <input class="item-field-value" type="text" data-dtype="String"
-          name="data.specialization" value="{{data.data.specialization}}"
+          name="system.specialization" value="{{system.specialization}}"
           placeholder="{{localize 'ANARCHY.item.skill.specializationHelp'}}"
       />
     </div>
     <div class="form-group">
-      <input name="data.isSocial" class="item-field-value" type="checkbox" {{checked data.data.isSocial}}>
+      <input name="system.isSocial" class="item-field-value" type="checkbox" {{checked system.isSocial}}>
         {{localize 'ANARCHY.item.skill.isSocial'}}
       </input>
     </div>
     <div class="form-group">
-      <input name="data.hasDrain" class="item-field-value" type="checkbox" {{checked data.data.hasDrain}}>
+      <input name="system.hasDrain" class="item-field-value" type="checkbox" {{checked system.hasDrain}}>
         {{localize 'ANARCHY.item.skill.hasDrain'}}
       </input>
     </div>
     <div class="form-group">
-      <input name="data.hasConvergence" class="item-field-value" type="checkbox" {{checked data.data.hasConvergence}}>
+      <input name="system.hasConvergence" class="item-field-value" type="checkbox" {{checked system.hasConvergence}}>
         {{localize 'ANARCHY.item.skill.hasConvergence'}}
       </input>
     </div>
@@ -54,8 +54,8 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="data.code">{{localize 'ANARCHY.item.skill.code'}}</label>
-      <input class="item-field-value" type="text" name="data.code" value="{{data.data.code}}" data-dtype="String"/>
+      <label for="system.code">{{localize 'ANARCHY.item.skill.code'}}</label>
+      <input class="item-field-value" type="text" name="system.code" value="{{system.code}}" data-dtype="String"/>
     </div>
     {{/unless}}
     {{> 'systems/anarchy/templates/item/parts/inactive.hbs'}}

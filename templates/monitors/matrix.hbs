@@ -2,24 +2,24 @@
   <label class="monitor-label">
     {{localize 'ANARCHY.actor.monitors.matrix'}}
     <input class="info-value" type="number" data-dtype="Number" maxlength="2" 
-      class="value" name="data.monitors.matrix.max" 
-      value="{{data.data.monitors.matrix.max}}"
+      class="value" name="system.monitors.matrix.max" 
+      value="{{system.monitors.matrix.max}}"
     />
   </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='matrix'
-    value=data.data.monitors.matrix.value
-    max=data.data.monitors.matrix.max
+    value=system.monitors.matrix.value
+    max=system.monitors.matrix.max
     rowlength=6
   }}
   <label class="resitance-label">
     {{localize ANARCHY.actor.monitors.resistance}}
     <input class="info-value" type="number" data-dtype="Number" maxlength="2"
-      name="data.monitors.matrix.resistance"
-      value="{{data.data.monitors.matrix.resistance}}" 
+      name="system.monitors.matrix.resistance"
+      value="{{system.monitors.matrix.resistance}}" 
     />
-    {{#if data.data.monitors.matrix.resistanceBonus}}
-    {{numberFormat data.data.monitors.matrix.resistanceBonus sign=true}}
+    {{#if system.monitors.matrix.resistanceBonus}}
+    {{numberFormat system.monitors.matrix.resistanceBonus sign=true}}
     {{/if}}
   </label>
 </div>

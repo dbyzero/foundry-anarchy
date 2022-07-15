@@ -1,9 +1,9 @@
 <br>
 {{localize 'ANARCHY.item.weapon.damage'}}
 {{> 'systems/anarchy/templates/common/damage-code.hbs'
-    damageAttribute=weapon.data.data.damageAttribute
-    actorAttribute=(actorAttribute weapon.data.data.damageAttribute actor)
-    damage=weapon.data.data.damage
-    monitor=weapon.data.data.monitor
-    armor=(weaponArmorMode weapon.data.data.monitor weapon.data.data.noArmor)
+    damageAttribute=weapon.system.damageAttribute
+    actorAttribute=(actorAttribute weapon.system.damageAttribute actor)
+    damage=weapon.system.damage
+    monitor=weapon.system.monitor
+    armor=(weaponArmorMode weapon.system.monitor weapon.system.noArmor)
 }}

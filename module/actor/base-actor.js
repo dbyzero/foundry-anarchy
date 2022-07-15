@@ -10,18 +10,18 @@ import { RollDialog } from "../roll/roll-dialog.js";
 
 export class AnarchyBaseActor extends Actor {
 
-  constructor(data, context = {}) {
+  constructor(docData, context = {}) {
     if (!context.anarchy?.ready) {
       mergeObject(context, { anarchy: { ready: true } });
-      const ActorConstructor = game.system.anarchy.actorClasses[data.type];
+      const ActorConstructor = game.system.anarchy.actorClasses[docData.type];
       if (ActorConstructor) {
-        if (!data.img) {
-          data.img = ActorConstructor.defaultIcon;
+        if (!docData.img) {
+          docData.img = ActorConstructor.defaultIcon;
         }
-        return new ActorConstructor(data, context);
+        return new ActorConstructor(docData, context);
       }
     }
-    super(data, context);
+    super(docData, context);
   }
 
   static get initiative() {
@@ -33,7 +33,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getAllowedUserIds(permission = 3) {
-    return Object.entries(this.data.permission)
+    return Object.entries(this.permission)
       .filter(kv => kv[0] != 'default' && kv[1] >= permission)
       .map(kv => kv[0]);
   }
@@ -51,7 +51,7 @@ export class AnarchyBaseActor extends Actor {
 
   getMatrixMonitor() {
     if (this.hasMatrixMonitor()) {
-      return this.data.data.monitors.matrix;
+      return this.system.monitors.matrix;
     }
     return {
       canMark: true,
@@ -63,7 +63,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   async setMatrixMonitorValue(value) {
-    await this.update({ 'data.monitors.matrix.value': value });
+    await this.update({ 'system.monitors.matrix.value': value });
   }
 
   _getMonitorMax(attribute) {
@@ -72,14 +72,14 @@ export class AnarchyBaseActor extends Actor {
   }
 
   prepareDerivedData() {
-    this.data.data.modifiers = {
+    this.system.modifiers = {
       initiative: Modifiers.sumModifiers(this.items, 'other', 'initiative')
     };
-    Object.entries(this.data.data.monitors).forEach(kv => {
+    Object.entries(this.system.monitors).forEach(kv => {
       kv[1].maxBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'max');
       kv[1].resistanceBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'resistance');
     });
-    Object.entries(this.data.data.attributes).forEach(kv => {
+    Object.entries(this.system.attributes).forEach(kv => {
       kv[1].total = this.getAttributeValue(kv[0]);
     });
   }
@@ -105,7 +105,7 @@ export class AnarchyBaseActor extends Actor {
     let value = 0;
     if (attribute) {
       if (this.getAttributes().includes(attribute)) {
-        value = this.data.data.attributes[attribute].value;
+        value = this.system.attributes[attribute].value;
       }
       else if (!item) {
         const candidateItems = this.items.filter(item => item.isActive() && item.getAttributes().includes(attribute));
@@ -154,10 +154,10 @@ export class AnarchyBaseActor extends Actor {
     await RollDialog.rollWeapon(this, skill, weapon, targeting);
   }
 
-  async rollDefense(attackData) {
-    const defense = attackData.attack.defense;
+  async rollDefense(attack) {
+    const defense = attack.attack.defense;
     const action = AttributeActions.getActorDefense(this, defense);
-    await RollDialog.rollDefense(this, action, attackData);
+    await RollDialog.rollDefense(this, action, attack);
   }
 
   async rollDrain(drain) {
@@ -187,7 +187,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   canReceiveMarks() {
-    return this.data.data.monitors?.matrix?.canMark;
+    return this.system.monitors?.matrix?.canMark;
   }
 
   isEmerged() {
@@ -256,7 +256,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   getRemainingEdge() {
-    return this.data.data.counters?.edge?.value ?? 0
+    return this.system.counters?.edge?.value ?? 0
   }
 
   canUseEdge() {
@@ -280,8 +280,8 @@ export class AnarchyBaseActor extends Actor {
 
   getSkillValue(skillId, specialization = undefined) {
     const skill = this.items.get(skillId);
-    const attribute = this.getAttributeValue(skill.data.data.attribute);
-    return skill.data.data.value + attribute + (specialization && skill.data.data.specialization ? 2 : 0);
+    const attribute = this.getAttributeValue(skill.system.attribute);
+    return skill.system.value + attribute + (specialization && skill.system.specialization ? 2 : 0);
   }
 
   getWounds() {
@@ -307,29 +307,29 @@ export class AnarchyBaseActor extends Actor {
     let actorToAttach = this;
     if (attachOrCopy == 'copy') {
       const cloneTmp = this.clone();
-      const created = await Actor.createDocuments([cloneTmp.data]);
+      const created = await Actor.createDocuments([cloneTmp]);
       actorToAttach = created[0];
     }
-    await actorToAttach.update({ 'data.ownerId': ownerActor?.id ?? '' });
+    await actorToAttach.update({ 'system.ownerId': ownerActor?.id ?? '' });
     ownerActor?.render();
     this.render();
   }
 
   getOwnerActor() {
-    if (this.data.data.ownerId) {
-      return game.actors.get(this.data.data.ownerId);
+    if (this.system.ownerId) {
+      return game.actors.get(this.system.ownerId);
     }
     return undefined;
   }
 
   getOwnedActors() {
-    return game.actors.filter(it => it.data.data.ownerId == this.id);
+    return game.actors.filter(it => it.system.ownerId == this.id);
   }
 
 
   hasFavorite(type, id) {
     const search = AnarchyBaseActor._prepareFavorite(type, id);
-    return this.data.data.favorites.find(it => AnarchyBaseActor._isSameFavorite(search, it)) ? true : false;
+    return this.system.favorites.find(it => AnarchyBaseActor._isSameFavorite(search, it)) ? true : false;
   }
 
   static _prepareFavorite(type, id) {
@@ -342,17 +342,17 @@ export class AnarchyBaseActor extends Actor {
 
   async switchFavorite(setFavorite, type, id) {
     const favorite = AnarchyBaseActor._prepareFavorite(type, id);
-    const newFavorites = this.data.data.favorites.filter(it => !AnarchyBaseActor._isSameFavorite(favorite, it));
+    const newFavorites = this.system.favorites.filter(it => !AnarchyBaseActor._isSameFavorite(favorite, it));
     if (setFavorite) {
       newFavorites.push(favorite);
     }
-    this.update({ 'data.favorites': newFavorites })
+    this.update({ 'system.favorites': newFavorites })
   }
 
   async cleanupFavorites() {
     const newFavorites = this.computeShortcuts().filter(f => !f.callback);
-    if (newFavorites.length < this.data.data.favorites) {
-      this.update({ 'data.favorites': newFavorites })
+    if (newFavorites.length < this.system.favorites) {
+      this.update({ 'system.favorites': newFavorites })
     }
   }
 
@@ -361,7 +361,7 @@ export class AnarchyBaseActor extends Actor {
   }
 
   computeShortcuts() {
-    return this.data.data.favorites.map(f => this.getShortcut(f.type, f.id));
+    return this.system.favorites.map(f => this.getShortcut(f.type, f.id));
   }
 
   getShortcut(type, id) {

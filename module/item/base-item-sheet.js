@@ -42,6 +42,7 @@ export class BaseItemSheet extends ItemSheet {
       ENUMS: mergeObject(Enums.getEnums(usableAttribute), game.system.anarchy.modifiers.getEnums()),
       ANARCHY: ANARCHY
     });
+    hbsData.system = this.item.system;
 
     return hbsData;
   }

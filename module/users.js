@@ -14,15 +14,15 @@ export class AnarchyUsers {
   }
 
 
-  static blindMessageToGM(chatMessageData) {
-    if (!RemoteCall.call(BLIND_MESSAGE_TO_GM, chatMessageData)) {
+  static blindMessageToGM(message) {
+    if (!RemoteCall.call(BLIND_MESSAGE_TO_GM, message)) {
       ChatMessage.create({
-        user: chatMessageData.user,
+        user: message.user,
         whisper: ChatMessage.getWhisperRecipients('GM'),
         blind: true,
         content: game.i18n.format(ANARCHY.chat.blindMessageToGM, {
           user: game.user.name,
-          message: chatMessageData.content
+          message: message.content
         })
       });
     }

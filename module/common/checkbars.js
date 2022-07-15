@@ -9,16 +9,16 @@ const COUNTERS = ANARCHY.actor.counters;
 
 export const CHECKBARS = {
   armor: {
-    path: 'data.monitors.armor.value',
-    monitor: it => it.data.data.monitors.armor,
+    path: 'system.monitors.armor.value',
+    monitor: it => it.system.monitors.armor,
     iconChecked: Icons.fontAwesome('fas fa-skull-crossbones'),
     iconUnchecked: Icons.fontAwesome('fas fa-shield-alt'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
     resource: MONITORS.armor,
   },
   stun: {
-    path: 'data.monitors.stun.value',
-    monitor: it => it.data.data.monitors.stun,
+    path: 'system.monitors.stun.value',
+    monitor: it => it.system.monitors.stun,
     iconChecked: Icons.fontAwesome('fas fa-grimace'),
     iconUnchecked: Icons.fontAwesome('far fa-smile'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
@@ -26,8 +26,8 @@ export const CHECKBARS = {
     useArmor: true
   },
   physical: {
-    path: 'data.monitors.physical.value',
-    monitor: it => it.data.data.monitors.physical,
+    path: 'system.monitors.physical.value',
+    monitor: it => it.system.monitors.physical,
     iconChecked: Icons.fontAwesome('fas fa-heartbeat'),
     iconUnchecked: Icons.fontAwesome('far fa-heart'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
@@ -35,15 +35,15 @@ export const CHECKBARS = {
     useArmor: true
   },
   structure: {
-    path: 'data.monitors.structure.value',
-    monitor: it => it.data.data.monitors.structure,
+    path: 'system.monitors.structure.value',
+    monitor: it => it.system.monitors.structure,
     iconChecked: Icons.fontAwesome('fas fa-car-crash'),
     iconUnchecked: Icons.fontAwesome('fas fa-car-alt'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
     resource: MONITORS.structure
   },
   matrix: {
-    path: 'data.monitors.matrix.value',
+    path: 'system.monitors.matrix.value',
     monitor: it => it.getMatrixMonitor(),
     iconChecked: Icons.fontAwesome('fas fa-laptop-medical'),
     iconUnchecked: Icons.fontAwesome('fas fa-laptop'),
@@ -67,10 +67,10 @@ export const CHECKBARS = {
     resource: MONITORS.convergence
   },
   anarchy: {
-    path: 'data.counters.anarchy.value',
+    path: 'system.counters.anarchy.value',
     monitor: it => {
       return {
-        value: it.data.data.counters.anarchy.value,
+        value: it.system.counters.anarchy.value,
         max: 6
       };
     },
@@ -79,9 +79,9 @@ export const CHECKBARS = {
     resource: COUNTERS.anarchy
   },
   plot: {
-    path: 'data.counters.anarchy.value',
+    path: 'system.counters.anarchy.value',
     monitor: it => {
-      const value = it.data.data.counters.anarchy.value;
+      const value = it.system.counters.anarchy.value;
       return { value: value, max: value + 1 };
     },
     iconChecked: Icons.iconSystemPath('danger-point.webp', 'checkbar-img'),
@@ -89,9 +89,9 @@ export const CHECKBARS = {
     resource: COUNTERS.anarchy
   },
   sceneAnarchy: {
-    path: 'data.counters.sceneAnarchy.value',
+    path: 'system.counters.sceneAnarchy.value',
     monitor: it => {
-      const value = it.data.data.counters.sceneAnarchy.value;
+      const value = it.system.counters.sceneAnarchy.value;
       return { value: value, max: 3 };
     },
     iconChecked: Icons.iconSystemPath('anarchy-point-scene.webp', 'checkbar-img'),
@@ -99,10 +99,10 @@ export const CHECKBARS = {
     resource: COUNTERS.sceneAnarchy
   },
   edge: {
-    path: 'data.counters.edge.value',
+    path: 'system.counters.edge.value',
     monitor: it => {
       return {
-        value: it.data.data.counters.edge.value,
+        value: it.system.counters.edge.value,
         max: it.getAttributeValue(TEMPLATE.attributes.edge)
       };
     },
@@ -111,11 +111,11 @@ export const CHECKBARS = {
     resource: COUNTERS.edge
   },
   credibility: {
-    path: 'data.counters.social.credibility.value',
+    path: 'system.counters.social.credibility.value',
     monitor: it => {
       return {
-        value: it.data.data.counters.social.credibility.value,
-        max: it.data.data.counters.social.credibility.max
+        value: it.system.counters.social.credibility.value,
+        max: it.system.counters.social.credibility.max
       };
     },
     iconChecked: Icons.fontAwesome('fas fa-handshake'),
@@ -123,11 +123,11 @@ export const CHECKBARS = {
     resource: COUNTERS.social.credibility
   },
   rumor: {
-    path: 'data.counters.social.rumor.value',
+    path: 'system.counters.social.rumor.value',
     monitor: it => {
       return {
-        value: it.data.data.counters.social.rumor.value,
-        max: it.data.data.counters.social.rumor.max
+        value: it.system.counters.social.rumor.value,
+        max: it.system.counters.social.rumor.max
       };
     },
     iconChecked: Icons.fontAwesome('fas fa-grimace'),
@@ -322,24 +322,24 @@ export class Checkbars {
   }
 
   static getActorMarks(target, sourceActorId) {
-    return Checkbars._findActorMarks(target.data.data.monitors.matrix.marks, sourceActorId)?.marks ?? 0;
+    return Checkbars._findActorMarks(target.system.monitors.matrix.marks, sourceActorId)?.marks ?? 0;
   }
 
   static async addActorMark(target, sourceActorId) {
-    const previous = Checkbars._findActorMarks(target.data.data.monitors.matrix.marks, sourceActorId);
+    const previous = Checkbars._findActorMarks(target.system.monitors.matrix.marks, sourceActorId);
     Checkbars.setActorMarks(target, (previous.marks ?? 0) + 1, sourceActorId);
   }
 
   static async setActorMarks(target, value, sourceActorId) {
     if (target.canReceiveMarks()) {
-      let targetMarks = deepClone(target.data.data.monitors.matrix.marks);
+      let targetMarks = deepClone(target.system.monitors.matrix.marks);
       ErrorManager.checkOutOfRange(CHECKBARS.marks.resource, value, 0, Checkbars.max(target, 'marks'));
       const sourceActorMarks = Checkbars._findActorMarks(targetMarks, sourceActorId);
       if (sourceActorMarks.marks == undefined) {
         targetMarks.push(sourceActorMarks);
       }
       sourceActorMarks.marks = Math.max(0, value);
-      await target.update({ ['data.monitors.matrix.marks']: targetMarks.filter(target => target.marks > 0) });
+      await target.update({ ['system.monitors.matrix.marks']: targetMarks.filter(target => target.marks > 0) });
     }
   }
 

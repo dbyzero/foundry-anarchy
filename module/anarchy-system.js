@@ -93,7 +93,6 @@ export class AnarchySystem {
     this.handlebarsManager = new HandlebarsManager();
     this.gmAnarchy = new GMAnarchy();
     this.gmConvergence = new GMConvergence();
-    this.gmManager = new GMManager(this.gmAnarchy, this.gmConvergence);
     Enums.init();
 
     this.skills = new Skills();
@@ -124,6 +123,7 @@ export class AnarchySystem {
     AnarchyBaseItem.init();
     ActorDamageManager.init();
     ChatManager.init();
+    this.gmManager = new GMManager(this.gmAnarchy, this.gmConvergence);
     console.log(LOG_HEAD + 'AnarchySystem.onInit | done');
     Hooks.once('ready', () => this.onReady());
   }

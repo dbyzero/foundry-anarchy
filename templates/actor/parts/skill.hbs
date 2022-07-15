@@ -1,8 +1,8 @@
-<div class="define-item-type item anarchy-skill {{#if data.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
+<div class="define-item-type item anarchy-skill {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
   {{#if img}}
   <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
   {{/if}}
-  {{#if (eq data.attribute 'knowledge')}}
+  {{#if (eq system.attribute 'knowledge')}}
   <span title="{{localize 'ANARCHY.attributes.knowledge'}}">
     {{{iconFA 'fas fa-user-graduate'}}}
     <label>{{name}}</label>
@@ -12,16 +12,16 @@
       <span class="flexrow">
         <a class="click-skill-roll">
         <label>
-            {{name}}: {{data.value}} + {{localizeAttribute data.attribute}}
+            {{name}}: {{system.value}} + {{localizeAttribute system.attribute}}
         </label>
         </a>
       </span>
-      {{#if data.specialization}}
+      {{#if system.specialization}}
         <span class="flexrow">
-          <a class="click-skill-roll" data-item-specialization="{{data.specialization}}">
+          <a class="click-skill-roll" data-item-specialization="{{system.specialization}}">
             <label>
-              ({{data.specialization}}:
-              {{sum data.value 2}} + {{localizeAttribute data.attribute}})
+              ({{system.specialization}}:
+              {{sum system.value 2}} + {{localizeAttribute system.attribute}})
             </label>
           </a>
         </span>

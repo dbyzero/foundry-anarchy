@@ -4,13 +4,13 @@
   </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='stun'
-    value=data.data.monitors.stun.value
-    max=(sum data.data.monitors.stun.max data.data.monitors.stun.maxBonus)
+    value=system.monitors.stun.value
+    max=(sum system.monitors.stun.max system.monitors.stun.maxBonus)
     rowlength=3
     adjust=true
   }}
   <label class="resitance-label">
     {{localize ANARCHY.actor.monitors.resistance}}:
-    {{data.data.monitors.stun.resistanceBonus}}
+    {{system.monitors.stun.resistanceBonus}}
   </label>
 </div>

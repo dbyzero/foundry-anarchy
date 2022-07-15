@@ -19,10 +19,6 @@ export const ANARCHY_HOOKS = {
    */
   MODIFY_ROLL_PARAMETER: 'anarchy-forbidRollParameter',
   /**
-   * @deprecated will be removed before v1.0.0
-   */
-  LOAD_STYLES: 'anarchy-loadStyles',
-  /**
    * Hook allowing to provide alternate skill sets for Anarchy hack modules
    */
   PROVIDE_SKILL_SET: 'anarchy-provideSkillSet',

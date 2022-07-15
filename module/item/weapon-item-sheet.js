@@ -16,7 +16,7 @@ export class WeaponItemSheet extends BaseItemSheet {
       const skillCode = event.currentTarget.value;
       const skill = game.system.anarchy.skills.get(skillCode);
       if (skill) {
-        await this.object.update({ "data.defense": skill.defense }, { render: false });
+        await this.object.update({ 'system.defense': skill.defense }, { render: false });
       }
     });
   }

@@ -3,15 +3,15 @@
     {{localize ANARCHY.actor.counters.social.rumor}}
     <input class="info-value"
       type="number" data-dtype="Number" min="0" max="10"
-      name="data.counters.social.rumor.max"
+      name="system.counters.social.rumor.max"
       data-counter-social="rumor"
-      value="{{data.data.counters.social.rumor.max}}"/>
+      value="{{system.counters.social.rumor.max}}"/>
   </label>
   {{> "systems/anarchy/templates/common/checkbar.hbs"
     code='rumor'
     labelkey=ANARCHY.actor.counters.social.rumor
-    value=data.data.counters.social.rumor.value
-    max=data.data.counters.social.rumor.max
+    value=system.counters.social.rumor.value
+    max=system.counters.social.rumor.max
     rowlength=5
   }}
 </div>

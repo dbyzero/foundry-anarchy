@@ -67,7 +67,7 @@ export class RollDialog extends Dialog {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.skill,
       skill: skill,
-      attribute1: skill?.data.data.attribute ?? TEMPLATE.attributes.agility,
+      attribute1: skill?.system.attribute ?? TEMPLATE.attributes.agility,
       specialization: specialization,
     });
     await RollDialog.create(rollData);
@@ -78,22 +78,22 @@ export class RollDialog extends Dialog {
       mode: ANARCHY_SYSTEM.rollType.weapon,
       weapon: weapon,
       skill: skill,
-      attribute1: skill?.data.data.attribute ?? TEMPLATE.attributes.agility,
-      specialization: skill?.data.data.specialization,
+      attribute1: skill?.system.attribute ?? TEMPLATE.attributes.agility,
+      specialization: skill?.system.specialization,
       targeting: targeting
     });
     await RollDialog.create(rollData);
   }
 
-  static async rollDefense(actor, action, attackData) {
+  static async rollDefense(actor, action, attack) {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.defense,
       attribute1: action.attribute1,
       attribute2: action.attribute2,
       defenseAction: action.code,
-      attackRoll: attackData.attackRoll,
-      tokenId: attackData.defenderTokenId,
-      choiceChatMessageId: attackData.choiceChatMessageId,
+      attackRoll: attack.attackRoll,
+      tokenId: attack.defenderTokenId,
+      choiceChatMessageId: attack.choiceChatMessageId,
     });
     await RollDialog.create(rollData);
   }
@@ -108,21 +108,21 @@ export class RollDialog extends Dialog {
     await RollDialog.create(rollData);
   }
 
-  static async create(rollData) {
-    const rollParameters = game.system.anarchy.rollParameters.build(rollData).sort(Misc.ascending(p => p.order ?? 200));
-    mergeObject(rollData, {
-      ENUMS: Enums.getEnums(attributeName => rollData.attributes.includes(attributeName)),
+  static async create(roll) {
+    const rollParameters = game.system.anarchy.rollParameters.build(roll).sort(Misc.ascending(p => p.order ?? 200));
+    mergeObject(roll, {
+      ENUMS: Enums.getEnums(attributeName => roll.attributes.includes(attributeName)),
       ANARCHY: ANARCHY,
       parameters: rollParameters
     });
 
-    const title = await renderTemplate(`${TEMPLATES_PATH}/roll/roll-dialog-title.hbs`, rollData);
-    const html = await renderTemplate(`${TEMPLATES_PATH}/roll/roll-dialog.hbs`, rollData);
-    new RollDialog(title, html, rollData).render(true);
+    const title = await renderTemplate(`${TEMPLATES_PATH}/roll/roll-dialog-title.hbs`, roll);
+    const html = await renderTemplate(`${TEMPLATES_PATH}/roll/roll-dialog.hbs`, roll);
+    new RollDialog(title, html, roll).render(true);
   }
 
 
-  constructor(title, html, rollData) {
+  constructor(title, html, roll) {
     const config = {
       title: title,
       content: html,
@@ -130,20 +130,20 @@ export class RollDialog extends Dialog {
       buttons: {
         'roll': {
           label: game.i18n.localize(ANARCHY.common.roll.button),
-          callback: async () => await game.system.anarchy.rollManager.roll(rollData)
+          callback: async () => await game.system.anarchy.rollManager.roll(roll)
         }
       },
     };
     const options = {
       classes: [game.system.anarchy.styles.selectCssClass(), "anarchy-dialog"],
       width: 400,
-      height: 134 + 24 * rollData.parameters.length,
+      height: 134 + 24 * roll.parameters.length,
       'z-index': 99999,
     };
 
     super(config, options);
 
-    this.rollData = rollData;
+    this.roll = roll;
   }
 
   activateListeners(html) {
@@ -152,10 +152,10 @@ export class RollDialog extends Dialog {
 
     html.find('.select-attribute-parameter').change((event) => {
       const parameter = this._getRollParameter(event);
-      const item = this._getEventItem(event, this.rollData.actor);
+      const item = this._getEventItem(event, this.roll.actor);
       const selected = event.currentTarget.value;
-      const value = this.rollData.actor.getAttributeValue(selected, item);
-      this.rollData[parameter.code] = selected;
+      const value = this.roll.actor.getAttributeValue(selected, item);
+      this.roll[parameter.code] = selected;
       this._setParameterSelectedOption(html, parameter, selected, value);
     });
 
@@ -206,6 +206,6 @@ export class RollDialog extends Dialog {
 
   _getRollParameter(event) {
     const code = $(event.currentTarget).closest('.parameter').attr('data-parameter-code');
-    return this.rollData.parameters.find(it => it.code == code);
+    return this.roll.parameters.find(it => it.code == code);
   }
 }

@@ -20,10 +20,10 @@ export class SkillItemSheet extends BaseItemSheet {
           await this.object.update({
             name: game.i18n.localize(skill.labelkey),
             img: skill.icon,
-            "data.code": skill.code,
-            "data.attribute": skill.attribute,
-            "data.hasDrain": skill.hasDrain ? true : false,
-            "data.hasConvergence": skill.hasConvergence ? true : false
+            'system.code': skill.code,
+            'system.attribute': skill.attribute,
+            'system.hasDrain': skill.hasDrain ? true : false,
+            'system.hasConvergence': skill.hasConvergence ? true : false
           });
         }
       }
@@ -31,8 +31,8 @@ export class SkillItemSheet extends BaseItemSheet {
 
     html.find('.check-knowledge').click(async event => {
       const checkKnowledge = event.currentTarget.checked;
-      const newAttribute = checkKnowledge ? 'knowledge' : game.system.anarchy.skills.get(this.object.data.data.code)?.attribute ?? '';
-      await this.object.update({ "data.attribute": newAttribute });
+      const newAttribute = checkKnowledge ? 'knowledge' : game.system.anarchy.skills.get(this.object.system.code)?.attribute ?? '';
+      await this.object.update({ 'system.attribute': newAttribute });
       this.render(true);
     });
   }

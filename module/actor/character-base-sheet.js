@@ -22,7 +22,7 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
     let hbsData = mergeObject(
       super.getData(options), {
       essence: {
-        adjust: CharacterEssence.getAdjust(this.actor.data.data.counters?.essence?.value)
+        adjust: CharacterEssence.getAdjust(this.actor.system.counters?.essence?.value)
       },
     });
     return hbsData;

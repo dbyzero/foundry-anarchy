@@ -95,9 +95,9 @@ export class AnarchyDice {
 
 
 export class AnarchyGlitchDie extends Die {
-  constructor(termData) {
-    termData.faces = 6;
-    super(termData);
+  constructor(term) {
+    term.faces = 6;
+    super(term);
   }
 
   /** @override */
@@ -124,9 +124,9 @@ export class AnarchyGlitchDie extends Die {
 }
 
 export class AnarchyRiskDie extends Die {
-  constructor(termData) {
-    termData.faces = 6;
-    super(termData);
+  constructor(term) {
+    term.faces = 6;
+    super(term);
   }
 
   static DENOMINATION = "r";

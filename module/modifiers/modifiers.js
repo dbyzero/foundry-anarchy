@@ -83,7 +83,7 @@ export class Modifiers {
       if (m.group == 'roll' && m.effect == effect) {
         switch (m.category) {
           case 'attribute': return [context.attribute1, context.attribute2].includes(m.subCategory);
-          case 'skill': return m.subCategory == context.skill?.data.data.code;
+          case 'skill': return m.subCategory == context.skill?.system.code;
           case 'defense': return m.subCategory == context.defenseAction;
           case 'attributeAction': return m.subCategory == context.attributeAction;
         }
@@ -151,7 +151,7 @@ export class Modifiers {
   }
 
   static _listItemModifiers(item, filter = m => true) {
-    return (item.data.data.modifiers ?? []).filter(filter);
+    return (item.system.modifiers ?? []).filter(filter);
   }
 
   static _itemModifier(item, modifier) {

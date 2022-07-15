@@ -12,18 +12,18 @@ export class AnarchyBaseItem extends Item {
   async onCreateItem(options, id) {
   }
 
-  constructor(data, context = {}) {
+  constructor(docData, context = {}) {
     if (!context.anarchy?.ready) {
       mergeObject(context, { anarchy: { ready: true } });
-      const ItemConstructor = game.system.anarchy.itemClasses[data.type];
+      const ItemConstructor = game.system.anarchy.itemClasses[docData.type];
       if (ItemConstructor) {
-        if (!data.img) {
-          data.img = ItemConstructor.defaultIcon;
+        if (!docData.img) {
+          docData.img = ItemConstructor.defaultIcon;
         }
-        return new ItemConstructor(data, context);
+        return new ItemConstructor(docData, context);
       }
     }
-    super(data, context);
+    super(docData, context);
   }
 
   static get defaultIcon() {
@@ -39,8 +39,8 @@ export class AnarchyBaseItem extends Item {
   }
 
   getAttributeValue(attribute) {
-    if (this.data.data.attributes) {
-      return this.data.data.attributes[attribute]?.value ?? 0;
+    if (this.system.attributes) {
+      return this.system.attributes[attribute]?.value ?? 0;
     }
     return 0;
   }
@@ -52,9 +52,9 @@ export class AnarchyBaseItem extends Item {
   isMetatype() { return this.type == TEMPLATE.itemType.metatype; }
   isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }
 
-  isActive() { return this.data.data.equiped && !this.data.data.inactive; }
+  isActive() { return this.system.equiped && !this.system.inactive; }
 
-  canReceiveMarks() { return this.data.data.monitors?.matrix?.canMark; }
+  canReceiveMarks() { return this.system.monitors?.matrix?.canMark; }
 
   async rollAttribute(attribute) {
     if (this.parent) {
@@ -140,9 +140,9 @@ export class AnarchyBaseItem extends Item {
   }
 
   async _mutateModifiers(mutation = values => values) {
-    const modifiers = mutation(this.data.data.modifiers);
+    const modifiers = mutation(this.system.modifiers);
     Misc.reindexIds(modifiers);
-    await this.update({ 'data.modifiers': modifiers });
+    await this.update({ 'system.modifiers': modifiers });
   }
 
   prepateShortcut() {

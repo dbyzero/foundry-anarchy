@@ -1,14 +1,14 @@
-<li class="item anarchy-weapon {{#if data.inactive}}inactive{{/if}}" draggable="true"
+<li class="item anarchy-weapon {{#if system.inactive}}inactive{{/if}}" draggable="true"
     data-item-id="{{_id}}" data-item-type="weapon">
   <div class="weapon-column weapon-summary">
     <a class="click-weapon-roll">
       {{name}}, 
       {{> 'systems/anarchy/templates/common/damage-code.hbs'
-        damageAttribute=data.damageAttribute
-        actorAttribute=(actorAttribute data.damageAttribute @root.actor)
-        damage=data.damage
-        monitor=data.monitor
-        armor=(weaponArmorMode data.monitor data.noArmor)
+        damageAttribute=system.damageAttribute
+        actorAttribute=(actorAttribute system.damageAttribute @root.actor)
+        damage=system.damage
+        monitor=system.monitor
+        armor=(weaponArmorMode system.monitor system.noArmor)
       }}
     {{> 'systems/anarchy/templates/actor/parts/weapon-range.hbs'}}
     </a>

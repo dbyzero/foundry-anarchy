@@ -17,8 +17,8 @@ export class SpriteActor extends AnarchyBaseActor {
   }
 
   prepareDerivedData() {
-    this.data.data.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.logic);
-    this.data.data.monitors.matrix.canMark = false;
+    this.system.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.logic);
+    this.system.monitors.matrix.canMark = false;
     super.prepareDerivedData();
   }
 

@@ -19,7 +19,7 @@ export class DeviceActor extends AnarchyBaseActor {
   hasMatrixMonitor() { return true; }
 
   prepareDerivedData() {
-    this.data.data.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.system);
+    this.system.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.system);
     super.prepareDerivedData();
   }
 
