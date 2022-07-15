@@ -70,7 +70,7 @@
     }
   ],
   "system": [],
-  "dependencies": [],
+  "relationships": {},
   "socket": true,
   "protected": false,
   "gridDistance": 1,
