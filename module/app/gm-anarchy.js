@@ -102,19 +102,13 @@ export class GMAnarchy {
   }
 
   _syncGMAnarchySheets() {
-    for (let actor of game.actors) {
-      this._syncNPCSheetAnarchy(actor);
-    }
-    for (let token of game.canvas.tokens.documentCollection.values()) {
-      if (token.actor && !token.actorLink) {
-        this._syncNPCSheetAnarchy(token.actor);
-      }
-    }
-  }
+    const linkedActors = game.actors.filter(actor => !actor.token || actor.token.isLinked);
+    const unlinkedActors = (game.canvas?.tokens?.getDocuments() ?? [])
+      .filter(t => !t.isLinked)
+      .map(t => t.actor);
 
-  _syncNPCSheetAnarchy(actor) {
-    if (!actor.hasPlayerOwner) {
-      actor.render();
-    }
+    linkedActors.concat(unlinkedActors)
+      .filter(actor => !actor.hasPlayerOwner)
+      .forEach(actor => actor.render());
   }
 }
