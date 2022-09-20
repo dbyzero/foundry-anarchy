@@ -1,6 +1,6 @@
 {
   "id": "anarchy",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "title": "Anarchy",
   "description": "Shadowrun Anarchy RPG, and hacks, for FoundryVTT",
   "compatibility": {
@@ -17,16 +17,14 @@
   "url": "https://gitlab.com/vincent.vandeme/anarchy",
   "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
   "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/master/system.json",
-  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/10.0.0/anarchy-10.0.0.zip",
+  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/10.0.1/anarchy-10.0.1.zip",
   "flags": {
     "allowBugReporter": true
   },
   "license": "LICENSE.md",
   "templateVersion": 5,
   "scripts": [],
-  "esmodules": [
-    "module/start.js"
-  ],
+  "esmodules": ["module/start.js"],
   "styles": [
     "style/anarchy.css",
     "style/anarchy-shadowrun.css",
@@ -53,9 +51,7 @@
       "module": "anarchy",
       "path": "./packs/macros.db",
       "type": "Macro",
-      "tags": [
-        "macro"
-      ]
+      "tags": ["macro"]
     },
     {
       "name": "gm-info",
@@ -64,9 +60,7 @@
       "module": "anarchy",
       "path": "./packs/gm-info.db",
       "type": "JournalEntry",
-      "tags": [
-        "journal"
-      ]
+      "tags": ["journal"]
     }
   ],
   "system": [],
