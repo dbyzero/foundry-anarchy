@@ -189,14 +189,12 @@ export class AnarchyActorSheet extends ActorSheet {
   }
 
   async _onDropActor(event, drag) {
-    if (drag.id != this.actor.id) {
-      const owned = game.actors.get(drag.id);
-      if (owned) {
-        // check circular references: find a owner, without finding the owned id
-        ConfirmationDialog.confirmAttachOrCopy(this.actor, owned,
-          async () => await owned.attachToOwnerActor(this.actor),
-          async () => await owned.attachToOwnerActor(this.actor, 'copy'));
-      }
+    const dropActor = fromUuidSync(drag.uuid);
+    if (dropActor?.id != this.actor.id) {
+      // check circular references: find a owner, without finding the owned id
+      ConfirmationDialog.confirmAttachOrCopy(this.actor, dropActor,
+        async () => await dropActor.attachToOwnerActor(this.actor),
+        async () => await dropActor.attachToOwnerActor(this.actor, 'copy'));
     }
     super._onDropActor(event, drag);
   }
