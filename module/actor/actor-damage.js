@@ -156,7 +156,7 @@ export class ActorDamageManager {
         total -= armorResistance;
       }
     }
-    total -= ActorDamageManager._computeStrengthResistance(actor);
+    total -= ActorDamageManager._computeStrengthResistance(actor, monitor);
     total -= Checkbars.resistance(actor, monitor);
     if (total > 0) {
       await Checkbars.addCounter(actor, monitor, total);
@@ -171,7 +171,11 @@ export class ActorDamageManager {
     return Math.max(0, Math.ceil(armor / 3));
   }
 
-  static _computeStrengthResistance(actor, value) {
+  static _computeStrengthResistance(actor, monitor) {
+    switch (monitor) {
+      case TEMPLATE.monitors.matrix:
+        return 0;
+    }
     const strength = actor.getAttributeValue(TEMPLATE.attributes.strength);
     return Math.max(0, Math.floor(strength / 4));
   }
