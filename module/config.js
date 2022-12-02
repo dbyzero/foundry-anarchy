@@ -26,6 +26,7 @@ export const ANARCHY = {
                 resistanceArmorMonitor: 'ANARCHY.settings.damageMode.values.resistanceArmorMonitor',
                 armorResistanceMonitor: 'ANARCHY.settings.damageMode.values.armorResistanceMonitor',
                 armorGivesResistance: 'ANARCHY.settings.damageMode.values.armorGivesResistance',
+                armorGiveResistanceHitsAvoid: 'ANARCHY.settings.damageMode.values.armorGiveResistanceHitsAvoid',
             },
         }
     },

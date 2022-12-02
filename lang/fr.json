@@ -40,9 +40,10 @@
         "name": "Application des dommages",
         "hint": "Détermine l'ordre dans lequel les résistances et armure s'appliquent",
         "values": {
-          "resistanceArmorMonitor": "Résistance, puis armure (et sa résistance), puis moniteur",
-          "armorResistanceMonitor": "Armure (et sa résistance), puis résistance, puis moniteur",
-          "armorGivesResistance": "Résistance du tiers de l'armure restante, elle perd 1 par coup"
+          "resistanceArmorMonitor": "Shadowrun Anarchy: Résistance, Armure, Moniteur",
+          "armorResistanceMonitor": "Armure, Résistance, Moniteur",
+          "armorGivesResistance": "L'armure donne 1/3 de résistance, perd 1 par coup, le contournement d'armure l'ignore",
+          "armorGiveResistanceHitsAvoid": "L'armure donne 1/3 de résistance, perd 1 par coup, le contournement d'armure diminue sa résistance de 1 par succès"
         }
       }
     },

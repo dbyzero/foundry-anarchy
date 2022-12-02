@@ -40,9 +40,10 @@
         "name": "Damage application",
         "hint": "Determine the order to apply resistances and armor",
         "values": {
-          "resistanceArmorMonitor": "Resistance, then armor (and its resistance), then monitor",
-          "armorResistanceMonitor": "Armor (and its resistance), then resistance, then monitor",
-          "armorGivesResistance": "Resistance is 1/3 of remaining armor, it is damaged of 1 per hit"
+          "resistanceArmorMonitor": "Shadowrun Anarchy: Resistance, Armor, then Monitor",
+          "armorResistanceMonitor": "Armor, Resistance, Monitor",
+          "armorGivesResistance": "Armor gives 1/3 resistance, is damaged of 1 per hit, can be fully avoided",
+          "armorGiveResistanceHitsAvoid": "Armor gives 1/3 resistance, is damaged of 1 per hit, avoidance reduces resistance per hits"
         }
       }
     },
