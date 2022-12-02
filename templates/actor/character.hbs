@@ -21,9 +21,11 @@
           <div class="passport-detail">
             {{> "systems/anarchy/templates/actor/character/karma.hbs"}}
           </div>
+          {{#if (localize 'ANARCHY.actor.counters.essence')}}
           <div class="passport-detail">
             {{> "systems/anarchy/templates/actor/character/essence.hbs"}}
           </div>
+          {{/if}}
         </div>
         <div class=".passport-action-row">
           <div class="passport-action">
