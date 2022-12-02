@@ -46,7 +46,7 @@ export class ActorDamageManager {
   }
 
   static async onUpdateSetting(setting, update, options, id) {
-    if (setting.key == SELECTED_DAMAGE_MODE) {
+    if (setting.namespace == SYSTEM_NAME && key == SELECTED_DAMAGE_MODE) {
       ActorDamageManager._selectDamageMode();
     }
   }

@@ -24,7 +24,7 @@ export class GMDifficulty {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (setting.key == GM_DIFFICULTY_POOL_KEY) {
+    if (setting.namespace == SYSTEM_NAME && setting.key == GM_DIFFICULTY_POOL_KEY) {
       this.loadDifficultySettings();
       this._rebuild();
       game.system.anarchy.gmManager.render(false);

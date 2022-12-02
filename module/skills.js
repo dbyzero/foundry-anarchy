@@ -76,7 +76,7 @@ export class Skills {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (setting.key == SELECTED_SKILL_LIST_KEY) {
+    if (setting.namespace == SYSTEM_NAME && setting.key == SELECTED_SKILL_LIST_KEY) {
       this.selectedSkills = game.settings.get(SYSTEM_NAME, SELECTED_SKILL_LIST);
     }
   }

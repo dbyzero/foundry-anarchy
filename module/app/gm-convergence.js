@@ -93,7 +93,7 @@ export class GMConvergence {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (game.user.isGM && setting.key == GM_CONVERGENCE_CONVERGENCES) {
+    if (game.user.isGM && setting.namespace == SYSTEM_NAME && setting.key == GM_CONVERGENCE_CONVERGENCES) {
       await this._rebuild();
     }
   }
