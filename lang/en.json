@@ -259,10 +259,10 @@
         "defense": "Defense",
         "area": "Area of effect",
         "withArmor": "Armor protects",
-        "noArmor": "Ignore armor",
+        "noArmor": "Armor avoidance",
         "damageShort": "DV",
         "areaShort": "Area",
-        "noArmorShort": "(AP)",
+        "noArmorShort": "(AA)",
         "weaponWithoutActor": "No Actor",
         "range": {
           "max": "Maximum range"
