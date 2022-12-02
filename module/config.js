@@ -5,6 +5,10 @@ export const ANARCHY = {
             name: 'ANARCHY.settings.defaultCssClass.name',
             hint: 'ANARCHY.settings.defaultCssClass.hint'
         },
+        anarchyHack: {
+            name: 'ANARCHY.settings.anarchyHack.name',
+            hint: 'ANARCHY.settings.anarchyHack.hint'
+        },
         skillSet: {
             name: 'ANARCHY.settings.skillSet.name',
             hint: 'ANARCHY.settings.skillSet.hint'

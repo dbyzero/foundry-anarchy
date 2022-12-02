@@ -1,3 +1,4 @@
+import { ANARCHY } from "./config.js";
 import { LOG_HEAD, SYSTEM_NAME } from "./constants.js";
 
 export const ANARCHY_HOOKS = {
@@ -25,12 +26,59 @@ export const ANARCHY_HOOKS = {
   /**
    * Hook allowing to provide alternate way to apply damages for Anarchy hack modules
    */
-  PROVIDE_DAMAGE_MODE: 'anarchy-provideDamageMode'
+  PROVIDE_DAMAGE_MODE: 'anarchy-provideDamageMode',
+  /**
+   * Hook allowing to provide alternate way to apply damages for Anarchy hack modules
+   */
+  ANARCHY_HACK: 'anarchy-hack',
 }
 
+const SHADOWRUN_ANARCHY_NO_HACK = {
+  id: SYSTEM_NAME,
+  name: 'Standard Shadowrun Anarchy',
+  hack: {
+  }
+};
+
 export class HooksManager {
+
   constructor() {
     this.hooks = [];
+    this.hacks = {};
+    this.hackNames = {};
+    this._register(ANARCHY_HOOKS.ANARCHY_HACK);
+    Hooks.on(ANARCHY_HOOKS.ANARCHY_HACK, register => register(SHADOWRUN_ANARCHY_NO_HACK));
+    Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
+    Hooks.once('ready', () => this.onReady());
+  }
+
+  async onReady() {
+    Hooks.callAll(ANARCHY_HOOKS.ANARCHY_HACK, (hack) => {
+      this.hacks[hack.id] = hack;
+      this.hackNames[hack.id] = hack.name;
+    });
+    game.settings.register(SYSTEM_NAME, ANARCHY_HOOKS.ANARCHY_HACK, {
+      scope: "world",
+      name: game.i18n.localize(ANARCHY.settings.anarchyHack.name),
+      hint: game.i18n.localize(ANARCHY.settings.anarchyHack.hint),
+      config: true,
+      default: SHADOWRUN_ANARCHY_NO_HACK.id,
+      choices: this.hackNames,
+      type: String
+    });
+    this.applySelectedAnarchyHack();
+  }
+
+  async onUpdateSetting(setting, update, options, id) {
+    if (setting.namespace == SYSTEM_NAME && setting.key == ANARCHY_HOOKS.ANARCHY_HACK) {
+      this.applySelectedAnarchyHack();
+    }
+  }
+
+  applySelectedAnarchyHack() {
+    const selectedHack = this.hacks[game.settings.get(SYSTEM_NAME, ANARCHY_HOOKS.ANARCHY_HACK)];
+    if (selectedHack) {
+    }
   }
 
   static instance() {

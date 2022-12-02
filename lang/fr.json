@@ -22,6 +22,10 @@
         "name": "Style des fenêtres Anarchy",
         "hint": "Sélectionne le style utilisées pour les personnages, objets, et Gestion du MJ"
       },
+      "anarchyHack": {
+        "name": "Anarchy hack",
+        "hint": "Choisir un hack de Anarchy fourni par un module"
+      },
       "skillSet": {
         "name": "Liste de compétences",
         "hint": "Sélectionne la liste de compétences à utiliser"

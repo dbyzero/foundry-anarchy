@@ -22,6 +22,10 @@
         "name": "Style of Anarchy UI",
         "hint": "Select the style used for actors, items and GM Manager"
       },
+      "anarchyHack": {
+        "name": "Anarchy hack",
+        "hint": "Use an Anarchy Hack provided by a module"
+      },
       "skillSet": {
         "name": "Skill set",
         "hint": "Select the set of skills to use"
