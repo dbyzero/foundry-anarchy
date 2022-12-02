@@ -38,11 +38,8 @@ export class Styles {
     });
   }
 
-  selectCssClass(style = undefined) {
-    if (style && this.availableStyles[style]) {
-      return style;
-    }
-    style = game.settings.get(SYSTEM_NAME, DEFAULT_CSS_CLASS);
+  selectCssClass() {
+    const style = game.settings.get(SYSTEM_NAME, DEFAULT_CSS_CLASS);
     return this.availableStyles[style] ? style : CSS_DEFAULT;
   }
 
