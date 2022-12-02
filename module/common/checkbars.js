@@ -7,7 +7,7 @@ import { TEMPLATE } from "../constants.js";
 const MONITORS = ANARCHY.actor.monitors;
 const COUNTERS = ANARCHY.actor.counters;
 
-export const CHECKBARS = {
+const DEFAULT_CHECKBARS = {
   armor: {
     path: 'system.monitors.armor.value',
     monitor: it => it.system.monitors.armor,
@@ -135,12 +135,20 @@ export const CHECKBARS = {
     resource: COUNTERS.social.rumor
   },
 }
+export const CHECKBARS = mergeObject(DEFAULT_CHECKBARS, {});
 
 export class Checkbars {
-
   static init() {
     Handlebars.registerHelper('iconCheckbar', Checkbars.iconCheckbar);
     Handlebars.registerHelper('iconCheckbarHit', Checkbars.iconHit);
+  }
+
+  static hackCheckbars(overrides) {
+    if (overrides) {
+      const newBar = mergeObject(DEFAULT_CHECKBARS, {})
+      mergeObject(newBar, overrides, { recursive: true });
+      mergeObject(CHECKBARS, newBar, { overwrite: true })
+    }
   }
 
   static iconCheckbar(monitor, checked) {

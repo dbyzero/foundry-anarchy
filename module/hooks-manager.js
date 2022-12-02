@@ -1,3 +1,4 @@
+import { CHECKBARS, Checkbars } from "./common/checkbars.js";
 import { ANARCHY } from "./config.js";
 import { LOG_HEAD, SYSTEM_NAME } from "./constants.js";
 
@@ -37,6 +38,7 @@ const SHADOWRUN_ANARCHY_NO_HACK = {
   id: SYSTEM_NAME,
   name: 'Standard Shadowrun Anarchy',
   hack: {
+    checkbars: () => CHECKBARS
   }
 };
 
@@ -78,6 +80,7 @@ export class HooksManager {
   applySelectedAnarchyHack() {
     const selectedHack = this.hacks[game.settings.get(SYSTEM_NAME, ANARCHY_HOOKS.ANARCHY_HACK)];
     if (selectedHack) {
+      Checkbars.hackCheckbars(selectedHack.hack.checkbars());
     }
   }
 
