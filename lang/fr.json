@@ -38,12 +38,12 @@
       },
       "damageMode": {
         "name": "Application des dommages",
-        "hint": "Détermine l'ordre dans lequel les résistances et armure s'appliquent",
+        "hint": "Détermine comment l'armure et les résistances aux dommages (RD) s'appliquent",
         "values": {
           "resistanceArmorMonitor": "Shadowrun Anarchy: Résistance, Armure, Moniteur",
           "armorResistanceMonitor": "Armure, Résistance, Moniteur",
-          "armorGivesResistance": "L'armure donne 1/3 de résistance, perd 1 par coup, le contournement d'armure l'ignore",
-          "armorGiveResistanceHitsAvoid": "L'armure donne 1/3 de résistance, perd 1 par coup, le contournement d'armure diminue sa résistance de 1 par succès"
+          "armorGivesResistance": "RD = Armure/3 + For/4, Armure -1 par coup, CA ignore",
+          "armorGiveResistanceHitsAvoid": "RD = Armure/3, armure -1 par coup, CA diminue la RD"
         }
       }
     },
@@ -139,7 +139,7 @@
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
         "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]",
         "onlyGM": "Seul un MJ est autorisé",
-        "noEdgeForActor": "{actorName} et un {actorType}, il ne peut pas utiliser la Chance",
+        "noEdgeForActor": "{actorName} est un {actorType}, il ne peut pas utiliser la Chance",
         "expectedType": "Objet de type incorrect, attendu: {expectedType}, type de l'objet: {type}",
         "noTargetSelected": "Aucune cible sélectionnée. Vous devriez choisir une (des?) cible avant d'utiliser votre {weapon}",
         "maxTargetsExceedeed": "{weapon} a une zone zone d'effet {area}, avec au maximum {max} cibles, vous en avez {count}",

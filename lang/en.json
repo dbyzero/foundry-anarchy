@@ -38,12 +38,12 @@
       },
       "damageMode": {
         "name": "Damage application",
-        "hint": "Determine the order to apply resistances and armor",
+        "hint": "Determine how Armor / Damage Resistance (RD) applies",
         "values": {
           "resistanceArmorMonitor": "Shadowrun Anarchy: Resistance, Armor, then Monitor",
           "armorResistanceMonitor": "Armor, Resistance, Monitor",
-          "armorGivesResistance": "Armor gives 1/3 resistance, is damaged of 1 per hit, can be fully avoided",
-          "armorGiveResistanceHitsAvoid": "Armor gives 1/3 resistance, is damaged of 1 per hit, avoidance reduces resistance per hits"
+          "armorGivesResistance": "RD = Armor/3 + Str/4, damaged per blow, AA ignores armor",
+          "armorGiveResistanceHitsAvoid": "RD = Armor/3, damaged per blow, AA reduces resistance"
         }
       }
     },
