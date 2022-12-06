@@ -341,10 +341,10 @@ export const ANARCHY = {
     },
     defense: {
         physicalDefense: 'ANARCHY.defense.physicalDefense',
-        mentalDefense: 'ANARCHY.defense.mentalDefense',
+        physicalResistance: 'ANARCHY.defense.physicalResistance',
         socialDefense: 'ANARCHY.defense.socialDefense',
         matrixDefense: 'ANARCHY.defense.matrixDefense',
-        astralDefense: 'ANARCHY.defense.astralDefense',
+        mentalResistance: 'ANARCHY.defense.mentalResistance',
     },
     skill: {
         athletics: 'ANARCHY.skill.athletics',

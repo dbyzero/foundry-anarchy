@@ -6,6 +6,7 @@ import { Checkbars } from "../common/checkbars.js";
 import { AnarchyUsers } from "../users.js";
 import { ROLL_PARAMETER_CATEGORY } from "../roll/roll-parameters.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
+import { AttributeActions } from "../attribute-actions.js";
 
 const AREA_TARGETS = {
   none: { targets: 1, adjust: [0] },
@@ -73,7 +74,7 @@ export class WeaponItem extends AnarchyBaseItem {
   }
 
   getDefense() {
-    return this.system.defense;
+    return AttributeActions.fixedDefenseCode(this.system.defense);
   }
 
   getDamage() {

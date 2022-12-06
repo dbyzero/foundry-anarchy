@@ -3,6 +3,7 @@ import { LOG_HEAD, SYSTEM_NAME, TEMPLATE } from "./constants.js";
 import { ANARCHY_SKILLS } from "./skills.js";
 import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 import { Misc } from "./misc.js";
+import { AttributeActions } from "./attribute-actions.js";
 
 export const DECLARE_MIGRATIONS = 'anarchy-declareMigration';
 
@@ -99,7 +100,7 @@ class _0_4_0_SelectWeaponDefense extends Migration {
     const setDefense = weapon => {
       return {
         _id: weapon.id,
-        'system.defense': findWeaponSkillWithDefense(weapon)?.defense
+        'system.defense': AttributeActions.fixedDefenseCode(findWeaponSkillWithDefense(weapon)?.defense)
       }
     };
 

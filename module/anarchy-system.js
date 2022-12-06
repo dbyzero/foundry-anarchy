@@ -53,6 +53,7 @@ import { RollManager } from './roll/roll-manager.js';
 import { CharacterTabbedSheet } from './actor/character-tabbed-sheet.js';
 import { Modifiers } from './modifiers/modifiers.js';
 import { ActorDamageManager } from './actor/actor-damage.js';
+import { AttributeActions } from './attribute-actions.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -116,6 +117,7 @@ export class AnarchySystem {
 
     WeaponItem.init();
     RollDialog.init();
+    AttributeActions.init();
     AnarchyCombat.init();
     AnarchyUsers.init();
     AnarchyDice.init();

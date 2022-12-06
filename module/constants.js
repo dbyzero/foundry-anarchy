@@ -109,9 +109,14 @@ export const ANARCHY_SYSTEM = {
   },
   defenses: {
     physicalDefense: "physicalDefense",
-    mentalDefense: "mentalDefense",
+    physicalResistance: "physicalResistance",
     socialDefense: "socialDefense",
     matrixDefense: "matrixDefense",
-    astralDefense: "astralDefense"
+    mentalResistance: "mentalResistance"
+  },
+  fixedDefenseCode: {
+    // fix for old incorrect defense codes
+    mentalDefense: "physicalResistance",
+    astralDefense: "mentalResistance",
   }
 }

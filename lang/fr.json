@@ -358,10 +358,10 @@
     },
     "defense": {
       "physicalDefense": "Défense physique",
-      "mentalDefense": "Défense mentale",
+      "physicalResistance": "Résistance physique",
       "socialDefense": "Défense sociale",
       "matrixDefense": "Défense matricielle",
-      "astralDefense": "Défense astrale"
+      "mentalResistance": "Résistance mentale"
     },
     "skill": {
       "athletics": "Athlétisme",

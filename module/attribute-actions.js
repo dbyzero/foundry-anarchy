@@ -53,13 +53,16 @@ const ATTRIBUTE_ACTIONS = [
 
 const DEFENSES = [
   defense(DEFENSE.physicalDefense, ACTION.defense),
-  defense(DEFENSE.mentalDefense, ACTION.resistTorture),
+  defense(DEFENSE.physicalResistance, ACTION.resistTorture),
   defense(DEFENSE.socialDefense, ACTION.composure),
   defense(DEFENSE.matrixDefense, ACTION.matrixDefense),
-  defense(DEFENSE.astralDefense, ACTION.perception),
+  defense(DEFENSE.mentalResistance, ACTION.perception),
 ]
 
 export class AttributeActions {
+  static init() {
+    Handlebars.registerHelper('fixedDefenseCode', code => AttributeActions.fixedDefenseCode(code));
+  }
 
   static all(filter = undefined) {
     return filter
@@ -71,6 +74,9 @@ export class AttributeActions {
     return ATTRIBUTE_ACTIONS.filter(it => it.actorTypes.includes(actor.type) && it.condition(actor));
   }
 
+  static fixedDefenseCode(code) {
+    return ANARCHY_SYSTEM.fixedDefenseCode[code] ?? code;
+  }
   static getActorDefenses(actor) {
     return DEFENSES
       .map(defense => {
@@ -85,6 +91,7 @@ export class AttributeActions {
   }
 
   static getActorDefense(actor, code) {
+    code = AttributeActions.fixedDefenseCode(code);
     const defense = DEFENSES.find(it => it.code == code);
     const actorAction = AttributeActions.getActorAction(actor, defense.actionCode);
     return AttributeActions._convertToDefense(actorAction, defense);

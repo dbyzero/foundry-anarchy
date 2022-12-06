@@ -4,7 +4,7 @@
   </div>
   <div class="column-details">
     <div>
-      {{defender.name}}: {{localize (concat 'ANARCHY.defense.' attack.defense)}}
+      {{defender.name}}: {{localize (concat 'ANARCHY.defense.' (fixedDefenseCode attack.defense))}}
     </div>
     {{#if defenseRoll}}
       <p>

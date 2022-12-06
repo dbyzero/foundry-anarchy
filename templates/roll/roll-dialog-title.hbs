@@ -9,7 +9,7 @@
 {{/if}}
 {{#if (eq mode 'defense')}}
   {{#if item}} - {{item.name}}{{/if}}:
-  {{localize (concat 'ANARCHY.defense.' defenseAction)}}
+  {{localize (concat 'ANARCHY.defense.' (fixedDefenseCode defenseAction))}}
 {{/if}}
 {{#if (eq mode 'skill')}} - {{skill.name}}{{/if}}
 {{#if (eq mode 'weapon')}} - {{weapon.name}}{{/if}}
