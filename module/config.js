@@ -130,6 +130,7 @@ export const ANARCHY = {
             noTokenActor: 'ANARCHY.common.errors.noTokenActor',
             cannotUseEdgeAnymore: 'ANARCHY.common.errors.cannotUseEdgeAnymore',
             actorCannotReceiveDamage: 'ANARCHY.common.errors.actorCannotReceiveDamage',
+            actorDoesNotHaveDefense: 'ANARCHY.common.errors.actorDoesNotHaveDefense',
         },
         sourceReference: 'ANARCHY.common.sourceReference',
         sourceReferenceHelp: 'ANARCHY.common.sourceReferenceHelp',

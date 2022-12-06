@@ -1,5 +1,6 @@
 import { ANARCHY } from "./config.js";
 import { ANARCHY_SYSTEM, TEMPLATE } from "./constants.js";
+import { ErrorManager } from "./error-manager.js";
 import { Icons } from "./icons.js";
 
 function action(code, attr1, attr2, icon, actorTypes, condition = actor => true) {
@@ -94,6 +95,7 @@ export class AttributeActions {
     code = AttributeActions.fixedDefenseCode(code);
     const defense = DEFENSES.find(it => it.code == code);
     const actorAction = AttributeActions.getActorAction(actor, defense.actionCode);
+    ErrorManager.checkActorDefenseAction(actorAction, actor, defense);
     return AttributeActions._convertToDefense(actorAction, defense);
   }
 

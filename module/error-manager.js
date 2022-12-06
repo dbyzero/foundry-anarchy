@@ -63,4 +63,15 @@ export class ErrorManager {
       throw error;
     }
   }
+  static checkActorDefenseAction(actorAction, actor, defense) {
+    if (!actorAction) {
+      const error = game.i18n.format(ANARCHY.common.errors.actorDoesNotHaveDefense, {
+        actor: actor.name,
+        defense: game.i18n.localize(defense.labelkey),
+        actorType: game.i18n.localize(ANARCHY.actorType[actor.type])
+      });
+      ui.notifications.error(error);
+      throw error;
+    }
+  }
 }
