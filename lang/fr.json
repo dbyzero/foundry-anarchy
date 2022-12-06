@@ -139,7 +139,7 @@
         "insufficient": "{resource} insuffisant: requis {required}, disponible {available}",
         "outOfRange": "Impossible de changer {resource} à {value}, en dehors de l'intervalle [{min} , {max}]",
         "onlyGM": "Seul un MJ est autorisé",
-        "noEdgeForActor": "{actorName} est un {actorType}, il ne peut pas utiliser la Chance",
+        "noEdgeForActor": "{actor} est un {actorType}, il ne peut pas utiliser la Chance",
         "expectedType": "Objet de type incorrect, attendu: {expectedType}, type de l'objet: {type}",
         "noTargetSelected": "Aucune cible sélectionnée. Vous devriez choisir une (des?) cible avant d'utiliser votre {weapon}",
         "maxTargetsExceedeed": "{weapon} a une zone zone d'effet {area}, avec au maximum {max} cibles, vous en avez {count}",

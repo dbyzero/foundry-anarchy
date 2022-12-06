@@ -139,7 +139,7 @@
         "insufficient": "Not enough {resource}: required {required}, available {available}",
         "outOfRange": "Cannot set {resource} to {value}, out of range [{min} , {max}]",
         "onlyGM": "Only allowed for GM",
-        "noEdgeForActor": "{actorName} is a {actorType}, so it cannot use Edge",
+        "noEdgeForActor": "{actor} is a {actorType}, so it cannot use Edge",
         "expectedType": "Item is of type {type} instead of expected type {expectedType}",
         "noTargetSelected": "No target is selected, consider selecting a target before using this {weapon}",
         "maxTargetsExceedeed": "{weapon} has a {area} area of effect, with a maximum of {max} targets. You are currently targetting {count} targets",

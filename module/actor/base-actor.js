@@ -269,7 +269,7 @@ export class AnarchyBaseActor extends Actor {
     }
     if (!this.canUseEdge()) {
       const message = game.i18n.localize(ANARCHY.common.errors.noEdgeForActor, {
-        actorName: this.name,
+        actor: this.name,
         actorType: game.i18n.localize(ANARCHY.actorType[this.type])
       });
       ui.notifications.warn(message)
