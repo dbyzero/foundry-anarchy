@@ -45,6 +45,7 @@
   --darkglass-background-negative: hsla(300, 50%, 20%, 0.5);
 
   --darkglass-background-lighter: hsla(0, 0%, 100%, 0.2);
+  --darkglass-background-input: hsla(230, 100%, 20%, 0.25);
 
   --darkglass-background-tooltip: hsla(207, 40%, 70%, 1);
   --darkglass-background-button: var(--darkglass-background-attributes);
@@ -320,4 +321,5 @@
   height: calc(100% - 2px);
   border: 1px inset var(--darkglass-color-border);
   box-shadow: var(--darkglass-shadow-anarchy-input);
+  background-color: var(--darkglass-background-input);
 }

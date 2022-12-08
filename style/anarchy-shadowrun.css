@@ -239,6 +239,6 @@
 
 .style-dark .roll-dialog div.roll-parameters div.parameter :is(select, input) {
   height: calc(100% - 2px);
-  background: var(--anarchy-background-words);
+  background-color: var(--anarchy-background-words);
   border: 1px inset var(--anarchy-color-border);
 }
