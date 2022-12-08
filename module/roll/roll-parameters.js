@@ -416,7 +416,7 @@ export class RollParameters {
     const byCategory = Misc.classify(actual, it => it.category);
     const sums = {}
     Object.values(byCategory)
-      .forEach(list => sums[list[0].category] = Misc.sumValues(list, it => it.value ?? (it.optional ? 1 : 0)));
+      .forEach(list => sums[list[0].category] = Math.max(0, Misc.sumValues(list, it => it.value ?? (it.optional ? 1 : 0))));
     return sums;
   }
 

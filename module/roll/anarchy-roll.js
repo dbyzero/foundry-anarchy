@@ -20,7 +20,7 @@ export class AnarchyRoll {
   constructor(param) {
     this.param = mergeObject(param, {
       target: 5,
-      pool: 1,
+      pool: 0,
       reroll: 0,
       rerollForced: 0,
       glitch: 0,
