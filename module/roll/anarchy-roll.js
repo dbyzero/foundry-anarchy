@@ -2,6 +2,24 @@ import { ANARCHY } from "../config.js";
 import { GLITCH_COLORSET, RISK_COLORSET } from "./dice.js";
 
 export const ROLL_THEME = {}
+const DEFAULT_ROLL_RESULT = {
+  riskProwess: 0,
+  riskGlitch: 0,
+  riskOutcome: 'nothing',
+  glitch: 0,
+  glitchOutcome: 'nothing',
+  totalGlitch: 0,
+  drain: 0,
+  total: 0,
+  subrolls: {
+    roll: undefined,
+    reroll: undefined,
+    removed: undefined,
+    rerollForced: undefined,
+    risk: undefined,
+    glitch: undefined,
+  }
+};
 
 export class AnarchyRoll {
   static init() {
@@ -18,36 +36,16 @@ export class AnarchyRoll {
    * @param {*} param : { pool: 1, reroll: 0, risk: 0, rerollForced: 0, target: 5 }
    */
   constructor(param) {
-    this.param = mergeObject(param, {
-      target: 5,
-      pool: 0,
-      reroll: 0,
-      rerollForced: 0,
-      glitch: 0,
-      risk: 0,
-      edge: 0,
-    }, { overwrite: false });
-    this.subrolls = {
-      roll: undefined,
-      reroll: undefined,
-      removed: undefined,
-      rerollForced: undefined,
-      risk: undefined,
-      glitch: undefined,
-    }
-    if (this.param.edge > 0) {
-      this.param.target = 4;
-    }
-    this.riskProwess = 0;
-    this.riskGlitch = 0;
-    this.riskOutcome = 'nothing'
-    this.glitch = 0;
-    this.glitchOutcome = 'nothing'
-    this.totalGlitch = 0;
-    this.drain = 0;
-    this.total = 0;
+    this.param = param;
+    this.param.pool = Math.max(this.param.pool ?? 0, 0);
+    this.param.reroll = Math.max(this.param.reroll ?? 0, 0);
+    this.param.rerollForced = Math.max(this.param.rerollForced ?? 0, 0);
+    this.param.glitch = Math.max(this.param.glitch ?? 0, 0);
+    this.param.risk = Math.max(this.param.risk ?? 0, 0);
+    this.param.edge = Math.max(this.param.edge ?? 0, 0);
+    this.param.target = this.param.edge > 0 ? 4 : (this.param.target ?? 5);
+    mergeObject(this, DEFAULT_ROLL_RESULT)
   }
-
 
   async evaluate() {
     await this.rollPool();
