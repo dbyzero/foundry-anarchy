@@ -27,6 +27,7 @@ const WEAPON_RANGE_PARAMETER = {
     hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/select-option.hbs`,
     hbsTemplateChat: undefined, //``
   },
+  isUsed: (p) => true,
   condition: context => context.weapon,
   factory: context => {
     const ranges = context.weapon.getRanges();
@@ -40,18 +41,19 @@ const WEAPON_RANGE_PARAMETER = {
 const WEAPON_AREA_PARAMETER = {
   code: 'weapon-area',
   options: {
-    flags: { used: true, },
+    used: true,
     order: 20, category: ROLL_PARAMETER_CATEGORY.pool,
     labelkey: ANARCHY.common.roll.modifiers.weaponArea,
     hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     hbsTemplateChat: undefined, //``
   },
+  isUsed: (p) => p.used,
   condition: context => context.weapon && context.weapon.getArea() != TEMPLATE.area.none,
   factory: context => {
     const countTargets = context.targeting.targetedTokenIds?.length ?? 1;
     return {
       value: context.weapon.getAreaModifier(countTargets),
-      flags: { used: countTargets > 1 },
+      used: countTargets > 1,
     }
   }
 }

@@ -39,7 +39,7 @@ export class AnarchyRoll {
     this.param = param;
     this.param.pool = Math.max(this.param.pool ?? 0, 0);
     this.param.reroll = Math.max(this.param.reroll ?? 0, 0);
-    this.param.rerollForced = Math.max(this.param.rerollForced ?? 0, 0);
+    this.param.rerollForced = Math.abs(this.param.rerollForced ?? 0);
     this.param.glitch = Math.max(this.param.glitch ?? 0, 0);
     this.param.risk = Math.max(this.param.risk ?? 0, 0);
     this.param.edge = Math.max(this.param.edge ?? 0, 0);

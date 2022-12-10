@@ -54,6 +54,7 @@ import { CharacterTabbedSheet } from './actor/character-tabbed-sheet.js';
 import { Modifiers } from './modifiers/modifiers.js';
 import { ActorDamageManager } from './actor/actor-damage.js';
 import { AttributeActions } from './attribute-actions.js';
+import { DiceCursor } from './roll/dice-cursor.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT AnarchySystem Initialization    */
@@ -116,6 +117,7 @@ export class AnarchySystem {
     this.loadItemSheets();
 
     WeaponItem.init();
+    DiceCursor.init();
     RollDialog.init();
     AttributeActions.init();
     AnarchyCombat.init();
