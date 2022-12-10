@@ -319,7 +319,27 @@
 
 .style-darkglass .roll-dialog div.roll-parameters div.parameter :is(select, input) {
   height: calc(100% - 2px);
+  text-align: center;
+  border: 1px inset var(--darkglass-color-border-light);
+}  
+.style-darkglass .roll-dialog div.roll-parameters div.parameter :is(select, input):not(:disabled) {
   border: 1px inset var(--darkglass-color-border);
   box-shadow: var(--darkglass-shadow-anarchy-input);
   background-color: var(--darkglass-background-input);
+}
+
+.style-darkglass .roll-dialog a.negative-dice-color.active i {
+  color: hsla(9, 100%, 50%, 0.9);
+}
+.style-darkglass .roll-dialog a.negative-dice-color.inactive i {
+  color: hsla(9, 60%, 50%, 0.8);
+}
+.style-darkglass .roll-dialog a.neutral-dice-color i {
+  color: hsla(39, 100%, 70%, 0.9);
+}
+.style-darkglass .roll-dialog a.positive-dice-color.active i {
+  color: hsla(100, 100%, 50%, 0.9);
+}
+.style-darkglass .roll-dialog a.positive-dice-color.inactive i {
+  color: hsla(100, 60%, 50%, 0.8);
 }

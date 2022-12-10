@@ -1046,8 +1046,8 @@ div.column-details {
 .roll-dialog div.roll-parameters div.parameter-category {
   margin-top: 2px;
   margin-bottom: 2px;
+  height: fit-content;
 }
-
 .roll-dialog div.roll-parameters div.parameter-category>label {
   height: 16px;
 }
@@ -1055,7 +1055,8 @@ div.column-details {
 .roll-dialog div.roll-parameters div.parameter {
   display: flex;
   flex-direction: row;
-  height: 24px;
+  min-height: 24px;
+  height: fit-content;
   width: 100%;
 }
 
@@ -1075,7 +1076,7 @@ div.column-details {
 }
 
 .roll-dialog div.roll-parameters div.parameter .parameter-label {
-  width: calc(66% - 1rem);
+  width: calc(45% - 1rem);
 }
 
 .roll-dialog div.roll-parameters div.parameter .parameter-value {
@@ -1083,11 +1084,29 @@ div.column-details {
 }
 
 .roll-dialog div.roll-parameters div.parameter .parameter-selection {
-  width: calc(33% - 1rem);
+  width: calc(55% - 1rem);
   display: flex;
   flex-direction: row;
 }
 
+.roll-dialog div.roll-parameters .input-cursor-parameter a i {
+  font-size: large;
+}
+
+
+.roll-dialog div.roll-parameters div.parameter-source{
+  margin-left: -2rem;
+}
+
+.roll-dialog a.negative-dice-color i {
+  color: hsla(0, 100%, 40%, 0.7);
+}
+.roll-dialog a.neutral-dice-color i {
+  color: hsla(50, 100%, 10%, 0.7);
+}
+.roll-dialog a.positive-dice-color i {
+  color: hsla(100, 100%, 40%, 0.7);
+}
 
 .anarchy-shortcuts .anarchy-shortcuts-list {
   display: flex;

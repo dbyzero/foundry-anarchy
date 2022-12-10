@@ -2,6 +2,7 @@ import { ANARCHY } from "../config.js";
 import { ANARCHY_SYSTEM, TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { Misc } from "../misc.js";
+import { DiceCursor } from "./dice-cursor.js";
 import { ROLL_PARAMETER_CATEGORY } from "./roll-parameters.js";
 
 /**
@@ -136,8 +137,8 @@ export class RollDialog extends Dialog {
     };
     const options = {
       classes: [game.system.anarchy.styles.selectCssClass(), "anarchy-dialog"],
-      width: 400,
-      height: 134 + 24 * roll.parameters.length,
+      width: 500,
+      height: 'fit-content',
       'z-index': 99999,
     };
 
@@ -148,64 +149,94 @@ export class RollDialog extends Dialog {
 
   activateListeners(html) {
     super.activateListeners(html);
+    this.html = html
     this.bringToTop();
 
-    html.find('.select-attribute-parameter').change((event) => {
+    this.html.find('.select-attribute-parameter').change(async event => {
       const parameter = this._getRollParameter(event);
       const item = this._getEventItem(event, this.roll.actor);
       const selected = event.currentTarget.value;
       const value = this.roll.actor.getAttributeValue(selected, item);
       this.roll[parameter.code] = selected;
-      this._setParameterSelectedOption(html, parameter, selected, value);
+      await this._setParameterSelectedOption(parameter, selected, value);
     });
 
-    html.find('.check-optional').click(event => {
+    this.html.find('.check-optional').click(async event => {
       const parameter = this._getRollParameter(event);
       parameter.onChecked(parameter, event.currentTarget.checked);
       if (parameter.category == ROLL_PARAMETER_CATEGORY.pool) {
-        this._updateParameterValue(html, parameter, parameter.value)
+        await this._updateParameterValue(parameter, parameter.value)
       }
     });
 
-    html.find('.input-select-parameter').on('input', event => {
+    this.activateDiceParameterClick();
+
+    this.html.find('.input-select-parameter').on('input', async event => {
       const parameter = this._getRollParameter(event);
       const value = Number.parseInt(event.currentTarget.value) ?? 0;
-      parameter.onValue(parameter, value);
-      parameter.onChecked(parameter, value);
+      await this._updateParameterValue(parameter, value);
     });
 
-    html.find('.select-option-parameter').change(event => {
+    this.html.find('.select-option-parameter').change(async event => {
       const parameter = this._getRollParameter(event);
       const selected = event.currentTarget.value;
       const value = Number.parseInt(selected);
-      this._setParameterSelectedOption(html, parameter, selected, value);
+      await this._setParameterSelectedOption(parameter, selected, value);
     });
   }
 
-  _setParameterSelectedOption(html, parameter, selected, value) {
+  activateDiceParameterClick() {
+    this.html.find('.input-cursor-parameter a').click(async (event) => {
+      const parameter = this._getRollParameter(event);
+      if (parameter.flags.editDice) {
+        const clickedValue = Number.parseInt(this.html.find(event.currentTarget).attr('data-dice')) ?? 0;
+        const value = (parameter.value != clickedValue || clickedValue == 0)
+          ? clickedValue
+          : (clickedValue > 0 ? clickedValue - 1 : clickedValue + 1)
+        await this._updateParameterValue(parameter, value);
+      }
+    });
+  }
+
+  async _setParameterSelectedOption(parameter, selected, value) {
     parameter.onChecked(parameter, selected);
+    parameter.max = value;
+    await this._updateParameterValue(parameter, value);
+  }
+
+  async _updateParameterValue(parameter, value) {
     parameter.onValue(parameter, value);
-    parameter.selected = selected;
-    this._updateParameterValue(html, parameter, value);
-  }
 
-  _updateParameterValue(html, parameter, value) {
-    html.find(`.parameter[data-parameter-code='${parameter.code}'] .parameter-value`)
+    this.html.find(`.parameter[data-parameter-code='${parameter.code}'] .parameter-value`)
       .text(value);
+
+    const diceCursorHtml = await this.renderDiceCursor(parameter);
+    const diceCursor = this.html.find(`.parameter[data-parameter-code='${parameter.code}'] .input-cursor-parameter`);
+    diceCursor
+      .empty()
+      .append(diceCursorHtml);
+    this.activateDiceParameterClick();
+
+    const inputs = this.html.find(`.parameter[data-parameter-code='${parameter.code}'] .input-select-parameter`);
+    inputs.val(parameter.value);
   }
 
-  _getSelectedOption(html, parameter) {
-    return html.find(`.parameter[data-parameter-code='${parameter.code}'] select.select-option-parameter option:selected`)
+  async renderDiceCursor(parameter) {
+    return await DiceCursor.diceCursor({ value: parameter.value, min: parameter.min, max: parameter.max, editable: parameter.flags.editDice });
+  }
+
+  _getSelectedOption(parameter) {
+    return this.html.find(`.parameter[data-parameter-code='${parameter.code}'] select.select-option-parameter option:selected`)
       .text();
   }
 
   _getEventItem(event, actor) {
-    const itemId = $(event.currentTarget).closest('.parameter').attr('data-item-id');
+    const itemId = this.html.find(event.currentTarget).closest('.parameter').attr('data-item-id');
     return itemId ? actor.items.get(itemId) : undefined;
   }
 
   _getRollParameter(event) {
-    const code = $(event.currentTarget).closest('.parameter').attr('data-parameter-code');
+    const code = this.html.find(event.currentTarget).closest('.parameter').attr('data-parameter-code');
     return this.roll.parameters.find(it => it.code == code);
   }
 }

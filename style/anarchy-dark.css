@@ -42,6 +42,7 @@
   --dark-color-resource-checked: hsla(39, 70%, 70%, 0.9);
   --dark-color-monitor-checked: hsla(9, 100%, 50%, 0.9);
   --dark-color-unchecked: var(--dark-background-item-img);
+
 }
 
 .window-app.style-dark {
@@ -250,6 +251,26 @@
 
 .style-dark .roll-dialog div.roll-parameters div.parameter :is(select, input) {
   height: calc(100% - 2px);
-  background-color: var(--dark-background-input);
   border-style: none;
+}
+.style-dark .roll-dialog div.roll-parameters div.parameter :is(select, input):not(:disabled) {
+  background-color: var(--dark-background-input);
+}
+.style-dark .roll-dialog a.negative-dice-color.active i {
+  color: hsla(9, 100%, 50%, 0.9);
+}
+.style-dark .roll-dialog a.negative-dice-color.inactive i {
+  color: hsla(9, 60%, 50%, 0.8);
+}
+.style-dark .roll-dialog a.neutral-dice-color.active i {
+  color: hsla(39, 100%, 70%, 0.9);
+}
+.style-dark .roll-dialog a.neutral-dice-color.inactive i {
+  color: hsla(39, 60%, 50%, 0.8);
+}
+.style-dark .roll-dialog a.positive-dice-color.active i {
+  color: hsla(100, 80%, 50%, 0.9);
+}
+.style-dark .roll-dialog a.positive-dice-color.inactive i {
+  color: hsla(100, 40%, 50%, 0.8);
 }

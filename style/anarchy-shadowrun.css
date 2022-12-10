@@ -237,7 +237,13 @@
   color: var(--anarchy-color-unchecked);
 }
 
-.style-dark .roll-dialog div.roll-parameters div.parameter :is(select, input) {
+.style-anarchy-shadowrun .roll-dialog div.roll-parameters div.parameter :is(select, input):disabled {
+  height: calc(100% - 2px);
+  border: 1px inset var(--anarchy-color-border-light);
+  text-align: center;
+}
+
+.style-anarchy-shadowrun .roll-dialog div.roll-parameters div.parameter :is(select, input):not(:disabled) {
   height: calc(100% - 2px);
   background-color: var(--anarchy-background-words);
   border: 1px inset var(--anarchy-color-border);
