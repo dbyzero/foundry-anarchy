@@ -31,8 +31,11 @@ const WEAPON_RANGE_PARAMETER = {
   condition: context => context.weapon,
   factory: context => {
     const ranges = context.weapon.getRanges();
+    const rangeValues = ranges.map(it => it.value);
     return {
       value: ranges[0].value,
+      min: Math.min(rangeValues),
+      max: Math.max(rangeValues),
       choices: ranges,
       selected: game.i18n.localize(ranges[0].labelkey)
     }
@@ -51,8 +54,11 @@ const WEAPON_AREA_PARAMETER = {
   condition: context => context.weapon && context.weapon.getArea() != TEMPLATE.area.none,
   factory: context => {
     const countTargets = context.targeting.targetedTokenIds?.length ?? 1;
+    const areaModifier = context.weapon.getAreaModifier(countTargets);
     return {
-      value: context.weapon.getAreaModifier(countTargets),
+      value: areaModifier,
+      min: Math.min(0, areaModifier),
+      max: Math.max(0, areaModifier),
       used: countTargets > 1,
     }
   }

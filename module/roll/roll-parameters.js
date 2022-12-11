@@ -157,7 +157,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       const wounds = context.actor.getWounds();
       return {
         wounds: wounds,
-        min: -wounds, max: 0,
+        min: - wounds, max: 0,
         value: - wounds,
         used: true,
       }

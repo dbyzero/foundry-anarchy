@@ -188,7 +188,7 @@ export class RollDialog extends Dialog {
   activateDiceParameterClick() {
     this.html.find('.input-cursor-parameter a').click(async (event) => {
       const parameter = this._getRollParameter(event);
-      if (parameter.flags.editDice) {
+      if (parameter.flags?.editDice) {
         const clickedValue = Number.parseInt(this.html.find(event.currentTarget).attr('data-dice')) ?? 0;
         const value = (parameter.value != clickedValue || clickedValue == 0)
           ? clickedValue
@@ -222,7 +222,7 @@ export class RollDialog extends Dialog {
   }
 
   async renderDiceCursor(parameter) {
-    return await DiceCursor.diceCursor({ value: parameter.value, min: parameter.min, max: parameter.max, editable: parameter.flags.editDice });
+    return await DiceCursor.diceCursor({ value: parameter.value, min: parameter.min, max: parameter.max, editable: parameter.flags?.editDice });
   }
 
   _getSelectedOption(parameter) {
