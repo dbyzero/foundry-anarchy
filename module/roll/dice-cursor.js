@@ -41,7 +41,10 @@ export class DiceCursor {
   }
 
   static colorClass(dice, editable) {
-    return (dice == 0 || !editable) ? 'neutral-dice-color' : dice < 0 ? 'negative-dice-color' : 'positive-dice-color';
+    if (dice == 0 || !editable) {
+      return dice < 0 ? 'fixed-dice-malus' : 'fixed-dice-bonus';
+    }
+    return dice < 0 ? 'variable-dice-malus' : 'variable-dice-bonus';
   }
 
   static $getFas(fasArray, dice) {

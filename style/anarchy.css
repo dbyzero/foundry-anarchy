@@ -1080,7 +1080,9 @@ div.column-details {
 }
 
 .roll-dialog div.roll-parameters div.parameter .parameter-value {
-  width: calc(2rem);
+  max-width: 2rem;
+  min-width: 2rem;
+  width: 2rem;
 }
 
 .roll-dialog div.roll-parameters div.parameter .parameter-selection {
@@ -1098,14 +1100,29 @@ div.column-details {
   margin-left: -2rem;
 }
 
-.roll-dialog a.negative-dice-color i {
+.roll-dialog a.variable-dice-malus.active i {
   color: hsla(0, 100%, 40%, 0.7);
 }
-.roll-dialog a.neutral-dice-color i {
-  color: hsla(50, 100%, 10%, 0.7);
+.roll-dialog a.variable-dice-malus.inactive i {
+  color: hsla(0, 50%, 40%, 0.7);
 }
-.roll-dialog a.positive-dice-color i {
+.roll-dialog a.fixed-dice-malus.active i {
+  color: hsla(20, 100%, 40%, 0.7);
+}
+.roll-dialog a.fixed-dice-malus.inactive i {
+  color: hsla(20, 50%, 40%, 0.7);
+}
+.roll-dialog a.fixed-dice-bonus.active i {
+  color: hsla(80, 100%, 40%, 0.7);
+}
+.roll-dialog a.fixed-dice-bonus.inactive i {
+  color: hsla(80, 50%, 40%, 0.7);
+}
+.roll-dialog a.variable-dice-bonus.active i {
   color: hsla(100, 100%, 40%, 0.7);
+}
+.roll-dialog a.variable-dice-bonus.inactive i {
+  color: hsla(100, 50%, 40%, 0.7);
 }
 
 .anarchy-shortcuts .anarchy-shortcuts-list {

@@ -328,18 +328,27 @@
   background-color: var(--darkglass-background-input);
 }
 
-.style-darkglass .roll-dialog a.negative-dice-color.active i {
-  color: hsla(9, 100%, 50%, 0.9);
+.style-darkglass .roll-dialog a.variable-dice-malus.active i {
+  color: hsla(0, 100%, 50%, 0.9);
 }
-.style-darkglass .roll-dialog a.negative-dice-color.inactive i {
-  color: hsla(9, 60%, 50%, 0.8);
+.style-darkglass .roll-dialog a.variable-dice-malus.inactive i {
+  color: hsla(0, 60%, 50%, 0.8);
 }
-.style-darkglass .roll-dialog a.neutral-dice-color i {
-  color: hsla(39, 100%, 70%, 0.9);
+.style-darkglass .roll-dialog a.fixed-dice-malus.active i {
+  color: hsla(20, 100%, 70%, 0.9);
 }
-.style-darkglass .roll-dialog a.positive-dice-color.active i {
+.style-darkglass .roll-dialog a.fixed-dice-malus.inactive i {
+  color: hsla(20, 60%, 50%, 0.8);
+}
+.style-darkglass .roll-dialog a.fixed-dice-bonus.active i {
+  color: hsla(80, 100%, 70%, 0.9);
+}
+.style-darkglass .roll-dialog a.fixed-dice-bonus.inactive i {
+  color: hsla(80, 60%, 50%, 0.8);
+}
+.style-darkglass .roll-dialog a.variable-dice-bonus.active i {
   color: hsla(100, 100%, 50%, 0.9);
 }
-.style-darkglass .roll-dialog a.positive-dice-color.inactive i {
+.style-darkglass .roll-dialog a.variable-dice-bonus.inactive i {
   color: hsla(100, 60%, 50%, 0.8);
 }

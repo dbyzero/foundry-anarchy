@@ -1,18 +1,8 @@
-<label class="parameter-label">
-    <span>
+<span class="flexrow parameter-label">
+  <label class="parameter-label">
       {{> 'systems/anarchy/templates/common/label.hbs' this}}
-      {{#if sources}}
-        <span class="tooltip tooltip-dotted">
-          (...)
-          <div class="tooltiptext tooltip-roll-parameters">
-            {{#each sources as |source|}}
-            <div class="parameter">
-              {{source.item.name}}: {{source.modifier.value}} {{#if
-              source.modifier.condition}}({{source.modifier.condition}}){{/if}}
-            </div>
-            {{/each}}
-          </div>
-        </span>
-        {{/if}}
-      </span>
-</label>
+  </label>
+  {{#if flags.optional}}
+    <input class="parameter-selection check-optional" type="checkbox" {{checked used}} />
+  {{/if}}
+</span>
