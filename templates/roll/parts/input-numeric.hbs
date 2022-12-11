@@ -2,7 +2,7 @@
 <div class="flexcol">
   <div class="flexrow">
     {{#if flags.editable}}
-      <input class="parameter-value info-value type-numeric input-select-parameter" type="number" data-dtype="Number"
+      <input class="parameter-value info-value type-numeric" type="number" data-dtype="Number"
         min="{{either min 0}}" max="{{either max 5}}" value="{{either value 0}}" />
     {{else}}
       <input disabled  class="parameter-value info-value" type="number" data-dtype="Number"

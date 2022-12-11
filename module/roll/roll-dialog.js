@@ -171,7 +171,7 @@ export class RollDialog extends Dialog {
 
     this.activateDiceParameterClick();
 
-    this.html.find('.input-select-parameter').on('input', async event => {
+    this.html.find('input.parameter-value:not(:disabled)').on('input', async event => {
       const parameter = this._getRollParameter(event);
       const value = Number.parseInt(event.currentTarget.value) ?? 0;
       await this._updateParameterValue(parameter, value);
@@ -217,7 +217,7 @@ export class RollDialog extends Dialog {
       .append(diceCursorHtml);
     this.activateDiceParameterClick();
 
-    const inputs = this.html.find(`.parameter[data-parameter-code='${parameter.code}'] .input-select-parameter`);
+    const inputs = this.html.find(`.parameter[data-parameter-code='${parameter.code}'] input.parameter-value`);
     inputs.val(parameter.value);
   }
 
