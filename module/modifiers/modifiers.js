@@ -67,7 +67,8 @@ export class Modifiers {
       case 'skill':
         return game.system.anarchy.skills.getSkillLabels().map(skill => { return { key: skill.value, label: skill.labelkey } });
       case 'attributeAction':
-        return AttributeActions.all().map(action => { return { key: action.code, label: action.labelkey } });
+        const actions = AttributeActions.all().map(action => { return { key: action.code, label: action.labelkey }; });
+        return Misc.distinct(actions.map(it => it.key)).map(key => actions.find(it => it.key == key))
       case 'defense':
         return AttributeActions.getDefenses().map(defense => { return { key: defense.code, label: defense.labelkey } });
     }
