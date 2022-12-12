@@ -69,6 +69,13 @@
       "path": "./packs/gm-info.db",
       "type": "JournalEntry",
       "tags": ["journal"]
+    },
+    {
+      "name": "manual-fr",
+      "label": "Manuel SR Anarchy (FR)",
+      "type": "JournalEntry",
+      "path": "./packs/manual-fr.db",
+      "tags": ["documentation"]
     }
   ],
   "system": [],
