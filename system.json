@@ -1,6 +1,10 @@
 {
   "id": "anarchy",
-  "version": "10.2.1",
+  "version": "10.2.2",
+  "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/master/system.json",
+  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/10.2.2/anarchy-10.2.2.zip",
+  "url": "https://gitlab.com/vincent.vandeme/anarchy",
+  "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
   "title": "Anarchy",
   "description": "Shadowrun Anarchy RPG, and hacks, for FoundryVTT",
   "compatibility": {
@@ -22,10 +26,6 @@
       "discord": "Los Brutos#1876"
     }
   ],
-  "url": "https://gitlab.com/vincent.vandeme/anarchy",
-  "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
-  "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/master/system.json",
-  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/10.2.1/anarchy-10.2.1.zip",
   "flags": {
     "allowBugReporter": true
   },
