@@ -33,9 +33,10 @@ const ATTRIBUTE_ACTIONS = [
   action(ACTION.defense, ATTR.autopilot, undefined, Icons.fontAwesome('fas fa-tachometer-alt'), [ACTOR.vehicle]),
   // TODO: add a way to pilot a vehicle to fallback defense of controled vehicle
   action(ACTION.resistTorture, ATTR.strength, ATTR.willpower, Icons.fontAwesome('fas fa-angry'), [ACTOR.character]),
+
   action(ACTION.perception, ATTR.logic, ATTR.willpower, Icons.fontAwesome('fas fa-eye'), [ACTOR.character]),
-  action(ACTION.perception, ATTR.logic, ATTR.willpower, Icons.fontAwesome('fas fa-eye'), [ACTOR.device]),
   action(ACTION.perception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-eye'), [ACTOR.device, ACTOR.vehicle]),
+
   action(ACTION.composure, ATTR.charisma, ATTR.willpower, Icons.fontAwesome('fas fa-meh'), [ACTOR.character]),
   action(ACTION.judgeIntentions, ATTR.charisma, ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks'), [ACTOR.character]),
   action(ACTION.memory, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-brain'), [ACTOR.character]),
