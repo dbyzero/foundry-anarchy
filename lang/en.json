@@ -105,7 +105,7 @@
         "rollTheme": {
           "dicePool": "Dice pool",
           "reroll": "Failure rerolls",
-          "removed": "Success removed by opponent",
+          "removed": "Success to reroll",
           "rerollRemoved": "Reroll removed success",
           "glitch": "Glitch dice",
           "drain": "Drain",
@@ -438,6 +438,7 @@
         "effect": {
           "pool": "Pool bonus",
           "reroll": "Rerolls",
+          "successReroll": "Reroll own successes",
           "opponentPool": "Opponent pool malus",
           "opponentReroll": "Opponent rerolls"
         },

@@ -105,7 +105,7 @@
         "rollTheme": {
           "dicePool": "Réserve de dés",
           "reroll": "Relance d'échecs",
-          "removed": "Succès supprimés par l'adversaire",
+          "removed": "Succès à relancer",
           "rerollRemoved": "Relance des succès supprimés",
           "glitch": "Complications",
           "drain": "Drain",
@@ -438,6 +438,7 @@
         "effect": {
           "pool": "Bonus",
           "reroll": "Relances",
+          "successReroll": "Relance de ses succès",
           "opponentPool": "Malus adversaire",
           "opponentReroll": "Relances adversaire"
         },

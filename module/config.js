@@ -422,6 +422,7 @@ export const ANARCHY = {
             effect: {
                 pool: 'ANARCHY.modifier.roll.effect.pool',
                 reroll: 'ANARCHY.modifier.roll.effect.reroll',
+                successReroll: 'ANARCHY.modifier.roll.effect.successReroll',
                 opponentPool: 'ANARCHY.modifier.roll.effect.opponentPool',
                 opponentReroll: 'ANARCHY.modifier.roll.effect.opponentReroll',
             },

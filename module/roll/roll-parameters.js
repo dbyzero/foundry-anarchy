@@ -10,6 +10,7 @@ export const ROLL_PARAMETER_CATEGORY = {
   pool: 'pool',
   reroll: 'reroll',
   rerollForced: 'rerollForced',
+  successReroll: 'successReroll',
   glitch: 'glitch',
   drain: 'drain',
   convergence: 'convergence',
@@ -136,7 +137,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       min: -4, max: 4
     },
     isUsed: (p) => p.value != 0,
-    factory: context => RollParameters.computeRollModifiers('pool', context)
+    factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.pool, context)
   },
   // wounds
   {
@@ -259,7 +260,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       min: 0, max: 4
     },
     isUsed: (p) => p.value != 0,
-    factory: context => RollParameters.computeRollModifiers('reroll', context)
+    factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.reroll, context)
   },
   // reduction from opponent
   {
@@ -287,15 +288,15 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 31, category: ROLL_PARAMETER_CATEGORY.rerollForced,
       labelkey: ANARCHY.common.roll.modifiers.rerollForced,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
-      min: -4, max: 0
+      min: -5, max: 0
     },
     isUsed: (p) => p.value != 0,
     factory: context => {
-      const rerollForced = -(context.attackRoll?.param.opponentReroll ?? 0);
-      return {
-        flags: { editDice: true, used: true, editable: rerollForced == 0 },
-        value: rerollForced,
-      }
+      const rerollForced = RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.successReroll, context);
+      rerollForced.value = -rerollForced.value - (context.attackRoll?.param.opponentReroll ?? 0);
+      return mergeObject(rerollForced, {
+        flags: { editDice: true, used: true, editable: rerollForced.value == 0 },
+      });
     }
   },
   // anarchy dispositions
@@ -362,7 +363,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       min: 0, max: 4
     },
     isUsed: (p) => p.value != 0,
-    factory: context => RollParameters.computeRollModifiers('opponentPool', context),
+    factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.opponentPool, context),
     condition: context => !context.attributeAction
   },
   // force opponent rerolls
@@ -377,7 +378,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       min: 0, max: 4
     },
     isUsed: (p) => p.value != 0,
-    factory: context => RollParameters.computeRollModifiers('opponentReroll', context),
+    factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.opponentReroll, context),
     condition: context => !context.attributeAction
   },
 
