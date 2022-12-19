@@ -3,6 +3,7 @@ import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME, TEMPLATE } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
+import { Modifiers } from "../modifiers/modifiers.js";
 
 const DAMAGE_MODE = 'damage-mode'
 const SELECTED_DAMAGE_MODE = `${SYSTEM_NAME}.${DAMAGE_MODE}`;
@@ -61,11 +62,12 @@ export class ActorDamageManager {
     ActorDamageManager.damageModeMethod = damageModeMethods[damageModeCode];
   }
 
-  static async sufferDamage(actor, damageType, damage, success, avoidArmor, sourceActor) {
-    const monitor = actor.getDamageMonitor(damageType);
-    ErrorManager.checkMonitorForDamage(damageType, monitor, actor);
+  static async sufferDamage(defender, damageType, damage, success, avoidArmor, attacker, attackWeapon) {
+    const monitor = defender.getDamageMonitor(damageType);
+    ErrorManager.checkMonitorForDamage(damageType, monitor, defender);
     const sufferDamageMethod = ActorDamageManager.damageModeMethod ?? ActorDamageManager.sufferDamageResistanceArmorMonitor;
-    return await sufferDamageMethod(actor, monitor, damage, success, avoidArmor, sourceActor);
+    await sufferDamageMethod(defender, monitor, damage, success, avoidArmor, attacker);
+    await defender.applyArmorDamage(damageType, Modifiers.sumModifiers([attackWeapon], 'other', 'damageArmor'));
   }
 
   static async sufferMarks(actor, sourceActor) {
@@ -85,14 +87,14 @@ export class ActorDamageManager {
       const resisted2 = Math.min(resistance - resisted1, success);
       total = damage - resisted1;
       if (Checkbars.useArmor(monitor)) {
-        total -= await ActorDamageManager._damageToArmor(actor, total);
+        total -= await ActorDamageManager.damageToArmor(actor, total);
       }
       total += success - resisted2;
     }
     else {
       total = damage + success - resistance;
       if (Checkbars.useArmor(monitor)) {
-        total -= await ActorDamageManager._damageToArmor(actor, total);
+        total -= await ActorDamageManager.damageToArmor(actor, total);
       }
     }
     if (total > 0) {
@@ -108,12 +110,12 @@ export class ActorDamageManager {
     let total = 0;
     if (Checkbars.useArmor(monitor)) {
       if (avoidArmor) {
-        damage -= await ActorDamageManager._damageToArmor(actor, damage);
+        damage -= await ActorDamageManager.damageToArmor(actor, damage);
         total = success + damage;
       }
       else {
         total = success + damage;
-        total -= await ActorDamageManager._damageToArmor(actor, total);
+        total -= await ActorDamageManager.damageToArmor(actor, total);
       }
     }
     else {
@@ -168,7 +170,7 @@ export class ActorDamageManager {
     return total;
   }
 
-  static async _damageToArmor(actor, value) {
+  static async damageToArmor(actor, value) {
     if (value > 0) {
       const armorMax = Checkbars.max(actor, TEMPLATE.monitors.armor);
       const armor = Checkbars.getCounterValue(actor, TEMPLATE.monitors.armor);

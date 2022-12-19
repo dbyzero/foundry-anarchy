@@ -101,12 +101,14 @@ export class CombatManager {
   async onClickApplyAttackDamage(attack) {
     const attacker = this.getTokenActor(attack.attackerTokenId);
     const defender = this.getTokenActor(attack.defenderTokenId);
+    const attackRoll = RollManager.inflateAnarchyRoll(attack.attackRoll);
     await ActorDamageManager.sufferDamage(defender,
       attack.attack.damage.monitor,
       attack.attack.damage.value,
       attack.attack.success,
       attack.attack.damage.noArmor,
-      attacker);
+      attacker,
+      attackRoll.weapon);
     this._preventObsoleteChoices(attack);
   }
 

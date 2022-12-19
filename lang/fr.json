@@ -465,6 +465,7 @@
       "other": {
         "effect": {
           "ignoreWounds": "Ignore des blessures",
+          "damageArmor": "Endommage l'armure",
           "sceneAnarchy": "Anarchy de scène",
           "locationAnarchy": "Anarchy de lieu",
           "essenceAdjustment": "Ajustement d'essence",

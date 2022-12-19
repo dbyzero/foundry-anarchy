@@ -7,6 +7,7 @@ import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { RollDialog } from "../roll/roll-dialog.js";
+import { ActorDamageManager } from "./actor-damage.js";
 
 export class AnarchyBaseActor extends Actor {
 
@@ -129,6 +130,14 @@ export class AnarchyBaseActor extends Actor {
         return damageType;
     }
     return undefined;
+  }
+
+  async applyArmorDamage(damageType, damage = 0) {
+    switch (damageType) {
+      case TEMPLATE.monitors.physical:
+      case TEMPLATE.monitors.stun:
+        await ActorDamageManager.damageToArmor(this, damage);
+    }
   }
 
   async rollAttribute(attribute) {
