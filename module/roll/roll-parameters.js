@@ -295,7 +295,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       const rerollForced = RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.successReroll, context);
       rerollForced.value = -rerollForced.value - (context.attackRoll?.param.opponentReroll ?? 0);
       return mergeObject(rerollForced, {
-        flags: { editDice: true, used: true, editable: rerollForced.value == 0 },
+        flags: { editDice: true, used: true, editable: true },
       });
     }
   },
