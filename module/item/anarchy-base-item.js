@@ -51,6 +51,7 @@ export class AnarchyBaseItem extends Item {
 
   isMetatype() { return this.type == TEMPLATE.itemType.metatype; }
   isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }
+  isWeapon() { return this.type == TEMPLATE.itemType.weapon; }
 
   isActive() { return this.system.equiped && !this.system.inactive; }
 

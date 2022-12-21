@@ -95,7 +95,6 @@ class _0_4_0_SelectWeaponDefense extends Migration {
   get code() { return 'migrate-select-weapon-defense'; }
 
   async migrate() {
-    const isWeapon = it => it.type == 'weapon';
     const findWeaponSkillWithDefense = weapon => ANARCHY_SKILLS.find(it => it.defense && it.code == weapon.system.skill);
     const setDefense = weapon => {
       return {
@@ -105,7 +104,7 @@ class _0_4_0_SelectWeaponDefense extends Migration {
     };
 
     await this.applyItemsUpdates(items =>
-      items.filter(isWeapon)
+      items.filter(it => it.isWeapon())
         .filter(findWeaponSkillWithDefense)
         .map(setDefense));
   }
