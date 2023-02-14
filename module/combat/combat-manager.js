@@ -70,6 +70,7 @@ export class CombatManager {
     });
     attack.choiceChatMessageId = notifyMessage.id;
     await ChatManager.setMessageData(notifyMessage, attack);
+    await ChatManager.setMessageActorId(notifyMessage, defender);
     // parent message is the defense, or else the attack: the last roll made.
     // When defense is made, the attack can't be touched anymore
     await ChatManager.setParentMessageId(notifyMessage,

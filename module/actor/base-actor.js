@@ -33,10 +33,9 @@ export class AnarchyBaseActor extends Actor {
     return undefined;
   }
 
-  getAllowedUserIds(permission = 3) {
-    return Object.entries(this.permission)
-      .filter(kv => kv[0] != 'default' && kv[1] >= permission)
-      .map(kv => kv[0]);
+  getAllowedUserIds(permission = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER) {
+    const allowedUsers = game.users.filter(user => this.testUserPermission(user, permission));
+    return allowedUsers.map(it => it.id);
   }
 
   isCharacter() { return this.type == 'character'; }

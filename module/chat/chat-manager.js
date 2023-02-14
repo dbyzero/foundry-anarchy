@@ -6,8 +6,15 @@ import { RemoteCall } from "../remotecall.js";
 export const PARENT_MESSAGE_ID = 'parent-message-id';
 export const MESSAGE_DATA = 'message-data';
 export const MESSAGE_CAN_USE_EDGE = 'can-use-edge';
+export const MESSAGE_OWNING_ACTOR_ID = 'owning-actor-id';
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
 const CHAT_MANAGER_REMOVE_FAMILY = 'ChatManager.removeChatMessageFamily';
+
+const CHAT_MESSAGE_BUTTON_HANDLERS = [
+  { selector: '.anarchy-button.click-edge-reroll', handler: async chatMessage => await ChatManager.edgeReroll(chatMessage) },
+  { selector: '.anarchy-button.click-defend-attack', handler: async chatMessage => await ChatManager.defendAttack(chatMessage) },
+  { selector: '.anarchy-button.click-apply-attack-damage', handler: async chatMessage => await ChatManager.applyAttack(chatMessage) },
+]
 
 export class ChatManager {
 
@@ -27,22 +34,18 @@ export class ChatManager {
 
   static async onRenderChatMessage(app, html, msg) {
 
-    html.find('.anarchy-button.click-edge-reroll').click(async event => {
-      const chatMessage = ChatManager.getChatMessage(event);
-      await ChatManager.edgeReroll(chatMessage);
-    });
+    const showButtons = ChatManager.hasRight(ChatManager.getChatMessageFromHtml(html));
 
-    html.find('.anarchy-button.click-defend-attack').click(async event => {
-      const chatMessage = ChatManager.getChatMessage(event);
-      await ChatManager.defendAttack(chatMessage);
+    CHAT_MESSAGE_BUTTON_HANDLERS.forEach(it => {
+      const jQueryButtonSelector = html.find(it.selector);
+      if (showButtons) {
+        jQueryButtonSelector.show();
+        jQueryButtonSelector.click(async event => await it.handler(ChatManager.getChatMessage(event)))
+      }
+      else {
+        jQueryButtonSelector.hide();
+      }
     });
-
-    html.find('.anarchy-button.click-apply-attack-damage').click(async event => {
-      const chatMessage = ChatManager.getChatMessage(event);
-      await ChatManager.applyAttack(chatMessage);
-    });
-
-    // Support for other buttons here?
   }
 
   static async edgeReroll(chatMessage) {
@@ -67,6 +70,11 @@ export class ChatManager {
 
   static getChatMessage(event) {
     const chatMessageId = $(event.currentTarget).closest('.chat-message').attr('data-message-id');
+    return game.messages.get(chatMessageId);
+  }
+
+  static getChatMessageFromHtml(html) {
+    const chatMessageId = $(html).closest('.chat-message').attr('data-message-id');
     return game.messages.get(chatMessageId);
   }
 
@@ -115,4 +123,18 @@ export class ChatManager {
     return chatMessage.getFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE);
   }
 
+  static async setMessageActorId(chatMessage, actor) {
+    if (actor) {
+      await chatMessage.setFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID, actor.id);
+    }
+  }
+
+  static hasRight(chatMessage) {
+    const actorId = chatMessage.getFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID);
+    const actor = actorId ? game.actors.get(actorId) : undefined;
+    if (actor) {
+      return actor.testUserPermission(game.user, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER)
+    }
+    return true;
+  }
 }
