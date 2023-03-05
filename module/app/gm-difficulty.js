@@ -23,7 +23,7 @@ export class GMDifficulty {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (setting.key == SYSTEM_KEY_GM_DIFFICULTY_POOL) {
+    if (game.user.isGM && setting.key == SYSTEM_KEY_GM_DIFFICULTY_POOL) {
       this.loadDifficultySettings();
       this._rebuild();
       game.system.anarchy.gmManager.render(false);
