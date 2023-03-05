@@ -2,8 +2,7 @@ import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME } from "../constants.js";
 
 const GM_DIFFICULTY_POOLS = "gm-difficulty-pools";
-
-const GM_DIFFICULTY_POOL_KEY = `${SYSTEM_NAME}.${GM_DIFFICULTY_POOLS}`;
+const SYSTEM_KEY_GM_DIFFICULTY_POOL = `${SYSTEM_NAME}.${GM_DIFFICULTY_POOLS}`;
 export class GMDifficulty {
 
   constructor() {
@@ -24,7 +23,7 @@ export class GMDifficulty {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (setting.namespace == SYSTEM_NAME && setting.key == GM_DIFFICULTY_POOL_KEY) {
+    if (setting.key == SYSTEM_KEY_GM_DIFFICULTY_POOL) {
       this.loadDifficultySettings();
       this._rebuild();
       game.system.anarchy.gmManager.render(false);

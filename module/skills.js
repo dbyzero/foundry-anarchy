@@ -4,7 +4,7 @@ import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 import { Misc } from "./misc.js";
 
 const SELECTED_SKILL_LIST = "selected-skill-list";
-const SELECTED_SKILL_LIST_KEY = `${SYSTEM_NAME}.${SELECTED_SKILL_LIST}`;
+const SETTING_KEY_SELECTED_SKILL_LIST = `${SYSTEM_NAME}.${SELECTED_SKILL_LIST}`;
 
 const ATTR = TEMPLATE.attributes;
 const DEFENSE = ANARCHY_SYSTEM.defenses;
@@ -76,7 +76,7 @@ export class Skills {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (setting.namespace == SYSTEM_NAME && setting.key == SELECTED_SKILL_LIST_KEY) {
+    if (setting.key == SETTING_KEY_SELECTED_SKILL_LIST) {
       this.selectedSkills = game.settings.get(SYSTEM_NAME, SELECTED_SKILL_LIST);
     }
   }

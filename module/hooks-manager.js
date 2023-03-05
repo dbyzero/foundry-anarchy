@@ -34,6 +34,8 @@ export const ANARCHY_HOOKS = {
   ANARCHY_HACK: 'anarchy-hack',
 }
 
+const SETTING_KEY_ANARCHY_HACK = `${SYSTEM_NAME}.${ANARCHY_HOOKS.ANARCHY_HACK}`;
+
 const SHADOWRUN_ANARCHY_NO_HACK = {
   id: SYSTEM_NAME,
   name: 'Standard Shadowrun Anarchy',
@@ -72,7 +74,7 @@ export class HooksManager {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (setting.namespace == SYSTEM_NAME && setting.key == ANARCHY_HOOKS.ANARCHY_HACK) {
+    if (setting.key == SETTING_KEY_ANARCHY_HACK) {
       this.applySelectedAnarchyHack();
     }
   }

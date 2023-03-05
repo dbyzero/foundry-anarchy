@@ -2,11 +2,9 @@ import { Checkbars } from "../common/checkbars.js";
 import { ANARCHY } from "../config.js";
 import { SYSTEM_NAME, TEMPLATES_PATH } from "../constants.js";
 import { RemoteCall } from "../remotecall.js";
-import { AnarchyUsers } from "../users.js";
 
 const CONVERGENCES = "convergences";
-
-const GM_CONVERGENCE_CONVERGENCES = `${SYSTEM_NAME}.${CONVERGENCES}`;
+const SETTING_KEY_CONVERGENCES = `${SYSTEM_NAME}.${CONVERGENCES}`;
 const ROLL_CONVERGENCE = 'GMConvergence.rollConvergence';
 
 const HBS_TEMPLATE_CONVERGENCE = `${TEMPLATES_PATH}/app/gm-convergence.hbs`
@@ -93,7 +91,7 @@ export class GMConvergence {
   }
 
   async onUpdateSetting(setting, update, options, id) {
-    if (game.user.isGM && setting.namespace == SYSTEM_NAME && setting.key == GM_CONVERGENCE_CONVERGENCES) {
+    if (game.user.isGM && setting.key == SETTING_KEY_CONVERGENCES) {
       await this._rebuild();
     }
   }

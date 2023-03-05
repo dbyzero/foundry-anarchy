@@ -6,7 +6,7 @@ import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 
 const DAMAGE_MODE = 'damage-mode'
-const SELECTED_DAMAGE_MODE = `${SYSTEM_NAME}.${DAMAGE_MODE}`;
+const SETTING_KEY_DAMAGE_MODE = `${SYSTEM_NAME}.${DAMAGE_MODE}`;
 
 const damageModeChoices = {};
 const damageModeMethods = {};
@@ -48,7 +48,7 @@ export class ActorDamageManager {
   }
 
   static async onUpdateSetting(setting, update, options, id) {
-    if (setting.namespace == SYSTEM_NAME && key == SELECTED_DAMAGE_MODE) {
+    if (setting.key == SETTING_KEY_DAMAGE_MODE) {
       ActorDamageManager._selectDamageMode();
     }
   }
