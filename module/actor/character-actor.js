@@ -6,25 +6,9 @@ import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { Checkbars } from "../common/checkbars.js";
 import { RollCelebrity } from "../dialog/roll-celebrity.js";
+import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
-
-const essenceRange = [
-  { from: 5, to: 6, adjust: 0 },
-  { from: 3, to: 5, adjust: -1 },
-  { from: 1, to: 3, adjust: -2 },
-  { from: 0, to: 1, adjust: -3 }
-]
-
-export class CharacterEssence {
-  static getAdjust(essence) {
-    return this.getEssenceRange(essence)?.adjust ?? 0;
-  }
-
-  static getEssenceRange(essence) {
-    return essenceRange.find(r => r.from < essence && essence <= r.to) ?? essenceRange[0];
-  }
-}
 
 export class CharacterActor extends AnarchyBaseActor {
 
@@ -43,16 +27,21 @@ export class CharacterActor extends AnarchyBaseActor {
     this.system.monitors.stun.max = this._getMonitorMax(TEMPLATE.attributes.willpower)
     super.prepareDerivedData();
     this.system.ignoreWounds = Modifiers.sumModifiers(this.items, 'other', 'ignoreWounds');
-    this.system.counters.essence.value = this._computeEssence();
   }
 
-  _computeEssence() {
+  computeEssence() {
+    // base essence
+    const baseEssence = game.system.anarchy.hooks.callHookMethod(ANARCHY_HOOKS.PROVIDE_BASE_ESSENCE, this);
     // spent essence: from cyberware/bioware
     const spentEssence = Misc.sumValues(this.items.filter(it => it.type == 'shadowamp')
       .map(it => it.system.essence));
     // adjustments: from quality (that gives a "free" essence point), or essence losses due to vampire
     const essenceAdjustment = Modifiers.sumModifiers(this.items, 'other', 'essenceAdjustment');
-    return Math.min(6, 6 + essenceAdjustment - spentEssence);
+    return baseEssence + essenceAdjustment + Math.min(0, spentEssence);
+  }
+
+  computeMalusEssence(essence = undefined) {
+    return game.system.anarchy.hooks.callHookMethod(ANARCHY_HOOKS.PROVIDE_MALUS_ESSENCE, this, essence ?? this.computeEssence())
   }
 
   getAttributes() {
@@ -97,7 +86,6 @@ export class CharacterActor extends AnarchyBaseActor {
     }
     return super.getDamageMonitor(damageType);
   }
-
 
   async createWord(wordType, added) {
     this._mutateWords(wordType, values => values.concat([{ word: added, audio: '' }]));

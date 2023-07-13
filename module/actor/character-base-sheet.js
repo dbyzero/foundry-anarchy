@@ -1,6 +1,5 @@
 import { ANARCHY } from "../config.js";
 import { AnarchyActorSheet } from "./anarchy-actor-sheet.js";
-import { CharacterEssence } from "./character-actor.js";
 import { TEMPLATES_PATH } from "../constants.js";
 
 export class CharacterBaseSheet extends AnarchyActorSheet {
@@ -19,12 +18,16 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
   }
 
   getData(options) {
+    const essence = this.actor.computeEssence();
     let hbsData = mergeObject(
-      super.getData(options), {
-      essence: {
-        adjust: CharacterEssence.getAdjust(this.actor.system.counters?.essence?.value)
-      },
-    });
+      super.getData(options),
+      {
+        essence: {
+          value: essence,
+          adjust: this.actor.computeMalusEssence(essence)
+        }
+
+      });
     return hbsData;
   }
 

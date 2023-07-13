@@ -112,7 +112,6 @@ export class AnarchySystem {
     CONFIG.Item.documentClass = AnarchyBaseItem;
 
     Checkbars.init();
-
     this.loadActorSheets();
     this.loadItemSheets();
 

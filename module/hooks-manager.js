@@ -1,3 +1,4 @@
+import { CharacterActorEssence } from "./actor/character-actor-essence.js";
 import { CHECKBARS, Checkbars } from "./common/checkbars.js";
 import { ANARCHY } from "./config.js";
 import { LOG_HEAD, SYSTEM_NAME } from "./constants.js";
@@ -29,6 +30,14 @@ export const ANARCHY_HOOKS = {
    */
   PROVIDE_DAMAGE_MODE: 'anarchy-provideDamageMode',
   /**
+   * Hook allowing to define base essence
+   */
+  PROVIDE_BASE_ESSENCE: 'anarchy-provideBaseEssence',
+  /**
+   * Hook allowing to define base essence
+   */
+  PROVIDE_MALUS_ESSENCE: 'anarchy-provideMalusEssence',
+  /**
    * Hook allowing to provide alternate way to apply damages for Anarchy hack modules
    */
   ANARCHY_HACK: 'anarchy-hack',
@@ -50,8 +59,12 @@ export class HooksManager {
     this.hooks = [];
     this.hacks = {};
     this.hackNames = {};
+    this.hookMethods = {}
     this._register(ANARCHY_HOOKS.ANARCHY_HACK);
+    this._register(ANARCHY_HOOKS.PROVIDE_BASE_ESSENCE);
     Hooks.on(ANARCHY_HOOKS.ANARCHY_HACK, register => register(SHADOWRUN_ANARCHY_NO_HACK));
+    Hooks.on(ANARCHY_HOOKS.PROVIDE_BASE_ESSENCE, provide => provide(SHADOWRUN_ANARCHY_NO_HACK, actor => 6));
+    Hooks.on(ANARCHY_HOOKS.PROVIDE_MALUS_ESSENCE, provide => provide(SHADOWRUN_ANARCHY_NO_HACK, (actor, essence) => CharacterActorEssence.getMalus(actor, essence)));
     Hooks.on('updateSetting', async (setting, update, options, id) => this.onUpdateSetting(setting, update, options, id));
     Hooks.once('ready', () => this.onReady());
   }
@@ -80,10 +93,36 @@ export class HooksManager {
   }
 
   applySelectedAnarchyHack() {
-    const selectedHack = this.hacks[game.settings.get(SYSTEM_NAME, ANARCHY_HOOKS.ANARCHY_HACK)];
+    const selectedHack = this.getSelectedHack();
     if (selectedHack) {
       Checkbars.hackCheckbars(selectedHack.hack.checkbars());
+      const overridableMethods = [
+        ANARCHY_HOOKS.PROVIDE_BASE_ESSENCE,
+        ANARCHY_HOOKS.PROVIDE_MALUS_ESSENCE
+      ];
+      overridableMethods.forEach(hookMethod => this.selectHookMethod(selectedHack, hookMethod))
     }
+  }
+
+  selectHookMethod(selectedHack, hookMethod) {
+    Hooks.callAll(hookMethod, (hack, callback) => {
+      if (hack == selectedHack) {
+        this.hookMethods[hookMethod] = callback
+      }
+    });
+  }
+
+  getSelectedHack() {
+    return this.hacks[game.settings.get(SYSTEM_NAME, ANARCHY_HOOKS.ANARCHY_HACK)];
+  }
+
+  getHookMethod(hookMethod, fallback) {
+    return this.hookMethods[hookMethod] ?? fallback;
+  }
+
+  callHookMethod(hookMethod, ...args) {
+    const method = this.hookMethods[hookMethod];
+    return method ? method(...args) : undefined;
   }
 
   static instance() {
