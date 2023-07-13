@@ -35,7 +35,8 @@ const ATTRIBUTE_ACTIONS = [
   action(ACTION.resistTorture, ATTR.strength, ATTR.willpower, Icons.fontAwesome('fas fa-angry'), [ACTOR.character]),
 
   action(ACTION.perception, ATTR.logic, ATTR.willpower, Icons.fontAwesome('fas fa-eye'), [ACTOR.character]),
-  action(ACTION.perception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-eye'), [ACTOR.device, ACTOR.vehicle]),
+  action(ACTION.perception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-video'), [ACTOR.device, ACTOR.vehicle]),
+  action(ACTION.perception, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-video'), [ACTOR.sprite, ACTOR.ic]),
 
   action(ACTION.composure, ATTR.charisma, ATTR.willpower, Icons.fontAwesome('fas fa-meh'), [ACTOR.character]),
   action(ACTION.judgeIntentions, ATTR.charisma, ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks'), [ACTOR.character]),
@@ -49,8 +50,6 @@ const ATTRIBUTE_ACTIONS = [
   action(ACTION.matrixDefense, ATTR.firewall, ATTR.system, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.device, ACTOR.vehicle]),
   action(ACTION.matrixDefense, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.sprite]),
 
-  action(ACTION.matrixPerception, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-video'), [ACTOR.character, ACTOR.sprite, ACTOR.ic]),
-  action(ACTION.matrixPerception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-video'), [ACTOR.device]),
 ]
 
 const DEFENSES = [

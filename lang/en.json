@@ -354,8 +354,7 @@
       "memory": "Memory",
       "catch": "Catch object",
       "lift": "Lift/carry",
-      "matrixDefense": "Matrix defense",
-      "matrixPerception": "Matrix perception"
+      "matrixDefense": "Matrix defense"
     },
     "defense": {
       "physicalDefense": "Physical defense",

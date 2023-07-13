@@ -337,8 +337,7 @@ export const ANARCHY = {
         memory: 'ANARCHY.attributeAction.memory',
         catch: 'ANARCHY.attributeAction.catch',
         lift: 'ANARCHY.attributeAction.lift',
-        matrixDefense: 'ANARCHY.attributeAction.matrixDefense',
-        matrixPerception: 'ANARCHY.attributeAction.matrixPerception'
+        matrixDefense: 'ANARCHY.attributeAction.matrixDefense'
     },
     defense: {
         physicalDefense: 'ANARCHY.defense.physicalDefense',

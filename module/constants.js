@@ -104,8 +104,7 @@ export const ANARCHY_SYSTEM = {
     memory: "memory",
     catch: "catch",
     lift: "lift",
-    matrixDefense: "matrixDefense",
-    matrixPerception: "matrixPerception"
+    matrixDefense: "matrixDefense"
   },
   defenses: {
     physicalDefense: "physicalDefense",
