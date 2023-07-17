@@ -31,13 +31,13 @@ export class CharacterActor extends AnarchyBaseActor {
 
   computeEssence() {
     // base essence
-    const baseEssence = game.system.anarchy.hooks.callHookMethod(ANARCHY_HOOKS.PROVIDE_BASE_ESSENCE, this);
+    const baseEssence = game.system.anarchy.hooks.callHookMethod(ANARCHY_HOOKS.PROVIDE_BASE_ESSENCE, this)
     // spent essence: from cyberware/bioware
     const spentEssence = Misc.sumValues(this.items.filter(it => it.type == 'shadowamp')
-      .map(it => it.system.essence));
+      .map(it => Math.abs(it.system.essence)))
     // adjustments: from quality (that gives a "free" essence point), or essence losses due to vampire
-    const essenceAdjustment = Modifiers.sumModifiers(this.items, 'other', 'essenceAdjustment');
-    return baseEssence + essenceAdjustment + Math.min(0, spentEssence);
+    const essenceAdjustment = Modifiers.sumModifiers(this.items, 'other', 'essenceAdjustment')
+    return baseEssence + essenceAdjustment - Math.max(0, spentEssence)
   }
 
   computeMalusEssence(essence = undefined) {
