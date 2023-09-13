@@ -229,8 +229,9 @@ const DEFAULT_ROLL_PARAMETERS = [
     isUsed: (p) => p.value != 0,
     factory: context => {
       const wounds = context.actor.getWounds();
+      const glitchModifiers = RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.glitch, context);
       return {
-        value: (wounds == 0 ? 0 : 1) + (context.glitch ?? 0),
+        value: (wounds == 0 ? 0 : 1) + (context.glitch ?? 0) + glitchModifiers.value,
       }
     }
   },

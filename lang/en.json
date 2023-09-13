@@ -437,6 +437,7 @@
         "effect": {
           "pool": "Pool bonus",
           "reroll": "Rerolls",
+          "glitch": "Glitch dice",
           "successReroll": "Reroll own successes",
           "opponentPool": "Opponent pool malus",
           "opponentReroll": "Opponent rerolls"

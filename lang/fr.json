@@ -437,6 +437,7 @@
         "effect": {
           "pool": "Bonus",
           "reroll": "Relances",
+          "glitch": "Dés de complication",
           "successReroll": "Relance de ses succès",
           "opponentPool": "Malus adversaire",
           "opponentReroll": "Relances adversaire"
