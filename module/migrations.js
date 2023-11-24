@@ -1,11 +1,12 @@
 import { CharacterActor } from "./actor/character-actor.js";
-import { LOG_HEAD, SYSTEM_NAME, TEMPLATE } from "./constants.js";
+import { ANARCHY_SYSTEM, LOG_HEAD, SYSTEM_NAME, TEMPLATE } from "./constants.js";
 import { ANARCHY_SKILLS } from "./skills.js";
 import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 import { Misc } from "./misc.js";
 import { AttributeActions } from "./attribute-actions.js";
 
 export const DECLARE_MIGRATIONS = 'anarchy-declareMigration';
+const SYSTEM_MIGRATION_CURRENT_VERSION = "systemMigrationVersion";
 
 export class Migration {
   get code() { return "sample"; }
@@ -132,13 +133,87 @@ class _0_5_0_MigrationBaseResistanceIsZero extends Migration {
 
 class _0_6_0_MigrateSkillSocial extends Migration {
   get version() { return '0.6.0' }
-  get code() { return 'migrate-skill-social'; }
+  get code() { return 'migrate-skill-social' }
 
   async migrate() {
-    const socialSkills = ANARCHY_SKILLS.filter(it => it.isSocial).map(it => it.code);
-    const isSocial = it => it.type == 'skill' && socialSkills.includes(it.system.code);
-    const setSocial = it => { return { _id: it.id, 'system.isSocial': true } };
-    await this.applyItemsUpdates(items => items.filter(isSocial).map(setSocial));
+    const socialSkills = ANARCHY_SKILLS.filter(it => it.isSocial).map(it => it.code)
+    const isSocial = it => it.type == 'skill' && socialSkills.includes(it.system.code)
+    const setSocial = it => { return { _id: it.id, 'system.isSocial': true } }
+    await this.applyItemsUpdates(items => items.filter(isSocial).map(setSocial))
+  }
+}
+
+class _11_1_00_MigrateAndWarnAboutDefenseModifiers extends Migration {
+  get version() { return '11.1.0' }
+  get code() { return 'migrate-defense-roll-modifiers' }
+
+  constructor() {
+    super()
+    this.isDefenseModifier = modifier => (modifier.group == 'roll'
+      && modifier.category == 'defense');
+    this.isCorrespondingActionModifier = (modifier, defense) => (modifier.group == 'roll'
+      && modifier.effect == defense.effect
+      && modifier.category == 'attributeAction'
+      && modifier.subCategory == defense.subCategory)
+    this.hasDefenseModifiers = it => (it.system.modifiers ?? [])
+      .filter(this.isDefenseModifier).length > 0
+  }
+
+  async migrate() {
+    const actualUpdates = []
+    await this.applyItemsUpdates(items => {
+      const itemsWithDefenseModifiers = items.filter(this.hasDefenseModifiers);
+      return itemsWithDefenseModifiers.map(item => this.getItemModifiersUpdate(item, actualUpdates));
+    })
+    if (actualUpdates.length > 0)
+      ChatMessage.create({
+        whisper: ChatMessage.getWhisperRecipients('GM'),
+        content: `${this.version} - Migration of defense modifiers:<ul>` + actualUpdates.reduce((a, b) => a + b) + `</ul></li>`
+      })
+  }
+
+  getItemModifiersUpdate(item, actualUpdates) {
+    const itemNotes = []
+    function addNote(action, d, m) {
+      itemNotes.push(`<li> ${action}: ${d.group}/${d.effect}/${d.subCategory} : ${d.category}/${d.value} ${d.condition} => ${m.category}/${m.value} ${m.condition}</li>`)
+    }
+
+    const newModifiers = {}
+    item.system.modifiers.forEach(m => newModifiers[m.id] = duplicate(m))
+
+    Object.values(newModifiers).filter(m => this.isDefenseModifier(m))
+      .forEach(defense => {
+        const oldDefense = duplicate(defense)
+        let actionAttributes = Object.values(newModifiers).filter(other => this.isCorrespondingActionModifier(other, defense))
+        switch (actionAttributes.length) {
+          case 0: {
+            defense.category = ANARCHY_SYSTEM.rollType.attributeAction
+            addNote('Changed category', oldDefense, defense)
+            break
+          }
+          case 1: {
+            const other = actionAttributes[0]
+            mergeObject(other, {
+              value: Math.max(defense.value, other.value),
+              condition: (other.condition ? other.condition + (defense.condition ?? '') : defense.condition)
+            }, { overwrite: true })
+            delete newModifiers[defense.id]
+            addNote('Merged with existing', defense, other)
+            break
+          }
+          default: {
+            delete newModifiers[defense.id]
+            addNote('Removed', defense, { category: '-', value: '-', condition: '-' })
+            break
+          }
+        }
+      })
+    if (itemNotes.length > 0) {
+      actualUpdates.push(`<li> ${item.actor ? item.actor.name : '-standalone-'} Item ${item.name} modifiers changed:
+        <ul>${itemNotes.reduce((a, b) => a + b)}</ul>
+        </li>`)
+    }
+    return { _id: item.id, 'system.modifiers': Object.values(newModifiers) }
   }
 }
 
@@ -153,9 +228,10 @@ export class Migrations {
       new _0_4_0_SelectWeaponDefense(),
       new _0_5_0_MigrationBaseResistanceIsZero(),
       new _0_6_0_MigrateSkillSocial(),
+      new _11_1_00_MigrateAndWarnAboutDefenseModifiers(),
     ));
 
-    game.settings.register(SYSTEM_NAME, "systemMigrationVersion", {
+    game.settings.register(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, {
       name: "System Migration Version",
       scope: "world",
       config: false,
@@ -165,8 +241,9 @@ export class Migrations {
   }
 
   migrate() {
-    const currentVersion = game.settings.get(SYSTEM_NAME, "systemMigrationVersion");
-    if (isNewerVersion(game.system.version, currentVersion)) {
+    const currentVersion = game.settings.get(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION);
+    // if (isNewerVersion(game.system.version, currentVersion)) {
+    if (true) {
       let migrations = [];
       Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, (...addedMigrations) =>
         migrations = migrations.concat(addedMigrations.filter(m => isNewerVersion(m.version, currentVersion)))
@@ -186,7 +263,7 @@ export class Migrations {
         console.log(LOG_HEAD + `No migration needeed, version will change to ${game.system.version}`)
       }
 
-      game.settings.set(SYSTEM_NAME, "systemMigrationVersion", game.system.version);
+      //game.settings.set(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, game.system.version);
     }
     else {
       console.log(LOG_HEAD + `No system version changed`);

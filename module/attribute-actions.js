@@ -87,13 +87,17 @@ export class AttributeActions {
       .filter(it => it?.code);
   }
 
+  static getDefenseAttributeAction(defenseCode) {
+    return DEFENSES.find(it => it.code == defenseCode)?.actionCode
+  }
+
   static getActorAction(actor, actionCode) {
     return AttributeActions.getActorActions(actor).find(it => it.code == actionCode);
   }
 
-  static getActorDefense(actor, code) {
-    code = AttributeActions.fixedDefenseCode(code);
-    const defense = DEFENSES.find(it => it.code == code);
+  static getActorDefense(actor, defenseCode) {
+    defenseCode = AttributeActions.fixedDefenseCode(defenseCode);
+    const defense = DEFENSES.find(it => it.code == defenseCode);
     const actorAction = AttributeActions.getActorAction(actor, defense.actionCode);
     ErrorManager.checkActorDefenseAction(actorAction, actor, defense);
     return AttributeActions._convertToDefense(actorAction, defense);

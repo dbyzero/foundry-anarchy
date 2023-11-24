@@ -3,6 +3,9 @@ import { ANARCHY } from "../config.js";
 import { Enums } from "../enums.js";
 import { Misc } from "../misc.js";
 
+/**
+ * Modifier: {group, effect, category, subCategory, value, condition, id}
+ */
 export class Modifiers {
   constructor() {
     this.modifiers = {
@@ -69,8 +72,6 @@ export class Modifiers {
       case 'attributeAction':
         const actions = AttributeActions.all().map(action => { return { key: action.code, label: action.labelkey }; });
         return Misc.distinct(actions.map(it => it.key)).map(key => actions.find(it => it.key == key))
-      case 'defense':
-        return AttributeActions.getDefenses().map(defense => { return { key: defense.code, label: defense.labelkey } });
     }
     return [];
   }
@@ -85,8 +86,7 @@ export class Modifiers {
         switch (m.category) {
           case 'attribute': return [context.attribute1, context.attribute2].includes(m.subCategory);
           case 'skill': return m.subCategory == context.skill?.system.code;
-          case 'defense': return m.subCategory == context.defenseAction;
-          case 'attributeAction': return m.subCategory == context.attributeAction;
+          case 'attributeAction': return m.subCategory == context.attributeAction || m.subCategory == AttributeActions.getDefenseAttributeAction(context.defenseAction)
         }
       }
       return false;
