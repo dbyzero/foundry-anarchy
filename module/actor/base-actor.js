@@ -108,8 +108,9 @@ export class AnarchyBaseActor extends Actor {
         value = this.system.attributes[attribute].value;
       }
       else if (!item) {
-        const candidateItems = this.items.filter(item => item.isActive() && item.getAttributes().includes(attribute));
-        value = Math.max(candidateItems.map(it => it.getAttributeValue(attribute) ?? 0));
+        const candidateItems = this.items.filter(item => item.isActive() && item.getAttributes().includes(attribute))
+        const candidateValues = candidateItems.map(it => it.getAttributeValue(attribute) ?? 0)
+        value = Math.max(...candidateValues)
       }
       else if (this.isEmerged() && attribute == TEMPLATE.attributes.firewall) {
         return this.getAttributeValue(TEMPLATE.attributes.logic);

@@ -9,7 +9,7 @@ const DICE_FAS_ICONS = {
 export class DiceCursor {
   static init() {
     Hooks.once('ready', async () => await this.onReady());
-    Handlebars.registerHelper('dice-cursor-array', (min, max) => DiceCursor.array(min, max));
+    Handlebars.registerHelper('dice-cursor-array', (min, max) => DiceCursor.array(min ?? 0, max ?? 5));
     Handlebars.registerHelper('dice-cursor-fas', (dice, value) => DiceCursor.fasClass(dice, value));
     Handlebars.registerHelper('dice-cursor-active', (dice, value) => DiceCursor.activeClass(dice, value));
     Handlebars.registerHelper('dice-cursor-color', (dice, editable) => DiceCursor.colorClass(dice, editable));
