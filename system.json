@@ -27,7 +27,11 @@
     }
   ],
   "flags": {
-    "allowBugReporter": true
+    "allowBugReporter": true,
+    "hotReload": {
+      "extensions": ["css", "hbs", "html"],
+      "paths": ["styles/", "templates/"]
+    }
   },
   "license": "LICENSE.md",
   "templateVersion": 5,
