@@ -46,7 +46,7 @@ export class AnarchyActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    // items standard actions (add/edit/delete)
+    // items standard actions (add/edit/activate/delete)
     html.find('.click-item-add').click(async event => {
       await this.createNewItem(this.getEventItemType(event));
     });
@@ -55,11 +55,16 @@ export class AnarchyActorSheet extends ActorSheet {
       this.getEventItem(event)?.sheet.render(true);
     });
 
+    html.find('.click-item-activate').click(async event => {
+      const item = this.getEventItem(event)
+      const inactive = item.system.inactive;
+      await item.update({ 'system.inactive': !inactive })
+    })
+
     html.find('.click-item-delete').click(async event => {
       const item = this.getEventItem(event);
       ConfirmationDialog.confirmDeleteItem(item, async () => {
         await this.actor.deleteEmbeddedDocuments('Item', [item.id]);
-        this.render(true);
       });
     });
 

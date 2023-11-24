@@ -51,6 +51,7 @@ export const ANARCHY = {
         cancel: 'ANARCHY.common.cancel',
         add: 'ANARCHY.common.add',
         edit: 'ANARCHY.common.edit',
+        activate: 'ANARCHY.common.activate',
         del: 'ANARCHY.common.del',
         favorite: 'ANARCHY.common.favorite',
         addFavorite: 'ANARCHY.common.addFavorite',
