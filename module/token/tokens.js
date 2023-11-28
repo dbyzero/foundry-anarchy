@@ -1,6 +1,9 @@
 export class Tokens {
   static getToken(tokenId) {
-    let token = game.scenes.current.tokens.get(tokenId);
+    if (tokenId == undefined) {
+      return undefined
+    }
+    let token = game.scenes.current?.tokens.get(tokenId);
     if (token) {
       return token;
     }
