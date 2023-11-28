@@ -446,8 +446,7 @@
         "category": {
           "attribute": "Attribute",
           "skill": "Skill",
-          "attributeAction": "Attribute action",
-          "defense": "Defense"
+          "attributeAction": "Attribute action"
         }
       },
       "monitor": {

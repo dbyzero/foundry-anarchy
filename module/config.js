@@ -431,7 +431,6 @@ export const ANARCHY = {
                 attribute: 'ANARCHY.modifier.roll.category.attribute',
                 skill: 'ANARCHY.modifier.roll.category.skill',
                 attributeAction: 'ANARCHY.modifier.roll.category.attributeAction',
-                defense: 'ANARCHY.modifier.roll.category.defense',
             },
         },
         monitor: {

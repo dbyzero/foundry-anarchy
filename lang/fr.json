@@ -446,8 +446,7 @@
         "category": {
           "attribute": "Attribut",
           "skill": "Compétence",
-          "attributeAction": "Action Attributs",
-          "defense": "Défense"
+          "attributeAction": "Action Attributs"
         }
       },
       "monitor": {
