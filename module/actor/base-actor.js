@@ -74,14 +74,12 @@ export class AnarchyBaseActor extends Actor {
   prepareDerivedData() {
     this.system.modifiers = {
       initiative: Modifiers.sumModifiers(this.items, 'other', 'initiative')
-    };
+    }
     Object.entries(this.system.monitors).forEach(kv => {
-      kv[1].maxBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'max');
-      kv[1].resistanceBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'resistance');
-    });
-    Object.entries(this.system.attributes).forEach(kv => {
-      kv[1].total = this.getAttributeValue(kv[0]);
-    });
+      kv[1].maxBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'max')
+      kv[1].resistanceBonus = Modifiers.sumMonitorModifiers(this.items, kv[0], 'resistance')
+    })
+    Object.entries(this.system.attributes).forEach(kv => kv[1].total = this.getAttributeValue(kv[0]))
   }
 
   getAttributeActions() {

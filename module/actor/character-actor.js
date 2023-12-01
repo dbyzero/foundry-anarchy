@@ -25,8 +25,10 @@ export class CharacterActor extends AnarchyBaseActor {
   prepareDerivedData() {
     this.system.monitors.physical.max = this._getMonitorMax(TEMPLATE.attributes.strength)
     this.system.monitors.stun.max = this._getMonitorMax(TEMPLATE.attributes.willpower)
-    super.prepareDerivedData();
-    this.system.ignoreWounds = Modifiers.sumModifiers(this.items, 'other', 'ignoreWounds');
+    this.prepareMatrixMonitor()
+    super.prepareDerivedData()
+
+    this.system.ignoreWounds = Modifiers.sumModifiers(this.items, 'other', 'ignoreWounds')
   }
 
   computeEssence() {
@@ -68,13 +70,21 @@ export class CharacterActor extends AnarchyBaseActor {
 
   hasMatrixMonitor() { return true; }
 
+  prepareMatrixMonitor() {
+    const cyberdeck = this.getCyberdeck();
+    if (cyberdeck) {
+      cyberdeck.system.monitors.matrix.maxBonus = Modifiers.sumMonitorModifiers(this.items, 'matrix', 'max')
+      cyberdeck.system.monitors.matrix.resistanceBonus = Modifiers.sumMonitorModifiers(this.items, 'matrix', 'resistance')
+    }
+  }
+
   async setMatrixMonitorValue(value) {
     const cyberdeck = this.getCyberdeck();
     if (cyberdeck) {
       return await cyberdeck.setMatrixMonitorValue(value);
     }
     if (this.isEmerged()) {
-      return Checkbars.setCheckbar(this, TEMPLATE.monitors.stun, value);
+      return await Checkbars.setCheckbar(this, TEMPLATE.monitors.stun, value);
     }
   }
 
