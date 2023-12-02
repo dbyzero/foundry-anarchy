@@ -177,6 +177,7 @@ export class WeaponItem extends AnarchyBaseItem {
 
   validateTargets(actor) {
     const monitor = this.getDamage()?.monitor
+    ErrorManager.checkActorCanApplyDamage(actor, monitor)
     const targets = AnarchyUsers.getTargets(game.user);
     const validTargets = targets.filter(token => token.actor?.canReceiveDamage(monitor))
     const invalidTargets = targets.filter(token => !token.actor?.canReceiveDamage(monitor))
@@ -193,7 +194,6 @@ export class WeaponItem extends AnarchyBaseItem {
       }));
     }
     else {
-      ErrorManager.checkActorCanApplyDamage(actor, monitor)
       this.checkWeaponTargetsCount(validTargets)
       // TODO: could check LOS, distance? ...
     }
