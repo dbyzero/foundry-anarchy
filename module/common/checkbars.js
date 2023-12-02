@@ -50,7 +50,7 @@ const DEFAULT_CHECKBARS = {
     iconUnchecked: Icons.fontAwesome('fas fa-laptop'),
     iconHit: Icons.fontAwesome('fas fa-laptop-code'),
     overflow: actor => actor.getMatrixOverflow(),
-    maxOverflow: value => Math.min(3, value),
+    recomputeOverflow: value => 3,
     resource: MONITORS.matrix
   },
   marks: {
@@ -253,7 +253,7 @@ export class Checkbars {
   static async _manageOverflow(checkbar, target, monitor, value, max) {
     if (value > max) {
       const overflowMonitor = checkbar.overflow ? checkbar.overflow(target) : undefined
-      const overflow = checkbar.maxOverflow ? checkbar.maxOverflow(value - max) : (value - max);
+      const overflow = checkbar.recomputeOverflow ? checkbar.recomputeOverflow(value - max) : (value - max);
       if (overflowMonitor && overflow > 0) {
         Checkbars._notifyOverflow(target, monitor, overflow, overflowMonitor);
         await Checkbars.addCounter(target, overflowMonitor, overflow);
