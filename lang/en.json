@@ -142,7 +142,8 @@
         "onlyGM": "Only allowed for GM",
         "noEdgeForActor": "{actor} is a {actorType}, so it cannot use Edge",
         "expectedType": "Item is of type {type} instead of expected type {expectedType}",
-        "noTargetSelected": "No target is selected, consider selecting a target before using this {weapon}",
+        "ignoredTargets": "This action cannot target {targets} due to its damage type",
+        "noTargetSelected": "No valid target is selected, consider selecting a valid target before using this {weapon}",
         "maxTargetsExceedeed": "{weapon} has a {area} area of effect, with a maximum of {max} targets. You are currently targetting {count} targets",
         "noDefenseOnWeapon": "No defense configured for {actor} weapon: {weapon}.<br>Configure defense against this weapon to be able to attack with it.",
         "noTokenActor": "Token is not attached to an Actor!",
@@ -196,7 +197,8 @@
       },
       "monitors": {
         "conditionMonitors": "Condition monitors",
-        "overflow": "Condition monitor {monitor} overflow of {overflow}",
+        "overflow": "{actor}: Overflow of {monitor} condition monitor, transfering {overflow} to {overflowMonitor} condition monitor",
+        "noMatrixMonitor": "{actor}: No Matrix condition monitor",
         "physical": "Physical",
         "stun": "Stun",
         "matrix": "Matrix",
@@ -278,7 +280,8 @@
       "cyberdeck": {
         "programs": "Programs",
         "processing": "Processing power",
-        "processingHelp": "re-rolls on matrix rolls"
+        "processingHelp": "re-rolls on matrix rolls",
+        "connectionMode": "Connection mode"
       }
     },
     "itemType": {

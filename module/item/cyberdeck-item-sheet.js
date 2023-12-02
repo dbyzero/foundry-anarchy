@@ -7,7 +7,11 @@ export class CyberdeckItemSheet extends BaseItemSheet {
     return hbsData;
   }
 
+
   activateListeners(html) {
+    html.find('a.click-cyberdeck-connectionMode').click(async event => {
+      await this.item.nextConnectionMode()
+    })
     super.activateListeners(html);
   }
 }

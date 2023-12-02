@@ -22,7 +22,7 @@ export class SpriteActor extends AnarchyBaseActor {
     super.prepareDerivedData();
   }
 
-  hasMatrixMonitor() { return true; }
+  hasMatrixMonitor() { return true }
 
   getAttributes() {
     return [
@@ -31,8 +31,5 @@ export class SpriteActor extends AnarchyBaseActor {
     ];
   }
 
-  isEmerged() {
-    return true;
-  }
-
+  isEmerged() { return true }
 }

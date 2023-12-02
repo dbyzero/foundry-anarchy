@@ -21,7 +21,7 @@ export class ICActor extends AnarchyBaseActor {
     super.prepareDerivedData();
   }
 
-  hasMatrixMonitor() { return true; }
+  hasMatrixMonitor() { return true }
 
   getAttributes() {
     return [

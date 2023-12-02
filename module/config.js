@@ -125,6 +125,7 @@ export const ANARCHY = {
             onlyGM: 'ANARCHY.common.errors.onlyGM',
             noEdgeForActor: 'ANARCHY.common.errors.noEdgeForActor',
             expectedType: 'ANARCHY.common.errors.expectedType',
+            ignoredTargets: 'ANARCHY.common.errors.ignoredTargets',
             noTargetSelected: 'ANARCHY.common.errors.noTargetSelected',
             maxTargetsExceedeed: 'ANARCHY.common.errors.maxTargetsExceedeed',
             noDefenseOnWeapon: 'ANARCHY.common.errors.noDefenseOnWeapon',
@@ -180,6 +181,7 @@ export const ANARCHY = {
         monitors: {
             conditionMonitors: 'ANARCHY.actor.monitors.conditionMonitors',
             overflow: 'ANARCHY.actor.monitors.overflow',
+            noMatrixMonitor: 'ANARCHY.actor.monitors.noMatrixMonitor',
             physical: 'ANARCHY.actor.monitors.physical',
             stun: 'ANARCHY.actor.monitors.stun',
             matrix: 'ANARCHY.actor.monitors.matrix',
@@ -261,7 +263,8 @@ export const ANARCHY = {
         cyberdeck: {
             programs: 'ANARCHY.item.cyberdeck.programs',
             processing: 'ANARCHY.item.cyberdeck.processing',
-            processingHelp: 'ANARCHY.item.cyberdeck.processingHelp'
+            processingHelp: 'ANARCHY.item.cyberdeck.processingHelp',
+            connectionMode: 'ANARCHY.item.cyberdeck.connectionMode',
         }
     },
     itemType: {
@@ -388,6 +391,11 @@ export const ANARCHY = {
         short: 'ANARCHY.range.short',
         medium: 'ANARCHY.range.medium',
         long: 'ANARCHY.range.long',
+    },
+    connectionMode: {
+        disconnected: 'ANARCHY.connectionMode.disconnected',
+        augmented: 'ANARCHY.connectionMode.augmented',
+        virtual: 'ANARCHY.connectionMode.virtual',
     },
     vehicleCategory: {
         miniDrone: 'ANARCHY.vehicleCategory.miniDrone',

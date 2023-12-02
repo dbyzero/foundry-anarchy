@@ -18,5 +18,34 @@ export class CyberdeckItem extends AnarchyBaseItem {
     await this.update({ 'system.monitors.matrix.value': value });
   }
 
-  hasMatrixMonitor() { return true; }
+  hasMatrixMonitor() { return true }
+
+  getMatrixMonitor() { return this.system.monitors.matrix }
+
+  getMatrixOverflow() {
+    switch (this.system.connectionMode) {
+      case 'virtual': return TEMPLATE.monitors.physical
+      case 'augmented': return TEMPLATE.monitors.stun
+    }
+    return undefined
+  }
+
+  isConnected() {
+    return this.getMatrixOverflow() != undefined
+  }
+
+  async nextConnectionMode() {
+    const newConnectionMode = CyberdeckItem.getNextConnectionMode(this.system.connectionMode)
+    await this.update({ 'system.connectionMode': newConnectionMode })
+  }
+
+  static getNextConnectionMode(connectionMode) {
+    switch (connectionMode) {
+      case 'disconnected': return 'augmented'
+      case 'augmented': return 'virtual'
+      default:
+      case 'virtual': return 'disconnected'
+    }
+  }
+
 }

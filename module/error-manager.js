@@ -53,6 +53,19 @@ export class ErrorManager {
     }
   }
 
+  static checkTargetsCount(maxTargets, targets, area) {
+    if (maxTargets > 0 && targets.length > maxTargets) {
+      const error = game.i18n.format(ANARCHY.common.errors.maxTargetsExceedeed, {
+        weapon: this.name,
+        area: game.i18n.localize(ANARCHY.area[area]),
+        count: targets.length,
+        max: maxTargets
+      });
+      ui.notifications.error(error);
+      throw error;
+    }
+  }
+
   static checkMonitorForDamage(damageType, monitor, actor) {
     if (!monitor) {
       const error = game.i18n.format(ANARCHY.common.errors.actorCannotReceiveDamage, {
@@ -63,6 +76,16 @@ export class ErrorManager {
       throw error;
     }
   }
+  static checkMatrixMonitor(actor) {
+    if (!actor.hasMatrixMonitor()) {
+      const error = game.i18n.format(ANARCHY.actor.monitors.noMatrixMonitor, {
+        actor: actor.name
+      });
+      ui.notifications.warn(error);
+      throw error;
+    }
+  }
+
   static checkActorDefenseAction(actorAction, actor, defense) {
     if (!actorAction) {
       const error = game.i18n.format(ANARCHY.common.errors.actorDoesNotHaveDefense, {

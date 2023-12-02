@@ -142,7 +142,8 @@
         "onlyGM": "Seul un MJ est autorisé",
         "noEdgeForActor": "{actor} est un {actorType}, il ne peut pas utiliser la Chance",
         "expectedType": "Objet de type incorrect, attendu: {expectedType}, type de l'objet: {type}",
-        "noTargetSelected": "Aucune cible sélectionnée. Vous devriez choisir une (des?) cible avant d'utiliser votre {weapon}",
+        "ignoredTargets": "Cette action ne peut pas cibler {targets} à cause de son type de dommages",
+        "noTargetSelected": "Aucune cible valide sélectionnée. Vous devriez choisir une (des?) cible valides avant d'utiliser votre {weapon}",
         "maxTargetsExceedeed": "{weapon} a une zone zone d'effet {area}, avec au maximum {max} cibles, vous en avez {count}",
         "noDefenseOnWeapon": "L'arme {weapon} de {actor} n'a pas de défense configurée. Configurez la défense contre cette arme pour pouvoir attaquer avec.",
         "noTokenActor": "Le token n'est pas lié à un Personnage!",
@@ -196,7 +197,8 @@
       },
       "monitors": {
         "conditionMonitors": "Moniteurs de condition",
-        "overflow": "Dépassement de {overflow} du moniteur {monitor}",
+        "overflow": "{actor}: Dépassement du moniteur {monitor}, transfert de {overflow} sur le moniteur {overflowMonitor}",
+        "noMatrixMonitor": "{actor}: Pas de moniteur matriciel",
         "physical": "Physique",
         "stun": "Etourdissant",
         "matrix": "Matriciel",
@@ -278,7 +280,8 @@
       "cyberdeck": {
         "programs": "Programmes",
         "processing": "Puissance de calcul",
-        "processingHelp": "relances sur tests matriciels"
+        "processingHelp": "relances sur tests matriciels",
+        "connectionMode": "Mode de connection"
       }
     },
     "itemType": {
@@ -405,6 +408,11 @@
       "short": "Courte",
       "medium": "Moyenne",
       "long": "Longue"
+    },
+    "connectionMode": {
+      "disconnected": "Disconnected",
+      "augmented": "Augmented",
+      "virtual": "Virtual"
     },
     "vehicleCategory": {
       "miniDrone": "Mini drone",

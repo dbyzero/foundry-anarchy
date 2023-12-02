@@ -35,6 +35,15 @@
           value="{{system.processing}}"/>
       </div>
       <div class="form-group">
+        <label for="system.connectionMode">{{localize 'ANARCHY.item.cyberdeck.connectionMode'}} </label>
+        <span>
+          {{> 'systems/anarchy/templates/common/item-control-connectionMode.hbs'}}
+          <a class="item-control click-cyberdeck-connectionMode">
+          {{localize (concat 'ANARCHY.connectionMode.' system.connectionMode)}}
+          </a>
+        </span>
+      </div>
+      <div class="form-group">
         <label>{{localize 'ANARCHY.actor.monitors.conditionMonitors'}}</label>
         {{> "systems/anarchy/templates/monitors/matrix.hbs"}}
       </div>

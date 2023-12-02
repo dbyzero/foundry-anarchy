@@ -7,6 +7,7 @@ import { AnarchyUsers } from "../users.js";
 import { ROLL_PARAMETER_CATEGORY } from "../roll/roll-parameters.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { AttributeActions } from "../attribute-actions.js";
+import { ErrorManager } from "../error-manager.js";
 
 const AREA_TARGETS = {
   none: { targets: 1, adjust: [0] },
@@ -175,32 +176,33 @@ export class WeaponItem extends AnarchyBaseItem {
   }
 
   validateTargets(actor) {
+    const monitor = this.getDamage()?.monitor
     const targets = AnarchyUsers.getTargets(game.user);
-    if (targets.length == 0) {
+    const validTargets = targets.filter(token => token.actor?.canReceiveDamage(monitor))
+    const invalidTargets = targets.filter(token => !token.actor?.canReceiveDamage(monitor))
+      .map(token => token.name)
+
+    if (invalidTargets.length > 0) {
+      ui.notifications.info(game.i18n.format(ANARCHY.common.errors.ignoredTargets, {
+        targets: invalidTargets.reduce((a, b) => a + ', ' + b),
+      }));
+    }
+    if (validTargets.length == 0) {
       ui.notifications.info(game.i18n.format(ANARCHY.common.errors.noTargetSelected, {
         weapon: this.name ?? game.i18n.localize(ANARCHY.itemType.singular.weapon)
       }));
     }
     else {
-      this.checkWeaponTargets(targets);
+      this.checkWeaponTargetsCount(validTargets)
       // TODO: could check LOS, distance? ...
     }
-    return targets;
+    return validTargets;
   }
 
-  checkWeaponTargets(targets) {
+  checkWeaponTargetsCount(targets) {
     const area = this.system.area;
     const areaTargets = AREA_TARGETS[area] ?? {};
-    if (areaTargets.targets && targets.length > areaTargets.targets) {
-      const error = game.i18n.format(ANARCHY.common.errors.maxTargetsExceedeed, {
-        weapon: this.name,
-        area: game.i18n.localize(ANARCHY.area[area]),
-        count: targets.length,
-        max: areaTargets.targets
-      });
-      ui.notifications.error(error);
-      throw error;
-    }
+    ErrorManager.checkTargetsCount(areaTargets.targets ?? 0, targets, area);
   }
 
   getAreaModifier(countTargets) {

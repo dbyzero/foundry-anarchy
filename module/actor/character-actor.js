@@ -59,7 +59,7 @@ export class CharacterActor extends AnarchyBaseActor {
 
   getMatrixMonitor() {
     const cyberdeck = this.getCyberdeck();
-    if (cyberdeck) {
+    if (cyberdeck?.isConnected()) {
       return cyberdeck.system.monitors.matrix;
     }
     if (this.isEmerged()) {
@@ -68,7 +68,19 @@ export class CharacterActor extends AnarchyBaseActor {
     return super.getMatrixMonitor();
   }
 
-  hasMatrixMonitor() { return true; }
+  getMatrixOverflow() {
+    const cyberdeck = this.getCyberdeck()
+    if (cyberdeck?.isConnected()) {
+      return cyberdeck.getMatrixOverflow()
+    }
+    if (this.isEmerged()) {
+      return TEMPLATE.monitors.physical
+    }
+    return undefined
+  }
+  hasMatrixMonitor() {
+    return this.getCyberdeck()?.isConnected() || this.isEmerged()
+  }
 
   prepareMatrixMonitor() {
     const cyberdeck = this.getCyberdeck();

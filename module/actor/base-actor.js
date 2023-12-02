@@ -42,7 +42,7 @@ export class AnarchyBaseActor extends Actor {
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return !this.hasPlayerOwner; }
-  hasMatrixMonitor() { return false; }
+  hasMatrixMonitor() { return false }
 
   prepareData() {
     super.prepareData();
@@ -51,7 +51,7 @@ export class AnarchyBaseActor extends Actor {
 
   getMatrixMonitor() {
     if (this.hasMatrixMonitor()) {
-      return this.system.monitors.matrix;
+      return this.system.monitors.matrix
     }
     return {
       canMark: true,
@@ -59,7 +59,18 @@ export class AnarchyBaseActor extends Actor {
       value: 0,
       max: 0,
       resistance: 0
-    };
+    }
+  }
+
+  getMatrixOverflow() {
+    return undefined
+  }
+
+  async setCheckbarValue(checkbarPath, value) {
+    if (checkbarPath == 'system.monitors.matrix.value') {
+      return this.setMatrixMonitorValue(value)
+    }
+    return await this.update({ [checkbarPath]: value })
   }
 
   async setMatrixMonitorValue(value) {
@@ -153,12 +164,15 @@ export class AnarchyBaseActor extends Actor {
 
   async rollWeapon(weapon) {
     ErrorManager.checkWeaponDefense(weapon, this);
-    const targeting = {
-      attackerTokenId: game.scenes.current?.tokens.find(it => it.actor?.id == this.id)?.id,
-      targetedTokenIds: weapon.validateTargets(this)?.map(it => it.id)
+    const targetedTokenIds = weapon.validateTargets(this)?.map(it => it.id)
+    if (targetedTokenIds.length > 0) {
+      const targeting = {
+        attackerTokenId: game.scenes.current?.tokens.find(it => it.actor?.id == this.id)?.id,
+        targetedTokenIds: targetedTokenIds
+      }
+      const skill = this.items.find(it => weapon.isWeaponSkill(it));
+      await RollDialog.rollWeapon(this, skill, weapon, targeting);
     }
-    const skill = this.items.find(it => weapon.isWeaponSkill(it));
-    await RollDialog.rollWeapon(this, skill, weapon, targeting);
   }
 
   async rollDefense(attack) {
@@ -195,6 +209,18 @@ export class AnarchyBaseActor extends Actor {
 
   canReceiveMarks() {
     return this.system.monitors?.matrix?.canMark;
+  }
+
+  canReceiveDamage(monitor) {
+    switch (monitor) {
+      case TEMPLATE.monitors.matrix:
+      case TEMPLATE.monitors.marks:
+        return this.hasMatrixMonitor()
+      case TEMPLATE.monitors.physical:
+      case TEMPLATE.monitors.stun:
+        return this.getDamageMonitor(monitor) != undefined
+    }
+    return false
   }
 
   isEmerged() {

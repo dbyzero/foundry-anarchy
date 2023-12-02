@@ -49,6 +49,21 @@ export class AnarchyBaseItem extends Item {
   hasGMAnarchy() { return false; }
   hasMatrixMonitor() { return false; }
 
+  getMatrixMonitor() {
+    return {
+      canMark: true,
+      marks: [],
+      value: 0,
+      max: 0,
+      resistance: 0
+    }
+  }
+  async nextConnectionMode() { }
+
+  async setCheckbarValue(checkbarPath, value) {
+    return await this.update({ [checkbarPath]: value })
+  }
+
   isMetatype() { return this.type == TEMPLATE.itemType.metatype; }
   isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }
   isWeapon() { return this.type == TEMPLATE.itemType.weapon; }

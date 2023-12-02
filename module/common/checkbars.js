@@ -23,6 +23,7 @@ const DEFAULT_CHECKBARS = {
     iconUnchecked: Icons.fontAwesome('far fa-smile'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
     resource: MONITORS.stun,
+    overflow: actor => TEMPLATE.monitors.physical,
     useArmor: true
   },
   physical: {
@@ -48,6 +49,8 @@ const DEFAULT_CHECKBARS = {
     iconChecked: Icons.fontAwesome('fas fa-laptop-medical'),
     iconUnchecked: Icons.fontAwesome('fas fa-laptop'),
     iconHit: Icons.fontAwesome('fas fa-laptop-code'),
+    overflow: actor => actor.getMatrixOverflow(),
+    maxOverflow: value => Math.min(3, value),
     resource: MONITORS.matrix
   },
   marks: {
@@ -207,12 +210,7 @@ export class Checkbars {
       case TEMPLATE.monitors.marks:
         return await Checkbars.setActorMarks(target, value, sourceActorId);
       case TEMPLATE.monitors.matrix:
-        if (target.hasMatrixMonitor()) {
-          return await target.setMatrixMonitorValue(value);
-        }
-        break;
-      case TEMPLATE.monitors.matrix:
-        return await Checkbars.setActorMatrix(target, value);
+        return await Checkbars.setActorMatrixCheckbar(target, monitor, value);
       case TEMPLATE.monitors.convergence:
         return await Checkbars.setActorConvergence(target, value);
       case TEMPLATE.monitors.anarchy:
@@ -245,27 +243,30 @@ export class Checkbars {
       if (max <= 0) {
         return;
       }
-      await Checkbars._manageOverflow(target, monitor, value, max);
+      await Checkbars._manageOverflow(checkbar, target, monitor, value, max);
       value = Math.min(value, max);
-      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max);
-      await target.update({ [checkbar.path]: value });
+      ErrorManager.checkOutOfRange(checkbar.resource, value, 0, max)
+      await target.setCheckbarValue(checkbar.path, value)
     }
   }
 
-  static async _manageOverflow(target, monitor, value, max) {
+  static async _manageOverflow(checkbar, target, monitor, value, max) {
     if (value > max) {
-      Checkbars._notifyOverflow(target, monitor, value, max);
-      switch (monitor) {
-        case TEMPLATE.monitors.stun:
-          return await Checkbars._manageStunOverflow(target, value, max);
+      const overflowMonitor = checkbar.overflow ? checkbar.overflow(target) : undefined
+      const overflow = checkbar.maxOverflow ? checkbar.maxOverflow(value - max) : (value - max);
+      if (overflowMonitor && overflow > 0) {
+        Checkbars._notifyOverflow(target, monitor, overflow, overflowMonitor);
+        await Checkbars.addCounter(target, overflowMonitor, overflow);
       }
     }
   }
 
-  static _notifyOverflow(target, monitor, value, max) {
+  static _notifyOverflow(target, monitor, overflow, overflowMonitor) {
     ui.notifications.warn(game.i18n.format(ANARCHY.actor.monitors.overflow, {
+      actor: target.name,
       monitor: game.i18n.format('ANARCHY.actor.monitors.' + monitor),
-      overflow: value - max
+      overflow: overflow,
+      overflowMonitor: game.i18n.format('ANARCHY.actor.monitors.' + overflowMonitor),
     }));
   }
 
@@ -273,6 +274,9 @@ export class Checkbars {
     await Checkbars.addCounter(target, TEMPLATE.monitors.physical, value - max);
   }
 
+  static async _manageMatrixOverflow(target, value, max) {
+    await Checkbars.addCounter(target, TEMPLATE.monitors.stun, value - max);
+  }
   static async setAnarchy(target, newValue) {
     if (!target.hasOwnAnarchy()) {
       return;
@@ -363,4 +367,8 @@ export class Checkbars {
     await game.system.anarchy.gmConvergence.setConvergence(target, value);
   }
 
+  static async setActorMatrixCheckbar(target, monitor, value) {
+    ErrorManager.checkMatrixMonitor(target)
+    return await Checkbars.setCheckbar(target, monitor, value);
+  }
 }
