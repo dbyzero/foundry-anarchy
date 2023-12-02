@@ -193,6 +193,7 @@ export class WeaponItem extends AnarchyBaseItem {
       }));
     }
     else {
+      ErrorManager.checkActorCanApplyDamage(actor, monitor)
       this.checkWeaponTargetsCount(validTargets)
       // TODO: could check LOS, distance? ...
     }

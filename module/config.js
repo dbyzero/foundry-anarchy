@@ -131,6 +131,7 @@ export const ANARCHY = {
             noDefenseOnWeapon: 'ANARCHY.common.errors.noDefenseOnWeapon',
             noTokenActor: 'ANARCHY.common.errors.noTokenActor',
             cannotUseEdgeAnymore: 'ANARCHY.common.errors.cannotUseEdgeAnymore',
+            actorCannotApplyDamage: 'ANARCHY.common.errors.actorCannotApplyDamage',
             actorCannotReceiveDamage: 'ANARCHY.common.errors.actorCannotReceiveDamage',
             actorDoesNotHaveDefense: 'ANARCHY.common.errors.actorDoesNotHaveDefense',
         },

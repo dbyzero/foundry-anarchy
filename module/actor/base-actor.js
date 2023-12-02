@@ -211,7 +211,7 @@ export class AnarchyBaseActor extends Actor {
     return this.system.monitors?.matrix?.canMark;
   }
 
-  canReceiveDamage(monitor) {
+  canApplyDamage(monitor) {
     switch (monitor) {
       case TEMPLATE.monitors.matrix:
       case TEMPLATE.monitors.marks:
@@ -221,6 +221,10 @@ export class AnarchyBaseActor extends Actor {
         return this.getDamageMonitor(monitor) != undefined
     }
     return false
+  }
+
+  canReceiveDamage(monitor) {
+    return this.canApplyDamage(monitor)
   }
 
   isEmerged() {

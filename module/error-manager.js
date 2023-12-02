@@ -44,6 +44,17 @@ export class ErrorManager {
     }
   }
 
+  static checkActorCanApplyDamage(actor, monitor) {
+    if (!actor.canApplyDamage(monitor)) {
+      const error = game.i18n.format(ANARCHY.common.errors.actorCannotApplyDamage, {
+        actor: actor.name,
+        damageType: game.i18n.format('ANARCHY.actor.monitors.' + damageType)
+      });
+      ui.notifications.error(error)
+      throw error
+    }
+  }
+
   static checkWeaponDefense(weapon, actor) {
     const defense = weapon.getDefense();
     if (!defense) {
@@ -66,7 +77,7 @@ export class ErrorManager {
     }
   }
 
-  static checkMonitorForDamage(damageType, monitor, actor) {
+  static checkActorCanReceiveDamage(damageType, monitor, actor) {
     if (!monitor) {
       const error = game.i18n.format(ANARCHY.common.errors.actorCannotReceiveDamage, {
         actor: actor.name,
@@ -76,6 +87,7 @@ export class ErrorManager {
       throw error;
     }
   }
+
   static checkMatrixMonitor(actor) {
     if (!actor.hasMatrixMonitor()) {
       const error = game.i18n.format(ANARCHY.actor.monitors.noMatrixMonitor, {

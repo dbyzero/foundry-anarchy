@@ -148,6 +148,7 @@
         "noDefenseOnWeapon": "L'arme {weapon} de {actor} n'a pas de défense configurée. Configurez la défense contre cette arme pour pouvoir attaquer avec.",
         "noTokenActor": "Le token n'est pas lié à un Personnage!",
         "cannotUseEdgeAnymore": "Trop tard pour utiliser la Chance. Un adversaire s'est déjà défendu!",
+        "actorCannotApplyDamage": "L'acteur {actor} ne peut pas causer de dommages {damageType}, vérifiez que le decker a connecté son cyberdeck",
         "actorCannotReceiveDamage": "L'acteur {actor} ne peut pas recevoir de dommages {damageType}: il n'a pas de moniteur de condition associé",
         "actorDoesNotHaveDefense": "L'acteur {actor} n'a pas de {defense}, l'attaque ne devrait pas cibler un(e) {actorType}.<br>Ou bien c'est un bug, à signaler, et à gérer à la main."
       },

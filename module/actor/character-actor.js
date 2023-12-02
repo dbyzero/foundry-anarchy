@@ -78,6 +78,7 @@ export class CharacterActor extends AnarchyBaseActor {
     }
     return undefined
   }
+
   hasMatrixMonitor() {
     return this.getCyberdeck()?.isConnected() || this.isEmerged()
   }

@@ -148,6 +148,7 @@
         "noDefenseOnWeapon": "No defense configured for {actor} weapon: {weapon}.<br>Configure defense against this weapon to be able to attack with it.",
         "noTokenActor": "Token is not attached to an Actor!",
         "cannotUseEdgeAnymore": "Too late to use edge. A defender already rolled his defense!",
+        "actorCannotApplyDamage": "Actor {actor} cannot apply {damageType} : maybe check the decker has connected his cyberdeck",
         "actorCannotReceiveDamage": "Cannot apply {damageType} to actor {actor} : it does not have a condition monitor for this type of damage",
         "actorDoesNotHaveDefense": "Actor {actor} does not have a {defense}, the attack should not to target {actorType}.<br>Or it may be a bug, please report and manage manually"
       },
