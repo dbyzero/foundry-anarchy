@@ -410,6 +410,11 @@
       "medium": "Medium",
       "long": "Long"
     },
+    "connectionMode": {
+      "disconnected": "Disconnected",
+      "augmented": "Augmented reality",
+      "virtual": "Virtual reality"
+    },
     "vehicleCategory": {
       "miniDrone": "Mini drone",
       "smallDrone": "Small drone",

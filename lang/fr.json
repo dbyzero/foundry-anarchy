@@ -411,9 +411,9 @@
       "long": "Longue"
     },
     "connectionMode": {
-      "disconnected": "Disconnected",
-      "augmented": "Augmented",
-      "virtual": "Virtual"
+      "disconnected": "Déconnecté",
+      "augmented": "Réalité augmentée",
+      "virtual": "Réalité virtuelle"
     },
     "vehicleCategory": {
       "miniDrone": "Mini drone",
