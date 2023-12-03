@@ -1,20 +1,22 @@
 {
-  "ACTOR": {
-    "TypeCharacter": "Character/Creature",
-    "TypeVehicle": "Vehicle/drone",
-    "TypeDevice": "Matrix device",
-    "TypeSprite": "Sprite",
-    "TypeIc": "IC"
-  },
-  "ITEM": {
-    "TypeContact": "Contact",
-    "TypeCyberdeck": "Cyberdeck",
-    "TypeGear": "Gear",
-    "TypeMetatype": "Metatype",
-    "TypeQuality": "Quality",
-    "TypeShadowamp": "Shadowamp",
-    "TypeSkill": "Skill",
-    "TypeWeapon": "Weapon"
+  "TYPES": {
+    "ACTOR": {
+      "character": "Character/Creature",
+      "vehicle": "Vehicle/drone",
+      "device": "Matrix device",
+      "sprite": "Sprite",
+      "ic": "IC"
+    },
+    "ITEM": {
+      "contact": "Contact",
+      "cyberdeck": "Cyberdeck",
+      "gear": "Gear",
+      "metatype": "Metatype",
+      "quality": "Quality",
+      "shadowamp": "Shadowamp",
+      "skill": "Skill",
+      "weapon": "Weapon"
+    }
   },
   "ANARCHY": {
     "settings": {

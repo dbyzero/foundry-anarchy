@@ -1,20 +1,22 @@
 {
-  "ACTOR": {
-    "TypeCharacter": "Personnage/Créature",
-    "TypeVehicle": "Véhicule/drone",
-    "TypeDevice": "Objet matriciel",
-    "TypeSprite": "Sprite",
-    "TypeIc": "Glace"
-  },
-  "ITEM": {
-    "TypeContact": "Contact",
-    "TypeCyberdeck": "Cyberdeck",
-    "TypeGear": "Equipement",
-    "TypeMetatype": "Métatype",
-    "TypeQuality": "Trait",
-    "TypeShadowamp": "Atout",
-    "TypeSkill": "Compétence",
-    "TypeWeapon": "Arme"
+  "TYPES": {
+    "ACTOR": {
+      "character": "Personnage/Créature",
+      "vehicle": "Véhicule/drone",
+      "device": "Objet matriciel",
+      "sprite": "Sprite",
+      "ic": "Glace"
+    },
+    "ITEM": {
+      "contact": "Contact",
+      "cyberdeck": "Cyberdeck",
+      "gear": "Equipement",
+      "metatype": "Métatype",
+      "quality": "Trait",
+      "shadowamp": "Atout",
+      "skill": "Compétence",
+      "weapon": "Arme"
+    }
   },
   "ANARCHY": {
     "settings": {
