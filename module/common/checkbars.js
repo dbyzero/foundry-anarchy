@@ -210,7 +210,8 @@ export class Checkbars {
       case TEMPLATE.monitors.marks:
         return await Checkbars.setActorMarks(target, value, sourceActorId);
       case TEMPLATE.monitors.matrix:
-        return await Checkbars.setActorMatrixCheckbar(target, monitor, value);
+        ErrorManager.checkMatrixMonitor(target)
+        return await Checkbars.setCheckbar(target, monitor, value);
       case TEMPLATE.monitors.convergence:
         return await Checkbars.setActorConvergence(target, value);
       case TEMPLATE.monitors.anarchy:
@@ -334,24 +335,25 @@ export class Checkbars {
   }
 
   static getActorMarks(target, sourceActorId) {
-    return Checkbars._findActorMarks(target.system.monitors.matrix.marks, sourceActorId)?.marks ?? 0;
+    return Checkbars._findActorMarks(target.getMatrixMarks(), sourceActorId)?.marks ?? 0;
   }
 
   static async addActorMark(target, sourceActorId) {
-    const previous = Checkbars._findActorMarks(target.system.monitors.matrix.marks, sourceActorId);
+    const previous = Checkbars._findActorMarks(target.getMatrixMarks(), sourceActorId);
     Checkbars.setActorMarks(target, (previous.marks ?? 0) + 1, sourceActorId);
   }
 
   static async setActorMarks(target, value, sourceActorId) {
     if (target.canReceiveMarks()) {
-      let targetMarks = deepClone(target.system.monitors.matrix.marks);
-      ErrorManager.checkOutOfRange(CHECKBARS.marks.resource, value, 0, Checkbars.max(target, 'marks'));
-      const sourceActorMarks = Checkbars._findActorMarks(targetMarks, sourceActorId);
+      let marks = deepClone(target.getMatrixMarks())
+      ErrorManager.checkOutOfRange(CHECKBARS.marks.resource, value, 0, Checkbars.max(target, 'marks'))
+      const sourceActorMarks = Checkbars._findActorMarks(marks, sourceActorId)
       if (sourceActorMarks.marks == undefined) {
-        targetMarks.push(sourceActorMarks);
+        marks.push(sourceActorMarks)
       }
       sourceActorMarks.marks = Math.max(0, value);
-      await target.update({ ['system.monitors.matrix.marks']: targetMarks.filter(target => target.marks > 0) });
+      marks = marks.filter(target => target.marks > 0);
+      await target.setCheckbarValue('system.monitors.matrix.marks', marks)
     }
   }
 
@@ -365,10 +367,5 @@ export class Checkbars {
 
   static async setActorConvergence(target, value) {
     await game.system.anarchy.gmConvergence.setConvergence(target, value);
-  }
-
-  static async setActorMatrixCheckbar(target, monitor, value) {
-    ErrorManager.checkMatrixMonitor(target)
-    return await Checkbars.setCheckbar(target, monitor, value);
   }
 }

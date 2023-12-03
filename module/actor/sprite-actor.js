@@ -12,17 +12,15 @@ export class SpriteActor extends AnarchyBaseActor {
     return AnarchyBaseActor.initiative + " + @attributes.logic.value";
   }
 
-  prepareData() {
-    super.prepareData();
+  getMatrixDetails() {
+    return {
+      logic: TEMPLATE.attributes.logic,
+      firewall: TEMPLATE.attributes.logic,
+      monitor: this.system.monitors.matrix,
+      overflow: undefined,
+      hasMatrix: true,
+    }
   }
-
-  prepareDerivedData() {
-    this.system.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.logic);
-    this.system.monitors.matrix.canMark = false;
-    super.prepareDerivedData();
-  }
-
-  hasMatrixMonitor() { return true }
 
   getAttributes() {
     return [

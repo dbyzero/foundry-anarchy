@@ -50,8 +50,8 @@ export class RollDialog extends Dialog {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.attributeAction,
       attributeAction: action.code,
-      attribute1: action.attribute1,
-      attribute2: action.attribute2
+      attribute1: action.attributeFunction1(actor),
+      attribute2: action.attributeFunction2(actor),
     });
     await RollDialog.create(rollData);
   }
@@ -89,8 +89,8 @@ export class RollDialog extends Dialog {
   static async rollDefense(actor, action, attack) {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.defense,
-      attribute1: action.attribute1,
-      attribute2: action.attribute2,
+      attribute1: action.attributeFunction1(actor),
+      attribute2: action.attributeFunction(actor),
       defenseAction: action.code,
       attackRoll: attack.attackRoll,
       tokenId: attack.defenderTokenId,

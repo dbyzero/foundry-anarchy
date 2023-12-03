@@ -55,6 +55,17 @@ export class ErrorManager {
     }
   }
 
+  static checkActorCanReceiveDamage(damageType, monitor, actor) {
+    if (!monitor) {
+      const error = game.i18n.format(ANARCHY.common.errors.actorCannotReceiveDamage, {
+        actor: actor.name,
+        damageType: game.i18n.format('ANARCHY.actor.monitors.' + damageType)
+      });
+      ui.notifications.error(error);
+      throw error;
+    }
+  }
+
   static checkWeaponDefense(weapon, actor) {
     const defense = weapon.getDefense();
     if (!defense) {
@@ -71,17 +82,6 @@ export class ErrorManager {
         area: game.i18n.localize(ANARCHY.area[area]),
         count: targets.length,
         max: maxTargets
-      });
-      ui.notifications.error(error);
-      throw error;
-    }
-  }
-
-  static checkActorCanReceiveDamage(damageType, monitor, actor) {
-    if (!monitor) {
-      const error = game.i18n.format(ANARCHY.common.errors.actorCannotReceiveDamage, {
-        actor: actor.name,
-        damageType: game.i18n.format('ANARCHY.actor.monitors.' + damageType)
       });
       ui.notifications.error(error);
       throw error;

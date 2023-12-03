@@ -2,6 +2,7 @@ import { Checkbars } from "../common/checkbars.js";
 import { Misc } from "../misc.js";
 import { TEMPLATE } from "../constants.js";
 import { RollDialog } from "../roll/roll-dialog.js";
+import { NO_MATRIX_MONITOR } from "../matrix-helper.js";
 
 export class AnarchyBaseItem extends Item {
 
@@ -47,17 +48,10 @@ export class AnarchyBaseItem extends Item {
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return false; }
-  hasMatrixMonitor() { return false; }
 
-  getMatrixMonitor() {
-    return {
-      canMark: true,
-      marks: [],
-      value: 0,
-      max: 0,
-      resistance: 0
-    }
-  }
+  hasMatrixMonitor() { return false; }
+  getMatrixMonitor() { return NO_MATRIX_MONITOR }
+
   async nextConnectionMode() { }
 
   async setCheckbarValue(checkbarPath, value) {
@@ -68,7 +62,7 @@ export class AnarchyBaseItem extends Item {
   isCyberdeck() { return this.type == TEMPLATE.itemType.cyberdeck; }
   isWeapon() { return this.type == TEMPLATE.itemType.weapon; }
 
-  isActive() { return this.system.equiped && !this.system.inactive; }
+  isActive() { return !this.system.inactive; }
 
   canReceiveMarks() { return this.system.monitors?.matrix?.canMark; }
 

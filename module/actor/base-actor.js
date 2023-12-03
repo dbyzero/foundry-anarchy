@@ -4,10 +4,12 @@ import { ANARCHY } from "../config.js";
 import { BASE_MONITOR, TEMPLATE } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ErrorManager } from "../error-manager.js";
+import { NO_MATRIX_MONITOR } from "../matrix-helper.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { RollDialog } from "../roll/roll-dialog.js";
 import { ActorDamageManager } from "./actor-damage.js";
+
 
 export class AnarchyBaseActor extends Actor {
 
@@ -42,47 +44,14 @@ export class AnarchyBaseActor extends Actor {
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return !this.hasPlayerOwner; }
-  hasMatrixMonitor() { return false }
 
   prepareData() {
-    super.prepareData();
-    this.cleanupFavorites();
-  }
-
-  getMatrixMonitor() {
-    if (this.hasMatrixMonitor()) {
-      return this.system.monitors.matrix
-    }
-    return {
-      canMark: true,
-      marks: [],
-      value: 0,
-      max: 0,
-      resistance: 0
-    }
-  }
-
-  getMatrixOverflow() {
-    return undefined
-  }
-
-  async setCheckbarValue(checkbarPath, value) {
-    if (checkbarPath == 'system.monitors.matrix.value') {
-      return this.setMatrixMonitorValue(value)
-    }
-    return await this.update({ [checkbarPath]: value })
-  }
-
-  async setMatrixMonitorValue(value) {
-    await this.update({ 'system.monitors.matrix.value': value });
-  }
-
-  _getMonitorMax(attribute) {
-    const attributeValue = this.getAttributeValue(attribute);
-    return attributeValue == 0 ? 0 : (BASE_MONITOR + Misc.divup(attributeValue, 2));
+    super.prepareData()
+    this.cleanupFavorites()
   }
 
   prepareDerivedData() {
+    this.prepareMatrixMonitor()
     this.system.modifiers = {
       initiative: Modifiers.sumModifiers(this.items, 'other', 'initiative')
     }
@@ -92,6 +61,57 @@ export class AnarchyBaseActor extends Actor {
     })
     Object.entries(this.system.attributes).forEach(kv => kv[1].total = this.getAttributeValue(kv[0]))
   }
+
+  prepareMatrixMonitor() {
+    const matrix = this.getMatrixDetails()
+    if (matrix.hasMatrix) {
+      this.system.monitors.matrix.max = this._getMonitorMax(matrix.logic)
+      this.system.monitors.matrix.canMark = true
+    }
+  }
+
+  getMatrixDetails() {
+    return {
+      hasMatrix: false,
+      logic: undefined,
+      firewall: undefined,
+      monitor: NO_MATRIX_MONITOR,
+      overflow: undefined,
+    }
+  }
+
+  getMatrixFirewall() { return this.getMatrixDetails().firewall }
+  getMatrixMonitor() { return this.getMatrixDetails().monitor }
+  getMatrixMarks() { return this.getMatrixDetails().monitor?.marks ?? [] }
+  getMatrixOverflow() { return this.getMatrixDetails().overflow }
+  hasMatrixMonitor() { return this.getMatrixDetails().hasMatrix }
+
+  async defSetMatrixMonitor(checkbarPath, value) {
+    if (!this.getMatrixDetails().hasMatrix) {
+      game.i18n.format(ANARCHY.actor.monitors.noMatrixMonitor, { actor: this.name })
+    }
+    else {
+      await this.update({ [checkbarPath]: value })
+    }
+  }
+
+  async setCheckbarValue(checkbarPath, value) {
+    if (checkbarPath.startsWith('system.monitors.matrix.')) {
+      const setMatrixMonitor = this.getMatrixDetails().setMatrixMonitor
+      if (setMatrixMonitor) {
+        return await setMatrixMonitor(checkbarPath, value)
+      } else {
+        return await this.defSetMatrixMonitor(checkbarPath, value)
+      }
+    }
+    return await this.update({ [checkbarPath]: value })
+  }
+
+  _getMonitorMax(attribute) {
+    const attributeValue = this.getAttributeValue(attribute);
+    return attributeValue == 0 ? 0 : (BASE_MONITOR + Misc.divup(attributeValue, 2));
+  }
+
 
   getAttributeActions() {
     return AttributeActions.getActorActions(this);
@@ -199,17 +219,13 @@ export class AnarchyBaseActor extends Actor {
     await Checkbars.setCounter(this, monitor, value, sourceActorId);
   }
 
-  canSetMarks() {
-    return false;
-  }
+  canSetMarks() { return false }
 
   getCyberdeck() {
     return undefined;
   }
 
-  canReceiveMarks() {
-    return this.system.monitors?.matrix?.canMark;
-  }
+  canReceiveMarks() { return this.system.monitors?.matrix?.canMark; }
 
   canApplyDamage(monitor) {
     switch (monitor) {

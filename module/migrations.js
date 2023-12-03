@@ -210,7 +210,7 @@ class _11_1_00_MigrateAndWarnAboutDefenseModifiers extends Migration {
       })
     if (itemNotes.length > 0) {
       actualUpdates.push(`<li> ${item.actor ? item.actor.name : '-standalone-'} Item ${item.name} modifiers changed:
-        <ul>${itemNotes.reduce((a, b) => a + b)}</ul>
+        <ul>${itemNotes.reduce(Misc.joiner())}</ul>
         </li>`)
     }
     return { _id: item.id, 'system.modifiers': Object.values(newModifiers) }

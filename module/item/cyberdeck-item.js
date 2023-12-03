@@ -14,8 +14,8 @@ export class CyberdeckItem extends AnarchyBaseItem {
     ];
   }
 
-  async setMatrixMonitorValue(value) {
-    await this.update({ 'system.monitors.matrix.value': value });
+  async setMatrixMonitor(checkbarPath, value) {
+    await this.update({ [checkbarPath]: value });
   }
 
   hasMatrixMonitor() { return true }

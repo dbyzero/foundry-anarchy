@@ -8,6 +8,7 @@ import { ROLL_PARAMETER_CATEGORY } from "../roll/roll-parameters.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { AttributeActions } from "../attribute-actions.js";
 import { ErrorManager } from "../error-manager.js";
+import { Misc } from "../misc.js";
 
 const AREA_TARGETS = {
   none: { targets: 1, adjust: [0] },
@@ -185,7 +186,7 @@ export class WeaponItem extends AnarchyBaseItem {
 
     if (invalidTargets.length > 0) {
       ui.notifications.info(game.i18n.format(ANARCHY.common.errors.ignoredTargets, {
-        targets: invalidTargets.reduce((a, b) => a + ', ' + b),
+        targets: invalidTargets.reduce(Misc.joiner(', ')),
       }));
     }
     if (validTargets.length == 0) {

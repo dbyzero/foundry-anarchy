@@ -11,16 +11,20 @@ export class VehicleActor extends AnarchyBaseActor {
     return AnarchyBaseActor.initiative + " + max(@attributes.system.value, @attributes.autopilot.value)";
   }
 
-  prepareData() {
-    super.prepareData();
-  }
-
   prepareDerivedData() {
-    this.system.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.system);
-    super.prepareDerivedData();
+    this.system.monitors.matrix.max = this._getMonitorMax(TEMPLATE.attributes.system)
+    super.prepareDerivedData()
   }
 
-  hasMatrixMonitor() { return true; }
+  getMatrixDetails() {
+    return {
+      hasMatrix: true,
+      logic: TEMPLATE.attributes.system,
+      firewall: TEMPLATE.attributes.firewall,
+      monitor: this.system.monitors.matrix,
+      overflow: undefined,
+    }
+  }
 
   getAttributes() {
     return [
@@ -32,10 +36,8 @@ export class VehicleActor extends AnarchyBaseActor {
 
   getDamageMonitor(damageType) {
     switch (damageType) {
-      case TEMPLATE.monitors.physical:
-        return TEMPLATE.monitors.structure;
-      case TEMPLATE.monitors.stun:
-        return undefined;
+      case TEMPLATE.monitors.physical: return TEMPLATE.monitors.structure;
+      case TEMPLATE.monitors.stun: return undefined;
     }
     return super.getDamageMonitor(damageType);
   }

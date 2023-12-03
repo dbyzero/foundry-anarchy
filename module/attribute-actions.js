@@ -3,12 +3,12 @@ import { ANARCHY_SYSTEM, TEMPLATE } from "./constants.js";
 import { ErrorManager } from "./error-manager.js";
 import { Icons } from "./icons.js";
 
-function action(code, attr1, attr2, icon, actorTypes, condition = actor => true) {
+function action(code, attributeFunction1, attributeFunction2, icon, actorTypes, condition = actor => true) {
   return {
     code: code,
     labelkey: ANARCHY.attributeAction[code],
-    attribute1: attr1,
-    attribute2: attr2,
+    attributeFunction1: attributeFunction1,
+    attributeFunction2: attributeFunction2,
     icon: icon,
     actorTypes: actorTypes,
     condition: condition
@@ -29,26 +29,25 @@ const ACTION = ANARCHY_SYSTEM.actions;
 const DEFENSE = ANARCHY_SYSTEM.defenses;
 
 const ATTRIBUTE_ACTIONS = [
-  action(ACTION.defense, ATTR.agility, ATTR.logic, Icons.fontAwesome('fas fa-shield-alt'), [ACTOR.character]),
-  action(ACTION.defense, ATTR.autopilot, undefined, Icons.fontAwesome('fas fa-tachometer-alt'), [ACTOR.vehicle]),
+  action(ACTION.defense, __ => ATTR.agility, __ => ATTR.logic, Icons.fontAwesome('fas fa-shield-alt'), [ACTOR.character]),
+  action(ACTION.defense, __ => ATTR.autopilot, __ => undefined, Icons.fontAwesome('fas fa-tachometer-alt'), [ACTOR.vehicle]),
   // TODO: add a way to pilot a vehicle to fallback defense of controled vehicle
-  action(ACTION.resistTorture, ATTR.strength, ATTR.willpower, Icons.fontAwesome('fas fa-angry'), [ACTOR.character]),
+  action(ACTION.resistTorture, __ => ATTR.strength, __ => ATTR.willpower, Icons.fontAwesome('fas fa-angry'), [ACTOR.character]),
 
-  action(ACTION.perception, ATTR.logic, ATTR.willpower, Icons.fontAwesome('fas fa-eye'), [ACTOR.character]),
-  action(ACTION.perception, ATTR.system, ATTR.system, Icons.fontAwesome('fas fa-video'), [ACTOR.device, ACTOR.vehicle]),
-  action(ACTION.perception, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-video'), [ACTOR.sprite, ACTOR.ic]),
+  action(ACTION.perception, __ => ATTR.logic, __ => ATTR.willpower, Icons.fontAwesome('fas fa-eye'), [ACTOR.character]),
+  action(ACTION.perception, __ => ATTR.system, __ => ATTR.system, Icons.fontAwesome('fas fa-video'), [ACTOR.device, ACTOR.vehicle]),
+  action(ACTION.perception, __ => ATTR.logic, __ => ATTR.logic, Icons.fontAwesome('fas fa-video'), [ACTOR.sprite, ACTOR.ic]),
 
-  action(ACTION.composure, ATTR.charisma, ATTR.willpower, Icons.fontAwesome('fas fa-meh'), [ACTOR.character]),
-  action(ACTION.judgeIntentions, ATTR.charisma, ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks'), [ACTOR.character]),
-  action(ACTION.memory, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-brain'), [ACTOR.character]),
-  action(ACTION.catch, ATTR.agility, ATTR.agility, Icons.fontAwesome('fas fa-baseball-ball'), [ACTOR.character]),
-  action(ACTION.lift, ATTR.strength, ATTR.strength, Icons.fontAwesome('fas fa-dumbbell'), [ACTOR.character]),
+  action(ACTION.composure, __ => ATTR.charisma, __ => ATTR.willpower, Icons.fontAwesome('fas fa-meh'), [ACTOR.character]),
+  action(ACTION.judgeIntentions, __ => ATTR.charisma, __ => ATTR.charisma, Icons.fontAwesome('fas fa-theater-masks'), [ACTOR.character]),
+  action(ACTION.memory, __ => ATTR.logic, __ => ATTR.logic, Icons.fontAwesome('fas fa-brain'), [ACTOR.character]),
+  action(ACTION.catch, __ => ATTR.agility, __ => ATTR.agility, Icons.fontAwesome('fas fa-baseball-ball'), [ACTOR.character]),
+  action(ACTION.lift, __ => ATTR.strength, __ => ATTR.strength, Icons.fontAwesome('fas fa-dumbbell'), [ACTOR.character]),
 
-  action(ACTION.matrixDefense, ATTR.logic, undefined, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => !actor.getCyberdeck()),
-  action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => actor.getCyberdeck()),
-  action(ACTION.matrixDefense, ATTR.firewall, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.ic]),
-  action(ACTION.matrixDefense, ATTR.firewall, ATTR.system, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.device, ACTOR.vehicle]),
-  action(ACTION.matrixDefense, ATTR.logic, ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.sprite]),
+  action(ACTION.matrixDefense, __ => ATTR.logic, actor => actor.getMatrixFirewall(), Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character], actor => !actor.getCyberdeck()),
+  action(ACTION.matrixDefense, __ => ATTR.firewall, __ => ATTR.firewall, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.ic]),
+  action(ACTION.matrixDefense, __ => ATTR.system, __ => ATTR.firewall, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.device, ACTOR.vehicle]),
+  action(ACTION.matrixDefense, __ => ATTR.logic, __ => ATTR.logic, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.sprite]),
 
 ]
 
