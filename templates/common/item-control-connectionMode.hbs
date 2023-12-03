@@ -1,9 +1,9 @@
 <a class="item-control click-cyberdeck-connectionMode" title="{{localize ANARCHY.item.cyberdeck.connectionMode}} {{localize (concat 'ANARCHY.connectionMode.' system.connectionMode)}}">
   {{#if (eq system.connectionMode 'augmented')}}
-  <i class="fa-solid fa-wifi"></i>
+  <i class="fa-solid fa-wifi cyberdeck-connectionMode-augmented"></i>
   {{else if (eq system.connectionMode 'virtual')}}
-  <i class="fa-solid fa-network-wired"></i>
+  <i class="fa-solid fa-network-wired cyberdeck-connectionMode-virtual"></i>
   {{else}}
-  <i class="fa-solid fa-user-slash"></i>
+  <i class="fa-solid fa-user-slash cyberdeck-connectionMode-disconnected"></i>
   {{/if}}
 </a>

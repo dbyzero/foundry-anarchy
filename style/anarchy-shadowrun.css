@@ -30,6 +30,9 @@
   --anarchy-color-dice-prowess: hsla(47, 60%, 40%, 1);
   --anarchy-color-dice-glitch: hsla(300, 80%, 20%, 1);
   --anarchy-color-controls: var(--anarchy-background-item-img);
+  --anarchy-color-controls-disconnected: hsla(47, 30%, 30%, 0.5);
+  --anarchy-color-controls-augmented: hsla(47, 80%, 50%, 0.9);
+  --anarchy-color-controls-virtual: hsla(47, 100%, 70%, 0.9);
   --anarchy-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
   --anarchy-shadow-section: 0px -8px 8px -6px var(--anarchy-color-border);
   --anarchy-shadow-attribute: 4px -4px 8px -4px var(--anarchy-color-border);
@@ -221,6 +224,15 @@
 .style-anarchy-shadowrun a.item-control i,
 .style-anarchy-shadowrun a.item-control img {
   color: var(--anarchy-color-controls);
+}
+.style-anarchy-shadowrun a.item-control i.cyberdeck-connectionMode-augmented {
+  color: var(--anarchy-color-controls-augmented);
+}
+.style-anarchy-shadowrun a.item-control i.cyberdeck-connectionMode-virtual {
+  color: var(--anarchy-color-controls-virtual);
+}
+.style-anarchy-shadowrun a.item-control i.cyberdeck-connectionMode-disconnected  {
+  color: var(--anarchy-color-controls-disconnected);
 }
 
 .style-anarchy-shadowrun :is(div.checkbar-root[data-monitor-code='edge'],

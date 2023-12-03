@@ -33,6 +33,10 @@
   --dark-color-dice-glitch: hsla(300, 80%, 20%, 1);
   --dark-color-favorite: hsla(47, 60%, 70%, 1);
   --dark-color-controls: var(--dark-background-item-img);
+  --dark-color-controls-disconnected: hsla(47, 10%, 50%, 0.8);
+  --dark-color-controls-augmented: hsla(47, 90%, 50%, 1);  
+  --dark-color-controls-virtual: hsla(47, 100%, 80%, 1);
+
   --dark-color-text-hyperlink: hsla(47, 90%, 50%, 0.5);
   --dark-shadow-section: inset 0px 12px 12px -8px var(--dark-color-border);
   --dark-shadow-attribute: 5px -5px 5px -2px var(--dark-color-border);
@@ -233,6 +237,15 @@
 .style-dark a.item-control i,
 .style-dark a.item-control img {
   color: var(--dark-color-controls);
+}
+.style-dark a.item-control i.cyberdeck-connectionMode-augmented {
+  color: var(--dark-color-controls-augmented);
+}
+.style-dark a.item-control i.cyberdeck-connectionMode-virtual {
+  color: var(--dark-color-controls-virtual);
+}
+.style-dark a.item-control i.cyberdeck-connectionMode-disconnected  {
+  color: var(--dark-color-controls-disconnected);
 }
 
 .style-dark :is(div.checkbar-root[data-monitor-code='edge'],
