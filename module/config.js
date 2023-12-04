@@ -1,5 +1,24 @@
 
 export const ANARCHY = {
+    TYPES: {
+        Actor: {
+            character: "TYPES.Actor.character",
+            vehicle: "TYPES.Actor.vehicle",
+            device: "TYPES.Actor.device",
+            sprite: "TYPES.Actor.sprite",
+            ic: "TYPES.Actor.ic"
+        },
+        Item: {
+            contact: "TYPES.Item.contact",
+            cyberdeck: "TYPES.Item.cyberdeck",
+            gear: "TYPES.Item.gear",
+            metatype: "TYPES.Item.metatype",
+            quality: "TYPES.Item.quality",
+            shadowamp: "TYPES.Item.shadowamp",
+            skill: "TYPES.Item.skill",
+            weapon: "TYPES.Item.weapon"
+        }
+    },
     settings: {
         defaultCssClass: {
             name: 'ANARCHY.settings.defaultCssClass.name',
