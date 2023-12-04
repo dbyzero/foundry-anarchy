@@ -80,6 +80,7 @@ export class AnarchyBaseActor extends Actor {
     }
   }
 
+  getMatrixLogic() { return this.getMatrixDetails().logic }
   getMatrixFirewall() { return this.getMatrixDetails().firewall }
   getMatrixMonitor() { return this.getMatrixDetails().monitor }
   getMatrixMarks() { return this.getMatrixDetails().monitor?.marks ?? [] }
@@ -245,10 +246,6 @@ export class AnarchyBaseActor extends Actor {
 
   isEmerged() {
     return false;
-  }
-
-  async switchActorMarksCheck(index, checked, sourceActorId) {
-    await Checkbars.switchMonitorCheck(this, 'marks', index, checked, sourceActorId);
   }
 
   async addActorMark(sourceActorId) {

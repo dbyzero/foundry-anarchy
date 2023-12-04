@@ -86,11 +86,12 @@ export class BaseItemSheet extends ItemSheet {
       const sourceActorId = monitor == 'marks' ?
         $(event.currentTarget).closest('.anarchy-marks').attr('data-actor-id')
         : undefined;
-      await this.item.switchMonitorCheck(
+      await this.item.parent.switchMonitorCheck(
         monitor,
         this.getEventMonitorIndex(event),
         this.isEventMonitorChecked(event),
-        sourceActorId
+        sourceActorId,
+        item
       );
     }
   }

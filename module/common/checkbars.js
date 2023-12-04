@@ -193,8 +193,8 @@ export class Checkbars {
     return index + (checked ? 0 : 1);
   }
 
-  static async switchMonitorCheck(target, monitor, index, checked, sourceActorId = undefined) {
-    await Checkbars.setCounter(target, monitor, Checkbars.newValue(index, checked), sourceActorId)
+  static async switchMonitorCheck(target, monitor, index, checked, sourceActorId = undefined, item = undefined) {
+    await Checkbars.setCounter(target, monitor, Checkbars.newValue(index, checked), sourceActorId, item)
   }
 
 
@@ -205,13 +205,13 @@ export class Checkbars {
     }
   }
 
-  static async setCounter(target, monitor, value, sourceActorId = undefined) {
+  static async setCounter(target, monitor, value, sourceActorId = undefined, item = undefined) {
     switch (monitor) {
       case TEMPLATE.monitors.marks:
-        return await Checkbars.setActorMarks(target, value, sourceActorId);
+        return await Checkbars.setActorMarks(target, value, sourceActorId, item);
       case TEMPLATE.monitors.matrix:
         ErrorManager.checkMatrixMonitor(target)
-        return await Checkbars.setCheckbar(target, monitor, value);
+        return await Checkbars.setCheckbar(target, monitor, value, item);
       case TEMPLATE.monitors.convergence:
         return await Checkbars.setActorConvergence(target, value);
       case TEMPLATE.monitors.anarchy:
@@ -338,12 +338,12 @@ export class Checkbars {
     return Checkbars._findActorMarks(target.getMatrixMarks(), sourceActorId)?.marks ?? 0;
   }
 
-  static async addActorMark(target, sourceActorId) {
+  static async addActorMark(target, sourceActorId, item = undefined) {
     const previous = Checkbars._findActorMarks(target.getMatrixMarks(), sourceActorId);
-    Checkbars.setActorMarks(target, (previous.marks ?? 0) + 1, sourceActorId);
+    Checkbars.setActorMarks(target, (previous.marks ?? 0) + 1, sourceActorId, item);
   }
 
-  static async setActorMarks(target, value, sourceActorId) {
+  static async setActorMarks(target, value, sourceActorId, item = undefined) {
     if (target.canReceiveMarks()) {
       let marks = deepClone(target.getMatrixMarks())
       ErrorManager.checkOutOfRange(CHECKBARS.marks.resource, value, 0, Checkbars.max(target, 'marks'))

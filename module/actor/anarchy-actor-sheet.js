@@ -96,7 +96,8 @@ export class AnarchyActorSheet extends ActorSheet {
 
     // counters & monitors
     html.find('a.click-checkbar-element').click(async event => {
-      const handler = this.getEventItem(event) ?? this.actor;
+      const item = this.getEventItem(event);
+      const handler = item ?? this.actor;
       const monitor = this.getEventMonitorCode(event);
       const sourceActorId = monitor == 'marks' ?
         $(event.currentTarget).closest('.anarchy-marks').attr('data-actor-id')
@@ -105,7 +106,8 @@ export class AnarchyActorSheet extends ActorSheet {
         monitor,
         this.getEventIndex(event),
         this.isEventChecked(event),
-        sourceActorId
+        sourceActorId,
+        item
       );
     });
     html.find('a.click-add-mark-actor').click(async event => {

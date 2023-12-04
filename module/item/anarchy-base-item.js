@@ -73,16 +73,13 @@ export class AnarchyBaseItem extends Item {
   }
 
   async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
-    await Checkbars.switchMonitorCheck(this, monitor, index, checked, sourceActorId);
+    await Checkbars.switchMonitorCheck(this.parent, monitor, index, checked, sourceActorId, this);
   }
 
   async setCounter(monitor, value) {
     await Checkbars.setCounter(this, monitor, value);
   }
 
-  async switchActorMarksCheck(index, checked, sourceActorId) {
-    await Checkbars.switchMonitorCheck(this, 'marks', index, checked, sourceActorId);
-  }
 
   async addActorMark(sourceActorId) {
     await Checkbars.addActorMark(this, sourceActorId);
