@@ -1,5 +1,4 @@
 import { ANARCHY } from "./config.js";
-import { ANARCHY_HOOKS } from "./hooks-manager.js";
 import { Misc } from "./misc.js";
 
 const actorWordTypes = {

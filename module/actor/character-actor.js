@@ -6,7 +6,7 @@ import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { Checkbars } from "../common/checkbars.js";
 import { RollCelebrity } from "../dialog/roll-celebrity.js";
-import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
+import { ANARCHY_HOOKS } from "../hooks-manager.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
 

@@ -14,11 +14,11 @@ export class SpriteActor extends AnarchyBaseActor {
 
   getMatrixDetails() {
     return {
+      hasMatrix: true,
       logic: TEMPLATE.attributes.logic,
       firewall: TEMPLATE.attributes.logic,
       monitor: this.system.monitors.matrix,
       overflow: undefined,
-      hasMatrix: true,
     }
   }
 

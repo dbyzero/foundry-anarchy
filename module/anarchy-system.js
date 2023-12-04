@@ -78,7 +78,7 @@ export class AnarchySystem {
       device: DeviceActor,
       sprite: SpriteActor,
       ic: ICActor
-    };
+    }
     this.itemClasses = {
       contact: ContactItem,
       cyberdeck: CyberdeckItem,
@@ -88,7 +88,7 @@ export class AnarchySystem {
       shadowamp: ShadowampItem,
       skill: SkillItem,
       weapon: WeaponItem
-    };
+    }
 
     this.hooks = new HooksManager();
     this.styles = new Styles();
