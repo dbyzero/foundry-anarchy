@@ -86,7 +86,7 @@ export class RollDialog extends Dialog {
     await RollDialog.create(rollData);
   }
 
-  static async rollDefense(actor, action, attack) {
+  static async rollDefense(actor, action, attack, pilot = undefined) {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.defense,
       attribute1: action.attributeFunction1(actor),

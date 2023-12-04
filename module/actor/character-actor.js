@@ -203,6 +203,8 @@ export class CharacterActor extends AnarchyBaseActor {
     return Math.max(0, wounds - this.system.ignoreWounds);
   }
 
+  canPilotVehicle() { return true }
+
   canSetMarks() {
     return this.getCyberdeck()?.isConnected() || this.isEmerged()
   }

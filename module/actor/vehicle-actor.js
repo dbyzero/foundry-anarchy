@@ -1,4 +1,9 @@
+import { AttributeActions } from "../attribute-actions.js";
+import { ANARCHY } from "../config.js";
 import { ICONS_PATH, TEMPLATE } from "../constants.js";
+import { ErrorManager } from "../error-manager.js";
+import { RollDialog } from "../roll/roll-dialog.js";
+import { AnarchyUsers } from "../users.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
 export class VehicleActor extends AnarchyBaseActor {
@@ -46,4 +51,25 @@ export class VehicleActor extends AnarchyBaseActor {
   getRightToDefend() {
     return CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER;
   }
+
+  async rollPilotDefense(attack) {
+    const selectedActors = AnarchyUsers.getSelectedActors()
+    ErrorManager.checkOutOfRange(ANARCHY.user.selectedTokenActors, selectedActors.length, 0, 1)
+
+    const character = AnarchyUsers.getPlayerActor(game.user);
+    const vehicleOwner = this.getOwnerActor();
+    const pilot = [...selectedActors, character, vehicleOwner]
+      .filter(actor => actor?.testUserPermission(game.user, this.getRightToDefend()))
+      .find(actor => actor?.canPilotVehicle())
+    if (pilot) {
+      return await pilot.rollDefense(attack)
+    }
+    else {
+      ui.notifications.warn(
+        game.i18n.localize(ANARCHY.common.errors.noValidPilotForVehicle, {
+          vehicle: this.name
+        }))
+    }
+  }
+
 }

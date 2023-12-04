@@ -60,9 +60,13 @@
       "sufferedDrain": "{actor} suffered a drain of {drain}",
       "noDrain": "{actor} did not suffer any drain",
       "defendAttack": "Defense against {success} success",
+      "defendPilotAttack": "Pilot defense against {success} success",
       "partiallyDefended": "Attack exceeds defense of {success} success",
       "fullyDefended": "The attack is fully defended",
       "applyDamage": "Apply {damage}"
+    },
+    "user": {
+      "selectedTokenActors": "Selected actor tokens"
     },
     "common": {
       "newEntry": "New entry...",
@@ -149,6 +153,7 @@
         "maxTargetsExceedeed": "{weapon} has a {area} area of effect, with a maximum of {max} targets. You are currently targetting {count} targets",
         "noDefenseOnWeapon": "No defense configured for {actor} weapon: {weapon}.<br>Configure defense against this weapon to be able to attack with it.",
         "noTokenActor": "Token is not attached to an Actor!",
+        "noValidPilotForVehicle": "No valid pilot found for {vehicle} among selected tokens, your main character, and vehicle owner",
         "cannotUseEdgeAnymore": "Too late to use edge. A defender already rolled his defense!",
         "actorCannotApplyDamage": "Actor {actor} cannot apply {damageType} : maybe check the decker has connected his cyberdeck",
         "actorCannotReceiveDamage": "Cannot apply {damageType} to actor {actor} : it does not have a condition monitor for this type of damage",

@@ -1,4 +1,5 @@
 import { ANARCHY } from "./config.js";
+import { ErrorManager } from "./error-manager.js";
 import { Misc } from "./misc.js";
 import { RemoteCall } from "./remotecall.js";
 
@@ -46,9 +47,22 @@ export class AnarchyUsers {
   static isUniqueConnectedGM(user = game.user) {
     return user.id == AnarchyUsers.firstConnectedGM()?.id;
   }
-  static getTargets(user) {
-    const targets = [];
-    user.targets.forEach(element => targets.push(element));
-    return targets;
+
+  static getTargetTokens(user) {
+    return Array.from(user.targets);
   }
+
+  static getSelectedTokens(user) {
+    return Array.from(canvas.tokens.controlled)
+  }
+
+  static getSelectedActors() {
+    return Array.from(canvas.tokens.controlled).map(t => t.actor)
+  }
+
+  static getPlayerActor() {
+    return game.user.character;
+  }
+
+
 }

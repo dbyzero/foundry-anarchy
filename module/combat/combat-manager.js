@@ -25,7 +25,9 @@ export class CombatManager {
         // notify attacker about the defense
         await this.onDefense(roll);
         break;
-
+      case ANARCHY_SYSTEM.rollType.defensePilot:
+        await this.onDefensePilot(roll);
+      // TODO defensePilot: 'defensePilot',
     }
   }
 
@@ -37,23 +39,26 @@ export class CombatManager {
     await this.displayDefenseChoice(defenderTokenId, attackRoll);
   }
 
-  async displayDefenseChoice(defenderTokenId, attackRoll, defenseRoll = undefined) {
+  async displayDefenseChoice(defenderTokenId, attackRoll, defenseRoll = undefined, defensePilotRoll = undefined) {
     const attackerTokenId = attackRoll.targeting?.attackerTokenId;
     const defender = this.getTokenActor(defenderTokenId)
 
+    const attackHits = attackRoll.roll.total;
+    const defenseHits = defenseRoll?.roll.total ?? defensePilotRoll?.roll.total ?? 0;
     const attack = {
       attackerTokenId: attackerTokenId,
       defenderTokenId: defenderTokenId,
       attackRoll: RollManager.deflateAnarchyRoll(attackRoll),
       defenseRoll: RollManager.deflateAnarchyRoll(defenseRoll),
+      defensePilotRoll: RollManager.deflateAnarchyRoll(defensePilotRoll),
       attack: {
-        isHit: attackRoll.roll.total > 0 && attackRoll.roll.total >= (defenseRoll?.roll.total ?? 0),
+        isHit: attackHits > 0 && attackHits >= defenseHits,
         defense: attackRoll.weapon.getDefense(),
-        success: Math.max(0, attackRoll.roll.total - (defenseRoll?.roll.total ?? 0)),
+        pilotCanDefend: defender?.isVehicle(),
+        success: Math.max(0, attackHits - defenseHits),
         damage: attackRoll.weapon.getDamage(),
       },
     }
-
     const notifyMessage = await ChatMessage.create({
       user: game.user.id,
       whisper: defender.getAllowedUserIds(defender.getRightToDefend()),
@@ -67,18 +72,26 @@ export class CombatManager {
         },
         attack))
     });
+
     attack.choiceChatMessageId = notifyMessage.id;
     await ChatManager.setMessageData(notifyMessage, attack);
     await ChatManager.setMessageActor(notifyMessage, defender, defender.getRightToDefend());
     // parent message is the defense, or else the attack: the last roll made.
     // When defense is made, the attack can't be touched anymore
-    await ChatManager.setParentMessageId(notifyMessage,
-      attack.defenseRoll?.chatMessageId ?? attack.attackRoll.chatMessageId);
+    const actionChatMessageIds = [
+      attack.defenseRoll?.chatMessageId, attack.defensePilotRoll?.chatMessageId, attack.attackRoll.chatMessageId
+    ]
+    await ChatManager.setParentMessageId(notifyMessage, actionChatMessageIds.find(it => it != undefined));
   }
 
   async onDefense(roll) {
     this._preventObsoleteChoices(roll);
+    const attackRoll = RollManager.inflateAnarchyRoll(roll.attackRoll);
+    await this.displayDefenseChoice(roll.tokenId, attackRoll, roll);
+  }
 
+  async onDefensePilot(roll) {
+    this._preventObsoleteChoices(roll);
     const attackRoll = RollManager.inflateAnarchyRoll(roll.attackRoll);
     await this.displayDefenseChoice(roll.tokenId, attackRoll, roll);
   }
@@ -96,6 +109,10 @@ export class CombatManager {
   async onClickDefendAttack(attack) {
     const defender = this.getTokenActor(attack.defenderTokenId);
     await defender.rollDefense(attack);
+  }
+  async onClickPilotDefendAttack(attack) {
+    const defender = this.getTokenActor(attack.defenderTokenId);
+    await defender.rollPilotDefense(attack);
   }
 
   async onClickApplyAttackDamage(attack) {

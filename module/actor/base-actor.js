@@ -35,16 +35,19 @@ export class AnarchyBaseActor extends Actor {
     return undefined;
   }
 
+  getAllowedUsers(permission = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER) {
+    return game.users.filter(user => this.testUserPermission(user, permission));
+  }
+
   getAllowedUserIds(permission = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER) {
-    const allowedUsers = game.users.filter(user => this.testUserPermission(user, permission));
-    return allowedUsers.map(it => it.id);
+    return this.getAllowedUsers(permission).map(it => it.id);
   }
 
   getRightToDefend() { return CONST.DOCUMENT_PERMISSION_LEVELS.OWNER }
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return !this.hasPlayerOwner; }
-
+  isVehicle() { return this.type == TEMPLATE.actorTypes.vehicle }
   prepareData() {
     super.prepareData()
     this.cleanupFavorites()
@@ -199,11 +202,11 @@ export class AnarchyBaseActor extends Actor {
     await RollDialog.rollDefense(this, action, attack);
   }
 
-  async rollDrain(drain) {
-  }
+  async rollPilotDefense(attack) { }
 
-  async rollConvergence(convergence) {
-  }
+  async rollDrain(drain) { }
+
+  async rollConvergence(convergence) { }
 
   async switchMonitorCheck(monitor, index, checked, sourceActorId = undefined) {
     await Checkbars.switchMonitorCheck(this, monitor, index, checked, sourceActorId);
@@ -216,6 +219,8 @@ export class AnarchyBaseActor extends Actor {
   async setCounter(monitor, value, sourceActorId = undefined) {
     await Checkbars.setCounter(this, monitor, value, sourceActorId);
   }
+
+  canPilotVehicle() { return false }
 
   canSetMarks() { return false }
 
@@ -241,9 +246,7 @@ export class AnarchyBaseActor extends Actor {
     return this.canApplyDamage(monitor)
   }
 
-  isEmerged() {
-    return false;
-  }
+  isEmerged() { return false }
 
   async addActorMark(sourceActorId) {
     await Checkbars.addActorMark(this, sourceActorId);
@@ -251,7 +254,6 @@ export class AnarchyBaseActor extends Actor {
 
   getActorMarks(sourceActorId) {
     return Checkbars.getActorMarks(this, sourceActorId)?.marks;
-
   }
 
   async onEnterCombat() {

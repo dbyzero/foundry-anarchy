@@ -13,6 +13,7 @@ const CHAT_MANAGER_REMOVE_FAMILY = 'ChatManager.removeChatMessageFamily';
 const CHAT_MESSAGE_BUTTON_HANDLERS = [
   { selector: '.anarchy-button.click-edge-reroll', controlVisibility: true, handler: async (chatMsg, event) => await ChatManager.edgeReroll(chatMsg) },
   { selector: '.anarchy-button.click-defend-attack', controlVisibility: true, handler: async (chatMsg, event) => await ChatManager.defendAttack(chatMsg) },
+  { selector: '.anarchy-button.click-defend-pilot-attack', controlVisibility: true, handler: async (chatMsg, event) => await ChatManager.defendPilotAttack(chatMsg) },
   { selector: '.anarchy-button.click-apply-attack-damage', controlVisibility: true, handler: async (chatMsg, event) => await ChatManager.applyAttack(chatMsg) },
   { selector: 'img.open-actor-sheet', controlVisibility: false, handler: async (chatMsg, event) => await ChatManager.openActorSheet(chatMsg, event) },
 ]
@@ -77,6 +78,10 @@ export class ChatManager {
 
   static defendAttack(chatMsg) {
     return game.system.anarchy.combatManager.onClickDefendAttack(ChatManager.getMessageData(chatMsg));
+  }
+
+  static defendPilotAttack(chatMsg) {
+    return game.system.anarchy.combatManager.onClickPilotDefendAttack(ChatManager.getMessageData(chatMsg));
   }
 
   static applyAttack(chatMsg) {

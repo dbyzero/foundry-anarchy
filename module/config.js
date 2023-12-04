@@ -60,9 +60,13 @@ export const ANARCHY = {
         sufferedDrain: 'ANARCHY.chat.sufferedDrain',
         noDrain: 'ANARCHY.chat.noDrain',
         defendAttack: 'ANARCHY.chat.defendAttack',
+        defendPilotAttack: 'ANARCHY.chat.defendPilotAttack',
         partiallyDefended: 'ANARCHY.chat.partiallyDefended',
         fullyDefended: 'ANARCHY.chat.fullyDefended',
         applyDamage: 'ANARCHY.chat.applyDamage',
+    },
+    user: {
+        selectedTokenActors: 'ANARCHY.user.selectedTokenActors'
     },
     common: {
         newEntry: 'ANARCHY.common.newEntry',
@@ -149,6 +153,7 @@ export const ANARCHY = {
             maxTargetsExceedeed: 'ANARCHY.common.errors.maxTargetsExceedeed',
             noDefenseOnWeapon: 'ANARCHY.common.errors.noDefenseOnWeapon',
             noTokenActor: 'ANARCHY.common.errors.noTokenActor',
+            noValidPilotForVehicle: 'ANARCHY.common.errors.noValidPilotForVehicle',
             cannotUseEdgeAnymore: 'ANARCHY.common.errors.cannotUseEdgeAnymore',
             actorCannotApplyDamage: 'ANARCHY.common.errors.actorCannotApplyDamage',
             actorCannotReceiveDamage: 'ANARCHY.common.errors.actorCannotReceiveDamage',

@@ -60,9 +60,13 @@
       "sufferedDrain": "{actor} subit un drain de {drain}",
       "noDrain": "{actor} n'a pas subi de drain",
       "defendAttack": "Défense contre {success} succès",
+      "defendPilotAttack": "Défense du pilote contre {success} succès",
       "partiallyDefended": "L'attaque surpasse la défense de {success} succès",
       "fullyDefended": "L'attaque est totalement évitée",
       "applyDamage": "Appliquer {damage}"
+    },
+    "user": {
+      "selectedTokenActors": "Sélection de tokens-Acteurs"
     },
     "common": {
       "newEntry": "Valeur...",
@@ -149,6 +153,7 @@
         "maxTargetsExceedeed": "{weapon} a une zone zone d'effet {area}, avec au maximum {max} cibles, vous en avez {count}",
         "noDefenseOnWeapon": "L'arme {weapon} de {actor} n'a pas de défense configurée. Configurez la défense contre cette arme pour pouvoir attaquer avec.",
         "noTokenActor": "Le token n'est pas lié à un Personnage!",
+        "noValidPilotForVehicle": "Aucun pilote valide pour {vehicle} parmi les tokens sélectionés, votre personnage principal, ou le propriétaire du véhicule",
         "cannotUseEdgeAnymore": "Trop tard pour utiliser la Chance. Un adversaire s'est déjà défendu!",
         "actorCannotApplyDamage": "L'acteur {actor} ne peut pas causer de dommages {damageType}, vérifiez que le decker a connecté son cyberdeck",
         "actorCannotReceiveDamage": "L'acteur {actor} ne peut pas recevoir de dommages {damageType}: il n'a pas de moniteur de condition associé",

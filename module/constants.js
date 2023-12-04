@@ -91,6 +91,7 @@ export const ANARCHY_SYSTEM = {
   rollType: {
     attributeAction: 'attributeAction',
     defense: 'defense',
+    defensePilot: 'defensePilot',
     attribute: 'attribute',
     skill: 'skill',
     weapon: 'weapon',

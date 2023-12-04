@@ -9,7 +9,15 @@
     {{#if defenseRoll}}
       <p>
         <hr>
-
+        {{#if attack.isHit}}
+          {{localize ANARCHY.chat.partiallyDefended success=attack.success}}
+        {{else}}
+          {{localize ANARCHY.chat.fullyDefended}}
+        {{/if}}
+      </p>
+    {{else if (and defensePilotRoll attack.pilotCanDefend)}}
+      <p>
+        <hr>
         {{#if attack.isHit}}
           {{localize ANARCHY.chat.partiallyDefended success=attack.success}}
         {{else}}
@@ -24,6 +32,15 @@
           </label>
         </a>
       </div>
+      {{#if attack.pilotCanDefend}}
+      <div class="anarchy-button defend-attack click-defend-pilot-attack">
+        <a>
+          <label>
+            {{localize ANARCHY.chat.defendPilotAttack success=attack.success}}
+          </label>
+        </a>
+      </div>
+      {{/if}}
     {{/if}}
 
     {{#if attack.isHit}}
