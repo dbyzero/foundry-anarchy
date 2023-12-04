@@ -186,14 +186,12 @@ export class AnarchyBaseActor extends Actor {
   async rollWeapon(weapon) {
     ErrorManager.checkWeaponDefense(weapon, this);
     const targetedTokenIds = weapon.validateTargets(this)?.map(it => it.id)
-    if (targetedTokenIds.length > 0) {
-      const targeting = {
-        attackerTokenId: game.scenes.current?.tokens.find(it => it.actor?.id == this.id)?.id,
-        targetedTokenIds: targetedTokenIds
-      }
-      const skill = this.items.find(it => weapon.isWeaponSkill(it));
-      await RollDialog.rollWeapon(this, skill, weapon, targeting);
+    const targeting = {
+      attackerTokenId: game.scenes.current?.tokens.find(it => it.actor?.id == this.id)?.id,
+      targetedTokenIds: targetedTokenIds
     }
+    const skill = this.items.find(it => weapon.isWeaponSkill(it));
+    await RollDialog.rollWeapon(this, skill, weapon, targeting);
   }
 
   async rollDefense(attack) {
