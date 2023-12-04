@@ -1,9 +1,9 @@
 <div class="define-item-type item anarchy-skill {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
   {{#if img}}
-  <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" title="{{name}}"/>
+  <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" data-tooltip="{{name}}"/>
   {{/if}}
   {{#if (eq system.attribute 'knowledge')}}
-  <span title="{{localize 'ANARCHY.attributes.knowledge'}}">
+  <span data-tooltip="{{localize 'ANARCHY.attributes.knowledge'}}">
     {{{iconFA 'fas fa-user-graduate'}}}
     <label>{{name}}</label>
   </span>

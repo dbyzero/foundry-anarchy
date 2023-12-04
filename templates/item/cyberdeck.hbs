@@ -1,6 +1,6 @@
 <form class="{{options.cssClass}}" autocomplete="off">
   <header class="sheet-header">
-    <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+    <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" data-tooltip="{{data.name}}"/>
     {{> 'systems/anarchy/templates/item/parts/itemname.hbs'
       labelkey='ANARCHY.itemType.singular.cyberdeck'
       type="cyberdeck"
@@ -29,7 +29,7 @@
         <input name="system.programs" type="number" data-dtype="Number" size=2
           value="{{system.programs}}"/>
       </div>
-      <div class="form-group" title="{{localize 'ANARCHY.item.cyberdeck.processingHelp'}}">
+      <div class="form-group" data-tooltip="{{localize 'ANARCHY.item.cyberdeck.processingHelp'}}">
         <label for="system.processing">{{localize 'ANARCHY.item.cyberdeck.processing'}} </label>
         <input name="system.processing" type="number" data-dtype="Number" size=2
           value="{{system.processing}}"/>
