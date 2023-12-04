@@ -14,7 +14,7 @@ export class ICActor extends AnarchyBaseActor {
 
   getMatrixDetails() {
     return {
-      hasMatrix: false,
+      hasMatrix: true,
       logic: TEMPLATE.attributes.logic,
       firewall: TEMPLATE.attributes.firewall,
       monitor: this.system.monitors.matrix,
