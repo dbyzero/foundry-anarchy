@@ -1,13 +1,13 @@
 {
   "TYPES": {
-    "ACTOR": {
+    "Actor": {
       "character": "Character/Creature",
       "vehicle": "Vehicle/drone",
       "device": "Matrix device",
       "sprite": "Sprite",
       "ic": "IC"
     },
-    "ITEM": {
+    "Item": {
       "contact": "Contact",
       "cyberdeck": "Cyberdeck",
       "gear": "Gear",
