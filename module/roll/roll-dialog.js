@@ -90,7 +90,7 @@ export class RollDialog extends Dialog {
     const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.defense,
       attribute1: action.attributeFunction1(actor),
-      attribute2: action.attributeFunction(actor),
+      attribute2: action.attributeFunction2(actor),
       defenseAction: action.code,
       attackRoll: attack.attackRoll,
       tokenId: attack.defenderTokenId,
