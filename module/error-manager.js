@@ -44,17 +44,6 @@ export class ErrorManager {
     }
   }
 
-  static checkActorCanApplyDamage(actor, monitor) {
-    if (!actor.canApplyDamage(monitor)) {
-      const error = game.i18n.format(ANARCHY.common.errors.actorCannotApplyDamage, {
-        actor: actor.name,
-        damageType: game.i18n.format('ANARCHY.actor.monitors.' + monitor)
-      });
-      ui.notifications.error(error)
-      throw error
-    }
-  }
-
   static checkActorCanReceiveDamage(damageType, monitor, actor) {
     if (!monitor) {
       const error = game.i18n.format(ANARCHY.common.errors.actorCannotReceiveDamage, {
