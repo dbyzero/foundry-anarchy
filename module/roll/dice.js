@@ -25,7 +25,7 @@ export class AnarchyDice {
 
     if (game.modules.get("dice-so-nice")?.active) {
       if (game.settings.get("core", "noCanvas")) {
-        ui.notifications.warn("Dice So Nice! will not display dice sue to Foundry option 'Disable Game Canvas' ");
+        ui.notifications.warn("Dice So Nice! will not display dice due to Foundry option 'Disable Game Canvas' ");
       }
     }
   }
