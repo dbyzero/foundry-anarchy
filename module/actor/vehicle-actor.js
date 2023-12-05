@@ -42,5 +42,7 @@ export class VehicleActor extends AnarchyBaseActor {
     return super.getDamageMonitor(damageType);
   }
 
-
+  getRightToDefend() {
+    return CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER;
+  }
 }

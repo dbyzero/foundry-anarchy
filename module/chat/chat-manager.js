@@ -6,7 +6,7 @@ import { RemoteCall } from "../remotecall.js";
 export const PARENT_MESSAGE_ID = 'parent-message-id';
 export const MESSAGE_DATA = 'message-data';
 export const MESSAGE_CAN_USE_EDGE = 'can-use-edge';
-export const MESSAGE_OWNING_ACTOR_ID = 'owning-actor-id';
+export const MESSAGE_OWNING_ACTOR = 'owning-actor';
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
 const CHAT_MANAGER_REMOVE_FAMILY = 'ChatManager.removeChatMessageFamily';
 
@@ -34,8 +34,8 @@ export class ChatManager {
   }
 
   static async onRenderChatMessage(app, html, msg) {
-
-    const showButtons = ChatManager.hasRight(ChatManager.getChatMessageFromHtml(html));
+    const chatMessage = ChatManager.getChatMessageFromHtml(html);
+    const showButtons = ChatManager.hasRight(chatMessage);
 
     CHAT_MESSAGE_BUTTON_HANDLERS.forEach(it => {
       const jQueryButtonSelector = html.find(it.selector);
@@ -45,6 +45,7 @@ export class ChatManager {
       }
       else {
         jQueryButtonSelector.hide();
+        jQueryButtonSelector.click(async event => { })
       }
     });
   }
@@ -137,18 +138,30 @@ export class ChatManager {
     return chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE);
   }
 
-  static async setMessageActorId(chatMsg, actor) {
+  static async setMessageActor(chatMsg, actor, right = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
     if (actor) {
-      await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID, actor.id);
+      await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR, {
+        actorId: actor.id,
+        tokenId: actor.token?.id,
+        right: right
+      });
     }
   }
 
   static hasRight(chatMsg, right = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
-    const actorId = chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID);
-    const actor = actorId ? game.actors.get(actorId) : undefined;
-    if (actor) {
-      return actor.testUserPermission(game.user, right)
+    const owningActor = chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR);
+    if (owningActor) {
+      const token = ChatManager.getToken(owningActor.tokenId)
+      const actor = token?.actor ?? game.actors.get(owningActor.actorId)
+      if (actor) {
+        return actor.testUserPermission(game.user, Math.min(owningActor.right, right))
+      }
+      return true
     }
-    return true;
+    return false
+  }
+
+  static getToken(tokenId) {
+    return tokenId ? game.scenes.map(s => s.tokens.find(it => it.id == tokenId)).find(it => it != undefined) : undefined;
   }
 }

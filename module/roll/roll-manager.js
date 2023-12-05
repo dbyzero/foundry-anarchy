@@ -74,7 +74,7 @@ export class RollManager {
     roll.chatMessageId = rollMessage.id;
     await ChatManager.setMessageData(rollMessage, RollManager.deflateAnarchyRoll(roll));
     await ChatManager.setMessageCanUseEdge(rollMessage, roll.options.canUseEdge);
-    await ChatManager.setMessageActorId(rollMessage, roll.actor);
+    await ChatManager.setMessageActor(rollMessage, roll.actor);
 
   }
 

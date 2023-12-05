@@ -54,23 +54,22 @@ export class CombatManager {
       },
     }
 
-    const html = await renderTemplate(TEMPLATE_INFORM_DEFENDER, mergeObject(
-      {
-        ANARCHY: ANARCHY,
-        options: { classes: [game.system.anarchy.styles.selectCssClass()] },
-        attacker: this.getTokenActor(attack.attackerTokenId),
-        defender: defender,
-        weapon: attack.attackRoll.weapon
-      },
-      attack));
     const notifyMessage = await ChatMessage.create({
       user: game.user.id,
-      whisper: defender.getAllowedUserIds(),
-      content: html
+      whisper: defender.getAllowedUserIds(defender.getRightToDefend()),
+      content: await renderTemplate(TEMPLATE_INFORM_DEFENDER, mergeObject(
+        {
+          ANARCHY: ANARCHY,
+          options: { classes: [game.system.anarchy.styles.selectCssClass()] },
+          attacker: this.getTokenActor(attack.attackerTokenId),
+          defender: defender,
+          weapon: attack.attackRoll.weapon
+        },
+        attack))
     });
     attack.choiceChatMessageId = notifyMessage.id;
     await ChatManager.setMessageData(notifyMessage, attack);
-    await ChatManager.setMessageActorId(notifyMessage, defender);
+    await ChatManager.setMessageActor(notifyMessage, defender, defender.getRightToDefend());
     // parent message is the defense, or else the attack: the last roll made.
     // When defense is made, the attack can't be touched anymore
     await ChatManager.setParentMessageId(notifyMessage,
@@ -114,6 +113,6 @@ export class CombatManager {
   }
 
   getTokenActor(tokenId) {
-    return game.scenes.current.tokens.get(tokenId)?.actor;
+    return canvas.tokens.get(tokenId)?.actor;
   }
 }

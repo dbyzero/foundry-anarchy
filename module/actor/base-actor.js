@@ -40,7 +40,7 @@ export class AnarchyBaseActor extends Actor {
     return allowedUsers.map(it => it.id);
   }
 
-  isCharacter() { return this.type == 'character'; }
+  getRightToDefend() { return CONST.DOCUMENT_PERMISSION_LEVELS.OWNER }
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return !this.hasPlayerOwner; }
