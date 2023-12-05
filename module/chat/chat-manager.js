@@ -11,9 +11,10 @@ const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
 const CHAT_MANAGER_REMOVE_FAMILY = 'ChatManager.removeChatMessageFamily';
 
 const CHAT_MESSAGE_BUTTON_HANDLERS = [
-  { selector: '.anarchy-button.click-edge-reroll', handler: async chatMessage => await ChatManager.edgeReroll(chatMessage) },
-  { selector: '.anarchy-button.click-defend-attack', handler: async chatMessage => await ChatManager.defendAttack(chatMessage) },
-  { selector: '.anarchy-button.click-apply-attack-damage', handler: async chatMessage => await ChatManager.applyAttack(chatMessage) },
+  { selector: '.anarchy-button.click-edge-reroll', controlVisibility: true, handler: async (chatMsg, event) => await ChatManager.edgeReroll(chatMsg) },
+  { selector: '.anarchy-button.click-defend-attack', controlVisibility: true, handler: async (chatMsg, event) => await ChatManager.defendAttack(chatMsg) },
+  { selector: '.anarchy-button.click-apply-attack-damage', controlVisibility: true, handler: async (chatMsg, event) => await ChatManager.applyAttack(chatMsg) },
+  { selector: 'img.open-actor-sheet', controlVisibility: false, handler: async (chatMsg, event) => await ChatManager.openActorSheet(chatMsg, event) },
 ]
 
 export class ChatManager {
@@ -38,9 +39,9 @@ export class ChatManager {
 
     CHAT_MESSAGE_BUTTON_HANDLERS.forEach(it => {
       const jQueryButtonSelector = html.find(it.selector);
-      if (showButtons) {
+      if (!it.controlVisibility || showButtons) {
         jQueryButtonSelector.show();
-        jQueryButtonSelector.click(async event => await it.handler(ChatManager.getChatMessage(event)))
+        jQueryButtonSelector.click(async event => await it.handler(ChatManager.getChatMessage(event), event))
       }
       else {
         jQueryButtonSelector.hide();
@@ -48,24 +49,37 @@ export class ChatManager {
     });
   }
 
-  static async edgeReroll(chatMessage) {
-    if (ChatManager.getMessageCanUseEdge(chatMessage)) {
+  static async openActorSheet(chatMsg, event) {
+    const img = $(event.currentTarget).closest('img.open-actor-sheet');
+    const tokenId = img.attr('data-token-id')
+    if (tokenId) {
+      const token = canvas.tokens.get(tokenId);
+      if (token?.actor) {
+        token.actor.sheet.render(true)
+        return
+      }
+    }
+    const actorId = img.attr('data-actor-id')
+    return game.actors.get(actorId)?.sheet.render(true)
+  }
 
-      const rollData = ChatManager.getMessageData(chatMessage);
+  static async edgeReroll(chatMsg) {
+    if (ChatManager.getMessageCanUseEdge(chatMsg)) {
+      const rollData = ChatManager.getMessageData(chatMsg);
       await game.system.anarchy.rollManager.edgeReroll(rollData);
-      ChatManager.removeFamily(chatMessage.id);
+      ChatManager.removeFamily(chatMsg.id);
     }
     else {
       ui.notifications.info(game.i18n.localize(ANARCHY.common.errors.cannotUseEdgeAnymore));
     }
   }
 
-  static defendAttack(chatMessage) {
-    return game.system.anarchy.combatManager.onClickDefendAttack(ChatManager.getMessageData(chatMessage));
+  static defendAttack(chatMsg) {
+    return game.system.anarchy.combatManager.onClickDefendAttack(ChatManager.getMessageData(chatMsg));
   }
 
-  static applyAttack(chatMessage) {
-    return game.system.anarchy.combatManager.onClickApplyAttackDamage(ChatManager.getMessageData(chatMessage));
+  static applyAttack(chatMsg) {
+    return game.system.anarchy.combatManager.onClickApplyAttackDamage(ChatManager.getMessageData(chatMsg));
   }
 
   static getChatMessage(event) {
@@ -78,15 +92,15 @@ export class ChatManager {
     return game.messages.get(chatMessageId);
   }
 
-  static async setParentMessageId(chatMessage, family) {
-    await chatMessage.setFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID, family);
+  static async setParentMessageId(chatMsg, family) {
+    await chatMsg.setFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID, family);
   }
 
-  static getParentMessageId(chatMessage) {
-    return chatMessage.getFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID);
+  static getParentMessageId(chatMsg) {
+    return chatMsg.getFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID);
   }
-  static getParentMessage(chatMessage) {
-    const chatMessageId = ChatManager.getParentMessageId(chatMessage);
+  static getParentMessage(chatMsg) {
+    const chatMessageId = ChatManager.getParentMessageId(chatMsg);
     return chatMessageId ? game.messages.get(chatMessageId) : undefined;
   }
 
@@ -98,14 +112,14 @@ export class ChatManager {
     }
   }
 
-  static async setMessageData(chatMessage, data) {
+  static async setMessageData(chatMsg, data) {
     if (data) {
-      await chatMessage.setFlag(SYSTEM_SCOPE, MESSAGE_DATA, JSON.stringify(data));
+      await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_DATA, JSON.stringify(data));
     }
   }
 
-  static getMessageData(chatMessage) {
-    const json = chatMessage.getFlag(SYSTEM_SCOPE, MESSAGE_DATA);
+  static getMessageData(chatMsg) {
+    const json = chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_DATA);
     return json ? JSON.parse(json) : undefined;
   }
 
@@ -115,25 +129,25 @@ export class ChatManager {
     }
   }
 
-  static async setMessageCanUseEdge(chatMessage, canUseEdge) {
-    await chatMessage.setFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE, canUseEdge);
+  static async setMessageCanUseEdge(chatMsg, canUseEdge) {
+    await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE, canUseEdge);
   }
 
-  static getMessageCanUseEdge(chatMessage) {
-    return chatMessage.getFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE);
+  static getMessageCanUseEdge(chatMsg) {
+    return chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE);
   }
 
-  static async setMessageActorId(chatMessage, actor) {
+  static async setMessageActorId(chatMsg, actor) {
     if (actor) {
-      await chatMessage.setFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID, actor.id);
+      await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID, actor.id);
     }
   }
 
-  static hasRight(chatMessage) {
-    const actorId = chatMessage.getFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID);
+  static hasRight(chatMsg, right = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
+    const actorId = chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR_ID);
     const actor = actorId ? game.actors.get(actorId) : undefined;
     if (actor) {
-      return actor.testUserPermission(game.user, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER)
+      return actor.testUserPermission(game.user, right)
     }
     return true;
   }
