@@ -31,9 +31,9 @@ const DEFAULT_ROLL_PARAMETERS = [
     condition: context => Object.values(ANARCHY_SYSTEM.rollType).includes(context.mode),
     isUsed: (p) => true,
     factory: context => {
-      const attribute = context.attribute1 ?? context.skill?.system.attribute ?? '';
+      const attribute = context.attribute1 ?? context.skill?.system.attribute;
       return {
-        labelkey: ANARCHY.attributes[attribute],
+        labelkey: attribute ? ANARCHY.attributes[attribute] : ANARCHY.attributes.noAttributes,
         value: context.actor.getAttributeValue(attribute, context.activeItem),
         flags: { editable: context.skill },
         selected: attribute,
@@ -56,11 +56,12 @@ const DEFAULT_ROLL_PARAMETERS = [
       p.used = selected ? true : false;
     },
     factory: context => {
+      const attribute = context.attribute2
       return {
+        labelkey: attribute ? ANARCHY.attributes[attribute] : ANARCHY.attributes.noAttributes,
+        value: context.actor.getAttributeValue(attribute, context.activeItem),
         flags: { editable: ANARCHY_SYSTEM.rollType.attribute == context.mode },
-        labelkey: ANARCHY.attributes[context.attribute2],
-        value: context.actor.getAttributeValue(context.attribute2, context.activeItem),
-        selected: context.attribute2,
+        selected: attribute,
         choices: Enums.getAttributes(it => context.attributes.includes(it))
       };
     }

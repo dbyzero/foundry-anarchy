@@ -33,6 +33,7 @@ export class VehicleActor extends AnarchyBaseActor {
       TEMPLATE.attributes.system
     ];
   }
+  getPhysicalAgility() { return TEMPLATE.attributes.autopilot }
 
   getDamageMonitor(damageType) {
     switch (damageType) {

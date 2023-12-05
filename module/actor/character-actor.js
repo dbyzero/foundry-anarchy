@@ -50,6 +50,7 @@ export class CharacterActor extends AnarchyBaseActor {
       TEMPLATE.attributes.edge
     ];
   }
+  getPhysicalAgility() { return TEMPLATE.attributes.agility }
 
   getMatrixDetails() {
     const cyberdeck = this.getCyberdeck();

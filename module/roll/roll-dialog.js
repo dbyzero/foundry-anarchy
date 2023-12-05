@@ -79,7 +79,7 @@ export class RollDialog extends Dialog {
       mode: ANARCHY_SYSTEM.rollType.weapon,
       weapon: weapon,
       skill: skill,
-      attribute1: skill?.system.attribute ?? TEMPLATE.attributes.agility,
+      attribute1: skill?.system.attribute ?? actor.getPhysicalAgility(),
       specialization: skill?.system.specialization,
       targeting: targeting
     });

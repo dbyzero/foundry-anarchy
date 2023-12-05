@@ -62,6 +62,9 @@ export class AnarchyBaseActor extends Actor {
     Object.entries(this.system.attributes).forEach(kv => kv[1].total = this.getAttributeValue(kv[0]))
   }
 
+  getAttributes() { return [undefined]; }
+  getPhysicalAgility() { return undefined }
+
   prepareMatrixMonitor() {
     const matrix = this.getMatrixDetails()
     if (matrix.hasMatrix) {
@@ -116,10 +119,6 @@ export class AnarchyBaseActor extends Actor {
 
   getAttributeActions() {
     return AttributeActions.getActorActions(this);
-  }
-
-  getAttributes() {
-    return [undefined];
   }
 
   getUsableAttributes(item = undefined) {
