@@ -36,8 +36,8 @@ const WEAPON_RANGE_PARAMETER = {
     const rangeValues = ranges.map(it => it.value);
     return {
       value: ranges[0].value,
-      min: Math.min(rangeValues),
-      max: Math.max(rangeValues),
+      min: Math.min(...rangeValues),
+      max: Math.max(...rangeValues),
       choices: ranges,
       selected: game.i18n.localize(ranges[0].labelkey)
     }
