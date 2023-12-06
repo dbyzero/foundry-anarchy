@@ -1,5 +1,5 @@
 import { ANARCHY } from "../config.js";
-import { ANARCHY_SYSTEM, LOG_HEAD, TEMPLATES_PATH } from "../constants.js";
+import { ANARCHY_SYSTEM, LOG_HEAD, TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
 import { MATRIX } from "../matrix-helper.js";
@@ -461,7 +461,8 @@ export class RollParameters {
   }
 
   build(context) {
-    return Object.values(this.registeredParameters).filter(p => !p.condition || p.condition(context))
+    return Object.values(this.registeredParameters)
+      .filter(p => !p.condition || p.condition(context))
       .map(p => this._computeParameter(p, context));
   }
 
@@ -506,7 +507,9 @@ export class RollParameters {
   }
 
   static computeRollModifiers(effect, context) {
-    return Modifiers.computeRollModifiers(context.actor.items, context, effect);
+    const itemsFilter = it => it.type != TEMPLATE.itemType.weapon || (context.weapon && it.id == context.weapon.id)
+    const items = context.actor.items.filter(itemsFilter)
+    return Modifiers.computeRollModifiers(items, context, effect);
   }
 
 }
