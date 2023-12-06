@@ -8,6 +8,7 @@ import { NO_MATRIX_MONITOR } from "../matrix-helper.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 import { RollDialog } from "../roll/roll-dialog.js";
+import { MATRIX_SKILLS } from "../skills.js";
 import { ActorDamageManager } from "./actor-damage.js";
 
 
@@ -93,6 +94,10 @@ export class AnarchyBaseActor extends Actor {
   getMatrixOverflow() { return this.getMatrixDetails().overflow }
   hasMatrixMonitor() { return this.getMatrixDetails().hasMatrix }
   isMatrixConnected(mode = undefined) { return false }
+  isMatrixSkill(skill) {
+    return MATRIX_SKILLS.includes(skill?.system.code)
+  }
+
   async nextConnectionMode(cyberdeck) { }
   async defSetMatrixMonitor(checkbarPath, value) {
     if (!this.getMatrixDetails().hasMatrix) {

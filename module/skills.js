@@ -38,6 +38,7 @@ export const ANARCHY_SKILLS = [
   { code: 'negotiation', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/negotiation.svg` },
   { code: 'disguise', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/disguise.svg`, lang: 'en' },
 ]
+export const MATRIX_SKILLS = ['tasking', 'hacking']
 
 export class Skills {
 

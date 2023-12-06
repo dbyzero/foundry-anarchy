@@ -97,7 +97,6 @@ export class CharacterActor extends AnarchyBaseActor {
     }
     return Matrix.resolveConnectionMode(connectionMode) == mode
   }
-
   async nextConnectionMode(cyberdeck) {
     if (cyberdeck) {
       await cyberdeck.nextConnectionMode()

@@ -2,6 +2,7 @@ import { ANARCHY } from "../config.js";
 import { ANARCHY_SYSTEM, LOG_HEAD, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
 import { ANARCHY_HOOKS, HooksManager } from "../hooks-manager.js";
+import { MATRIX } from "../matrix-helper.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
 
@@ -164,6 +165,26 @@ const DEFAULT_ROLL_PARAMETERS = [
         used: true,
       }
     }
+  },
+  // modifier for deckers/technomancers connected in virtual reality
+  {
+    code: 'virtualReality',
+    options: {
+      flags: { editDice: false, editable: false },
+      order: 24, category: ROLL_PARAMETER_CATEGORY.pool,
+      value: 1,
+      labelkey: ANARCHY.common.roll.modifiers.virtualReality,
+      hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
+      min: 1, max: 1,
+    },
+    condition: context => context.actor.isMatrixSkill(context.skill) && context.actor.isMatrixConnected(MATRIX.connectionMode.virtual),
+    factory: context => {
+      return {
+        isUsed: (p) => context.actor.isMatrixSkill(context.skill),
+        flags: { used: context.actor.isMatrixSkill(context.skill) && context.actor.isMatrixConnected(MATRIX.connectionMode.virtual) },
+      }
+    }
+
   },
   // other modifiers
   {
