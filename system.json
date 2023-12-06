@@ -1,8 +1,8 @@
 {
   "id": "anarchy",
-  "version": "11.1.5",
+  "version": "11.1.6",
   "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/master/system.json",
-  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/11.1.5/anarchy-11.1.5.zip",
+  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/11.1.6/anarchy-11.1.6.zip",
   "url": "https://gitlab.com/vincent.vandeme/anarchy",
   "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
   "title": "Anarchy",
