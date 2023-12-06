@@ -61,9 +61,8 @@ export class AnarchyActorSheet extends ActorSheet {
       await item.update({ 'system.inactive': !inactive })
     })
 
-    html.find('a.click-cyberdeck-connectionMode').click(async event => {
-      const item = this.getEventItem(event)
-      await item.nextConnectionMode()
+    html.find('a.click-matrix-connectionMode').click(async event => {
+      await this.actor.nextConnectionMode(this.getEventItem(event))
     })
 
     html.find('.click-item-delete').click(async event => {

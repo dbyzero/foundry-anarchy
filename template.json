@@ -156,6 +156,7 @@
       "style": "",
       "genre": "",
       "capacity": "mundane",
+      "connectionMode": "disconnected",
       "ownAnarchy": false,
       "keywords": [],
       "dispositions": [],

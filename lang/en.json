@@ -81,6 +81,9 @@
       "delFavorite": "Remove from favorites",
       "attach": "Change owner",
       "attachCopy": "Give a copy",
+      "matrix": {
+        "connectionMode": "Connection mode"
+      },
       "roll": {
         "button": "Roll",
         "title": "Roll {name} {specialization}",
@@ -103,6 +106,7 @@
           "weaponRange": "Range",
           "weaponArea": "Multiple targets",
           "other": "Other modifiers",
+          "virtualReality": "Virtual Reality",
           "reduced": "Pool reduced",
           "reroll": "Rerolls",
           "rerollForced": "Rerolls successes",
@@ -288,8 +292,7 @@
       "cyberdeck": {
         "programs": "Programs",
         "processing": "Processing power",
-        "processingHelp": "re-rolls on matrix rolls",
-        "connectionMode": "Connection mode"
+        "processingHelp": "re-rolls on matrix rolls"
       }
     },
     "itemType": {

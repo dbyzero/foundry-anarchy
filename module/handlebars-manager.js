@@ -87,9 +87,9 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/common/enum-value-label.hbs',
   'systems/anarchy/templates/common/favorite.hbs',
   'systems/anarchy/templates/common/item-control-add.hbs',
-  'systems/anarchy/templates/common/item-control-connectionMode.hbs',
   'systems/anarchy/templates/common/item-control-activate.hbs',
   'systems/anarchy/templates/common/item-controls.hbs',
+  'systems/anarchy/templates/common/control-connectionMode.hbs',
   'systems/anarchy/templates/common/actor-reference.hbs',
   // dialogs
   'systems/anarchy/templates/dialog/roll-modifier.hbs',

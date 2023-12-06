@@ -81,6 +81,9 @@
       "delFavorite": "Enlever des favoris",
       "attach": "Changer le propriétaire",
       "attachCopy": "Donner une copie",
+      "matrix": {
+        "connectionMode": "Mode de connection"
+      },
       "roll": {
         "button": "Lancer",
         "title": "Jet de {name} {specialization}",
@@ -103,6 +106,7 @@
           "weaponRange": "Portée",
           "weaponArea": "Cibles multiples",
           "other": "Autres modificateurs",
+          "virtualReality": "Réalité Virtuelle",
           "reduced": "Malus de dés",
           "reroll": "Relances",
           "rerollForced": "Relances forcées",
@@ -288,8 +292,7 @@
       "cyberdeck": {
         "programs": "Programmes",
         "processing": "Puissance de calcul",
-        "processingHelp": "relances sur tests matriciels",
-        "connectionMode": "Mode de connection"
+        "processingHelp": "relances sur tests matriciels"
       }
     },
     "itemType": {

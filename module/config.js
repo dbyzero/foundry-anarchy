@@ -81,6 +81,9 @@ export const ANARCHY = {
         delFavorite: 'ANARCHY.common.delFavorite',
         attach: 'ANARCHY.common.attach',
         attachCopy: 'ANARCHY.common.attachCopy',
+        matrix: {
+            connectionMode: 'ANARCHY.common.matrix.connectionMode',
+        },
         roll: {
             button: 'ANARCHY.common.roll.button',
             title: 'ANARCHY.common.roll.title',
@@ -103,6 +106,7 @@ export const ANARCHY = {
                 weaponRange: 'ANARCHY.common.roll.modifiers.weaponRange',
                 weaponArea: 'ANARCHY.common.roll.modifiers.weaponArea',
                 other: 'ANARCHY.common.roll.modifiers.other',
+                virtualReality: 'ANARCHY.common.roll.modifiers.virtualReality',
                 reduced: 'ANARCHY.common.roll.modifiers.reduced',
                 reroll: 'ANARCHY.common.roll.modifiers.reroll',
                 rerollForced: 'ANARCHY.common.roll.modifiers.rerollForced',
@@ -289,7 +293,6 @@ export const ANARCHY = {
             programs: 'ANARCHY.item.cyberdeck.programs',
             processing: 'ANARCHY.item.cyberdeck.processing',
             processingHelp: 'ANARCHY.item.cyberdeck.processingHelp',
-            connectionMode: 'ANARCHY.item.cyberdeck.connectionMode',
         }
     },
     itemType: {

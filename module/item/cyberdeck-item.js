@@ -1,5 +1,6 @@
 import { ICONS_PATH } from "../constants.js";
 import { TEMPLATE } from "../constants.js";
+import { MATRIX, Matrix } from "../matrix-helper.js";
 import { AnarchyBaseItem } from "./anarchy-base-item.js";
 
 export class CyberdeckItem extends AnarchyBaseItem {
@@ -24,28 +25,18 @@ export class CyberdeckItem extends AnarchyBaseItem {
 
   getMatrixOverflow() {
     switch (this.system.connectionMode) {
-      case 'virtual': return TEMPLATE.monitors.physical
-      case 'augmented': return TEMPLATE.monitors.stun
+      case MATRIX.connectionMode.virtual: return TEMPLATE.monitors.physical
+      case MATRIX.connectionMode.augmented: return TEMPLATE.monitors.stun
     }
     return undefined
   }
 
-  isConnected() {
-    return this.getMatrixOverflow() != undefined
-  }
+  isConnected() { return this.getMatrixOverflow() != undefined }
+
+  getConnectionMode() { return this.system.connectionMode }
 
   async nextConnectionMode() {
-    const newConnectionMode = CyberdeckItem.getNextConnectionMode(this.system.connectionMode)
+    const newConnectionMode = Matrix.getNextConnectionMode(this.system.connectionMode)
     await this.update({ 'system.connectionMode': newConnectionMode })
   }
-
-  static getNextConnectionMode(connectionMode) {
-    switch (connectionMode) {
-      case 'disconnected': return 'augmented'
-      case 'augmented': return 'virtual'
-      default:
-      case 'virtual': return 'disconnected'
-    }
-  }
-
 }

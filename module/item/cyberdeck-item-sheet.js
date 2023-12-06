@@ -9,7 +9,7 @@ export class CyberdeckItemSheet extends BaseItemSheet {
 
 
   activateListeners(html) {
-    html.find('a.click-cyberdeck-connectionMode').click(async event => {
+    html.find('a.click-matrix-connectionMode').click(async event => {
       await this.item.nextConnectionMode()
     })
     super.activateListeners(html);

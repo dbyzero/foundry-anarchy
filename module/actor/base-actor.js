@@ -92,7 +92,8 @@ export class AnarchyBaseActor extends Actor {
   getMatrixMarks() { return this.getMatrixDetails().monitor?.marks ?? [] }
   getMatrixOverflow() { return this.getMatrixDetails().overflow }
   hasMatrixMonitor() { return this.getMatrixDetails().hasMatrix }
-
+  isMatrixConnected(mode = undefined) { return false }
+  async nextConnectionMode(cyberdeck) { }
   async defSetMatrixMonitor(checkbarPath, value) {
     if (!this.getMatrixDetails().hasMatrix) {
       game.i18n.format(ANARCHY.actor.monitors.noMatrixMonitor, { actor: this.name })
@@ -224,11 +225,9 @@ export class AnarchyBaseActor extends Actor {
 
   canSetMarks() { return false }
 
-  getCyberdeck() {
-    return undefined;
-  }
+  getCyberdeck() { return undefined }
 
-  canReceiveMarks() { return this.system.monitors?.matrix?.canMark; }
+  canReceiveMarks() { return this.system.monitors?.matrix?.canMark }
 
   canApplyDamage(monitor) {
     switch (monitor) {

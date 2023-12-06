@@ -7,6 +7,7 @@ import { Modifiers } from "../modifiers/modifiers.js";
 import { Checkbars } from "../common/checkbars.js";
 import { RollCelebrity } from "../dialog/roll-celebrity.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
+import { MATRIX, Matrix } from "../matrix-helper.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
 
@@ -79,6 +80,32 @@ export class CharacterActor extends AnarchyBaseActor {
       }
     }
     return super.getMatrixDetails()
+  }
+
+  isMatrixConnected(mode = undefined) {
+    mode = Matrix.resolveConnectionMode(mode)
+    let connectionMode = undefined
+    const cyberdeck = this.getCyberdeck();
+    if (cyberdeck?.isConnected()) {
+      connectionMode = cyberdeck.getConnectionMode()
+    }
+    if (!connectionMode && this.isEmerged()) {
+      connectionMode = this.system.connectionMode
+    }
+    if (mode == undefined) {
+      return Matrix.resolveConnectionMode(connectionMode) != MATRIX.connectionMode.disconnected
+    }
+    return Matrix.resolveConnectionMode(connectionMode) == mode
+  }
+
+  async nextConnectionMode(cyberdeck) {
+    if (cyberdeck) {
+      await cyberdeck.nextConnectionMode()
+    }
+    else if (this.isEmerged()) {
+      const newConnectionMode = Matrix.getNextConnectionMode(this.system.connectionMode)
+      await this.update({ 'system.connectionMode': newConnectionMode })
+    }
   }
 
   prepareMatrixMonitor() {

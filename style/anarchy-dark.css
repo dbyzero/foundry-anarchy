@@ -238,13 +238,13 @@
 .style-dark a.item-control img {
   color: var(--dark-color-controls);
 }
-.style-dark a.item-control i.cyberdeck-connectionMode-augmented {
+.style-dark a.item-control i.matrix-connectionMode-augmented {
   color: var(--dark-color-controls-augmented);
 }
-.style-dark a.item-control i.cyberdeck-connectionMode-virtual {
+.style-dark a.item-control i.matrix-connectionMode-virtual {
   color: var(--dark-color-controls-virtual);
 }
-.style-dark a.item-control i.cyberdeck-connectionMode-disconnected  {
+.style-dark a.item-control i.matrix-connectionMode-disconnected  {
   color: var(--dark-color-controls-disconnected);
 }
 

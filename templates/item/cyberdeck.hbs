@@ -35,10 +35,10 @@
           value="{{system.processing}}"/>
       </div>
       <div class="form-group">
-        <label for="system.connectionMode">{{localize 'ANARCHY.item.cyberdeck.connectionMode'}} </label>
+        <label for="system.connectionMode">{{localize 'ANARCHY.common.matrix.connectionMode'}} </label>
         <span>
-          {{> 'systems/anarchy/templates/common/item-control-connectionMode.hbs'}}
-          <a class="item-control click-cyberdeck-connectionMode">
+          {{> 'systems/anarchy/templates/common/control-connectionMode.hbs' connectionMode=system.connectionMode}}
+          <a class="item-control click-matrix-connectionMode">
           {{localize (concat 'ANARCHY.connectionMode.' system.connectionMode)}}
           </a>
         </span>

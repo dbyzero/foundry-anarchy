@@ -225,13 +225,13 @@
 .style-anarchy-shadowrun a.item-control img {
   color: var(--anarchy-color-controls);
 }
-.style-anarchy-shadowrun a.item-control i.cyberdeck-connectionMode-augmented {
+.style-anarchy-shadowrun a.item-control i.matrix-connectionMode-augmented {
   color: var(--anarchy-color-controls-augmented);
 }
-.style-anarchy-shadowrun a.item-control i.cyberdeck-connectionMode-virtual {
+.style-anarchy-shadowrun a.item-control i.matrix-connectionMode-virtual {
   color: var(--anarchy-color-controls-virtual);
 }
-.style-anarchy-shadowrun a.item-control i.cyberdeck-connectionMode-disconnected  {
+.style-anarchy-shadowrun a.item-control i.matrix-connectionMode-disconnected  {
   color: var(--anarchy-color-controls-disconnected);
 }
 

@@ -305,13 +305,13 @@
 .style-darkglass a.item-control img {
   color: var(--darkglass-color-controls);
 }
-.style-darkglass a.item-control i.cyberdeck-connectionMode-augmented {
+.style-darkglass a.item-control i.matrix-connectionMode-augmented {
   color: var(--darkglass-color-controls-augmented);
 }
-.style-darkglass a.item-control i.cyberdeck-connectionMode-virtual {
+.style-darkglass a.item-control i.matrix-connectionMode-virtual {
   color: var(--darkglass-color-controls-virtual);
 }
-.style-darkglass a.item-control i.cyberdeck-connectionMode-disconnected  {
+.style-darkglass a.item-control i.matrix-connectionMode-disconnected  {
   color: var(--darkglass-color-controls-disconnected);
 }
 
