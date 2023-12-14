@@ -53,9 +53,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     },
     condition: context => [ANARCHY_SYSTEM.rollType.attribute, ANARCHY_SYSTEM.rollType.attributeAction, ANARCHY_SYSTEM.rollType.defense].includes(context.mode),
     isUsed: (p) => p.used,
-    onChecked: (p, selected) => {
-      p.used = selected ? true : false;
-    },
+    onChecked: (p, selected) => p.used = selected ? true : false,
     factory: context => {
       const attribute = context.attribute2
       return {
@@ -76,7 +74,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       order: 3, category: ROLL_PARAMETER_CATEGORY.pool,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
-    isUsed: (p) => p.value != 0,
     condition: context => ['skill', 'weapon'].includes(context.mode),
     factory: context => {
       return {
@@ -104,7 +101,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     factory: context => {
       return {
         label: context.specialization ?? context.skill.system.specialization,
-        used: context.specialization,
+        used: context.specialization != undefined,
         value: 2
       }
     }
@@ -119,7 +116,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       labelkey: ANARCHY.common.roll.modifiers.social.credibility,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
     },
-    isUsed: (p) => p.value != 0,
     condition: context => context.skill?.system.isSocial && context.actor.getCredibilityValue() > 0,
     factory: context => {
       return {
@@ -138,7 +134,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: -4, max: 4
     },
-    isUsed: (p) => p.value != 0,
     factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.pool, context)
   },
   // wounds
@@ -153,8 +148,8 @@ const DEFAULT_ROLL_PARAMETERS = [
     isUsed: (p) => p.used,
     condition: context => context.actor.getWounds(),
     onChecked: (p, checked) => {
-      p.value = checked ? - p.wounds : 0
       p.used = checked
+      p.value = checked ? - p.wounds : 0
     },
     factory: context => {
       const wounds = context.actor.getWounds();
@@ -180,11 +175,9 @@ const DEFAULT_ROLL_PARAMETERS = [
     condition: context => context.actor.isMatrixSkill(context.skill) && context.actor.isMatrixConnected(MATRIX.connectionMode.virtual),
     factory: context => {
       return {
-        isUsed: (p) => context.actor.isMatrixSkill(context.skill),
         flags: { used: context.actor.isMatrixSkill(context.skill) && context.actor.isMatrixConnected(MATRIX.connectionMode.virtual) },
       }
     }
-
   },
   // other modifiers
   {
@@ -196,8 +189,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       labelkey: ANARCHY.common.roll.modifiers.other,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: -5, max: 5
-    },
-    isUsed: (p) => p.value != 0,
+    }
   },
   // Drain
   {
@@ -210,7 +202,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: 0, max: 6
     },
-    isUsed: (p) => p.value != 0,
     condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.system.hasDrain,
     factory: context => {
       return {
@@ -248,7 +239,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/glitch.hbs`,
       min: 0, max: 5
     },
-    isUsed: (p) => p.value != 0,
     factory: context => {
       const wounds = context.actor.getWounds();
       const glitchModifiers = RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.glitch, context);
@@ -269,7 +259,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/glitch.hbs`,
       min: 0, max: 1,
     },
-    isUsed: (p) => p.value != 0,
     condition: context => context.skill?.system.isSocial && context.actor.getRumorValue() > 0
   },
   // rerolls
@@ -282,7 +271,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: 0, max: 4
     },
-    isUsed: (p) => p.value != 0,
     factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.reroll, context)
   },
   // reduction from opponent
@@ -294,7 +282,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: -4, max: 0
     },
-    isUsed: (p) => p.value != 0,
     condition: context => (context.attackRoll?.param.opponentPool ?? 0) != 0,
     factory: context => {
       const reduced = -(context.attackRoll?.param.opponentPool ?? 0);
@@ -313,7 +300,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: -5, max: 0
     },
-    isUsed: (p) => p.value != 0,
     factory: context => {
       const rerollForced = RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.successReroll, context);
       rerollForced.value = -rerollForced.value - (context.attackRoll?.param.opponentReroll ?? 0);
@@ -385,7 +371,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: 0, max: 4
     },
-    isUsed: (p) => p.value != 0,
     factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.opponentPool, context),
     condition: context => !context.attributeAction
   },
@@ -400,7 +385,6 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: 0, max: 4
     },
-    isUsed: (p) => p.value != 0,
     factory: context => RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.opponentReroll, context),
     condition: context => !context.attributeAction
   },
@@ -477,10 +461,14 @@ export class RollParameters {
 
   isParameterUsed(it) {
     const registeredParameter = this.findParameter(it.code);
-    if (registeredParameter.isUsed != undefined) {
-      return registeredParameter?.isUsed(it);
+    if (registeredParameter?.isUsed != undefined) {
+      return registeredParameter.isUsed(it);
     }
-    throw `registered parameter ${registeredParameter.code} does not have isUsed method`
+    if (it.value != undefined) {
+      return it.value != 0
+    }
+    console.error(`registered parameter ${registeredParameter.code} does not have isUsed method`, registeredParameter)
+    return false
   }
 
   findParameter(code) {
