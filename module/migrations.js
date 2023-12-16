@@ -143,7 +143,7 @@ class _0_6_0_MigrateSkillSocial extends Migration {
   }
 }
 
-class _11_1_00_MigrateAndWarnAboutDefenseModifiers extends Migration {
+class _11_1_0_MigrateAndWarnAboutDefenseModifiers extends Migration {
   get version() { return '11.1.0' }
   get code() { return 'migrate-defense-roll-modifiers' }
 
@@ -217,6 +217,17 @@ class _11_1_00_MigrateAndWarnAboutDefenseModifiers extends Migration {
   }
 }
 
+class _11_1_9_MigrateVehicleHandlingToAttribute extends Migration {
+  get version() { return '11.1.9' }
+  get code() { return 'migrate-vehicle-handling' }
+
+  async migrate() {
+    game.actors.filter(it => it.isVehicle()).forEach(async actor => await actor._migrateHandlingToAttribute())
+  }
+}
+
+
+
 export class Migrations {
   constructor() {
     HooksManager.register(ANARCHY_HOOKS.DECLARE_MIGRATIONS);
@@ -228,7 +239,8 @@ export class Migrations {
       new _0_4_0_SelectWeaponDefense(),
       new _0_5_0_MigrationBaseResistanceIsZero(),
       new _0_6_0_MigrateSkillSocial(),
-      new _11_1_00_MigrateAndWarnAboutDefenseModifiers(),
+      new _11_1_0_MigrateAndWarnAboutDefenseModifiers(),
+      new _11_1_9_MigrateVehicleHandlingToAttribute(),
     ));
 
     game.settings.register(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, {

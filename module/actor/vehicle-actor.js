@@ -1,8 +1,6 @@
-import { AttributeActions } from "../attribute-actions.js";
 import { ANARCHY } from "../config.js";
 import { ICONS_PATH, TEMPLATE } from "../constants.js";
 import { ErrorManager } from "../error-manager.js";
-import { RollDialog } from "../roll/roll-dialog.js";
 import { AnarchyUsers } from "../users.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
@@ -34,10 +32,12 @@ export class VehicleActor extends AnarchyBaseActor {
   getAttributes() {
     return [
       TEMPLATE.attributes.autopilot,
+      TEMPLATE.attributes.handling,
       TEMPLATE.attributes.firewall,
       TEMPLATE.attributes.system
     ];
   }
+
   getPhysicalAgility() { return TEMPLATE.attributes.autopilot }
 
   getDamageMonitor(damageType) {
@@ -69,6 +69,16 @@ export class VehicleActor extends AnarchyBaseActor {
         game.i18n.localize(ANARCHY.common.errors.noValidPilotForVehicle, {
           vehicle: this.name
         }))
+    }
+  }
+  async _migrateHandlingToAttribute(actor) {
+    const fromAttribute = this.system.attributes.handling?.value ?? 0
+    const fromOldField = this.system.handling
+    if (fromOldField && fromAttribute < fromOldField) {
+      await this.update({
+        'system.-=handling': null,
+        'system.attributes.handling.value': fromOldField
+      })
     }
   }
 

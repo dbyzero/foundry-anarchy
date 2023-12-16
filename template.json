@@ -1,12 +1,6 @@
 {
   "Actor": {
-    "types": [
-      "character",
-      "vehicle",
-      "device",
-      "sprite",
-      "ic"
-    ],
+    "types": ["character", "vehicle", "device", "sprite", "ic"],
     "templates": {
       "description": {
         "ownerId": "",
@@ -92,6 +86,13 @@
             "value": 4
           }
         }
+      },
+      "attribute-handling": {
+        "attributes": {
+          "handling": {
+            "value": 0
+          }
+        }
       }
     },
     "character": {
@@ -167,6 +168,7 @@
         "description",
         "matrix-monitor",
         "attribute-autopilot",
+        "attribute-handling",
         "attribute-firewall",
         "attribute-system"
       ],
@@ -177,7 +179,6 @@
           "resistance": 2
         }
       },
-      "handling": 1,
       "moves": 0,
       "attacks": 0,
       "stealth": 0,

@@ -66,7 +66,7 @@ export class AnarchyBaseActor extends Actor {
     Object.entries(this.system.attributes).forEach(kv => kv[1].total = this.getAttributeValue(kv[0]))
   }
 
-  getAttributes() { return [undefined]; }
+  getAttributes() { return []; }
   getPhysicalAgility() { return undefined }
 
   prepareMatrixMonitor() {

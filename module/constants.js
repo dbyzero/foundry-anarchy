@@ -49,6 +49,7 @@ export const TEMPLATE = {
     charisma: 'charisma',
     edge: 'edge',
     autopilot: 'autopilot',
+    handling: 'handling',
     firewall: 'firewall',
     system: 'system',
   },

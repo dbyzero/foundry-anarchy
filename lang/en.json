@@ -221,7 +221,6 @@
         "convergence": "Convergence"
       },
       "vehicle": {
-        "handling": "Handling",
         "moves": "Moves",
         "attacks": "Attacks",
         "stealth": "Stealth",
@@ -357,6 +356,7 @@
       "knowledge": "Knowledge",
       "noAttribute": "No attribute chosen",
       "autopilot": "Autopilot",
+      "handling": "Handling",
       "firewall": "Firewall",
       "system": "System"
     },

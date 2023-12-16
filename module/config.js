@@ -221,7 +221,6 @@ export const ANARCHY = {
             convergence: 'ANARCHY.actor.monitors.convergence',
         },
         vehicle: {
-            handling: 'ANARCHY.actor.vehicle.handling',
             moves: 'ANARCHY.actor.vehicle.moves',
             attacks: 'ANARCHY.actor.vehicle.attacks',
             stealth: 'ANARCHY.actor.vehicle.stealth',
@@ -356,6 +355,7 @@ export const ANARCHY = {
         charisma: 'ANARCHY.attributes.charisma',
         edge: 'ANARCHY.attributes.edge',
         autopilot: 'ANARCHY.attributes.autopilot',
+        handling: 'ANARCHY.attributes.handling',
         firewall: 'ANARCHY.attributes.firewall',
         system: 'ANARCHY.attributes.system',
         knowledge: 'ANARCHY.attributes.knowledge',

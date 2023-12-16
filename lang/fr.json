@@ -221,7 +221,6 @@
         "convergence": "Surveillance"
       },
       "vehicle": {
-        "handling": "Mobilité",
         "moves": "Déplacements",
         "attacks": "Attaques",
         "stealth": "Furtivité",
@@ -357,6 +356,7 @@
       "knowledge": "Connaissance",
       "noAttribute": "Pas d'attribut choisi",
       "autopilot": "Autopilote",
+      "handling": "Mobilité",
       "firewall": "Firewall",
       "system": "Système"
     },
