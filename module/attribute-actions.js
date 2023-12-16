@@ -7,8 +7,8 @@ function action(code, attributeFunction1, attributeFunction2, icon, actorTypes, 
   return {
     code: code,
     labelkey: ANARCHY.attributeAction[code],
-    attributeFunction1: attributeFunction1,
-    attributeFunction2: attributeFunction2,
+    attributeFunction1: attributeFunction1 ?? (__ => undefined),
+    attributeFunction2: attributeFunction2 ?? (__ => undefined),
     icon: icon,
     actorTypes: actorTypes,
     condition: condition

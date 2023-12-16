@@ -1,4 +1,3 @@
-import { CharacterActor } from "./actor/character-actor.js";
 import { ANARCHY_SYSTEM, LOG_HEAD, SYSTEM_NAME, TEMPLATE } from "./constants.js";
 import { ANARCHY_SKILLS } from "./skills.js";
 import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
