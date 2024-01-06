@@ -104,4 +104,7 @@ export class Misc {
       control.hide();
     }
   }
+  static minmax(value, min, max) {
+    return Math.max(min, Math.min(value, max))
+  }
 }

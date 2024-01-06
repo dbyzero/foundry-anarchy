@@ -7,7 +7,6 @@ import { SelectActor } from "../dialog/select-actor.js";
 
 export class AnarchyActorSheet extends ActorSheet {
 
-
   get template() {
     return `${TEMPLATES_PATH}/actor/${this.actor.type}.hbs`;
   }

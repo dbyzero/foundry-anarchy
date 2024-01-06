@@ -385,9 +385,7 @@ export class AnarchyBaseActor extends Actor {
     return this.system.favorites.find(it => AnarchyBaseActor._isSameFavorite(search, it)) ? true : false;
   }
 
-  static _prepareFavorite(type, id) {
-    return { type: type, id: id };
-  }
+  static _prepareFavorite(type, id) { return { type, id } }
 
   static _isSameFavorite(f1, f2) {
     return f1.id == f2.id && f1.type == f2.type;

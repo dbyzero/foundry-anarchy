@@ -21,7 +21,7 @@ const CHAT_MESSAGE_BUTTON_HANDLERS = [
 export class ChatManager {
 
   static async init() {
-    Hooks.on("renderChatMessage", async (app, html, msg) => await ChatManager.onRenderChatMessage(app, html, msg));
+    Hooks.on('renderChatMessage', async (app, html, msg) => await ChatManager.onRenderChatMessage(app, html, msg));
 
     RemoteCall.register(CHAT_MANAGER_REMOVE_FAMILY, {
       callback: data => this.removeFamily(data),

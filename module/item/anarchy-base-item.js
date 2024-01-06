@@ -1,13 +1,13 @@
-import { Checkbars } from "../common/checkbars.js";
-import { Misc } from "../misc.js";
-import { TEMPLATE } from "../constants.js";
-import { RollDialog } from "../roll/roll-dialog.js";
-import { NO_MATRIX_MONITOR } from "../matrix-helper.js";
+import { Checkbars } from '../common/checkbars.js';
+import { Misc } from '../misc.js';
+import { TEMPLATE } from '../constants.js';
+import { RollDialog } from '../roll/roll-dialog.js';
+import { NO_MATRIX_MONITOR } from '../matrix-helper.js';
 
 export class AnarchyBaseItem extends Item {
 
   static init() {
-    Hooks.on("createItem", (item, options, id) => item.onCreateItem(options, id));
+    Hooks.on('createItem', (item, options, id) => item.onCreateItem(options, id));
   }
 
   async onCreateItem(options, id) {
