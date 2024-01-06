@@ -94,18 +94,21 @@ export class Modifiers {
   }
 
   static computeRollModifiers(items, context, effect) {
-    const group = 'roll';
-    const contextFilter = Modifiers.buildRollModifiersFilter(context, effect);
-    const filter = m => m.group == group && m.effect == effect && contextFilter(m);
+    const contextFilter = Modifiers.buildRollModifiersFilter(context, effect)
+    const filter = m => m.group == 'roll' && m.effect == effect && contextFilter(m)
     const itemModifiers = Modifiers._activeItems(items).map(item => Modifiers.itemModifiers(item, filter))
-      .reduce((a, b) => a.concat(b), []);
+      .reduce((a, b) => a.concat(b), [])
+      .sort(Misc.descending(im => im.modifier.value))
 
-    // sum values, max bonus is 3
-    const sumValues = Math.min(3, Misc.sumValues(itemModifiers, im => im.modifier.value));
-    // allow one item with modfier above 3 (for deltaware option in French rulebook)
-    const maxValue = Math.max(...itemModifiers.map(im => im.modifier.value));
+    const numericModifiers = itemModifiers.map(im => im.modifier.value)
+    const deltaWare = numericModifiers.find(v => v > 3) ?? 0
+    const negative = Misc.sumValues(numericModifiers.filter(v => v < 0))
+    const positive = Math.min(3, Misc.sumValues(numericModifiers.filter(v => v > 0 && v <= 3)))
+    // allow only one item with modifier above 3 that replaces usual max of 3 to positive modifiers (for deltaware option in French rulebook)
+
+    const sum = negative + Math.max(positive, deltaWare)
     return {
-      value: Math.max(maxValue, sumValues),
+      value: sum,
       sources: itemModifiers
     };
   }
