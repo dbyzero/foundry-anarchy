@@ -2,10 +2,10 @@
     data-item-id="{{_id}}" data-item-type="weapon">
   <div class="weapon-column weapon-summary">
     <a class="click-weapon-roll">
-      {{name}}, 
+      {{name}},
       {{> 'systems/anarchy/templates/common/damage-code.hbs'
         damageAttribute=system.damageAttribute
-        actorAttribute=(actorAttribute system.damageAttribute @root.actor)
+        actorAttribute=(actorAttribute system.damageAttribute @root.actor this)
         damage=system.damage
         monitor=system.monitor
         armor=(weaponArmorMode system.monitor system.noArmor)
