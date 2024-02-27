@@ -307,8 +307,7 @@ export class Migrations {
       else {
         console.log(LOG_HEAD + `No migration needeed, version will change to ${game.system.version}`)
       }
-
-      //game.settings.set(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, game.system.version);
+      game.settings.set(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, game.system.version);
     }
     else {
       console.log(LOG_HEAD + `No system version changed`);
