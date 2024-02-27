@@ -1,5 +1,7 @@
 export class Misc {
 
+  static isString = value => (typeof value === 'string' || value instanceof String)
+
   static ascending(orderFunction = x => x) {
     return (a, b) => Misc.sortingBy(orderFunction(a), orderFunction(b));
   }

@@ -10,6 +10,7 @@ import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { MATRIX, Matrix } from "../matrix-helper.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
+const HBS_TEMPLATE_ACTOR_SAY_WORD = `${TEMPLATES_PATH}/chat/actor-say-word.hbs`;
 
 export class CharacterActor extends AnarchyBaseActor {
 
@@ -129,24 +130,21 @@ export class CharacterActor extends AnarchyBaseActor {
   }
 
   async sayWord(wordType, wordId) {
-    const wordsToSay = this.getWord(wordType, wordId);
+    const wordsToSay = this.getWord(wordType, wordId)?.word
     if (wordsToSay) {
-      if (wordsToSay?.audio) {
-        // TODO: play audio file
-      }
       ChatMessage.create({
         speaker: { alias: this.token?.name ?? this.name },
-        content: wordsToSay.word // TODO: improve the tchat content (add the character image)
+        content: await renderTemplate(HBS_TEMPLATE_ACTOR_SAY_WORD,
+          {
+            actor: this,
+            wordsToSay: wordsToSay
+          })
       });
     }
   }
 
   getWord(wordType, wordId) {
     return wordType ? this.system[wordType].find(it => it.id == wordId) : undefined;
-  }
-
-  async editWord(wordType, wordId) {
-    // TODO: dialog to edit the word audio
   }
 
   async updateWord(wordType, id, updated) {

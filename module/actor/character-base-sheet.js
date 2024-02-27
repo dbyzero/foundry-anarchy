@@ -45,12 +45,6 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
         this.getEventWordId(event));
     });
 
-    html.find('.click-word-edit').click(async event => {
-      this.actor.editWord(
-        this.getEventWordType(event),
-        this.getEventWordId(event));
-    });
-
     html.find('.change-word-value').change(async event => {
       const newWordValue = event.currentTarget.value;
       await this.actor.updateWord(

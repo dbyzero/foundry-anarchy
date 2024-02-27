@@ -46,7 +46,13 @@ class _0_3_1_MigrationMoveWordsInObjects extends Migration {
   }
 
   _createWordObject(current) {
-    return Misc.reindexIds((current ?? []).map(k => { return { word: k, audio: '' }; }));
+    return Misc.reindexIds((current ?? []).map(k => this._keywordToObject(k)));
+  }
+  _keywordToObject(k) {
+    if (k instanceof String) {
+      return { word: k }
+    }
+    return k
   }
 }
 
@@ -225,6 +231,33 @@ class _11_1_9_MigrateVehicleHandlingToAttribute extends Migration {
   }
 }
 
+class _11_1_12_MigrateBackWords extends Migration {
+  get version() { return '11.1.12' }
+  get code() { return 'migrate-back-words' }
+  async migrate() {
+    game.actors.forEach(async actor => {
+      await actor.update({
+        ['system.keywords']: this._migrateBackWords(actor.system.keywords),
+        ['system.cues']: this._migrateBackWords(actor.system.cues),
+        ['system.dispositions']: this._migrateBackWords(actor.system.dispositions),
+      });
+    });
+  }
+
+  _migrateBackWords(current) {
+    if (current) {
+      return Misc.reindexIds(current.map(k => this._migrateBackWord(k)));
+    }
+    return []
+  }
+
+  _migrateBackWord(k) {
+    while (k.word != undefined && !Misc.isString(k.word)) {
+      k = k.word
+    }
+    return k
+  }
+}
 
 
 export class Migrations {
@@ -240,6 +273,7 @@ export class Migrations {
       new _0_6_0_MigrateSkillSocial(),
       new _11_1_0_MigrateAndWarnAboutDefenseModifiers(),
       new _11_1_9_MigrateVehicleHandlingToAttribute(),
+      new _11_1_12_MigrateBackWords(),
     ));
 
     game.settings.register(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, {
@@ -253,8 +287,8 @@ export class Migrations {
 
   migrate() {
     const currentVersion = game.settings.get(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION);
-    // if (isNewerVersion(game.system.version, currentVersion)) {
-    if (true) {
+    if (isNewerVersion(game.system.version, currentVersion)) {
+    //if (true) {
       let migrations = [];
       Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, (...addedMigrations) =>
         migrations = migrations.concat(addedMigrations.filter(m => isNewerVersion(m.version, currentVersion)))

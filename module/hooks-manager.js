@@ -38,7 +38,7 @@ export const ANARCHY_HOOKS = {
    */
   PROVIDE_MALUS_ESSENCE: 'anarchy-provideMalusEssence',
   /**
-   * Hook allowing to provide alternate way to apply damages for Anarchy hack modules
+   * Hook allowing to provide alternate anarchy hack (TODO: document)
    */
   ANARCHY_HACK: 'anarchy-hack',
 }
