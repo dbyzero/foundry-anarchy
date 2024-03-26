@@ -251,7 +251,7 @@
       },
       "skill": {
         "code": "Internal code",
-        "copyDefault": "Copy default skill",
+        "copyDefault": "Configure skill",
         "isKnowledge": "Knowledge",
         "attribute": "Attribute",
         "value": "Level",
@@ -405,7 +405,8 @@
       "negotiation": "Negotiation",
       "disguise": "Disguise",
       "animals": "Animals",
-      "etiquette": "Etiquette"
+      "etiquette": "Etiquette",
+      "knowledge": "Knowledge"
     },
     "area": {
       "none": "None",

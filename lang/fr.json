@@ -252,7 +252,7 @@
       "skill": {
         "isKnowledge": "Connaissance",
         "code": "Code interne",
-        "copyDefault": "Copier une compétence",
+        "copyDefault": "Configurer la compétence",
         "attribute": "Attribut",
         "value": "Niveau",
         "specialization": "Spécialisation",
@@ -405,7 +405,8 @@
       "negotiation": "Négociation",
       "disguise": "Déguisement",
       "animals": "Animaux",
-      "etiquette": "Etiquette"
+      "etiquette": "Etiquette",
+      "knowledge": "Connaissance"
     },
     "area": {
       "none": "Aucune",

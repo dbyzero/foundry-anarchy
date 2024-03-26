@@ -8,11 +8,11 @@ export class SkillItem extends AnarchyBaseItem {
   }
 
   isKnowledgeSkill() {
-    return this.system.attribute == 'knowledge';
+    return this.system.code == 'knowledge';
   }
 
   isGeneralSkill() {
-    return this.system.attribute != 'knowledge';
+    return this.system.code != 'knowledge';
   }
 
   prepareShortcut() {

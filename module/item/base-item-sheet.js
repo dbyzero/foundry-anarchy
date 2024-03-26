@@ -1,7 +1,6 @@
 import { ANARCHY } from "../config.js";
-import { TEMPLATES_PATH } from "../constants.js";
+import { TEMPLATE, TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
-import { Modifiers } from "../modifiers/modifiers.js";
 
 export class BaseItemSheet extends ItemSheet {
 
@@ -26,9 +25,10 @@ export class BaseItemSheet extends ItemSheet {
   getData(options) {
     const actorAttributes = this.item.actor?.getAttributes(this.item);
 
-    const usableAttribute = this.item.actor
+    const usableAttribute = (this.item.actor
       ? attribute => actorAttributes.includes(attribute)
-      : attribute => true;
+      : attribute => true)
+    const withKnowledge = this.item.type == TEMPLATE.itemType.skill
 
     let hbsData = mergeObject(
       super.getData(options), {
@@ -39,7 +39,7 @@ export class BaseItemSheet extends ItemSheet {
         editable: this.isEditable,
         cssClass: this.isEditable ? "editable" : "locked",
       },
-      ENUMS: mergeObject(Enums.getEnums(usableAttribute), game.system.anarchy.modifiers.getEnums()),
+        ENUMS: mergeObject(Enums.getEnums(usableAttribute, withKnowledge), game.system.anarchy.modifiers.getEnums()),
       ANARCHY: ANARCHY
     });
     hbsData.system = this.item.system;

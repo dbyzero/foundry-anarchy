@@ -1,8 +1,6 @@
-import { AnarchyBaseActor } from "./actor/base-actor.js";
 import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
-import { ANARCHY_HOOKS, HooksManager } from "./hooks-manager.js";
 import { Icons } from "./icons.js";
 import { WeaponItem } from "./item/weapon-item.js";
 import { Misc } from "./misc.js";

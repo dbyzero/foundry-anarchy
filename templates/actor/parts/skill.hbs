@@ -2,7 +2,7 @@
   {{#if img}}
   <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" data-tooltip="{{name}}"/>
   {{/if}}
-  {{#if (eq system.attribute 'knowledge')}}
+  {{#if (or (eq system.code 'knowledge') (eq system.attribute 'knowledge') (eq system.attribute '')) }}
   <span data-tooltip="{{localize 'ANARCHY.attributes.knowledge'}}">
     {{{iconFA 'fas fa-user-graduate'}}}
     <label>{{name}}</label>

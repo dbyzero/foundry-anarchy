@@ -406,6 +406,7 @@ export const ANARCHY = {
         disguise: 'ANARCHY.skill.disguise',
         animals: 'ANARCHY.skill.animals',
         etiquette: 'ANARCHY.skill.etiquette',
+        knowledge: 'ANARCHY.skill.knowledge',
     },
     area: {
         none: 'ANARCHY.area.none',

@@ -52,6 +52,7 @@ export const TEMPLATE = {
     handling: 'handling',
     firewall: 'firewall',
     system: 'system',
+    knowledge: 'knowledge',
   },
   capacities: {
     mundane: 'mundane',

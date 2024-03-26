@@ -68,7 +68,8 @@ export class Modifiers {
       case 'attribute':
         return Enums.getAttributes().map(attr => { return { key: attr.value, label: attr.labelkey } });
       case 'skill':
-        return game.system.anarchy.skills.getSkillLabels().map(skill => { return { key: skill.value, label: skill.labelkey } });
+        return game.system.anarchy.skills.getSkills()
+          .map(it => { return { key: it.code, label: it.labelkey } });
       case 'attributeAction':
         const actions = AttributeActions.all().map(action => { return { key: action.code, label: action.labelkey }; });
         return Misc.distinct(actions.map(it => it.key)).map(key => actions.find(it => it.key == key))

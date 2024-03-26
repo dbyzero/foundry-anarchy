@@ -1,5 +1,5 @@
 <div class="item anarchy-skill {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
-  {{#if (eq system.attribute 'knowledge')}}
+  {{#if (or (eq system.code 'knowledge') (eq system.attribute 'knowledge') (eq system.attribute '')) }}
   <span data-tooltip="{{localize 'ANARCHY.attributes.knowledge'}}">
     {{{iconFA 'fas fa-user-graduate'}}}
     <label>{{name}}</label>

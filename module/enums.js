@@ -42,14 +42,15 @@ export class Enums {
     Handlebars.registerHelper('sortedAttributes', map => Misc.sortedMap(map, Misc.ascendingBySortedArray(Enums.sortedAttributeKeys)));
   }
 
-  static getEnums(filterAttributes = it => true) {
+  static getEnums(filterAttributes = it => true, withKnowledge = false) {
     return {
       attributes: Enums.getAttributes(filterAttributes),
       itemTypes: Enums.hbsItemTypes,
       capacities: Enums.hbsCapacities,
       monitors: Enums.hbsMonitors,
       shadowampCategories: Enums.hbsShadowampCategories,
-      skills: game.system.anarchy.skills.getSkillLabels(),
+      skills: game.system.anarchy.skills.getSkills({ withKnowledge })
+        .map(it => { return { value: it.code, label: game.i18n.localize(it.labelkey), labelkey: it.labelkey }; }),
       areas: Enums.hbsAreas,
       ranges: Enums.hbsRanges,
       vehicleCategories: Enums.hbsVehicleCategories

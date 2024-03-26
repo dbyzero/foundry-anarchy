@@ -37,6 +37,7 @@ export const ANARCHY_SKILLS = [
   { code: 'intimidation', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/intimidation.svg` },
   { code: 'negotiation', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/negotiation.svg` },
   { code: 'disguise', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/disguise.svg`, lang: 'en' },
+  { code: 'knowledge', attribute: ATTR.knowledge, icon: `${ICONS_SKILLS_PATH}/knowledge.svg` },
 ]
 export const MATRIX_SKILLS = ['tasking', 'hacking']
 
@@ -82,9 +83,14 @@ export class Skills {
     }
   }
 
-  getSkillLabels() {
-    const selected = this._getSelectedSkillSet();
-    return selected.skills.map(skill => { return { value: skill.code, label: game.i18n.localize(skill.labelkey), labelkey: skill.labelkey }; });
+  getSkills(options = { withKnowledge: false }) {
+    const selected = this._getSelectedSkillSet().skills;
+    const skills = selected.filter(it => it.code != 'knowledge').sort(Misc.ascending(it => it.label))
+    if (options.withKnowledge) {
+      const knowledge = selected.find(it => it.code == 'knowledge')
+      return [knowledge, ...skills]
+    }
+    return skills
   }
 
   _getSelectedSkillSet() {
