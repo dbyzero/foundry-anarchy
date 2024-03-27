@@ -9,6 +9,9 @@ const SETTING_KEY_SELECTED_SKILL_LIST = `${SYSTEM_NAME}.${SELECTED_SKILL_LIST}`;
 const ATTR = TEMPLATE.attributes;
 const DEFENSE = ANARCHY_SYSTEM.defenses;
 
+const DEFAULT_SKILLSET_ANARCHY = 'shadowrun-anarchy-en';
+const KNOWLEDGE = { code: 'knowledge', attribute: ATTR.knowledge, icon: `${ICONS_SKILLS_PATH}/knowledge.svg` };
+
 export const ANARCHY_SKILLS = [
   { code: 'athletics', attribute: ATTR.strength, icon: `${ICONS_SKILLS_PATH}/athletics.svg` },
   { code: 'acrobatics', attribute: ATTR.agility, icon: `${ICONS_SKILLS_PATH}/escape-artist.svg`, lang: 'fr' },
@@ -37,7 +40,6 @@ export const ANARCHY_SKILLS = [
   { code: 'intimidation', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/intimidation.svg` },
   { code: 'negotiation', attribute: ATTR.charisma, isSocial: true, icon: `${ICONS_SKILLS_PATH}/negotiation.svg` },
   { code: 'disguise', attribute: ATTR.charisma, icon: `${ICONS_SKILLS_PATH}/disguise.svg`, lang: 'en' },
-  { code: 'knowledge', attribute: ATTR.knowledge, icon: `${ICONS_SKILLS_PATH}/knowledge.svg` },
 ]
 export const MATRIX_SKILLS = ['tasking', 'hacking']
 
@@ -47,7 +49,7 @@ export class Skills {
     this.skillSets = {};
     HooksManager.register(ANARCHY_HOOKS.PROVIDE_SKILL_SET);
     Hooks.on(ANARCHY_HOOKS.PROVIDE_SKILL_SET, provide =>
-      provide('shadowrun-anarchy-en', 'Shadowrun Anarchy EN', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'en'), { lang: 'en' })
+      provide(DEFAULT_SKILLSET_ANARCHY, 'Shadowrun Anarchy EN', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'en'), { lang: 'en' })
     );
     Hooks.on(ANARCHY_HOOKS.PROVIDE_SKILL_SET, provide =>
       provide('shadowrun-anarchy-fr', 'Shadowrun Anarchy FR', ANARCHY_SKILLS.filter(it => !it.lang || it.lang == 'fr'), { lang: 'fr' })
@@ -57,8 +59,9 @@ export class Skills {
   }
 
   async onReady() {
-    Hooks.callAll(ANARCHY_HOOKS.PROVIDE_SKILL_SET, (name, lang, skills, details) => {
-      const skillSet = this._prepareSkillSet(name, lang, skills, details)
+    this.$prepareSkill(KNOWLEDGE)
+    Hooks.callAll(ANARCHY_HOOKS.PROVIDE_SKILL_SET, (id, name, skills, details) => {
+      const skillSet = this.$prepareSkillSet(id, name, skills, details)
       if (skillSet) {
         this.skillSets[skillSet.id] = skillSet;
       }
@@ -70,7 +73,7 @@ export class Skills {
       name: game.i18n.localize(ANARCHY.settings.skillSet.name),
       hint: game.i18n.localize(ANARCHY.settings.skillSet.hint),
       config: true,
-      default: 'shadowrun-anarchy-en',
+      default: DEFAULT_SKILLSET_ANARCHY,
       choices: skillSetChoices,
       type: String
     });
@@ -83,37 +86,41 @@ export class Skills {
     }
   }
 
+  get(code) {
+    return this.getSkills({ withKnowledge: true }).find(it => it.code == code);
+  }
+
   getSkills(options = { withKnowledge: false }) {
-    const selected = this._getSelectedSkillSet().skills;
-    const skills = selected.filter(it => it.code != 'knowledge').sort(Misc.ascending(it => it.label))
+    const skills = this.$getConfiguredSkills().sort(Misc.ascending(it => it.label))
     if (options.withKnowledge) {
-      const knowledge = selected.find(it => it.code == 'knowledge')
-      return [knowledge, ...skills]
+      return [KNOWLEDGE, ...skills]
     }
     return skills
   }
 
-  _getSelectedSkillSet() {
-    return this.skillSets[this.selectedSkills];
+  $getConfiguredSkills() {
+    const skillSet = this.skillSets[this.selectedSkills] ?? this.skillSets[DEFAULT_SKILLSET_ANARCHY];
+    return skillSet.skills;
   }
 
-  get(code) {
-    return this._getSelectedSkillSet().skills.find(it => it.code == code);
-  }
 
-  _prepareSkillSet(id, name, skills, details) {
+  $prepareSkillSet(id, name, skills, details) {
     const skillSet = mergeObject({ id: id, name: name, skills: skills }, details);
-    if (this._validateSkillSet(skillSet)) {
-      skillSet.skills.forEach(skill => {
-        skill.labelkey = skill.labelkey ?? ANARCHY.skill[skill.code];
-        skill.icon = skill.icon ?? `${SYSTEM_PATH}/icons/skills/skills.svg`;
-      });
-      return skillSet;
+    if (!this.$validateSkillSet(skillSet)) {
+      return undefined;
     }
-    return undefined;
+    skillSet.skills.forEach(skill => {
+      this.$prepareSkill(skill);
+    });
+    return skillSet;
   }
 
-  _validateSkillSet(skillSet) {
+  $prepareSkill(skill) {
+    skill.labelkey = skill.labelkey ?? ANARCHY.skill[skill.code];
+    skill.icon = skill.icon ?? `${SYSTEM_PATH}/icons/skills/skills.svg`;
+  }
+
+  $validateSkillSet(skillSet) {
     function check(check, error = '') { if (!check) { throw error; } }
 
     try {
