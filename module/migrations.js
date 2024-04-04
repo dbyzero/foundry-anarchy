@@ -259,6 +259,21 @@ class _11_1_12_MigrateBackWords extends Migration {
   }
 }
 
+class _11_1_16_MigrateSkillsAttributes extends Migration {
+  get version() { return '11.1.16' }
+  get code() { return 'migrate-skills-attributes' }
+  async migrate() {
+    this.applyItemsUpdates(items => items.filter(it => it.isSkill(type = TEMPLATE.itemType.skill))
+      .filter(it => it.system.attribute == '' || it.system.code == '')
+      .map(it => {
+        return {
+          _id: it.id,
+          'system.attribute': '',
+          'system.code': TEMPLATE.attributes.knowledge
+        }
+      }));
+  }
+}
 
 export class Migrations {
   constructor() {
@@ -274,6 +289,7 @@ export class Migrations {
       new _11_1_0_MigrateAndWarnAboutDefenseModifiers(),
       new _11_1_9_MigrateVehicleHandlingToAttribute(),
       new _11_1_12_MigrateBackWords(),
+      new _11_1_16_MigrateSkillsAttributes(),
     ));
 
     game.settings.register(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, {
@@ -288,7 +304,7 @@ export class Migrations {
   migrate() {
     const currentVersion = game.settings.get(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION);
     if (isNewerVersion(game.system.version, currentVersion)) {
-    //if (true) {
+      //if (true) {
       let migrations = [];
       Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, (...addedMigrations) =>
         migrations = migrations.concat(addedMigrations.filter(m => isNewerVersion(m.version, currentVersion)))

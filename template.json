@@ -66,24 +66,10 @@
           }
         }
       },
-      "attribute-firewall": {
-        "attributes": {
-          "firewall": {
-            "value": 4
-          }
-        }
-      },
-      "attribute-system": {
-        "attributes": {
-          "system": {
-            "value": 4
-          }
-        }
-      },
       "attribute-autopilot": {
         "attributes": {
           "autopilot": {
-            "value": 4
+            "value": 6
           }
         }
       },
@@ -168,10 +154,16 @@
         "description",
         "matrix-monitor",
         "attribute-autopilot",
-        "attribute-handling",
-        "attribute-firewall",
-        "attribute-system"
+        "attribute-handling"
       ],
+      "attributes": {
+        "system": {
+          "value": 6
+        },
+        "firewall": {
+          "value": 0
+        }
+      },
       "monitors": {
         "structure": {
           "value": 0,
@@ -187,12 +179,15 @@
       "passengers": 4
     },
     "device": {
-      "templates": [
-        "description",
-        "matrix-monitor",
-        "attribute-firewall",
-        "attribute-system"
-      ]
+      "templates": ["description", "matrix-monitor"],
+      "attributes": {
+        "system": {
+          "value": 6
+        },
+        "firewall": {
+          "value": 0
+        }
+      }
     },
     "sprite": {
       "templates": [
@@ -203,12 +198,12 @@
       ]
     },
     "ic": {
-      "templates": [
-        "description",
-        "matrix-monitor",
-        "attribute-firewall",
-        "attribute-logic"
-      ]
+      "templates": ["description", "matrix-monitor", "attribute-logic"],
+      "attributes": {
+        "firewall": {
+          "value": 4
+        }
+      }
     }
   },
   "Item": {

@@ -17,7 +17,7 @@
       <label for="system.code">{{localize 'ANARCHY.item.skill.code'}}</label>
       <input class="item-field-value" type="text" name="system.code" value="{{system.code}}" data-dtype="String" disabled/>
     </div>
-    {{#unless (or (eq system.code 'knowledge') (eq system.attribute 'knowledge') (eq system.attribute '')) }}
+    {{#unless (or (eq system.code 'knowledge') (eq system.attribute 'knowledge')) }}
     <div class="form-group">
       <label for="system.value">{{localize 'ANARCHY.item.skill.value'}} </label>
       <input class="type-numeric" type="number" name="system.value" value="{{system.value}}" data-dtype="Number"/>

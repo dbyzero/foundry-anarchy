@@ -1,15 +1,19 @@
 import { ICONS_PATH, TEMPLATE } from "../constants.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
+const IC_ATTRIBUTES = [
+  TEMPLATE.attributes.logic,
+  TEMPLATE.attributes.firewall,
+]
 
 export class ICActor extends AnarchyBaseActor {
 
   static get defaultIcon() {
-    return `${ICONS_PATH}/misc/rub-el-hizb.svg`;
+    return `${ICONS_PATH}/misc/rub-el-hizb.svg`
   }
 
   static get initiative() {
-    return AnarchyBaseActor.initiative + " + @attributes.logic.value";
+    return AnarchyBaseActor.initiative + " + @attributes.logic.value"
   }
 
   getMatrixDetails() {
@@ -25,9 +29,6 @@ export class ICActor extends AnarchyBaseActor {
   canSetMarks() { return false }
 
   getAttributes() {
-    return [
-      TEMPLATE.attributes.logic,
-      TEMPLATE.attributes.firewall,
-    ];
+    return IC_ATTRIBUTES
   }
 }

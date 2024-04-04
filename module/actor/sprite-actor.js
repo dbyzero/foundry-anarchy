@@ -1,6 +1,10 @@
 import { ICONS_PATH, TEMPLATE } from "../constants.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
+const SPRITE_ATTRIBUTES = [
+  TEMPLATE.attributes.logic,
+  TEMPLATE.attributes.edge,
+]
 
 export class SpriteActor extends AnarchyBaseActor {
 
@@ -23,10 +27,7 @@ export class SpriteActor extends AnarchyBaseActor {
   }
 
   getAttributes() {
-    return [
-      TEMPLATE.attributes.logic,
-      TEMPLATE.attributes.edge,
-    ];
+    return SPRITE_ATTRIBUTES
   }
 
   isEmerged() { return true }

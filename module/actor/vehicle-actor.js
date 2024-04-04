@@ -4,14 +4,21 @@ import { ErrorManager } from "../error-manager.js";
 import { AnarchyUsers } from "../users.js";
 import { AnarchyBaseActor } from "./base-actor.js";
 
+const VEHICLE_ATTRIBUTES = [
+  TEMPLATE.attributes.autopilot,
+  TEMPLATE.attributes.handling,
+  TEMPLATE.attributes.firewall,
+  TEMPLATE.attributes.system
+]
+
 export class VehicleActor extends AnarchyBaseActor {
 
   static get defaultIcon() {
-    return `${ICONS_PATH}/shadowamps/drone.svg`;
+    return `${ICONS_PATH}/shadowamps/drone.svg`
   }
 
   static get initiative() {
-    return AnarchyBaseActor.initiative + " + max(@attributes.system.value, @attributes.autopilot.value)";
+    return AnarchyBaseActor.initiative + " + max(@attributes.system.value, @attributes.autopilot.value)"
   }
 
   prepareDerivedData() {
@@ -30,26 +37,21 @@ export class VehicleActor extends AnarchyBaseActor {
   }
 
   getAttributes() {
-    return [
-      TEMPLATE.attributes.autopilot,
-      TEMPLATE.attributes.handling,
-      TEMPLATE.attributes.firewall,
-      TEMPLATE.attributes.system
-    ];
+    return VEHICLE_ATTRIBUTES
   }
 
   getPhysicalAgility() { return TEMPLATE.attributes.autopilot }
 
   getDamageMonitor(damageType) {
     switch (damageType) {
-      case TEMPLATE.monitors.physical: return TEMPLATE.monitors.structure;
-      case TEMPLATE.monitors.stun: return undefined;
+      case TEMPLATE.monitors.physical: return TEMPLATE.monitors.structure
+      case TEMPLATE.monitors.stun: return undefined
     }
-    return super.getDamageMonitor(damageType);
+    return super.getDamageMonitor(damageType)
   }
 
   getRightToDefend() {
-    return CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER;
+    return CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER
   }
 
   async rollPilotDefense(attack) {

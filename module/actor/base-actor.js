@@ -68,6 +68,13 @@ export class AnarchyBaseActor extends Actor {
 
   getAttributes() { return []; }
   getPhysicalAgility() { return undefined }
+  getCorrespondingAttribute(attribute) {
+    const attributes = this.getAttributes()
+    if (attributes.includes(attribute)) {
+      return attribute
+    }
+    return undefined
+  }
 
   prepareMatrixMonitor() {
     const matrix = this.getMatrixDetails()
@@ -141,14 +148,17 @@ export class AnarchyBaseActor extends Actor {
 
   getAttributeValue(attribute, item = undefined) {
     let value = 0;
+    attribute = this.getCorrespondingAttribute(attribute)
     if (attribute) {
       if (this.getAttributes().includes(attribute)) {
         value = this.system.attributes[attribute].value;
       }
       else if (!item) {
         const candidateItems = this.items.filter(item => item.isActive() && item.getAttributes().includes(attribute))
-        const candidateValues = candidateItems.map(it => it.getAttributeValue(attribute) ?? 0)
-        value = Math.max(...candidateValues)
+        if (candidateItems.length > 0) {
+          const candidateValues = candidateItems.map(it => it.getAttributeValue(attribute) ?? 0)
+          value = Math.max(...candidateValues)
+        }
       }
       else if (this.isEmerged() && attribute == TEMPLATE.attributes.firewall) {
         return this.getAttributeValue(TEMPLATE.attributes.logic);
