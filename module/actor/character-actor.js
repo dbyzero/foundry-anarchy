@@ -7,7 +7,7 @@ import { Modifiers } from "../modifiers/modifiers.js";
 import { Checkbars } from "../common/checkbars.js";
 import { RollCelebrity } from "../dialog/roll-celebrity.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
-import { MATRIX, Matrix } from "../matrix-helper.js";
+import { MATRIX, Matrix, NO_MATRIX_MONITOR } from "../matrix-helper.js";
 
 const HBS_TEMPLATE_ACTOR_DRAIN = `${TEMPLATES_PATH}/chat/actor-drain.hbs`;
 const HBS_TEMPLATE_ACTOR_SAY_WORD = `${TEMPLATES_PATH}/chat/actor-say-word.hbs`;
@@ -52,7 +52,15 @@ export class CharacterActor extends AnarchyBaseActor {
       TEMPLATE.attributes.edge
     ];
   }
+
   getPhysicalAgility() { return TEMPLATE.attributes.agility }
+
+  getCorrespondingAttribute(attribute) {
+    if (TEMPLATE.attributes.firewall == attribute) {
+      return TEMPLATE.attributes.firewall
+    }
+    return super.getCorrespondingAttribute(attribute)
+  }
 
   getMatrixDetails() {
     const cyberdeck = this.getCyberdeck();
@@ -80,7 +88,13 @@ export class CharacterActor extends AnarchyBaseActor {
         },
       }
     }
-    return super.getMatrixDetails()
+    return {
+      hasMatrix: false,
+      logic: TEMPLATE.attributes.logic,
+      firewall: undefined,
+      monitor: NO_MATRIX_MONITOR,
+      overflow: undefined,
+    }
   }
 
   isMatrixConnected(mode = undefined) {
