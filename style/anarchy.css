@@ -551,13 +551,17 @@ img.checkbar-img:active {
 .items-group .items-group-list div.item {
   height: 100%;
   position: relative;
-  PADDINg: 4px 4px 1.6rem 4px;
+  padding: 4px;
+}
+
+.items-group .items-group-list div.item.anarchy-skill {
+  min-height: 52px;
 }
 
 .items-group .items-group-list div.item .item-controls {
   position: absolute;
-  bottom: 6px;
-  left: 6px;
+  left: calc(100% - 16px);
+  bottom: initial;
 }
 
 :is(.npc-sheet, .device-sheet) .items-group .items-group-list {
@@ -628,16 +632,36 @@ div.define-item-type.item div.item-controls {
   flex-direction: column;
 }
 
-
 :is(.npc-sheet, .device-sheet) .items-group div.item {
-  gap: 1px;
-  margin: 2px;
-  max-width: 12rem;
+  margin: 1px;
+  height: 100%;
+  position: relative;
+  padding: 1px;
+}
+
+:is(.npc-sheet, .device-sheet) .items-group .items-group-list {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+:is(.npc-sheet, .device-sheet) .items-group .items-group-list div.item.anarchy-skill {
+  min-height: fit-content;
+}
+:is(.npc-sheet, .device-sheet) .items-group .items-group-list div.item.anarchy-skill .item-controls {
+  position: absolute;
+  left: calc(100% - 48px);
+  bottom: initial;
+}
+
+:is(.npc-sheet, .device-sheet) .items-group .items-group-list div.item:not(.anarchy-skill) .item-content {
+  max-width: calc(100% - 16px);
 }
 
 :is(.npc-sheet, .device-sheet) .items-group div.item.anarchy-cyberdeck {
   max-width: max-content;
 }
+
 
 /* Modifiers lists */
 .modifier-list {
