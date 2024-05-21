@@ -7,7 +7,7 @@ import { TEMPLATE } from "../constants.js";
 const MONITORS = ANARCHY.actor.monitors;
 const COUNTERS = ANARCHY.actor.counters;
 
-const DEFAULT_CHECKBARS = {
+export const DEFAULT_CHECKBARS = {
   armor: {
     path: 'system.monitors.armor.value',
     monitor: it => it.system.monitors.armor,

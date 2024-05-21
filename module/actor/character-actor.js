@@ -4,7 +4,7 @@ import { AnarchyBaseActor } from "./base-actor.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
 import { Modifiers } from "../modifiers/modifiers.js";
-import { Checkbars } from "../common/checkbars.js";
+import { Checkbars, DEFAULT_CHECKBARS } from "../common/checkbars.js";
 import { RollCelebrity } from "../dialog/roll-celebrity.js";
 import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { MATRIX, Matrix, NO_MATRIX_MONITOR } from "../matrix-helper.js";
@@ -71,7 +71,7 @@ export class CharacterActor extends AnarchyBaseActor {
         firewall: TEMPLATE.attributes.firewall,
         monitor: cyberdeck.system.monitors.matrix,
         overflow: cyberdeck.getMatrixOverflow(),
-        setMatrixMonitor: async (checkbarPath, value) => cyberdeck.setMatrixMonitor(checkbarPath, value),
+        setMatrixMonitor: async (path, value) => cyberdeck.setMatrixMonitor(path, value),
       }
     }
     if (this.isEmerged()) {
@@ -81,11 +81,11 @@ export class CharacterActor extends AnarchyBaseActor {
         firewall: TEMPLATE.attributes.logic,
         monitor: this.system.monitors.stun,
         overflow: TEMPLATE.monitors.physical,
-        setMatrixMonitor: async (checkbarPath, value) => {
-          if (key == 'system.monitors.matrix.value') {
-            await Checkbars.setCheckbar(this, TEMPLATE.monitors.stun, value)
+        setMatrixMonitor: async (path, value) => {
+          if (path == DEFAULT_CHECKBARS.matrix.path) {
+            return await Checkbars.setCheckbar(this, TEMPLATE.monitors.stun, value)
           }
-        },
+        }
       }
     }
     return {

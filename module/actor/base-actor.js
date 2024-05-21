@@ -115,16 +115,12 @@ export class AnarchyBaseActor extends Actor {
     }
   }
 
-  async setCheckbarValue(checkbarPath, value) {
-    if (checkbarPath.startsWith('system.monitors.matrix.')) {
-      const setMatrixMonitor = this.getMatrixDetails().setMatrixMonitor
-      if (setMatrixMonitor) {
-        return await setMatrixMonitor(checkbarPath, value)
-      } else {
-        return await this.defSetMatrixMonitor(checkbarPath, value)
-      }
+  async setCheckbarValue(path, value) {
+    if (path.startsWith('system.monitors.matrix.')) {
+      const setMatrixMonitor = this.getMatrixDetails().setMatrixMonitor ?? this.defSetMatrixMonitor
+      return await setMatrixMonitor(path, value)
     }
-    return await this.update({ [checkbarPath]: value })
+    return await this.update({ [path]: value })
   }
 
   _getMonitorMax(attribute) {
