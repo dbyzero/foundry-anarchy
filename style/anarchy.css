@@ -627,6 +627,10 @@ div.define-item-type.item div.item-controls {
   justify-content: space-between;
 }
 
+.items-group div.define-item-type.item.anarchy-cyberdeck .item-content div.anarchy-monitor {
+  min-width: fit-content;
+}
+
 .items-group div.define-item-type.item.anarchy-cyberdeck .item-content .cyberdeck-details {
   display: flex;
   flex-direction: column;
