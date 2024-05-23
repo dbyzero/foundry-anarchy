@@ -39,7 +39,7 @@ export class RollDialog extends Dialog {
   }
 
   static async rollAttribute(actor, attribute) {
-    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+    const rollData = foundry.utils.mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.attribute,
       attribute1: attribute
     });
@@ -47,7 +47,7 @@ export class RollDialog extends Dialog {
   }
 
   static async rollAttributeAction(actor, action) {
-    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+    const rollData = foundry.utils.mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.attributeAction,
       attributeAction: action.code,
       attribute1: action.attributeFunction1(actor),
@@ -57,7 +57,7 @@ export class RollDialog extends Dialog {
   }
 
   static async rollAttribute(actor, attribute) {
-    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+    const rollData = foundry.utils.mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.attribute,
       attribute1: attribute
     });
@@ -65,7 +65,7 @@ export class RollDialog extends Dialog {
   }
 
   static async rollSkill(actor, skill, specialization) {
-    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+    const rollData = foundry.utils.mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.skill,
       skill: skill,
       attribute1: skill?.system.attribute ?? TEMPLATE.attributes.agility,
@@ -75,7 +75,7 @@ export class RollDialog extends Dialog {
   }
 
   static async rollWeapon(actor, skill, weapon, targeting) {
-    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+    const rollData = foundry.utils.mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.weapon,
       weapon: weapon,
       skill: skill,
@@ -87,7 +87,7 @@ export class RollDialog extends Dialog {
   }
 
   static async rollDefense(actor, action, attack, pilot = undefined) {
-    const rollData = mergeObject(RollDialog.prepareActorRoll(actor), {
+    const rollData = foundry.utils.mergeObject(RollDialog.prepareActorRoll(actor), {
       mode: ANARCHY_SYSTEM.rollType.defense,
       attribute1: action.attributeFunction1(actor),
       attribute2: action.attributeFunction2(actor),
@@ -100,7 +100,7 @@ export class RollDialog extends Dialog {
   }
 
   static async itemAttributeRoll(item, attribute) {
-    const rollData = mergeObject(RollDialog.prepareActorRoll(item.actor), {
+    const rollData = foundry.utils.mergeObject(RollDialog.prepareActorRoll(item.actor), {
       mode: ANARCHY_SYSTEM.rollType.attribute,
       item: item,
       attribute1: attribute,
@@ -111,7 +111,7 @@ export class RollDialog extends Dialog {
 
   static async create(roll) {
     const rollParameters = game.system.anarchy.rollParameters.build(roll).sort(Misc.ascending(p => p.order ?? 200));
-    mergeObject(roll, {
+    foundry.utils.mergeObject(roll, {
       ENUMS: Enums.getEnums(attributeName => roll.attributes.includes(attributeName)),
       ANARCHY: ANARCHY,
       parameters: rollParameters

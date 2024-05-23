@@ -143,7 +143,7 @@ export class RollManager {
     const built = game.system.anarchy.rollParameters.build(rollData);
     return parameters.map(p => {
       const initial = built.find(it => it.code == p.code) ?? {};
-      return mergeObject(p, initial, { overwrite: false });
+      return foundry.utils.mergeObject(p, initial, { overwrite: false });
     });
   }
 

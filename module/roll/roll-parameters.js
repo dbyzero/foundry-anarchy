@@ -303,7 +303,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     factory: context => {
       const rerollForced = RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.successReroll, context);
       rerollForced.value = -rerollForced.value - (context.attackRoll?.param.opponentReroll ?? 0);
-      return mergeObject(rerollForced, {
+      return foundry.utils.mergeObject(rerollForced, {
         flags: { editDice: true, used: true, editable: true },
       });
     }
@@ -481,11 +481,11 @@ export class RollParameters {
       onChecked: param.onChecked,
       onValue: param.onValue
     };
-    mergeObject(computed, param.options);
+    foundry.utils.mergeObject(computed, param.options);
     if (param.factory) {
-      mergeObject(computed, param.factory(context, param.options));
+      foundry.utils.mergeObject(computed, param.factory(context, param.options));
     }
-    mergeObject(computed, {
+    foundry.utils.mergeObject(computed, {
       used: computed.used || computed.value,
       min: computed.min ?? 0,
       max: computed.max ?? computed.value ?? 0

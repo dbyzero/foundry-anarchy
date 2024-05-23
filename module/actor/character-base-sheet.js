@@ -10,7 +10,7 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       width: 720,
       height: 700,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }],
@@ -19,7 +19,7 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
 
   getData(options) {
     const essence = this.actor.computeEssence();
-    let hbsData = mergeObject(
+    let hbsData = foundry.utils.mergeObject(
       super.getData(options),
       {
         essence: {

@@ -105,7 +105,7 @@ export class Skills {
 
 
   $prepareSkillSet(id, name, skills, details) {
-    const skillSet = mergeObject({ id: id, name: name, skills: skills }, details);
+    const skillSet = foundry.utils.mergeObject({ id: id, name: name, skills: skills }, details);
     if (!this.$validateSkillSet(skillSet)) {
       return undefined;
     }

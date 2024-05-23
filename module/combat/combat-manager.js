@@ -62,7 +62,7 @@ export class CombatManager {
     const notifyMessage = await ChatMessage.create({
       user: game.user.id,
       whisper: defender.getAllowedUserIds(defender.getRightToDefend()),
-      content: await renderTemplate(TEMPLATE_INFORM_DEFENDER, mergeObject(
+      content: await renderTemplate(TEMPLATE_INFORM_DEFENDER, foundry.utils.mergeObject(
         {
           ANARCHY: ANARCHY,
           options: { classes: [game.system.anarchy.styles.selectCssClass()] },

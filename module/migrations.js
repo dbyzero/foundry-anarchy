@@ -198,7 +198,7 @@ class _11_1_0_MigrateAndWarnAboutDefenseModifiers extends Migration {
           }
           case 1: {
             const other = actionAttributes[0]
-            mergeObject(other, {
+            foundry.utils.mergeObject(other, {
               value: Math.max(defense.value, other.value),
               condition: (other.condition ? other.condition + (defense.condition ?? '') : defense.condition)
             }, { overwrite: true })
@@ -303,17 +303,17 @@ export class Migrations {
 
   migrate() {
     const currentVersion = game.settings.get(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION);
-    if (isNewerVersion(game.system.version, currentVersion)) {
+    if (foundry.utils.isNewerVersion(game.system.version, currentVersion)) {
       //if (true) {
       let migrations = [];
       Hooks.callAll(ANARCHY_HOOKS.DECLARE_MIGRATIONS, (...addedMigrations) =>
-        migrations = migrations.concat(addedMigrations.filter(m => isNewerVersion(m.version, currentVersion)))
+        migrations = migrations.concat(addedMigrations.filter(m => foundry.utils.isNewerVersion(m.version, currentVersion)))
       );
       Hooks.off(ANARCHY_HOOKS.DECLARE_MIGRATIONS, () => { });
 
       if (migrations.length > 0) {
 
-        migrations.sort((a, b) => isNewerVersion(a.version, b.version) ? 1 : isNewerVersion(b.version, a.version) ? -1 : 0);
+        migrations.sort((a, b) => foundry.utils.isNewerVersion(a.version, b.version) ? 1 : foundry.utils.isNewerVersion(b.version, a.version) ? -1 : 0);
         migrations.forEach(async m => {
           ui.notifications.info(`Executing migration ${m.code}: version ${currentVersion} is lower than ${m.version}`);
           await m.migrate();
@@ -329,4 +329,5 @@ export class Migrations {
       console.log(LOG_HEAD + `No system version changed`);
     }
   }
+
 }

@@ -8,7 +8,7 @@ export class CharacterNPCSheet extends CharacterBaseSheet {
   }
 
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       width: 450,
       height: 550
     });

@@ -14,7 +14,7 @@ export class RollCelebrity extends Dialog {
         labelkey: ANARCHY.actor.celebrity,
         value: actor.getCelebrityValue(),
       },
-      modifiers: mergeObject(
+      modifiers: foundry.utils.mergeObject(
         { labelkey: ANARCHY.item.tabs.modifiers },
         Modifiers.computeModifiers(actor.items, 'other', 'celebrity')
       ),

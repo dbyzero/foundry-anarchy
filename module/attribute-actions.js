@@ -100,7 +100,7 @@ export class AttributeActions {
   }
 
   static _convertToDefense(actorAction, defense) {
-    return actorAction ? mergeObject(defense,
+    return actorAction ? foundry.utils.mergeObject(defense,
       actorAction ?? {},
       { overwrite: false, inplace: false }
     ) : undefined;

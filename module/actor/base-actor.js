@@ -16,8 +16,8 @@ export class AnarchyBaseActor extends Actor {
 
   constructor(docData, context = {}) {
     if (!context.anarchy?.ready) {
-      mergeObject(context, { anarchy: { ready: true } });
       const ActorConstructor = game.system.anarchy.actorClasses[docData.type];
+      foundry.utils.mergeObject(context, { anarchy: { ready: true } });
       if (ActorConstructor) {
         if (!docData.img) {
           docData.img = ActorConstructor.defaultIcon;
@@ -430,13 +430,13 @@ export class AnarchyBaseActor extends Actor {
     if (type == 'attributeAction') {
       const shortcut = AttributeActions.prepareShortcut(this, id);
       if (shortcut) {
-        return mergeObject(shortcut, favorite);
+        return foundry.utils.mergeObject(shortcut, favorite);
       }
     }
     else if (Object.values(TEMPLATE.itemType).includes(type)) {
       const shortcut = this.items.get(id)?.prepareShortcut();
       if (shortcut) {
-        return mergeObject(shortcut, favorite);
+        return foundry.utils.mergeObject(shortcut, favorite);
       }
     }
     return favorite;

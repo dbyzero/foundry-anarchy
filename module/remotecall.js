@@ -16,7 +16,7 @@ export class RemoteCall {
     if (this.remoteCalls[msg]) {
       throw `RemoteCall msg ${msg} is already registered`;
     }
-    mergeObject(remoteCall, {
+    foundry.utils.mergeObject(remoteCall, {
       callback: data => { console.log(LOG_HEAD + 'RemoteCall [', msg, '] (', data, ')'); },
       condition: user => true,
       multiple: false /* true if multiple users should handle the message */

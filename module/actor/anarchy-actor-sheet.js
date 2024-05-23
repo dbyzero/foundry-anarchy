@@ -13,7 +13,7 @@ export class AnarchyActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       isGM: game.user.isGM,
       dragDrop: [{ dragSelector: ".item ", dropSelector: null }],
       classes: [game.system.anarchy.styles.selectCssClass(), "sheet", "actor"],
@@ -21,19 +21,20 @@ export class AnarchyActorSheet extends ActorSheet {
   }
 
   getData(options) {
-    let hbsData = mergeObject(
-      super.getData(options), {
-      items: {},
-      anarchy: this.actor.getAnarchy(),
-      ownerActor: this.actor.getOwnerActor(),
-      ownedActors: this.actor.getOwnedActors(),
-      options: {
-        owner: this.document.isOwner,
-        cssClass: this.isEditable ? "editable" : "locked",
-      },
-      ENUMS: mergeObject({ attributeAction: this.actor.getAttributeActions() }, Enums.getEnums()),
-      ANARCHY: ANARCHY
-    });
+    let hbsData = foundry.utils.mergeObject(
+      super.getData(options),
+      {
+        items: {},
+        anarchy: this.actor.getAnarchy(),
+        ownerActor: this.actor.getOwnerActor(),
+        ownedActors: this.actor.getOwnedActors(),
+        options: {
+          owner: this.document.isOwner,
+          cssClass: this.isEditable ? "editable" : "locked",
+        },
+        ENUMS: foundry.utils.mergeObject({ attributeAction: this.actor.getAttributeActions() }, Enums.getEnums()),
+        ANARCHY: ANARCHY
+      });
     hbsData.options.classes.push(`actor-${this.actor.type}`);
     hbsData.options.classes = Misc.distinct(hbsData.options.classes);
     hbsData.system = this.actor.system;

@@ -138,7 +138,7 @@ export const DEFAULT_CHECKBARS = {
     resource: COUNTERS.social.rumor
   },
 }
-export const CHECKBARS = mergeObject(DEFAULT_CHECKBARS, {});
+export const CHECKBARS = foundry.utils.mergeObject(DEFAULT_CHECKBARS, {});
 
 export class Checkbars {
   static init() {
@@ -148,9 +148,9 @@ export class Checkbars {
 
   static hackCheckbars(overrides) {
     if (overrides) {
-      const newBar = mergeObject(DEFAULT_CHECKBARS, {})
-      mergeObject(newBar, overrides, { recursive: true });
-      mergeObject(CHECKBARS, newBar, { overwrite: true })
+      const newBar = foundry.utils.mergeObject(DEFAULT_CHECKBARS, {})
+      foundry.utils.mergeObject(newBar, overrides, { recursive: true });
+      foundry.utils.mergeObject(CHECKBARS, newBar, { overwrite: true })
     }
   }
 

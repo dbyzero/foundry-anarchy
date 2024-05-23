@@ -5,7 +5,7 @@ export class WeaponItemSheet extends BaseItemSheet {
 
   getData(options) {
     let hbsData = super.getData(options);
-    hbsData.ENUMS = mergeObject({ defenses: AttributeActions.getDefenses(), }, hbsData.ENUMS);
+    hbsData.ENUMS = foundry.utils.mergeObject({ defenses: AttributeActions.getDefenses(), }, hbsData.ENUMS);
     return hbsData;
   }
 

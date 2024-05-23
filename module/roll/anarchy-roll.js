@@ -44,7 +44,7 @@ export class AnarchyRoll {
     this.param.risk = Math.max(this.param.risk ?? 0, 0);
     this.param.edge = Math.max(this.param.edge ?? 0, 0);
     this.param.target = this.param.edge > 0 ? 4 : (this.param.target ?? 5);
-    mergeObject(this, DEFAULT_ROLL_RESULT)
+    foundry.utils.mergeObject(this, DEFAULT_ROLL_RESULT)
   }
 
   async evaluate() {
@@ -117,7 +117,7 @@ export class AnarchyRoll {
   }
 
   async toMessage(messageData, options) {
-    options = mergeObject(options ?? {}, { create: true });
+    options = foundry.utils.mergeObject(options ?? {}, { create: true });
     return await this.toGroupedRoll().toMessage(messageData, options);
   }
 

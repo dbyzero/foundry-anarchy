@@ -22,7 +22,7 @@ export class AnarchyCombat extends Combat {
     Object.entries(combatantsByType).forEach(async ([type, list]) => {
       const typeActorClass = game.system.anarchy.actorClasses[type];
       const typeIds = list.map(it => it.id);
-      const typeOptions = mergeObject({ formula: typeActorClass.initiative }, options ?? {});
+      const typeOptions = foundry.utils.mergeObject({ formula: typeActorClass.initiative }, options ?? {});
       await super.rollInitiative(typeIds, typeOptions);
     });
   }

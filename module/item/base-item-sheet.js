@@ -5,7 +5,7 @@ import { Enums } from "../enums.js";
 export class BaseItemSheet extends ItemSheet {
 
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       isGM: game.user.isGM,
       dragDrop: [{ dragSelector: ".item ", dropSelector: null }],
       classes: [game.system.anarchy.styles.selectCssClass(), "sheet", "item-sheet"],
@@ -30,18 +30,19 @@ export class BaseItemSheet extends ItemSheet {
       : attribute => true)
     const withKnowledge = this.item.type == TEMPLATE.itemType.skill
 
-    let hbsData = mergeObject(
-      super.getData(options), {
-      options: {
-        isGM: game.user.isGM,
-        owner: this.document.isOwner,
-        isOwned: (this.actor != undefined),
-        editable: this.isEditable,
-        cssClass: this.isEditable ? "editable" : "locked",
-      },
-        ENUMS: mergeObject(Enums.getEnums(usableAttribute, withKnowledge), game.system.anarchy.modifiers.getEnums()),
-      ANARCHY: ANARCHY
-    });
+    let hbsData = foundry.utils.mergeObject(
+      super.getData(options),
+      {
+        options: {
+          isGM: game.user.isGM,
+          owner: this.document.isOwner,
+          isOwned: (this.actor != undefined),
+          editable: this.isEditable,
+          cssClass: this.isEditable ? "editable" : "locked",
+        },
+        ENUMS: foundry.utils.mergeObject(Enums.getEnums(usableAttribute, withKnowledge), game.system.anarchy.modifiers.getEnums()),
+        ANARCHY: ANARCHY
+      });
     hbsData.system = this.item.system;
 
     return hbsData;
