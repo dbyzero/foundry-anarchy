@@ -38,20 +38,18 @@ export class RollCelebrity extends Dialog {
       buttons: {
         'roll': {
           label: game.i18n.localize(ANARCHY.common.roll.button),
-          callback: async () => await this.roll()
+          callback: async () => RollCelebrity.doRoll(roll)
         }
       },
     };
     const options = {
       classes: [game.system.anarchy.styles.selectCssClass(), "anarchy-dialog"],
       width: 400,
-      height: 86 + 3 * 24,
+      height: 'fit-content',
       'z-index': 99999,
     };
 
     super(config, options);
-
-    this.roll = roll;
   }
 
   activateListeners(html) {
@@ -62,15 +60,15 @@ export class RollCelebrity extends Dialog {
     });
   }
 
-  async roll() {
+  static async doRoll(rollData) {
     const parameters = [
-      this.roll.celebrity,
-      this.roll.modifiers,
-      this.roll.other
+      rollData.celebrity,
+      rollData.modifiers,
+      rollData.other
     ];
     const pool = Misc.sumValues(parameters, it => it.value);
     const hbsCelebrityRoll = {
-      actor: this.roll.actor,
+      actor: rollData.actor,
       parameters: parameters,
       pool: pool,
       options: {
@@ -84,4 +82,27 @@ export class RollCelebrity extends Dialog {
     const flavor = await renderTemplate(HBS_TEMPLATE_CHAT_CELEBRITY_ROLL, hbsCelebrityRoll);
     await roll.toMessage({ flavor: flavor });
   }
+
+  // async roll() {
+  //   const parameters = [
+  //     this.roll.celebrity,
+  //     this.roll.modifiers,
+  //     this.roll.other
+  //   ];
+  //   const pool = Misc.sumValues(parameters, it => it.value);
+  //   const hbsCelebrityRoll = {
+  //     actor: this.roll.actor,
+  //     parameters: parameters,
+  //     pool: pool,
+  //     options: {
+  //       classes: [game.system.anarchy.styles.selectCssClass()]
+  //     },
+  //     ANARCHY: ANARCHY
+  //   }
+  //   const roll = new Roll(`${pool}d6cs>=5`);
+  //   await roll.evaluate();
+
+  //   const flavor = await renderTemplate(HBS_TEMPLATE_CHAT_CELEBRITY_ROLL, hbsCelebrityRoll);
+  //   await roll.toMessage({ flavor: flavor });
+  // }
 }
