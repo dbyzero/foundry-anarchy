@@ -93,7 +93,7 @@ export class CharacterActor extends AnarchyBaseActor {
       logic: TEMPLATE.attributes.logic,
       firewall: undefined,
       monitor: NO_MATRIX_MONITOR,
-      overflow: undefined,
+      overflow: undefined
     }
   }
 
