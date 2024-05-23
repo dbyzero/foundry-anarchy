@@ -24,6 +24,7 @@ export class AnarchyBaseItem extends Item {
         return new ItemConstructor(docData, context);
       }
     }
+    context.anarchy = undefined
     super(docData, context);
   }
 

@@ -25,6 +25,7 @@ export class AnarchyBaseActor extends Actor {
         return new ActorConstructor(docData, context);
       }
     }
+    context.anarchy = undefined
     super(docData, context);
   }
 
