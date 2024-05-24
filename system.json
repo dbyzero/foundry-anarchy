@@ -86,8 +86,7 @@
   "relationships": {},
   "socket": true,
   "protected": false,
-  "gridDistance": 1,
-  "gridUnits": "m",
+  "grid": { "distance": 1, "units": "m" },
   "primaryTokenAttribute": "monitors.physical",
   "secondaryTokenAttribute": "monitors.stun"
 }
