@@ -2,11 +2,11 @@ import { ANARCHY } from "../config.js";
 import { SYSTEM_SCOPE } from "../constants.js";
 import { RemoteCall } from "../remotecall.js";
 
-
 export const PARENT_MESSAGE_ID = 'parent-message-id';
 export const MESSAGE_DATA = 'message-data';
-export const MESSAGE_CAN_USE_EDGE = 'can-use-edge';
-export const MESSAGE_OWNING_ACTOR = 'owning-actor';
+export const CAN_USE_EDGE = 'can-use-edge';
+export const OWNING_ACTOR = 'owning-actor';
+
 const REMOVE_CHAT_MESSAGE = 'ChatManager.removeChatMessage';
 const CHAT_MANAGER_REMOVE_FAMILY = 'ChatManager.removeChatMessageFamily';
 
@@ -37,7 +37,6 @@ export class ChatManager {
   static async onRenderChatMessage(app, html, msg) {
     const chatMessage = ChatManager.getChatMessageFromHtml(html);
     const showButtons = ChatManager.hasRight(chatMessage);
-
     CHAT_MESSAGE_BUTTON_HANDLERS.forEach(it => {
       const jQueryButtonSelector = html.find(it.selector);
       if (!it.controlVisibility || showButtons) {
@@ -66,8 +65,8 @@ export class ChatManager {
   }
 
   static async edgeReroll(chatMsg) {
-    if (ChatManager.getMessageCanUseEdge(chatMsg)) {
-      const rollData = ChatManager.getMessageData(chatMsg);
+    if (chatMsg.getFlag(SYSTEM_SCOPE, CAN_USE_EDGE)) {
+      const rollData = chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_DATA)
       await game.system.anarchy.rollManager.edgeReroll(rollData);
       ChatManager.removeFamily(chatMsg.id);
     }
@@ -77,15 +76,15 @@ export class ChatManager {
   }
 
   static defendAttack(chatMsg) {
-    return game.system.anarchy.combatManager.onClickDefendAttack(ChatManager.getMessageData(chatMsg));
+    return game.system.anarchy.combatManager.onClickDefendAttack(chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_DATA))
   }
 
   static defendPilotAttack(chatMsg) {
-    return game.system.anarchy.combatManager.onClickPilotDefendAttack(ChatManager.getMessageData(chatMsg));
+    return game.system.anarchy.combatManager.onClickPilotDefendAttack(chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_DATA))
   }
 
   static applyAttack(chatMsg) {
-    return game.system.anarchy.combatManager.onClickApplyAttackDamage(ChatManager.getMessageData(chatMsg));
+    return game.system.anarchy.combatManager.onClickApplyAttackDamage(chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_DATA))
   }
 
   static getChatMessage(event) {
@@ -98,16 +97,16 @@ export class ChatManager {
     return game.messages.get(chatMessageId);
   }
 
-  static async setParentMessageId(chatMsg, family) {
-    await chatMsg.setFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID, family);
-  }
-
-  static getParentMessageId(chatMsg) {
-    return chatMsg.getFlag(SYSTEM_SCOPE, PARENT_MESSAGE_ID);
-  }
-  static getParentMessage(chatMsg) {
-    const chatMessageId = ChatManager.getParentMessageId(chatMsg);
-    return chatMessageId ? game.messages.get(chatMessageId) : undefined;
+  /**
+   * Method in charge of preparing ANARCHY flags to be set on Document, for ChatMessage
+   */
+  static prepareFlag(flags, key, data) {
+    if (flags[SYSTEM_SCOPE] == undefined) {
+      flags[SYSTEM_SCOPE] = { [key]: data }
+    }
+    else {
+      flags[SYSTEM_SCOPE][key] = data
+    }
   }
 
   static removeFamily(chatMessageId) {
@@ -118,48 +117,34 @@ export class ChatManager {
     }
   }
 
-  static async setMessageData(chatMsg, data) {
-    if (data) {
-      await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_DATA, JSON.stringify(data));
-    }
-  }
-
-  static getMessageData(chatMsg) {
-    const json = chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_DATA);
-    return json ? JSON.parse(json) : undefined;
-  }
-
   static removeChatMessage(chatMessageId) {
     if (!RemoteCall.call(REMOVE_CHAT_MESSAGE, chatMessageId)) {
       game.messages.get(chatMessageId)?.delete();
     }
   }
 
-  static async setMessageCanUseEdge(chatMsg, canUseEdge) {
-    await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE, canUseEdge);
+  static messageActorRights(actor, right = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
+    return {
+      actorId: actor?.id,
+      tokenId: actor?.token?.id,
+      right: right ?? CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER
+    }
   }
 
-  static getMessageCanUseEdge(chatMsg) {
-    return chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_CAN_USE_EDGE);
-  }
-
-  static async setMessageActor(chatMsg, actor, right = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
-    if (actor) {
-      await chatMsg.setFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR, {
-        actorId: actor.id,
-        tokenId: actor.token?.id,
-        right: right
-      });
+  static readActorRights(flag) {
+    const token = flag.tokenId ? ChatManager.getToken(flag.tokenId) : undefined;
+    return {
+      actor: token?.actor ?? game.actors.get(flag.actorId),
+      token: token,
+      right: flag.right
     }
   }
 
   static hasRight(chatMsg, right = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
-    const owningActor = chatMsg.getFlag(SYSTEM_SCOPE, MESSAGE_OWNING_ACTOR);
+    const owningActor = ChatManager.readActorRights(chatMsg.getFlag(SYSTEM_SCOPE, OWNING_ACTOR))
     if (owningActor) {
-      const token = ChatManager.getToken(owningActor.tokenId)
-      const actor = token?.actor ?? game.actors.get(owningActor.actorId)
-      if (actor) {
-        return actor.testUserPermission(game.user, Math.min(owningActor.right, right))
+      if (owningActor.actor) {
+        return owningActor.actor.testUserPermission(game.user, Math.min(owningActor.right, right))
       }
       return true
     }

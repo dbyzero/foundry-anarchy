@@ -275,6 +275,21 @@ class _11_1_16_MigrateSkillsAttributes extends Migration {
   }
 }
 
+class _12_0_1_MigrateChatMessageFlags extends Migration {
+  get version() { return '12.0.1' }
+  get code() { return 'migrate-chatmessage-flags-messagedata' }
+  async migrate() {
+    await Promise.all(
+      game.messages.map(async message => {
+        const json = message.getFlag(SYSTEM_SCOPE, MESSAGE_DATA)
+        if (json) {
+          await message.setFlag(SYSTEM_SCOPE, MESSAGE_DATA, JSON.parse(json))
+        }
+      })
+    )
+  }
+}
+
 export class Migrations {
   constructor() {
     HooksManager.register(ANARCHY_HOOKS.DECLARE_MIGRATIONS);
@@ -290,6 +305,7 @@ export class Migrations {
       new _11_1_9_MigrateVehicleHandlingToAttribute(),
       new _11_1_12_MigrateBackWords(),
       new _11_1_16_MigrateSkillsAttributes(),
+      new _12_0_1_MigrateChatMessageFlags(),
     ));
 
     game.settings.register(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, {

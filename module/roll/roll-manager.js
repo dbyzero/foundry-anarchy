@@ -1,4 +1,4 @@
-import { ChatManager } from "../chat/chat-manager.js";
+import { ChatManager, CAN_USE_EDGE, MESSAGE_DATA, OWNING_ACTOR } from "../chat/chat-manager.js";
 import { ANARCHY } from "../config.js";
 import { TEMPLATES_PATH } from "../constants.js";
 import { Enums } from "../enums.js";
@@ -64,18 +64,17 @@ export class RollManager {
     await game.system.anarchy.combatManager.manageCombat(roll);
   }
 
-  async _displayRollInChat(roll) {
-    const hbsRoll = deepClone(roll);
+  async _displayRollInChat(hbsRoll) {
     hbsRoll.options.classes = [game.system.anarchy.styles.selectCssClass()];
 
+    const flags = {}
+    ChatManager.prepareFlag(flags, MESSAGE_DATA, RollManager.deflateAnarchyRoll(hbsRoll))
+    ChatManager.prepareFlag(flags, CAN_USE_EDGE, hbsRoll.options.canUseEdge)
+    ChatManager.prepareFlag(flags, OWNING_ACTOR, ChatManager.messageActorRights(hbsRoll.actor))
+
     const flavor = await renderTemplate(HBS_TEMPLATE_CHAT_ANARCHY_ROLL, hbsRoll);
-    const rollMessage = await hbsRoll.roll.toMessage({ flavor: flavor });
-
-    roll.chatMessageId = rollMessage.id;
-    await ChatManager.setMessageData(rollMessage, RollManager.deflateAnarchyRoll(roll));
-    await ChatManager.setMessageCanUseEdge(rollMessage, roll.options.canUseEdge);
-    await ChatManager.setMessageActor(rollMessage, roll.actor);
-
+    const rollMessage = await hbsRoll.roll.toMessage({ flavor: flavor, flags: flags });
+    hbsRoll.chatMessageId = rollMessage.id;
   }
 
   static deflateAnarchyRoll(roll) {
