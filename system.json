@@ -30,7 +30,7 @@
     "allowBugReporter": true,
     "hotReload": {
       "extensions": ["css", "hbs", "html"],
-      "paths": ["styles/", "templates/"]
+      "paths": ["style/", "templates/"]
     }
   },
   "license": "LICENSE.md",
