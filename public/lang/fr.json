@@ -171,6 +171,7 @@
     "actor": {
       "characterSheet": "Personnage",
       "characterTabbedSheet": "Personnage (avec onglets)",
+      "characterEnhancedSheet": "Personnage (avec onglets), nouveau design",
       "vehicleSheet": "Véhicule",
       "deviceSheet": "Objet virtuel",
       "spriteSheet": "Sprite",

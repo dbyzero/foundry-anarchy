@@ -1,0 +1,57 @@
+<form class="{{options.cssClass}} character-enhanced wrapper-case" autocomplete="off">
+  <div class="side up"></div>
+  <div class="side right"></div>
+  <div class="side down"></div>
+  <div class="side left"></div>
+  <div class="angle tl"></div>
+  <div class="angle tr"></div>
+  <div class="angle br"></div>
+  <div class="angle bl"></div>
+  <div class="content">
+    <header>
+      <div class="avatar wrapper-case">
+        <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" data-tooltip="{{data.name}}" />
+        <div class="side up"></div>
+        <div class="side down"></div>
+        <div class="side right"></div>
+        <div class="angle tl"></div>
+        <div class="angle bl"></div>
+        <div class="angle br"></div>
+        <div class="metatype wrapper-case">
+          <div class="side up"></div>
+          <div class="side left"></div>
+          <div class="angle tl"></div>
+          <div class="angle tr"></div>
+          <div class="angle bl"></div>
+          {{> "systems/anarchy/templates/actor/character-enhanced/metatype.hbs"}}
+        </div>
+      </div>
+      <div class="name-attributes">
+        <div class="name wrapper-case">
+          <div class="side right"></div>
+          <div class="side down"></div>
+          <div class="side left"></div>
+          <div class="angle br"></div>
+          <div class="angle bl"></div>
+          <div class="content">
+            <div class="input">
+              <input class="info-value" name="name" type="text" value="{{data.name}}"
+                placeholder="{{localize ANARCHY.actor.actorName}}" />
+            </div>
+          </div>
+          <div class="awarness">
+            <div class="emerged">
+              EMERGER
+            </div>
+            <div class="awaken">
+              EVEILLER
+            </div>
+          </div>
+        </div>
+        <div class="attributes">
+          {{> "systems/anarchy/templates/actor/character-enhanced/parts/attributes.hbs"}}
+        </div>
+      </div>
+    </header>
+  </div>
+</form>

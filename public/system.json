@@ -29,19 +29,28 @@
   "flags": {
     "allowBugReporter": true,
     "hotReload": {
-      "extensions": ["css", "hbs", "html"],
-      "paths": ["style/", "templates/"]
+      "extensions": [
+        "css",
+        "hbs",
+        "html"
+      ],
+      "paths": [
+        "style/",
+        "templates/"
+      ]
     }
   },
   "license": "LICENSE.md",
-  "templateVersion": 5,
   "scripts": [],
-  "esmodules": ["module/start.js"],
+  "esmodules": [
+    "index.mjs"
+  ],
   "styles": [
     "style/anarchy.css",
     "style/anarchy-shadowrun.css",
     "style/anarchy-dark.css",
-    "style/anarchy-darkglass.css"
+    "style/anarchy-darkglass.css",
+    "style/anarchy-compiled.css"
   ],
   "languages": [
     {
@@ -63,7 +72,9 @@
       "module": "anarchy",
       "path": "./packs/macros.db",
       "type": "Macro",
-      "tags": ["macro"]
+      "tags": [
+        "macro"
+      ]
     },
     {
       "name": "gm-info",
@@ -72,21 +83,27 @@
       "module": "anarchy",
       "path": "./packs/gm-info.db",
       "type": "JournalEntry",
-      "tags": ["journal"]
+      "tags": [
+        "journal"
+      ]
     },
     {
       "name": "manual-fr",
       "label": "Manuel SR Anarchy (FR)",
       "type": "JournalEntry",
       "path": "./packs/manual-fr.db",
-      "tags": ["documentation"]
+      "tags": [
+        "documentation"
+      ]
     }
   ],
-  "system": [],
   "relationships": {},
   "socket": true,
   "protected": false,
-  "grid": { "distance": 1, "units": "m" },
+  "grid": {
+    "distance": 1,
+    "units": "m"
+  },
   "primaryTokenAttribute": "monitors.physical",
   "secondaryTokenAttribute": "monitors.stun"
 }

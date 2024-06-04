@@ -171,6 +171,7 @@
     "actor": {
       "characterSheet": "Character sheet",
       "characterTabbedSheet": "Character sheet (tabs)",
+      "characterEnhancedSheet": "Character enhanced sheet (tabs)",
       "vehicleSheet": "Vehicle sheet",
       "deviceSheet": "Device sheet",
       "spriteSheet": "Sprite sheet",

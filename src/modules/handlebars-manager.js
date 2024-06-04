@@ -31,6 +31,10 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/contacts.hbs',
   'systems/anarchy/templates/actor/parts/gear.hbs',
   'systems/anarchy/templates/actor/parts/gears.hbs',
+  // character enhanced
+  'systems/anarchy/templates/actor/character-enhanced/metatype.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/parts/attribute.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/parts/attributes.hbs',
   // actor common
   'systems/anarchy/templates/actor/parts/attributebutton.hbs',
   'systems/anarchy/templates/actor/parts/attributebuttons.hbs',

@@ -51,6 +51,7 @@ import { HUDShortcuts } from './token/hud-shortcuts.js';
 import { CombatManager } from './combat/combat-manager.js';
 import { RollManager } from './roll/roll-manager.js';
 import { CharacterTabbedSheet } from './actor/character-tabbed-sheet.js';
+import { CharacterEnhancedSheet } from './actor/character-enhanced-sheet.js';
 import { Modifiers } from './modifiers/modifiers.js';
 import { ActorDamageManager } from './actor/actor-damage.js';
 import { AttributeActions } from './attribute-actions.js';
@@ -152,6 +153,11 @@ export class AnarchySystem {
     });
     Actors.registerSheet(SYSTEM_NAME, CharacterTabbedSheet, {
       label: game.i18n.localize(ANARCHY.actor.characterTabbedSheet),
+      makeDefault: false,
+      types: ['character']
+    });
+    Actors.registerSheet(SYSTEM_NAME, CharacterEnhancedSheet, {
+      label: game.i18n.localize(ANARCHY.actor.characterEnhancedSheet),
       makeDefault: false,
       types: ['character']
     });

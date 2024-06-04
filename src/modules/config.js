@@ -171,6 +171,7 @@ export const ANARCHY = {
     actor: {
         characterSheet: 'ANARCHY.actor.characterSheet',
         characterTabbedSheet: 'ANARCHY.actor.characterTabbedSheet',
+        characterEnhancedSheet: 'ANARCHY.actor.characterEnhancedSheet',
         vehicleSheet: 'ANARCHY.actor.vehicleSheet',
         deviceSheet: 'ANARCHY.actor.deviceSheet',
         spriteSheet: 'ANARCHY.actor.spriteSheet',
