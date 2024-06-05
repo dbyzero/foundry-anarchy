@@ -1,3 +1,4 @@
+import { LOG_HEAD } from "./constants.js";
 import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
@@ -33,8 +34,9 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/parts/gears.hbs',
   // character enhanced
   'systems/anarchy/templates/actor/character-enhanced/metatype.hbs',
-  'systems/anarchy/templates/actor/character-enhanced/parts/attribute.hbs',
-  'systems/anarchy/templates/actor/character-enhanced/parts/attributes.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/attributes.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/capacity.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/attribute.hbs',
   // actor common
   'systems/anarchy/templates/actor/parts/attributebutton.hbs',
   'systems/anarchy/templates/actor/parts/attributebuttons.hbs',
@@ -109,7 +111,19 @@ export class HandlebarsManager {
 
   async onReady() {
     this.registerBasicHelpers();
-    await loadTemplates(Misc.distinct(HBS_PARTIAL_TEMPLATES));
+    await loadTemplates(Misc.distinct(HBS_PARTIAL_TEMPLATES))
+  }
+
+  async reloadAnarchyTemplate(file) {
+    console.log(LOG_HEAD + 'Reloading template ' + file);
+
+    // refresh template
+    Handlebars.unregisterPartial(file);
+    await loadTemplates([file]);
+
+    // render all Dialogs
+    const windowKeys = Object.keys(ui.windows);
+    windowKeys.forEach(window => ui.windows[window].render());
   }
 
   registerBasicHelpers() {

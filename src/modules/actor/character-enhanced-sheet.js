@@ -11,7 +11,7 @@ export class CharacterEnhancedSheet extends CharacterNPCSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      width: 780,
+      width: 800,
       height: 700,
     });
   }

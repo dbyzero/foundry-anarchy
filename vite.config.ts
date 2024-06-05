@@ -1,4 +1,27 @@
-import type { UserConfig } from 'vite';
+import type { PluginOption, UserConfig } from 'vite';
+import { visualizer } from 'rollup-plugin-visualizer';
+
+
+function HbsHmr(): PluginOption {
+    return {
+        name: 'hbs-hmr',
+        enforce: 'post',
+        // HMR
+        handleHotUpdate({ file, server }) {
+            if (file.endsWith('.hbs')) {
+                // window.Hooks.callAll('rereloadTemplate');
+                console.log('reloading hbs file...');
+
+                server.ws.send(
+                    'reloadTemplate',
+                    file.replace(__dirname + '/public', 'systems/anarchy')
+                );
+            }
+        },
+    }
+}
+
+
 const config: UserConfig = {
     publicDir: 'public',
     base: '/systems/anarchy/',
@@ -21,9 +44,16 @@ const config: UserConfig = {
             name: 'anarchy',
             entry: 'src/start.js',
             formats: ['es'],
-            fileName: 'index'
-        }
+            fileName: 'index',
+        },
     },
+    plugins: [
+        HbsHmr(),
+        visualizer({
+            gzipSize: true,
+            template: "treemap",
+        })
+    ]
 }
 
 export default config;
