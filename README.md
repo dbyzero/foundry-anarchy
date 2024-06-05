@@ -47,15 +47,15 @@ If you need to build the project for production, use:
 npx vite build
 ```
 
-This command compiles your JavaScript and assets into static files ready for production deployment.
+This command compiles your JavaScript and assets into static files ready for production deployment. These files are in `./dist` directory.
 
 ## Foundry Configuration
 
-Ensure Foundry is running locally on port 12580 to allow seamless interaction between the Vite server and Foundry.
+Ensure Foundry is running locally on port 30000 to allow seamless interaction between the Vite server and Foundry.
 
 ```
 # Start Foundry command (Example)
-node resources/app/main.js --dataPath=<path_to_foundry_data>/foundrydata --port=12580
+node resources/app/main.js --dataPath=<path_to_foundry_data>/foundrydata --port=30000
 ```
 
 ## Note on Vite Server and Foundry Interaction

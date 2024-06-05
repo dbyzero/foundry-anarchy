@@ -6,9 +6,9 @@ const config: UserConfig = {
         port: 30001,
         open: true,
         proxy: {
-            '^(?!/systems/anarchy)': 'http://localhost:12580/',
+            '^(?!/systems/anarchy)': 'http://localhost:30000/',
             '/socket.io': {
-                target: 'ws://localhost:12580',
+                target: 'ws://localhost:30000',
                 ws: true,
             },
         }
