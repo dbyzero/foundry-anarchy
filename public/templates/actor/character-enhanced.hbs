@@ -1,52 +1,40 @@
 <form class="{{options.cssClass}} character-enhanced wrapper-case" autocomplete="off">
-  <div class="side up"></div>
-  <div class="side right"></div>
-  <div class="side down"></div>
-  <div class="side left"></div>
-  <div class="angle tl"></div>
-  <div class="angle tr"></div>
-  <div class="angle br"></div>
-  <div class="angle bl"></div>
+  {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
   <div class="content">
     <header>
       <div class="avatar wrapper-case">
         <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" data-tooltip="{{data.name}}" />
-        <div class="side up"></div>
-        <div class="side down"></div>
-        <div class="side right"></div>
-        <div class="angle tl"></div>
-        <div class="angle bl"></div>
-        <div class="angle br"></div>
-        <div class="metatype wrapper-case">
-          <div class="side up"></div>
-          <div class="side left"></div>
-          <div class="angle tl"></div>
-          <div class="angle tr"></div>
-          <div class="angle bl"></div>
-          {{> "systems/anarchy/templates/actor/character-enhanced/metatype.hbs"}}
-        </div>
+        {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
+        {{> "systems/anarchy/templates/actor/character-enhanced/metatype.hbs"}}
       </div>
       <div class="name-attributes">
         <div class="name wrapper-case">
-          <div class="side right"></div>
-          <div class="side down"></div>
-          <div class="side left"></div>
-          <div class="angle br"></div>
-          <div class="angle bl"></div>
+          {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
           <div class="content">
             <div class="input">
               <input class="info-value" name="name" type="text" value="{{data.name}}"
                 placeholder="{{localize ANARCHY.actor.actorName}}" />
             </div>
           </div>
-          <div class="awarness">
-            {{> "systems/anarchy/templates/actor/character-enhanced/capacity.hbs"}}
-          </div>
+          {{> "systems/anarchy/templates/actor/character-enhanced/capacity.hbs"}}
         </div>
-        <div class="attributes">
-          {{> "systems/anarchy/templates/actor/character-enhanced/attributes.hbs"}}
-        </div>
+        {{> "systems/anarchy/templates/actor/character-enhanced/attributes.hbs"}}
       </div>
+      {{> "systems/anarchy/templates/actor/character-enhanced/karma.hbs"}}
     </header>
+    <section class="roleplay">
+      <div class="key word">
+        {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
+        KEYWORD
+      </div>
+      <div class="quote">
+        {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
+        QUOTE
+      </div>
+      <div class="behavior">
+        {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
+        BEHAVIOT
+      </div>
+    </section>
   </div>
 </form>

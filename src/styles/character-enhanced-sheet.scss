@@ -5,6 +5,7 @@
                 height: 150px;
                 display: grid;
                 grid-template-columns: 150px 1fr;
+                position: relative;
 
                 .avatar {
                     position: relative;
@@ -12,6 +13,9 @@
                     margin-top: -6px;
                     margin-left: -6px;
 
+                    >.angle.tr {
+                        display: none;
+                    }
 
                     .metatype {
                         position: absolute;
@@ -48,6 +52,12 @@
                         margin-right: -12px;
                         padding-top: 0px;
                         position: relative;
+
+                        >.side.up,
+                        >.angle.tr,
+                        >.angle.tl {
+                            display: none;
+                        }
 
                         >.right,
                         >.left {
@@ -139,6 +149,27 @@
                                     height: 22px;
                                 }
                             }
+                        }
+                    }
+                }
+
+                .karma {
+                    position: absolute;
+                    right: 4px;
+                    bottom: -36px;
+                    font-size: 12px;
+
+                    .karma-row {
+                        display: grid;
+
+                        grid-template-columns: 1fr 4px 1fr;
+                        align-items: center;
+                        justify-content: center;
+                        justify-items: center;
+                        background-color: white;
+
+                        input {
+                            text-align: center;
                         }
                     }
                 }

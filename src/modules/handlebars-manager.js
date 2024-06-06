@@ -37,6 +37,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/character-enhanced/attributes.hbs',
   'systems/anarchy/templates/actor/character-enhanced/capacity.hbs',
   'systems/anarchy/templates/actor/character-enhanced/attribute.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/karma.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/hexabox.hbs',
   // actor common
   'systems/anarchy/templates/actor/parts/attributebutton.hbs',
   'systems/anarchy/templates/actor/parts/attributebuttons.hbs',

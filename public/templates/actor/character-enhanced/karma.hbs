@@ -1,0 +1,17 @@
+<div class="karma wrapper-case">
+  {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
+  <div class="karma-row">
+    <label class="info-label" for="system.counters.karma.value">
+      {{localize 'ANARCHY.actor.counters.karma'}}
+    </label> /
+    <label class="info-label" for="system.counters.karma.total">
+      {{localize 'ANARCHY.actor.counters.karmaTotal'}}
+    </label>
+  </div>
+  <div class="karma-row">
+    <input class="info-value" type="number" data-dtype="Number" name="system.counters.karma.value"
+      value="{{system.counters.karma.value}}" /> /
+    <input class="info-value" type="number" data-dtype="Number" name="system.counters.karma.total"
+      value="{{system.counters.karma.total}}" />
+  </div>
+</div>
