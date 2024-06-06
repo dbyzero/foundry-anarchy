@@ -58,6 +58,12 @@ Ensure Foundry is running locally on port 30000 to allow seamless interaction be
 node resources/app/main.js --dataPath=<path_to_foundry_data>/foundrydata --port=30000
 ```
 
+You need to link `<foundrydata>/systems/anarchy` to the `public` directory of your repository.
+
+When Foundry starts in the backend (Node.js), it will detect the necessary files in the public directory of the repository (these files are `systems/anarchy/index.mjs` and `systems/anarchy/style.css`).
+
+When you connect to Foundry from a browser (frontend), Vite will intercept all requests and redirect them to Foundry, except for requests to `systems/anarchy`. These files will be served by the Vite project.
+
 ## Note on Vite Server and Foundry Interaction
 
 The Vite server is configured to handle specific API calls (e.g., to **systems/anarchy**) directly, enhancing development efficiency. All other requests are forwarded to the local Foundry server, ensuring that the environment replicates the production setup as closely as possible.
