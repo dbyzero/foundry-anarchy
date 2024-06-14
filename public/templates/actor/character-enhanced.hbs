@@ -1,14 +1,14 @@
-<form class="{{options.cssClass}} character-enhanced wrapper-case" autocomplete="off">
+<form class="{{options.cssClass}} character-enhanced wrapper-hexabox" autocomplete="off">
   {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
   <div class="content">
     <header>
-      <div class="avatar wrapper-case">
+      <div class="avatar wrapper-hexabox">
         <img class="anarchy-img profile-img" src="{{data.img}}" data-edit="img" data-tooltip="{{data.name}}" />
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
         {{> "systems/anarchy/templates/actor/character-enhanced/metatype.hbs"}}
       </div>
       <div class="name-attributes">
-        <div class="name wrapper-case">
+        <div class="name wrapper-hexabox">
           {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
           <div class="content">
             <div class="input">
@@ -20,21 +20,48 @@
         </div>
         {{> "systems/anarchy/templates/actor/character-enhanced/attributes.hbs"}}
       </div>
-      {{> "systems/anarchy/templates/actor/character-enhanced/karma.hbs"}}
     </header>
     <section class="roleplay">
-      <div class="key word">
+      <div class="keyword section-roleplay {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'roleplay'}}closed{{/ifTabClosed}}">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
-        KEYWORD
+        {{> "systems/anarchy/templates/actor/character-enhanced/words.hbs" wordType='keywords' minValues=5
+        values=system.keywords}}
       </div>
-      <div class="quote">
+      <div class="quote wrapper-hexabox click-section section-roleplay {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'roleplay'}}closed{{/ifTabClosed}}" data-class="section-roleplay">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
-        QUOTE
+        <div class="center">
+          <div class="label">
+            {{> "systems/anarchy/templates/actor/character-enhanced/words.hbs" wordType='cues' minValues=6
+            values=system.cues}}
+          </div>
+        </div>
       </div>
-      <div class="behavior">
+      <div class="behavior section-roleplay {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'roleplay'}}closed{{/ifTabClosed}}">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
-        BEHAVIOT
+        {{> "systems/anarchy/templates/actor/character-enhanced/words.hbs" wordType='dispositions' minValues=5
+        values=system.dispositions}}
       </div>
+    </section>
+    <section class="monitors">
+      {{> "systems/anarchy/templates/actor/character-enhanced/monitors.hbs"}}
+    </section>
+    <section class="actions">
+      {{> "systems/anarchy/templates/actor/character-enhanced/actions.hbs"}}
+    </section>
+    <section class="skills">
+      {{> "systems/anarchy/templates/actor/character-enhanced/skills.hbs"}}
+    </section>
+    <section class="shadowamps">
+      {{> "systems/anarchy/templates/actor/character-enhanced/shadowamps.hbs"}}
+    </section>
+    <section class="qualities">
+      {{> "systems/anarchy/templates/actor/character-enhanced/qualities.hbs"}}
+    </section>
+    <section class="equipments">
+      {{> "systems/anarchy/templates/actor/character-enhanced/equipments.hbs"}}
+    </section>
+    <section class="story">
+      {{> "systems/anarchy/templates/actor/character-enhanced/story.hbs"}}
     </section>
   </div>
 </form>

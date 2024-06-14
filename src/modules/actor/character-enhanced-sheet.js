@@ -15,4 +15,17 @@ export class CharacterEnhancedSheet extends CharacterNPCSheet {
       height: 700,
     });
   }
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    const actorClass = `#CharacterEnhancedSheet-Actor-${this.actor._id}`;
+
+    $(`${actorClass} .click-section`).on("click", function() {
+      const sectionClass = ($(this).data('class'));
+      const sectionClassName = `${actorClass} .${sectionClass}`;
+      const jqueryElement = $(sectionClassName);
+      jqueryElement.toggleClass('closed');
+      localStorage.setItem(sectionClassName, jqueryElement.hasClass('closed') ? 'closed' : null);
+    });
+  }
 }

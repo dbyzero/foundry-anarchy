@@ -1,3 +1,4 @@
+import { AnarchyBaseActor } from "./actor/base-actor.js";
 import { LOG_HEAD } from "./constants.js";
 import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
@@ -39,6 +40,40 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/actor/character-enhanced/attribute.hbs',
   'systems/anarchy/templates/actor/character-enhanced/karma.hbs',
   'systems/anarchy/templates/actor/character-enhanced/hexabox.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/words.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/skills.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/skill.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/shadowamp.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/shadowamps.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/quality.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/qualities.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/monitors.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/armor.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/stun.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/physical.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/checkbar.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/check-element.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/anarchy-actor.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/social-credibility.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/social-rumor.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/edge.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/actions.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/attributebutton.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/attributebuttons.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/gears.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/gear.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/cyberdecks.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/cyberdeck.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/weapons.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/weapon.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/damage-code.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/damage-armor.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/story.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/equipments.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/contact.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/contacts.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/gmnotes.hbs',
+  'systems/anarchy/templates/actor/character-enhanced/description.hbs',
   // actor common
   'systems/anarchy/templates/actor/parts/attributebutton.hbs',
   'systems/anarchy/templates/actor/parts/attributebuttons.hbs',
@@ -116,18 +151,6 @@ export class HandlebarsManager {
     await loadTemplates(Misc.distinct(HBS_PARTIAL_TEMPLATES))
   }
 
-  async reloadAnarchyTemplate(file) {
-    console.log(LOG_HEAD + 'Reloading template ' + file);
-
-    // refresh template
-    Handlebars.unregisterPartial(file);
-    await loadTemplates([file]);
-
-    // render all Dialogs
-    const windowKeys = Object.keys(ui.windows);
-    windowKeys.forEach(window => ui.windows[window].render());
-  }
-
   registerBasicHelpers() {
     Handlebars.registerHelper('concat', (...args) => Misc.join(args.slice(0, -1)));
     Handlebars.registerHelper('substring', (str, from, to) => str?.substring(from, to));
@@ -144,6 +167,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('divint', Misc.divint);
     Handlebars.registerHelper('divup', Misc.divup);
     Handlebars.registerHelper('sum', (v1, v2) => v1 + v2);
+    Handlebars.registerHelper('times', (v1, v2) => v1 * v2);
     Handlebars.registerHelper('diff', (v1, v2) => v1 - v2);
     Handlebars.registerHelper('min', (v1, v2) => Math.min(v1, v2));
     Handlebars.registerHelper('max', (v1, v2) => Math.max(v1, v2));
@@ -157,6 +181,20 @@ export class HandlebarsManager {
     Handlebars.registerHelper('iconD6', Icons.iconD6);
     Handlebars.registerHelper('getActor', id => game.actors.get(id));
     Handlebars.registerHelper('actorHasFavorite', (actorId, options) => HandlebarsManager.checkHasFavorite(actorId, options));
+    Handlebars.registerHelper('padWordListToMin', AnarchyBaseActor.padWordListToMin);
+    Handlebars.registerHelper('sortSkills', AnarchyBaseActor.sortSkills);
+    Handlebars.registerHelper('sortShadowamps', AnarchyBaseActor.sortShadowamps);
+    Handlebars.registerHelper('sortQualities', AnarchyBaseActor.sortQualities);
+    Handlebars.registerHelper('range', function (min, max) { let array = []; for (let i = min; i <= max; i++) { array.push(i); } return array; });
+    Handlebars.registerHelper('ifGte', function (value, threshold, options) { if (value >= threshold) { return options.fn(this); } else { return options.inverse(this); } });
+    Handlebars.registerHelper('ifTabClosed', function(prefix, id, sectionName, option) {
+      const tabName = `${prefix}${id} .section-${sectionName}`;
+      const isTabClosed = localStorage.getItem(tabName) === "closed";
+      if (isTabClosed) {
+        return option.fn(this);
+      }
+      return option.inverse(this);
+    });
   }
 
   static hbsForLoop(start, end, options) {

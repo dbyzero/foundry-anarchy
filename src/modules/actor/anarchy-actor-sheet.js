@@ -48,24 +48,29 @@ export class AnarchyActorSheet extends ActorSheet {
 
     // items standard actions (add/edit/activate/delete)
     html.find('.click-item-add').click(async event => {
+      event.stopPropagation();
       await this.createNewItem(this.getEventItemType(event));
     });
 
     html.find('.click-item-edit').click(async event => {
+      event.stopPropagation();
       this.getEventItem(event)?.sheet.render(true);
     });
 
     html.find('.click-item-activate').click(async event => {
+      event.stopPropagation();
       const item = this.getEventItem(event)
       const inactive = item.system.inactive;
       await item.update({ 'system.inactive': !inactive })
     })
 
     html.find('a.click-matrix-connectionMode').click(async event => {
+      event.stopPropagation();
       await this.actor.nextConnectionMode(this.getEventItem(event))
     })
 
     html.find('.click-item-delete').click(async event => {
+      event.stopPropagation();
       const item = this.getEventItem(event);
       ConfirmationDialog.confirmDeleteItem(item, async () => {
         await this.actor.deleteEmbeddedDocuments('Item', [item.id]);
@@ -73,6 +78,7 @@ export class AnarchyActorSheet extends ActorSheet {
     });
 
     html.find('.click-favorite').click(async event => {
+      event.stopPropagation();
       this.onClickFavorite({
         skillId: $(event.currentTarget).attr('data-skill-id'),
         specialization: $(event.currentTarget).attr('data-specialization'),
@@ -84,17 +90,21 @@ export class AnarchyActorSheet extends ActorSheet {
 
     // ownership management
     html.find('.click-owner-actor-unlink').click(async event => {
+      event.stopPropagation();
       this.detachFromOwner(this.actor.getOwnerActor(), this.actor);
     });
     html.find('.click-owned-actor-view').click(async event => {
+      event.stopPropagation();
       this.getEventOwnedActor(event)?.sheet.render(true);
     });
     html.find('.click-owned-actor-unlink').click(async event => {
+      event.stopPropagation();
       this.detachFromOwner(this.actor, this.getEventOwnedActor(event));
     });
 
     // counters & monitors
     html.find('a.click-checkbar-element').click(async event => {
+      event.stopPropagation();
       const item = this.getEventItem(event);
       const handler = item ?? this.actor;
       const monitor = this.getEventMonitorCode(event);
@@ -110,17 +120,20 @@ export class AnarchyActorSheet extends ActorSheet {
       );
     });
     html.find('a.click-add-mark-actor').click(async event => {
+      event.stopPropagation();
       this.onClickAddMark();
     });
 
     // rolls
     html.find('.click-skill-roll').click(async event => {
+      event.stopPropagation();
       this.actor.rollSkill(
         this.getEventItem(event),
         this.getEventSkillSpecialization(event));
     });
 
     html.find('.click-roll-attribute').click(async event => {
+      event.stopPropagation();
       const handler = this.getEventItem(event) ?? this.actor;
       handler.rollAttribute(
         $(event.currentTarget).closest('.anarchy-attribute').attr('data-attribute')
@@ -128,10 +141,12 @@ export class AnarchyActorSheet extends ActorSheet {
     });
 
     html.find('.click-roll-attribute-action').click(async event => {
+      event.stopPropagation();
       this.actor.rollAttributeAction(this.getEventActionCode(event));
     });
 
     html.find('.click-weapon-roll').click(async event => {
+      event.stopPropagation();
       this.actor.rollWeapon(this.getEventItem(event));
     });
   }

@@ -1,4 +1,15 @@
 /** common definitions **/
+@font-face {
+  font-family: "Impact";
+  src: url("../fonts/Impact.ttf");
+}
+
+/** common definitions **/
+@font-face {
+  font-family: "BebasNeue";
+  src: url("../fonts/BebasNeue.ttf");
+}
+
 :root {
   --transparent: hsla(0, 0%, 0%, 0.0);
   --background-inactive: repeating-linear-gradient(60deg,
@@ -652,6 +663,7 @@ div.define-item-type.item div.item-controls {
 :is(.npc-sheet, .device-sheet) .items-group .items-group-list div.item.anarchy-skill {
   min-height: fit-content;
 }
+
 :is(.npc-sheet, .device-sheet) .items-group .items-group-list div.item.anarchy-skill .item-controls {
   position: absolute;
   left: calc(100% - 48px);

@@ -91,12 +91,6 @@ export class AnarchySystem {
       weapon: WeaponItem
     }
 
-    // This is used in dev mode to hot reload templates
-    if (import.meta.hot) {
-      import.meta.hot.on('reloadTemplate', (file) => {
-        this.handlebarsManager.reloadAnarchyTemplate(file);
-      })
-    }
     this.hooks = new HooksManager();
     this.styles = new Styles();
     this.handlebarsManager = new HandlebarsManager();

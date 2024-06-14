@@ -11,7 +11,7 @@ export const DEFAULT_CHECKBARS = {
   armor: {
     path: 'system.monitors.armor.value',
     monitor: it => it.system.monitors.armor,
-    iconChecked: Icons.fontAwesome('fas fa-skull-crossbones'),
+    iconChecked: Icons.fontAwesome('fas fa-shield-alt'),
     iconUnchecked: Icons.fontAwesome('fas fa-shield-alt'),
     iconHit: Icons.fontAwesome('fas fa-bahai'),
     resource: MONITORS.armor,

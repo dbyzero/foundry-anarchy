@@ -181,6 +181,7 @@
       "genre": "Genre",
       "noMetatype": "No metatype, drag it!",
       "celebrity": "Celebrity",
+      "famous": "Famous",
       "tabs": {
         "main": "Character",
         "equipment": "Equipment",
@@ -198,6 +199,7 @@
       "counters": {
         "essence": "Essence",
         "karma": "Karma",
+        "karmaUnused": "Unused",
         "karmaTotal": "Total",
         "edge": "Edge",
         "anarchy": "Anarchy",
@@ -314,7 +316,9 @@
         "weapon": "Weapons",
         "gear": "Gears",
         "cyberdeck": "Cyberdecks",
-        "contact": "Contacts"
+        "contact": "Contacts",
+        "action": "Actions",
+        "monitor": "Monitors"
       }
     },
     "capacity": {
