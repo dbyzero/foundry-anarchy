@@ -20,16 +20,12 @@
               {{{system.description}}}
             </span>
             {{/if}}
-            <div class="weapon-drain">
-              {{#if hasDrain}}
-              {{system.drain}}
-              {{/if}}
-            </div>
           </div>
         </div>
       </div>
       <div class="weapon-stats">
         <div>
+          <span class="weapon-dmg">
           {{>
           'systems/anarchy/templates/actor/character-enhanced/damage-code.hbs'
           damageAttribute=system.damageAttribute
@@ -39,9 +35,16 @@
           monitor=system.monitor
           armor=(weaponArmorMode system.monitor system.noArmor)
           }}
+          </span>
           {{!-- <div>
             {{localize (concat 'ANARCHY.area.' (either system.area 'none'))}}
           </div> --}}
+          {{#if hasDrain}}
+          <spam class="weapon-drain">
+            {{localize 'ANARCHY.item.weapon.drain'}}:
+          </spam>
+          {{system.drain}}
+          {{/if}}
         </div>
         <div class="weapon-range">
           {{either system.range.short 'OK'}}

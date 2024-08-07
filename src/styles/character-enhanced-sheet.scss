@@ -487,10 +487,13 @@
                                             display: grid;
                                             flex-direction: row;
                                             grid-template-columns: 1fr 1fr;
-                                            font-family: "BebasNeue";
 
                                             .weapon-range {
                                                 text-wrap: nowrap;
+                                            }
+
+                                            .weapon-dmg{
+                                                font-family: "BebasNeue";
                                             }
                                         }
                                     }

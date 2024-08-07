@@ -759,11 +759,11 @@ ul.weapon-list {
 }
 
 .weapon-list .weapon-column.weapon-controls {
-  width: 4rem;
+  width: 5rem;
 }
 
 .weapon-list .weapon-column.weapon-txt {
-  width: calc(100% - 20rem - 32px);
+  width: calc(100% - 25rem - 32px);
 }
 
 .weapon-list .weapon-column.weapon-summary {

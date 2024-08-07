@@ -9,8 +9,9 @@
         damage=system.damage
         monitor=system.monitor
         armor=(weaponArmorMode system.monitor system.noArmor)
-      }}
-    {{> 'systems/anarchy/templates/actor/parts/weapon-range.hbs'}}
+      }},
+      {{> 'systems/anarchy/templates/actor/parts/weapon-range.hbs'}}
+      {{#if hasDrain}}, {{localize 'ANARCHY.item.weapon.drain'}}: {{system.drain}}{{/if}}
     </a>
   </div>
   <div class="item-controls weapon-column weapon-controls">
@@ -18,6 +19,7 @@
       isFavorite=(actorHasFavorite @root.actor.id id=_id type=type)
       weapon=this
     }}
+    {{> 'systems/anarchy/templates/common/item-control-activate.hbs'}}
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
   </div>
 
