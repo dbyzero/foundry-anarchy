@@ -50,7 +50,7 @@
   height: 57px;
 }
 
-#pause>img {
+#pause > img {
   content: url(anarchy-pause.webp);
   height: 192px;
   width: 192px;
@@ -78,6 +78,10 @@ a.favorite-control i,
 a.item-control i,
 a.item-control img {
   font-size: small;
+}
+
+div a.view-mode-control {
+  font-size: large
 }
 
 img.anarchy-img {

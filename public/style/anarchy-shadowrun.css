@@ -68,8 +68,6 @@
 #gm-manager.style-anarchy-shadowrun a:hover label,
 .style-anarchy-shadowrun :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover,
 .style-anarchy-shadowrun :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
-.style-anarchy-shadowrun :is(a.item-control, .attribute-box):hover,
-.style-anarchy-shadowrun :is(a.item-control, .attribute-box):hover :is(i, label, a),
 .style-anarchy-shadowrun .item :is(a:hover, a.item-controls:hover i, a:hover label) {
   color: var(--anarchy-color-highlight);
   text-shadow: 0 0 4px var(--anarchy-tint-hover);
@@ -221,6 +219,7 @@
   color: var(--anarchy-color-text-hyperlink);
 }
 
+.style-anarchy-shadowrun a.view-mode-control i,
 .style-anarchy-shadowrun a.item-control i,
 .style-anarchy-shadowrun a.item-control img {
   color: var(--anarchy-color-controls);

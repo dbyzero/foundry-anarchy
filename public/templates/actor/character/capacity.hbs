@@ -1,5 +1,6 @@
 <div class="info-label">
-  <select class="info-value character-capacity" name="system.capacity">
+  <select class="info-value character-capacity" name="system.capacity"
+  {{#if @root.options.viewMode}}disabled{{/if}}>
     {{#select system.capacity}}
     {{> 'systems/anarchy/templates/common/enum-value-label.hbs' entries=ENUMS.capacities noEmpty=true}}
     {{/select}}

@@ -3,9 +3,11 @@
   <label class="info-label define-item-type anarchy-metatype"
     data-item-id="{{metatype._id}}" data-item-type="metatype">
     <span>{{metatype.name}}</span>
+    {{#unless @root.options.viewMode}}
     <a class="item-control click-item-delete" data-tooltip="{{localize ANARCHY.common.del}}">
       {{{iconFA 'fas fa-trash'}}}
     </a>
+    {{/unless}}
   </label>
   {{/with}}
 {{else}}
@@ -13,3 +15,4 @@
     data-item-type="metatype">{{localize ANARCHY.actor.noMetatype}}
   </label>
 {{/if}}
+

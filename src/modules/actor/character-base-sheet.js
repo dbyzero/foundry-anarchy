@@ -18,21 +18,34 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
   }
 
   getData(options) {
+    if (this.viewMode == undefined) {
+      this.viewMode = true
+    }
     const essence = this.actor.computeEssence();
-    let hbsData = foundry.utils.mergeObject(
+    const hbsData = foundry.utils.mergeObject(
       super.getData(options),
       {
         essence: {
           value: essence,
           adjust: this.actor.computeMalusEssence(essence)
+        },
+        options: {
+          viewMode: this.viewMode
         }
-
       });
     return hbsData;
   }
 
+  toggleViewMode() {
+    console.log('this');
+    this.viewMode = !this.viewMode
+    this.render()
+  }
+
   activateListeners(html) {
     super.activateListeners(html);
+
+    html.find('.click-toggle-view-mode').click(async event => this.toggleViewMode())
 
     // cues, dispositions, keywords
     html.find('.click-word-add').click(async event => {

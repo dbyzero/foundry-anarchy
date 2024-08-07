@@ -7,7 +7,7 @@
       <div class="passport-column">
         <div class="passport-details-row">
           <div class="passport-detail">
-            <input class="info-value" name="name" type="text" value="{{data.name}}" placeholder="{{localize ANARCHY.actor.actorName}}"/>
+            {{> "systems/anarchy/templates/actor/character/name.hbs"}}
           </div>
           <div class="passport-detail">
             {{> "systems/anarchy/templates/actor/character/metatype.hbs"}}
@@ -42,7 +42,7 @@
         {{> "systems/anarchy/templates/monitors/physical.hbs"}}
         {{> "systems/anarchy/templates/monitors/stun.hbs"}}
       </div>
-
+      {{> "systems/anarchy/templates/common/view-mode.hbs"}}
     </div>
       <div class="flexrow">
         <div class="section-attributes anarchy-attributes flexrow">

@@ -69,12 +69,8 @@
 
 #gm-manager.style-dark a:hover,
 #gm-manager.style-dark a:hover label,
-.style-dark :is(.anarchy-button, a, .attribute-box):hover,
-.style-dark :is(.anarchy-button, a, .attribute-box, .a):hover :is(i, label, a, img),
-.style-dark :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover,
-.style-dark :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
-.style-dark :is(a.item-control, .attribute-box):hover,
-.style-dark :is(a.item-control, .attribute-box):hover :is(i, label, a),
+.style-dark :is(.anarchy-button, a.item-control, a.view-mode-control, .attribute-box, .a.click-checkbar-element):hover,
+.style-dark :is(.anarchy-button, a.item-control, a.view-mode-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
 .style-dark .item :is(a:hover, a.item-controls:hover i, a:hover label) {
   color: var(--dark-color-highlight);
   text-shadow: 0 0 4px var(--dark-tint-hover);
@@ -234,6 +230,7 @@
   color: var(--dark-color-favorite);
 }
 
+.style-dark a.view-mode-control i,
 .style-dark a.item-control i,
 .style-dark a.item-control img {
   color: var(--dark-color-controls);

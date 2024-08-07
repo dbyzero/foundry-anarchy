@@ -1,7 +1,6 @@
-<div class="define-item-type item anarchy-skill {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}"
-  data-item-type="skill" draggable="true">
+<div class="define-item-type item anarchy-skill {{#if system.inactive}}inactive{{/if}}" data-item-id="{{_id}}" data-item-type="skill" draggable="true">
   {{#if img}}
-  <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" data-tooltip="{{name}}" />
+  <img class="anarchy-img item-img" src="{{img}}" alt="{{name}}" data-tooltip="{{name}}"/>
   {{/if}}
   {{#if (or (eq system.code 'knowledge') (eq system.attribute 'knowledge')) }}
   <span data-tooltip="{{localize 'ANARCHY.attributes.knowledge'}}">
@@ -9,30 +8,29 @@
     <label>{{name}}</label>
   </span>
   {{else}}
-  <div class="flexcol">
-    <span class="flexrow">
-      <a class="click-skill-roll">
-        <label>
-          {{name}}: {{system.value}} + {{localizeAttribute system.attribute}}
-        </label>
-      </a>
-    </span>
-    {{#if system.specialization}}
-    <span class="flexrow">
-      <a class="click-skill-roll" data-item-specialization="{{system.specialization}}">
-        <label>
-          ({{system.specialization}}:
-          {{sum system.value 2}} + {{localizeAttribute system.attribute}})
-        </label>
-      </a>
-    </span>
-    {{/if}}
-  </div>
+    <div class="flexcol">
+      <span class="flexrow">
+        <a class="click-skill-roll">
+          <label data-tooltip="{{localizeAttribute system.attribute}} + {{system.value}}">
+            {{name}}: {{skillValue @root.actor _id}}
+          </label>
+        </a>
+      </span>
+      {{#if system.specialization}}
+        <span class="flexrow">
+          <a class="click-skill-roll" data-item-specialization="{{system.specialization}}">
+            <label data-tooltip="{{localizeAttribute system.attribute}} + {{system.value}} + 2">
+              ({{system.specialization}}: {{specializationValue @root.actor _id}})
+            </label>
+          </a>
+        </span>
+      {{/if}}
+    </div>
   {{/if}}
   <div class="item-controls">
     {{> 'systems/anarchy/templates/common/favorite.hbs'
-    isFavorite=(actorHasFavorite @root.actor.id id=_id type=type)
-    skill=this
+      isFavorite=(actorHasFavorite @root.actor.id id=_id type=type)
+      skill=this
     }}
     {{> 'systems/anarchy/templates/common/item-controls.hbs'}}
   </div>

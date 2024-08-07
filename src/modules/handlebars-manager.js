@@ -19,6 +19,8 @@ const HBS_PARTIAL_TEMPLATES = [
   'systems/anarchy/templates/monitors/social-rumor.hbs',
   'systems/anarchy/templates/monitors/structure.hbs',
   'systems/anarchy/templates/monitors/stun.hbs',
+  'systems/anarchy/templates/actor/character/name.hbs',
+
   // character
   'systems/anarchy/templates/actor/character/capacity.hbs',
   'systems/anarchy/templates/actor/character/description.hbs',
@@ -120,6 +122,7 @@ const HBS_PARTIAL_TEMPLATES = [
   // common&technical partials
   'systems/anarchy/templates/monitors/anarchy.hbs',
   'systems/anarchy/templates/monitors/anarchy-scene.hbs',
+  'systems/anarchy/templates/common/view-mode.hbs',
   'systems/anarchy/templates/common/check-element.hbs',
   'systems/anarchy/templates/common/checkbar.hbs',
   'systems/anarchy/templates/common/label.hbs',

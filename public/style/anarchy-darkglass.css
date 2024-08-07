@@ -116,10 +116,8 @@
 
 #gm-manager.style-darkglass a:hover,
 #gm-manager.style-darkglass a:hover label,
-.style-darkglass :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover,
-.style-darkglass :is(.anarchy-button, a.item-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
-.style-darkglass :is(a.item-control, .attribute-box):hover,
-.style-darkglass :is(a.item-control, .attribute-box):hover :is(i, label, a),
+.style-darkglass :is(.anarchy-button, a.item-control, a.view-mode-control, .attribute-box, .a.click-checkbar-element):hover,
+.style-darkglass :is(.anarchy-button, a.item-control, a.view-mode-control, .attribute-box, .a.click-checkbar-element):hover :is(i, label, a, img),
 .style-darkglass .item :is(a:hover, a.item-controls:hover i, a:hover label) {
   color: var(--darkglass-color-highlight);
   text-shadow: 0 0 1px var(--darkglass-tint-hover);
@@ -301,6 +299,7 @@
   color: var(--darkglass-color-highlight);
 }
 
+.style-darkglass a.view-mode-control i,
 .style-darkglass a.item-control i,
 .style-darkglass a.item-control img {
   color: var(--darkglass-color-controls);

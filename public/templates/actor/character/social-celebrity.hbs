@@ -8,6 +8,8 @@
     <input class="info-value" type="number" data-dtype="Number" 
       name="system.counters.social.celebrity.value"
       data-counter-social="celebrity"
-      value="{{system.counters.social.celebrity.value}}"/>
+      value="{{system.counters.social.celebrity.value}}"
+      {{#if @root.options.viewMode}}disabled{{/if}}
+      />
   </label>
 </div>

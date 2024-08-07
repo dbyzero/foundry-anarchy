@@ -1,8 +1,8 @@
 import { TEMPLATES_PATH } from "../constants.js";
-import { CharacterNPCSheet } from "./character-npc-sheet.js";
+import { CharacterBaseSheet } from "./character-base-sheet.js";
 import "../../styles/character-enhanced-sheet.scss";
 
-export class CharacterEnhancedSheet extends CharacterNPCSheet {
+export class CharacterEnhancedSheet extends CharacterBaseSheet {
 
   get template() {
     return `${TEMPLATES_PATH}/actor/character-enhanced.hbs`;
