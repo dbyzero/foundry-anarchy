@@ -1,6 +1,5 @@
 .sheet {
     .character-enhanced {
-
         a {
             transition: all 200ms;
             cursor: pointer !important;
@@ -274,10 +273,10 @@
         .section-equipments,
         .section-shadowamps {
             max-height: 1000px;
-            transition: max-height 500ms cubic-bezier(.14, .87, .5, .97);
+            transition: max-height 400ms cubic-bezier(.14, .87, .5, .97);
 
             &:not(.wrapper) {
-                transition: max-height 500ms cubic-bezier(.78, .32, .88, .38);
+                transition: max-height 400ms cubic-bezier(.78, .32, .88, .38);
                 overflow: hidden;
             }
 
@@ -289,6 +288,15 @@
                 &.closed {
                     max-height: 36px;
                 }
+            }
+        }
+        .section-roleplay {
+            max-height: 300px;
+            transition: max-height 300ms ease-out;
+
+            &:not(.wrapper) {
+                transition: max-height 300ms ease-out;
+                overflow: hidden;
             }
         }
 
