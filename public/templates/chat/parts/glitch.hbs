@@ -3,9 +3,11 @@
     {{> 'systems/anarchy/templates/common/label.hbs' this}}:
   </label>
   {{#each @root.roll.subrolls.glitch.terms.[0].results as |dice|}}
-    <span class="risk-glitch-dice {{@root.roll.glitchOutcome}}">
-      {{{iconD6 dice.result}}}
-    </span>
+    {{#if (eq dice.result 1)}}
+      <span class="risk-glitch-dice {{@root.roll.glitchOutcome}}">
+        {{{iconD6 dice.result}}}
+      </span>
+    {{/if}}
   {{/each}}
   {{#if @root.roll.subrolls.glitch.total}}
     <label>
@@ -13,4 +15,3 @@
     </label>
   {{/if}}
 </div>
-

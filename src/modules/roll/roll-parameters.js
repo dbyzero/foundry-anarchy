@@ -239,6 +239,7 @@ const DEFAULT_ROLL_PARAMETERS = [
       hbsTemplateChat: `${TEMPLATES_PATH}/chat/parts/glitch.hbs`,
       min: 0, max: 5
     },
+    isUsed: (p) => p.value > 0,
     factory: context => {
       const wounds = context.actor.getWounds();
       const glitchModifiers = RollParameters.computeRollModifiers(ROLL_PARAMETER_CATEGORY.glitch, context);
@@ -479,7 +480,8 @@ export class RollParameters {
     const computed = {
       code: param.code,
       onChecked: param.onChecked,
-      onValue: param.onValue
+      onValue: param.onValue,
+      isUsed: param.isUsed
     };
     foundry.utils.mergeObject(computed, param.options);
     if (param.factory) {

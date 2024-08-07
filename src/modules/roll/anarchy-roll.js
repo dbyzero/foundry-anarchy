@@ -85,7 +85,7 @@ export class AnarchyRoll {
   async rollGlitchDice() {
     if (this.param.glitch > 0) {
       // using dgcs=0 allows to roll dice for glitch, but to have them count as 0 successes
-      this.subrolls.glitch = new Roll(`${this.param.glitch}dgcs=0[${ROLL_THEME['glitch']}]`);
+      this.subrolls.glitch = new Roll(`${this.param.glitch}d6cf=1[${ROLL_THEME['glitch']}]`);
       await this.subrolls.glitch.evaluate({ async: true })
       this.subrolls.glitch.dice[0].options.appearance = { colorset: GLITCH_COLORSET };
       this.glitch = this.subrolls.glitch.terms[0].results.filter(it => it.result == 1).length;

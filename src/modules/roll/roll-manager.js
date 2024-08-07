@@ -28,6 +28,12 @@ export class RollManager {
   }
 
   async roll(roll) {
+    roll.parameters.forEach(p => {
+      if (p.isUsed != undefined) {
+        p.used = p.isUsed(p)
+      }
+    })
+
     roll.param = game.system.anarchy.rollParameters.compute(roll.parameters);
     roll.param.edge = roll.parameters.find(it => it.category == ROLL_PARAMETER_CATEGORY.edge && it.used) ? 1 : 0;
     roll.param.anarchy = roll.parameters.filter(it => it.flags?.isAnarchy && it.used).length;
