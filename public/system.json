@@ -1,8 +1,8 @@
 {
   "id": "anarchy",
-  "version": "12.0.1",
-  "manifest": "https://gitlab.com/vincent.vandeme/anarchy/raw/master/system.json",
-  "download": "https://gitlab.com/vincent.vandeme/anarchy/-/archive/12.0.1/anarchy-12.0.1.zip",
+  "version": "12.0.15",
+  "manifest": "https://raw.githubusercontent.com/dbyzero/foundry-anarchy/master/public/system.json",
+  "download": "https://github.com/dbyzero/foundry-anarchy/releases/download/v12.0.15/foundry-anarchy-v12.0.15.zip",
   "url": "https://gitlab.com/vincent.vandeme/anarchy",
   "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
   "title": "Anarchy",
