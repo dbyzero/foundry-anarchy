@@ -197,7 +197,6 @@ const DEFAULT_ROLL_PARAMETERS = [
     options: {
       flags: { editDice: true, editable: true, forceDisplay: true, },
       order: 40, category: ROLL_PARAMETER_CATEGORY.drain,
-      value: 1,
       labelkey: ANARCHY.common.roll.modifiers.drain,
       hbsTemplateRoll: `${TEMPLATES_PATH}/roll/parts/input-numeric.hbs`,
       min: 0, max: 6
@@ -205,9 +204,7 @@ const DEFAULT_ROLL_PARAMETERS = [
     condition: context => (context.mode == 'skill' || context.mode == 'weapon') && context.skill?.system.hasDrain,
     factory: context => {
       return {
-        // TODO: link the weapon to the shadowamp to find drain
-        // TODO: add a defaukt drain on the skill?
-        value: 1,
+        value: context.mode == 'weapon' && context.weapon.hasDrain ? context.weapon.system.drain : 1
       }
     }
   },

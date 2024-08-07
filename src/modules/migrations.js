@@ -62,7 +62,7 @@ class _0_3_8_MigrateWeaponDamage extends Migration {
 
   async migrate() {
 
-    const isStrengthDamageItem = it => it.type == 'weapon' && it.system.strength;
+    const isStrengthDamageItem = it => it.type == TEMPLATE.itemType.weapon && it.system.strength;
     const fixItemDamage = it => {
       return {
         _id: it.id,
@@ -82,11 +82,11 @@ class _0_3_14_MigrateSkillDrainConvergence extends Migration {
 
   async migrate() {
     const withDrain = ANARCHY_SKILLS.filter(it => it.hasDrain).map(it => it.code);
-    const hasDrain = it => it.type == 'skill' && withDrain.includes(it.system.code);
+    const hasDrain = it => it.type == TEMPLATE.itemType.skill && withDrain.includes(it.system.code);
     const setDrain = it => { return { _id: it.id, 'system.hasDrain': true } };
 
     const withConvergence = ANARCHY_SKILLS.filter(it => it.hasConvergence).map(it => it.code);
-    const hasConvergence = it => it.type == 'skill' && withConvergence.includes(it.system.code);
+    const hasConvergence = it => it.type == TEMPLATE.itemType.skill && withConvergence.includes(it.system.code);
     const setConvergence = it => { return { _id: it.id, 'system.hasConvergence': true } };
 
     const computeUpdates = items => items.filter(hasDrain).map(setDrain)
@@ -142,7 +142,7 @@ class _0_6_0_MigrateSkillSocial extends Migration {
 
   async migrate() {
     const socialSkills = ANARCHY_SKILLS.filter(it => it.isSocial).map(it => it.code)
-    const isSocial = it => it.type == 'skill' && socialSkills.includes(it.system.code)
+    const isSocial = it => it.type == TEMPLATE.itemTypeskill && socialSkills.includes(it.system.code)
     const setSocial = it => { return { _id: it.id, 'system.isSocial': true } }
     await this.applyItemsUpdates(items => items.filter(isSocial).map(setSocial))
   }
@@ -263,7 +263,7 @@ class _11_1_16_MigrateSkillsAttributes extends Migration {
   get version() { return '11.1.16' }
   get code() { return 'migrate-skills-attributes' }
   async migrate() {
-    this.applyItemsUpdates(items => items.filter(it => it.isSkill(type = TEMPLATE.itemType.skill))
+    this.applyItemsUpdates(items => items.filter(it => it.type == TEMPLATE.itemType.skill)
       .filter(it => it.system.attribute == '' || it.system.code == '')
       .map(it => {
         return {
@@ -290,6 +290,21 @@ class _12_0_1_MigrateChatMessageFlags extends Migration {
   }
 }
 
+class _12_0_4_MigrateWeaponDrain extends Migration {
+  get version() { return '12.0.2' }
+  get code() { return 'migrate-weapon-drain' }
+  async migrate() {
+    this.applyItemsUpdates(items => items.filter(it => it.type = TEMPLATE.itemType.weapon)
+      .filter(it => it.hasDrain)
+      .map(it => {
+        return {
+          _id: it.id,
+          'system.drain': 1
+        }
+      }))
+  }
+}
+
 export class Migrations {
   constructor() {
     HooksManager.register(ANARCHY_HOOKS.DECLARE_MIGRATIONS);
@@ -306,6 +321,7 @@ export class Migrations {
       new _11_1_12_MigrateBackWords(),
       new _11_1_16_MigrateSkillsAttributes(),
       new _12_0_1_MigrateChatMessageFlags(),
+      new _12_0_4_MigrateWeaponDrain(),
     ));
 
     game.settings.register(SYSTEM_NAME, SYSTEM_MIGRATION_CURRENT_VERSION, {

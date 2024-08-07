@@ -280,6 +280,7 @@
       },
       "weapon": {
         "skill": "Skill",
+        "drain": "Drain",
         "damage": "Damages",
         "strength": "+ strength",
         "defense": "Defense",

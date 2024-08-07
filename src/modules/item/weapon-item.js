@@ -9,6 +9,7 @@ import { ANARCHY_HOOKS } from "../hooks-manager.js";
 import { AttributeActions } from "../attribute-actions.js";
 import { ErrorManager } from "../error-manager.js";
 import { Misc } from "../misc.js";
+import { SkillItem } from "./skill-item.js";
 
 const AREA_TARGETS = {
   none: { targets: 1, adjust: [0] },
@@ -81,6 +82,28 @@ export class WeaponItem extends AnarchyBaseItem {
 
   isWeaponSkill(item) {
     return item.type == 'skill' && item.system.code === this.system.skill;
+  }
+
+  get hasDrain() {
+    const skill = this.getWeaponSkill()
+    return skill.system.hasDrain
+  }
+
+  get hasConvergence() {
+    const skill = this.getWeaponSkill()
+    return skill.system.hasConvergence
+  }
+
+  getWeaponSkill() {
+    const actorSkill = this.actor?.items.find(skill => this.isWeaponSkill(skill))
+    if (actorSkill) {
+      return actorSkill
+    }
+    const worldSkill = game.items.find(skill => this.isWeaponSkill(skill))
+    if (worldSkill) {
+      return worldSkill
+    }
+    return SkillItem.prepareSkill(this.system.skill)
   }
 
   getDefense() {

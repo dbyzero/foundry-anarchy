@@ -34,6 +34,11 @@
     {{either system.range.long 'OK'}}
     {{/if}}
   </div>
+  <div class="weapon-column weapon-stat">
+    {{#if hasDrain}}
+    {{system.drain}}
+    {{/if}}
+  </div>
   <div class="weapon-column weapon-controls item-controls">
     {{> 'systems/anarchy/templates/common/favorite.hbs'
       isFavorite=(actorHasFavorite @root.actor.id id=_id type=type)

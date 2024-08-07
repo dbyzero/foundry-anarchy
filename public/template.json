@@ -270,11 +270,7 @@
       "essence": 0
     },
     "weapon": {
-      "templates": [
-        "modifiers",
-        "inactive",
-        "references"
-      ],
+      "templates": ["modifiers", "inactive", "references"],
       "skill": "",
       "specialization": "",
       "strength": true,
@@ -284,6 +280,7 @@
       "monitor": "stun",
       "defense": "",
       "area": "",
+      "drain": 0,
       "range": {
         "max": "short",
         "short": 0,

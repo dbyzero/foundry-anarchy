@@ -27,6 +27,14 @@
             {{/select}}
         </select>
       </div>
+      {{#if hasDrain}}
+      <div class="form-group">
+        <label for="system.drain">{{localize 'ANARCHY.item.weapon.drain'}} </label>
+          <input class="type-numeric" type="number" data-dtype="Number"
+            name="system.drain" value="{{system.drain}}"
+          />
+      </div>
+      {{/if}}
       <div class="form-group">
         <label for="system.damage">
           {{localize 'ANARCHY.item.weapon.damage'}}
