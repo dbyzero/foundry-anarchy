@@ -37,77 +37,15 @@ export class AnarchyBaseActor extends Actor {
     return undefined;
   }
 
-  static padWordListToMin(items, min) {
-    for (let index = items.length; index < min; index++) {
-      items.push({
-        word: "",
-        id: index + 1,
-        audio: "",
-        no_delete: false
-      });
-    }
-    for (let index = 0; index < min; index++) {
-      items[index]["no_delete"] = true;
-    }
-    return items;
-  }
-
-  static sortSkills(actor, skills) {
-    return skills.sort((skilla, skillb) => {
-      const skillaIsKnowledge = (skilla.system.code === 'knowledge') || (skilla.system.attribute === 'knowledge');
-      const skillbIsKnowledge = (skillb.system.code === 'knowledge') || (skillb.system.attribute === 'knowledge');
-      if (skillaIsKnowledge && !skillbIsKnowledge) return 1;
-      if (!skillbIsKnowledge && skillaIsKnowledge) return -1;
-      if (skillaIsKnowledge && skillbIsKnowledge) {
-        if (skilla.name > skillb.name) return 1;
-        if (skilla.name > skillb.name) return -1;
-        return 0;
-      }
-
-      const skillATotal = actor.getAttributeValue(skilla.system.attribute) + skilla.system.value;
-      const skillBTotal = actor.getAttributeValue(skillb.system.attribute) + skillb.system.value;
-      if (skillATotal > skillBTotal) return -1;
-      if (skillATotal < skillBTotal) return 1;
-      return 0;
-    })
-  }
-
-  static sortQualities(qualities) {
-    return qualities.sort((qa, qb) => {
-      // same type of quality
-      if(qa.system.positive === qb.system.positive) {
-        if (qa.name > qb.name) return 1;
-        if (qa.name < qb.name) return -1;
-        return 0;
-      }
-
-      if (qa.system.positive) return -1;
-      if (qb.system.positive) return 1;
-
-      return 0;
-    })
-  }
-
-  static sortShadowamps(shadowamps) {
-    return shadowamps.sort((sa, sb) => {
-      if(sa.system.level > sb.system.level) return -1;
-      if(sa.system.level < sb.system.level) return 1;
-      if (sa.name > sb.name) return 1;
-      if (sa.name < sb.name) return -1;
-      return 0;
-    })
-  }
-
-
-  getAllowedUsers(permission = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER) {
+  getAllowedUsers(permission = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
     return game.users.filter(user => this.testUserPermission(user, permission));
   }
 
-  getAllowedUserIds(permission = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER) {
+  getAllowedUserIds(permission = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
     return this.getAllowedUsers(permission).map(it => it.id);
   }
 
-  getRightToDefend() { return CONST.DOCUMENT_PERMISSION_LEVELS.OWNER }
+  getRightToDefend() { return CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER }
 
   hasOwnAnarchy() { return false; }
   hasGMAnarchy() { return !this.hasPlayerOwner; }

@@ -1,10 +1,10 @@
 {
   "id": "anarchy",
-  "version": "12.0.15",
+  "version": "12.0.3",
   "manifest": "https://raw.githubusercontent.com/dbyzero/foundry-anarchy/master/public/system.json",
-  "download": "https://github.com/dbyzero/foundry-anarchy/releases/download/v12.0.15/foundry-anarchy-v12.0.15.zip",
-  "url": "https://gitlab.com/vincent.vandeme/anarchy",
-  "bugs": "https://gitlab.com/vincent.vandeme/anarchy/-/issues",
+  "download": "https://github.com/dbyzero/foundry-anarchy/releases/download/v12.0.3/foundry-anarchy-v12.0.3.zip",
+  "url": "https://github.com/dbyzero/foundry-anarchy",
+  "bugs": "https://github.com/dbyzero/foundry-anarchy/issues",
   "title": "Anarchy",
   "description": "Shadowrun Anarchy RPG, and hacks, for FoundryVTT",
   "compatibility": {
@@ -24,6 +24,11 @@
     {
       "name": "Los Brutos",
       "discord": "Los Brutos#1876"
+    },
+    {
+      "name": "Half",
+      "discord": "half#3405",
+      "email": "cyril@dbyzero.com"
     }
   ],
   "flags": {

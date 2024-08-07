@@ -1,7 +1,7 @@
 import { ActorDamageManager } from "../actor/actor-damage.js";
 import { ChatManager, CAN_USE_EDGE, MESSAGE_DATA, OWNING_ACTOR, PARENT_MESSAGE_ID } from "../chat/chat-manager.js";
 import { ANARCHY } from "../config.js";
-import { ANARCHY_SYSTEM, TEMPLATES_PATH } from "../constants.js";
+import { ANARCHY_SYSTEM, SYSTEM_SCOPE, TEMPLATES_PATH } from "../constants.js";
 import { RollManager } from "../roll/roll-manager.js";
 
 const TEMPLATE_INFORM_DEFENDER = `${TEMPLATES_PATH}/combat/inform-defender.hbs`;
@@ -64,9 +64,7 @@ export class CombatManager {
     ]
 
     const flags = {}
-    ChatManager.prepareFlag(flags, MESSAGE_DATA, attack)
-    ChatManager.prepareFlag(flags, OWNING_ACTOR, ChatManager.messageActorRights(defender, defender.getRightToDefend())
-    )
+    ChatManager.prepareFlag(flags, OWNING_ACTOR, ChatManager.messageActorRights(defender, defender.getRightToDefend()))
     ChatManager.prepareFlag(flags, PARENT_MESSAGE_ID, actionChatMessageIds.find(it => it != undefined));
 
     const notifyMessage = await ChatMessage.create({
@@ -83,8 +81,8 @@ export class CombatManager {
         attack)),
       flags: flags
     })
-
     attack.choiceChatMessageId = notifyMessage.id
+    notifyMessage.setFlag(SYSTEM_SCOPE, MESSAGE_DATA, attack)
   }
 
   async onDefense(roll) {

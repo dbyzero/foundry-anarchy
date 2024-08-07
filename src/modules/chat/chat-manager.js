@@ -143,10 +143,10 @@ export class ChatManager {
   static hasRight(chatMsg, right = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
     const flagOwner = chatMsg.getFlag(SYSTEM_SCOPE, OWNING_ACTOR);
     if (flagOwner) {
-      const owningActor = ChatManager.readActorRights(flagOwner)
-      if (owningActor) {
-        if (owningActor.actor) {
-          return owningActor.actor.testUserPermission(game.user, Math.min(owningActor.right, right))
+      const neededRights = ChatManager.readActorRights(flagOwner)
+      if (neededRights) {
+        if (neededRights.actor) {
+          return neededRights.actor.testUserPermission(game.user, Math.min(neededRights.right, right))
         }
         return true
       }

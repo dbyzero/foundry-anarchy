@@ -51,7 +51,7 @@ export class VehicleActor extends AnarchyBaseActor {
   }
 
   getRightToDefend() {
-    return CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER
+    return CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER
   }
 
   async rollPilotDefense(attack) {
