@@ -1082,11 +1082,18 @@
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
                 .gear {
-                    label {
-                        font-family: "BebasNeue";
-                        font-size: 18px;
-                        letter-spacing: 1px;
-                        font-weight: bold;
+                    .content {
+                        padding:4px ;
+                        p {
+                            text-align: justify;
+                        }
+
+                        label {
+                            font-family: "BebasNeue";
+                            font-size: 18px;
+                            letter-spacing: 1px;
+                            font-weight: bold;
+                        }
                     }
 
                     .item-controls {
@@ -1313,11 +1320,18 @@
                     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
                     .contact {
-                        label {
-                            font-family: "BebasNeue";
-                            font-size: 18px;
-                            letter-spacing: 1px;
-                            font-weight: bold;
+                        .content {
+                            padding:4px ;
+                            p {
+                                text-align: justify;
+                            }
+
+                            label {
+                                font-family: "BebasNeue";
+                                font-size: 18px;
+                                letter-spacing: 1px;
+                                font-weight: bold;
+                            }
                         }
 
                         .item-controls {
@@ -1454,11 +1468,12 @@
                             }
 
                             .item-description {
-                                display:inline-block;
+                                display: inline-block;
                                 max-height: 150px;
                                 overflow: auto;
+
                                 p {
-                                    margin:0 !important;
+                                    margin: 0 !important;
                                 }
 
                             }
