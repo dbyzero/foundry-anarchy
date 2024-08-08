@@ -388,7 +388,7 @@
                         padding: 8px;
                         display: grid;
                         gap: 12px;
-                        grid-template-columns: 1fr 1fr 1fr;
+                        grid-template-columns: 1fr 1fr;
                         background-color: white;
 
                         a {
@@ -396,8 +396,9 @@
                             --wrapper-background-color: #f4c000;
                             --wrapper-padding: 8px;
                             color: white;
-                            font-size: 24px;
+                            font-size: 18px;
                             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+                            transition:200ms;
 
                             &:hover {
                                 transform: scale(1.05);
@@ -405,32 +406,24 @@
 
                             &>.content {
                                 padding: 0px 8px 0px 24px;
-                                font-size: 24px;
+                                font-size: 16px;
                                 align-items: center;
                                 justify-content: center;
-                                display: flex;
+                                display: grid;
 
-                                .angle.br {
-                                    display: none;
-                                }
-
-
-                                .side.right,
-                                .side.down {
-                                    border: 0;
-                                }
 
                                 .attribute-button-icon {
                                     --wrapper-background-color: #f4c000;
                                     position: absolute;
                                     top: -5px;
                                     left: -5px;
+                                    width:36px;
                                 }
 
                                 label {
                                     display: block;
                                     text-align: center;
-                                    font-size: 16px;
+                                    font-size: 14px;
                                     font-weight: bold;
                                     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
                                     color: white;
@@ -458,36 +451,55 @@
                             display: flex;
                             flex-direction: column;
                             gap: 8px;
+                            padding:0 2px;
 
                             .weapon {
-                                padding: 4px 2px;
+                                padding: 6px;
+                                transition: 200ms;
+                                background-color:transparent;
+                                --wrapper-border-color: black;
+
+                                &:hover {
+                                    transform: scale(1.01);
+                                }
 
                                 .content {
                                     width: 100%;
                                     display: grid;
-                                    grid-template-columns: 38px 1fr;
+                                    grid-template-columns: 50px 1fr;
                                     cursor: pointer;
 
                                     .item-controls {
                                         position: absolute;
                                         bottom: 4px;
-                                        right: 4px;
+                                        right: 6px;
                                         text-align: center;
                                     }
 
                                     .weapon-name {
-                                        font-size: 14px;
-                                        font-weight: bold;
+                                        font-family: "BebasNeue";
+                                        font-size: 16px;
+                                        letter-spacing: 0px;
+                                        // font-weight: bold;
 
                                     }
 
                                     .weapon-desc {
-                                        font-size: 14px;
+                                        font-size: 12px;
+                                        padding:2px 0;
 
                                         span {
                                             p {
                                                 margin: 0;
                                             }
+                                        }
+                                    }
+
+                                    .weapon-img {
+                                        width:42px !important;
+                                        .item-img {
+                                            width:42px !important;
+                                            height: 42px !important;
                                         }
                                     }
 
@@ -503,6 +515,7 @@
 
                                             .weapon-range {
                                                 text-wrap: nowrap;
+                                                font-family: "BebasNeue";
                                             }
 
                                             .weapon-dmg {
@@ -582,7 +595,8 @@
             }
 
             .item-list {
-                padding: 0 1rem;
+                padding: 1rem 1rem 0 1rem;
+                margin-top:0rem;
                 gap: 1rem;
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -622,14 +636,13 @@
 
                     .level {
                         position: absolute;
-                        top: 50%;
+                        top: 10px;
                         transform: translateY(-50%);
                         position: absolute;
                         width: 32px;
                         height: 32px;
-                        top: 50%;
                         font-weight: bold;
-                        left: -14px;
+                        left: -6px;
                         transform: translateY(-50%);
 
                         .content {
@@ -707,7 +720,8 @@
 
             .item-list {
                 gap: 1rem;
-                padding: 0 1rem;
+                padding: 1rem 1rem 0 1rem;
+                margin-top:0rem;
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 .anarchy-shadowamp {
@@ -747,14 +761,13 @@
 
                     .level {
                         position: absolute;
-                        top: 50%;
                         transform: translateY(-50%);
                         position: absolute;
                         width: 32px;
                         height: 32px;
-                        top: 50%;
+                        top: 10px;
                         font-weight: bold;
-                        left: -14px;
+                        left: -6px;
                         transform: translateY(-50%);
 
                         .content {

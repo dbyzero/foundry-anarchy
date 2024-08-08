@@ -1,5 +1,5 @@
 import { AnarchyBaseActor } from "./actor/base-actor.js";
-import { LOG_HEAD } from "./constants.js";
+import { CharacterEnhancedSheet } from "./actor/character-enhanced-sheet.js";
 import { Damage } from "./damage.js";
 import { Enums } from "./enums.js";
 import { Grammar } from "./grammar.js";
@@ -188,15 +188,10 @@ export class HandlebarsManager {
     Handlebars.registerHelper('sortSkills', AnarchyBaseActor.sortSkills);
     Handlebars.registerHelper('sortShadowamps', AnarchyBaseActor.sortShadowamps);
     Handlebars.registerHelper('sortQualities', AnarchyBaseActor.sortQualities);
+    Handlebars.registerHelper('sortAttributeButton', AnarchyBaseActor.sortAttributeButton);
     Handlebars.registerHelper('range', function (min, max) { let array = []; for (let i = min; i <= max; i++) { array.push(i); } return array; });
     Handlebars.registerHelper('ifGte', function (value, threshold, options) { if (value >= threshold) { return options.fn(this); } else { return options.inverse(this); } });
-    Handlebars.registerHelper('ifTabClosed', function(id, sectionName, option) {
-      const isTabClosed = localStorage.getItem(`${id}-section-${sectionName}`) === "closed";
-      if (isTabClosed) {
-        return option.fn(this);
-      }
-      return option.inverse(this);
-    });
+    Handlebars.registerHelper('ifTabClosed', CharacterEnhancedSheet.ifTabClosed);
   }
 
   static hbsForLoop(start, end, options) {

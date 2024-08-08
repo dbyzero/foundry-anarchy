@@ -45,6 +45,7 @@ const ATTRIBUTE_ACTIONS = [
   action(ACTION.lift, __ => ATTR.strength, __ => ATTR.strength, Icons.fontAwesome('fas fa-dumbbell'), [ACTOR.character]),
 
   action(ACTION.matrixDefense, actor => actor.getMatrixLogic(), actor => actor.getMatrixFirewall(), Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character, ACTOR.sprite, ACTOR.ic, ACTOR.device, ACTOR.vehicle]),
+  action(ACTION.astralDefense, ___ => ATTR.logic, ___ => ATTR.willpower, Icons.fontAwesome('fas fa-shield-virus'), [ACTOR.character]),
 
 ]
 

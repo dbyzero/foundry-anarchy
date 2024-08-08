@@ -10,17 +10,17 @@
       class="item-list section-actions {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
     </div>
     <div class="action-list">
+      <div class="weapons section-actions {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
+        <div class="content">
+          {{> "systems/anarchy/templates/actor/character-enhanced/weapons.hbs"}}
+        </div>
+      </div>
       <div
         class="wrapper-hexabox item-list section-actions {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
         <div class="content">
           {{>
           "systems/anarchy/templates/actor/character-enhanced/attributebuttons.hbs"}}
-        </div>
-      </div>
-      <div class="weapons section-actions {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
-        <div class="content">
-          {{> "systems/anarchy/templates/actor/character-enhanced/weapons.hbs"}}
         </div>
       </div>
     </div>

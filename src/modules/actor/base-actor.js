@@ -98,6 +98,13 @@ export class AnarchyBaseActor extends Actor {
     })
   }
 
+  static sortAttributeButton(buttons) {
+    return buttons.sort((a, b) => {
+      if (game.i18n.localize(a.labelkey) > game.i18n.localize(b.labelkey)) return 1;
+      if (game.i18n.localize(a.labelkey) < game.i18n.localize(b.labelkey)) return -1;
+      return 0;
+    })
+  }
 
   getAllowedUsers(permission = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
     return game.users.filter(user => this.testUserPermission(user, permission));

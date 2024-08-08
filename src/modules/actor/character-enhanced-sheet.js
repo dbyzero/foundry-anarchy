@@ -19,10 +19,18 @@ export class CharacterEnhancedSheet extends CharacterBaseSheet {
     super.activateListeners(html);
 
     const actorId = this.actor._id;
-    html.find('.click-section').on("click", function() {
+    html.find('.click-section').on("click", function () {
       const sectionClass = ($(this).data('class'));
       html.find(`.${sectionClass}`).toggleClass('closed');
       localStorage.setItem(`${actorId}-${sectionClass}`, html.find(`.${sectionClass}`).hasClass('closed') ? 'closed' : null);
     });
+  }
+
+  static ifTabClosed(id, sectionName, option) {
+    const isTabClosed = localStorage.getItem(`${id}-section-${sectionName}`) === "closed";
+    if (isTabClosed) {
+      return option.fn(this);
+    }
+    return option.inverse(this);
   }
 }

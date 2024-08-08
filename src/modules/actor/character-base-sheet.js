@@ -37,7 +37,6 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
   }
 
   toggleViewMode() {
-    console.log('this');
     this.viewMode = !this.viewMode
     this.render()
   }

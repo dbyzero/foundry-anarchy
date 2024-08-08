@@ -378,7 +378,8 @@
       "memory": "Mémoire",
       "catch": "Attraper au vol",
       "lift": "Soulever",
-      "matrixDefense": "Défense matricielle"
+      "matrixDefense": "Défense matricielle",
+      "astralDefense": "Défense astrale"
     },
     "defense": {
       "physicalDefense": "Défense physique",

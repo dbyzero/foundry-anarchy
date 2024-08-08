@@ -378,7 +378,8 @@
       "memory": "Memory",
       "catch": "Catch object",
       "lift": "Lift/carry",
-      "matrixDefense": "Matrix defense"
+      "matrixDefense": "Matrix defense",
+      "astralDefense": "Astral defense"
     },
     "defense": {
       "physicalDefense": "Physical defense",
