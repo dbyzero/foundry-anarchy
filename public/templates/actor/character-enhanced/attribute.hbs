@@ -17,8 +17,10 @@
             <a class="click-roll-attribute">
                 {{attribute.total}}
             </a>
-            <input class="value" type="number" data-dtype="Number" min="0" max="36" maxlength="2"
-                name="system.attributes.{{key}}.value" value="{{attribute.value}}" />
+            {{#unless @root.options.viewMode}}
+                <input class="value" type="number" data-dtype="Number" min="0" max="36" maxlength="2"
+                    name="system.attributes.{{key}}.value" value="{{attribute.value}}" />
+            {{/unless}}
         </div>
     </div>
 </div>
