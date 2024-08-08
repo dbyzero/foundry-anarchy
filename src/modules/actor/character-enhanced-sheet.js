@@ -18,14 +18,11 @@ export class CharacterEnhancedSheet extends CharacterBaseSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    const actorClass = `#CharacterEnhancedSheet-Actor-${this.actor._id}`;
-
-    $(`${actorClass} .click-section`).on("click", function() {
+    const actorId = this.actor._id;
+    html.find('.click-section').on("click", function() {
       const sectionClass = ($(this).data('class'));
-      const sectionClassName = `${actorClass} .${sectionClass}`;
-      const jqueryElement = $(sectionClassName);
-      jqueryElement.toggleClass('closed');
-      localStorage.setItem(sectionClassName, jqueryElement.hasClass('closed') ? 'closed' : null);
+      html.find(`.${sectionClass}`).toggleClass('closed');
+      localStorage.setItem(`${actorId}-${sectionClass}`, html.find(`.${sectionClass}`).hasClass('closed') ? 'closed' : null);
     });
   }
 }

@@ -1,4 +1,4 @@
-<div class="define-item-type section-skills wrapper {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'skills'}}closed{{/ifTabClosed}}" data-item-type="skill">
+<div class="define-item-type section-skills wrapper {{#ifTabClosed @root.actor._id 'skills'}}closed{{/ifTabClosed}}" data-item-type="skill">
   <h2 class="wrapper-hexabox click-section" data-class="section-skills">
     {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
     <div class="content">
@@ -6,7 +6,7 @@
       {{> 'systems/anarchy/templates/common/item-control-add.hbs' itemType='skill'}}
     </div>
   </h2>
-  <div class="item-list section-skills {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'skills'}}closed{{/ifTabClosed}}">
+  <div class="item-list section-skills {{#ifTabClosed @root.actor._id 'skills'}}closed{{/ifTabClosed}}">
     {{#each (sortSkills @root.actor items.skill) as |skill|}}
     {{> "systems/anarchy/templates/actor/character-enhanced/skill.hbs" skill}}
     {{/each}}

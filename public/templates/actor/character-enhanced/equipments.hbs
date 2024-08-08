@@ -1,5 +1,5 @@
 <div
-  class="section-equipments wrapper {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'equipments'}}closed{{/ifTabClosed}}">
+  class="section-equipments wrapper {{#ifTabClosed @root.actor._id 'equipments'}}closed{{/ifTabClosed}}">
   <h2 class="wrapper-hexabox click-section" data-class="section-equipments">
     {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
     <div class="content">
@@ -8,10 +8,10 @@
       itemType='gear'}}
     </h2>
     <div
-      class="item-list section-equipments {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'equipments'}}closed{{/ifTabClosed}}">
+      class="item-list section-equipments {{#ifTabClosed @root.actor._id 'equipments'}}closed{{/ifTabClosed}}">
       <div class="action-list">
         <div
-          class="item-list section-equipments {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'equipments'}}closed{{/ifTabClosed}}">
+          class="item-list section-equipments {{#ifTabClosed @root.actor._id 'equipments'}}closed{{/ifTabClosed}}">
           <div class="content">
             {{!-- <div class="section-group items-group">
               {{> "systems/anarchy/templates/actor/parts/owned-actors.hbs"}}

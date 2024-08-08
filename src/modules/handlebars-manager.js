@@ -190,9 +190,8 @@ export class HandlebarsManager {
     Handlebars.registerHelper('sortQualities', AnarchyBaseActor.sortQualities);
     Handlebars.registerHelper('range', function (min, max) { let array = []; for (let i = min; i <= max; i++) { array.push(i); } return array; });
     Handlebars.registerHelper('ifGte', function (value, threshold, options) { if (value >= threshold) { return options.fn(this); } else { return options.inverse(this); } });
-    Handlebars.registerHelper('ifTabClosed', function(prefix, id, sectionName, option) {
-      const tabName = `${prefix}${id} .section-${sectionName}`;
-      const isTabClosed = localStorage.getItem(tabName) === "closed";
+    Handlebars.registerHelper('ifTabClosed', function(id, sectionName, option) {
+      const isTabClosed = localStorage.getItem(`${id}-section-${sectionName}`) === "closed";
       if (isTabClosed) {
         return option.fn(this);
       }

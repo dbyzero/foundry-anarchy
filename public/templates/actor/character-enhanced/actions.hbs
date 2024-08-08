@@ -1,5 +1,5 @@
 <div
-  class="define-item-type section-actions wrapper {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'actions'}}closed{{/ifTabClosed}}"
+  class="define-item-type section-actions wrapper {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}"
   data-item-type="action">
   <h2 class="wrapper-hexabox click-section" data-class="section-actions">
     {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
@@ -7,18 +7,18 @@
       {{localize 'ANARCHY.itemType.plural.action'}}
     </h2>
     <div
-      class="item-list section-actions {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
+      class="item-list section-actions {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
     </div>
     <div class="action-list">
       <div
-        class="wrapper-hexabox item-list section-actions {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
+        class="wrapper-hexabox item-list section-actions {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
         <div class="content">
           {{>
           "systems/anarchy/templates/actor/character-enhanced/attributebuttons.hbs"}}
         </div>
       </div>
-      <div class="weapons section-actions {{#ifTabClosed '#CharacterEnhancedSheet-Actor-' @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
+      <div class="weapons section-actions {{#ifTabClosed @root.actor._id 'actions'}}closed{{/ifTabClosed}}">
         <div class="content">
           {{> "systems/anarchy/templates/actor/character-enhanced/weapons.hbs"}}
         </div>
