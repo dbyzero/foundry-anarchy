@@ -44,9 +44,11 @@
                     font-size: 10px;
 
                     .anarchy-metatype {
+                        gap: 8px;
                         background-color: white;
-                        display: grid;
-                        grid-template-columns: 1fr 10px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         padding-right: 6px;
 
                         &.info-value {
@@ -181,7 +183,8 @@
 
         .item {
             opacity: 1;
-            transition: opacity 200ms ease-out; 
+            transition: opacity 200ms ease-out;
+
             &.inactive {
                 background: transparent !important;
                 opacity: 0.3;
@@ -398,7 +401,7 @@
                             color: white;
                             font-size: 18px;
                             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-                            transition:200ms;
+                            transition: 200ms;
 
                             &:hover {
                                 transform: scale(1.05);
@@ -417,7 +420,7 @@
                                     position: absolute;
                                     top: -5px;
                                     left: -5px;
-                                    width:36px;
+                                    width: 36px;
                                 }
 
                                 label {
@@ -451,12 +454,12 @@
                             display: flex;
                             flex-direction: column;
                             gap: 8px;
-                            padding:0 2px;
+                            padding: 0 2px;
 
                             .weapon {
                                 padding: 6px;
                                 transition: 200ms;
-                                background-color:transparent;
+                                background-color: transparent;
                                 --wrapper-border-color: black;
 
                                 &:hover {
@@ -486,7 +489,7 @@
 
                                     .weapon-desc {
                                         font-size: 12px;
-                                        padding:2px 0;
+                                        padding: 2px 0;
 
                                         span {
                                             p {
@@ -496,9 +499,10 @@
                                     }
 
                                     .weapon-img {
-                                        width:42px !important;
+                                        width: 42px !important;
+
                                         .item-img {
-                                            width:42px !important;
+                                            width: 42px !important;
                                             height: 42px !important;
                                         }
                                     }
@@ -596,7 +600,7 @@
 
             .item-list {
                 padding: 1rem 1rem 0 1rem;
-                margin-top:0rem;
+                margin-top: 0rem;
                 gap: 1rem;
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -721,23 +725,23 @@
             .item-list {
                 gap: 1rem;
                 padding: 1rem 1rem 0 1rem;
-                margin-top:0rem;
+                margin-top: 0rem;
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
                 .anarchy-shadowamp {
                     --wrapper-padding: 12px;
 
                     .content {
-                        display: grid;
+                        display: flex;
                         flex-direction: row;
-                        grid-template-columns: 46px 1fr;
 
 
                         .shadowamp-img {
                             display: flex;
                             flex-direction: column;
                             justify-content: space-between;
-                            gap: 6px;
+                            min-width: 46px;
 
                             .anarchy-img {
                                 width: 46px;
@@ -1078,6 +1082,13 @@
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
                 .gear {
+                    label {
+                        font-family: "BebasNeue";
+                        font-size: 18px;
+                        letter-spacing: 1px;
+                        font-weight: bold;
+                    }
+
                     .item-controls {
                         position: absolute;
                         bottom: 4px;
@@ -1302,6 +1313,13 @@
                     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
                     .contact {
+                        label {
+                            font-family: "BebasNeue";
+                            font-size: 18px;
+                            letter-spacing: 1px;
+                            font-weight: bold;
+                        }
+
                         .item-controls {
                             position: absolute;
                             bottom: 4px;
@@ -1433,6 +1451,16 @@
                                 font-weight: bold;
                                 font-size: 18px;
                                 letter-spacing: 1px;
+                            }
+
+                            .item-description {
+                                display:inline-block;
+                                max-height: 150px;
+                                overflow: auto;
+                                p {
+                                    margin:0 !important;
+                                }
+
                             }
                         }
                     }

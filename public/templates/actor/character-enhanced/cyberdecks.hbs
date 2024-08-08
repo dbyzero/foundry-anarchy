@@ -1,4 +1,4 @@
-{{#if (localize 'ANARCHY.itemType.plural.cyberdeck')}}
+{{#unless (and @root.options.viewMode (eq (length items.cyberdeck) 0))}}
 <div class="cyberdecks">
   <h2 class="title">
     {{localize 'ANARCHY.itemType.plural.cyberdeck'}}
@@ -10,4 +10,4 @@
     {{/each}}
   </div>
 </div>
-{{/if}}
+{{/unless}}

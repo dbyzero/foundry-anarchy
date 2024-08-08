@@ -192,7 +192,7 @@ export class HandlebarsManager {
     Handlebars.registerHelper('range', function (min, max) { let array = []; for (let i = min; i <= max; i++) { array.push(i); } return array; });
     Handlebars.registerHelper('ifGte', function (value, threshold, options) { if (value >= threshold) { return options.fn(this); } else { return options.inverse(this); } });
     Handlebars.registerHelper('ifTabClosed', CharacterEnhancedSheet.ifTabClosed);
-  }
+    Handlebars.registerHelper('length', function(context) { return context?.length || 0; }); }
 
   static hbsForLoop(start, end, options) {
     let accum = '';

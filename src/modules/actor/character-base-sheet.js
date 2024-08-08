@@ -48,16 +48,24 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
 
     // cues, dispositions, keywords
     html.find('.click-word-add').click(async event => {
+      event.stopPropagation();
       this.createNewWord(this.getEventWordType(event));
     });
 
     html.find('.click-word-say').click(async event => {
+      event.stopPropagation();
       this.actor.sayWord(
         this.getEventWordType(event),
         this.getEventWordId(event));
     });
 
+    html.find('.change-word-value').click(async event => {
+      event.stopPropagation();
+    });
+
+
     html.find('.change-word-value').change(async event => {
+      event.stopPropagation();
       const newWordValue = event.currentTarget.value;
       await this.actor.updateWord(
         this.getEventWordType(event),
@@ -66,12 +74,16 @@ export class CharacterBaseSheet extends AnarchyActorSheet {
     });
 
     html.find('.click-word-delete').click(async event => {
+      event.stopPropagation();
       this.actor.deleteWord(
         this.getEventWordType(event),
         this.getEventWordId(event));
     });
 
-    html.find(".click-celebrity-roll").click(async event => this.actor.rollCelebrity());
+    html.find(".click-celebrity-roll").click(async event => {
+      event.stopPropagation();
+      this.actor.rollCelebrity();
+    });
   }
 
   createNewWord(wordType) {

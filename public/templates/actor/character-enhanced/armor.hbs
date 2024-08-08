@@ -2,7 +2,7 @@
     <div>
        {{localize 'ANARCHY.actor.monitors.armor'}}
     </div>
-    <input class="info-value" name="system.monitors.armor.max"
+    <input {{#if @root.options.viewMode}}disabled{{/if}} class="info-value" name="system.monitors.armor.max"
         type="number" data-dtype="Number"
         value="{{system.monitors.armor.max}}" />
 </div>
