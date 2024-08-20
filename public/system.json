@@ -1,8 +1,8 @@
 {
   "id": "anarchy",
-  "version": "12.1.6",
+  "version": "12.1.8",
   "manifest": "https://raw.githubusercontent.com/dbyzero/foundry-anarchy/master/public/system.json",
-  "download": "https://github.com/dbyzero/foundry-anarchy/releases/download/v12.1.6/foundry-anarchy-v12.1.6.zip",
+  "download": "https://github.com/dbyzero/foundry-anarchy/releases/download/v12.1.8/foundry-anarchy-v12.1.8.zip",
   "url": "https://github.com/dbyzero/foundry-anarchy",
   "bugs": "https://github.com/dbyzero/foundry-anarchy/issues",
   "title": "Anarchy",
