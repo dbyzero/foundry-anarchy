@@ -53,6 +53,9 @@ export class AnarchyBaseActor extends Actor {
   }
 
   static sortSkills(actor, skills) {
+    if (!skills) {
+      return []
+    }
     return skills.sort((skilla, skillb) => {
       const skillaIsKnowledge = (skilla.system.code === 'knowledge') || (skilla.system.attribute === 'knowledge');
       const skillbIsKnowledge = (skillb.system.code === 'knowledge') || (skillb.system.attribute === 'knowledge');
@@ -73,6 +76,9 @@ export class AnarchyBaseActor extends Actor {
   }
 
   static sortQualities(qualities) {
+    if (!qualities) {
+      return []
+    }
     return qualities.sort((qa, qb) => {
       // same type of quality
       if(qa.system.positive === qb.system.positive) {
@@ -89,6 +95,9 @@ export class AnarchyBaseActor extends Actor {
   }
 
   static sortShadowamps(shadowamps) {
+    if (!shadowamps) {
+      return []
+    }
     return shadowamps.sort((sa, sb) => {
       if(sa.system.level > sb.system.level) return -1;
       if(sa.system.level < sb.system.level) return 1;
@@ -99,6 +108,9 @@ export class AnarchyBaseActor extends Actor {
   }
 
   static sortAttributeButton(buttons) {
+    if (!buttons) {
+      return []
+    }
     return buttons.sort((a, b) => {
       if (game.i18n.localize(a.labelkey) > game.i18n.localize(b.labelkey)) return 1;
       if (game.i18n.localize(a.labelkey) < game.i18n.localize(b.labelkey)) return -1;
