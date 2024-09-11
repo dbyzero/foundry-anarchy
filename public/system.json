@@ -1,10 +1,10 @@
 {
   "id": "anarchy",
-  "version": "12.1.8",
-  "manifest": "https://raw.githubusercontent.com/dbyzero/foundry-anarchy/master/public/system.json",
-  "download": "https://github.com/dbyzero/foundry-anarchy/releases/download/v12.1.8/foundry-anarchy-v12.1.8.zip",
-  "url": "https://github.com/dbyzero/foundry-anarchy",
-  "bugs": "https://github.com/dbyzero/foundry-anarchy/issues",
+  "version": "12.2.0",
+  "manifest": "https://raw.githubusercontent.com/VincentVk9373/anarchy/master/public/system.json",
+  "download": "https://github.com/VincentVk9373/anarchy/releases/download/v12.2.0/foundry-anarchy-v12.2.0.zip",
+  "url": "https://github.com/VincentVk9373/anarchy",
+  "bugs": "https://github.com/VincentVk9373/anarchy/issues",
   "title": "Anarchy",
   "description": "Shadowrun Anarchy RPG, and hacks, for FoundryVTT",
   "compatibility": {

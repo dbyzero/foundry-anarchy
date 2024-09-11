@@ -143,7 +143,7 @@ export class AnarchySystem {
     Actors.unregisterSheet('core', ActorSheet);
     Actors.registerSheet(SYSTEM_NAME, CharacterActorSheet, {
       label: game.i18n.localize(ANARCHY.actor.characterSheet),
-      makeDefault: true,
+      makeDefault: false,
       types: ['character']
     });
     Actors.registerSheet(SYSTEM_NAME, CharacterNPCSheet, {
@@ -158,7 +158,7 @@ export class AnarchySystem {
     });
     Actors.registerSheet(SYSTEM_NAME, CharacterEnhancedSheet, {
       label: game.i18n.localize(ANARCHY.actor.characterEnhancedSheet),
-      makeDefault: false,
+      makeDefault: true,
       types: ['character']
     });
     Actors.registerSheet(SYSTEM_NAME, VehicleSheet, {
