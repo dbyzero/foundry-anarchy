@@ -28,14 +28,14 @@
     </header>
     <section class="roleplay">
       <div
-        class="keyword section-roleplay {{#ifTabClosed @root.actor._id 'roleplay'}}closed{{/ifTabClosed}}">
+        class="keyword section-roleplay {{actorTabClosed actor._id 'roleplay'}}">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
         {{> "systems/anarchy/templates/actor/character-enhanced/words.hbs"
         wordType='keywords' minValues=5
         values=system.keywords}}
       </div>
       <div
-        class="quote wrapper-hexabox click-section section-roleplay {{#ifTabClosed @root.actor._id 'roleplay'}}closed{{/ifTabClosed}}"
+        class="quote wrapper-hexabox click-section section-roleplay {{actorTabClosed actor._id 'roleplay'}}"
         data-class="section-roleplay">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
         <div class="center">
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div
-        class="behavior section-roleplay {{#ifTabClosed @root.actor._id 'roleplay'}}closed{{/ifTabClosed}}">
+        class="behavior section-roleplay {{actorTabClosed actor._id 'roleplay'}}">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
         {{> "systems/anarchy/templates/actor/character-enhanced/words.hbs"
         wordType='dispositions' minValues=5

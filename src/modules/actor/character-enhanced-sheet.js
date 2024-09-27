@@ -33,4 +33,12 @@ export class CharacterEnhancedSheet extends CharacterBaseSheet {
     }
     return option.inverse(this);
   }
+
+  static actorTabClosed(id, sectionName, option) {
+    const isTabClosed = localStorage.getItem(`${id}-section-${sectionName}`) === "closed";
+    if (isTabClosed) {
+      return 'closed'
+    }
+    return ''
+  }
 }

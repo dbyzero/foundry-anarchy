@@ -1,5 +1,5 @@
 <div
-  class="section-story wrapper {{#ifTabClosed @root.actor._id 'story'}}closed{{/ifTabClosed}}">
+  class="section-story wrapper {{actorTabClosed actor._id 'story'}}">
   <h2 class="wrapper-hexabox" data-class="section-story">
     {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
     <div class="content">
@@ -7,9 +7,9 @@
     </div>
   </h2>
   <div
-    class="section-story {{#ifTabClosed @root.actor._id 'story'}}closed{{/ifTabClosed}}">
+    class="section-story {{actorTabClosed actor._id 'story'}}">
     <div
-      class="section-story {{#ifTabClosed @root.actor._id 'story'}}closed{{/ifTabClosed}}">
+      class="section-story {{actorTabClosed actor._id 'story'}}">
       <div class="social-info">
         <div class="credibility wrapper-hexabox">
           {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}

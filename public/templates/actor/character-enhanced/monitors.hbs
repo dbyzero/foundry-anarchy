@@ -1,11 +1,11 @@
-<div class="section-monitors wrapper {{#ifTabClosed @root.actor._id 'monitors'}}closed{{/ifTabClosed}}">
+<div class="section-monitors wrapper {{actorTabClosed actor._id 'monitors'}}">
     <h2 class="wrapper-hexabox click-section" data-class="section-monitors">
         {{> "systems/anarchy/templates/actor/character-enhanced/hexabox.hbs"}}
         <div class="content">
             {{localize 'ANARCHY.itemType.plural.monitor'}}
         </div>
     </h2>
-    <div class="monitor-list section-monitors {{#ifTabClosed @root.actor._id 'monitors'}}closed{{/ifTabClosed}}">
+    <div class="monitor-list section-monitors {{actorTabClosed actor._id 'monitors'}}">
         <div class="tokens">
             <div class="anarchy wrapper-hexabox">
                 {{>
