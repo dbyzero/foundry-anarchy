@@ -75,7 +75,7 @@
       "label": "Macros",
       "system": "anarchy",
       "module": "anarchy",
-      "path": "./packs/macros.db",
+      "path": "systems/anarchy/packs/macros.db",
       "type": "Macro",
       "tags": [
         "macro"
@@ -86,7 +86,7 @@
       "label": "Gamemaster information",
       "system": "anarchy",
       "module": "anarchy",
-      "path": "./packs/gm-info.db",
+      "path": "systems/anarchy/packs/gm-info.db",
       "type": "JournalEntry",
       "tags": [
         "journal"
@@ -96,7 +96,7 @@
       "name": "manual-fr",
       "label": "Manuel SR Anarchy (FR)",
       "type": "JournalEntry",
-      "path": "./packs/manual-fr.db",
+      "path": "systems/anarchy/packs/manual-fr.db",
       "tags": [
         "documentation"
       ]
