@@ -102,6 +102,13 @@
       ]
     }
   ],
+  "media": [
+    {
+      "type": "cover",
+      "url": "systems/anarchy/style/anarchy-logo.webp"
+    }
+  ],
+  "background" : "systems/anarchy/style/anarchy-logo.webp",
   "relationships": {},
   "socket": true,
   "protected": false,
