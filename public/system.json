@@ -34,22 +34,13 @@
   "flags": {
     "allowBugReporter": true,
     "hotReload": {
-      "extensions": [
-        "css",
-        "hbs",
-        "html"
-      ],
-      "paths": [
-        "style/",
-        "templates/"
-      ]
+      "extensions": ["css", "hbs", "html"],
+      "paths": ["style/", "templates/"]
     }
   },
   "license": "LICENSE.md",
   "scripts": [],
-  "esmodules": [
-    "index.mjs"
-  ],
+  "esmodules": ["index.mjs"],
   "styles": [
     "style/anarchy.css",
     "style/anarchy-shadowrun.css",
@@ -73,33 +64,32 @@
     {
       "name": "macros",
       "label": "Macros",
-      "system": "anarchy",
-      "module": "anarchy",
-      "path": "systems/anarchy/packs/macros.db",
       "type": "Macro",
-      "tags": [
-        "macro"
-      ]
+      "system": "anarchy",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
     },
     {
       "name": "gm-info",
       "label": "Gamemaster information",
-      "system": "anarchy",
-      "module": "anarchy",
-      "path": "systems/anarchy/packs/gm-info.db",
       "type": "JournalEntry",
-      "tags": [
-        "journal"
-      ]
+      "system": "anarchy",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
     },
     {
       "name": "manual-fr",
       "label": "Manuel SR Anarchy (FR)",
       "type": "JournalEntry",
-      "path": "systems/anarchy/packs/manual-fr.db",
-      "tags": [
-        "documentation"
-      ]
+      "system": "anarchy",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
     }
   ],
   "media": [
@@ -108,7 +98,7 @@
       "url": "systems/anarchy/style/anarchy-logo.webp"
     }
   ],
-  "background" : "systems/anarchy/style/anarchy-logo.webp",
+  "background": "systems/anarchy/style/anarchy-logo.webp",
   "relationships": {},
   "socket": true,
   "protected": false,

@@ -30,6 +30,9 @@ jobs:
     - name: Build the application
       run: npx vite build
 
+    - name: Build the compendiums
+      run: node ./tools/packCompendiumsToDist.mjs
+
     - name: Archive dist directory
       run: |
         VERSION=$(git describe --tags --abbrev=0)
