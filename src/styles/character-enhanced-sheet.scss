@@ -1,5 +1,8 @@
 .sheet {
     .character-enhanced {
+        --darkglass-color-font: black !important;
+        --darkglass-background-attributes: white !important;
+        color: var(--darkglass-color-font);
         a {
             transition: all 200ms;
             cursor: pointer !important;
