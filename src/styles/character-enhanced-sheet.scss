@@ -625,6 +625,12 @@
                                 width: 46px;
                                 height: 46px;
                             }
+
+                            .item-controls {
+                                position: absolute;
+                                top: 8px;
+                                right: 8px;
+                            }
                         }
 
                         .skill-txt {
@@ -671,6 +677,12 @@
             margin-right: -4px;
             padding: 0 0rem 2rem 0rem;
             box-shadow: var(--anarchy-shadow-section);
+
+            .item-controls {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+            }
 
             h2 {
                 --wrapper-padding: 19px;
