@@ -853,6 +853,11 @@
                 grid-template-columns: 1fr 120px 120px 120px;
                 gap: 8px;
 
+                .checkbar-img {
+                    width: 24px;
+                    height: 24px;
+                }
+
                 .tokens {
                     display: flex;
                     flex-direction: column;
@@ -993,6 +998,17 @@
                     }
                 }
 
+                .anarchy-essence {
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                    gap: 8px;
+
+                    div {
+                        flex: 1;
+                    }
+                }
+
                 .edge-credibility {
                     height: 100%;
                     display: grid;
@@ -1083,7 +1099,8 @@
 
                 .gear {
                     .content {
-                        padding:4px ;
+                        padding: 4px;
+
                         p {
                             text-align: justify;
                         }
@@ -1321,7 +1338,8 @@
 
                     .contact {
                         .content {
-                            padding:4px ;
+                            padding: 4px;
+
                             p {
                                 text-align: justify;
                             }
